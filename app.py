@@ -249,7 +249,12 @@ def _allowed_source_paths() -> list[str]:
     return paths
 
 
-def answer_question(query: str, progress: gr.Progress = gr.Progress()):
+# Maps the UI radio label to the internal audience key used by
+# rag/generation.py ("phd" is the shared default in both places).
+_AUDIENCE_MAP = {"PhD astronomer": "phd", "Non-expert": "general"}
+
+
+def answer_question(query: str, audience: str, progress: gr.Progress = gr.Progress()):
     """Retrieve relevant chunks then stream a grounded answer, yielding status
     updates. *progress* drives Gradio's native progress bar: the retrieval
     half (0-0.5) is driven by real stage callbacks from `retrieve()`, and the
@@ -260,6 +265,7 @@ def answer_question(query: str, progress: gr.Progress = gr.Progress()):
         yield "", "", ""
         return
 
+    audience_key = _AUDIENCE_MAP.get(audience, "phd")
     progress(0, desc="Searching knowledge base…")
 
     def _on_retrieve_progress(fraction: float, desc: str) -> None:
@@ -291,7 +297,7 @@ def answer_question(query: str, progress: gr.Progress = gr.Progress()):
         answer = ""
         token_count = 0
         for token_count, token in enumerate(
-            stream_answer(query, display_chunks), start=1
+            stream_answer(query, display_chunks, audience=audience_key), start=1
         ):
             answer += token
             fraction = 0.5 + 0.47 * (1 - math.exp(-token_count / 60))
@@ -395,6 +401,13 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                 )
                 submit_btn = gr.Button("Ask", variant="primary")
 
+            with gr.Accordion("Settings", open=False):
+                audience_radio = gr.Radio(
+                    choices=["PhD astronomer", "Non-expert"],
+                    value="PhD astronomer",
+                    label="Answer level",
+                )
+
             status_box = gr.Markdown(value="", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
             answer_box = gr.Markdown(label="Answer", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
 
@@ -404,12 +417,12 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
             # Wire up events
             submit_btn.click(
                 answer_question,
-                inputs=[query_box],
+                inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
             )
             query_box.submit(
                 answer_question,
-                inputs=[query_box],
+                inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
             )
 
