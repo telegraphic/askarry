@@ -39,6 +39,10 @@ mkdir -p pdfs
 cp ~/Downloads/my_paper.pdf pdfs/
 ```
 
+> All commands below (`python ingest.py`, `python app.py`, etc.) assume the
+> `.venv` is activated — remember to `source .venv/bin/activate` first in
+> every new shell.
+
 ---
 
 ## Usage
@@ -162,6 +166,17 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 
 ---
 
+### Bibliography & Table of Contents (`rag/bibliography.py`)
+
+`pdfs/bibliography.json` is a static lookup of `{chapter_id: {title, authors, section}}` for the AASKAII chapter PDFs, generated offline by `pdfs/build_bibliography.py` (scrapes the live <https://www.skao.int/en/aaskaii> page — re-run manually if new chapters are published). `rag/bibliography.py` matches chunk `source` paths to bibliography entries by filename stem and provides:
+
+- `lookup_citation()` / `format_citation()` — used in the **Source Passages** panel to show "Surname et al (2026) Title" instead of a raw file path.
+- `list_toc_entries()` — powers the **Table of Contents** tab in the web UI, grouping chapters by section (in book order) with author lists and direct links to the local PDFs.
+
+Local PDFs with no matching bibliography entry are silently excluded from the Table of Contents by design.
+
+---
+
 ## Configuration reference (`rag/config.py`)
 
 ### Directories
@@ -172,6 +187,8 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 | `PDF_DIRS` | `[PDF_DIR]` | List of all directories to ingest; edit to add/remove sources |
 | `CHROMA_DIR` | `chroma_db/` | Where ChromaDB persists the vector index on disk |
 | `COLLECTION_NAME` | `"astronomy"` | ChromaDB collection name; change this if you want separate indexes for different document sets |
+| `BIBLIOGRAPHY_PATH` | `pdfs/bibliography.json` | Title/author/section lookup for AASKAII chapters, used for citations and the Table of Contents tab (see `rag/bibliography.py`) |
+| `AASKAII_YEAR` | `2026` | Publication year shown in formatted citations for all AASKAII chapters |
 
 ### Embedding model
 
@@ -199,7 +216,7 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 |---------|---------|---------|
 | `TOP_K` | `5` | How many chunks are ultimately passed to the LLM. Higher values give the LLM more context but slow generation and can dilute the answer with less relevant material. 3–7 is a typical range. |
 | `RETRIEVAL_CANDIDATES` | `20` | How many results each of the two first-stage search legs (semantic + BM25) fetches before fusion. A larger pool gives RRF and the cross-encoder more to work with, improving recall at the cost of re-ranking time. |
-| `MAX_CHUNK_TOKENS` | `400` | Maximum tokens per chunk at ingest time. BGE-large has a hard 512-token limit (including `[CLS]`/`[SEP]` special tokens); staying at 400 gives headroom for the tokenizer and prevents the model from silently truncating. **Changing this requires a full re-ingest.** |
+| `MAX_CHUNK_TOKENS` | `480` | Maximum tokens per chunk at ingest time. BGE-large has a hard 512-token limit (including `[CLS]`/`[SEP]` special tokens); staying at 480 gives headroom for the tokenizer and prevents the model from silently truncating. **Changing this requires a full re-ingest.** |
 | `BM25_WEIGHT` | `0.5` | Controls how much the BM25 keyword leg contributes to the RRF score. `0.0` = pure semantic search (ignores BM25); `1.0` = semantic and keyword legs weighted equally. SKA documentation is rich in acronyms and part numbers that benefit from keyword matching, so 0.5 is a reasonable default. Raise toward 1.0 if exact-term queries perform poorly; lower toward 0.0 if unrelated documents with matching keywords keep appearing. |
 | `USE_HYDE` | `False` | When `True`, Ollama generates a short hypothetical answer before retrieval; that answer text is embedded instead of the raw question. This shifts the query vector into "answer space" and improves recall for highly technical questions. Adds roughly the latency of one LLM call (~1–3 s) per query. Off by default; enable it if semantic retrieval results feel topically off. |
 | `CONFIDENCE_THRESHOLD` | `0.3` | Sigmoid-normalized cross-encoder relevance (0-1) below which the top retrieved chunk is treated as a weak match. Below this, the UI shows a low-confidence warning while the answer streams, and the LLM is given an explicit hedging instruction instead of being left to guess from marginal passages. |
@@ -210,14 +227,17 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 
 ```
 astronomy-rag/
-├── pdfs/               ← Add your PDFs here
-├── chroma_db/          ← Auto-created by ingest.py
+├── pdfs/                     ← Add your PDFs here
+│   ├── bibliography.json     ← Title/author/section lookup (see build_bibliography.py)
+│   └── build_bibliography.py ← One-time offline scraper for bibliography.json
+├── chroma_db/                ← Auto-created by ingest.py
 ├── rag/
-│   ├── config.py       ← All tuneable settings
-│   ├── ingestion.py    ← docling → HybridChunker → ChromaDB
-│   ├── retrieval.py    ← Hybrid BM25 + semantic → RRF → rerank → expand
-│   └── generation.py   ← Ollama prompt & response
-├── ingest.py           ← Run this first
-├── app.py              ← Gradio web UI
+│   ├── config.py             ← All tuneable settings
+│   ├── ingestion.py          ← docling → HybridChunker → ChromaDB
+│   ├── retrieval.py          ← Hybrid BM25 + semantic → RRF → rerank → expand
+│   ├── generation.py         ← Ollama prompt & response
+│   └── bibliography.py       ← Citation lookup + Table of Contents data
+├── ingest.py                 ← Run this first
+├── app.py                    ← Gradio web UI (Ask a Question / Table of Contents tabs)
 └── requirements.txt
 ```
