@@ -10,24 +10,19 @@ Module-level caches mean models load only once per process.
 
 from __future__ import annotations
 
-import hashlib
-import logging
 import math
 import re
 from typing import Callable
 
 import chromadb
-import ollama
+from loguru import logger
 from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
+from . import store
 from .config import (
     BM25_WEIGHT,
-    CHROMA_DIR,
-    COLLECTION_NAME,
-    EMBEDDING_MODEL,
     EMBEDDING_QUERY_PROMPT,
-    OLLAMA_BASE_URL,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
     OLLAMA_TOP_K,
@@ -38,21 +33,12 @@ from .config import (
     USE_HYDE,
 )
 
-log = logging.getLogger(__name__)
-
-_ollama_client = ollama.Client(host=OLLAMA_BASE_URL)
-
 # Module-level cache — populated on first call to retrieve()
-_model: SentenceTransformer | None = None
 _reranker: CrossEncoder | None = None
-_collection: chromadb.Collection | None = None
-# BM25 index rebuilt whenever the collection changes size
-_bm25: BM25Okapi | None = None
-_bm25_docs: list[dict] | None = None   # parallel list of {text, meta} dicts
-_bm25_count: int = 0                   # collection.count() at last BM25 build
-# Acronym lookup: {"CSP": "Central Signal Processor", ...} built from tagged chunks
-_acronyms: dict[str, str] | None = None
-_acronyms_count: int = 0
+# BM25 index and acronym lookup, both rebuilt whenever the collection size
+# changes (e.g. after ingest); see store.CountCache.
+_bm25_cache = store.CountCache()
+_acronyms_cache = store.CountCache()
 
 # Matches lines like "CSP   Central Signal Processor" or "CSP: Central Signal Processor"
 _ACRONYM_LINE_RE = re.compile(
@@ -62,18 +48,10 @@ _ACRONYM_LINE_RE = re.compile(
 
 
 def _get_resources() -> tuple[SentenceTransformer, CrossEncoder, chromadb.Collection]:
-    global _model, _reranker, _collection
-    if _model is None:
-        _model = SentenceTransformer(EMBEDDING_MODEL)
+    global _reranker
     if _reranker is None:
         _reranker = CrossEncoder(RERANKER_MODEL)
-    if _collection is None:
-        client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-        _collection = client.get_or_create_collection(
-            name=COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"},
-        )
-    return _model, _reranker, _collection
+    return store.get_embedding_model(), _reranker, store.get_chroma_collection()
 
 
 def warmup() -> None:
@@ -87,31 +65,29 @@ def warmup() -> None:
 
 def _get_acronyms(collection: chromadb.Collection) -> dict[str, str]:
     """Build (or return cached) acronym→expansion dict from tagged chunks."""
-    global _acronyms, _acronyms_count
-    current_count = collection.count()
-    if _acronyms is not None and current_count == _acronyms_count:
-        return _acronyms
 
-    _acronyms = {}
-    _acronyms_count = current_count
-    try:
-        results = collection.get(
-            where={"chunk_type": "acronyms"},
-            include=["documents"],
-        )
-    except Exception:
-        # ChromaDB raises if no metadata filter matches — that's fine
-        return _acronyms
+    def _build() -> dict[str, str]:
+        acronyms: dict[str, str] = {}
+        try:
+            results = collection.get(
+                where={"chunk_type": "acronyms"},
+                include=["documents"],
+            )
+        except Exception:
+            # ChromaDB raises if no metadata filter matches — that's fine
+            return acronyms
 
-    for text in results.get("documents") or []:
-        for match in _ACRONYM_LINE_RE.finditer(text):
-            acronym = match.group(1).strip()
-            expansion = match.group(2).strip()
-            if acronym not in _acronyms:   # first definition wins
-                _acronyms[acronym] = expansion
+        for text in results.get("documents") or []:
+            for match in _ACRONYM_LINE_RE.finditer(text):
+                acronym = match.group(1).strip()
+                expansion = match.group(2).strip()
+                if acronym not in acronyms:   # first definition wins
+                    acronyms[acronym] = expansion
 
-    log.info("Loaded %d acronyms from indexed documents.", len(_acronyms))
-    return _acronyms
+        logger.info(f"Loaded {len(acronyms)} acronyms from indexed documents.")
+        return acronyms
+
+    return _acronyms_cache.get(collection, _build)
 
 
 def _expand_query(query: str, acronyms: dict[str, str]) -> str:
@@ -132,7 +108,7 @@ def _expand_query(query: str, acronyms: dict[str, str]) -> str:
     if not expansions:
         return query
     expanded = query + " " + " ".join(expansions)
-    log.info("Query expanded: %s", expanded)
+    logger.info(f"Query expanded: {expanded}")
     return expanded
 
 
@@ -143,20 +119,19 @@ def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
     ingest). For large collections this is slightly slow on first call but
     subsequent queries are fast.
     """
-    global _bm25, _bm25_docs, _bm25_count
-    current_count = collection.count()
-    if _bm25 is None or current_count != _bm25_count:
-        log.info("Building BM25 index over %d documents…", current_count)
+
+    def _build() -> tuple[BM25Okapi, list[dict]]:
+        logger.info(f"Building BM25 index over {collection.count()} documents…")
         # Fetch everything — ChromaDB stores all text so this is in-memory.
         all_results = collection.get(include=["documents", "metadatas"])
-        _bm25_docs = [
+        bm25_docs = [
             {"text": doc, "meta": meta}
             for doc, meta in zip(all_results["documents"], all_results["metadatas"])
         ]
-        tokenised = [doc["text"].lower().split() for doc in _bm25_docs]
-        _bm25 = BM25Okapi(tokenised)
-        _bm25_count = current_count
-    return _bm25, _bm25_docs
+        tokenised = [doc["text"].lower().split() for doc in bm25_docs]
+        return BM25Okapi(tokenised), bm25_docs
+
+    return _bm25_cache.get(collection, _build)
 
 
 def _hyde_query(query: str) -> str:
@@ -173,7 +148,7 @@ def _hyde_query(query: str) -> str:
         f"Question: {query}"
     )
     try:
-        response = _ollama_client.chat(
+        response = store.get_ollama_client().chat(
             model=OLLAMA_MODEL,
             messages=[{"role": "user", "content": prompt}],
             options={
@@ -186,8 +161,31 @@ def _hyde_query(query: str) -> str:
         )
         return response["message"]["content"].strip()
     except Exception as exc:
-        log.warning("HyDE generation failed (%s); falling back to raw query.", exc)
+        logger.warning(f"HyDE generation failed ({exc}); falling back to raw query.")
         return query
+
+
+def _sigmoid(x: float) -> float:
+    """Squash an unbounded cross-encoder logit to a 0-1 confidence score."""
+    return 1.0 / (1.0 + math.exp(-x))
+
+
+def _meta_to_chunk(meta: dict, text: str, score: float) -> dict:
+    """Build the common chunk dict shape from a ChromaDB metadata record.
+
+    Shared by the semantic-search and BM25-search hit loops (and implicitly
+    matched by `_expand_context`) so both legs of hybrid retrieval produce
+    identically-shaped dicts before RRF fusion merges them.
+    """
+    return {
+        "text": text,
+        "source": meta.get("source", "unknown"),
+        "chunk_index": meta.get("chunk_index", 0),
+        "page_no": meta.get("page_no", 0),
+        "heading": meta.get("heading", ""),
+        "caption": meta.get("caption", ""),
+        "score": score,
+    }
 
 
 def _rrf_fuse(
@@ -207,7 +205,7 @@ def _rrf_fuse(
     chunks_by_id: dict[str, dict] = {}
 
     def _id(chunk: dict) -> str:
-        return _chunk_id(chunk["source"], chunk["chunk_index"])
+        return store.chunk_id(chunk["source"], chunk["chunk_index"])
 
     # Semantic leg (weight = 1.0)
     for rank, chunk in enumerate(semantic_hits, start=1):
@@ -233,7 +231,7 @@ def _rrf_fuse(
 
 def retrieve(
     query: str,
-    top_k: int = TOP_K,
+    top_k: int | None = None,
     on_progress: Callable[[float, str], None] | None = None,
 ) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
@@ -261,6 +259,7 @@ def retrieve(
                       0-1 (higher = more relevant; this is what determines the
                       final ranking, unlike the intermediate RRF score)
     """
+    top_k = top_k if top_k is not None else TOP_K
     model, reranker, collection = _get_resources()
 
     if collection.count() == 0:
@@ -273,7 +272,7 @@ def retrieve(
         on_progress(0.05, "Generating hypothetical answer (HyDE)…")
     embed_text = _hyde_query(query) if USE_HYDE else query
     if USE_HYDE:
-        log.info("HyDE hypothesis: %s…", embed_text[:120])
+        logger.info(f"HyDE hypothesis: {embed_text[:120]}…")
 
     # --- Stage 1a: Semantic vector search ---
     if on_progress:
@@ -294,15 +293,7 @@ def retrieve(
         vec_results["distances"][0],
     ):
         score = max(0.0, 1.0 - dist / 2.0)
-        semantic_hits.append({
-            "text": doc,
-            "source": meta.get("source", "unknown"),
-            "chunk_index": meta.get("chunk_index", 0),
-            "page_no": meta.get("page_no", 0),
-            "heading": meta.get("heading", ""),
-            "caption": meta.get("caption", ""),
-            "score": round(score, 4),
-        })
+        semantic_hits.append(_meta_to_chunk(meta, doc, round(score, 4)))
 
     # --- Stage 1b: BM25 keyword search (with acronym expansion) ---
     if on_progress:
@@ -318,15 +309,9 @@ def retrieve(
     bm25_hits = []
     for i in top_bm25_indices:
         meta = bm25_docs[i]["meta"]
-        bm25_hits.append({
-            "text": bm25_docs[i]["text"],
-            "source": meta.get("source", "unknown"),
-            "chunk_index": meta.get("chunk_index", 0),
-            "page_no": meta.get("page_no", 0),
-            "heading": meta.get("heading", ""),
-            "caption": meta.get("caption", ""),
-            "score": float(bm25_scores[i]),
-        })
+        bm25_hits.append(
+            _meta_to_chunk(meta, bm25_docs[i]["text"], float(bm25_scores[i]))
+        )
 
     # --- Stage 2: Reciprocal Rank Fusion ---
     if on_progress:
@@ -349,7 +334,7 @@ def retrieve(
     # which doesn't track the final (cross-encoder) ranking order at all.
     # Squash to a 0-1 confidence via sigmoid so the UI and the low-confidence
     # check below both reflect what actually determined the ranking.
-    confidences = [1.0 / (1.0 + math.exp(-float(s))) for s in ce_scores]
+    confidences = [_sigmoid(float(s)) for s in ce_scores]
     ranked = sorted(
         zip(confidences, rerank_pool), key=lambda x: x[0], reverse=True
     )
@@ -375,7 +360,7 @@ def _expand_context(chunks: list[dict], collection: chromadb.Collection) -> list
         idx = chunk["chunk_index"]
 
         neighbour_ids = [
-            _chunk_id(source, i)
+            store.chunk_id(source, i)
             for i in [idx - 1, idx, idx + 1]
             if i >= 0
         ]
@@ -387,7 +372,7 @@ def _expand_context(chunks: list[dict], collection: chromadb.Collection) -> list
             )
         except Exception:
             expanded.append(chunk)
-            seen_ids.add(_chunk_id(source, idx))
+            seen_ids.add(store.chunk_id(source, idx))
             continue
 
         neighbour_pairs = sorted(
@@ -396,15 +381,9 @@ def _expand_context(chunks: list[dict], collection: chromadb.Collection) -> list
         )
         combined_text = "\n\n".join(doc for doc, _ in neighbour_pairs if doc)
 
-        cid = _chunk_id(source, idx)
+        cid = store.chunk_id(source, idx)
         if cid not in seen_ids:
             seen_ids.add(cid)
             expanded.append({**chunk, "text": combined_text})
 
     return expanded
-
-
-def _chunk_id(source: str, index: int) -> str:
-    """Mirror of ingestion._chunk_id — must stay in sync."""
-    raw = f"{source}::{index}"
-    return hashlib.sha1(raw.encode()).hexdigest()

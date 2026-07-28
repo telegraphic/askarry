@@ -18,15 +18,20 @@ from urllib.parse import quote
 
 import gradio as gr
 import ollama
+from loguru import logger
 
 from rag.bibliography import format_citation, list_toc_entries, lookup_citation
-from rag.config import CONFIDENCE_THRESHOLD, OLLAMA_MODEL, PDF_DIRS, TOP_K
+from rag.citations import build_uncited_note, linkify_citations
+from rag.config import (
+    AUDIENCE_PHD,
+    AUDIENCE_UI_LABELS,
+    CONFIDENCE_THRESHOLD,
+    OLLAMA_MODEL,
+    PDF_DIRS,
+    TOP_K,
+)
 from rag.generation import stream_answer
 from rag.retrieval import retrieve, warmup
-
-# Pre-load models in the background so the first query doesn't block the UI.
-threading.Thread(target=warmup, daemon=True, name="rag-warmup").start()
-
 
 # ---------------------------------------------------------------------------
 # Core query function
@@ -111,51 +116,6 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
     if not parts:
         return ""
     return "\n\n---\n\n".join(parts)
-
-
-_CITATION_RE = re.compile(r"\[\s*(\d+)\s*\]")
-
-
-def _linkify_citations(answer: str, chunks: list[dict]) -> tuple[str, set[int]]:
-    """Turn `[n]` markers in the final answer into clickable links to the
-    matching Source Passages entry, and flag citation numbers that don't
-    correspond to any retrieved chunk.
-
-    Only structural validation is performed (does `[n]` match a retrieved
-    passage?) — not whether the passage actually supports the claim.
-
-    Returns the linkified answer plus the set of valid cited chunk numbers,
-    so callers can report passages the model never referenced.
-    """
-    if not chunks:
-        return answer, set()
-
-    cited: set[int] = set()
-
-    def _replace(match: re.Match) -> str:
-        n = int(match.group(1))
-        if 1 <= n <= len(chunks):
-            cited.add(n)
-            return f'<a href="#source-{n}" class="citation-link">[{n}]</a>'
-        return (
-            f'<span class="citation-invalid" '
-            f'title="No retrieved source matches [{n}]">[{n}]⚠️</span>'
-        )
-
-    return _CITATION_RE.sub(_replace, answer), cited
-
-
-def _build_uncited_note(chunks: list[dict], cited: set[int]) -> str:
-    """Return a small note listing retrieved passages the model never cited,
-    or "" if every passage was referenced (or there are none)."""
-    uncited = [i for i in range(1, len(chunks) + 1) if i not in cited]
-    if not uncited:
-        return ""
-    labels = ", ".join(f"[{i}]" for i in uncited)
-    return (
-        f'\n\n<p class="text-sm opacity-70">Not referenced in the answer: '
-        f'{labels}</p>'
-    )
 
 
 def _toc_entry_html(entry: dict) -> str:
@@ -251,8 +211,8 @@ def _allowed_source_paths() -> list[str]:
 
 
 # Maps the UI radio label to the internal audience key used by
-# rag/generation.py ("phd" is the shared default in both places).
-_AUDIENCE_MAP = {"PhD astronomer": "phd", "Non-expert": "general"}
+# rag/generation.py (config.AUDIENCE_UI_LABELS is the single source of truth
+# shared between the two modules).
 
 
 def _progress_bar_html(fraction: float, desc: str) -> str:
@@ -326,7 +286,7 @@ def answer_question(query: str, audience: str):
         yield "", "", ""
         return
 
-    audience_key = _AUDIENCE_MAP.get(audience, "phd")
+    audience_key = AUDIENCE_UI_LABELS.get(audience, AUDIENCE_PHD)
     yield _progress_bar_html(0.0, "Searching knowledge base…"), "", ""
 
     chunks: list[dict] | None = None
@@ -370,6 +330,7 @@ def answer_question(query: str, audience: str):
             status = warning + ("\n\n" if warning else "") + progress_html
             yield status, answer, sources_md
     except ollama.ResponseError as exc:
+        logger.exception("Ollama chat request failed")
         yield "", (
             f"**Ollama error:** {exc}\n\n"
             f"Make sure Ollama is running (`ollama serve`) and that "
@@ -380,8 +341,8 @@ def answer_question(query: str, audience: str):
     # Final pass: linkify/validate citations only once the answer has fully
     # settled (mid-stream text can contain partial markers like "[1" before
     # the closing bracket arrives, which the regex must not misinterpret).
-    linked_answer, cited = _linkify_citations(answer, display_chunks)
-    final_sources_md = sources_md + _build_uncited_note(display_chunks, cited)
+    linked_answer, cited = linkify_citations(answer, display_chunks)
+    final_sources_md = sources_md + build_uncited_note(display_chunks, cited)
     yield warning, linked_answer, final_sources_md
 
 
@@ -550,6 +511,11 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
 
 
 if __name__ == "__main__":
+    # Pre-load models in the background so the first query doesn't block the
+    # UI. Guarded here (rather than at module import time) so importing
+    # app.py — e.g. from tests — has no side effects.
+    threading.Thread(target=warmup, daemon=True, name="rag-warmup").start()
+
     demo.launch(
         theme=_load_theme(),
         allowed_paths=_allowed_source_paths(),

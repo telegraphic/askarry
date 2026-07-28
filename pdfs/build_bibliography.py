@@ -22,6 +22,7 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from loguru import logger
 
 PAGE_URL = "https://www.skao.int/en/aaskaii"
 OUTPUT_PATH = Path(__file__).parent / "bibliography.json"
@@ -88,7 +89,7 @@ def main() -> None:
     html = requests.get(PAGE_URL, timeout=60).text
     entries = build_bibliography(html)
     OUTPUT_PATH.write_text(json.dumps(entries, indent=2, ensure_ascii=False))
-    print(f"Wrote {len(entries)} bibliography entries to {OUTPUT_PATH}")
+    logger.info(f"Wrote {len(entries)} bibliography entries to {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":

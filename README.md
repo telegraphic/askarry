@@ -1,6 +1,12 @@
 # SKARRY — SKA RAG Documentation Search
 
-A local **Retrieval-Augmented Generation** system for searching and querying SKA documentation and astronomy PDFs. All computation runs on-device — no API keys, no cloud calls.
+SKARRY is a local Retrieval-Augmented Generation (RAG) system designed to answer questions from SKA documentation and astronomy PDFs. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
+The workflow has two major phases:
+
+1) Ingestion (run once when documents are added)
+2) Querying (run every time a user asks a question)
+
+All computation runs on-device (so it does not transfer data to the cloud).
 
 | Component | Technology |
 |-----------|------------|
@@ -11,6 +17,51 @@ A local **Retrieval-Augmented Generation** system for searching and querying SKA
 | Re-ranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
 | LLM | [Ollama](https://ollama.com) (`gemma4` by default) |
 | Web UI | Gradio |
+
+
+## High-level overview
+
+### Ingestion
+
+- **Document discovery and ingestion** The system scans the configured document directories and identifies all PDF and HTML files that should be added to the searchable corpus.
+
+- **Document structure extraction with Docling** Each document is parsed by Docling's `DocumentConverter`, which preserves structural elements such as headings, tables, figures, captions, and multi-column layouts.
+
+- **Structure-aware chunking** The parsed document is passed through Docling's `HybridChunker`, which divides the content into manageable passages while respecting document structure.
+
+- **Metadata enrichment** Each chunk is annotated with metadata including its source document, page number, chunk index, section heading, and any associated figure or table caption.
+
+- **Dense embedding generation** Every chunk is converted into a semantic vector using the `BAAI/bge-large-en-v1.5` embedding model so similar concepts can be matched during retrieval.
+
+- **Persistent vector indexing** The chunk text, metadata, and embeddings are stored in a local ChromaDB collection to create a searchable vector index.
+
+### Querying (Retrieval)
+
+- **Optional HyDE query expansion** When enabled, the local LLM generates a hypothetical answer to the user's question and the system embeds that answer instead of the original query.
+
+- **Semantic vector retrieval** The query embedding is compared against stored chunk embeddings in ChromaDB to retrieve semantically similar passages.
+
+- **Keyword retrieval using BM25** The same query is searched using BM25 to find passages containing important exact matches such as acronyms, identifiers, and technical terminology.
+
+- **Hybrid ranking via Reciprocal Rank Fusion** The semantic and BM25 result lists are combined using Reciprocal Rank Fusion to produce a single ranked set of candidates.
+
+- **Cross-encoder re-ranking** A cross-encoder model jointly evaluates each query and candidate passage pair to produce a more accurate relevance score.
+
+- **Confidence assessment** The top re-ranking score is compared against a confidence threshold to determine whether retrieval quality is strong or weak.
+
+- **Context window expansion** The system retrieves neighbouring chunks around each highly ranked passage to provide additional surrounding context.
+
+- **Context assembly** The highest-ranked expanded passages are combined into a single context block that will be supplied to the language model.
+
+### Answer Generation
+
+- **Grounded answer generation** The context and user query are sent to the local Ollama-hosted LLM, which is instructed to answer only using the retrieved passages and cite its sources.
+
+### Presentation and Citation
+
+- **Citation and bibliography enhancement** Source documents are matched against a local bibliography database to display formatted citations rather than raw file paths.
+
+- **Presentation through the Gradio interface** The generated answer, supporting source passages, citations, and confidence information are displayed in the Gradio web application.
 
 ---
 

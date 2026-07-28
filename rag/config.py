@@ -13,6 +13,22 @@ AASKAII_YEAR = 2026                                  # Publication year for all 
 # Non-existent paths are silently skipped.
 PDF_DIRS: list[Path] = [PDF_DIR]
 
+# File extensions handled throughout the pipeline (ingestion, bibliography
+# lookup, the pdfs/ download & bibliography-build tooling).
+SUPPORTED_SUFFIXES: set[str] = {".pdf", ".html", ".htm"}
+
+# Book section names, in book order, shared by rag/bibliography.py (Table of
+# Contents grouping) and pdfs/download.py (download folder organisation).
+SECTION_ORDER: list[str] = [
+    "Science Working Group Overviews",
+    "Sun, Earth and Planets",
+    "Formation and Evolution of Stars",
+    "From the Milky Way to Distant Galaxies",
+    "The Cosmos",
+    "The Extreme Universe",
+    "Methods and Techniques",
+]
+
 # ---------------------------------------------------------------------------
 # Embedding model  (sentence-transformers, runs locally)
 # ---------------------------------------------------------------------------
@@ -100,3 +116,16 @@ ACRONYM_HEADINGS: list[str] = [
 # ChromaDB collection name
 # ---------------------------------------------------------------------------
 COLLECTION_NAME = "astronomy"
+
+# ---------------------------------------------------------------------------
+# Answer audience
+# ---------------------------------------------------------------------------
+# Internal audience keys, shared between rag/generation.py (system-prompt
+# instructions) and app.py (UI radio button mapping) so both sides reference
+# the same constants instead of matching raw string literals by convention.
+AUDIENCE_PHD = "phd"
+AUDIENCE_GENERAL = "general"
+AUDIENCE_UI_LABELS: dict[str, str] = {
+    "PhD astronomer": AUDIENCE_PHD,
+    "Non-expert": AUDIENCE_GENERAL,
+}

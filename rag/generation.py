@@ -5,18 +5,19 @@ Answer generation using a local Ollama model.
 from __future__ import annotations
 
 import ollama
+from loguru import logger
 
+from . import store
 from .config import (
+    AUDIENCE_GENERAL,
+    AUDIENCE_PHD,
     CONFIDENCE_THRESHOLD,
-    OLLAMA_BASE_URL,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
     OLLAMA_TEMPERATURE,
     OLLAMA_TOP_K,
     OLLAMA_TOP_P,
 )
-
-_client = ollama.Client(host=OLLAMA_BASE_URL)
 
 _CHAT_OPTIONS = {
     "num_ctx": OLLAMA_NUM_CTX,
@@ -45,11 +46,11 @@ Rules:
 """
 
 # Audience-specific instructions appended to `_SYSTEM_PROMPT`, selected via the
-# `audience` argument on `generate_answer`/`stream_answer`. "phd" is the
+# `audience` argument on `generate_answer`/`stream_answer`. AUDIENCE_PHD is the
 # default for both the UI (app.py) and these functions, so any caller that
 # omits the argument still gets PhD-level output.
 _AUDIENCE_INSTRUCTIONS: dict[str, str] = {
-    "phd": (
+    AUDIENCE_PHD: (
         "\nAudience: write for a reader with a PhD in astronomy. Use precise "
         "technical terminology, standard notation and units, and equations "
         "where they aid precision. Do not define standard concepts, "
@@ -59,7 +60,7 @@ _AUDIENCE_INSTRUCTIONS: dict[str, str] = {
         "explicitly in the answer rather than describing them only "
         "qualitatively."
     ),
-    "general": (
+    AUDIENCE_GENERAL: (
         "\nAudience: write for a non-expert reader. Use plain language, "
         "avoid unexplained jargon, define any acronyms or technical terms "
         "on first use, and avoid presenting equations without explaining "
@@ -98,16 +99,16 @@ def _build_user_message(query: str, chunks: list[dict]) -> str:
 
 def _build_system_prompt(audience: str) -> str:
     """Combine the base system prompt with audience-specific instructions.
-    Falls back to the "phd" (default) audience for unknown keys."""
+    Falls back to the AUDIENCE_PHD (default) audience for unknown keys."""
     return _SYSTEM_PROMPT + _AUDIENCE_INSTRUCTIONS.get(
-        audience, _AUDIENCE_INSTRUCTIONS["phd"]
+        audience, _AUDIENCE_INSTRUCTIONS[AUDIENCE_PHD]
     )
 
 
-def generate_answer(query: str, chunks: list[dict], audience: str = "phd") -> str:
+def generate_answer(query: str, chunks: list[dict], audience: str = AUDIENCE_PHD) -> str:
     """
     Generate an answer to *query* grounded in the retrieved *chunks*, written
-    for the given *audience* ("phd" or "general").
+    for the given *audience* (AUDIENCE_PHD or AUDIENCE_GENERAL).
 
     Raises `ollama.ResponseError` if the Ollama server is unreachable or the
     model has not been pulled yet.
@@ -117,21 +118,25 @@ def generate_answer(query: str, chunks: list[dict], audience: str = "phd") -> st
 
     user_message = _build_user_message(query, chunks)
 
-    response = _client.chat(
-        model=OLLAMA_MODEL,
-        messages=[
-            {"role": "system", "content": _build_system_prompt(audience)},
-            {"role": "user", "content": user_message},
-        ],
-        options=_CHAT_OPTIONS,
-    )
+    try:
+        response = store.get_ollama_client().chat(
+            model=OLLAMA_MODEL,
+            messages=[
+                {"role": "system", "content": _build_system_prompt(audience)},
+                {"role": "user", "content": user_message},
+            ],
+            options=_CHAT_OPTIONS,
+        )
+    except ollama.ResponseError as exc:
+        logger.error(f"Ollama chat request failed: {exc}")
+        raise
     return response["message"]["content"]
 
 
-def stream_answer(query: str, chunks: list[dict], audience: str = "phd"):
+def stream_answer(query: str, chunks: list[dict], audience: str = AUDIENCE_PHD):
     """
     Stream an answer token-by-token, written for the given *audience*
-    ("phd" or "general").
+    (AUDIENCE_PHD or AUDIENCE_GENERAL).
 
     Yields successive string tokens. Raises `ollama.ResponseError` if the
     Ollama server is unreachable or the model has not been pulled yet.
@@ -142,15 +147,19 @@ def stream_answer(query: str, chunks: list[dict], audience: str = "phd"):
 
     user_message = _build_user_message(query, chunks)
 
-    response = _client.chat(
-        model=OLLAMA_MODEL,
-        messages=[
-            {"role": "system", "content": _build_system_prompt(audience)},
-            {"role": "user", "content": user_message},
-        ],
-        options=_CHAT_OPTIONS,
-        stream=True,
-    )
+    try:
+        response = store.get_ollama_client().chat(
+            model=OLLAMA_MODEL,
+            messages=[
+                {"role": "system", "content": _build_system_prompt(audience)},
+                {"role": "user", "content": user_message},
+            ],
+            options=_CHAT_OPTIONS,
+            stream=True,
+        )
+    except ollama.ResponseError as exc:
+        logger.error(f"Ollama streaming chat request failed: {exc}")
+        raise
     for chunk in response:
         token = chunk["message"]["content"]
         if token:

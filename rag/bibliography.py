@@ -10,18 +10,14 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-from rag.config import AASKAII_YEAR, BIBLIOGRAPHY_PATH, PDF_DIRS
-
-_SECTION_ORDER = [
-    "Science Working Group Overviews",
-    "Sun, Earth and Planets",
-    "Formation and Evolution of Stars",
-    "From the Milky Way to Distant Galaxies",
-    "The Cosmos",
-    "The Extreme Universe",
-    "Methods and Techniques",
-]
-_SUPPORTED_SUFFIXES = {".pdf", ".html", ".htm"}
+from rag import store
+from rag.config import (
+    AASKAII_YEAR,
+    BIBLIOGRAPHY_PATH,
+    PDF_DIRS,
+    SECTION_ORDER,
+    SUPPORTED_SUFFIXES,
+)
 
 
 @lru_cache(maxsize=1)
@@ -52,14 +48,7 @@ def format_citation(entry: dict) -> str:
 
 def _discover_pdf_stems() -> dict[str, Path]:
     """Recursively find all supported files under PDF_DIRS, keyed by filename stem."""
-    found: dict[str, Path] = {}
-    for d in PDF_DIRS:
-        if not d.exists():
-            continue
-        for suffix in _SUPPORTED_SUFFIXES:
-            for path in d.rglob(f"*{suffix}"):
-                found[path.stem] = path
-    return found
+    return {path.stem: path for path in store.discover_files(PDF_DIRS, SUPPORTED_SUFFIXES)}
 
 
 def list_toc_entries() -> dict[str, list[dict]]:
@@ -84,7 +73,7 @@ def list_toc_entries() -> dict[str, list[dict]]:
             }
         )
 
-    ordered_sections = _SECTION_ORDER + sorted(set(grouped) - set(_SECTION_ORDER))
+    ordered_sections = SECTION_ORDER + sorted(set(grouped) - set(SECTION_ORDER))
     return {
         section: sorted(grouped[section], key=lambda e: e["title"].lower())
         for section in ordered_sections

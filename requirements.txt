@@ -16,6 +16,12 @@ rank-bm25>=0.2.2
 # Web UI
 gradio>=4.0.0
 
+# Structured logging (used across rag/, ingest.py, app.py, and pdfs/ scripts)
+loguru>=0.7.0
+
 # pdfs/ tooling: downloading source PDFs and building bibliography.json
 requests>=2.31.0
 beautifulsoup4>=4.12.0
+
+# Testing
+pytest>=8.0.0

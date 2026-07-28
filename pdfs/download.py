@@ -1,27 +1,24 @@
 import re
 import shutil
-import requests
+import sys
 from pathlib import Path
-
-from pypdf import PdfReader
-from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+
+import requests
+from bs4 import BeautifulSoup
+from loguru import logger
+from pypdf import PdfReader
+
+# Allow running as `python pdfs/download.py` from the repo root (or from
+# inside pdfs/) while still importing the shared `rag` package.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from rag.config import SECTION_ORDER
 
 PDF_INDEX = "Advancing Astrophysics with the SKA II _ SKAO.pdf"
 PAGE_URL = "https://www.skao.int/en/aaskaii"
 
 OUTPUT_DIR = Path("AASKAII")
 OUTPUT_DIR.mkdir(exist_ok=True)
-
-TOPIC_HEADINGS = [
-    "Science Working Group Overviews",
-    "Sun, Earth and Planets",
-    "Formation and Evolution of Stars",
-    "From the Milky Way to Distant Galaxies",
-    "The Cosmos",
-    "The Extreme Universe",
-    "Methods and Techniques",
-]
 
 # ------------------------------------------------------------
 # Extract topic mapping from downloaded webpage PDF
@@ -44,7 +41,7 @@ def build_topic_map(pdf_file):
 
         line = line.strip()
 
-        for heading in TOPIC_HEADINGS:
+        for heading in SECTION_ORDER:
             if heading in line:
                 current_topic = heading
                 break
@@ -59,7 +56,7 @@ def build_topic_map(pdf_file):
 
 topic_map = build_topic_map(PDF_INDEX)
 
-print(f"Mapped {len(topic_map)} chapters")
+logger.info(f"Mapped {len(topic_map)} chapters")
 
 # ------------------------------------------------------------
 # Scrape PDF links
@@ -81,7 +78,7 @@ for chapter in topic_map:
         f"https://www.skao.int/sites/default/files/documents/{chapter}.pdf"
     )
 
-print(f"Found {len(pdf_links)} candidate PDFs")
+logger.info(f"Found {len(pdf_links)} candidate PDFs")
 
 # ------------------------------------------------------------
 # Download
@@ -112,20 +109,20 @@ for url in sorted(pdf_links):
 
         if r.status_code == 404:
             failures.append(url)
-            print(f"404  {filename}")
+            logger.warning(f"404  {filename}")
             continue
 
         r.raise_for_status()
 
         outfile.write_bytes(r.content)
 
-        print(f"OK   {filename} -> {topic}")
+        logger.info(f"OK   {filename} -> {topic}")
 
     except Exception as e:
 
         failures.append(f"{url} : {e}")
 
-        print(f"FAIL {filename}")
+        logger.error(f"FAIL {filename}")
 
 # ------------------------------------------------------------
 # Save error log
@@ -136,6 +133,5 @@ with open("download_errors.txt", "w") as f:
     for item in failures:
         f.write(str(item) + "\n")
 
-print()
-print(f"Downloaded successfully")
-print(f"Failures: {len(failures)}")
+logger.info("Downloaded successfully")
+logger.info(f"Failures: {len(failures)}")

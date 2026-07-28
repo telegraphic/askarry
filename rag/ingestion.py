@@ -11,26 +11,24 @@ Steps:
 
 from __future__ import annotations
 
-import hashlib
 import logging
 import shutil
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
-import chromadb
 from docling.chunking import HybridChunker
-from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTokenizer
 from docling.document_converter import DocumentConverter
-from sentence_transformers import SentenceTransformer
+from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTokenizer
+from loguru import logger
 
+from . import store
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
-    COLLECTION_NAME,
     EMBEDDING_MODEL,
     INGEST_WORKERS,
-    MAX_CHUNK_TOKENS,
     PDF_DIRS,
+    SUPPORTED_SUFFIXES,
 )
 
 # HybridChunker/tokenizers count tokens on the *full* section text before
@@ -41,9 +39,6 @@ from .config import (
 # level so it also applies inside spawned ProcessPoolExecutor workers, which
 # re-import this module fresh.
 logging.getLogger("transformers.tokenization_utils_base").setLevel(logging.ERROR)
-
-# File extensions handled by docling
-_SUPPORTED_SUFFIXES = {".pdf", ".html", ".htm"}
 
 # ---------------------------------------------------------------------------
 # Worker-process state (populated once per worker by _worker_init)
@@ -72,24 +67,18 @@ def _worker_parse_chunk(
     try:
         conv_result = _worker_converter.convert(source)
     except Exception as exc:  # noqa: BLE001
-        print(f"  Warning  : Could not parse {name} — {exc}", flush=True)
+        logger.warning(f"Could not parse {name} — {exc}")
         return None
 
     chunks = list(_worker_chunker.chunk(dl_doc=conv_result.document))
     if not chunks:
-        print(f"  Warning  : No chunks extracted from {name}", flush=True)
+        logger.warning(f"No chunks extracted from {name}")
         return None
 
     texts = [c.text for c in chunks]
     metadatas = [_chunk_metadata(source, i, c) for i, c in enumerate(chunks)]
-    print(f"  Parsed   : {len(texts)} chunks from {name}", flush=True)
+    logger.info(f"Parsed {len(texts)} chunks from {name}")
     return source, texts, metadatas
-
-
-def _chunk_id(source: str, index: int) -> str:
-    """Stable, collision-resistant chunk ID derived from the full file path."""
-    raw = f"{source}::{index}"
-    return hashlib.sha1(raw.encode()).hexdigest()
 
 
 def _chunk_metadata(source: str, index: int, chunk) -> dict:
@@ -134,19 +123,7 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
     }
 
 
-def _discover_files(dirs: list[Path]) -> list[Path]:
-    """Recursively find all supported files across *dirs*."""
-    found: list[Path] = []
-    for d in dirs:
-        if not d.exists():
-            print(f"  Skipping : '{d}' (directory not found)")
-            continue
-        for suffix in _SUPPORTED_SUFFIXES:
-            found.extend(sorted(d.rglob(f"*{suffix}")))
-    return found
-
-
-def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, int]:
+def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[str, int]:
     """
     Ingest all supported files found (recursively) in *dirs* into ChromaDB.
 
@@ -158,25 +135,22 @@ def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, 
 
     Returns a dict mapping file path string → number of chunks indexed.
     """
+    dirs = dirs if dirs is not None else PDF_DIRS
+
     if reset and CHROMA_DIR.exists():
-        print(f"  Reindex  : removing existing ChromaDB store at '{CHROMA_DIR}'")
+        logger.info(f"Reindex: removing existing ChromaDB store at '{CHROMA_DIR}'")
         shutil.rmtree(CHROMA_DIR)
 
     # Embedding model lives in the main process only
-    model = SentenceTransformer(EMBEDDING_MODEL)
-    chunk_size = min(MAX_CHUNK_TOKENS, model.max_seq_length)
-    model.max_seq_length = chunk_size
+    model = store.get_embedding_model()
+    chunk_size = model.max_seq_length
 
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    collection = client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        metadata={"hnsw:space": "cosine"},
-    )
+    collection = store.get_chroma_collection()
 
     existing_metadatas = collection.get(include=["metadatas"])["metadatas"] or []
     indexed_sources: set[str] = {m["source"] for m in existing_metadatas}
 
-    all_files = _discover_files(dirs)
+    all_files = store.discover_files(dirs, SUPPORTED_SUFFIXES)
     if not all_files:
         return {}
 
@@ -184,7 +158,7 @@ def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, 
     for fp in all_files:
         source = str(fp.resolve())
         if source in indexed_sources:
-            print(f"  Skipping : {fp.name} (already indexed)")
+            logger.info(f"Skipping {fp.name} (already indexed)")
         else:
             new_sources.append(source)
 
@@ -193,7 +167,7 @@ def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, 
 
     # --- Parse + chunk in parallel worker processes ---
     n_workers = min(INGEST_WORKERS, len(new_sources))
-    print(f"\n  Parsing {len(new_sources)} file(s) with {n_workers} worker(s)…\n")
+    logger.info(f"Parsing {len(new_sources)} file(s) with {n_workers} worker(s)…")
 
     parsed: list[tuple[str, list[str], list[dict]]] = []
 
@@ -223,16 +197,16 @@ def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, 
     results: dict[str, int] = {}
     for source, texts, metadatas in parsed:
         name = Path(source).name
-        print(f"  Embedding: {len(texts)} chunks from {name} …")
+        logger.info(f"Embedding {len(texts)} chunks from {name}…")
         embeddings = model.encode(texts, show_progress_bar=False).tolist()
-        ids = [_chunk_id(source, m["chunk_index"]) for m in metadatas]
+        ids = [store.chunk_id(source, m["chunk_index"]) for m in metadatas]
         collection.upsert(
             documents=texts,
             embeddings=embeddings,
             ids=ids,
             metadatas=metadatas,
         )
-        print(f"  Indexed  : {len(texts)} chunks from {name}")
+        logger.info(f"Indexed {len(texts)} chunks from {name}")
         results[source] = len(texts)
 
     return results
