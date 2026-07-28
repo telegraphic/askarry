@@ -4,10 +4,12 @@ CLI ingestion script.
 Usage:
     python ingest.py                        # index all configured directories
     python ingest.py path/to/dir [more...]  # index specific directories only
+    python ingest.py --reindex              # wipe ChromaDB and reindex everything from scratch
 """
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -16,7 +18,21 @@ from rag.ingestion import ingest_files
 
 
 def main() -> None:
-    dirs = [Path(p) for p in sys.argv[1:]] if len(sys.argv) > 1 else PDF_DIRS
+    parser = argparse.ArgumentParser(description="Ingest PDFs/HTML into ChromaDB.")
+    parser.add_argument(
+        "dirs",
+        nargs="*",
+        type=Path,
+        help="Specific directories to index (default: all configured directories)",
+    )
+    parser.add_argument(
+        "--reindex",
+        action="store_true",
+        help="Delete the existing ChromaDB store and reindex all files from scratch",
+    )
+    args = parser.parse_args()
+
+    dirs = args.dirs if args.dirs else PDF_DIRS
 
     print("Ingestion directories:")
     for d in dirs:
@@ -24,7 +40,7 @@ def main() -> None:
         print(f"  {d}  {status}")
     print()
 
-    results = ingest_files(dirs)
+    results = ingest_files(dirs, reset=args.reindex)
 
     if not results:
         print("No new files were indexed.")

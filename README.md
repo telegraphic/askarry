@@ -34,7 +34,7 @@ source .venv/bin/activate
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Add PDFs to the pdfs/ folder (or point ZOTERO_DIR at your Zotero library)
+# 3. Add PDFs to the pdfs/ folder
 mkdir -p pdfs
 cp ~/Downloads/my_paper.pdf pdfs/
 ```
@@ -47,6 +47,9 @@ cp ~/Downloads/my_paper.pdf pdfs/
 
 ```bash
 python ingest.py
+
+# To wipe the existing ChromaDB store and reindex everything from scratch:
+python ingest.py --reindex
 ```
 
 ### Step 2 — Launch the web UI
@@ -166,8 +169,7 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 | Setting | Default | Purpose |
 |---------|---------|---------|
 | `PDF_DIR` | `pdfs/` | Local folder scanned recursively for PDFs and HTML files |
-| `ZOTERO_DIR` | `~/Zotero/storage` | Zotero attachment library; non-existent paths are silently skipped |
-| `PDF_DIRS` | `[PDF_DIR, ZOTERO_DIR]` | Combined list of all directories to ingest; edit to add/remove sources |
+| `PDF_DIRS` | `[PDF_DIR]` | List of all directories to ingest; edit to add/remove sources |
 | `CHROMA_DIR` | `chroma_db/` | Where ChromaDB persists the vector index on disk |
 | `COLLECTION_NAME` | `"astronomy"` | ChromaDB collection name; change this if you want separate indexes for different document sets |
 
@@ -200,7 +202,7 @@ The LLM never searches the internet — every answer is grounded in the indexed 
 | `MAX_CHUNK_TOKENS` | `400` | Maximum tokens per chunk at ingest time. BGE-large has a hard 512-token limit (including `[CLS]`/`[SEP]` special tokens); staying at 400 gives headroom for the tokenizer and prevents the model from silently truncating. **Changing this requires a full re-ingest.** |
 | `BM25_WEIGHT` | `0.5` | Controls how much the BM25 keyword leg contributes to the RRF score. `0.0` = pure semantic search (ignores BM25); `1.0` = semantic and keyword legs weighted equally. SKA documentation is rich in acronyms and part numbers that benefit from keyword matching, so 0.5 is a reasonable default. Raise toward 1.0 if exact-term queries perform poorly; lower toward 0.0 if unrelated documents with matching keywords keep appearing. |
 | `USE_HYDE` | `False` | When `True`, Ollama generates a short hypothetical answer before retrieval; that answer text is embedded instead of the raw question. This shifts the query vector into "answer space" and improves recall for highly technical questions. Adds roughly the latency of one LLM call (~1–3 s) per query. Off by default; enable it if semantic retrieval results feel topically off. |
-| `SCORE_THRESHOLD` | `0.45` | Legacy cosine similarity threshold from before hybrid retrieval was added. No longer applied in the pipeline but kept for reference. |
+| `CONFIDENCE_THRESHOLD` | `0.3` | Sigmoid-normalized cross-encoder relevance (0-1) below which the top retrieved chunk is treated as a weak match. Below this, the UI shows a low-confidence warning while the answer streams, and the LLM is given an explicit hedging instruction instead of being left to guess from marginal passages. |
 
 ---
 

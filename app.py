@@ -7,17 +7,18 @@ Usage:
 
 from __future__ import annotations
 
+import re
+import threading
+import warnings
 from html import escape
 from pathlib import Path
 from urllib.parse import quote
-import threading
-import warnings
 
 import gradio as gr
 import ollama
 
 from rag.bibliography import format_citation, list_toc_entries, lookup_citation
-from rag.config import OLLAMA_MODEL, PDF_DIRS, TOP_K
+from rag.config import CONFIDENCE_THRESHOLD, OLLAMA_MODEL, PDF_DIRS, TOP_K
 from rag.generation import stream_answer
 from rag.retrieval import retrieve, warmup
 
@@ -67,7 +68,7 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
     """
     parts = []
     for i, chunk in enumerate(chunks, start=1):
-        header = f"**[{i}]** " + _source_links(chunk["source"])
+        header = f'<a id="source-{i}"></a>**[{i}]** ' + _source_links(chunk["source"])
 
         page_no = chunk.get("page_no", 0)
         if page_no:
@@ -81,7 +82,7 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
         if caption:
             header += f" &nbsp; · &nbsp; _{caption}_"
 
-        header += f" &nbsp; relevance: `{chunk['score']:.2f}`"
+        header += f" &nbsp; relevance: `{chunk['score']:.0%}`"
 
         text = chunk["text"]
         excerpt = text[:400].strip() + ("…" if len(text) > 400 else "")
@@ -89,7 +90,52 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
 
     if not parts:
         return ""
-    return "## Source Passages\n\n" + "\n\n---\n\n".join(parts)
+    return "\n\n---\n\n".join(parts)
+
+
+_CITATION_RE = re.compile(r"\[\s*(\d+)\s*\]")
+
+
+def _linkify_citations(answer: str, chunks: list[dict]) -> tuple[str, set[int]]:
+    """Turn `[n]` markers in the final answer into clickable links to the
+    matching Source Passages entry, and flag citation numbers that don't
+    correspond to any retrieved chunk.
+
+    Only structural validation is performed (does `[n]` match a retrieved
+    passage?) — not whether the passage actually supports the claim.
+
+    Returns the linkified answer plus the set of valid cited chunk numbers,
+    so callers can report passages the model never referenced.
+    """
+    if not chunks:
+        return answer, set()
+
+    cited: set[int] = set()
+
+    def _replace(match: re.Match) -> str:
+        n = int(match.group(1))
+        if 1 <= n <= len(chunks):
+            cited.add(n)
+            return f'<a href="#source-{n}" class="citation-link">[{n}]</a>'
+        return (
+            f'<span class="citation-invalid" '
+            f'title="No retrieved source matches [{n}]">[{n}]⚠️</span>'
+        )
+
+    return _CITATION_RE.sub(_replace, answer), cited
+
+
+def _build_uncited_note(chunks: list[dict], cited: set[int]) -> str:
+    """Return a small note listing retrieved passages the model never cited,
+    or "" if every passage was referenced (or there are none)."""
+    uncited = [i for i in range(1, len(chunks) + 1) if i not in cited]
+    if not uncited:
+        return ""
+    labels = ", ".join(f"[{i}]" for i in uncited)
+    return (
+        f'\n\n<p class="text-sm opacity-70">Not referenced in the answer: '
+        f'{labels}</p>'
+    )
 
 
 def _toc_entry_html(entry: dict) -> str:
@@ -98,17 +144,28 @@ def _toc_entry_html(entry: dict) -> str:
     title_html = escape(entry["title"])
     authors_html = escape(", ".join(entry.get("authors", [])))
     return (
-        f'<a href="{link}" target="_blank" rel="noopener noreferrer">{title_html}</a>'
-        f'<br><span style="opacity:0.75;">{authors_html}</span>'
+        f'<a href="{link}" target="_blank" rel="noopener noreferrer" '
+        f'class="font-medium hover:underline">{title_html}</a>'
+        f'<br><span class="text-sm opacity-75">{authors_html}</span>'
     )
 
 
+def _slugify(text: str) -> str:
+    """Turn a section title into a stable HTML id fragment."""
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return slug or "section"
+
+
 def _render_toc(search: str = "") -> str:
-    """Render the searchable Table of Contents, grouped by section."""
+    """Render the searchable Table of Contents: a section side menu plus
+    collapsible sections for the entries themselves. Styling is done with
+    Tailwind utility classes (loaded via the CDN script injected into
+    <head>) rather than a hand-rolled <style> block."""
     grouped = list_toc_entries()
     query = (search or "").strip().lower()
 
-    sections_md = []
+    nav_links = []
+    sections_html = []
     for section, entries in grouped.items():
         if query:
             entries = [
@@ -119,12 +176,34 @@ def _render_toc(search: str = "") -> str:
             ]
             if not entries:
                 continue
-        items_md = "\n\n".join(f"- {_toc_entry_html(e)}" for e in entries)
-        sections_md.append(f"### {section}\n\n{items_md}")
 
-    if not sections_md:
-        return "_No matching papers._"
-    return "\n\n".join(sections_md)
+        anchor = f"toc-{_slugify(section)}"
+        section_html = escape(section)
+        nav_links.append(
+            f'<a href="#{anchor}" class="block rounded-md px-2 py-1 text-sm '
+            f'leading-tight no-underline hover:bg-gray-500/15">{section_html}</a>'
+        )
+
+        items_html = "".join(f'<li class="mb-3">{_toc_entry_html(e)}</li>' for e in entries)
+        sections_html.append(
+            f'<details id="{anchor}" class="mb-3 rounded-lg border border-gray-500/25 '
+            f'px-4 py-2" open>'
+            f'<summary class="cursor-pointer py-1 text-lg font-semibold">'
+            f'{section_html} <span class="text-sm font-normal opacity-65">({len(entries)})</span>'
+            "</summary>"
+            f'<ul class="mt-2 mb-1 list-none pl-0">{items_html}</ul>'
+            "</details>"
+        )
+
+    if not sections_html:
+        return "<p><em>No matching papers.</em></p>"
+
+    nav_html = (
+        '<nav class="sticky top-2 flex w-56 flex-none flex-col gap-1 pr-4 '
+        'border-r border-gray-500/30">' + "".join(nav_links) + "</nav>"
+    )
+    content_html = '<div class="min-w-0 flex-1">' + "".join(sections_html) + "</div>"
+    return f'<div class="flex items-start gap-7">{nav_html}{content_html}</div>'
 
 
 def _load_theme() -> gr.themes.ThemeClass:
@@ -172,7 +251,15 @@ def answer_question(query: str):
     ]
     sources_md = _build_sources_markdown(chunks)
 
-    yield "_💬 Generating answer…_", "", sources_md
+    best_score = max((c["score"] for c in chunks), default=0.0)
+    generating_status = "_💬 Generating answer…_"
+    if best_score < CONFIDENCE_THRESHOLD:
+        generating_status += (
+            "\n\n⚠️ _The best-matching passages have low relevance — the "
+            "knowledge base may not have a good answer to this question._"
+        )
+
+    yield generating_status, "", sources_md
 
     try:
         answer = ""
@@ -187,7 +274,12 @@ def answer_question(query: str):
         ), sources_md
         return
 
-    yield "", answer, sources_md
+    # Final pass: linkify/validate citations only once the answer has fully
+    # settled (mid-stream text can contain partial markers like "[1" before
+    # the closing bracket arrives, which the regex must not misinterpret).
+    linked_answer, cited = _linkify_citations(answer, display_chunks)
+    final_sources_md = sources_md + _build_uncited_note(display_chunks, cited)
+    yield "", linked_answer, final_sources_md
 
 
 # ---------------------------------------------------------------------------
@@ -201,14 +293,60 @@ _LATEX_DELIMITERS = [
     {"left": r"\[", "right": r"\]", "display": True},
 ]
 
-with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
+# Tailwind is loaded via CDN and injected into <head> at launch() time (Gradio
+# 6 moved `css`/`head`/`theme` from the Blocks constructor to launch()). This
+# gives us modern utility classes for the custom HTML/Markdown blocks below
+# without hand-rolling one-off <style> tags or inline `style="..."` attributes.
+_TAILWIND_HEAD = '<script src="https://cdn.tailwindcss.com"></script>'
+
+# Global overrides: bump the base font size (the Gradio default reads small on
+# most displays) and give the source-passages accordion label more presence.
+_CUSTOM_CSS = """
+html {
+    scroll-behavior: smooth;
+}
+.gradio-container {
+    font-size: 17px !important;
+}
+.gradio-container .prose :where(p, li, blockquote) {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+.gradio-container h1 { font-size: 2.1rem !important; }
+.gradio-container h2 { font-size: 1.6rem !important; }
+.gradio-container h3 { font-size: 1.3rem !important; }
+.gradio-container textarea,
+.gradio-container input[type='text'],
+.gradio-container button {
+    font-size: 1rem !important;
+}
+.source-passages-accordion > .label-wrap span {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.citation-link {
+    font-weight: 600;
+    text-decoration: none;
+    scroll-margin-top: 1rem;
+}
+.citation-link:hover {
+    text-decoration: underline;
+}
+.citation-invalid {
+    color: #b45309;
+    border-bottom: 1px dotted currentColor;
+    cursor: help;
+}
+"""
+
+with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
     gr.Markdown(
                 f"""
-                <div style="display:flex; align-items:center; gap:0.9rem; margin-bottom:0.75rem;">
-                    <img src="{_gradio_file_url(Path('logo.png').resolve())}" alt="SKARRY logo" style="width:112px; height:112px; object-fit:contain; border-radius:12px;" />
+                <div class="mb-3 flex items-center gap-4">
+                    <img src="{_gradio_file_url(Path('logo.png').resolve())}" alt="SKARRY logo" class="h-28 w-28 rounded-2xl object-contain shadow-sm" />
                     <div>
-                        <h1 style="margin:0;">ASKARRY - Advancing Astrophysics with the SKA II RAG search</h1>
-                        <p style="margin:0.35rem 0 0;">Ask questions about SKA science. Run <code>python ingest.py</code> first to index your PDFs.</p>
+                        <h1 class="m-0 text-3xl font-bold tracking-tight">ASKARRY - Advancing Astrophysics with the SKA II RAG search</h1>
+                        <p class="mb-0 mt-1 text-base opacity-80">Ask questions about SKA science. Run <code>python ingest.py</code> first to index your PDFs.</p>
                     </div>
                 </div>
                 """
@@ -227,7 +365,7 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
             status_box = gr.Markdown(value="", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
             answer_box = gr.Markdown(label="Answer", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
 
-            with gr.Accordion("Source passages", open=False):
+            with gr.Accordion("Source Passages", open=True, elem_classes=["source-passages-accordion"]):
                 sources_box = gr.Markdown(latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
 
             # Wire up events
@@ -257,4 +395,9 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch(theme=_load_theme(), allowed_paths=_allowed_source_paths())
+    demo.launch(
+        theme=_load_theme(),
+        allowed_paths=_allowed_source_paths(),
+        css=_CUSTOM_CSS,
+        head=_TAILWIND_HEAD,
+    )

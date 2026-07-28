@@ -7,6 +7,7 @@ from __future__ import annotations
 import ollama
 
 from .config import (
+    CONFIDENCE_THRESHOLD,
     OLLAMA_BASE_URL,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
@@ -46,6 +47,27 @@ def _build_context_block(chunks: list[dict]) -> str:
     )
 
 
+def _build_user_message(query: str, chunks: list[dict]) -> str:
+    """Assemble the user-turn message: context block, a low-confidence hedge
+    instruction when retrieval didn't find a strong match, then the question."""
+    context_block = _build_context_block(chunks)
+
+    parts = [f"Context passages:\n\n{context_block}"]
+
+    best_score = max((c["score"] for c in chunks), default=0.0)
+    if best_score < CONFIDENCE_THRESHOLD:
+        parts.append(
+            "Note: none of the retrieved passages score highly for relevance "
+            "to this question. Treat them with skepticism — do not force an "
+            "answer out of weakly related material. If they don't genuinely "
+            "answer the question, say clearly that the knowledge base doesn't "
+            "appear to contain a good answer."
+        )
+
+    parts.append(f"Question: {query}")
+    return "\n\n".join(parts)
+
+
 def generate_answer(query: str, chunks: list[dict]) -> str:
     """
     Generate an answer to *query* grounded in the retrieved *chunks*.
@@ -56,12 +78,7 @@ def generate_answer(query: str, chunks: list[dict]) -> str:
     if not chunks:
         return "No relevant passages were found in the indexed papers."
 
-    context_block = _build_context_block(chunks)
-
-    user_message = (
-        f"Context passages:\n\n{context_block}\n\n"
-        f"Question: {query}"
-    )
+    user_message = _build_user_message(query, chunks)
 
     response = _client.chat(
         model=OLLAMA_MODEL,
@@ -85,12 +102,7 @@ def stream_answer(query: str, chunks: list[dict]):
         yield "No relevant passages were found in the indexed papers."
         return
 
-    context_block = _build_context_block(chunks)
-
-    user_message = (
-        f"Context passages:\n\n{context_block}\n\n"
-        f"Question: {query}"
-    )
+    user_message = _build_user_message(query, chunks)
 
     response = _client.chat(
         model=OLLAMA_MODEL,

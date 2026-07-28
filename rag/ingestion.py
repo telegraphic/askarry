@@ -12,6 +12,8 @@ Steps:
 from __future__ import annotations
 
 import hashlib
+import logging
+import shutil
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
@@ -30,6 +32,15 @@ from .config import (
     MAX_CHUNK_TOKENS,
     PDF_DIRS,
 )
+
+# HybridChunker/tokenizers count tokens on the *full* section text before
+# splitting it down to MAX_CHUNK_TOKENS, so transformers' fast tokenizer logs
+# a "Token indices sequence length is longer than the specified maximum..."
+# warning for every long section. This is expected and harmless here (the
+# chunker still splits correctly) — silence just that logger. Set at module
+# level so it also applies inside spawned ProcessPoolExecutor workers, which
+# re-import this module fresh.
+logging.getLogger("transformers.tokenization_utils_base").setLevel(logging.ERROR)
 
 # File extensions handled by docling
 _SUPPORTED_SUFFIXES = {".pdf", ".html", ".htm"}
@@ -135,15 +146,22 @@ def _discover_files(dirs: list[Path]) -> list[Path]:
     return found
 
 
-def ingest_files(dirs: list[Path] = PDF_DIRS) -> dict[str, int]:
+def ingest_files(dirs: list[Path] = PDF_DIRS, reset: bool = False) -> dict[str, int]:
     """
     Ingest all supported files found (recursively) in *dirs* into ChromaDB.
 
     Files whose resolved path is already recorded as a source in ChromaDB are
     skipped, so re-running only processes new files.
 
+    If *reset* is True, the existing ChromaDB store at CHROMA_DIR is deleted
+    first, so every file is parsed and indexed from scratch.
+
     Returns a dict mapping file path string → number of chunks indexed.
     """
+    if reset and CHROMA_DIR.exists():
+        print(f"  Reindex  : removing existing ChromaDB store at '{CHROMA_DIR}'")
+        shutil.rmtree(CHROMA_DIR)
+
     # Embedding model lives in the main process only
     model = SentenceTransformer(EMBEDDING_MODEL)
     chunk_size = min(MAX_CHUNK_TOKENS, model.max_seq_length)

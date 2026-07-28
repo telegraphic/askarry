@@ -5,14 +5,13 @@ from pathlib import Path
 # Directories
 # ---------------------------------------------------------------------------
 PDF_DIR = Path("pdfs")                              # Local PDFs folder
-ZOTERO_DIR = Path.home() / "Zotero" / "storage"    # Zotero attachment storage
 CHROMA_DIR = Path("chroma_db")                      # Persistent ChromaDB storage
 BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"   # AASKAII title/author lookup (see pdfs/build_bibliography.py)
 AASKAII_YEAR = 2026                                  # Publication year for all AASKAII chapters
 
 # All directories to scan during ingestion (edit freely).
 # Non-existent paths are silently skipped.
-PDF_DIRS: list[Path] = [PDF_DIR] #, ZOTERO_DIR]
+PDF_DIRS: list[Path] = [PDF_DIR]
 
 # ---------------------------------------------------------------------------
 # Embedding model  (sentence-transformers, runs locally)
@@ -55,7 +54,13 @@ OLLAMA_TOP_K = 64
 # ---------------------------------------------------------------------------
 TOP_K = 5                  # Final chunks passed to the LLM
 RETRIEVAL_CANDIDATES = 20  # Broad first-stage fetch (per method) before fusion & re-ranking
-SCORE_THRESHOLD = 0.45     # Kept for compatibility; not used in hybrid pipeline
+# Cross-encoder relevance (sigmoid of the reranker logit, 0-1) below which the
+# top retrieved chunk is considered a weak match. Used to warn the user in the
+# UI and to nudge the LLM to hedge rather than confidently answer from
+# marginally-relevant passages. Tune by inspecting real "relevance: NN%"
+# values shown in the Source Passages panel for queries that are/aren't
+# actually answered by the corpus.
+CONFIDENCE_THRESHOLD = 0.3
 MAX_CHUNK_TOKENS = 480     # Conservative: BERT max is 512 but needs [CLS]/[SEP] headroom;
                            # HybridChunker sometimes overshoots so we stay well below the limit
 

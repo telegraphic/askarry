@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import math
 import re
 
 import chromadb
@@ -247,7 +248,9 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
         page_no     : int
         heading     : str
         caption     : str
-        score       : float — RRF score
+        score       : float — cross-encoder relevance, sigmoid-normalised to
+                      0-1 (higher = more relevant; this is what determines the
+                      final ranking, unlike the intermediate RRF score)
     """
     model, reranker, collection = _get_resources()
 
@@ -321,8 +324,20 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
     rerank_pool = fused[: min(RETRIEVAL_CANDIDATES, len(fused))]
     pairs = [[query, c["text"]] for c in rerank_pool]
     ce_scores = reranker.predict(pairs)
-    ranked = sorted(zip(ce_scores, rerank_pool), key=lambda x: x[0], reverse=True)
-    top = [chunk for _, chunk in ranked[:top_k]]
+    # The raw cross-encoder logit isn't a meaningful score to show a user (it's
+    # unbounded and can be negative), and it previously wasn't even used as the
+    # displayed "relevance" — the stale RRF fusion score was shown instead,
+    # which doesn't track the final (cross-encoder) ranking order at all.
+    # Squash to a 0-1 confidence via sigmoid so the UI and the low-confidence
+    # check below both reflect what actually determined the ranking.
+    confidences = [1.0 / (1.0 + math.exp(-float(s))) for s in ce_scores]
+    ranked = sorted(
+        zip(confidences, rerank_pool), key=lambda x: x[0], reverse=True
+    )
+    top = [
+        {**chunk, "score": round(confidence, 4)}
+        for confidence, chunk in ranked[:top_k]
+    ]
 
     # --- Stage 4: Context window expansion ---
     return _expand_context(top, collection)
