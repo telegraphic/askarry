@@ -7,6 +7,7 @@ Usage:
 
 from __future__ import annotations
 
+import math
 import re
 import threading
 import warnings
@@ -248,17 +249,24 @@ def _allowed_source_paths() -> list[str]:
     return paths
 
 
-def answer_question(query: str):
-    """Retrieve relevant chunks then stream a grounded answer, yielding status updates."""
+def answer_question(query: str, progress: gr.Progress = gr.Progress()):
+    """Retrieve relevant chunks then stream a grounded answer, yielding status
+    updates. *progress* drives Gradio's native progress bar: the retrieval
+    half (0-0.5) is driven by real stage callbacks from `retrieve()`, and the
+    generation half (0.5-1.0) by an asymptotic curve over the live token
+    count (final answer length isn't known ahead of time)."""
     query = query.strip()
     if not query:
         yield "", "", ""
         return
 
-    yield "_🔍 Searching knowledge base…_", "", ""
+    progress(0, desc="Searching knowledge base…")
+
+    def _on_retrieve_progress(fraction: float, desc: str) -> None:
+        progress(fraction * 0.5, desc=desc)
 
     try:
-        chunks = retrieve(query, top_k=TOP_K)
+        chunks = retrieve(query, top_k=TOP_K, on_progress=_on_retrieve_progress)
     except RuntimeError as exc:
         yield "", f"**Error:** {exc}", ""
         return
@@ -270,20 +278,25 @@ def answer_question(query: str):
     sources_md = _build_sources_markdown(chunks)
 
     best_score = max((c["score"] for c in chunks), default=0.0)
-    generating_status = "_💬 Generating answer…_"
+    warning = ""
     if best_score < CONFIDENCE_THRESHOLD:
-        generating_status += (
-            "\n\n⚠️ _The best-matching passages have low relevance — the "
+        warning = (
+            "⚠️ _The best-matching passages have low relevance — the "
             "knowledge base may not have a good answer to this question._"
         )
 
-    yield generating_status, "", sources_md
+    yield warning, "", sources_md
 
     try:
         answer = ""
-        for token in stream_answer(query, display_chunks):
+        token_count = 0
+        for token_count, token in enumerate(
+            stream_answer(query, display_chunks), start=1
+        ):
             answer += token
-            yield "", answer, sources_md
+            fraction = 0.5 + 0.47 * (1 - math.exp(-token_count / 60))
+            progress(fraction, desc=f"Generating answer… ({token_count} tokens)")
+            yield warning, answer, sources_md
     except ollama.ResponseError as exc:
         yield "", (
             f"**Ollama error:** {exc}\n\n"
@@ -292,12 +305,14 @@ def answer_question(query: str):
         ), sources_md
         return
 
+    progress(1.0, desc="Done")
+
     # Final pass: linkify/validate citations only once the answer has fully
     # settled (mid-stream text can contain partial markers like "[1" before
     # the closing bracket arrives, which the regex must not misinterpret).
     linked_answer, cited = _linkify_citations(answer, display_chunks)
     final_sources_md = sources_md + _build_uncited_note(display_chunks, cited)
-    yield "", linked_answer, final_sources_md
+    yield warning, linked_answer, final_sources_md
 
 
 # ---------------------------------------------------------------------------

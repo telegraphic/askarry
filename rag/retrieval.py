@@ -14,6 +14,7 @@ import hashlib
 import logging
 import math
 import re
+from typing import Callable
 
 import chromadb
 import ollama
@@ -230,7 +231,11 @@ def _rrf_fuse(
     return result
 
 
-def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
+def retrieve(
+    query: str,
+    top_k: int = TOP_K,
+    on_progress: Callable[[float, str], None] | None = None,
+) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
 
     Pipeline:
@@ -240,6 +245,10 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
       4. Reciprocal Rank Fusion to merge both ranked lists.
       5. Cross-encoder re-rank the fused candidates.
       6. Context window expansion: fetch neighbouring chunks for richer context.
+
+    If *on_progress* is given, it is called as `on_progress(fraction, desc)`
+    (fraction in 0-1) at each stage boundary so a caller (e.g. the Gradio UI)
+    can drive a real progress bar instead of an opaque "searching" spinner.
 
     Each returned dict has at minimum:
         text        : str   — expanded passage text
@@ -260,11 +269,15 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
         )
 
     # --- Optional HyDE ---
+    if USE_HYDE and on_progress:
+        on_progress(0.05, "Generating hypothetical answer (HyDE)…")
     embed_text = _hyde_query(query) if USE_HYDE else query
     if USE_HYDE:
         log.info("HyDE hypothesis: %s…", embed_text[:120])
 
     # --- Stage 1a: Semantic vector search ---
+    if on_progress:
+        on_progress(0.3, "Embedding query & searching vector index…")
     n_candidates = min(RETRIEVAL_CANDIDATES, collection.count())
     query_embedding = model.encode(
         [embed_text], prompt=EMBEDDING_QUERY_PROMPT
@@ -292,6 +305,8 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
         })
 
     # --- Stage 1b: BM25 keyword search (with acronym expansion) ---
+    if on_progress:
+        on_progress(0.5, "Running keyword (BM25) search…")
     bm25, bm25_docs = _get_bm25(collection)
     acronyms = _get_acronyms(collection)
     expanded_query = _expand_query(query, acronyms)
@@ -314,12 +329,16 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
         })
 
     # --- Stage 2: Reciprocal Rank Fusion ---
+    if on_progress:
+        on_progress(0.6, "Fusing search results…")
     fused = _rrf_fuse(semantic_hits, bm25_hits, bm25_weight=BM25_WEIGHT)
 
     if not fused:
         return []
 
     # --- Stage 3: Cross-encoder re-rank ---
+    if on_progress:
+        on_progress(0.85, "Re-ranking candidates…")
     # Re-rank only as many candidates as make sense (cap to keep latency low)
     rerank_pool = fused[: min(RETRIEVAL_CANDIDATES, len(fused))]
     pairs = [[query, c["text"]] for c in rerank_pool]
@@ -340,6 +359,8 @@ def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
     ]
 
     # --- Stage 4: Context window expansion ---
+    if on_progress:
+        on_progress(1.0, "Expanding context…")
     return _expand_context(top, collection)
 
 
