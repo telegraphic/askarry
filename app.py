@@ -8,6 +8,7 @@ Usage:
 from __future__ import annotations
 
 import math
+import queue
 import re
 import threading
 import warnings
@@ -91,7 +92,7 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
 
         page_no = chunk.get("page_no", 0)
         if page_no:
-            header += f" &nbsp; p.{page_no}"
+            header += f"<br /> &nbsp; p.{page_no}"
 
         heading = chunk.get("heading", "")
         if heading:
@@ -254,28 +255,91 @@ def _allowed_source_paths() -> list[str]:
 _AUDIENCE_MAP = {"PhD astronomer": "phd", "Non-expert": "general"}
 
 
-def answer_question(query: str, audience: str, progress: gr.Progress = gr.Progress()):
+def _progress_bar_html(fraction: float, desc: str) -> str:
+    """Render a modern animated progress bar as raw HTML/CSS.
+
+    This replaces Gradio's built-in `gr.Progress` overlay entirely (see
+    `_run_retrieve_with_progress` below for why), styled as a rounded
+    gradient pill with a moving shimmer and a live percentage/description
+    label.
+    """
+    pct = max(0.0, min(1.0, fraction)) * 100
+    return (
+        '<div class="askarry-progress-wrap">'
+        '<div class="askarry-progress-label">'
+        f"<span>{escape(desc)}</span>"
+        f'<span class="askarry-progress-pct">{pct:.0f}%</span>'
+        "</div>"
+        '<div class="askarry-progress-track">'
+        f'<div class="askarry-progress-fill" style="width: {pct:.1f}%"></div>'
+        "</div>"
+        "</div>"
+    )
+
+
+def _run_retrieve_with_progress(query: str, top_k: int):
+    """Run `retrieve()` on a background thread and yield live progress.
+
+    `retrieve()`'s `on_progress` callback fires synchronously from *inside*
+    a blocking, multi-stage pipeline (HyDE, embedding, BM25, cross-encoder
+    rerank, context expansion). To surface those updates without relying on
+    Gradio's own `gr.Progress` mechanism, `retrieve()` runs on a daemon
+    thread and each callback is relayed to this generator through a
+    `queue.Queue`, so the caller can `yield` a custom HTML progress bar for
+    every stage while still driving a single blocking call underneath.
+
+    Yields `("progress", fraction, desc)` tuples, then a final
+    `("result", chunks)` or `("error", exc)` tuple.
+    """
+    updates: queue.Queue = queue.Queue()
+
+    def _worker() -> None:
+        try:
+            chunks = retrieve(
+                query,
+                top_k=top_k,
+                on_progress=lambda fraction, desc: updates.put(("progress", fraction, desc)),
+            )
+            updates.put(("result", chunks))
+        except Exception as exc:  # noqa: BLE001 - relayed to the caller, not swallowed
+            updates.put(("error", exc))
+
+    threading.Thread(target=_worker, daemon=True, name="rag-retrieve").start()
+
+    while True:
+        message = updates.get()
+        yield message
+        if message[0] != "progress":
+            return
+
+
+def answer_question(query: str, audience: str):
     """Retrieve relevant chunks then stream a grounded answer, yielding status
-    updates. *progress* drives Gradio's native progress bar: the retrieval
-    half (0-0.5) is driven by real stage callbacks from `retrieve()`, and the
+    updates. The retrieval half (0-0.5) is driven by real stage callbacks
+    from `retrieve()` (relayed via `_run_retrieve_with_progress`), and the
     generation half (0.5-1.0) by an asymptotic curve over the live token
-    count (final answer length isn't known ahead of time)."""
+    count (final answer length isn't known ahead of time). Progress is
+    rendered as a custom HTML bar (`_progress_bar_html`) rather than
+    Gradio's built-in `gr.Progress`."""
     query = query.strip()
     if not query:
         yield "", "", ""
         return
 
     audience_key = _AUDIENCE_MAP.get(audience, "phd")
-    progress(0, desc="Searching knowledge base…")
+    yield _progress_bar_html(0.0, "Searching knowledge base…"), "", ""
 
-    def _on_retrieve_progress(fraction: float, desc: str) -> None:
-        progress(fraction * 0.5, desc=desc)
-
-    try:
-        chunks = retrieve(query, top_k=TOP_K, on_progress=_on_retrieve_progress)
-    except RuntimeError as exc:
-        yield "", f"**Error:** {exc}", ""
-        return
+    chunks: list[dict] | None = None
+    for message in _run_retrieve_with_progress(query, TOP_K):
+        kind = message[0]
+        if kind == "progress":
+            _, fraction, desc = message
+            yield _progress_bar_html(fraction * 0.5, desc), "", ""
+        elif kind == "error":
+            yield "", f"**Error:** {message[1]}", ""
+            return
+        else:  # "result"
+            chunks = message[1]
 
     display_chunks = [
         {**chunk, "source": _display_source_name(chunk["source"])}
@@ -291,7 +355,8 @@ def answer_question(query: str, audience: str, progress: gr.Progress = gr.Progre
             "knowledge base may not have a good answer to this question._"
         )
 
-    yield warning, "", sources_md
+    status = warning + ("\n\n" if warning else "") + _progress_bar_html(0.5, "Preparing answer…")
+    yield status, "", sources_md
 
     try:
         answer = ""
@@ -301,8 +366,9 @@ def answer_question(query: str, audience: str, progress: gr.Progress = gr.Progre
         ):
             answer += token
             fraction = 0.5 + 0.47 * (1 - math.exp(-token_count / 60))
-            progress(fraction, desc=f"Generating answer… ({token_count} tokens)")
-            yield warning, answer, sources_md
+            progress_html = _progress_bar_html(fraction, f"Generating answer… ({token_count} tokens)")
+            status = warning + ("\n\n" if warning else "") + progress_html
+            yield status, answer, sources_md
     except ollama.ResponseError as exc:
         yield "", (
             f"**Ollama error:** {exc}\n\n"
@@ -310,8 +376,6 @@ def answer_question(query: str, audience: str, progress: gr.Progress = gr.Progre
             f"`{OLLAMA_MODEL}` has been pulled (`ollama pull {OLLAMA_MODEL}`)."
         ), sources_md
         return
-
-    progress(1.0, desc="Done")
 
     # Final pass: linkify/validate citations only once the answer has fully
     # settled (mid-stream text can contain partial markers like "[1" before
@@ -376,6 +440,46 @@ html {
     border-bottom: 1px dotted currentColor;
     cursor: help;
 }
+
+/* Custom progress bar (replaces Gradio's built-in gr.Progress entirely —
+see _progress_bar_html / _run_retrieve_with_progress in app.py). A rounded
+gradient pill with a moving shimmer, plus a live percentage/description
+label above the track. */
+.askarry-progress-wrap {
+    margin: 0.15rem 0 0.85rem;
+}
+.askarry-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin-bottom: 0.35rem;
+}
+.askarry-progress-pct {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+.askarry-progress-track {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(127, 127, 127, 0.18);
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.askarry-progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+    background-size: 200% 100%;
+    animation: askarry-progress-flow 1.6s linear infinite;
+    transition: width 0.25s ease-out;
+}
+@keyframes askarry-progress-flow {
+    0% { background-position: 0% 0; }
+    100% { background-position: -200% 0; }
+}
 """
 
 with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
@@ -414,16 +518,21 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
             with gr.Accordion("Source Passages", open=True, elem_classes=["source-passages-accordion"]):
                 sources_box = gr.Markdown(latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
 
-            # Wire up events
+            # Wire up events. `show_progress="hidden"` suppresses Gradio's
+            # own pending overlay/progress bar entirely — progress is shown
+            # via the custom HTML bar yielded into `status_box` instead (see
+            # `_progress_bar_html` / `_run_retrieve_with_progress`).
             submit_btn.click(
                 answer_question,
                 inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
+                show_progress="hidden",
             )
             query_box.submit(
                 answer_question,
                 inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
+                show_progress="hidden",
             )
 
         with gr.Tab("Table of Contents"):
