@@ -37,7 +37,35 @@ Rules:
   passage numbers in the context block. Cite every factual claim.
 - Keep your answer concise and technically precise.
 - Use correct SKA terminology and acronyms where appropriate.
+- Avoid superlatives and hyped or promotional language (e.g. "groundbreaking",
+  "cutting-edge", "revolutionary", "unprecedented", "vital"); state facts
+  plainly and let the evidence speak for itself.
+- Write in a classic, restrained scientific prose style: plain declarative
+  sentences, no rhetorical flourishes, and no exclamation points.
 """
+
+# Audience-specific instructions appended to `_SYSTEM_PROMPT`, selected via the
+# `audience` argument on `generate_answer`/`stream_answer`. "phd" is the
+# default for both the UI (app.py) and these functions, so any caller that
+# omits the argument still gets PhD-level output.
+_AUDIENCE_INSTRUCTIONS: dict[str, str] = {
+    "phd": (
+        "\nAudience: write for a reader with a PhD in astronomy. Use precise "
+        "technical terminology, standard notation and units, and equations "
+        "where they aid precision. Do not define standard concepts, "
+        "acronyms, or units that a professional astronomer would already "
+        "know. When the context passages contain relevant formulas, "
+        "parameter values, or other numerical results, include them "
+        "explicitly in the answer rather than describing them only "
+        "qualitatively."
+    ),
+    "general": (
+        "\nAudience: write for a non-expert reader. Use plain language, "
+        "avoid unexplained jargon, define any acronyms or technical terms "
+        "on first use, and avoid presenting equations without explaining "
+        "what they mean in words."
+    ),
+}
 
 
 def _build_context_block(chunks: list[dict]) -> str:
@@ -68,9 +96,18 @@ def _build_user_message(query: str, chunks: list[dict]) -> str:
     return "\n\n".join(parts)
 
 
-def generate_answer(query: str, chunks: list[dict]) -> str:
+def _build_system_prompt(audience: str) -> str:
+    """Combine the base system prompt with audience-specific instructions.
+    Falls back to the "phd" (default) audience for unknown keys."""
+    return _SYSTEM_PROMPT + _AUDIENCE_INSTRUCTIONS.get(
+        audience, _AUDIENCE_INSTRUCTIONS["phd"]
+    )
+
+
+def generate_answer(query: str, chunks: list[dict], audience: str = "phd") -> str:
     """
-    Generate an answer to *query* grounded in the retrieved *chunks*.
+    Generate an answer to *query* grounded in the retrieved *chunks*, written
+    for the given *audience* ("phd" or "general").
 
     Raises `ollama.ResponseError` if the Ollama server is unreachable or the
     model has not been pulled yet.
@@ -83,7 +120,7 @@ def generate_answer(query: str, chunks: list[dict]) -> str:
     response = _client.chat(
         model=OLLAMA_MODEL,
         messages=[
-            {"role": "system", "content": _SYSTEM_PROMPT},
+            {"role": "system", "content": _build_system_prompt(audience)},
             {"role": "user", "content": user_message},
         ],
         options=_CHAT_OPTIONS,
@@ -91,9 +128,10 @@ def generate_answer(query: str, chunks: list[dict]) -> str:
     return response["message"]["content"]
 
 
-def stream_answer(query: str, chunks: list[dict]):
+def stream_answer(query: str, chunks: list[dict], audience: str = "phd"):
     """
-    Stream an answer token-by-token.
+    Stream an answer token-by-token, written for the given *audience*
+    ("phd" or "general").
 
     Yields successive string tokens. Raises `ollama.ResponseError` if the
     Ollama server is unreachable or the model has not been pulled yet.
@@ -107,7 +145,7 @@ def stream_answer(query: str, chunks: list[dict]):
     response = _client.chat(
         model=OLLAMA_MODEL,
         messages=[
-            {"role": "system", "content": _SYSTEM_PROMPT},
+            {"role": "system", "content": _build_system_prompt(audience)},
             {"role": "user", "content": user_message},
         ],
         options=_CHAT_OPTIONS,

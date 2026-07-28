@@ -60,6 +60,24 @@ def _source_links(source: str) -> str:
     return file_link
 
 
+_WHITESPACE_RE = re.compile(r"\s+")
+
+
+def _collapse_whitespace(text: str) -> str:
+    """Collapse all runs of whitespace (including embedded newlines) into a
+    single space.
+
+    Docling-extracted chunk text often contains raw layout artifacts from the
+    source PDF — multi-line author/affiliation lists, blank lines, indented
+    columns, etc. Left as-is, a single leading `> ` blockquote marker only
+    covers the excerpt's first line: any embedded newline drops the rest of
+    the text out of the blockquote, and runs of leading whitespace on those
+    lines get reinterpreted by Markdown as an indented code block. Collapsing
+    to one line keeps the excerpt a single clean blockquote paragraph.
+    """
+    return _WHITESPACE_RE.sub(" ", text).strip()
+
+
 def _build_sources_markdown(chunks: list[dict]) -> str:
     """Build the Markdown/HTML shown in the source passages accordion.
 
@@ -76,15 +94,15 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
 
         heading = chunk.get("heading", "")
         if heading:
-            header += f" &nbsp; · &nbsp; _{heading}_"
+            header += f" &nbsp; · &nbsp; _{_collapse_whitespace(heading)}_"
 
         caption = chunk.get("caption", "")
         if caption:
-            header += f" &nbsp; · &nbsp; _{caption}_"
+            header += f" &nbsp; · &nbsp; _{_collapse_whitespace(caption)}_"
 
         header += f" &nbsp; relevance: `{chunk['score']:.0%}`"
 
-        text = chunk["text"]
+        text = _collapse_whitespace(chunk["text"])
         excerpt = text[:400].strip() + ("…" if len(text) > 400 else "")
         parts.append(f"{header}\n\n> {excerpt}")
 
