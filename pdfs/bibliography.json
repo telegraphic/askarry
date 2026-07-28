@@ -1,0 +1,4425 @@
+{
+  "McClure-Griffiths01": {
+    "title": "Advancing Astrophysics with the SKA II: SKAO Science for Today's Generation",
+    "authors": [
+      "Naomi McClure-Griffiths",
+      "SKAO Chief Scientist"
+    ],
+    "section": "Unclassified"
+  },
+  "Zucca01": {
+    "title": "Solar, Heliospheric and Ionospheric Physics: Pathfinders, Precursors and SKAO Perspectives.",
+    "authors": [
+      "Pietro Zucca",
+      "Rohit Sharma",
+      "Divya Oberoi",
+      "Eduard Kontar",
+      "John Morgan",
+      "Peter Gallagher",
+      "Sven Wedemeyer",
+      "Biagio Forte"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Huege01": {
+    "title": "Measuring High-Energy Cosmic Particles with the SKA",
+    "authors": [
+      "Tim Huege",
+      "Katharine Mulrey",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Stijn Buitink",
+      "Arthur Corstanje",
+      "Vital De Henau",
+      "Edwin Dickinson",
+      "Brian Hare",
+      "Haoning He",
+      "Jörg Hörandel",
+      "Clancy James",
+      "Philipp Laub",
+      "Xingyu Li",
+      "Marten Lourens",
+      "Hermann-Josef Mathes",
+      "Anna Nelles",
+      "Subhadip Saha",
+      "Felix Schlüter",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Veberic",
+      "Keito Watanabe",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Bianchi02": {
+    "title": "Cradle of Life: From the Formation of Stars to Habitable Worlds with the SKAO",
+    "authors": [
+      "Eleonora Bianchi",
+      "Joseph R. Callingham",
+      "the Cradle of Life working group"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Audard01": {
+    "title": "The Science of the Cycle of Matter in Our Galaxy with SKA",
+    "authors": [
+      "Marc Audard",
+      "Ke Wang"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "JingWang01": {
+    "title": "HI Galaxy Science with the SKA",
+    "authors": [
+      "Jing Wang",
+      "D. J. Pisano",
+      "Sarah Blyth",
+      "Barbara Catinella",
+      "Lister Steveley-Smith",
+      "Paolo Serra",
+      "Elizabeth A. K. Adams",
+      "Neeraj Gupta",
+      "Erwin de Blok",
+      "Martin Meyer",
+      "Lourdes Verdes-Montenegro",
+      "Tom Oosterloo"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "vanLoon01": {
+    "title": "Advancing Extragalactic Spectral Line Studies with the Square Kilometre Array Observatory",
+    "authors": [
+      "Jacco Th. van Loon",
+      "Viviana Casasola",
+      "Manuela Bischetti",
+      "Sandra Etoka",
+      "Hans-Rainer Klöckner",
+      "Mamta Pandey-Pommier",
+      "Mark Sargent",
+      "Nick Seymour",
+      "Andrea Tarchi"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Vernstrom01": {
+    "title": "Cosmic Magnetism Science with the SKA",
+    "authors": [
+      "Tessa Vernstrom",
+      "Jennifer L. West",
+      "Cathy Horellou"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Hale01": {
+    "title": "Overview: Extragalactic Continuum Science with the SKAO",
+    "authors": [
+      "Catherine L. Hale",
+      "Fatemeh S. Tabatabaei"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Trott01": {
+    "title": "Overview of 21cm Experiments at High Redshift with SKAO",
+    "authors": [
+      "Cathryn M. Trott",
+      "Gianni Bernardi",
+      "Daniela Breitman",
+      "Abhirup Datta",
+      "Anastasia Fialkov",
+      "Leon Koopmans",
+      "Adrian Liu",
+      "Yi Mao",
+      "Garrelt Mellema",
+      "Florent Mertens",
+      "Andrei Mesinger",
+      "Jonathan Pritchard",
+      "Aurel Schneider",
+      "Yidong Xu",
+      "Anshuman Acharya",
+      "Satadru Bag",
+      "Rennan Barkana",
+      "Nichole Barry",
+      "Oliver Basquette",
+      "Michele Bianco",
+      "Stefanie A. Brackenhoff",
+      "Carlo Burigana",
+      "Isabella C. Carucci",
+      "Emilio Ceccotti",
+      "Arnab Chakraborty",
+      "Samir Choudhuri",
+      "Tirthankar Roy Choudhury",
+      "Benedetta Ciardi",
+      "Hector Afonso G. Cruz",
+      "Saswata Dasgupta",
+      "Kanan K. Datta",
+      "Pratika Dayal",
+      "Eloy de Lera Acedo",
+      "Khandakar Md Asif Elahi",
+      "Ivelin Georgiev",
+      "Sukhdeep Singh Gill",
+      "Sambit K. Giri",
+      "Adélie Gorce",
+      "Quan Guo",
+      "Caroline Heneka",
+      "Ian Hothi",
+      "Anne Hutter",
+      "Piyanat Kittiwisit",
+      "Bohua Li",
+      "Yashrajsinh Mahida",
+      "Barun Maity",
+      "Suman Majumdar",
+      "Avery Meiksin",
+      "Romain Meriot",
+      "Arnab Mishra",
+      "Shikhar Mittal",
+      "Rajesh Mondal",
+      "Lauro Moscardini",
+      "Julian Munoz",
+      "Satyapan Munshi",
+      "Pravin Kumar Natwariya",
+      "Leon Noble",
+      "Oscar Sage David O'Hara",
+      "Pierre Ocvirk",
+      "Samit Kumar Pal",
+      "Yannic Pietschke",
+      "Steven G. Piyanat",
+      "Rashmi Sagar",
+      "Rasha M. Samir",
+      "Mario G. Santos",
+      "Benoit Semelin",
+      "Rahul Shah",
+      "Yali Shao",
+      "Abinash Kumar Shaw",
+      "Hayato Shimabukuro",
+      "Peter H. Sims",
+      "Tomáš Šoltinský",
+      "Guochao Sun",
+      "Anshuman Tripathi",
+      "Tiziana Trombetti",
+      "Ceren Ulusoy",
+      "Maio Umberto",
+      "Jochen Weller",
+      "Sarod Yatawatta",
+      "Shintaro Yoshiura",
+      "Bin Yue",
+      "Saleem Zaroubi",
+      "Qian Zheng"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Bellomo01": {
+    "title": "Exploring Gravitational Wave Science Frontiers with the SKAO",
+    "authors": [
+      "Nicola Bellomo",
+      "Philippa Cole"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Spinelli02": {
+    "title": "Overview: Cosmology with the SKAO",
+    "authors": [
+      "Marta Spinelli",
+      "Ian Harrison",
+      "Richard A. Battye",
+      "Stefano Camera",
+      "Xulei Chen",
+      "Roy Maartens",
+      "Mario G. Santos",
+      "Laura Wolz"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Joshi01": {
+    "title": "Pulsar Science with the SKAO",
+    "authors": [
+      "Bhal Chandra Joshi",
+      "Aris Karastergiou",
+      "Marta Burgay"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Miller-Jones01": {
+    "title": "Unveiling Radio Transients with SKAO Telescopes",
+    "authors": [
+      "James C.A. Miller-Jones",
+      "Kaustubh M. Rajwade",
+      "Patrick A. Woudt",
+      "Jason W.T. Hessels"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Radcliffe01": {
+    "title": "Very Long Baseline Interferometry with the SKA Observatory",
+    "authors": [
+      "Jack F. Radcliffe",
+      "Jun Yang",
+      "Zsolt Paragi",
+      "Olga Bayandina",
+      "Cormac Reynolds",
+      "Tao An",
+      "Cristina Garcia-Miro",
+      "M. Abada-Simon",
+      "J.N.H.S. Aditya",
+      "Ivan Agudo",
+      "Takuya Akahori",
+      "Antxon Alberdi",
+      "Sonia Anton",
+      "Pikky Atri",
+      "Anne-Kathrin Baczko",
+      "Silvia Belladitta",
+      "Emmanuel Bempong-Manful",
+      "Robert Beswick",
+      "Mohit Bhardwaj",
+      "Etienne Bonnassieux",
+      "Andreas Brunthaler",
+      "Chin-Shin Chang",
+      "Patrick Charlot",
+      "Siyuan Chen",
+      "Wen Chen",
+      "Xiaopeng Cheng",
+      "Ayushi Chhipa",
+      "James Chibueze",
+      "Ilje Cho",
+      "Juan B. Climent",
+      "Lang Cui",
+      "Salvador Curiel",
+      "Filippo D'Ammando",
+      "J. R. Dawson",
+      "Adam Deller",
+      "Hao Ding",
+      "Richard Dodson",
+      "Julien Drevon",
+      "Florian Eppel",
+      "Sándor Frey",
+      "Michael Garrett",
+      "Marcin Gawronski",
+      "Jinjun Geng",
+      "Stefano Giarratana",
+      "Marcello Giroletti",
+      "Sergei Gulyaev",
+      "Leonid Gurvits",
+      "Chaojie Hao",
+      "Tomoya Hirota",
+      "A.J. Hedge",
+      "Huanchen Hu",
+      "Hiroshi Imai",
+      "Pengfei Jiang",
+      "Jurjen de Jong",
+      "Matthias Kadler",
+      "Bahman Karimi",
+      "Preeti Kharb",
+      "Rubinur Khatun",
+      "Jae-Young Kim",
+      "Jungha Kim",
+      "Junhan Kim",
+      "Franz Kirsten",
+      "H.R. Klöckner",
+      "Hideyuki Kobayashi",
+      "Yuri Y.",
+      "Magdalena Kunert-Bajraszewska",
+      "Alexander Kutkin",
+      "Huib Jan van Langevelde",
+      "Jinzeng Li",
+      "Ye Li",
+      "Yingjie Li",
+      "Zehao Lin",
+      "Dejian Liu",
+      "Honghui Liu",
+      "Kuo Liu",
+      "Andrei Lobanov",
+      "Rusen Lu",
+      "Vijay Mahatma",
+      "Benito Marcote",
+      "Mar Mezcua",
+      "Javier Moldon",
+      "Leah K. Morabito",
+      "Sara E. Motta",
+      "Suma Murthy",
+      "Iniyan Natarajan",
+      "Ann Njeri",
+      "Junghwan Oh",
+      "Monica Orienti",
+      "Angelina Osetrova",
+      "Mamta Pommier",
+      "Francesca Panessa",
+      "Jongho Park",
+      "Miguel Pérez-Torres",
+      "Jonathon Pierce",
+      "Chris Phillips",
+      "Mamta Pommier",
+      "Luca Ricci",
+      "Maria Rioja",
+      "Hyunwook Ro",
+      "Jan Röder",
+      "Eduardo Ros",
+      "Michael Rupen",
+      "Kazi Rygl",
+      "Ramananda Santra",
+      "Silpa Sasikumar",
+      "Tuomas Savolainen",
+      "G.A. Shanmugha Sundaram",
+      "Prajval Shastri",
+      "Xinwen Shu",
+      "Agnieszka Slowikowska",
+      "Bong Won Sohn",
+      "Cristiana Spingola",
+      "Frits Sweijen",
+      "Keitaro Takahashi",
+      "Roland Timmerman",
+      "Francesco Ubertosi",
+      "Lucero Uscanga",
+      "Eskil Varenius",
+      "Marjolein Verkouter",
+      "Tessa Vernstrom",
+      "Stefan Wagner",
+      "David Williams-Baldwin",
+      "Jompoj Wongphechauxsorn",
+      "Xuefeng Wu",
+      "Ye Xu",
+      "Mustafa K. Yildiz",
+      "Zhen Yan",
+      "Aiyuan Yang",
+      "Xuan Yang",
+      "Su Yao",
+      "Wei Yu",
+      "Bo Zhang",
+      "Lin Zehao",
+      "Pfesesani Van Zyl"
+    ],
+    "section": "Science Working Group Overviews"
+  },
+  "Oberoi01": {
+    "title": "State-of-the-art Observation, Calibration, and Imaging Framework for Solar and Heliospheric Sciences with SKAO",
+    "authors": [
+      "Divya Oberoi",
+      "Devojyoti Kansabanik",
+      "Surajit Mondal",
+      "Deepan Patra",
+      "Puja Majee",
+      "Soham Dey",
+      "Peijin Zhang",
+      "Pietro Zucca"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Kontar01": {
+    "title": "Solar Radio Burst Fine Structures",
+    "authors": [
+      "Eduard Kontar",
+      "Daniel Clarkson",
+      "Hamish Reid",
+      "Yingjie Luo",
+      "Nicolina Chrysaphi",
+      "Alexey Kuznetsov",
+      "Galina Motorina",
+      "Carine Briand"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Dey01": {
+    "title": "Understanding Coronal `Seeing' Using High Angular Resolution Radio Observations of Active Solar Emissions",
+    "authors": [
+      "Soham Dey",
+      "Deepan Patra",
+      "Divya Oberoi",
+      "Anshu Kumari",
+      "Atul Mohan",
+      "Surajit Mondal",
+      "Pietro Zucca"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "PeijinZhang01": {
+    "title": "Probing the Solar Corona and the Solar Wind Using Angular Broadening Observations with the SKA",
+    "authors": [
+      "Peijin Zhang",
+      "John Morgan",
+      "Divya Oberoi",
+      "Du Toit Strauss",
+      "Yingjie Luo",
+      "Eduard Kontar",
+      "Zesen Huang",
+      "Keshav Aggarwal",
+      "Anshu Kumari",
+      "Abhirup Datta",
+      "Diana Morosan",
+      "Gert J. Botha"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Nakariakov01": {
+    "title": "The Study of Quasi-Periodic Pulsations in Solar and Stellar Flares with SKA",
+    "authors": [
+      "Valery M. Nakariakov",
+      "Atul Mohan",
+      "Vishal Upendran",
+      "Teresa Monsue",
+      "Hamish A. S. Reid",
+      "Dmitrii Y. Kolotkov",
+      "Sergey A. Belov",
+      "Kyung-Suk Cho"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Mondal01": {
+    "title": "Unravelling the Nonthermal Emissions from the Quiet Solar Corona with the SKA",
+    "authors": [
+      "Surajit Mondal",
+      "Divya Oberoi",
+      "Rohit Sharma",
+      "Peijin Zhang",
+      "Devojyoti Kansabanik",
+      "Xingyao Chen",
+      "Eduard Kontar"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Morosan01": {
+    "title": "Solar Energetic Particles and their Association with Radio Emissions",
+    "authors": [
+      "Diana E. Morosan",
+      "Anshu Kumari",
+      "Immanuel Jebaraj",
+      "Eduard Kontar",
+      "Mugundhan V.",
+      "Ketaki Deshpande",
+      "Nina Dresing",
+      "Puja Majee",
+      "Divya Paliwal"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Cheung01": {
+    "title": "Probing the Physics of the Solar Corona with High-Resolution Observations Using SKA-Mid",
+    "authors": [
+      "Mark C. M. Cheung",
+      "John Morgan",
+      "Rohit Sharma",
+      "Sven Wedemeyer",
+      "Gregory Fleishman",
+      "Matthias Rempel"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Kansabanik01": {
+    "title": "Role of SKA in Advancing Remote Measurements of Magnetic Fields of Solar Coronal Mass Ejections",
+    "authors": [
+      "Devojyoti Kansabanik",
+      "Surajit Mondal",
+      "Shaheda Begum Shahik",
+      "Peijin Zhang",
+      "Puja Majee",
+      "Angelos Vourlidas",
+      "John Morgan",
+      "Divya Oberoi",
+      "Anshu Kumari",
+      "Alec Thomson",
+      "Bin Chen",
+      "Carl Shneider",
+      "Hariharan Krishnan",
+      "Kamen Kozarev",
+      "Sneha Pandit",
+      "Vanessa Moss"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Raja01": {
+    "title": "Radio Wave Propagation as a Probe of the Solar Corona and Solar Wind",
+    "authors": [
+      "Sasikumar Raja Kantepalli",
+      "Prasad Subramanian",
+      "Susanta Kumar Bisoi",
+      "Janardhan Padmanabhan",
+      "Eduard Kontar",
+      "Anshu Kumari"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Chrysaphi01": {
+    "title": "The SKA as a Probe of Heliospheric Turbulence and Radio-wave Propagation Effects",
+    "authors": [
+      "Nicolina Chrysaphi",
+      "Eduard P. Kontar",
+      "Hamish A. S. Reid",
+      "Sophie Musset",
+      "Shilpi Bhunia",
+      "Kamen Kozarev"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Kumari01": {
+    "title": "Solar Radio Bursts in the Metric to Kilometric Range",
+    "authors": [
+      "Anshu Kumari",
+      "Mugundhan V",
+      "Diana E. Morosan",
+      "Jasmina Magdalenić",
+      "Ketaki Deshpande",
+      "Peijin Zhang",
+      "Divya Paliwal",
+      "Pietro Zucca",
+      "Puja Majee"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Patra01": {
+    "title": "Coronal Magnetography Using Spectropolarimetry with SKA Telescopes",
+    "authors": [
+      "Deepan Patra",
+      "Puja Majee",
+      "Soham Dey",
+      "Devojyoti Kansabanik",
+      "Divya Oberoi",
+      "Anshu Kumari",
+      "Surajit Mondal",
+      "Ketaki Deshpande",
+      "Divya Paliwal"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Sharma01": {
+    "title": "Radio Diagnostics of Particle Acceleration in Solar Flares with SKAO Observations",
+    "authors": [
+      "Rohit Sharma",
+      "Marina Battaglia",
+      "Sijie Yu",
+      "Hamish Reid",
+      "Eduard Kontar",
+      "Bin Chen"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Mohan01": {
+    "title": "Exploring Activity Across the Stellar Main Sequence with the Sun as a Benchmark",
+    "authors": [
+      "Atul Mohan",
+      "Stephen M. White",
+      "Sven Wedemeyer",
+      "Vladimir Airapetian"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Hare01": {
+    "title": "Unveiling the Mysteries of Lightning: Exploring its Fundamental Physical Processes with SKA-Low",
+    "authors": [
+      "Brian M. Hare",
+      "Sjoerd Bouma",
+      "Stijn Buitink",
+      "Arthur Corstanje",
+      "Steve Cummer",
+      "Joseph R. Dwyer",
+      "Vital De Henau",
+      "Tim Huege",
+      "Philipp Laub",
+      "Ningyu Liu",
+      "Marten A. A. Lourens",
+      "Katie Mulrey",
+      "Anna Nelles",
+      "Olaf Scholten",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Paulina Ťureková",
+      "Keito Watanabe"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Santos-Sanz01": {
+    "title": "Unveiling the Trans-Neptunian Region with the SKA",
+    "authors": [
+      "Pablo Santos-Sanz",
+      "Yücel Kilic",
+      "Thomas G. Müller",
+      "Emmanuel Lellouch",
+      "Javier Moldón",
+      "Jorma Harju"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Vedantham01": {
+    "title": "Radio Emission from Star-planet Interactions",
+    "authors": [
+      "Harish K. Vedantham",
+      "Antoine Strugarek",
+      "Corentin K. Louis",
+      "Joeseph R. Callingham",
+      "Luis Peña-Moñino",
+      "Miguel Pérez-Torres",
+      "Philippe Zarka",
+      "Emilie Mauduit",
+      "Noémie Duchêne",
+      "Pedro Amado",
+      "Sanne Bloot",
+      "Robert D. Kavanagh",
+      "Aline A. Vidotto",
+      "Laurent Lamy",
+      "Cyril Tasse"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Kavanagh01": {
+    "title": "Discovering and Characterising Exoplanets and Ultracool Dwarfs with the Square Kilometre Array",
+    "authors": [
+      "Robert D. Kavanagh",
+      "Juan B. Climent",
+      "Philippe Zarka",
+      "Joseph R. Callingham",
+      "Yuka Fujii",
+      "Corentin K. Louis",
+      "Laurent Lamy",
+      "Mayank Narang",
+      "J. Sebastian Pineda",
+      "Harish K. Vedantham",
+      "Sanne Bloot",
+      "Jean-Mathias Grießmeier",
+      "Jose Carlos Guirado",
+      "Simranpreet Kaur",
+      "T. Joseph W. Lazio",
+      "Miguel Pérez-Torres",
+      "Alice Zurlo"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Curiel01": {
+    "title": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "authors": [
+      "Salvador Curiel",
+      "Maria J. Rioja",
+      "Richard Dodson",
+      "Huib Jan van Langevelde",
+      "Tao An"
+    ],
+    "section": "Sun, Earth and Planets"
+  },
+  "Traficante01": {
+    "title": "The 10-15 GHz Radio Continuum Survey of the Galactic Plane with SKAO",
+    "authors": [
+      "A. Traficante",
+      "C. Mininni",
+      "F. Cavallaro",
+      "G. Umana",
+      "C. Trigilio",
+      "S. Molinari",
+      "L. D. Anderson",
+      "M. Audard",
+      "C. Bordiu",
+      "C. Buemi",
+      "C. Carrasco-Gonzalez",
+      "L. Cerrigone",
+      "E. J. Chung",
+      "J. Dey",
+      "A. Ingallinera",
+      "I. Jimenez-Serra",
+      "P. Klaassen",
+      "S. Loru",
+      "K. Mallick",
+      "A. Nucara",
+      "M. Padovani",
+      "J. D. Pandian",
+      "K. Rygl",
+      "T. M. Rodriguez",
+      "G. Sabatini",
+      "S. Reissl",
+      "P. Suin",
+      "M. A. Thompson",
+      "T. L. Bourke",
+      "J. S. Urquhart",
+      "M. Valeille-Manet",
+      "F. Xu",
+      "A. Zavagno",
+      "M. Benedettini",
+      "E. Bianchi",
+      "A. Bracco",
+      "F. Bufano",
+      "C. Codella",
+      "N. Cunningham",
+      "J. R. Dawson",
+      "D. Galli",
+      "M. Guarcello",
+      "A. Karska",
+      "W. Kim",
+      "P. Leto",
+      "B. Liu",
+      "B. Mookerjea",
+      "F. Motte",
+      "T. Nony",
+      "R. Paladini",
+      "A. Patel",
+      "L. Podio",
+      "A. Ramaila",
+      "B. Riaz",
+      "S. Riggi",
+      "D. A. Roshi",
+      "A. Ruggeri",
+      "A. Sanchez-Monge",
+      "R. Schodel",
+      "O. Smirnov",
+      "J. D. Soler",
+      "S. Sottie",
+      "R. Unnikrishnan",
+      "A. Y. Yang",
+      "K. Wang",
+      "T. Wilson"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Garufi01": {
+    "title": "Demographics of Planet-forming Disks with the SKAO",
+    "authors": [
+      "Antonio Garufi",
+      "Sebastián Pérez",
+      "John D. Ilee",
+      "Daniel Price",
+      "Paola Pinilla",
+      "Marion Villenave",
+      "Eleonora Bianchi",
+      "Luca Cacciapuoti",
+      "Greta Guidi",
+      "Giovanni Sabatini",
+      "Yinhao Wu",
+      "Asmita Bhandare",
+      "Claudio Codella",
+      "Nicolás Cuello",
+      "Liton Majumdar",
+      "Mayank Narang",
+      "Linda Podio",
+      "Danae Polychroni",
+      "Isaac Radley",
+      "Jessica Speedie",
+      "Leonardo Testi",
+      "Claudia Toci",
+      "Diego Turrini",
+      "Dave Wilner"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Podio01": {
+    "title": "Unveiling Complex Chemistry in Planet-forming Disks with the SKAO",
+    "authors": [
+      "Linda Podio",
+      "Lisa Giani",
+      "Catherine Walsh",
+      "Audrey Coutens",
+      "Izaskun Jiménez-Serra",
+      "Claudio Codella",
+      "María José Maureira",
+      "Marta De Simone",
+      "John D. Ilee",
+      "Manuela Lippi",
+      "Chin-Fei Lee",
+      "Romane Le Gal",
+      "Mayank Narang",
+      "Giovanni Sabatini",
+      "Eleonora Bianchi",
+      "Elenia Pacetti",
+      "Danai Polychroni",
+      "Bihan Banerjee",
+      "Paola Caselli",
+      "Cecilia Ceccarelli",
+      "Amin Farhang",
+      "Antonio Garufi",
+      "Greta Guidi",
+      "Adriano Ingallinera",
+      "Stavro L. Ivanovski",
+      "Pamela Klaassen",
+      "Ana López-Sepulcre",
+      "Liton Majumdar",
+      "Giulia Perotti",
+      "Jaime E. Pineda",
+      "Daniel J. Price",
+      "Manoj Puravankara",
+      "Pablo Rivière-Marichalar",
+      "Alvaro Sánchez-Monge",
+      "Eugenio Schisano",
+      "Paolo M. Simonetti",
+      "Leonardo Testi",
+      "Claudia Toci",
+      "Diego Turrini",
+      "Alessio Traficante",
+      "Yinhao Wu"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Greaves01": {
+    "title": "Pathfinder Results for Populations of Planet-forming Discs with SKAO",
+    "authors": [
+      "Jane S Greaves",
+      "Anita M S Richards",
+      "Katie Hesterly",
+      "Emmanuel Bempong-Manful"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Guidi01": {
+    "title": "Ionized Gas Emission in Protoplanetary Disks with the SKAO",
+    "authors": [
+      "Greta Guidi",
+      "Christian Rab",
+      "Barbara Ercolano",
+      "Michael L. Weber",
+      "Claudio Codella",
+      "Evgenia Koumpia",
+      "John D. Ilee",
+      "Enrique Macías",
+      "Elena Viscardi",
+      "Yinhao Wu",
+      "Francesca Bacciotti",
+      "Asmita Bhandare",
+      "Eleonora Bianchi",
+      "Tyler Bourke",
+      "Izascun Jiménez-Serra",
+      "Antonio Garufi",
+      "Geoffroy Lesur",
+      "Vincent Piétu",
+      "Linda Podio",
+      "Giovanni Sabatini",
+      "Leonardo Testi",
+      "Claudia Toci"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Wu01": {
+    "title": "Substructures in Planet-Forming Disks with the SKAO",
+    "authors": [
+      "Yinhao Wu",
+      "Jessica Speedie",
+      "Sebastián Pérez",
+      "John D. Ilee",
+      "Takahiro Ueda",
+      "Claudia Toci",
+      "Daniel J. Price",
+      "Asmita Bhandare",
+      "Eleonora Bianchi",
+      "Til Birnstiel",
+      "Richard A. Booth",
+      "Tyler Bourke",
+      "Gemma Busquet",
+      "Simon Casassus",
+      "Yi-Xian Chen",
+      "Claudio Codella",
+      "Nicolás Cuello",
+      "Ruobing Dong",
+      "Antonio Garufi",
+      "Greta Guidi",
+      "Cassandra Hall",
+      "Haochang Jiang",
+      "Izaskun Jiménez-Serra",
+      "Hauyu Baobab Liu",
+      "Mayank Narang",
+      "Elenia Pacetti",
+      "Jaime Pineda",
+      "Paola Pinilla",
+      "Linda Podio",
+      "Danai Polychroni",
+      "Giovanni Sabatini",
+      "Eugenio Schisano",
+      "Leonardo Testi",
+      "Diego Turrini",
+      "Marion Villenave",
+      "David Wilner"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Bianchi01": {
+    "title": "Chemical Complexity in the Early Stages of Star Formation in the SKAO Era",
+    "authors": [
+      "Eleonora Bianchi",
+      "Mathilde Bouvier",
+      "Claudio Codella",
+      "Laura Colzi",
+      "Audrey Coutens",
+      "Marta De Simone",
+      "Joan E. Romero",
+      "Gisela Esplugues",
+      "Francesco Fontani",
+      "Antonio Garufi",
+      "Lisa Giani",
+      "Arshia M. Jacob",
+      "Izaskun Jiménez-Serra",
+      "Marco Padovani",
+      "Linda Podio",
+      "Albert Rimola",
+      "Pablo Rivière Marichalar",
+      "Giovanni Sabatini",
+      "Andrea Socci",
+      "Riccardo G. Urso",
+      "Tyler L. Bourke",
+      "Gemma Busquet",
+      "Paola Caselli",
+      "Cecilia Ceccarelli",
+      "Tomoya Hirota",
+      "John D. Ilee",
+      "Valerio Lattanzi",
+      "Manuela Lippi",
+      "Ana López-Sepulcre",
+      "Pierre Marchand",
+      "Liton Majumdar",
+      "Sabyasachi Pal",
+      "Maria E. Palumbo",
+      "Jaime E. Pineda",
+      "Manoj Puravankara",
+      "Elena Redaelli",
+      "Victor M. Rivilla",
+      "Basmah Riaz",
+      "Álvaro Sánchez-Monge",
+      "Silvia Spezzano",
+      "Leonardo Testi",
+      "Himanshu Tyagi",
+      "Claudia Toci",
+      "Alessio Traficante",
+      "Grazia Umana",
+      "Charlotte Vastel",
+      "Susanne Wampfler"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Forbrich01": {
+    "title": "SKA–ALMA Synergies in Star Formation Science",
+    "authors": [
+      "Jan Forbrich",
+      "Gary A. Fuller",
+      "Mark A. Thompson",
+      "Eleonora Bianchi",
+      "Jaime E. Pineda",
+      "Marta De Simone",
+      "Tomoya Hirota",
+      "Katharine Johnston",
+      "Giovanni Sabatini"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Sabatini01": {
+    "title": "Jets and Outflows in Young Stellar Objects with the SKAO",
+    "authors": [
+      "Giovanni Sabatini",
+      "Gemma Busquet",
+      "Carlos Carrasco-González",
+      "Adriana Rodríguez-Kamenetzky",
+      "Codella Claudio",
+      "Linda Podio",
+      "Antonio Martínez-Henares",
+      "Josep Miquel Girart",
+      "Marta De Simone",
+      "Luca Cacciapuoti",
+      "Guillem Anglada",
+      "Lukasz Tychoniec",
+      "Lisa Giani",
+      "Manoj Puravankara",
+      "Francesca Bacciotti",
+      "Rafael Bachiller",
+      "Eleonora Bianchi",
+      "Guillermo Blázquez-Calero",
+      "Tyler L. Bourke",
+      "Stefano Bovino",
+      "Paola Caselli",
+      "Francesco Cavallaro",
+      "Cecilia Ceccarelli",
+      "Elena Diaz-Marquez",
+      "Stefano Facchini",
+      "Antonio Garufi",
+      "Greta Guidi",
+      "Tomoya Hirota",
+      "John D. Ilee",
+      "Adriano Ingallinera",
+      "Izaskun Jiménez-Serra",
+      "Valerio Lattanzi",
+      "Chin-Fei Lee",
+      "Manuela Lippi",
+      "Alessandro Lupi",
+      "Liton Majumdar",
+      "Mayank Narang",
+      "Mayra Osorio",
+      "Marco Padovani",
+      "Jaime Pineda",
+      "Isaac Radley",
+      "Basmah Riaz",
+      "Luis Felipe Rodríguez",
+      "Alvaro Sánchez-Monge",
+      "Alberto Sanna",
+      "Silvia Spezzano",
+      "Leonardo Testi",
+      "Claudia Toci",
+      "Alessio Traficante",
+      "Himanshu Tyagi",
+      "Grazia Maria Umana"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Bracco01": {
+    "title": "Early Phases of Star Formation with SKAO: Synchrotron Emission from Dense Starless Cores in Molecular Clouds",
+    "authors": [
+      "Andrea Bracco",
+      "Tyler Bourke",
+      "Stefano Bovino",
+      "Clive Dickinson",
+      "Daniele Galli",
+      "Michael Kuffmeier",
+      "Marco Padovani",
+      "Stefania Pezzuto",
+      "Thushara Pillai",
+      "Giovanni Sabatini",
+      "Alessio Traficante"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Bourke01": {
+    "title": "Measuring Magnetic Field Strengths in Galactic Star-forming Regions via the Zeeman Effect with the SKA",
+    "authors": [
+      "Tyler L. Bourke",
+      "Tao-Chung Ching",
+      "Laura Fissel",
+      "James A. Green",
+      "Jihye Hwang",
+      "Arshia M. Jacob",
+      "Boy Lankhaar",
+      "Emmanuel Momjian",
+      "Kate Pattle",
+      "Anuj P. Sarma",
+      "Mehrnoosh Tahani",
+      "Chenoa D. Tremblay",
+      "Timothy Robishaw",
+      "Tomoya Hirota",
+      "Kristen L. Thompson",
+      "Keping Qiu",
+      "Aaryaa Premanand"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Cavallaro01": {
+    "title": "Coherent and Incoherent Emission from the Ordered Magnetospheres of Low-Mass Stars, UCDs, and Massive Stars",
+    "authors": [
+      "Francesco Cavallaro",
+      "Paolo Leto",
+      "Barnali Das",
+      "Corrado Trigilio",
+      "Grazia Umana",
+      "Cristobal Bordiu",
+      "Filomena Bufano",
+      "Carla S. Buemi",
+      "Joseph R. Callingham",
+      "Laura Driessen",
+      "Adriano Ingallinera",
+      "Sara Loru",
+      "Stanley Owocki",
+      "Simone Riggi",
+      "Alan C. Ruggeri",
+      "Giovanni Sabatini",
+      "Matt E. Shultz",
+      "Alessio Traficante"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Buemi01": {
+    "title": "Evolved Massive Stars and their Impact on their Environment",
+    "authors": [
+      "Carla S. Buemi",
+      "Grazia Umana",
+      "Corrado Trigilio",
+      "Cristobal Bordiu",
+      "Filomena Bufano",
+      "Jakob van den Eijnden",
+      "Salvatore Orlando",
+      "Paolo Leto",
+      "Fabrizio Bocchino",
+      "Marco Miceli",
+      "Miguel Pérez-Torres",
+      "Antxon Alberdi",
+      "Francesco Cavallaro",
+      "Luciano Cerrigone",
+      "Sara Loru",
+      "Adriano Ingallinera",
+      "Simone Riggi",
+      "Alan C. Ruggeri"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Ingallinera01": {
+    "title": "Supernova Remnants in the New Radio Astronomy Era",
+    "authors": [
+      "Adriano Ingallinera",
+      "Maria Arias",
+      "Gabriela Castelletti",
+      "Cristobal Bordiu",
+      "Filomena Bufano",
+      "Giuliana Cosentino",
+      "Miroslav Filipovic",
+      "Dejian Liu",
+      "Sara Loru",
+      "Salvatore Orlando",
+      "Oleh Petruk",
+      "Zachary Smeaton",
+      "Alessio Traficante",
+      "Corrado Trigilio",
+      "Grazia Umana",
+      "Gemma Anderson",
+      "Fabrizio Bocchino",
+      "Carla Buemi",
+      "Francesco Cavallaro",
+      "Elise Egron",
+      "Natasha Hurley-Walker",
+      "Roland Kothes",
+      "Paolo Leto",
+      "Silvia Mantovanini",
+      "Marco Miceli",
+      "Giovanni Morlino",
+      "Alberto Pellizzoni",
+      "Manami Sasaki"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Akahori02": {
+    "title": "VLBI Astrometry of Magnetars",
+    "authors": [
+      "Takuya Akahori",
+      "Sujin Eie",
+      "Kei Amada",
+      "Sangita Kumari",
+      "Kohei Kurahara",
+      "Hiroto Masaoka",
+      "Hao Ding",
+      "Teruaki Enoto",
+      "Shota Kisaka",
+      "Keiichi Maeda",
+      "Kotaro Niinuma"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "LorenAnderson01": {
+    "title": "The Impact and Environment of Massive Stars and Stellar Clusters",
+    "authors": [
+      "Loren Anderson",
+      "Jagadheep Pandian",
+      "Jyotirmoy Dey",
+      "Marco Padovani",
+      "Ramlal Unnikrishnan Nair",
+      "Annie Zavagno",
+      "Grazia M. Umana",
+      "Jakob van den Eijnden",
+      "Giovanni Sabatini",
+      "Kimberly L. Emig",
+      "Alessio Traficante",
+      "Álvaro Sánchez-Monge",
+      "D. Anish Roshi"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Rygl01": {
+    "title": "Cosmic Rulers: Masers as Tools for Probing Structure in the Galaxy and Beyond, from AU to kpc",
+    "authors": [
+      "Kazi L. J. Rygl",
+      "Anna Bartkiewicz",
+      "Olga Bayandina",
+      "Andreas Brunthaler",
+      "Sandra Etoka",
+      "Simon Ellingsen",
+      "Dieter Engels",
+      "Tomoya Hirota",
+      "Arshia M. Jacob",
+      "Jacco Th. van Loon",
+      "Alberto Sanna",
+      "Lucero Uscanga"
+    ],
+    "section": "Formation and Evolution of Stars"
+  },
+  "Yamamoto01": {
+    "title": "Search for Seeds of The Cradle of Stars: Study of The Evolution From Atomic to Molecular Hydrogen Clouds with 1000 AU Scale Resolution",
+    "authors": [
+      "Hiroaki Yamamoto",
+      "Yamato Matsuzuki",
+      "Kengo Tachihara"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Salas01": {
+    "title": "The Physics of the Cold and Warm Interstellar Medium Through Radio Recombination Lines",
+    "authors": [
+      "Pedro Salas",
+      "Kimbery L. Emig",
+      "Matteo Luisi",
+      "Loren D. Anderson",
+      "Lucie Cros",
+      "Antoine Gusdorf",
+      "Alexander Tielens"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Sun01": {
+    "title": "The Magnetic Field in the Milky Way Galaxy: from Large to Small Scales",
+    "authors": [
+      "Xiaohui Sun",
+      "Jennifer L. West",
+      "Marijke Haverkorn",
+      "Andrea Bracco",
+      "Anna Ordog",
+      "Sui Ann Mao",
+      "Yik Ki Ma",
+      "Wenhui Jing",
+      "Thiem Hoang"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Sun02": {
+    "title": "A 3D Tomography of the Local Bubble with SKA-Low",
+    "authors": [
+      "Xiaohui Sun",
+      "George Heald",
+      "Andrea Bracco"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Schoedel01": {
+    "title": "The Nearest Galactic Nucleus: Studying the Galactic Centre with SKA-Mid",
+    "authors": [
+      "Rainer Schoedel",
+      "Antxon Alberdi",
+      "Izaskun Jiménez-Serra",
+      "Michael Kramer",
+      "Farhad Yusef-Zadeh",
+      "Miguel Pérez-Torres",
+      "Mark R. Morris",
+      "Rob Fender",
+      "Jan Forbrich",
+      "Adriano Ingallinera",
+      "Miguel Cano-González",
+      "Jonathan D. Henshaw",
+      "Steven Longmore",
+      "Javier Moldón",
+      "Angela Gardini",
+      "Ian Heywood",
+      "Isabella Rammala",
+      "Fatemeh S. Tabatabaei",
+      "Farideh Mazoochi",
+      "Veena Vadamattom",
+      "Alessio Traficante",
+      "Michal Zajacek",
+      "Jaroslav Haas",
+      "Lourdes Verdes-Montenegro",
+      "Susana Sánchez-Expósito",
+      "Alvaro Martínez-Arranz",
+      "Francisco Nogueras-Lara"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "XuYe01": {
+    "title": "Mapping the Milky Way with Masers",
+    "authors": [
+      "Ye Xu",
+      "Kazi L.J. Rygl",
+      "Huib Jan van Langevelde",
+      "Dejian Liu",
+      "Jingjing Li",
+      "Yingjie Li",
+      "Simon P. Ellingsen",
+      "Maria J. Rioja",
+      "Richard Dodson",
+      "Zehao Lin",
+      "Chaojie Hao",
+      "Yiwei Dong",
+      "Jun Yang"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Vidal01": {
+    "title": "Probing Anomalous Microwave Emission with the Square Kilometre Array",
+    "authors": [
+      "Matias Vidal",
+      "Simon Casassus",
+      "Roke Cepeda-Arroita",
+      "Miguel Carcamo",
+      "Stuart E. Harper",
+      "Thiem Hoang",
+      "J. A. Rubiño-Martín",
+      "K. A. Cleary",
+      "Clive Dickinson",
+      "Ricardo T Génova-Santos",
+      "Gabriel A. Hoerning",
+      "Melis O. Irfan",
+      "A. Lazarian",
+      "Hauyu Baobab Liu",
+      "Murphy J. Eric",
+      "M. W. Peel",
+      "Nathalie Ysard",
+      "Zheng Zhang"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Karska01": {
+    "title": "Spectroscopic Surveys with the SKA Probing the Ionized and Molecular Milky Way",
+    "authors": [
+      "Agata Karska",
+      "Joanne R. Dawson",
+      "Arshia M. Jacob",
+      "Trey V. Wenger",
+      "James S. Urquhart",
+      "Dario Colombo",
+      "Loren D. Anderson",
+      "Vadamattom S. Veena",
+      "Michael Rugel",
+      "Mark A. Thompson",
+      "Pamela D. Klaassen",
+      "Henrik Beuther",
+      "Michael P. Busch",
+      "Alessio Traficante",
+      "Giovanni Sabatini"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Tahani01": {
+    "title": "3D Magnetic Field Vectors in Space: Bubbles, Clouds, and Filaments",
+    "authors": [
+      "Mehrnoosh Tahani",
+      "Anna Ordog",
+      "Jennifer L. West",
+      "Georgina V. Panopoulou",
+      "Hiroko Shinnaga",
+      "Marijke Haverkorn"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Imai01": {
+    "title": "Spatio-kinematical Structure of the Galactic Nuclear Stellar Disk Revealed in VLBI Astrometry of Circumstellar Masers",
+    "authors": [
+      "Hiroshi Imai",
+      "Kohei Kurahara",
+      "Huib J. van Langevelde",
+      "Maria J. Rioja",
+      "Richard Dodson"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Ma01": {
+    "title": "Small-scale Magnetic Fields in the Milky Way and Nearby Galaxies",
+    "authors": [
+      "Yik Ki Ma",
+      "Amit Seta",
+      "Aritra Basu",
+      "Sebastian Hutschenreuter",
+      "Marco Padovani",
+      "Georgia V. Panopoulou",
+      "Jeroen M. Stil",
+      "Craig S. Anderson",
+      "Lucia Armillotta",
+      "Jennifer Y. H. Chan",
+      "Marijke Haverkorn",
+      "Roland M. Crocker",
+      "Timea O. Kovacs",
+      "Sunil Malik",
+      "Sui Ann Mao",
+      "Kierra J. Weatherhead"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Miville-Deschenes01": {
+    "title": "The Multi-phase HI of the Milky Way and Nearby Galaxies",
+    "authors": [
+      "Marc-Antoine Miville-Deschênes",
+      "Joanne R. Dawson",
+      "Narendra Nath Patra",
+      "Erwan Allys",
+      "Prenana Biswas",
+      "Frances Buckland-Willis",
+      "Susan E. Clark",
+      "James Dempsey",
+      "John Dickey",
+      "Adriana Gazol",
+      "Benjamin Godard",
+      "Patrick Hennebelle",
+      "Alex Hill",
+      "Min-Young Lee",
+      "Minjie Lei",
+      "Callum Lynn",
+      "Antoine Marchal",
+      "Naomi McClure-Griffiths",
+      "Claire Murray",
+      "Van Hiep Nguyen",
+      "Marta Nowotka",
+      "Theo O'Neill",
+      "Josh E. G. Peek",
+      "Nickolas M. Pingel",
+      "Mary Putman",
+      "Daniel Rybarczyk",
+      "Nirupam Roy",
+      "Amit Seta",
+      "Sarkar Sougata",
+      "Juan Diego Soler",
+      "Enrique Vazquez-Semadeni",
+      "Trey Wenger",
+      "Catherine Zucker"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "HengxingPan01": {
+    "title": "Studying HI and the Cosmic Web in the Era of SKA",
+    "authors": [
+      "Hengxing Pan",
+      "Martin Meyer",
+      "Madalina N. Tudorache",
+      "S. Lyla Jung",
+      "Maryam Arabsalmani",
+      "Gabriella De Lucia",
+      "Kristine Spekkens",
+      "Matt J. Jarvis"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Mahony01": {
+    "title": "Tracing Cold Gas in Absorption Across Cosmic Time with the SKA",
+    "authors": [
+      "Elizabeth K. Mahony",
+      "Neeraj Gupta",
+      "Sergei A. Balashev",
+      "Yogesh Chandola",
+      "Francoise Combes",
+      "Rebecca Davies",
+      "Jens-Kristian Krogager",
+      "Wenkai Hu",
+      "Filippo M. Maccagni",
+      "Pasquier Noterdaeme",
+      "Mamta Pandey-Pommier",
+      "Elaine M. Sadler",
+      "Rasha M. Samir",
+      "Nick Seymour",
+      "Hyein Yoon"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Pandey-Pommier03": {
+    "title": "Uncovering Neutral Hydrogen Clouds in Radio Galaxies",
+    "authors": [
+      "Mamta Pandey-Pommier"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "RanWang01": {
+    "title": "Cm-wavelength Studies of Molecular Gas and Star Formation at High Redshift with the SKA",
+    "authors": [
+      "Ran Wang",
+      "Jeff Wagg",
+      "Mark T. Sargent",
+      "Manuel Aravena",
+      "Mamta Pandey-Pommier",
+      "Elisabete da Cunha",
+      "Eric Murphy",
+      "Dominik Riechers",
+      "Jacqueline Hodge"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Prandoni01": {
+    "title": "Opening New Parameter Space Windows on galaxy/AGN Co-evolution with SKA Radio Continuum Surveys",
+    "authors": [
+      "Isabella Prandoni",
+      "Mark T. Sargent",
+      "Matteo Bonato",
+      "Dharam V. Lal",
+      "Mahdiyar Mousavi-Sadr",
+      "Masoumeh Ghasemi-Nodehi",
+      "Nicholas Seymour",
+      "Fatemeh S. Tabatabaei",
+      "Gianfranco De Zotti",
+      "Ivano Baronchelli",
+      "Elisabetta Liuzzo",
+      "Nicola Marchili",
+      "Marcella Massardi",
+      "Rosita Paladino"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Giulietti01": {
+    "title": "Semi-empirical Predictions for Ultra-deep Radio Counts of Star-forming Galaxies with the SKAO",
+    "authors": [
+      "Marika Giulietti",
+      "Isabella Prandoni",
+      "Andrea Lapi",
+      "Laura Bisigello",
+      "Marco Bondi",
+      "Marcella Massardi",
+      "Matteo Bonato"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "FangxiaAn01": {
+    "title": "Tracing Cosmic Star Formation History through Radio Continuum Spectral Energy Distribution and Nonthermal Emission",
+    "authors": [
+      "Fangxia An",
+      "Fatemeh S. Tabatabaei",
+      "Nick Seymour",
+      "Maryam Khademi",
+      "Z. L. Yuan",
+      "Wenjie Wang",
+      "Joe A. Grundy",
+      "Mark Sargent",
+      "Tao Wang",
+      "Yuheng Zhang",
+      "Ying H. Zhao",
+      "Hiddo S. B. Algera",
+      "Elias Brinks",
+      "Mttia Vaccari"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Algera01": {
+    "title": "Tracing the Star Formation History of the Universe through Thermal Free-Free Emission with the SKA",
+    "authors": [
+      "Hiddo S. B. Algera",
+      "Mark Sargent",
+      "Eric J. Murphy",
+      "Fangxia An"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Rosolowsky01": {
+    "title": "From Atomic Gas to Star Formation",
+    "authors": [
+      "Erik Rosolowsky",
+      "Eric Koch",
+      "Sambit Roychowdhury",
+      "Luca Cortese",
+      "Filippo M. Maccagni",
+      "Barbara Catinella",
+      "Nushkia Chamba",
+      "Timothy A. Davis",
+      "Cosima Eibensteiner",
+      "Eric Murphy",
+      "Mamta Pandey-Pommier",
+      "Amidou Sorgho"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Tarchi01": {
+    "title": "Boosting Water Maser Studies in AGN with the SKA",
+    "authors": [
+      "Andrea Tarchi",
+      "Paola Castangia",
+      "Elisabetta Ladu"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Maccagni01": {
+    "title": "AGN Feeding & Feedback Over the Galactic Scales",
+    "authors": [
+      "Filippo M. Maccagni",
+      "Vincenzo Mainieri",
+      "Isabella Prandoni",
+      "Massimo Gaspari",
+      "W.J.G. de Blok",
+      "Ilaria Ruffa",
+      "Stanislav S. Shabala",
+      "Dipanjan Mukherjee",
+      "Mayur B. Shende",
+      "Antonino Marasco",
+      "Paolo Serra"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Panessa01": {
+    "title": "The SKA-VLBI Perspective on Radio-Quiet AGN",
+    "authors": [
+      "Francesca Panessa",
+      "Tao An",
+      "James Petley",
+      "Ailing Wang",
+      "Ranieri Diego Baldi",
+      "Ehud Behar",
+      "Emmanuel Bempong-Manful",
+      "Gabriele Bruni",
+      "Ning Chang",
+      "Sina Chen",
+      "Lang Cui",
+      "Filippo D'Ammando",
+      "Sibasish Laha",
+      "Ari Laor",
+      "Isabella Prandoni",
+      "Claudio Ricci",
+      "Miguel Perez-Torres",
+      "David Williams",
+      "Magdalena Kunert-Bajraszewska"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Kudoh01": {
+    "title": "Probing the Parsec-Scale Dynamical Structure of Ionized Gas in Radio-Quiet AGN with SKA",
+    "authors": [
+      "Yuki Kudoh",
+      "Satoko Sawada-Satoh"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Mazzolari01": {
+    "title": "Unveil the Nature of JWST-AGN and Little Red Dots with SKAO Continuum Surveys",
+    "authors": [
+      "Giovanni Mazzolari",
+      "Dharam Vir Lal",
+      "Isabella Prandoni",
+      "Roberto Gilli",
+      "Roberto Maiolino",
+      "Hannah Übler",
+      "Ivan Delvecchio",
+      "Marcella Brusa",
+      "Marco Mignoli"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Baczko01": {
+    "title": "AGN Jets from Formation to Dissipation",
+    "authors": [
+      "Anne-Kathrin Baczko",
+      "Eleni Vardoulaki",
+      "Etienne Bonnassieux",
+      "Manel Perucho",
+      "Marisa Brienza",
+      "Marcus Brüggen",
+      "Emmanuel K. Bempong-Manful",
+      "Robert Beswick",
+      "Florian Eppel",
+      "Damien Gratadour",
+      "Jonas Herßdörfer",
+      "Kiara Hervella-Seoane",
+      "Matthias Kadler",
+      "Jae-Young Kim",
+      "Aretaios Lalakos",
+      "Leah K. Morabito",
+      "Dhanya G. Nair",
+      "Felix Pötzl",
+      "Jack Radcliffe",
+      "Luca Ricci",
+      "Eduardo Ros",
+      "Jan Röder",
+      "Florian Rösch",
+      "Ainara Saiz-Pérez",
+      "Hrishikesh Shetgaonkar",
+      "Cyril Tasse",
+      "Francesco Ubertosi",
+      "Jun Yang",
+      "J Anton Zensus"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Bruni01": {
+    "title": "The Emerging Population of High-energy Emitting Radio Galaxies",
+    "authors": [
+      "Gabriele Bruni",
+      "Vaidehi S. Paliya",
+      "Dhruba J. Saikia",
+      "Loredana Bassani",
+      "Ranieri D. Baldi",
+      "Ettore Bronzini",
+      "Filippo D'Ammando",
+      "Santiago del Palacio",
+      "Matthias Kadler",
+      "Yuri Y. Kovalev",
+      "Dharam V. Lal",
+      "Giulia Migliori",
+      "Beatriz Mingo Fernandez",
+      "Javier Moldon",
+      "Luisa Ostorero",
+      "Francesca Panessa",
+      "Massimo Persic",
+      "Isabella Prandoni",
+      "Luca Ricci",
+      "Tuomas Savolainen",
+      "Francesco Shankar",
+      "Fabrizio Tavecchio",
+      "Efthalia Traianou",
+      "Francesco Ubertosi",
+      "Tiziana Venturi"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Kondapally01": {
+    "title": "Evolution of AGN Across Cosmic Epochs with the SKAO",
+    "authors": [
+      "Rohit Kondapally",
+      "Veeresh Singh",
+      "Giovanni Mazzolari",
+      "Ivan Delvecchio",
+      "Abhirup Datta",
+      "Abhijit Kayal",
+      "Beatriz Mingo",
+      "Javier Moldon",
+      "James Petley",
+      "Isabella Prandoni",
+      "Khatun Rubinur",
+      "Stanislav Shabala",
+      "Francesco Shankar"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Sawada-Satoh01": {
+    "title": "Measurements of Magnetic Fields in Circumnuclear Matter with the SKA Telescopes",
+    "authors": [
+      "Satoko Sawada-Satoh",
+      "Yuki Kudoh"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Moldon01": {
+    "title": "Star Formation and Accretion in Nearby Galaxies",
+    "authors": [
+      "Javier Moldon",
+      "Antxon Alberdi",
+      "Miguel Perez-Torres",
+      "Geferson Lucatelli",
+      "Robert Beswick",
+      "Mark Sargent",
+      "Elias Brinks",
+      "Ranieri Diego Baldi",
+      "Fatemeh S. Tabatabaei",
+      "Khatun Rubinur",
+      "Nick Seymour",
+      "Mamta Pandey-Pommier",
+      "Subhrata Dey",
+      "Caroline Bot"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Lagos01": {
+    "title": "Cosmological Galaxy Formation Modelling in the Era of the Square Kilometre Array",
+    "authors": [
+      "Claudia D. P. Lagos",
+      "Carlton M. Baugh",
+      "Connor Bottrell",
+      "Romeel Dave",
+      "Gabriella De Lucia",
+      "Jindra Gensior",
+      "Filip Husko",
+      "Cedric Lacey",
+      "Danail Obreschkow",
+      "Kyle Oman",
+      "Chris Power",
+      "Nicole Thomas",
+      "Ruby J. Wright",
+      "Lizhi Xie"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Emig01": {
+    "title": "Low-Frequency Recombination Lines from Galaxies and AGN Over Cosmic Time",
+    "authors": [
+      "Kimberly L. Emig",
+      "Sergei Balashev",
+      "Francoise Combes",
+      "Lucie Cros",
+      "Bjorn Emonts",
+      "Neeraj Gupta",
+      "Antoine Gusdorf",
+      "Emmanuel Momjian",
+      "Sébastien Muller",
+      "Elaine M. Sadler",
+      "Alexander G. G. M. Tielens",
+      "Ilsang Yoon"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Hardcastle01": {
+    "title": "Radio Galaxies and Jet Duty Cycles",
+    "authors": [
+      "Martin J. Hardcastle",
+      "Chiranjib Konar",
+      "Sushant Dutta",
+      "Dharam V. Lal",
+      "Ranieri D. Baldi",
+      "Marisa Brienza",
+      "Ananda Hota",
+      "Magdalena Kunert-Bajraszewska",
+      "Beatriz Mingo",
+      "Mamta Pommier",
+      "Khatun Rubinur",
+      "Stanislav Shabala",
+      "Eleni Vardoulaki"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Yoon01": {
+    "title": "Impact of Anomalous Microwave Emission (AME) on Radio Spectral Energy Distributions: SKA Observations of Galaxies Near and Far",
+    "authors": [
+      "Ilsang Yoon",
+      "Eric J. Murphy",
+      "Caroline Bot",
+      "Lucie Correia"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Tabatabaei01": {
+    "title": "Unveiling the Roles of Thermal and Nonthermal Processes in the ISM & IGM Structure Formation and Evolution of Galaxies with SKAO",
+    "authors": [
+      "Fatemeh S. Tabatabaei",
+      "Masoumeh Ghasemi-Nodehi",
+      "Mark T. Sargent",
+      "Mahdiyar Mousavi-Sadr",
+      "Maryam Khademi",
+      "Eva Schinnerer",
+      "Eric J. Murphy",
+      "Elizabeth A. K. Adams",
+      "Isabella Prandoni",
+      "Cathy Horellou",
+      "Volker Heesen",
+      "Javier Moldon",
+      "Ilsang Yoon"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Pandey-Pommier01": {
+    "title": "Tracing Gas Outflows in Molecular Hydrogen Emission-rich Galaxies with the SKA",
+    "authors": [
+      "Mamta Pandey-Pommier",
+      "Ramya Sethuram",
+      "Subhashis Roy",
+      "Chinnathambi Muthumariappan",
+      "Nirupam Roy",
+      "Alexandre Marcowith",
+      "Chiranjib Konar"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "DAmato01": {
+    "title": "Dual AGN and Multiple SMBH Systems in the Era of SKAO",
+    "authors": [
+      "Quirino D'Amato",
+      "Lang Cui",
+      "Roger Deane",
+      "Stefanie Komossa",
+      "Coral Pillay",
+      "Ashutosh Tripathi",
+      "Preeti Kharb",
+      "Hengxiao Guo",
+      "Sumana Nandi",
+      "Khatun Rubinur",
+      "Sonia Anton",
+      "Tao An",
+      "Silvia Bonoli",
+      "Ning Chang",
+      "Romeel Dave",
+      "Alessandra De Rosa",
+      "Melanie Habouzit",
+      "Filippo Mannucci",
+      "Isabella Prandoni",
+      "Paola Severgnini",
+      "Martina Scialpi",
+      "Cristiana Spingola",
+      "Cristian Vignali",
+      "Wancheng Xu",
+      "Xi Yan",
+      "Yingkang Zhang"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "deBlok01": {
+    "title": "Deep HI Observations of Cold Gas Inflow and Outflow",
+    "authors": [
+      "W.J.G. de Blok",
+      "D.B. Fisher",
+      "K. Tachihara",
+      "F.M. Maccagni",
+      "J. Wang",
+      "R. Enokiya",
+      "L. Chemin",
+      "T. Hayakawa",
+      "D. Kleiner",
+      "D.J. Pisano",
+      "S.H. Oh"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Duncan01": {
+    "title": "Unlocking the Full Potential of SKAO Extra-galactic Science with High-multiplex Optical Spectroscopy",
+    "authors": [
+      "Kenneth J. Duncan",
+      "Natasha Maddox",
+      "Daniel J. B. Smith",
+      "Marina I. Arnaudova",
+      "Catherine L. Hale",
+      "Sophia Flury",
+      "Luke Holden",
+      "Matt J. Jarvis",
+      "Elizabeth A. K. Adams",
+      "S. Ilani Loubser",
+      "Mamta Pandey-Pommier",
+      "Anastasia Ponomoreva"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Bait01": {
+    "title": "Probing the Nature of Lyman Continuum Emitting and Low-metallicity Galaxies Using the SKA",
+    "authors": [
+      "Omkar Bait",
+      "Daniel Schaerer",
+      "Mark Sargent"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "SabyasachiPal03": {
+    "title": "Exploring the Influence of the Jet-environment Interactions on the Observed Asymmetry of Extragalactic Radio Sources with SKAO",
+    "authors": [
+      "Sabyasachi Pal",
+      "Souvik Manik",
+      "Shobha Kumari",
+      "Chiranjib Konar"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Mao01": {
+    "title": "Probing Magnetic Fields in and Around Galaxies Near and Far",
+    "authors": [
+      "S. A. Mao",
+      "Rainer Beck",
+      "Aritra Basu",
+      "Lerato Baidoo",
+      "Andrea Bracco",
+      "Ralf-Jürgen Dettmar",
+      "Volker Heesen",
+      "Cathy Horellou",
+      "Timea O. Kovacs",
+      "Kohei Kurahara",
+      "Yu-Qing Lou",
+      "Yik Ki Ma",
+      "Rikuto Omae",
+      "Rosita Paladino",
+      "Amit Seta",
+      "Fatemeh Tabatabaei",
+      "Theresa Wiegert"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Ramatsoku01": {
+    "title": "Resolved HI and Environmental Dynamics",
+    "authors": [
+      "Mpati Ramatsoku",
+      "Paolo Serra",
+      "Nathan Deg",
+      "Roger Ianjamasimanana",
+      "Amidou Sorgho",
+      "Lourdes Verdes-Montenegro",
+      "Gabriella De Lucia",
+      "Martin Meyer",
+      "Kristine Spekkens",
+      "Hyein Yoon",
+      "Brenda Namumba"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Ignesti01": {
+    "title": "Exploring the Physics of Ram Pressure Stripping with Radio Continuum Observations in the SKA Era",
+    "authors": [
+      "Alessandro Ignesti",
+      "Ian D. Roberts",
+      "Henrik W. Edler",
+      "Myriam Gitti",
+      "Reinout van Weeren",
+      "Paolo Serra",
+      "Pavel Jachym"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Koribalski01": {
+    "title": "Discovering Radio Relics Around Massive Early-type Galaxies Formed by Merger Shocks",
+    "authors": [
+      "Baerbel S Koribalski"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "SabyasachiPal02": {
+    "title": "Tracing the Origin of Circular-Symmetry Diffuse Radio Sources in the Next-Generation SKAO Era",
+    "authors": [
+      "Sabyasachi Pal",
+      "Shobha Kumari",
+      "Souvik Manik",
+      "Marek Jamrozy",
+      "Ananda Hota"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Baldi01": {
+    "title": "Compact Radio Galaxies: the Case of FR0s",
+    "authors": [
+      "Ranieri D. Baldi",
+      "Alessandro Capetti",
+      "Gabriele Giovannini",
+      "Stergios Amarantidis",
+      "Marisa Brienza",
+      "Gabriele Bruni",
+      "Jones Chilufya",
+      "Agnese Costa",
+      "Myriam Gitti",
+      "Dharam Lal",
+      "Giulia Migliori",
+      "Javier Moldon",
+      "Monica Orienti",
+      "Francesca Panessa",
+      "Isabella Prandoni",
+      "Marta Puig-Subirà",
+      "Rasha M. Samir",
+      "Stanislav Shabala",
+      "Francesco Shankar",
+      "Cristiana Spingola",
+      "Fabrizio Tavecchio",
+      "Francesco Ubertosi",
+      "Bhargav Vaidya"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Sasmal01": {
+    "title": "Identification and Study of Irregular Radio Sources with SKA Continuum Surveys",
+    "authors": [
+      "Tapan K. Sasmal",
+      "Xuelei Chen",
+      "Baoqiang Lao",
+      "Soumen Kumar Bera",
+      "Yougang Wang",
+      "Soumen Mondal",
+      "Taotao Fang",
+      "Renyue Cen"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Sakemi01": {
+    "title": "Polarimetry of Ultraluminous X-ray Sources",
+    "authors": [
+      "Haruka Sakemi"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Deg01": {
+    "title": "The Bright Future of the Dark and Dim Universe",
+    "authors": [
+      "Nathan Deg",
+      "Alejandro Benitez-Llambay",
+      "Elizabeth A. K. Adams",
+      "Nushkia Chamba",
+      "Virginia Kilborn",
+      "Filippo M. Maccagni",
+      "Tamsyn O'Beirne",
+      "Kristine Spekkens"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Lal01": {
+    "title": "Radio Emission from Ultra-diffuse Galaxies Residing in Galaxy Clusters",
+    "authors": [
+      "Dharam Lal",
+      "Jeyasiona Jeyasiona"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Fromm01": {
+    "title": "Exploring the Physics Behind the Observed Magnetic Filaments in Large Scale Radio Galaxies",
+    "authors": [
+      "Christian M. Fromm",
+      "Matthias Kadler",
+      "Karl Mannheim"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Dabhade01": {
+    "title": "Tracing the Cosmic Web Across Cosmic Time through SKA Observations of Radio Galaxies",
+    "authors": [
+      "Pratik Dabhade",
+      "Gianluca Castignani",
+      "Mousumi Mahato",
+      "Shishir Sankhyayan",
+      "Dhruba Jyoti Saikia",
+      "Viviana Casasola",
+      "Francoise Combes"
+    ],
+    "section": "From the Milky Way to Distant Galaxies"
+  },
+  "Wolz01": {
+    "title": "Cosmology with HI Intensity Mapping",
+    "authors": [
+      "Laura Wolz",
+      "Gabriele Autieri",
+      "Jose L. Bernal",
+      "Maria Berti",
+      "Phil Bull",
+      "Stefano Camera",
+      "Isabella Carucci",
+      "Zhaoting Chen",
+      "Steve Cunnington",
+      "Jose Fonseca",
+      "Keith Grainge",
+      "Jiakang Han",
+      "Wenkai Hu",
+      "Dionysios Karagiannis",
+      "Mario Santos",
+      "Marta Spinelli",
+      "Liantsoa F. Randrianjanahary",
+      "Cora Uhlemann",
+      "Matteo Viel",
+      "Bernhard Vos-Gines",
+      "Jingying Wang"
+    ],
+    "section": "The Cosmos"
+  },
+  "Cunnington01": {
+    "title": "Single-dish HI Intensity Mapping with the SKAO: Precursor Progress with MeerKAT's Large Area Synoptic Survey (MeerKLASS)",
+    "authors": [
+      "Steven Cunnington",
+      "Jingying Wang",
+      "Mario Santos",
+      "Matilde Barberi-Squarotti",
+      "Philip Bull",
+      "Stefano Camera",
+      "Isabella P. Carucci",
+      "Zhaoting Chen",
+      "Brandon Engelbrecht",
+      "José Fonseca",
+      "Karin Fornazier",
+      "Keith Grainge",
+      "Wenkai Hu",
+      "Melis O. Irfan",
+      "Yichao Li",
+      "Alkistis Pourtsidou",
+      "Marta Spinelli",
+      "Amadeus Witzemann",
+      "Laura Wolz"
+    ],
+    "section": "The Cosmos"
+  },
+  "Elahi01": {
+    "title": "Observational Frontiers in the post-EoR 21-cm Intensity Mapping: Lessons from the SKA Pathfinders",
+    "authors": [
+      "Khandakar Md Asif Elahi",
+      "Somnath Bharadwaj",
+      "Philip Bull",
+      "Stefano Camera",
+      "Arnab Chakraborty",
+      "Tzu-Ching Chang",
+      "Xuelei Chen",
+      "Samir Choudhuri",
+      "Devin Crichton",
+      "Abhirup Datta",
+      "Simon Foreman",
+      "Wenkai Hu",
+      "Yichao Li",
+      "Kiyo Masui",
+      "Ainulnabilah Nasirudin",
+      "Samit Kumar Pal",
+      "Rashmi Sagar",
+      "Seth R. Siegel",
+      "Lister Staveley-Smith",
+      "Eric Switzer",
+      "Yougang Wang",
+      "Laura Wolz",
+      "Wenxiu Yang",
+      "Shifan Zuo"
+    ],
+    "section": "The Cosmos"
+  },
+  "Spinelli01": {
+    "title": "Methodological Frontiers in 21-cm Intensity Mapping: the Treatment of Systematics and Foreground Contamination",
+    "authors": [
+      "Marta Spinelli",
+      "Matilde Barberi-Squarotti",
+      "Jose' Luis Bernal",
+      "Somnath Bharadwaj",
+      "Victor Bonjean",
+      "Philip Bull",
+      "Carmelita Carbone",
+      "Isabella Paola Carucci",
+      "Stefano Camera",
+      "Suman Chatterjee",
+      "Tianyue Chen",
+      "Zhaoting Chen",
+      "Samir Choudhuri",
+      "Devin Crichton",
+      "Steven Cunnington",
+      "Bianca De Caro",
+      "Khandakar Md Asif Elahi",
+      "Jose Fonseca",
+      "Athanasia Gkogkou",
+      "Abhik Ghosh",
+      "Keith Grainge",
+      "Wenkai Hu",
+      "Melis Irfan",
+      "Yichao Li",
+      "Siyambonga Matshawule",
+      "Geoff Murphy",
+      "Simon Prunet",
+      "Mario G. Santos",
+      "Jean-Luc Starck",
+      "Jingying Wang",
+      "Laura Wolz",
+      "Zheng Zhang"
+    ],
+    "section": "The Cosmos"
+  },
+  "Mazumder01": {
+    "title": "Interferometric HI Intensity Mapping of the Late Time Universe with SKA-Mid",
+    "authors": [
+      "Aishrila Mazumder",
+      "Zhaoting Chen",
+      "Junaid Townsend",
+      "Suman Chatterjee",
+      "Zhixing Li",
+      "Sourabh Paul",
+      "Reza Ansari",
+      "Laura Wolz",
+      "Mario Santos"
+    ],
+    "section": "The Cosmos"
+  },
+  "Majumdar01": {
+    "title": "Cosmology with Intensity Mapping via Statistics Beyond the Power Spectrum in the SKAO Era",
+    "authors": [
+      "Suman Majumdar",
+      "Debanjan Sarkar",
+      "Leon Noble",
+      "Manas Mohit Dosibhatla",
+      "Zhaoting Chen",
+      "Bernhard Vos-Ginés",
+      "Vishrut Pandya",
+      "Mohd Kamran",
+      "Sourav Pal",
+      "Chandra Shekhar Murmu",
+      "Cora Uhlemann",
+      "Pauline Gorbatchev",
+      "Jean-Luc Starck",
+      "José Luis Bernal",
+      "Marta Spinelli",
+      "Caroline S. Heneka",
+      "Matteo Viel",
+      "Gabriella De Lucia",
+      "Fabio Fontanot",
+      "Stefano Camera",
+      "Steve Cunnington",
+      "Benedetta Spina",
+      "Dionysis Karagiannis",
+      "Samit Kumar Pal",
+      "Anshuman Tripathi",
+      "Sarah Libanore",
+      "Abinash Kumar Shaw",
+      "Rajesh Mondal",
+      "Yashrajsinh Mahida",
+      "Yashar Akrami",
+      "Philip Bull",
+      "Chris Clarkson",
+      "Abhirup Datta",
+      "José Fonseca",
+      "Yin-Zhe Ma",
+      "Roy Maartens",
+      "Liantsoa F. Randrianjanahary",
+      "Martin Sahlen",
+      "Xin Wang",
+      "Yougang Wang",
+      "Jochen Weller"
+    ],
+    "section": "The Cosmos"
+  },
+  "Sarkar01": {
+    "title": "Cosmology with Multi-Wavelength Line Intensity Mapping Synergies in the SKAO Era",
+    "authors": [
+      "Debanjan Sarkar",
+      "Suman Majumdar",
+      "Chandra Shekhar Murmu",
+      "Leon Noble",
+      "Manas Mohit Dosibhatla",
+      "Vishrut Pandya",
+      "José Luis Bernal",
+      "Yashrajsinh Mahida",
+      "Mohd Kamran",
+      "Caroline S. Heneka",
+      "Anshuman Tripathi",
+      "Samit Kumar Pal",
+      "Gabriella De Lucia",
+      "Fabio Fontanot",
+      "Matteo Viel",
+      "Marta Spinelli",
+      "Parth Kothari",
+      "Sarah Libanore",
+      "Abinash Kumar Shaw",
+      "Martin Sahlen",
+      "José Fonseca",
+      "Abhirup Datta",
+      "Ziad Sakr",
+      "Wenkai Hu"
+    ],
+    "section": "The Cosmos"
+  },
+  "Chatterjee01": {
+    "title": "Fast Simultaneous Surveys with On-the-Fly Mapping",
+    "authors": [
+      "Suman Chatterjee",
+      "Sarvesh Mangla",
+      "Sourabh Paul",
+      "Keith Grainge",
+      "Matthias Hoeft",
+      "Tamera Kassie",
+      "Joseph J. Mohr",
+      "Yvette Perrott",
+      "Kristof Rozgonyi",
+      "Mario G. Santos",
+      "Oleg M. Smirnov",
+      "Cyril Tasse",
+      "Laura Wolz"
+    ],
+    "section": "The Cosmos"
+  },
+  "Asorey01": {
+    "title": "Cosmology from Clustering of Continuum Galaxies",
+    "authors": [
+      "Jacobo Asorey",
+      "Catherine L. Hale",
+      "Sebastian von Hausegger",
+      "David Parkinson",
+      "Chandra Shekhar Saraf",
+      "Jonah D. Wagenveld",
+      "Benedict Bahr-Kalus",
+      "Syed Faisal ur Rahman",
+      "Ziad Sakr"
+    ],
+    "section": "The Cosmos"
+  },
+  "Bertacca01": {
+    "title": "The Cosmic Radio Dipole and Observer Effects in SKA All-sky Surveys",
+    "authors": [
+      "Daniele Bertacca",
+      "Lukas Böhme",
+      "Bartolomeo Bottazzi Baldi",
+      "Carlo Burigana",
+      "Mohamed Yousry Elkhashab",
+      "Catherine L. Hale",
+      "Sebastian von Hausegger",
+      "Hans-Rainer Klöckner",
+      "Mali Land-Strykowski",
+      "Geraint Lewis",
+      "Vasudev Mittal",
+      "Oliver Oayda",
+      "Dominik J. Schwarz",
+      "Prabhakar Tiwari",
+      "Tiziana Trombetti",
+      "Jonah Wagenveld"
+    ],
+    "section": "The Cosmos"
+  },
+  "Harrison02": {
+    "title": "Weak Lensing with SKAO: Cosmic Shear Cosmology",
+    "authors": [
+      "Ian Harrison",
+      "Roberto Ingrao",
+      "Stefano Camera",
+      "Catherine Cress",
+      "Mamta Pandey-Pommier",
+      "Ziad Sakr",
+      "Cora Uhlemann"
+    ],
+    "section": "The Cosmos"
+  },
+  "Nasirudin01": {
+    "title": "Cosmology from HI Galaxy Surveys with the SKA",
+    "authors": [
+      "Ainulnabilah Nasirudin",
+      "Philip Bull",
+      "Ziad Sakr",
+      "Joël Mayor",
+      "Benedict Bahr-Kalus",
+      "Hengxing Pan",
+      "Stefano Camera",
+      "José Fonseca",
+      "Liantsoa F. Randrianjanahary",
+      "Gabriella De Lucia",
+      "Marta Spinelli"
+    ],
+    "section": "The Cosmos"
+  },
+  "Mayor01": {
+    "title": "Cosmology with Tully-Fisher HI Galaxy Surveys",
+    "authors": [
+      "Joël Mayor",
+      "Anthony Carr",
+      "Khaled Said",
+      "Gabriella De Lucia",
+      "Anastasia Ponomareva",
+      "Philip Bull",
+      "Stefano Camera",
+      "Ainulnabilah Nasirudin",
+      "Marta Spinelli",
+      "Robert Yates"
+    ],
+    "section": "The Cosmos"
+  },
+  "Ronconi01": {
+    "title": "HI Simulations for Cosmology with the SKA Observatory",
+    "authors": [
+      "Tommaso Ronconi",
+      "Gabriella De Lucia",
+      "Marta Spinelli",
+      "Pascal Hitz",
+      "Fabio Fontanot",
+      "Francesco Sinigaglia",
+      "Lizhi Xie",
+      "Robert Yates",
+      "José L. Bernal",
+      "Anna Bonaldi",
+      "Stefano Camera",
+      "Isabella P. Carucci",
+      "Steven Cunnington",
+      "Francisco-Shu Kitaura",
+      "Joël Mayor",
+      "Rajesh Mondal",
+      "Giulia Piccirilli",
+      "Digvijay Wadekar"
+    ],
+    "section": "The Cosmos"
+  },
+  "Harrison01": {
+    "title": "Cosmology from Nx2pt Analyses of SKAO Cosmology Surveys",
+    "authors": [
+      "Ian Harrison",
+      "Giulia Piccirilli",
+      "Ziad Sakr",
+      "Chandra Shekhar Saraf",
+      "Jacobo Asorey",
+      "Benedict Bahr-Kalus",
+      "Jose Fonseca",
+      "Marina Migliaccio",
+      "David Parkinson",
+      "Cora Uhlemann"
+    ],
+    "section": "The Cosmos"
+  },
+  "Camera01": {
+    "title": "Beyond ΛCDM with the SKA Observatory – I: Probing Gravity on Cosmological Scales",
+    "authors": [
+      "Stefano Camera",
+      "Chris Addis",
+      "Sêcloka L. Guedezounme",
+      "Federico Montano",
+      "Thomas Montandon",
+      "Marco Novara",
+      "Samantha J. Rossiter",
+      "Jacobo Asorey",
+      "Sveva Castello",
+      "Chris Clarkson",
+      "José Fonseca",
+      "Noemi Frusciante",
+      "Claudio Gomes",
+      "Nastassia Grimm",
+      "Ainulnabilah Nasirudin",
+      "Livia Oliveira",
+      "Francesco Pace",
+      "Camille Bonvin",
+      "Phil Bull",
+      "Enea Di Dio",
+      "Catherine Cress",
+      "Caroline Heneka",
+      "Hans-Rainer Klöckner",
+      "Roy Maartens",
+      "Carlos Martins",
+      "David Parkinson",
+      "Chandra S. Saraf",
+      "Ziad Sakr",
+      "Maria Berti"
+    ],
+    "section": "The Cosmos"
+  },
+  "Fonseca01": {
+    "title": "Beyond ΛCDM with the SKA Observatory – II: Unveiling the Secrets of the Early Universe",
+    "authors": [
+      "José Fonseca",
+      "Benedict Bahr-Kalus",
+      "Mario Ballardini",
+      "Matilde Barberi-Squarotti",
+      "Steve Cunnington",
+      "Sêcloka L. Guedezounme",
+      "Dionysios Karagiannis",
+      "Samantha J. Rossiter",
+      "Ziad Sakr",
+      "Cora Uhlemann",
+      "Stefano Camera",
+      "Bikash Dinda Dinda",
+      "Cláudio Gomes",
+      "Roy Maartens",
+      "Mario G. Santos"
+    ],
+    "section": "The Cosmos"
+  },
+  "Caleb01": {
+    "title": "Probing the Baryon Distribution with Fast Radio Bursts",
+    "authors": [
+      "Manisha Caleb",
+      "Jéferson A. S. Fortunato",
+      "Steffen Hagstotz",
+      "Clancy W. James",
+      "Joscha N. Jahns-Schindler",
+      "Dylan L. Jow",
+      "Evan F. Keane",
+      "Koustav Konar",
+      "Yin-Zhe Ma",
+      "Daniele Michilli",
+      "Robert Reischke",
+      "Amit Seta",
+      "Priyanka Singh",
+      "Laura G. Spitler",
+      "Yidan Wang",
+      "Amanda Weltman"
+    ],
+    "section": "The Cosmos"
+  },
+  "Caleb02": {
+    "title": "Fast Radio Bursts as Cosmological Probes",
+    "authors": [
+      "Manisha Caleb",
+      "Jéferson A. S. Fortunato",
+      "Steffen Hagstotz",
+      "Clancy W. James",
+      "Joscha N. Jahns-Schindler",
+      "Dylan L. Jow",
+      "Evan F. Keane",
+      "Koustav Konar",
+      "Yin-Zhe Ma",
+      "Daniele Michilli",
+      "Robert Reischke",
+      "Amit Seta",
+      "Priyanka Singh",
+      "Laura G. Spitler",
+      "Yidan Wang",
+      "Amanda Weltman"
+    ],
+    "section": "The Cosmos"
+  },
+  "Baker01": {
+    "title": "Cosmology from Synergies Between SKAO Surveys and Gravitational Wave Observations",
+    "authors": [
+      "Tessa Baker",
+      "Alberto Colombo",
+      "Steven Cunnington",
+      "Ulyana Dupletsa",
+      "Jose Fonseca",
+      "Ian Harrison",
+      "Konstantin Leyde",
+      "Simone Mastrogiovanni",
+      "Riccardo Murgia",
+      "Dounia Nanadoumgar-Lacroze",
+      "Tommaso Ronconi",
+      "Giulio Scelfo",
+      "Matteo Schulz",
+      "Marta Spinelli"
+    ],
+    "section": "The Cosmos"
+  },
+  "Regis01": {
+    "title": "Probing the Fundamental Nature of Particle Dark Matter",
+    "authors": [
+      "Marco Regis",
+      "Aritra Basu",
+      "Geoff Beck",
+      "Gianni Bernardi",
+      "Paolo Marchegiani",
+      "Dominik J. Schwarz",
+      "Marco Taoso",
+      "Elisa Todarello",
+      "Emma Tolley",
+      "Cora Uhlemann"
+    ],
+    "section": "The Cosmos"
+  },
+  "Vacca01": {
+    "title": "Study of Polarized Emission in Radio Halos and Filaments in the SKA Telescopes Era",
+    "authors": [
+      "Valentina Vacca",
+      "Federica Govoni",
+      "Matteo Murgia",
+      "Paolo Marchegiani",
+      "Hui Li",
+      "Myriam Gitti",
+      "Francesca Loi",
+      "Luigina Feretti",
+      "Ettore Carretti",
+      "Elia Battistelli",
+      "Andrea Cabriolu",
+      "Torsten A. Enßin",
+      "Chiara Ferrari",
+      "Gabriele Giovannini",
+      "Richard A. Perley"
+    ],
+    "section": "The Cosmos"
+  },
+  "deGasperin01": {
+    "title": "The Cosmic Ray Life Cycle in Galaxy Clusters",
+    "authors": [
+      "Francesco de Gasperin",
+      "Marcus Brüggen",
+      "Henrik Edler",
+      "Reinout van Weeren",
+      "Tiziana Venturi",
+      "Gianfranco Brunetti"
+    ],
+    "section": "The Cosmos"
+  },
+  "AritraBasu01": {
+    "title": "Unraveling the Imprints of Fluctuation-dynamo on the Intracluster Medium with the SKA",
+    "authors": [
+      "Aritra Basu",
+      "Sharanya Sur",
+      "Nadia Biava",
+      "Marisa Brienza"
+    ],
+    "section": "The Cosmos"
+  },
+  "Pasini01": {
+    "title": "Galactic Hubs: New Insights and SKA View of AGN Feedback in Galaxy Groups",
+    "authors": [
+      "Thomas Pasini",
+      "Marisa Brienza",
+      "Christopher J. Riseley"
+    ],
+    "section": "The Cosmos"
+  },
+  "ArpanPal01": {
+    "title": "Probing Merger Shocks in Galaxy Clusters in the SKA Era",
+    "authors": [
+      "Arpan Pal",
+      "Ruta Kale",
+      "Gabriella Di Gennaro",
+      "Francesco de Gasperin",
+      "Swarna Chatterjee",
+      "Majidul Rahaman",
+      "Ramananda Santra",
+      "Mamta Pandey-Pommier",
+      "Abhirup Datta",
+      "Kenda Knowles",
+      "Nasmi S. Anand"
+    ],
+    "section": "The Cosmos"
+  },
+  "Loi01": {
+    "title": "The Impact of Dense RM Grids on the Study of Intra-cluster and Intra-group Magnetic Fields",
+    "authors": [
+      "Francesca Loi",
+      "Valentina Vacca",
+      "Shane P. O'Sullivan",
+      "Craig Anderson",
+      "Chiara Stuardi",
+      "Federica Govoni",
+      "Matteo Murgia",
+      "Annalisa Bonafede",
+      "Ettore Carretti",
+      "Filippo M. Maccagni",
+      "Tessa Vernstrom"
+    ],
+    "section": "The Cosmos"
+  },
+  "Santra01": {
+    "title": "Probing High-redshift Intracluster Medium Using SKA",
+    "authors": [
+      "Ramananda Santra",
+      "Ruta Kale"
+    ],
+    "section": "The Cosmos"
+  },
+  "Acharya01": {
+    "title": "Inferring Cosmology and Astrophysics from the High-redshift 21cm Signal with SKA-Low",
+    "authors": [
+      "Anshuman Acharya",
+      "Satadru Bag",
+      "Sabrina Berger",
+      "Michele Bianco",
+      "Daniela Breitman",
+      "Lilian Crascall-Kennedy",
+      "Saswata Dasgupta",
+      "Abhirup Datta",
+      "Marian Douspis",
+      "Ivelin Georgiev",
+      "Sambit K. Giri",
+      "Adélie Gorce",
+      "Caroline Heneka",
+      "Julien Hiegel",
+      "Ian Hothi",
+      "Akanksha Kapahtia",
+      "Nicholas Kern",
+      "Yashrajsinh Mahida",
+      "Barun Maity",
+      "Suman Majumdar",
+      "Romain Meriot",
+      "Rajesh Mondal",
+      "Steven G. Murray",
+      "Leon Noble",
+      "Samit Kumar Pal",
+      "Aurel Schneider",
+      "Benoit Semelin",
+      "Abinash Kumar Shaw",
+      "Hayato Shimabukuro",
+      "Emilie Thélie",
+      "Anshuman Tripathi",
+      "Cathryn M. Trott"
+    ],
+    "section": "The Cosmos"
+  },
+  "Cang01": {
+    "title": "Exploring the Cosmic Dawn through the 21cm Forest and High-redshift Radio Sources with the SKA",
+    "authors": [
+      "Junsong Cang",
+      "Benedetta Ciardi",
+      "Barun Maity",
+      "Atsushi J. Nishizawa",
+      "Qi Niu",
+      "Yue Shao",
+      "Abinash Kumar Shaw",
+      "Hayato Shimabukuro",
+      "Tomáš Šoltinský",
+      "Tian-Yang Sun",
+      "Tsutomu T. Takeuchi",
+      "Yidong Xu",
+      "Kohji Yoshikawa",
+      "Bin Yue",
+      "Xin Zhang"
+    ],
+    "section": "The Cosmos"
+  },
+  "Barkana01": {
+    "title": "High-Redshift Signatures from the Cosmic Dawn and the Epoch of Reionization",
+    "authors": [
+      "Renan Barkana",
+      "Oliver Basquette",
+      "Ankita Bera",
+      "Jennifer Yik Ham Chan",
+      "Pravabati Chingangbam",
+      "Hector Afonso G. Cruz",
+      "Saswata Dasgupta",
+      "Kanan K. Datta",
+      "Anastasia Fialkov",
+      "Sambit K. Giri",
+      "Qin Han",
+      "Ilian T. Illiev",
+      "Bohua Li",
+      "Teppei Minoda",
+      "Shikhar Mittal",
+      "Julian B. Munoz",
+      "Suvedha Suresh Naik",
+      "Janakee Raste",
+      "Aurel Schneider",
+      "Sudipta Sikder",
+      "Kinwah Wu",
+      "Yidong Xu",
+      "Bin Yue",
+      "Meng Zhang",
+      "Meng-Lin Zhao"
+    ],
+    "section": "The Cosmos"
+  },
+  "Chakraborty01": {
+    "title": "Synergies for the Epoch of Reionization and Cosmic Dawn",
+    "authors": [
+      "Anirban Chakraborty",
+      "Tirthankar R. Choudhury",
+      "Kanan K. Datta",
+      "Pratika Dayal",
+      "Jiten Dhandha",
+      "Samuel Gagnon-Hartman",
+      "Sambit K. Giri",
+      "Adélie Gorce",
+      "Caroline Heneka",
+      "Anne Hutter",
+      "Barun Maity",
+      "Suman Majumdar",
+      "Andrei Mesinger",
+      "Kana Moriwaki",
+      "Chandra S. Murmu",
+      "Yuxiang Qin",
+      "Shintaro Yoshiura",
+      "Erik Zackrisson"
+    ],
+    "section": "The Cosmos"
+  },
+  "Bag01": {
+    "title": "Imaging the 21-cm Signal from the Cosmic Dawn & Epoch of Reionization and the Connection with the Global Signal",
+    "authors": [
+      "Satadru Bag",
+      "Michele Bianco",
+      "Samir Choudhuri",
+      "Saswata Dasgupta",
+      "Abhirup Datta",
+      "Kanan K. Datta",
+      "Ivelin Georgiev",
+      "Sambit K. Giri",
+      "Ian Hothi",
+      "Akanksha Kapahtia",
+      "Suman Majumdar",
+      "Garrelt Mellema",
+      "Arnab Mishra",
+      "Samit Kumar Pal",
+      "Feiyu Zhao"
+    ],
+    "section": "The Cosmos"
+  },
+  "deLeraAcedo01": {
+    "title": "Observations of the Cosmic Dawn and Epoch of Reionization with the SKAO: Observational Lessons Learned from Precursors and Pathfinder Instruments",
+    "authors": [
+      "Eloy de Lera Acedo",
+      "James Aguirre",
+      "Dominic Anstey",
+      "Nichole Barry",
+      "Gianni Bernardi",
+      "Somnath Bhardwaj",
+      "Anthony Brown",
+      "Jean Cavillot",
+      "Suman Chatterjee",
+      "Samir Choudhuri",
+      "Tyler Cox",
+      "John Cumner",
+      "Abhirup Datta",
+      "Fred Dulwich",
+      "Khandakar Md Asif Elahi",
+      "Andrew Faulkner",
+      "Sukhdeep Singh Gill",
+      "Quentin Gueuning",
+      "Daniel C. Jacobs",
+      "Nicholas Kern",
+      "Piyanat Kittiwisit",
+      "Yuchen Liu",
+      "Zachary Martinot",
+      "Ashish Mhaske",
+      "Florent Mertens",
+      "Vincent McKay",
+      "Satyapan Munshi",
+      "Steven Murray",
+      "Chuneeta D. Nunhokee",
+      "Oscar S. D. O'Hara",
+      "Samit K. Pal",
+      "Robert Pascua",
+      "Rashmi Sagar",
+      "Shouvik Sarkar",
+      "Shiv Sethi",
+      "Sarod Yatawatta",
+      "Oskar Zetterstrom"
+    ],
+    "section": "The Cosmos"
+  },
+  "Afonso01": {
+    "title": "The Road to Identifying the Earliest Radio-Powerful AGN with the SKA",
+    "authors": [
+      "Jose Afonso",
+      "Stergios Amarantidis",
+      "Stas Shabala",
+      "Ross J. Turner",
+      "Luca Ighina",
+      "Mojtaba Raouf",
+      "Nuno Covas",
+      "Pedro Martins",
+      "Nick Seymour",
+      "Alessandro Caccianiga",
+      "Alexander Hedge",
+      "Jess W. Broderick",
+      "Davi Barbosa",
+      "Isabella Prandoni",
+      "Sabyasachi Pal",
+      "Bruno Arsioli",
+      "Luis Barroso",
+      "Rodrigo Carvajal",
+      "João Tiago",
+      "Andrew Hopkins",
+      "Manuela Magliocchetti",
+      "Israel Matute",
+      "Ciro Pappalardo"
+    ],
+    "section": "The Cosmos"
+  },
+  "Cuciti01": {
+    "title": "The Large-Scale Structure of the Universe through the SKA Lenses",
+    "authors": [
+      "Virginia Cuciti",
+      "Surajit Paul",
+      "Viral Parekh",
+      "Franco Vazza",
+      "M. Brüggen",
+      "Prateek Gupta",
+      "Sameer T. Salunkhe",
+      "S. Sankhyayan",
+      "A. Bonafede",
+      "T. Akahori",
+      "G. Brunetti",
+      "R. Cassano",
+      "M. Hoeft",
+      "R. Kale"
+    ],
+    "section": "The Cosmos"
+  },
+  "Cassano01": {
+    "title": "Radio Halos in Galaxy Clusters as Unveiled by the SKA Telescope",
+    "authors": [
+      "Rossella Cassano",
+      "Gabriella Di Gennaro",
+      "Virginia Cuciti",
+      "Abhirup Datta",
+      "Marco Balboni",
+      "Gianni Bernardi",
+      "Annalisa Bonafede",
+      "Andrea Botteon",
+      "Marcus Brueggen",
+      "Gianfranco Brunetti",
+      "Swarna Chatterjee",
+      "Klaus Dolag",
+      "Stefano Ettori",
+      "Fabio Gastaldello",
+      "Simona Giacintucci",
+      "Carlo Giocoli",
+      "Myriam Gitti",
+      "Ruta Kale",
+      "Mamta Pandey‑Pommier",
+      "Koushika Sri Lakshmi Srikanth",
+      "Gabriel Pratt",
+      "Majidul Rahaman",
+      "Mariachiara Rossetti",
+      "Huub J.A. Röttgering",
+      "Ramananda Santra",
+      "Reinout J. van Weeren",
+      "Tiziana Venturi"
+    ],
+    "section": "The Cosmos"
+  },
+  "Akahori01": {
+    "title": "Magnetic Reconnection in Galaxy Clusters",
+    "authors": [
+      "Takuya Akahori",
+      "Kohei Kurahara",
+      "Shin-ya Nitta",
+      "Haruka Sakemi",
+      "Hiroki Akamatsu",
+      "Mami Machida",
+      "Motokazu Takizawa"
+    ],
+    "section": "The Cosmos"
+  },
+  "Gitti01": {
+    "title": "The SKA View of Cool-core Clusters: Evolution of Radio Mini-halos and AGN Feedback",
+    "authors": [
+      "Myriam Gitti",
+      "Paolo Tozzi",
+      "Francesco Ubertosi",
+      "Annalisa Bonafede",
+      "Gianfranco Brunetti",
+      "Rossella Cassano",
+      "Stefano Ettori",
+      "Luigina Feretti",
+      "Marie-Lou Gendron-Marsolais",
+      "Simona Giacintucci",
+      "Julie Hlavacek-Larrondo",
+      "Alessandro Ignesti",
+      "Giulia Macario",
+      "Mamta Pandey-Pommier",
+      "Tiziana Venturi"
+    ],
+    "section": "The Cosmos"
+  },
+  "Kurahara01": {
+    "title": "Unravelling Turbulence and Magnetic Fields in Galaxy Clusters with SKA and XRISM",
+    "authors": [
+      "Kohei Kurahara",
+      "Takuya Akahori",
+      "Amit Seta",
+      "Kosuke Nishiwaki",
+      "Kazuhiro Nakazawa",
+      "Yuki Omiya",
+      "Daisuke Ito",
+      "Kosei Sakai"
+    ],
+    "section": "The Cosmos"
+  },
+  "Perrott01": {
+    "title": "The SKA View of the Sunyaev-Zeldovich Effect from Massive Cosmic Halos",
+    "authors": [
+      "Yvette C. Perrott",
+      "Luca Di Mascolo",
+      "Rémi Adam",
+      "Chiara Ferrari",
+      "Keith J. B. Grainge",
+      "Matthias Hoeft",
+      "Mamta Pandey-Pommier"
+    ],
+    "section": "The Cosmos"
+  },
+  "Pandey-Pommier02": {
+    "title": "A Comprehensive SKA Survey of Lensing Clusters and Lensed Galaxies",
+    "authors": [
+      "Mamta Pandey-Pommier",
+      "John Mckean",
+      "Ian Harrison",
+      "Catherine Cress"
+    ],
+    "section": "The Cosmos"
+  },
+  "Lelli01": {
+    "title": "Testing Dark Matter Models and Modified Gravity Theories with Spatially Resolved HI Observations",
+    "authors": [
+      "Federico Lelli",
+      "Antonino Marasco",
+      "Timothy A. Davis",
+      "Nathan Deg",
+      "Jonathan Freundlich",
+      "Gyula I. G. Jòzsa",
+      "Peter Kamphuis",
+      "Pavel E. Mancera Piña",
+      "Stacy S. McGaugh",
+      "Amidou Sorgho",
+      "Kristine Spekkens"
+    ],
+    "section": "The Cosmos"
+  },
+  "OSullivan01": {
+    "title": "An SKA-Low RM Grid for Constraining the Origin of Cosmic Magnetism",
+    "authors": [
+      "Shane P. O'Sullivan",
+      "Franco Vazza",
+      "Ettore Carretti",
+      "Valentina Vacca",
+      "Francesca Loi"
+    ],
+    "section": "The Cosmos"
+  },
+  "Cruz01": {
+    "title": "Probing Kinematic Anisotropies in the Stochastic Gravitational Wave Background with the SKA",
+    "authors": [
+      "Marisol J. Cruz",
+      "Ameek Malhotra",
+      "Gianmassimo Tasinato",
+      "Ivonne Zavala"
+    ],
+    "section": "The Cosmos"
+  },
+  "Bosi01": {
+    "title": "Using SKAO to Understand the Clustering of Gravitational Wave Sources",
+    "authors": [
+      "Michele Bosi",
+      "Sarah Libanore",
+      "Nicola Bellomo",
+      "Caterina Scarpel",
+      "Federico Semenzato",
+      "Alvise Raccanelli",
+      "Michele Liguori"
+    ],
+    "section": "The Cosmos"
+  },
+  "Perna01": {
+    "title": "Synergies Between Pulsar Timing Array and Astrometry",
+    "authors": [
+      "Gabriele Perna",
+      "Nicola Bellomo",
+      "Daniele Bertacca"
+    ],
+    "section": "The Cosmos"
+  },
+  "Jenkins01": {
+    "title": "Unveiling the Microhertz Gravitational-Wave Sky with the Square Kilometre Array Observatory",
+    "authors": [
+      "Alexander C. Jenkins",
+      "Diego Blas",
+      "Joshua W. Foster"
+    ],
+    "section": "The Cosmos"
+  },
+  "Ragavendra01": {
+    "title": "Exploring Gravitational Wave Signatures Due to Primordial Non-gaussianity and Large Scale Structure Using SKAO",
+    "authors": [
+      "Ragavendra H. V.",
+      "Giulia Capurri",
+      "Alina Mierna",
+      "Gabriele Perna",
+      "Federico Semenzato",
+      "Nicola Bartolo",
+      "Daniele Bertacca",
+      "Lorenzo Valbusa Dall'Armi",
+      "Sabino Matarrese",
+      "Matteo Pegorin",
+      "Angelo Ricciardone"
+    ],
+    "section": "The Cosmos"
+  },
+  "Pasechnik01": {
+    "title": "Probing Cosmological Phase Transitions with SKA through nano-Hz Gravitational-wave Portal",
+    "authors": [
+      "Roman Pasechnik",
+      "Antonio Morais"
+    ],
+    "section": "The Cosmos"
+  },
+  "Driessen01": {
+    "title": "The Variability of Radio Stars",
+    "authors": [
+      "Laura N. Driessen",
+      "Alex Andersson",
+      "Joseph R. Callingham",
+      "Barnali Das",
+      "Jakob van den Eijnden",
+      "Tara Murphy",
+      "Kovi Rose",
+      "Joshua Pritchard",
+      "Miguel Pérez-Torres"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Marcote01": {
+    "title": "Enabling Population Studies on Wind-driven Galactic Binary Systems",
+    "authors": [
+      "Benito Marcote",
+      "Paula Benaglia",
+      "Valentí Bosch-Ramon",
+      "Michaël De Becker",
+      "Santiago del Palacio",
+      "Pikky Atri",
+      "Javier Moldón",
+      "Josep M. Paredes",
+      "Marc Ribó",
+      "Gustavo E. Romero",
+      "Anandmayee Tej"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Lico01": {
+    "title": "Probing Physical Conditions in Classical and Symbiotic Novae with the Square Kilometre Array Observatory",
+    "authors": [
+      "Rocco Lico",
+      "Marcello Giroletti",
+      "Arnau Aguasca-Cabot",
+      "Joris Kersten",
+      "Benito Marcote",
+      "Ulisse Munari",
+      "Miriam M. Nyamai",
+      "Timothy J. O'Brien",
+      "Zsolt Paragi",
+      "Iris de Ruiter",
+      "Kirill Sokolovsky",
+      "David R. A. Williams"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Beri01": {
+    "title": "Accreting Compact Object Binaries with the SKA",
+    "authors": [
+      "Aru Beri",
+      "Francesco Carotenuto",
+      "Rob P. Fender",
+      "James C.A. Miller-Jones",
+      "Sara Motta",
+      "Valeriu Tudose",
+      "Jakob van den Eijnden"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "TaoAn01": {
+    "title": "Transforming X-ray Binary Astrophysics with SKA+VLBI",
+    "authors": [
+      "Tao An",
+      "Ailing Wang",
+      "James C. A. Miller-Jones",
+      "Valeriu Tudose",
+      "Pikky Atri",
+      "Lang Cui",
+      "Hua Feng",
+      "Benito Marcote",
+      "Sara E. Motta"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Lin01": {
+    "title": "Compact Objects Revealed by SKA and SKA-VLBI",
+    "authors": [
+      "Zehao Lin",
+      "Yingjie Li",
+      "Chaojie Hao",
+      "Jingjing Li",
+      "Yiwei Dong",
+      "Dejian liu",
+      "Ye Xu"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Qiu01": {
+    "title": "Long-Period Transients as a New Frontier in Time-domain Astronomy",
+    "authors": [
+      "Hao Qiu",
+      "Manisha Caleb",
+      "Dougal Dobie",
+      "Natasha Hurley-Walker",
+      "Yogesh Maan",
+      "Mao Yuan",
+      "Nanda Rea",
+      "Kovi Rose",
+      "Iris de Ruiter",
+      "Ben Stappers",
+      "Ziteng Wang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Keane01": {
+    "title": "A Square Kilometre Array Pulsar Census",
+    "authors": [
+      "Evan F Keane",
+      "Vanessa Graber",
+      "Lina Levin",
+      "Chia Min Tan",
+      "Owen A. Johnson",
+      "Cherry Ng",
+      "Celsa Pardo-Araujo",
+      "Michele Ronchi",
+      "Dany Vohl",
+      "Mengyao Xue"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Bagchi01": {
+    "title": "Pulsars in Globular Clusters With the SKAO",
+    "authors": [
+      "Manjari Bagchi",
+      "Federico Abbate",
+      "Vishnu Balakrishnan",
+      "Miquel C. Bernadich",
+      "Bhaswati Bhattacharyya",
+      "Arunima Dutta",
+      "Paulo C. C. Freire",
+      "Kriisa Halley",
+      "Jason W. T. Hessels",
+      "Sangeeta Kumari",
+      "Duncan R. Lorimer",
+      "Andrea Possenti",
+      "Rouhin Nag",
+      "Scott M. Ransom",
+      "Alessandro Ridolfi",
+      "Vivek V. Krishnan",
+      "Weiwei Zhu"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Abbate01": {
+    "title": "Galactic Centre Pulsars with the SKAO",
+    "authors": [
+      "Federico Abbate",
+      "Amodio Carleo",
+      "Shami Chatterjee",
+      "James Cordes",
+      "Paul B. Demorest",
+      "Gregory Desvignes",
+      "Ralph Eatough",
+      "Eva Hackmann",
+      "Zexin Hu",
+      "Michael Kramer",
+      "Joseph Lazio",
+      "Kejia Lee",
+      "Kuo Liu",
+      "Isabella Rammala-Zitha",
+      "Scott M. Ransom",
+      "Grit Saowanit",
+      "Lijing Shao",
+      "Pablo Torne",
+      "Robert Wharton",
+      "Jompoj Wongphechauxsorn",
+      "Weiwei Zhu"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Levin01": {
+    "title": "Understanding the Neutron Star Population with the SKAO Telescopes",
+    "authors": [
+      "Lina Levin",
+      "Manjari Bagchi",
+      "Marta Burgay",
+      "Adam T. Deller",
+      "Vanessa Graber",
+      "Andrei Igoshev",
+      "Michael Kramer",
+      "Duncan Lorimer",
+      "Bettina Posselt",
+      "Thiagaraj Prabu",
+      "Kaustubh Rajwade",
+      "Nanda Rea",
+      "Benjamin Stappers",
+      "Thomas M. Tauris",
+      "Patrick Weltevrede"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Oswald01": {
+    "title": "Understanding Pulsar Magnetospheres with the SKAO",
+    "authors": [
+      "Lucy S. Oswald",
+      "Avishek Basu",
+      "Manoneeta Chakraborty",
+      "Bhal Chandra Joshi",
+      "Natalia Lewandowska",
+      "Kuo Liu",
+      "Marcus E. Lower",
+      "Alexander Philippov",
+      "Xiaoxi Song",
+      "Pratik Tarafdar",
+      "Joeri van Leeuwen",
+      "Anna L. Watts",
+      "Patrick Weltevrede",
+      "Geoffrey Wright",
+      "Jan Benacek",
+      "Aru Beri",
+      "Shunshun Cao",
+      "Paolo Esposito",
+      "Fabian Jankowski",
+      "Jinchen Jiang",
+      "Aris Karastergiou",
+      "Kejia Lee",
+      "Nanda Rea",
+      "Dany Vohl"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Tiburzi01": {
+    "title": "Exploring the Galactic Plasma with Pulsars in the SKA Era",
+    "authors": [
+      "Caterina Tiburzi",
+      "Lam Michael",
+      "Daniel Reardon",
+      "Nataliya Porayko",
+      "Maaijke Mevius",
+      "Stella Koch Ocker",
+      "Sai Chaitanya Susarla",
+      "Joanne Dawson",
+      "Joris Verbiest",
+      "Adam Deller",
+      "Golam Shaifullah",
+      "Ramesh Bhat",
+      "Jean-Mathias Griessmeier",
+      "Mark Walker",
+      "Weicong Jing",
+      "Francesco Iraci",
+      "Marisa Geyer",
+      "Lina Levin",
+      "Michael Keith"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "JunXu01": {
+    "title": "Exploring the Magnetic Field Structure of the Milky Way with Pulsars in the SKA Era",
+    "authors": [
+      "Jun Xu",
+      "J. L. Han",
+      "Weicong Jing"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Gelfand01": {
+    "title": "Understanding Pulsar Wind Nebulae with the SKA",
+    "authors": [
+      "Joseph D. Gelfand",
+      "Chi-Yun Ng",
+      "Bettina Posselt",
+      "Mallory S. E. Roberts",
+      "Subir Bhattacharyya",
+      "Shi Dai",
+      "Rene Breton",
+      "Benjamin Stappers",
+      "Andrea Possenti",
+      "Jason Hessels",
+      "Yifan Sun",
+      "Moaz Abdelmaguid"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "VenkatramanKrishnan01": {
+    "title": "Testing Gravity with Binary Pulsars in the SKA Era",
+    "authors": [
+      "Vivek Venkatraman Krishnan",
+      "Lijing Shao",
+      "Vishnu Balakrishnan",
+      "Amodio Carleo",
+      "Miquel Colom i Bernadich",
+      "Alessandro Corongiu",
+      "Adam Deller",
+      "Paulo C. C. Freire",
+      "Marisa Geyer",
+      "Eva Hackmann",
+      "Huanchen Hu",
+      "Zexin Hu",
+      "Michael Kramer",
+      "Jutta Kunz",
+      "Kuo Liu",
+      "Marcus E. Lower",
+      "Xueli Miao",
+      "Delphine Perrodin",
+      "Denisha S. Pillay",
+      "Andrea Possenti",
+      "Scott Ransom",
+      "Ingrid Stairs",
+      "Ben Stappers"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "AvishekBasu01": {
+    "title": "Probing Neutron Star Interiors and the Properties of Cold Ultra-dense Matter with the SKAO",
+    "authors": [
+      "Avishek Basu",
+      "Vanessa Graber",
+      "Marcus E. Lower",
+      "Marco Antonelli",
+      "Danai Antonopoulou",
+      "Manjari Bagchi",
+      "Prasanta Char",
+      "Paulo C. Freire",
+      "Brynmor Haskell",
+      "Huanchen Hu",
+      "David I. Jones",
+      "Banibrata Mukhopadhyay",
+      "Michaela Oertel",
+      "Nanda Rea",
+      "Violetta Sagun",
+      "Benjamin Shaw",
+      "Jaikhomba Singha",
+      "Benjamin W. Stappers",
+      "Tinn Thongmeearkom",
+      "Anna L. Watts",
+      "Patrick Weltevrede"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Shannon01": {
+    "title": "The SKAO Pulsar Timing Array",
+    "authors": [
+      "Ryan M. Shannon",
+      "N. D. Ramesh Bhat",
+      "Aurelien Chalumeau",
+      "Siyuan Chen",
+      "H. Thankful Cromartie",
+      "A. Gopukumar",
+      "Kathrin Grunthal",
+      "Jeffrey Hazboun",
+      "Francesco Iraci",
+      "Bhal Chandra Joshi",
+      "Ryo Kato",
+      "Michael Keith",
+      "Kejia Lee",
+      "Kuo Liu",
+      "Hannah Middleton",
+      "Matthew T. Miles",
+      "Chiara Mingarelli",
+      "Aditya Parthasarathy",
+      "Daniel J. Reardon",
+      "Golam M. Shaiffulah",
+      "Keitaro Takahashi",
+      "Caterina Tiburzi",
+      "Riccardo J. Truant",
+      "Xiao Xue",
+      "Andrew Zic"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Besancon01": {
+    "title": "Tests of General Relativity: Memory Effects",
+    "authors": [
+      "Marc Besancon",
+      "Adrien Cogez",
+      "Antoine Petiteau"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Curtin01": {
+    "title": "The Astrophysics of Fast Radio Bursts",
+    "authors": [
+      "Alice P Curtin",
+      "Marcin Gawroński",
+      "Jason Hessels",
+      "Clancy James",
+      "Fabian Jankowski",
+      "Franz Kirsten",
+      "Benito Marcote",
+      "Harry Qiu",
+      "Robert Reischke",
+      "Mawson Sammons",
+      "Laura G. Spitler",
+      "Ben Stappers",
+      "Amanda Weltman"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Chandra01": {
+    "title": "Supernovae with the Square Kilometre Array",
+    "authors": [
+      "Poonam Chandra",
+      "Yuhei Iwata",
+      "A.J. Nayana",
+      "Miguel Perez-Torres",
+      "Kovi Rose"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "TaoAn02": {
+    "title": "Unraveling the Mysteries of Supernovae with SKA+VLBI",
+    "authors": [
+      "Tao An",
+      "Zhengwei Liu",
+      "Ailing Wang",
+      "Miguel Perez-Torres",
+      "Javier Moldon",
+      "Liangduan Liu",
+      "Peter Lundqvist",
+      "Xuefei Chen",
+      "Xiangcun Meng"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Pathak01": {
+    "title": "Probing Magnetized Accretion Disk-jet Systems: Stellar Mass to Supermassive Black Holes",
+    "authors": [
+      "Mayank Pathak",
+      "Rohan Raha",
+      "Banibrata Mukhopadhyay"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "TaoAn03": {
+    "title": "Tidal Disruption Events with the SKA",
+    "authors": [
+      "Tao An",
+      "Adelle J. Goodwin",
+      "James C. A. Miller-Jones",
+      "Miguel Perez Torres",
+      "Lauren Rhodes",
+      "Xinwen Shu"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Shu01": {
+    "title": "Exploring Tidal Disruption Events with SKA and VLBI: Unveiling the Mystery of Black Hole Feeding and Outflows",
+    "authors": [
+      "Xinwen Shu",
+      "Guobin Mou",
+      "Tao An",
+      "S. Komossa",
+      "Miguel Perez-Torres",
+      "Weihua Lei",
+      "Luming Sun",
+      "Ning Jiang",
+      "Tinggui Wang",
+      "Chichuan Jin",
+      "Jun Yang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Bignall01": {
+    "title": "Time Domain Studies of Active Galactic Nuclei with the Square Kilometer Array",
+    "authors": [
+      "Hayley E Bignall",
+      "Rajan Chhetri"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Spingola01": {
+    "title": "SKA–VLBI View of AGN Jets in the Early Universe",
+    "authors": [
+      "Cristiana Spingola",
+      "Mar Mezcua",
+      "Yuanqi Liu",
+      "Sándor Frey",
+      "Silvia Belladitta",
+      "Tao An",
+      "Marcello Giroletti",
+      "Alessandro Caccianiga",
+      "Alberto Moretti",
+      "Luca Ighina",
+      "Tullia Sbarrato",
+      "Giulia Migliori",
+      "Daniele Dallacasa",
+      "Leonid Gurvits",
+      "Krisztina Éva Gabányi",
+      "Krisztina Perger",
+      "Zsolt Paragi",
+      "Ranieri D. Baldi",
+      "Eduardo Bañados",
+      "Gianni Bernardi",
+      "Marco Bondi",
+      "Emanuele De Rubeis",
+      "Filippo D'Ammando",
+      "Francesco De Gasperin",
+      "Ivan Delvecchio",
+      "Fabio Vito",
+      "Khatun Rubinur",
+      "Máté Krezinger",
+      "Rocco Lico",
+      "Emmanuel Momjian",
+      "Monica Orienti",
+      "Jeffrey Hodgson",
+      "Carlo Stanghellini",
+      "Ailing Wang",
+      "Muhammad Abdul Latif",
+      "Hongmin Cao"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Kadler01": {
+    "title": "SKA-VLBI Probes of High-energy Emission Processes in Relativistic Jets",
+    "authors": [
+      "Matthias Kadler",
+      "Emmanuel K. Bempong-Manful",
+      "Phil G. Edwards",
+      "Florian Eppel",
+      "Christian M. Fromm",
+      "Marcello Giroletti",
+      "Jonas Heßdörfer",
+      "Talvikki Hovatta",
+      "Yuri Y. Kovalev",
+      "Karl Mannheim",
+      "Roopesh Ojha",
+      "Florian Rösch",
+      "Eduardo Ros"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Kovalev01": {
+    "title": "Unique Science Opportunities for Space VLBI Systems with the SKA Telescopes",
+    "authors": [
+      "Y. Y. Kovalev",
+      "G. Bruni",
+      "T. An",
+      "H. E. Bignall",
+      "P. G. Edwards",
+      "C. Garcia-Miro",
+      "M. Giroletti",
+      "L. I. Gurvits",
+      "M. Kadler",
+      "J. Y. Kim",
+      "E. V. Kravchenko",
+      "I. Liodakis",
+      "Y. Q. Liu",
+      "A. V. Plavin",
+      "A. V. Popkov",
+      "A. B. Pushkarev",
+      "T. Savolainen",
+      "Z. Q. Shen",
+      "A. Tamar",
+      "E. Traianou"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Rosch01": {
+    "title": "A Census of Variable and Transient Radio Sources Within High-Energy Neutrino Fields",
+    "authors": [
+      "Florian Rösch",
+      "Matthias Kadler",
+      "Roger P. Deane",
+      "Philip G. Edwards",
+      "Karl Mannheim",
+      "Jack F. Radcliffe"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Giarratana01": {
+    "title": "Gamma-ray Bursts in the Radio Sky: the Role of the SKA-VLBI",
+    "authors": [
+      "Stefano Giarratana",
+      "Om S. Salafia",
+      "Xue-Feng Wu",
+      "Jin-Jun Geng",
+      "Tao An",
+      "Benito Marcote",
+      "Marcello Giroletti",
+      "Giancarlo Ghirlanda",
+      "Tiziana Venturi"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Castignani01": {
+    "title": "SKAO and Gamma-Ray Synergies",
+    "authors": [
+      "Gianluca Castignani",
+      "Gavin Rowell",
+      "Arnau Aguasca-Cabot",
+      "Gemma E. Anderson",
+      "Csaba Balazs",
+      "Pol Bordas",
+      "Andrea Botteon",
+      "Jess W. Broderick",
+      "Gianfranco Brunetti",
+      "Ettore Carretti",
+      "Roland M. Crocker",
+      "Shi Dai",
+      "Filippo D’Ammando",
+      "Philip G. Edwards",
+      "Sabrina Einecke",
+      "Miroslav D. Filipović",
+      "Marcello Giroletti",
+      "Adelle J. Goodwin",
+      "Jimi Green",
+      "Sanja Lazarević",
+      "Giulia Migliori",
+      "Monica Orienti",
+      "Josep M. Paredes",
+      "Elena Pian",
+      "Alak Ray",
+      "Lauren Rhodes",
+      "Zachary J. Smeaton",
+      "Nick Tothill",
+      "Martin White"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Colombo01": {
+    "title": "Gamma-ray Bursts and Kilonovae from Gravitational Wave Events",
+    "authors": [
+      "Alberto Colombo",
+      "Marcello Giroletti",
+      "Susanna D. Vergani",
+      "Lauren Rhodes"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Capelo01": {
+    "title": "Multi-messenger and Multi-band Studies of Massive Black Holes: the Synergies Between LISA and SKAO",
+    "authors": [
+      "Pedro R. Capelo",
+      "Alberto Mangiagli",
+      "Lorenz Zwick",
+      "Lucio Mayer",
+      "Marta Volonteri"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "AlexAndersson02": {
+    "title": "Revisiting the Unknown Unknowns in Transient Astrophysics with the SKAO Telescopes",
+    "authors": [
+      "Alex Andersson",
+      "Manisha Caleb",
+      "Joseph Callingham",
+      "Adam Deller",
+      "Dougal Dobie",
+      "Natasha Hurley-Walker",
+      "Benito Marcote",
+      "Kaustubh Rajwade",
+      "Antonia Rowlinson",
+      "Benjamin Stappers",
+      "Matteo Trudu",
+      "Harish Vedantham",
+      "Amanda Weltman"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Corstanje01": {
+    "title": "Origins of Cosmic Rays in the Galactic-extragalactic Transition Energy Range",
+    "authors": [
+      "Arthur Corstanje",
+      "Subhadip Saha",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Stijn Buitink",
+      "Vital de Heneau",
+      "Edwin Dickinson",
+      "Brian Hare",
+      "Andreas Haungs",
+      "Haoning He",
+      "Jörg Hörandel",
+      "Tim Huege",
+      "Clancy James",
+      "Philipp Laub",
+      "Xingyu Li",
+      "Hermann-Josef Mathes",
+      "Katharine Mulrey",
+      "Anna Nelles",
+      "Felix Schlüter",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Veberic",
+      "Keito Watanabe",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Watanabe01": {
+    "title": "Interferometric Analysis of Air-shower Radio Emission in the Near Field with an Information Field Theory Approach",
+    "authors": [
+      "Keito Watanabe",
+      "Karen Terveer",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Stijn Buitink",
+      "Arthur Corstanje",
+      "Vital De Henau",
+      "Edwin Dickinson",
+      "Vincent Eberle",
+      "Torsten Enßlin",
+      "Brian Hare",
+      "Haoning He",
+      "Jörg Hörandel",
+      "Tim Huege",
+      "Clancy James",
+      "Philipp Laub",
+      "Xingyu Li",
+      "Hermann-Josef Mathes",
+      "Katharine Mulrey",
+      "Anna Nelles",
+      "Subhadip Saha",
+      "Felix Schlüter",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Veberic",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Buitink01": {
+    "title": "Anomalous Air Showers and What They Reveal About Hadronic Interactions and Cosmic-ray Masses",
+    "authors": [
+      "Stijn Buitink",
+      "Vital De Henau",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Arthur Corstanje",
+      "Edwin Dickinson",
+      "Brian Hare",
+      "Andreas Haungs",
+      "Haoning He",
+      "Jörg Hörandel",
+      "Tim Huege",
+      "Clancy James",
+      "Philipp Laub",
+      "Xingyu Li",
+      "Hermann-Josef Mathes",
+      "Katharine Mulrey",
+      "Anna Nelles",
+      "Subhadip Saha",
+      "Felix Schlüter",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Veberic",
+      "Keito Watanabe",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "Nelles01": {
+    "title": "Using SKA-Low to Detect PeV Gamma-rays from Galactic Sources",
+    "authors": [
+      "Anna Nelles",
+      "Philipp Laub",
+      "Haoning He",
+      "Felix Schlüter",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Stijn Buitink",
+      "Arthur Corstanje",
+      "Vital De Henau",
+      "Edwin Dickinson",
+      "Brian Hare",
+      "Jörg Hörandel",
+      "Tim Huege",
+      "Clancy James",
+      "Xingyu Li",
+      "Hermann-Josef Mathes",
+      "Katherine Mulrey",
+      "Subhadib Saha",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Verberic",
+      "Keito Wantanabe",
+      "Hiroaki Yamamoto",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
+    ],
+    "section": "The Extreme Universe"
+  },
+  "AlexAndersson01": {
+    "title": "Commensal Image Plane Transient Search Methods with the SKAO",
+    "authors": [
+      "Alex Andersson",
+      "Dougal Dobbie",
+      "Natasha Hurley-Walker",
+      "Hao Qiu",
+      "Kaustubh Rajwade",
+      "Antonia Rowlinson",
+      "Iris de Ruiter",
+      "Fabian Schussler",
+      "Oleg Smirnov",
+      "Ben Stappers"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "GemmaAnderson01": {
+    "title": "Rapid Response Triggering for Radio Transients with the SKA Observatory",
+    "authors": [
+      "Gemma E. Anderson",
+      "Sarah I. Chastain",
+      "Alice P. Curtin",
+      "Kelly Gourdji",
+      "Natasha Hurley-Walker",
+      "Clancy W. James",
+      "Rami F. Mandow",
+      "Benito Marcote",
+      "Divya Oberoi",
+      "Kaustubh M. Rajwade",
+      "Kovi Rose",
+      "Antonia Rowlinson",
+      "Fabian Schüssler"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Morgan01": {
+    "title": "Methods of Observing and Characterising the Ionosphere with SKA-Low",
+    "authors": [
+      "John S Morgan",
+      "Biagio Forte",
+      "Kshitija B Deshpande",
+      "Andrzej Krankowski",
+      "Mario M Bisi"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Chhetri01": {
+    "title": "Understanding Sub-arcsecond Scale Radio Sources and Space Weather with the SKA Low Using Interplanetary Scintillation",
+    "authors": [
+      "Rajan Chhetri",
+      "John Morgan",
+      "Elaine M. Sadler",
+      "Hayley Bignall",
+      "Emily Kerrison",
+      "Harsha Avinash Tanti"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Datta01": {
+    "title": "Studying Ionosphere Using SKA-Low and SKA-Mid",
+    "authors": [
+      "Abhirup Datta",
+      "Samit Kumar Pal",
+      "Sarvesh Mangla",
+      "Bhuvnesh Brawar",
+      "Sumanjit Chakraborty",
+      "Sudipta Sasmal",
+      "Anshuman Tripathi"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Burba01": {
+    "title": "Foreground Characterization and Mitigation in Theobservations of the CD/EoR with the SKA",
+    "authors": [
+      "Jacob Burba",
+      "Philip Bull",
+      "Emilio Ceccotti",
+      "Arnab Chakraborty",
+      "Samir Choudhuri",
+      "Abhirup Datta",
+      "Khandakar Md Asif Elahi",
+      "Sambit K. Giri",
+      "Vibor Jelić",
+      "Yi Mao",
+      "Florent Mertens",
+      "Satyapan Munshi",
+      "Ridhima Nunhokee",
+      "André R. Offringa",
+      "Samit Kumar Pal",
+      "Rashmi Sagar",
+      "Peter H. Sims",
+      "Huanyuan Shan",
+      "Takumi Ito",
+      "Anshuman Tripathi",
+      "Emma Tolley",
+      "Le Zhang",
+      "Zhenghao Zhu"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "LeZhang01": {
+    "title": "A Non-Negativity Iterative Approach to Image Deconvolution for SKA",
+    "authors": [
+      "Le Zhang",
+      "Shiyu Li"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "SabyasachiPal01": {
+    "title": "Source Finding and Characterisation for SKAO Science",
+    "authors": [
+      "Sabyasachi Pal",
+      "Souvik Manik",
+      "M Carmen Toribio",
+      "Geferson Lucatelli",
+      "Omkar Bait",
+      "Simone Riggi",
+      "Antxon Alberdi",
+      "Philippa Hartley",
+      "J. Moldon",
+      "M. Pandey-Pommier",
+      "Rob Beswick"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Vacca02": {
+    "title": "Application of Bayesian Statistical Tools to SKA Telescopes Polarization Surveys to Study Magnetization of the Large-scale Structure of the Universe",
+    "authors": [
+      "Valentina Vacca",
+      "Sebastian Hutschenreuter",
+      "Andrea Cabriolu",
+      "Torsten A. Enßlin",
+      "Philipp Frank",
+      "Jakob Roth",
+      "Martin Reinecke",
+      "Jens Jasche",
+      "Florent Leclercq",
+      "Ettore Carretti",
+      "Luigina Feretti",
+      "Chiara Ferrari",
+      "Federica Govoni",
+      "Cathy Horellou",
+      "Melanie Johnston-Hollitt",
+      "Francesca Loi",
+      "Matteo Murgia",
+      "Shane O'Sullivan",
+      "Rosita Paladino",
+      "Tessa Vernstrom",
+      "Gianni Fenu"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Carcamo01": {
+    "title": "Faraday Tomography with the SKA: A New Era of Cosmic Magnetism Studies",
+    "authors": [
+      "Miguel Carcamo",
+      "Anna M. M. Scaife",
+      "Jeroen Stil",
+      "Russ Taylor",
+      "Jennifer L. West",
+      "Tessa Vernstrom"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Chan01": {
+    "title": "Bridging Theory and Observation in the SKA Era: A Cosmological Polarized Radiative Transfer Framework for Point-to-Point Polarized Sky Comparisons",
+    "authors": [
+      "Jennifer Y. H. Chan",
+      "Alvina Y. L. On",
+      "Paul C. W. Lai",
+      "Kinwah Wu"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Robishaw01": {
+    "title": "Measuring Magnetic Fields Near and Far with the SKA via the Zeeman Effect",
+    "authors": [
+      "Timothy Robishaw",
+      "Marta Nowotka",
+      "Tao-Chung Ching",
+      "James A. Green",
+      "Anita M. S. Richards",
+      "Sandra Etoka",
+      "Malcolm Gray",
+      "Susan E. Clark",
+      "Tyler L. Bourke",
+      "Vincent Fish"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Tripathi01": {
+    "title": "Weak Lensing with the SKAO: Radio Shear Measurement",
+    "authors": [
+      "Priyamvad Tripathi",
+      "Marzia Rivi",
+      "Simon Prunet",
+      "Ian Harrison",
+      "André Ferrari"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Li01": {
+    "title": "Gravitational Light Deflection with SKA‑VLBI and Its Application to Precision Tests of General Relativity",
+    "authors": [
+      "Yingjie Li",
+      "Jingjing Li",
+      "Zehao Lin",
+      "Dejian Liu",
+      "Yiwei Dong",
+      "Chaojie Hao",
+      "Ye Xu"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Chen01": {
+    "title": "Enhancing VLBI Capability with the SKA-Mid and the Jingdong 120-m Radio Telescope",
+    "authors": [
+      "Wen Chen",
+      "Jun Yang",
+      "Zhixuan Li",
+      "Yingjie Li",
+      "Niu Liu"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Timmerman01": {
+    "title": "Low-frequency VLBI with the SKA-Low",
+    "authors": [
+      "Roland Timmerman",
+      "Emmy L. Escott",
+      "Tessa Vernstrom",
+      "Leah K. Morabito",
+      "Cormac Reynolds"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Kobayashi01": {
+    "title": "Low-Frequency VLBI Network Using SKA-Low",
+    "authors": [
+      "Hideyuki Kobayashi",
+      "Tomoaki Oyama",
+      "Kazuma Fujita",
+      "Syunsaku Suzuki",
+      "Shintaro Yoshiura",
+      "Hiroaki Misawa",
+      "Fuminori Tsuchiya",
+      "Kazuhiro Takefuji",
+      "Kenta Fujisawa",
+      "Kotaro Niinuma",
+      "Keitaro Takahashi",
+      "Yashwant Gupta",
+      "Bhal Chandra Joshi",
+      "Vishwesh Marthi",
+      "M.A. Krishnakumar",
+      "Zhiqiang Shen",
+      "Jiang Wu",
+      "Yihua Yan",
+      "Wei Wang",
+      "Linjie Chen"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "MingHuiXu01": {
+    "title": "SKA VLBI Survey of the Southern Sky for Astrometry, Geodesy, and Astrophysics",
+    "authors": [
+      "Ming Hui Xu",
+      "Leonid Y Petrov",
+      "Yuri Y Kovalev"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Wongphecauxson01": {
+    "title": "VLBI with SKAMPI, the SKA-MID MPIfR Dish Demonstrator",
+    "authors": [
+      "Jompoj Wongphechauxsorn",
+      "Niclas Alexander Esser",
+      "Tobias Winchen",
+      "Jan Wagner",
+      "Uwe Bach",
+      "Hans-Rainer Kloeckner",
+      "Michael Kramer",
+      "Gundolf Wieching",
+      "Ewan Barr",
+      "Jonathan Quick",
+      "Roger Deane",
+      "Cormac Reynolds",
+      "Phil Edwards",
+      "Chris Phillips",
+      "Matthias Kadler",
+      "Roopesh Ojha"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Kadler02": {
+    "title": "Developments of the EVN to Optimize SKA-VLBI and ngVLA Synergies",
+    "authors": [
+      "Matthias Kadler",
+      "Simon Garrington",
+      "Florian Eppel",
+      "Rob Beswick",
+      "Anne-Kathrin Baczko",
+      "Roger Deane",
+      "Dominik Elsässer",
+      "Yuri Y. Kovalev",
+      "Karl Mannheim",
+      "Eric Murphy",
+      "Zsolt Paragi",
+      "Jack Radcliffe",
+      "Agnieszka Slowikowska",
+      "Vikto L. Toth",
+      "Pablo de Vicente",
+      "Christian M. Fromm",
+      "Frank Bertoldi",
+      "Marcus Brüggen",
+      "Andreas Brunthaler",
+      "Andrei Lobanov",
+      "John Mc Kean",
+      "Dominik Riechers",
+      "Eduardo Ros",
+      "Viviana Rosero",
+      "Frank Schinzel",
+      "Simona Vegetti",
+      "Fabian Walter",
+      "Sebastian Wolf",
+      "Anton Zensus",
+      "Jompoj Wongphechauxsorn",
+      "Nicholas Wrigley"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Bempong-Manful01": {
+    "title": "Extending the SKA Across Africa: The Case for a Continental African VLBI Network",
+    "authors": [
+      "Emmanuel K. Bempong-Manful",
+      "Jompoj Wongphechauxsorn",
+      "Jack Radcliffe",
+      "Melvin G. Hoare",
+      "Olga Bayandina",
+      "Pfesesani V. van Zyl",
+      "Cristina García-Miró",
+      "Candela Chico",
+      "Naomi A. Frimpong",
+      "Hans-Rainer Klöckner",
+      "Valente Cuambe",
+      "Carla S. Mitchell",
+      "Saul P. Phiri",
+      "Benedicta Woode",
+      "Emmanuel Proven-Adzri",
+      "Willice Obonyo",
+      "Tyler L. Bourke",
+      "Cristiana Spingola",
+      "Matthias Kadler",
+      "Ailing Wang",
+      "Roger P. Deane",
+      "Isabella Prandoni",
+      "Rocco Lico",
+      "James O. Chibueze",
+      "Robert Beswick",
+      "Simon Garrington",
+      "Benito Marcote",
+      "Tao An",
+      "Marcello Giroletti",
+      "Isaac M. Mutie",
+      "Anne-Kathrin Baczko",
+      "Johannes Allotey",
+      "Stefano Giarratana",
+      "Rasha M. Samir"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Rioja01": {
+    "title": "Ultra-Precise Astrometry with SKA-VLBI: A Comprehensive Exploration of Performance Optimization Strategies",
+    "authors": [
+      "Maria J. Rioja",
+      "Richard Dodson",
+      "Lucas J. Hyland",
+      "Jingdong Zhang",
+      "Shuangjing Xu",
+      "Hiroshi Imai",
+      "Huib van Langevelde",
+      "Simon P. Ellingsen"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Takahashi01": {
+    "title": "VLBI-Enabled Precision Localization of Continuous Gravitational Wave Sources with Pulsar Timing Arrays in the SKA Era",
+    "authors": [
+      "Keitaro Takahashi",
+      "Takuya Akahori",
+      "Kenta Fujisawa",
+      "Hiroshi Imai",
+      "Hajime Kita",
+      "Hideyuki Kobayashi",
+      "Hiroaki Misawa",
+      "Kotaro Niinuma",
+      "Tomoaki Oyama",
+      "Kazuhiro Takefuji",
+      "Fuminori Tsuchiya"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Tremblay01": {
+    "title": "Searching for Extraterrestrial Intelligence with the SKA",
+    "authors": [
+      "Chenoa D. Tremblay",
+      "Alex Anderson",
+      "Joe S. Bright",
+      "Barbara Cabrales",
+      "David DeBoer",
+      "Vishal Gajjar",
+      "Michael A. Garrett",
+      "Evan F. Keane",
+      "Dong-Jim Kim",
+      "Steve Prabu",
+      "Danny C. Price",
+      "Andrew P. V. Siemion",
+      "Sophia Z. Sheikh",
+      "Cyril Tasse",
+      "Philippe Zarka",
+      "Nathalie Cabrol",
+      "Joseph R. Callingham",
+      "Steve Croft",
+      "William Diamond",
+      "Jamie Drew",
+      "Kyran Grattan",
+      "S Peter Worden"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Denzel01": {
+    "title": "The Role of Artificial Intelligence in the SKA Era",
+    "authors": [
+      "Philipp Denzel",
+      "Frank-Peter Schilling",
+      "Elena Gavagnin"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Acharya02": {
+    "title": "Machine Learning and the SKA for Cosmic Dawn and the Epoch of Reionization",
+    "authors": [
+      "Anshuman Acharya",
+      "Michele Bianco",
+      "Daniela Breitman",
+      "Huaxi Chen",
+      "Abhirup Datta",
+      "Kangning Diao",
+      "Sambit K. Giri",
+      "Caroline S. Heneka",
+      "Nicholas Kern",
+      "Adrian Liu",
+      "Yashrajsinh Mahida",
+      "Suman Majumdar",
+      "Samit Kumar Pal",
+      "Shulei Ni",
+      "Yannic Pietschke",
+      "Davide Piras",
+      "Abinash Kumar Shaw",
+      "Hayato Shimabukuro",
+      "Ce Sui",
+      "Anshuman Tripathi",
+      "Xiaosheng Zhao"
+    ],
+    "section": "Methods and Techniques"
+  },
+  "Hota01": {
+    "title": "Citizen Science Research with the Square Kilometre Array Observatory (SKAO)",
+    "authors": [
+      "Ananda Hota",
+      "Pratik Dabhade",
+      "M. J. Hardcastle",
+      "Stephen Serjeant",
+      "C. Konar",
+      "Hugh Dickinson",
+      "Sabyasachi Pal",
+      "Sravani Vaddi",
+      "Sagar Sethi",
+      "Shubhrangshu Ghosh",
+      "Arundhati Purohit"
+    ],
+    "section": "Methods and Techniques"
+  }
+}

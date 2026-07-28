@@ -7,6 +7,8 @@ from pathlib import Path
 PDF_DIR = Path("pdfs")                              # Local PDFs folder
 ZOTERO_DIR = Path.home() / "Zotero" / "storage"    # Zotero attachment storage
 CHROMA_DIR = Path("chroma_db")                      # Persistent ChromaDB storage
+BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"   # AASKAII title/author lookup (see pdfs/build_bibliography.py)
+AASKAII_YEAR = 2026                                  # Publication year for all AASKAII chapters
 
 # All directories to scan during ingestion (edit freely).
 # Non-existent paths are silently skipped.

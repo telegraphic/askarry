@@ -16,6 +16,7 @@ import warnings
 import gradio as gr
 import ollama
 
+from rag.bibliography import format_citation, list_toc_entries, lookup_citation
 from rag.config import OLLAMA_MODEL, PDF_DIRS, TOP_K
 from rag.generation import stream_answer
 from rag.retrieval import retrieve, warmup
@@ -42,7 +43,9 @@ def _gradio_file_url(path: Path) -> str:
 def _source_links(source: str) -> str:
     """Render a Gradio-served HTTP link to the source file."""
     source_path = Path(source).expanduser()
-    label = escape(_display_source_name(source))
+
+    citation = lookup_citation(source)
+    label = escape(format_citation(citation)) if citation else escape(_display_source_name(source))
 
     try:
         resolved = source_path.resolve()
@@ -84,7 +87,44 @@ def _build_sources_markdown(chunks: list[dict]) -> str:
         excerpt = text[:400].strip() + ("…" if len(text) > 400 else "")
         parts.append(f"{header}\n\n> {excerpt}")
 
-    return "\n\n---\n\n".join(parts)
+    if not parts:
+        return ""
+    return "## Source Passages\n\n" + "\n\n---\n\n".join(parts)
+
+
+def _toc_entry_html(entry: dict) -> str:
+    """Render one Table of Contents entry as a new-tab link plus author list."""
+    link = _gradio_file_url(entry["path"].resolve())
+    title_html = escape(entry["title"])
+    authors_html = escape(", ".join(entry.get("authors", [])))
+    return (
+        f'<a href="{link}" target="_blank" rel="noopener noreferrer">{title_html}</a>'
+        f'<br><span style="opacity:0.75;">{authors_html}</span>'
+    )
+
+
+def _render_toc(search: str = "") -> str:
+    """Render the searchable Table of Contents, grouped by section."""
+    grouped = list_toc_entries()
+    query = (search or "").strip().lower()
+
+    sections_md = []
+    for section, entries in grouped.items():
+        if query:
+            entries = [
+                e for e in entries
+                if query in e["title"].lower()
+                or query in section.lower()
+                or any(query in author.lower() for author in e.get("authors", []))
+            ]
+            if not entries:
+                continue
+        items_md = "\n\n".join(f"- {_toc_entry_html(e)}" for e in entries)
+        sections_md.append(f"### {section}\n\n{items_md}")
+
+    if not sections_md:
+        return "_No matching papers._"
+    return "\n\n".join(sections_md)
 
 
 def _load_theme() -> gr.themes.ThemeClass:
@@ -174,36 +214,50 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
                 """
     )
 
-    with gr.Row(), gr.Column(scale=3):
-        query_box = gr.Textbox(
-            label="Your question",
-            placeholder="Tell me about SKA-Low subarrays.",
-            lines=2,
-        )
-        with gr.Row():
-            top_k_slider = gr.Slider(
-                minimum=1, maximum=10, value=TOP_K, step=1,
-                label="Chunks to retrieve",
+    with gr.Tabs():
+        with gr.Tab("Ask a Question"):
+            with gr.Row(), gr.Column(scale=3):
+                query_box = gr.Textbox(
+                    label="Your question",
+                    placeholder="Tell me about SKA-Low subarrays.",
+                    lines=2,
+                )
+                with gr.Row():
+                    top_k_slider = gr.Slider(
+                        minimum=1, maximum=10, value=TOP_K, step=1,
+                        label="Chunks to retrieve",
+                    )
+                    submit_btn = gr.Button("Ask", variant="primary", scale=0)
+
+            status_box = gr.Markdown(value="", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
+            answer_box = gr.Markdown(label="Answer", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
+
+            with gr.Accordion("Source passages", open=False):
+                sources_box = gr.Markdown(latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
+
+            # Wire up events
+            submit_btn.click(
+                answer_question,
+                inputs=[query_box, top_k_slider],
+                outputs=[status_box, answer_box, sources_box],
             )
-            submit_btn = gr.Button("Ask", variant="primary", scale=0)
+            query_box.submit(
+                answer_question,
+                inputs=[query_box, top_k_slider],
+                outputs=[status_box, answer_box, sources_box],
+            )
 
-    status_box = gr.Markdown(value="", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
-    answer_box = gr.Markdown(label="Answer", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
-
-    with gr.Accordion("Source passages", open=False):
-        sources_box = gr.Markdown(latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
-
-    # Wire up events
-    submit_btn.click(
-        answer_question,
-        inputs=[query_box, top_k_slider],
-        outputs=[status_box, answer_box, sources_box],
-    )
-    query_box.submit(
-        answer_question,
-        inputs=[query_box, top_k_slider],
-        outputs=[status_box, answer_box, sources_box],
-    )
+        with gr.Tab("Table of Contents"):
+            toc_search = gr.Textbox(
+                label="Search",
+                placeholder="Filter by title, author, or section…",
+            )
+            toc_display = gr.Markdown(
+                value=_render_toc(),
+                latex_delimiters=_LATEX_DELIMITERS,
+                sanitize_html=False,
+            )
+            toc_search.change(_render_toc, inputs=[toc_search], outputs=[toc_display])
 
 
 

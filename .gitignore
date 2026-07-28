@@ -13,3 +13,5 @@ chroma_db/
 pdfs/**
 !pdfs/download.py
 !pdfs/download_errors.txt
+!pdfs/build_bibliography.py
+!pdfs/bibliography.json
