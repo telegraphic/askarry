@@ -151,7 +151,7 @@ def _allowed_source_paths() -> list[str]:
     return paths
 
 
-def answer_question(query: str, top_k: int):
+def answer_question(query: str):
     """Retrieve relevant chunks then stream a grounded answer, yielding status updates."""
     query = query.strip()
     if not query:
@@ -161,7 +161,7 @@ def answer_question(query: str, top_k: int):
     yield "_🔍 Searching knowledge base…_", "", ""
 
     try:
-        chunks = retrieve(query, top_k=int(top_k))
+        chunks = retrieve(query, top_k=TOP_K)
     except RuntimeError as exc:
         yield "", f"**Error:** {exc}", ""
         return
@@ -207,8 +207,8 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
                 <div style="display:flex; align-items:center; gap:0.9rem; margin-bottom:0.75rem;">
                     <img src="{_gradio_file_url(Path('logo.png').resolve())}" alt="SKARRY logo" style="width:112px; height:112px; object-fit:contain; border-radius:12px;" />
                     <div>
-                        <h1 style="margin:0;">SKARRY - SKA RAG Documentation Search</h1>
-                        <p style="margin:0.35rem 0 0;">Ask questions about the SKA and find things in SKA documentation. Run <code>python ingest.py</code> first to index your PDFs.</p>
+                        <h1 style="margin:0;">ASKARRY - Advancing Astrophysics with the SKA II RAG search</h1>
+                        <p style="margin:0.35rem 0 0;">Ask questions about SKA science. Run <code>python ingest.py</code> first to index your PDFs.</p>
                     </div>
                 </div>
                 """
@@ -219,15 +219,10 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
             with gr.Row(), gr.Column(scale=3):
                 query_box = gr.Textbox(
                     label="Your question",
-                    placeholder="Tell me about SKA-Low subarrays.",
+                    placeholder="What can SKA tell us about magnetic fields?",
                     lines=2,
                 )
-                with gr.Row():
-                    top_k_slider = gr.Slider(
-                        minimum=1, maximum=10, value=TOP_K, step=1,
-                        label="Chunks to retrieve",
-                    )
-                    submit_btn = gr.Button("Ask", variant="primary", scale=0)
+                submit_btn = gr.Button("Ask", variant="primary")
 
             status_box = gr.Markdown(value="", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
             answer_box = gr.Markdown(label="Answer", latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False)
@@ -238,12 +233,12 @@ with gr.Blocks(title="SKArry: SKA RAG documentation search") as demo:
             # Wire up events
             submit_btn.click(
                 answer_question,
-                inputs=[query_box, top_k_slider],
+                inputs=[query_box],
                 outputs=[status_box, answer_box, sources_box],
             )
             query_box.submit(
                 answer_question,
-                inputs=[query_box, top_k_slider],
+                inputs=[query_box],
                 outputs=[status_box, answer_box, sources_box],
             )
 
