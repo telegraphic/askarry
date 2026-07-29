@@ -12,10 +12,12 @@ Steps:
 from __future__ import annotations
 
 import logging
+import re
 import shutil
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
+import chromadb
 from docling.chunking import HybridChunker
 from docling.document_converter import DocumentConverter
 from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTokenizer
@@ -210,3 +212,199 @@ def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[st
         results[source] = len(texts)
 
     return results
+
+
+# ---------------------------------------------------------------------------
+# Acronym discovery
+# ---------------------------------------------------------------------------
+# The heading-based tagging above (chunk_type="acronyms") only catches
+# dedicated glossary/acronym-table sections, which most journal-article PDFs
+# simply don't have. In practice, scientific writing instead defines an
+# acronym inline on first use — e.g. "the Central Signal Processor (CSP)" or
+# "Field of View (FoV)". This scans every indexed chunk for that pattern to
+# build a candidate list for a human to review and copy into
+# config.SEED_ACRONYMS — it is not wired into retrieval automatically since
+# the heuristic isn't perfect (ambiguous/ wrong expansions are possible).
+
+# Matches "<1-6 preceding words> (CANDIDATE)" e.g. "Central Signal Processor (CSP)"
+_INLINE_ACRONYM_RE = re.compile(r"((?:[A-Za-z][\w\-]*\s+){1,6})\(([A-Za-z][A-Za-z0-9\-]{1,9})\)")
+
+
+def _split_words(phrase: str) -> list[str]:
+    """Split an expansion phrase into initial-bearing words, treating both
+    whitespace *and* hyphens as boundaries.
+
+    Scientific writing routinely hyphenates compound expansions — e.g.
+    "Gamma-Ray Burst (GRB)" — but `str.split()` alone would only see 2 tokens
+    ("Gamma-Ray", "Burst") for a 3-letter acronym, so the initials-matching in
+    `_acronym_expansion` below could never line up and the whole definition
+    was silently dropped. Splitting on hyphens too yields 3 tokens (Gamma,
+    Ray, Burst) that correctly match "GRB".
+    """
+    return [w for w in re.split(r"[\s\-]+", phrase.strip()) if w]
+
+
+def _acronym_expansion(words: list[str], acronym: str) -> str | None:
+    """Return the expansion phrase if the last len(acronym) words' initials
+    spell out *acronym* (case-insensitively), else None."""
+    n = len(acronym)
+    if len(words) < n:
+        return None
+    window = words[-n:]
+    initials = "".join(w[0] for w in window)
+    if initials.lower() == acronym.lower():
+        return " ".join(window)
+    return None
+
+
+def _strip_plural(acronym: str) -> str:
+    """Normalize an inline-plural acronym like "GRBs" or "PTAs" back to its
+    base form ("GRB", "PTA").
+
+    Papers routinely pluralize acronyms in running text ("...several GRBs
+    were observed..."). Without this, "GRBs" would (a) be treated as a
+    4-letter acronym distinct from "GRB" and (b) fail `_acronym_expansion`
+    outright, since the trailing lowercase "s" has no corresponding word in
+    the expansion phrase — the definition was silently dropped instead of
+    counting towards "GRB". Only strips a trailing lowercase "s" following an
+    otherwise all-uppercase acronym, so genuine acronyms that happen to end
+    in a capital S (e.g. "SDSS") are left untouched.
+    """
+    if len(acronym) > 2 and acronym[-1] == "s" and acronym[:-1].isupper():
+        return acronym[:-1]
+    return acronym
+
+
+def _normalize_expansion(expansion: str) -> str:
+    """Canonical form of an expansion phrase, used to decide whether two
+    differently-worded phrases mean the same thing so their occurrence counts
+    should be merged.
+
+    Case, hyphen-vs-space, and simple plural/singular differences are
+    ignored — e.g. "Gamma Ray Bursts", "Gamma-Ray Burst" and "gamma-ray
+    burst" all normalize to "gamma ray burst", and "equations of state" /
+    "equation of state" both normalize to "equation of state". Genuinely
+    different meanings (e.g. "dispersion measure" vs "dark matter") still
+    normalize differently, so they are *not* merged — see
+    `find_acronym_candidates`.
+    """
+    words = re.split(r"[\s\-]+", expansion.lower().strip())
+    singularized = []
+    for word in words:
+        if len(word) > 3 and word.endswith("s") and not word.endswith("ss"):
+            word = word[:-1]
+        singularized.append(word)
+    return " ".join(w for w in singularized if w)
+
+
+# ---------------------------------------------------------------------------
+# Acronym categorization
+# ---------------------------------------------------------------------------
+# Best-effort keyword classifier so the Acronyms UI tab can group/filter
+# entries (e.g. "Telescopes & Facilities" vs "Science & Astrophysics").
+# Categories are checked in order and the first keyword match wins, so more
+# specific categories are listed first — e.g. "Convolutional Neural Network"
+# must be caught by the "neural network" keyword before the generic
+# "network" keyword (meant for telescope/VLBI networks) gets a chance.
+CATEGORY_SCIENCE = "Science & Astrophysics"
+_ACRONYM_CATEGORY_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
+    ("Methods & Software", (
+        "algorithm", "neural network", "machine learning", "deep learning",
+        "learning", "regression", "estimator", "analysis", "technique",
+        "transform", "simulation", "processing", "pipeline", "software",
+        "code", "criterion", "classifier", "clustering",
+    )),
+    ("Organizations & Programs", (
+        "university", "institute", "council", "foundation", "agency",
+        "school", "center", "centre", "consortium", "programme", "program",
+    )),
+    ("Instruments & Hardware", (
+        "processor", "converter", "receiver", "amplifier", "detector",
+        "camera", "instrument", "polarimeter", "spectrometer", "correlator",
+        "antenna", "feed", "field-programmable", "gate array",
+    )),
+    ("Telescopes & Facilities", (
+        "telescope", "array", "observatory", "interferometer",
+        "interferometry", "network", "dish",
+    )),
+]
+# Exposed for UI category filters — includes the CATEGORY_SCIENCE fallback,
+# which in practice is the largest bucket (astrophysical objects/phenomena
+# rarely share a consistent keyword to match on).
+ACRONYM_CATEGORIES: list[str] = [c for c, _ in _ACRONYM_CATEGORY_KEYWORDS] + [CATEGORY_SCIENCE]
+
+
+def classify_acronym(expansion: str) -> str:
+    """Best-effort category for an acronym based on keywords found in its
+    expansion text. This is a heuristic aid for browsing/filtering, not an
+    authoritative taxonomy — falls back to CATEGORY_SCIENCE."""
+    text = expansion.lower()
+    for category, keywords in _ACRONYM_CATEGORY_KEYWORDS:
+        if any(keyword in text for keyword in keywords):
+            return category
+    return CATEGORY_SCIENCE
+
+
+def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
+    """Scan every indexed chunk for inline acronym definitions.
+
+    Returns {KEY: {"expansions": {text: count}, "sources": [absolute source
+    paths], "category": str}}, sorted by nothing in particular — callers
+    should rank by count. Sources are full paths (as stored in chunk
+    metadata) rather than bare filenames so callers can build file links /
+    bibliography lookups without re-resolving relative paths; derive a
+    display name at render time. `category` is assigned via
+    `classify_acronym()` from the most common expansion seen. Intended for
+    manual review (e.g. via `python ingest.py --list-acronyms`) or the
+    Acronyms UI tab, not for silently feeding retrieval.
+
+    Different phrasings of the *same* meaning are merged so their counts add
+    up — e.g. "Gamma Ray Burst", "Gamma-Ray Bursts" and "gamma-ray burst" all
+    count towards one "GRB" entry (see `_normalize_expansion`), and plurals
+    like "GRBs" are folded into "GRB" (see `_strip_plural`). Conversely, when
+    the same letters have genuinely different meanings in the corpus (e.g.
+    "DM" = Dispersion Measure vs. "DM" = Dark Matter), each meaning is kept
+    as its *own* entry — key `"DM (Dispersion Measure)"`,
+    `"DM (Dark Matter)"` — with its own separate occurrence/paper counts,
+    instead of being silently summed together into one misleading total.
+    """
+    # acronym -> normalized expansion -> {"counts": {raw text: count}, "sources": {..}}
+    raw: dict[str, dict[str, dict]] = {}
+    all_results = collection.get(include=["documents", "metadatas"])
+
+    for text, meta in zip(all_results["documents"], all_results["metadatas"] or []):
+        for match in _INLINE_ACRONYM_RE.finditer(text):
+            phrase, raw_acronym = match.group(1), match.group(2)
+            # Require a plausible acronym: mostly uppercase, e.g. reject "(shown)"
+            if sum(1 for c in raw_acronym if c.isupper()) < len(raw_acronym) - 1:
+                continue
+            acronym = _strip_plural(raw_acronym)
+            words = _split_words(phrase)
+            expansion = _acronym_expansion(words, acronym)
+            if expansion is None:
+                continue
+
+            key = acronym.upper()
+            norm = _normalize_expansion(expansion)
+            bucket = raw.setdefault(key, {}).setdefault(
+                norm, {"counts": {}, "sources": set()}
+            )
+            bucket["counts"][expansion] = bucket["counts"].get(expansion, 0) + 1
+            bucket["sources"].add(meta["source"])
+
+    candidates: dict[str, dict] = {}
+    for acronym, senses in raw.items():
+        ranked_senses = sorted(
+            senses.values(), key=lambda bucket: -sum(bucket["counts"].values())
+        )
+        disambiguate = len(ranked_senses) > 1
+        for bucket in ranked_senses:
+            best_expansion = max(bucket["counts"], key=bucket["counts"].get)
+            display_key = f"{acronym} ({best_expansion})" if disambiguate else acronym
+            candidates[display_key] = {
+                "expansions": bucket["counts"],
+                "sources": sorted(bucket["sources"]),
+                "category": classify_acronym(best_expansion),
+            }
+
+    return candidates

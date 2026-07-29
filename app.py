@@ -20,6 +20,7 @@ import gradio as gr
 import ollama
 from loguru import logger
 
+from rag import store
 from rag.bibliography import format_citation, list_toc_entries, lookup_citation
 from rag.citations import build_uncited_note, linkify_citations
 from rag.config import (
@@ -31,6 +32,7 @@ from rag.config import (
     TOP_K,
 )
 from rag.generation import stream_answer
+from rag.ingestion import ACRONYM_CATEGORIES, find_acronym_candidates
 from rag.retrieval import retrieve, warmup
 
 # ---------------------------------------------------------------------------
@@ -184,6 +186,95 @@ def _render_toc(search: str = "") -> str:
     )
     content_html = '<div class="min-w-0 flex-1">' + "".join(sections_html) + "</div>"
     return f'<div class="flex items-start gap-7">{nav_html}{content_html}</div>'
+
+
+# ---------------------------------------------------------------------------
+# Acronyms tab
+# ---------------------------------------------------------------------------
+# Candidate acronyms are discovered by scanning every indexed chunk for
+# inline definitions (e.g. "Central Signal Processor (CSP)") — see
+# rag.ingestion.find_acronym_candidates. Rebuilding that scan is a bit slow
+# (regex over the full corpus text) so it's cached and only rebuilt when the
+# ChromaDB collection's chunk count changes, same pattern as the BM25/
+# retrieval acronym caches in rag/retrieval.py.
+_acronym_cache = store.CountCache()
+
+_ACRONYM_SORT_CHOICES = ["Most frequent", "Most papers", "Alphabetical"]
+_ACRONYM_CATEGORY_CHOICES = ["All categories", *ACRONYM_CATEGORIES]
+
+
+def _get_acronym_candidates() -> dict[str, dict]:
+    collection = store.get_chroma_collection()
+    return _acronym_cache.get(collection, lambda: find_acronym_candidates(collection))
+
+
+def _build_acronym_rows(search: str, sort_by: str, category: str) -> list[list]:
+    """Build the row data for the Acronyms tab Dataframe: [Acronym,
+    Category, Expansion, Occurrences, Papers], filtered by *search*/
+    *category* and ordered by *sort_by*. The acronym is kept in column 0 so a
+    row-select event (`evt.row_value[0]`) can identify which entry was
+    clicked without extra bookkeeping state."""
+    candidates = _get_acronym_candidates()
+    query = (search or "").strip().lower()
+
+    rows = []
+    for acronym, entry in candidates.items():
+        if category != "All categories" and entry["category"] != category:
+            continue
+        if query and query not in acronym.lower() and not any(
+            query in expansion.lower() for expansion in entry["expansions"]
+        ):
+            continue
+        best_expansion = max(entry["expansions"], key=entry["expansions"].get)
+        count = sum(entry["expansions"].values())
+        rows.append([acronym, entry["category"], best_expansion, count, len(entry["sources"])])
+
+    if sort_by == "Alphabetical":
+        rows.sort(key=lambda row: row[0])
+    elif sort_by == "Most papers":
+        rows.sort(key=lambda row: (-row[4], -row[3]))
+    else:  # "Most frequent"
+        rows.sort(key=lambda row: (-row[3], row[0]))
+
+    return rows
+
+
+def _build_acronym_modal_html(acronym: str) -> str:
+    """Render the modal shown when an acronym row is clicked: every distinct
+    expansion seen (in case of ambiguity, e.g. DM = dark matter vs.
+    dispersion measure) plus a linked list of the papers that use it."""
+    entry = _get_acronym_candidates().get(acronym)
+    if entry is None:
+        return f"### {escape(acronym)}\n\n_No details available._"
+
+    expansions_by_count = sorted(entry["expansions"].items(), key=lambda kv: -kv[1])
+    best_expansion, _ = expansions_by_count[0]
+    total = sum(entry["expansions"].values())
+
+    lines = [
+        f"### {escape(acronym)} — {escape(best_expansion)}",
+        f"**Category:** {escape(entry['category'])}",
+    ]
+    if len(expansions_by_count) > 1:
+        others = ", ".join(escape(text) for text, _ in expansions_by_count[1:])
+        lines.append(f"_Also seen as: {others}_")
+
+    lines.append(f"\n**{total} occurrence(s) across {len(entry['sources'])} paper(s):**\n")
+    for source in sorted(entry["sources"], key=_display_source_name):
+        lines.append(f"- {_source_links(source)}")
+
+    return "\n".join(lines)
+
+
+def _refresh_acronym_table(search: str, sort_by: str, category: str) -> list[list]:
+    return _build_acronym_rows(search, sort_by, category)
+
+
+def _on_acronym_row_select(evt: gr.SelectData):
+    row = evt.row_value
+    if not row:
+        return gr.update(visible=False), ""
+    return gr.update(visible=True), _build_acronym_modal_html(row[0])
 
 
 def _load_theme() -> gr.themes.ThemeClass:
@@ -363,85 +454,9 @@ _LATEX_DELIMITERS = [
 # without hand-rolling one-off <style> tags or inline `style="..."` attributes.
 _TAILWIND_HEAD = '<script src="https://cdn.tailwindcss.com"></script>'
 
-# Global overrides: bump the base font size (the Gradio default reads small on
-# most displays) and give the source-passages accordion label more presence.
-_CUSTOM_CSS = """
-html {
-    scroll-behavior: smooth;
-}
-.gradio-container {
-    font-size: 17px !important;
-}
-.gradio-container .prose :where(p, li, blockquote) {
-    font-size: 1rem;
-    line-height: 1.65;
-}
-.gradio-container h1 { font-size: 2.1rem !important; }
-.gradio-container h2 { font-size: 1.6rem !important; }
-.gradio-container h3 { font-size: 1.3rem !important; }
-.gradio-container textarea,
-.gradio-container input[type='text'],
-.gradio-container button {
-    font-size: 1rem !important;
-}
-.source-passages-accordion > .label-wrap span {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-.citation-link {
-    font-weight: 600;
-    text-decoration: none;
-    scroll-margin-top: 1rem;
-}
-.citation-link:hover {
-    text-decoration: underline;
-}
-.citation-invalid {
-    color: #b45309;
-    border-bottom: 1px dotted currentColor;
-    cursor: help;
-}
-
-/* Custom progress bar (replaces Gradio's built-in gr.Progress entirely —
-see _progress_bar_html / _run_retrieve_with_progress in app.py). A rounded
-gradient pill with a moving shimmer, plus a live percentage/description
-label above the track. */
-.askarry-progress-wrap {
-    margin: 0.15rem 0 0.85rem;
-}
-.askarry-progress-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 0.85rem;
-    opacity: 0.75;
-    margin-bottom: 0.35rem;
-}
-.askarry-progress-pct {
-    font-variant-numeric: tabular-nums;
-    font-weight: 600;
-}
-.askarry-progress-track {
-    position: relative;
-    height: 10px;
-    border-radius: 999px;
-    background: rgba(127, 127, 127, 0.18);
-    overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-.askarry-progress-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
-    background-size: 200% 100%;
-    animation: askarry-progress-flow 1.6s linear infinite;
-    transition: width 0.25s ease-out;
-}
-@keyframes askarry-progress-flow {
-    0% { background-position: 0% 0; }
-    100% { background-position: -200% 0; }
-}
-"""
+# Custom styling (font sizing, citation links, progress bar, etc.) lives in
+# static/style.css and is loaded via `css_paths=` in demo.launch() below.
+_CUSTOM_CSS_PATH = Path(__file__).parent / "static" / "style.css"
 
 with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
     gr.Markdown(
@@ -496,7 +511,7 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                 show_progress="hidden",
             )
 
-        with gr.Tab("Table of Contents"):
+        with gr.Tab("Browse Chapters"):
             toc_search = gr.Textbox(
                 label="Search",
                 placeholder="Filter by title, author, or section…",
@@ -507,6 +522,74 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                 sanitize_html=False,
             )
             toc_search.change(_render_toc, inputs=[toc_search], outputs=[toc_display])
+
+        with gr.Tab("Acronyms"):
+            gr.Markdown(
+                "Acronyms discovered by scanning inline definitions across the "
+                "indexed papers (e.g. _\u201cCentral Signal Processor (CSP)\u201d_). "
+                "Click a row to see every paper that uses it."
+            )
+            with gr.Row():
+                acronym_search = gr.Textbox(
+                    label="Search",
+                    placeholder="Filter by acronym or expansion…",
+                    scale=3,
+                )
+                acronym_category = gr.Dropdown(
+                    choices=_ACRONYM_CATEGORY_CHOICES,
+                    value=_ACRONYM_CATEGORY_CHOICES[0],
+                    label="Category",
+                    scale=2,
+                )
+                acronym_sort = gr.Radio(
+                    choices=_ACRONYM_SORT_CHOICES,
+                    value=_ACRONYM_SORT_CHOICES[0],
+                    label="Sort by",
+                    scale=2,
+                )
+
+            acronym_table = gr.Dataframe(
+                headers=["Acronym", "Category", "Expansion", "Occurrences", "Papers"],
+                datatype=["str", "str", "str", "number", "number"],
+                value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0], _ACRONYM_CATEGORY_CHOICES[0]),
+                interactive=False,
+                wrap=True,
+            )
+
+            with gr.Column(visible=False, elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
+                 gr.Column(elem_classes=["askarry-modal-box"]):
+                acronym_modal_close = gr.Button(
+                    "✕ Close", size="sm", elem_classes=["askarry-modal-close"]
+                )
+                acronym_modal_content = gr.Markdown(
+                    latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False
+                )
+
+            acronym_search.change(
+                _refresh_acronym_table,
+                inputs=[acronym_search, acronym_sort, acronym_category],
+                outputs=[acronym_table],
+            )
+            acronym_sort.change(
+                _refresh_acronym_table,
+                inputs=[acronym_search, acronym_sort, acronym_category],
+                outputs=[acronym_table],
+            )
+            acronym_category.change(
+                _refresh_acronym_table,
+                inputs=[acronym_search, acronym_sort, acronym_category],
+                outputs=[acronym_table],
+            )
+            acronym_table.select(
+                _on_acronym_row_select,
+                outputs=[acronym_modal, acronym_modal_content],
+                show_progress="hidden",
+            )
+            acronym_modal_close.click(
+                lambda: gr.update(visible=False),
+                outputs=[acronym_modal],
+                show_progress="hidden",
+            )
 
 
 
@@ -519,6 +602,6 @@ if __name__ == "__main__":
     demo.launch(
         theme=_load_theme(),
         allowed_paths=_allowed_source_paths(),
-        css=_CUSTOM_CSS,
+        css_paths=_CUSTOM_CSS_PATH,
         head=_TAILWIND_HEAD,
     )

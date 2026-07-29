@@ -29,6 +29,7 @@ from .config import (
     OLLAMA_TOP_P,
     RERANKER_MODEL,
     RETRIEVAL_CANDIDATES,
+    SEED_ACRONYMS,
     TOP_K,
     USE_HYDE,
 )
@@ -75,16 +76,24 @@ def _get_acronyms(collection: chromadb.Collection) -> dict[str, str]:
             )
         except Exception:
             # ChromaDB raises if no metadata filter matches — that's fine
-            return acronyms
+            results = None
 
-        for text in results.get("documents") or []:
+        for text in (results or {}).get("documents") or []:
             for match in _ACRONYM_LINE_RE.finditer(text):
                 acronym = match.group(1).strip()
                 expansion = match.group(2).strip()
                 if acronym not in acronyms:   # first definition wins
                     acronyms[acronym] = expansion
 
-        logger.info(f"Loaded {len(acronyms)} acronyms from indexed documents.")
+        n_from_docs = len(acronyms)
+        for acronym, expansion in SEED_ACRONYMS.items():
+            acronyms.setdefault(acronym, expansion)   # documents win on conflicts
+
+        logger.info(
+            f"Loaded {len(acronyms)} acronyms "
+            f"({n_from_docs} from indexed documents, "
+            f"{len(acronyms) - n_from_docs} from seed list)."
+        )
         return acronyms
 
     return _acronyms_cache.get(collection, _build)

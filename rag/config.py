@@ -112,6 +112,60 @@ ACRONYM_HEADINGS: list[str] = [
     "definitions",
 ]
 
+# Curated fallback acronyms for the SKA/radio-astronomy domain. Most AASKAII
+# papers are journal articles with no dedicated glossary/acronym section, so
+# relying solely on ACRONYM_HEADINGS-tagged chunks (see rag/retrieval.py::
+# _get_acronyms) yields little to nothing. This seed list is merged in for
+# any acronym not already discovered in the indexed documents (documents win
+# on conflicts, since they're more likely to match the terminology actually
+# used in a given corpus).
+# Keys must be all-uppercase (letters/digits/-/.) to match the token regex
+# _expand_query uses to spot acronyms in a user's query — mixed-case forms
+# like "FoV" or plurals like "PTAs" would never be matched, so are omitted.
+SEED_ACRONYMS: dict[str, str] = {
+    "SKA": "Square Kilometre Array",
+    "SKAO": "SKA Observatory",
+    "AA0.5": "Array Assembly 0.5",
+    "AA1": "Array Assembly 1",
+    "AA2": "Array Assembly 2",
+    "AA4": "Array Assembly 4",
+    "CSP": "Central Signal Processor",
+    "SDP": "Science Data Processor",
+    "RFI": "Radio Frequency Interference",
+    "FOV": "Field of View",
+    "SNR": "Signal-to-Noise Ratio",
+    "HI": "Neutral Atomic Hydrogen",
+    "AGN": "Active Galactic Nucleus",
+    "FRB": "Fast Radio Burst",
+    "GW": "Gravitational Wave",
+    "CMB": "Cosmic Microwave Background",
+    "ISM": "Interstellar Medium",
+    "IGM": "Intergalactic Medium",
+    "PSR": "Pulsar",
+    "NS": "Neutron Star",
+    "BH": "Black Hole",
+    "QSO": "Quasi-Stellar Object (Quasar)",
+    "LOFAR": "Low-Frequency Array",
+    "VLBI": "Very Long Baseline Interferometry",
+    "EOR": "Epoch of Reionization",
+    "PTA": "Pulsar Timing Array",
+    "LISA": "Laser Interferometer Space Antenna",
+    "SED": "Spectral Energy Distribution",
+    "CME": "Coronal Mass Ejection",
+    "YSO": "Young Stellar Object",
+    "GMC": "Giant Molecular Cloud",
+    "WD": "White Dwarf",
+    "GRB": "Gamma-Ray Burst",
+    "DM": "Dispersion Measure",
+    "RM": "Rotation Measure",
+    "FFT": "Fast Fourier Transform",
+    "FPGA": "Field-Programmable Gate Array",
+    "ML": "Machine Learning",
+    "AI": "Artificial Intelligence",
+    "CNN": "Convolutional Neural Network",
+    "RNN": "Recurrent Neural Network",
+}
+
 # ---------------------------------------------------------------------------
 # ChromaDB collection name
 # ---------------------------------------------------------------------------
