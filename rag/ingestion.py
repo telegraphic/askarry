@@ -14,6 +14,7 @@ from __future__ import annotations
 import logging
 import re
 import shutil
+import unicodedata
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
@@ -275,26 +276,126 @@ def _strip_plural(acronym: str) -> str:
     return acronym
 
 
+def _strip_accents(text: str) -> str:
+    """Strip diacritics, e.g. "Farèse"/"Farésé" both -> "Farese". Accented
+    letters in transliterated names are frequently inconsistent (OCR
+    artifacts, author typos, different house styles) across papers, so
+    without this a single person's name could fragment an acronym like DEF
+    into multiple spurious "different" candidates."""
+    decomposed = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in decomposed if not unicodedata.combining(c))
+
+
+# Irregular Latin/Greek plurals that don't follow the regular "-s"/"-ies"
+# rules below (e.g. "nuclei" is not "nucleu" + s). Keyed by plural form.
+_IRREGULAR_PLURALS: dict[str, str] = {
+    "nuclei": "nucleus",
+    "radii": "radius",
+    "foci": "focus",
+    "axes": "axis",
+    "crises": "crisis",
+    "bases": "basis",
+    "analyses": "analysis",
+    "theses": "thesis",
+    "criteria": "criterion",
+    "phenomena": "phenomenon",
+}
+
+
+def _singularize(word: str) -> str:
+    """Fold a plural word to its singular form: irregular Latin/Greek
+    plurals ("nuclei" -> "nucleus") via `_IRREGULAR_PLURALS`, "-ies" -> "y"
+    ("galaxies" -> "galaxy", "assemblies" -> "assembly", "instabilities" ->
+    "instability", "energies" -> "energy"), and the regular trailing "s"
+    ("bursts" -> "burst"). Words ending in "-us"/"-is" (nucleus, radius,
+    axis, analysis, ...) are excluded from the regular "-s" rule since
+    they're already singular despite ending in a literal "s".
+    """
+    if word in _IRREGULAR_PLURALS:
+        return _IRREGULAR_PLURALS[word]
+    if len(word) > 4 and word.endswith("ies"):
+        return word[:-3] + "y"
+    if (
+        len(word) > 3
+        and word.endswith("s")
+        and not word.endswith("ss")
+        and not word.endswith("us")
+        and not word.endswith("is")
+    ):
+        return word[:-1]
+    return word
+
+
 def _normalize_expansion(expansion: str) -> str:
     """Canonical form of an expansion phrase, used to decide whether two
     differently-worded phrases mean the same thing so their occurrence counts
     should be merged.
 
-    Case, hyphen-vs-space, and simple plural/singular differences are
-    ignored — e.g. "Gamma Ray Bursts", "Gamma-Ray Burst" and "gamma-ray
-    burst" all normalize to "gamma ray burst", and "equations of state" /
-    "equation of state" both normalize to "equation of state". Genuinely
-    different meanings (e.g. "dispersion measure" vs "dark matter") still
-    normalize differently, so they are *not* merged — see
-    `find_acronym_candidates`.
+    Accents, case, hyphen-vs-space, British/American spelling, plural/
+    singular (including irregular Latin/Greek plurals), "-ment" nominalization,
+    and "-ic" adjective-vs-noun differences are all ignored — e.g. "Gamma Ray
+    Bursts", "Gamma-Ray Burst" and "gamma-ray burst" all normalize to "gamma
+    ray burst"; "equations of state" / "equation of state" both normalize to
+    "equation of state"; "Square Kilometre Array" / "Square Kilometer Array"
+    both normalize to "square kilometer array" (see `_normalize_spelling`);
+    "active galactic nuclei" / "active galactic nucleus" both normalize to
+    "active galactic nucleus"; "rotation measurement" normalizes towards
+    "rotation measure"; and "Baryonic Acoustic Oscillations" / "Baryon
+    Acoustic Oscillation" both normalize to "baryon acoust oscillation".
+    Genuinely different meanings (e.g. "dispersion measure" vs "dark
+    matter") still normalize differently, so they are *not* merged here —
+    see `find_acronym_candidates` / `_senses_are_same` for the further
+    single-word-swap clustering pass (e.g. EIRP's "effective"/"equivalent",
+    ATCA's "Australia"/"Australian", CTA's "Cerenkov"/"Cherenkov").
     """
-    words = re.split(r"[\s\-]+", expansion.lower().strip())
-    singularized = []
+    words = re.split(r"[\s\-]+", _strip_accents(expansion).lower().strip())
+    normalized = []
     for word in words:
-        if len(word) > 3 and word.endswith("s") and not word.endswith("ss"):
-            word = word[:-1]
-        singularized.append(word)
-    return " ".join(w for w in singularized if w)
+        word = _normalize_spelling(word)
+        word = _singularize(word)
+        if len(word) > 5 and word.endswith("ment"):
+            word = word[:-4]
+        if len(word) > 5 and word.endswith("ic"):
+            word = word[:-2]
+        normalized.append(word)
+    return " ".join(w for w in normalized if w)
+
+
+# British → American spelling variants seen in scientific writing (e.g.
+# "kilometre" vs "kilometer", "polarised" vs "polarized"). Suffixes, so they
+# also match compounds like "kilometre"/"centimetre". Ordered longest-first
+# so e.g. "isation" is matched before the shorter "ise" would otherwise
+# apply to the wrong part of the word.
+_SPELLING_SUFFIXES: tuple[tuple[str, str], ...] = (
+    ("behaviour", "behavior"),
+    ("neighbour", "neighbor"),
+    ("isation", "ization"),
+    ("flavour", "flavor"),
+    ("colour", "color"),
+    ("centre", "center"),
+    ("metre", "meter"),
+    ("litre", "liter"),
+    ("ising", "izing"),
+    ("ised", "ized"),
+    ("ogue", "og"),
+    ("ise", "ize"),
+)
+
+
+def _normalize_spelling(word: str) -> str:
+    """Fold a British spelling suffix to its American form, e.g. "kilometre"
+    -> "kilometer", "organised" -> "organized". Requires either an exact
+    match (root_len == 0, e.g. "colour" -> "color") or at least 3 leading
+    characters before the suffix (root_len >= 3) so short unrelated words
+    that merely end the same way — "wise", "rise", "noise" — aren't
+    mis-transformed."""
+    for british, american in _SPELLING_SUFFIXES:
+        if not word.endswith(british):
+            continue
+        root_len = len(word) - len(british)
+        if root_len == 0 or root_len >= 3:
+            return word[:root_len] + american
+    return word
 
 
 # ---------------------------------------------------------------------------
@@ -345,6 +446,77 @@ def classify_acronym(expansion: str) -> str:
     return CATEGORY_SCIENCE
 
 
+def _senses_are_same(norm_a: str, norm_b: str) -> bool:
+    """Decide whether two *already word-normalized* expansions for the same
+    acronym letters are the same underlying meaning, expressed with one
+    word swapped for a near-synonym/alternate term/typo, rather than a
+    genuinely different meaning.
+
+    Requires the same word count with at most one differing position, e.g.:
+      - "effective isotropic radiated power" vs "equivalent isotropic
+        radiated power" (EIRP — both terms are used interchangeably)
+      - "expanded owens valley solar array" vs "extended owens valley solar
+        array" (EOVSA)
+      - "laser interferometer space antenna" vs "laser interferometry space
+        antenna" (LISA)
+      - "cerenkov telescope array" vs "cherenkov telescope array" (CTA —
+        alternate transliteration)
+      - "australia telescope compact array" vs "australian telescope
+        compact aarray" (ATCA — demonym variant *and* a typo, still just one
+        differing word each pairwise)
+      - "global navigation satellite system" vs "global navigation satellite
+        signal" (GNSS); "gigahertz peaked spectrum" vs "ghz peaked spectrum"
+        (GPS)
+
+    Genuinely different meanings sharing an acronym (e.g. DM = "dispersion
+    measure" vs "dark matter", or GPS = the above vs "global positioning
+    system") differ in *every* word position, so they are correctly kept
+    separate — this is deliberately conservative (single-word-swap only) to
+    avoid merging unrelated concepts that merely share a couple of words.
+    """
+    words_a, words_b = norm_a.split(), norm_b.split()
+    if not words_a or len(words_a) != len(words_b):
+        return False
+    diff = sum(1 for a, b in zip(words_a, words_b) if a != b)
+    return diff <= 1
+
+
+def _cluster_senses(senses: dict[str, dict]) -> list[dict]:
+    """Merge normalized-expansion buckets (see `find_acronym_candidates`)
+    that `_senses_are_same()` considers the same underlying meaning, summing
+    their raw-text occurrence counts and sources together.
+
+    A new normalized form joins the first existing cluster where it matches
+    *any* previously-clustered member (not just that cluster's original
+    representative), so transitive chains merge correctly — e.g. for ATCA,
+    "Australian Telescope Compact Array" merges into "Australia Telescope
+    Compact Array" (demonym swap), and "Australian Telescope Compact Aarray"
+    (typo) then merges too because it's a one-word swap *from the
+    "Australian ..." member*, even though it differs from the original
+    "Australia ..." representative in two words at once.
+    """
+    clustered: list[dict] = []
+    for norm, bucket in senses.items():
+        target = next(
+            (c for c in clustered if any(_senses_are_same(norm, m) for m in c["norms"])),
+            None,
+        )
+        if target is None:
+            clustered.append(
+                {
+                    "norms": [norm],
+                    "counts": dict(bucket["counts"]),
+                    "sources": set(bucket["sources"]),
+                }
+            )
+        else:
+            target["norms"].append(norm)
+            for raw_text, n in bucket["counts"].items():
+                target["counts"][raw_text] = target["counts"].get(raw_text, 0) + n
+            target["sources"] |= bucket["sources"]
+    return clustered
+
+
 def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
     """Scan every indexed chunk for inline acronym definitions.
 
@@ -361,10 +533,15 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
     Different phrasings of the *same* meaning are merged so their counts add
     up — e.g. "Gamma Ray Burst", "Gamma-Ray Bursts" and "gamma-ray burst" all
     count towards one "GRB" entry (see `_normalize_expansion`), and plurals
-    like "GRBs" are folded into "GRB" (see `_strip_plural`). Conversely, when
-    the same letters have genuinely different meanings in the corpus (e.g.
-    "DM" = Dispersion Measure vs. "DM" = Dark Matter), each meaning is kept
-    as its *own* entry — key `"DM (Dispersion Measure)"`,
+    like "GRBs" are folded into "GRB" (see `_strip_plural`). A further
+    clustering pass (see `_senses_are_same`) merges expansions that differ by
+    only one swapped word — near-synonyms, alternate transliterations, or
+    typos — e.g. EIRP's "effective"/"equivalent", ATCA's
+    "Australia"/"Australian" (plus a stray "Aarray" typo), CTA's
+    "Cerenkov"/"Cherenkov". Conversely, when the same letters have genuinely
+    different meanings in the corpus (e.g. "DM" = Dispersion Measure vs.
+    "DM" = Dark Matter — different in *every* word, not just one), each
+    meaning is kept as its *own* entry — key `"DM (Dispersion Measure)"`,
     `"DM (Dark Matter)"` — with its own separate occurrence/paper counts,
     instead of being silently summed together into one misleading total.
     """
@@ -395,7 +572,7 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
     candidates: dict[str, dict] = {}
     for acronym, senses in raw.items():
         ranked_senses = sorted(
-            senses.values(), key=lambda bucket: -sum(bucket["counts"].values())
+            _cluster_senses(senses), key=lambda bucket: -sum(bucket["counts"].values())
         )
         disambiguate = len(ranked_senses) > 1
         for bucket in ranked_senses:

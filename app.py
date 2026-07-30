@@ -144,7 +144,7 @@ def _render_toc(search: str = "") -> str:
     Tailwind utility classes (loaded via the CDN script injected into
     <head>) rather than a hand-rolled <style> block."""
     grouped = list_toc_entries()
-    query = (search or "").strip().lower()
+    query = (search or "").strip().casefold()
 
     nav_links = []
     sections_html = []
@@ -152,9 +152,9 @@ def _render_toc(search: str = "") -> str:
         if query:
             entries = [
                 e for e in entries
-                if query in e["title"].lower()
-                or query in section.lower()
-                or any(query in author.lower() for author in e.get("authors", []))
+                if query in e["title"].casefold()
+                or query in section.casefold()
+                or any(query in author.casefold() for author in e.get("authors", []))
             ]
             if not entries:
                 continue
@@ -215,14 +215,14 @@ def _build_acronym_rows(search: str, sort_by: str, category: str) -> list[list]:
     row-select event (`evt.row_value[0]`) can identify which entry was
     clicked without extra bookkeeping state."""
     candidates = _get_acronym_candidates()
-    query = (search or "").strip().lower()
+    query = (search or "").strip().casefold()
 
     rows = []
     for acronym, entry in candidates.items():
         if category != "All categories" and entry["category"] != category:
             continue
-        if query and query not in acronym.lower() and not any(
-            query in expansion.lower() for expansion in entry["expansions"]
+        if query and query not in acronym.casefold() and not any(
+            query in expansion.casefold() for expansion in entry["expansions"]
         ):
             continue
         best_expansion = max(entry["expansions"], key=entry["expansions"].get)
@@ -554,6 +554,7 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                 value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0], _ACRONYM_CATEGORY_CHOICES[0]),
                 interactive=False,
                 wrap=True,
+                column_widths=["15%", "20%", "40%", "14%", "11%"],
             )
 
             with gr.Column(visible=False, elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
