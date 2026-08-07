@@ -10,7 +10,7 @@ All computation runs on-device (so it does not transfer data to the cloud).
 
 ## Demo
 
-<video src="docs/askarry-screengrab.mp4" controls width="100%"></video>
+<video src="https://github.com/user-attachments/assets/8d68da0e-47ca-4c52-a8a9-8dca620dd92a" controls width="100%"></video>
 
 | Component | Technology |
 |-----------|------------|
