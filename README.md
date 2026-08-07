@@ -1,12 +1,13 @@
-# SKARRY — SKA RAG Documentation Search
+# ASKARRY — SKA RAG Documentation Search
 
-SKARRY is a local Retrieval-Augmented Generation (RAG) system designed to answer questions from the openly-accessible Advancing Astrophysics with the SKA II book. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
+ASKARRY is a learning prototype of a Retrieval-Augmented Generation (RAG) system designed to answer questions from the openly-accessible [Advancing Astrophysics with the SKA II](https://www.skao.int/en/science-users/aaskaii) book. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
+
 The workflow has two major phases:
 
 1) Ingestion (run once when documents are added)
 2) Querying (run every time a user asks a question)
 
-All computation runs on-device (so it does not transfer data to the cloud).
+All computation runs on-device (it does not transfer data to the cloud), which requires running an LLM via [Ollama](https://ollama.com). Note this is a personal learning prototype / experiment that comes with no support or maintenance.
 
 ## Demo
 
