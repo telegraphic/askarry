@@ -8,6 +8,10 @@ The workflow has two major phases:
 
 All computation runs on-device (so it does not transfer data to the cloud).
 
+## Demo
+
+<video src="docs/askarry-screengrab.mp4" controls width="100%"></video>
+
 | Component | Technology |
 |-----------|------------|
 | PDF parsing & chunking | [docling](https://github.com/DS4SD/docling) + `HybridChunker` |
