@@ -1,6 +1,6 @@
 # SKARRY — SKA RAG Documentation Search
 
-SKARRY is a local Retrieval-Augmented Generation (RAG) system designed to answer questions from SKA documentation and astronomy PDFs. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
+SKARRY is a local Retrieval-Augmented Generation (RAG) system designed to answer questions from the openly-accessible Advancing Astrophysics with the SKA II book. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
 The workflow has two major phases:
 
 1) Ingestion (run once when documents are added)
