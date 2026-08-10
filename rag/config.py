@@ -1,12 +1,17 @@
 import os
 from pathlib import Path
 
+# Root of the repository — one level up from this file (rag/config.py).
+# All path constants are anchored here so the package works regardless of
+# the working directory from which scripts or the MCP server are launched.
+HERE = Path(__file__).resolve().parent.parent
+
 # ---------------------------------------------------------------------------
 # Directories
 # ---------------------------------------------------------------------------
-PDF_DIR = Path("pdfs")                              # Local PDFs folder
-CHROMA_DIR = Path("chroma_db")                      # Persistent ChromaDB storage
-BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"   # AASKAII title/author lookup (see pdfs/build_bibliography.py)
+PDF_DIR = HERE / "pdfs"                              # Local PDFs folder
+CHROMA_DIR = HERE / "chroma_db"                      # Persistent ChromaDB storage
+BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"    # AASKAII title/author lookup (see pdfs/build_bibliography.py)
 AASKAII_YEAR = 2026                                  # Publication year for all AASKAII chapters
 
 # All directories to scan during ingestion (edit freely).
