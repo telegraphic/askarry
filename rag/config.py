@@ -68,8 +68,15 @@ OLLAMA_TOP_K = 64
 # ---------------------------------------------------------------------------
 # Retrieval
 # ---------------------------------------------------------------------------
-TOP_K = 5                  # Final chunks passed to the LLM
+TOP_K = 5                  # Final chunks passed to the LLM (Gradio UI / local model)
 RETRIEVAL_CANDIDATES = 20  # Broad first-stage fetch (per method) before fusion & re-ranking
+
+# MCP / frontier-LLM overrides — used by mcp_server.py instead of the UI defaults
+# above. Frontier models (Claude, GPT-4 etc.) have large context windows and can
+# synthesise many more passages than a local model; the wider candidate pool keeps
+# the reranker funnel meaningful when top_k is 20.
+MCP_TOP_K = 20
+MCP_RETRIEVAL_CANDIDATES = 50
 # Cross-encoder relevance (sigmoid of the reranker logit, 0-1) below which the
 # top retrieved chunk is considered a weak match. Used to warn the user in the
 # UI and to nudge the LLM to hedge rather than confidently answer from
@@ -99,6 +106,12 @@ BM25_WEIGHT = 0.5
 # is then embedded instead of (or alongside) the raw question.  Improves
 # recall for highly technical queries at the cost of one fast Ollama call.
 USE_HYDE = False
+
+# --- Context expansion ---
+# Number of neighbouring chunks fetched on each side of a matched chunk and
+# joined into the passage returned to the LLM. 1 = ±1 (three raw chunks total).
+# The MCP server passes expansion_window=2 to give frontier models wider context.
+CONTEXT_EXPANSION_WINDOW = 1
 
 # --- Acronym expansion ---
 # Headings (case-insensitive substring match) that signal an acronym/glossary

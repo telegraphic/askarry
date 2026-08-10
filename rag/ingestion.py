@@ -25,6 +25,7 @@ from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTok
 from loguru import logger
 
 from . import store
+from .bibliography import format_citation, lookup_citation
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
@@ -98,10 +99,12 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
             page_no = item.prov[0].page_no
             break
 
-    # Section heading: outermost heading above this chunk
+    # Section heading hierarchy: outermost → innermost (e.g. ["Methods", "2.3 DSP"])
     heading = ""
+    section_path = ""
     if meta.headings:
-        heading = meta.headings[0]
+        heading = meta.headings[0]           # outermost heading (kept for back-compat)
+        section_path = " > ".join(meta.headings)  # full path for richer MCP output
 
     # Caption (for figures/tables)
     caption = ""
@@ -121,8 +124,13 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
         "chunk_index": index,
         "page_no": page_no,
         "heading": heading,
+        "section_path": section_path,
         "caption": caption,
         "chunk_type": chunk_type,
+        # doc_title is injected later in the main process (ingest_files) once
+        # the bibliography is available; set a placeholder here so the shape is
+        # consistent for any caller that directly invokes _chunk_metadata.
+        "doc_title": "",
     }
 
 
@@ -200,6 +208,15 @@ def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[st
     results: dict[str, int] = {}
     for source, texts, metadatas in parsed:
         name = Path(source).name
+
+        # Enrich each chunk with a human-readable document title. The bibliography
+        # lookup is fast (cached JSON) and happens here in the main process so
+        # worker processes don't need the bibliography module loaded.
+        bib_entry = lookup_citation(source)
+        doc_title = bib_entry["title"] if bib_entry else Path(source).stem
+        for meta in metadatas:
+            meta["doc_title"] = doc_title
+
         logger.info(f"Embedding {len(texts)} chunks from {name}…")
         embeddings = model.encode(texts, show_progress_bar=False).tolist()
         ids = [store.chunk_id(source, m["chunk_index"]) for m in metadatas]

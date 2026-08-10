@@ -32,7 +32,7 @@ from rag.config import (
     TOP_K,
 )
 from rag.generation import stream_answer
-from rag.ingestion import ACRONYM_CATEGORIES, find_acronym_candidates
+from rag.ingestion import find_acronym_candidates
 from rag.retrieval import retrieve, warmup
 
 # ---------------------------------------------------------------------------
@@ -144,7 +144,7 @@ def _render_toc(search: str = "") -> str:
     Tailwind utility classes (loaded via the CDN script injected into
     <head>) rather than a hand-rolled <style> block."""
     grouped = list_toc_entries()
-    query = (search or "").strip().casefold()
+    query = (search or "").strip().lower()
 
     nav_links = []
     sections_html = []
@@ -152,9 +152,9 @@ def _render_toc(search: str = "") -> str:
         if query:
             entries = [
                 e for e in entries
-                if query in e["title"].casefold()
-                or query in section.casefold()
-                or any(query in author.casefold() for author in e.get("authors", []))
+                if query in e["title"].lower()
+                or query in section.lower()
+                or any(query in author.lower() for author in e.get("authors", []))
             ]
             if not entries:
                 continue
@@ -200,7 +200,6 @@ def _render_toc(search: str = "") -> str:
 _acronym_cache = store.CountCache()
 
 _ACRONYM_SORT_CHOICES = ["Most frequent", "Most papers", "Alphabetical"]
-_ACRONYM_CATEGORY_CHOICES = ["All categories", *ACRONYM_CATEGORIES]
 
 
 def _get_acronym_candidates() -> dict[str, dict]:
@@ -208,33 +207,31 @@ def _get_acronym_candidates() -> dict[str, dict]:
     return _acronym_cache.get(collection, lambda: find_acronym_candidates(collection))
 
 
-def _build_acronym_rows(search: str, sort_by: str, category: str) -> list[list]:
+def _build_acronym_rows(search: str, sort_by: str) -> list[list]:
     """Build the row data for the Acronyms tab Dataframe: [Acronym,
-    Category, Expansion, Occurrences, Papers], filtered by *search*/
-    *category* and ordered by *sort_by*. The acronym is kept in column 0 so a
-    row-select event (`evt.row_value[0]`) can identify which entry was
-    clicked without extra bookkeeping state."""
+    Expansion, Occurrences, Papers], filtered by *search* and ordered by
+    *sort_by*. The acronym is kept in column 0 so a row-select event
+    (`evt.row_value[0]`) can identify which entry was clicked without extra
+    bookkeeping state."""
     candidates = _get_acronym_candidates()
-    query = (search or "").strip().casefold()
+    query = (search or "").strip().lower()
 
     rows = []
     for acronym, entry in candidates.items():
-        if category != "All categories" and entry["category"] != category:
-            continue
-        if query and query not in acronym.casefold() and not any(
-            query in expansion.casefold() for expansion in entry["expansions"]
+        if query and query not in acronym.lower() and not any(
+            query in expansion.lower() for expansion in entry["expansions"]
         ):
             continue
         best_expansion = max(entry["expansions"], key=entry["expansions"].get)
         count = sum(entry["expansions"].values())
-        rows.append([acronym, entry["category"], best_expansion, count, len(entry["sources"])])
+        rows.append([acronym, best_expansion, count, len(entry["sources"])])
 
     if sort_by == "Alphabetical":
         rows.sort(key=lambda row: row[0])
     elif sort_by == "Most papers":
-        rows.sort(key=lambda row: (-row[4], -row[3]))
+        rows.sort(key=lambda row: (-row[3], -row[2]))
     else:  # "Most frequent"
-        rows.sort(key=lambda row: (-row[3], row[0]))
+        rows.sort(key=lambda row: (-row[2], row[0]))
 
     return rows
 
@@ -251,10 +248,7 @@ def _build_acronym_modal_html(acronym: str) -> str:
     best_expansion, _ = expansions_by_count[0]
     total = sum(entry["expansions"].values())
 
-    lines = [
-        f"### {escape(acronym)} — {escape(best_expansion)}",
-        f"**Category:** {escape(entry['category'])}",
-    ]
+    lines = [f"### {escape(acronym)} — {escape(best_expansion)}"]
     if len(expansions_by_count) > 1:
         others = ", ".join(escape(text) for text, _ in expansions_by_count[1:])
         lines.append(f"_Also seen as: {others}_")
@@ -266,8 +260,8 @@ def _build_acronym_modal_html(acronym: str) -> str:
     return "\n".join(lines)
 
 
-def _refresh_acronym_table(search: str, sort_by: str, category: str) -> list[list]:
-    return _build_acronym_rows(search, sort_by, category)
+def _refresh_acronym_table(search: str, sort_by: str) -> list[list]:
+    return _build_acronym_rows(search, sort_by)
 
 
 def _on_acronym_row_select(evt: gr.SelectData):
@@ -535,12 +529,6 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                     placeholder="Filter by acronym or expansion…",
                     scale=3,
                 )
-                acronym_category = gr.Dropdown(
-                    choices=_ACRONYM_CATEGORY_CHOICES,
-                    value=_ACRONYM_CATEGORY_CHOICES[0],
-                    label="Category",
-                    scale=2,
-                )
                 acronym_sort = gr.Radio(
                     choices=_ACRONYM_SORT_CHOICES,
                     value=_ACRONYM_SORT_CHOICES[0],
@@ -549,15 +537,14 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
                 )
 
             acronym_table = gr.Dataframe(
-                headers=["Acronym", "Category", "Expansion", "Occurrences", "Papers"],
-                datatype=["str", "str", "str", "number", "number"],
-                value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0], _ACRONYM_CATEGORY_CHOICES[0]),
+                headers=["Acronym", "Expansion", "Occurrences", "Papers"],
+                datatype=["str", "str", "number", "number"],
+                value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0]),
                 interactive=False,
                 wrap=True,
-                column_widths=["15%", "20%", "40%", "14%", "11%"],
             )
 
-            with gr.Column(visible=False, elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
+            with gr.Group(visible=False, elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
                  gr.Column(elem_classes=["askarry-modal-box"]):
                 acronym_modal_close = gr.Button(
                     "✕ Close", size="sm", elem_classes=["askarry-modal-close"]
@@ -568,28 +555,21 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
 
             acronym_search.change(
                 _refresh_acronym_table,
-                inputs=[acronym_search, acronym_sort, acronym_category],
+                inputs=[acronym_search, acronym_sort],
                 outputs=[acronym_table],
             )
             acronym_sort.change(
                 _refresh_acronym_table,
-                inputs=[acronym_search, acronym_sort, acronym_category],
-                outputs=[acronym_table],
-            )
-            acronym_category.change(
-                _refresh_acronym_table,
-                inputs=[acronym_search, acronym_sort, acronym_category],
+                inputs=[acronym_search, acronym_sort],
                 outputs=[acronym_table],
             )
             acronym_table.select(
                 _on_acronym_row_select,
                 outputs=[acronym_modal, acronym_modal_content],
-                show_progress="hidden",
             )
             acronym_modal_close.click(
                 lambda: gr.update(visible=False),
                 outputs=[acronym_modal],
-                show_progress="hidden",
             )
 
 

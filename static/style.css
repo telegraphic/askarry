@@ -81,17 +81,11 @@ label above the track. */
     100% { background-position: -200% 0; }
 }
 
-/* Acronyms tab: pseudo-modal overlay (Gradio 6.14 has no native gr.Modal,
-and the third-party gradio_modal package's compiled frontend crashes under
-Gradio 6). A single gr.Column is toggled visible/hidden by Gradio adding/
-removing its own `.hide` class (same specificity as a plain `.askarry-
-modal-overlay` rule, and our stylesheet loads after Gradio's base CSS, so a
-bare `display: flex` here would win the cascade and keep the overlay
-visible — and clickable/blocking — even while `.hide` is applied. Scoping
-the flex layout to `:not(.hide)` guarantees Gradio's hide rule always wins). */
-.askarry-modal-overlay:not(.hide) {
-    display: flex;
-}
+/* Acronyms tab: pseudo-modal overlay (Gradio 6.14 has no native gr.Modal
+component). The gr.Group given elem_classes=["askarry-modal-overlay"] is
+pinned to fill the viewport as a dimmed, centered backdrop when Gradio makes
+it visible; `display` is intentionally left alone (no !important) so
+Gradio's own inline `display:none` toggle for visible=False still works. */
 .askarry-modal-overlay {
     position: fixed;
     inset: 0;
@@ -114,3 +108,4 @@ the flex layout to `:not(.hide)` guarantees Gradio's hide rule always wins). */
 .askarry-modal-close {
     float: right;
 }
+

@@ -22,6 +22,7 @@ from sentence_transformers import CrossEncoder, SentenceTransformer
 from . import store
 from .config import (
     BM25_WEIGHT,
+    CONTEXT_EXPANSION_WINDOW,
     EMBEDDING_QUERY_PROMPT,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
@@ -192,7 +193,9 @@ def _meta_to_chunk(meta: dict, text: str, score: float) -> dict:
         "chunk_index": meta.get("chunk_index", 0),
         "page_no": meta.get("page_no", 0),
         "heading": meta.get("heading", ""),
+        "section_path": meta.get("section_path", ""),
         "caption": meta.get("caption", ""),
+        "doc_title": meta.get("doc_title", ""),
         "score": score,
     }
 
@@ -242,6 +245,8 @@ def retrieve(
     query: str,
     top_k: int | None = None,
     on_progress: Callable[[float, str], None] | None = None,
+    use_hyde: bool | None = None,
+    expansion_window: int | None = None,
 ) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
 
@@ -257,18 +262,28 @@ def retrieve(
     (fraction in 0-1) at each stage boundary so a caller (e.g. the Gradio UI)
     can drive a real progress bar instead of an opaque "searching" spinner.
 
+    *use_hyde* overrides the ``USE_HYDE`` config flag for this call. Pass
+    ``False`` from the MCP server to avoid requiring Ollama to be running.
+    *None* means use the config default.
+
+    *expansion_window* overrides ``CONTEXT_EXPANSION_WINDOW`` for this call.
+    The MCP server passes ``2`` to give frontier models a wider passage context.
+
     Each returned dict has at minimum:
-        text        : str   — expanded passage text
-        source      : str   — originating file path
-        chunk_index : int
-        page_no     : int
-        heading     : str
-        caption     : str
-        score       : float — cross-encoder relevance, sigmoid-normalised to
-                      0-1 (higher = more relevant; this is what determines the
-                      final ranking, unlike the intermediate RRF score)
+        text         : str   — expanded passage text
+        source       : str   — originating file path
+        chunk_index  : int
+        page_no      : int
+        heading      : str   — outermost section heading
+        section_path : str   — full heading hierarchy (" > "-joined)
+        caption      : str
+        doc_title    : str   — paper/document title from bibliography
+        score        : float — cross-encoder relevance, sigmoid-normalised to
+                       0-1 (higher = more relevant)
     """
     top_k = top_k if top_k is not None else TOP_K
+    _use_hyde = USE_HYDE if use_hyde is None else use_hyde
+    _expansion_window = CONTEXT_EXPANSION_WINDOW if expansion_window is None else expansion_window
     model, reranker, collection = _get_resources()
 
     if collection.count() == 0:
@@ -277,10 +292,10 @@ def retrieve(
         )
 
     # --- Optional HyDE ---
-    if USE_HYDE and on_progress:
+    if _use_hyde and on_progress:
         on_progress(0.05, "Generating hypothetical answer (HyDE)…")
-    embed_text = _hyde_query(query) if USE_HYDE else query
-    if USE_HYDE:
+    embed_text = _hyde_query(query) if _use_hyde else query
+    if _use_hyde:
         logger.info(f"HyDE hypothesis: {embed_text[:120]}…")
 
     # --- Stage 1a: Semantic vector search ---
@@ -355,12 +370,17 @@ def retrieve(
     # --- Stage 4: Context window expansion ---
     if on_progress:
         on_progress(1.0, "Expanding context…")
-    return _expand_context(top, collection)
+    return _expand_context(top, collection, window=_expansion_window)
 
 
-def _expand_context(chunks: list[dict], collection: chromadb.Collection) -> list[dict]:
-    """Fetch the immediately neighbouring chunks (±1) from the same source and
-    join them with the matched chunk so the LLM receives a wider passage."""
+def _expand_context(
+    chunks: list[dict],
+    collection: chromadb.Collection,
+    window: int = 1,
+) -> list[dict]:
+    """Fetch neighbouring chunks (±window) from the same source and join them
+    with the matched chunk so the LLM receives a wider passage.
+    window=1 fetches ±1 (three raw chunks); window=2 fetches ±2 (five), etc."""
     expanded = []
     seen_ids: set[str] = set()
 
@@ -370,7 +390,7 @@ def _expand_context(chunks: list[dict], collection: chromadb.Collection) -> list
 
         neighbour_ids = [
             store.chunk_id(source, i)
-            for i in [idx - 1, idx, idx + 1]
+            for i in range(idx - window, idx + window + 1)
             if i >= 0
         ]
 
