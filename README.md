@@ -7,7 +7,12 @@ The workflow has two major phases:
 1) Ingestion (run once when documents are added)
 2) Querying (run every time a user asks a question)
 
-All computation runs on-device (it does not transfer data to the cloud), which requires running an LLM via [Ollama](https://ollama.com). Note this is a personal learning prototype / experiment that comes with no support or maintenance.
+There are two ways to query the knowledge base:
+
+- **Gradio web UI** — runs fully on-device using a local LLM via [Ollama](https://ollama.com)
+- **Claude Desktop (MCP)** — the retrieval pipeline runs locally and serves passages to Claude via the [Model Context Protocol](https://modelcontextprotocol.io); Claude does the generation
+
+Note this is a personal learning prototype / experiment that comes with no support or maintenance.
 
 ## Demo
 
@@ -20,7 +25,8 @@ All computation runs on-device (it does not transfer data to the cloud), which r
 | Keyword search | BM25 (`rank-bm25`) |
 | Vector store | ChromaDB (local, persistent) |
 | Re-ranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
-| LLM | [Ollama](https://ollama.com) (`gemma4` by default) |
+| LLM (local) | [Ollama](https://ollama.com) (`gemma4` by default) |
+| LLM (frontier) | Claude via [MCP](https://modelcontextprotocol.io) (`mcp_server.py`) |
 | Web UI | Gradio |
 
 
@@ -119,6 +125,38 @@ python app.py
 ```
 
 Open your browser at <http://localhost:7860>.
+
+---
+
+### Step 3 (optional) — Use with Claude Desktop
+
+The MCP server exposes the retrieval pipeline as tools that Claude Desktop can call. Claude receives the retrieved passages and generates the answer — no Ollama installation is needed for this path.
+
+**Register the server** in Claude Desktop's config file at
+`~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "astronomy-rag": {
+      "command": "/Users/<you>/Data/astronomy-rag/.venv/bin/python",
+      "args":    ["/Users/<you>/Data/astronomy-rag/mcp_server.py"]
+    }
+  }
+}
+```
+
+Replace `/Users/<you>/Data/astronomy-rag` with the absolute path to your checkout. The `.venv/bin/python` interpreter must be used so the server finds all installed dependencies.
+
+Restart Claude Desktop after editing the config. The following tools will appear in Claude's tool panel:
+
+| Tool | What it does |
+|------|--------------|
+| `search_astronomy_docs` | Hybrid semantic + BM25 search, re-ranked; returns passages with title, section, page, and relevance |
+| `list_documents` | Table of contents grouped by AASKAII section |
+| `get_document_chunks` | All indexed chunks from a named paper in reading order |
+
+> **Note:** Run `python ingest.py` first so there is a populated ChromaDB index for the server to search. The MCP server is read-only and never calls Ollama.
 
 ---
 
@@ -277,6 +315,13 @@ Local PDFs with no matching bibliography entry are silently excluded from the Ta
 | `USE_HYDE` | `False` | When `True`, Ollama generates a short hypothetical answer before retrieval; that answer text is embedded instead of the raw question. This shifts the query vector into "answer space" and improves recall for highly technical questions. Adds roughly the latency of one LLM call (~1–3 s) per query. Off by default; enable it if semantic retrieval results feel topically off. |
 | `CONFIDENCE_THRESHOLD` | `0.3` | Sigmoid-normalized cross-encoder relevance (0-1) below which the top retrieved chunk is treated as a weak match. Below this, the UI shows a low-confidence warning while the answer streams, and the LLM is given an explicit hedging instruction instead of being left to guess from marginal passages. |
 
+### MCP server (Claude Desktop)
+
+| Setting | Default | Purpose |
+|---------|---------|--------|
+| `MCP_TOP_K` | `20` | Chunks returned to Claude per `search_astronomy_docs` call. Frontier models have large context windows and can synthesise more passages than a local model, so this is set higher than `TOP_K`. |
+| `MCP_RETRIEVAL_CANDIDATES` | `50` | First-stage candidate pool for the MCP path. A larger pool keeps the re-ranker funnel meaningful when `MCP_TOP_K` is high. |
+
 ---
 
 ## Project structure
@@ -291,9 +336,10 @@ astronomy-rag/
 │   ├── config.py             ← All tuneable settings
 │   ├── ingestion.py          ← docling → HybridChunker → ChromaDB
 │   ├── retrieval.py          ← Hybrid BM25 + semantic → RRF → rerank → expand
-│   ├── generation.py         ← Ollama prompt & response
+│   ├── generation.py         ← Ollama prompt & response (Gradio UI path)
 │   └── bibliography.py       ← Citation lookup + Table of Contents data
 ├── ingest.py                 ← Run this first
 ├── app.py                    ← Gradio web UI (Ask a Question / Table of Contents tabs)
+├── mcp_server.py             ← MCP server for Claude Desktop (retrieval-only; Claude generates)
 └── requirements.txt
 ```
