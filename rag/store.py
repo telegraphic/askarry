@@ -13,6 +13,7 @@ each redefining it slightly differently.
 from __future__ import annotations
 
 import hashlib
+import threading
 from collections.abc import Callable
 from pathlib import Path
 from typing import TypeVar
@@ -33,36 +34,55 @@ _collection: chromadb.Collection | None = None
 _embedding_model: SentenceTransformer | None = None
 _ollama_client: ollama.Client | None = None
 
+_collection_lock = threading.Lock()
+_embedding_model_lock = threading.Lock()
+_ollama_client_lock = threading.Lock()
+
 
 def get_chroma_collection() -> chromadb.Collection:
     """Return the process-cached ChromaDB collection, creating it if needed."""
     global _collection
-    if _collection is None:
-        client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-        _collection = client.get_or_create_collection(
-            name=COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"},
-        )
-    return _collection
+    with _collection_lock:
+        if _collection is None:
+            client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+            _collection = client.get_or_create_collection(
+                name=COLLECTION_NAME,
+                metadata={"hnsw:space": "cosine"},
+            )
+        return _collection
+
+
+def reset_collection() -> None:
+    """Clear the cached ChromaDB collection handle.
+
+    Must be called after the on-disk store is deleted (e.g. during --reindex)
+    so the next call to get_chroma_collection() opens a fresh client instead
+    of returning a stale handle pointing at the deleted database.
+    """
+    global _collection
+    with _collection_lock:
+        _collection = None
 
 
 def get_embedding_model() -> SentenceTransformer:
     """Return the process-cached embedding model, with its max sequence
     length clamped to MAX_CHUNK_TOKENS."""
     global _embedding_model
-    if _embedding_model is None:
-        model = SentenceTransformer(EMBEDDING_MODEL)
-        model.max_seq_length = min(MAX_CHUNK_TOKENS, model.max_seq_length)
-        _embedding_model = model
-    return _embedding_model
+    with _embedding_model_lock:
+        if _embedding_model is None:
+            model = SentenceTransformer(EMBEDDING_MODEL)
+            model.max_seq_length = min(MAX_CHUNK_TOKENS, model.max_seq_length)
+            _embedding_model = model
+        return _embedding_model
 
 
 def get_ollama_client() -> ollama.Client:
     """Return the process-cached Ollama client, created lazily on first use."""
     global _ollama_client
-    if _ollama_client is None:
-        _ollama_client = ollama.Client(host=OLLAMA_BASE_URL)
-    return _ollama_client
+    with _ollama_client_lock:
+        if _ollama_client is None:
+            _ollama_client = ollama.Client(host=OLLAMA_BASE_URL)
+        return _ollama_client
 
 
 def chunk_id(source: str, index: int) -> str:
@@ -100,10 +120,12 @@ class CountCache:
     def __init__(self) -> None:
         self._value: _T | None = None
         self._count: int | None = None
+        self._lock = threading.Lock()
 
     def get(self, collection: chromadb.Collection, build_fn: Callable[[], _T]) -> _T:
         current_count = collection.count()
-        if self._value is None or current_count != self._count:
-            self._value = build_fn()
-            self._count = current_count
-        return self._value
+        with self._lock:
+            if self._value is None or current_count != self._count:
+                self._value = build_fn()
+                self._count = current_count
+            return self._value

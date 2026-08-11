@@ -151,6 +151,10 @@ def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[st
     if reset and CHROMA_DIR.exists():
         logger.info(f"Reindex: removing existing ChromaDB store at '{CHROMA_DIR}'")
         shutil.rmtree(CHROMA_DIR)
+        # Invalidate the in-memory handle so get_chroma_collection() opens a
+        # fresh client against the new (empty) on-disk store rather than
+        # returning a stale handle pointing at the deleted database.
+        store.reset_collection()
 
     # Embedding model lives in the main process only
     model = store.get_embedding_model()

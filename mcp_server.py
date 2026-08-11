@@ -94,15 +94,16 @@ def search_astronomy_docs(query: str, top_k: int = MCP_TOP_K) -> str:
 
     Uses a hybrid pipeline: semantic vector search + BM25 keyword search,
     fused with Reciprocal Rank Fusion, then cross-encoder re-ranked.
-    Returns up to *top_k* passages (default 20) with source title, section
-    hierarchy, page number, and relevance score.
+    Returns up to *top_k* passages with source title, section hierarchy, page
+    number, and relevance score. The default value of *top_k* is set by
+    MCP_TOP_K in config.py.
 
     Use this to answer questions about SKA science, engineering, and methods.
     Cite passages inline with [n] markers matching the returned passage numbers.
 
     Args:
         query:  The question or topic to search for.
-        top_k:  Maximum number of passages to return (default 20).
+        top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
     """
     chunks = retrieve(
         query,
