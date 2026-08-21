@@ -35,15 +35,21 @@ def lookup_citation(source: str) -> dict | None:
 
 
 def format_citation(entry: dict) -> str:
-    """Format a bibliography entry as "{Surname} (et al) ({year}) {title}"."""
+    """Format a bibliography entry as "{Surname} (et al) ({year}) {title}".
+
+    *year* comes from the entry itself when present (e.g. AASKA2015 chapters,
+    tagged by pdfs/build_bibliography_aaska2015.py), else defaults to
+    AASKAII_YEAR for the original (year-less) AASKAII entries.
+    """
     authors = entry.get("authors") or []
     title = entry.get("title", "")
+    year = entry.get("year", AASKAII_YEAR)
     if authors:
         surname = authors[0].split()[-1]
         who = f"{surname} et al" if len(authors) > 1 else surname
     else:
         who = "Unknown"
-    return f"{who} ({AASKAII_YEAR}) {title}"
+    return f"{who} ({year}) {title}"
 
 
 def _discover_pdf_stems() -> dict[str, Path]:

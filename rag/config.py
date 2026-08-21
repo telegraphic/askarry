@@ -19,9 +19,19 @@ AASKAII_YEAR = 2026                                  # Publication year for all 
 # separately from the AASKAII book chapters (see DOC_SOURCE_DIRS below).
 SKA_CAPABILITIES_DIR = PDF_DIR / "SKA_Key_Capabilities"
 
+# The original "Advancing Astrophysics with the SKA" proceedings (PoS vol.
+# 215, AASKA14 conference, published 2015) — the 10-years-older predecessor
+# to the AASKAII book. download_pos215.py drops flat, numerically-named PDFs
+# (e.g. "001.pdf") into pdfs/PoS215/; pdfs/build_bibliography_aaska2015.py
+# then renames/reorganizes them here into per-session subfolders with
+# AASKAII-style "<FirstAuthorSurname><NN>.pdf" filenames (e.g. "Koopmans01.pdf")
+# and merges their titles/authors into pdfs/bibliography.json.
+AASKA2015_DIR = PDF_DIR / "AASKA2015"
+AASKA2015_YEAR = 2015
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
-# recursively, so SKA_CAPABILITIES_DIR (a subdirectory of it) is already
-# covered — it isn't listed separately here to avoid double-discovery.
+# recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
+# are already covered — not listed separately here to avoid double-discovery.
 # Non-existent paths are silently skipped.
 PDF_DIRS: list[Path] = [PDF_DIR]
 
@@ -30,8 +40,30 @@ PDF_DIRS: list[Path] = [PDF_DIR]
 # defaults to DOC_SOURCE_AASKAII.
 DOC_SOURCE_AASKAII = "aaskaii"
 DOC_SOURCE_SKA_CAPABILITIES = "ska_capabilities"
+DOC_SOURCE_AASKA2015 = "aaska2015"
 DOC_SOURCE_DIRS: dict[Path, str] = {
     SKA_CAPABILITIES_DIR: DOC_SOURCE_SKA_CAPABILITIES,
+    AASKA2015_DIR: DOC_SOURCE_AASKA2015,
+}
+
+# Human-readable "book, year" label per doc_source, used when showing a
+# passage's provenance to the LLM (rag/generation.py, mcp_server.py) so it
+# can reason about recency directly instead of relying solely on the
+# priority instruction in the system prompt / MCP instructions.
+DOC_SOURCE_LABELS: dict[str, str] = {
+    DOC_SOURCE_AASKAII: f"AASKAII, {AASKAII_YEAR}",
+    DOC_SOURCE_AASKA2015: f"Advancing Astrophysics with the SKA, {AASKA2015_YEAR}",
+    DOC_SOURCE_SKA_CAPABILITIES: "SKA Key Capabilities",
+}
+
+# Relevance multiplier applied per doc_source at rerank time (see
+# rag/retrieval.py::retrieve). Sources not listed default to 1.0. AASKAII
+# supersedes the 10-years-older AASKA2015 book scientifically, so AASKA2015
+# hits get a modest discount — a soft tie-breaker, not a hard exclusion, so
+# AASKA2015 can still win when it's clearly the better match for a query
+# AASKAII doesn't cover.
+DOC_SOURCE_PRIORITY: dict[str, float] = {
+    DOC_SOURCE_AASKA2015: 0.85,
 }
 
 # File extensions handled throughout the pipeline (ingestion, bibliography

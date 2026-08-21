@@ -12,6 +12,8 @@ from .config import (
     AUDIENCE_GENERAL,
     AUDIENCE_PHD,
     CONFIDENCE_THRESHOLD,
+    DOC_SOURCE_AASKAII,
+    DOC_SOURCE_LABELS,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
     OLLAMA_TEMPERATURE,
@@ -43,6 +45,10 @@ Rules:
   plainly and let the evidence speak for itself.
 - Write in a classic, restrained scientific prose style: plain declarative
   sentences, no rhetorical flourishes, and no exclamation points.
+- Context passages are labeled with their source book and year. When
+  passages from the original 2015 "Advancing Astrophysics with the SKA"
+  proceedings conflict with the newer AASKAII book, prefer the AASKAII
+  information as the more current source.
 """
 
 # Audience-specific instructions appended to `_SYSTEM_PROMPT`, selected via the
@@ -71,7 +77,9 @@ _AUDIENCE_INSTRUCTIONS: dict[str, str] = {
 
 def _build_context_block(chunks: list[dict]) -> str:
     return "\n\n---\n\n".join(
-        f"[{i}] Source: {c['source']} | relevance: {c['score']:.2f}\n{c['text']}"
+        f"[{i}] Source: {c['source']} "
+        f"({DOC_SOURCE_LABELS.get(c.get('doc_source', DOC_SOURCE_AASKAII), '')}) "
+        f"| relevance: {c['score']:.2f}\n{c['text']}"
         for i, c in enumerate(chunks, start=1)
     )
 

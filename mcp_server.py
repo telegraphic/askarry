@@ -8,6 +8,8 @@ search_astronomy_docs   Semantic + BM25 hybrid search, re-ranked; returns
                         passages with title, section hierarchy, page, relevance.
 list_documents          Table of contents grouped by section.
 get_document_chunks     All indexed chunks from a named paper in reading order.
+query_sensitivity_calculator
+                        Live query to the SKAO sensitivity calculator REST API.
 
 Usage
 -----
@@ -40,11 +42,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import requests
 from fastmcp import FastMCP
 
 from rag import store
 from rag.bibliography import format_citation, list_toc_entries, lookup_citation
 from rag.config import (
+    DOC_SOURCE_AASKAII,
+    DOC_SOURCE_LABELS,
     DOC_SOURCE_SKA_CAPABILITIES,
     MCP_RETRIEVAL_CANDIDATES,
     MCP_TOP_K,
@@ -52,12 +57,18 @@ from rag.config import (
     SUPPORTED_SUFFIXES,
 )
 from rag.retrieval import retrieve
+from rag.sensitivity_calculator import query_sensitivity_calculator
 
 mcp = FastMCP(
     "astronomy-rag",
     instructions=(
         "This server provides access to an indexed collection of SKA (Square "
-        "Kilometre Array) astronomy papers from the AASKAII compendium. Use "
+        "Kilometre Array) astronomy papers, mainly from the AASKAII "
+        "compendium but also including chapters from its 10-years-older "
+        "predecessor, the 2015 'Advancing Astrophysics with the SKA' "
+        "proceedings. Each passage returned by search_astronomy_docs is "
+        "labeled with its source book and year — when passages from the two "
+        "books conflict, prefer the newer AASKAII information. Use "
         "search_astronomy_docs to find relevant passages for a question, "
         "list_documents to discover what papers are available, and "
         "get_document_chunks to read a specific paper in full."
@@ -82,7 +93,8 @@ def _format_passage(i: int, chunk: dict) -> str:
     score = chunk.get("score", 0.0)
     caption = chunk.get("caption", "")
 
-    lines = [f"[{i}] {doc_title}"]
+    book_label = DOC_SOURCE_LABELS.get(chunk.get("doc_source", DOC_SOURCE_AASKAII), "")
+    lines = [f"[{i}] {doc_title} ({book_label})" if book_label else f"[{i}] {doc_title}"]
     if section:
         lines.append(f"    Section: {section}")
     if page:
@@ -292,6 +304,61 @@ def get_document_chunks(filename: str, max_chunks: int = 60) -> str:
         )
 
     return "\n".join(lines)
+
+
+@mcp.tool()
+def query_sensitivity_calc(telescope: str, endpoint: str, params: dict) -> str:
+    """Query the live SKAO sensitivity calculator REST API (sensitivity-calculator.skao.int).
+
+    This calls the real backend service over the network — it is not a
+    document search. Call "subarrays" first if unsure which subarray_configuration
+    values are valid; use search_ska_capabilities for theoretical background.
+
+    Args:
+        telescope: "low" or "mid".
+        endpoint:  One of "subarrays", "continuum/calculate", "zoom/calculate",
+                   "pss/calculate". "subarrays" takes params={}.
+
+        params:    Query parameters for the endpoint. Common to all: pointing_centre
+                   ("HH:MM:SS[.ss] [+|-]DD:MM:SS[.ss]"), weighting_mode ("uniform",
+                   "natural", or "robust" — plus robustness if "robust"),
+                   subarray_configuration (from "subarrays"; Low alt: num_stations,
+                   Mid alt: n_ska+n_meer for a custom subarray).
+
+                   continuum/calculate — Low: freq_centre_mhz, bandwidth_mhz,
+                   integration_time_h, elevation_limit (optional). Mid: rx_band
+                   (e.g. "Band 1"), freq_centre_hz, bandwidth_hz, integration_time_s
+                   (or supplied_sensitivity + sensitivity_unit "Jy/beam"/"K" to solve
+                   for integration time instead).
+                   Example: {"integration_time_h": 1, "subarray_configuration":
+                   "LOW_AAstar_all", "freq_centre_mhz": 200, "bandwidth_mhz": 300,
+                   "pointing_centre": "0 0", "weighting_mode": "uniform"}
+
+                   zoom/calculate — one or more zoom windows, one value per window in
+                   each array param. Low: freq_centres_mhz, total_bandwidths_khz,
+                   spectral_resolutions_hz, integration_time_h. Mid (AA*/AA4/custom
+                   only): rx_band, freq_centres_hz, total_bandwidths_hz,
+                   spectral_resolutions_hz, integration_time_s.
+
+                   pss/calculate — only valid for subarrays with max baseline < 20 km
+                   (check "subarrays"). pulsar_mode ("folded_pulse" or "single_pulse"),
+                   dm, intrinsic_pulse_width (ms, required if folded_pulse),
+                   pulse_period (ms, ignored if single_pulse). Low: freq_centre_mhz,
+                   bandwidth_mhz (ignored if folded_pulse), integration_time_h. Mid:
+                   rx_band, freq_centre_hz, bandwidth_hz, integration_time_s.
+
+                   Full parameter reference (advanced overrides like taper, pwv, el,
+                   eta_*, t_sys_*): rag/sensitivity_calculator.py docstrings, or the
+                   live OpenAPI spec at sensitivity-calculator.skao.int/api/v11/
+                   {telescope}/openapi.json.
+    """
+    try:
+        result = query_sensitivity_calculator(telescope, endpoint, params)
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+    except requests.HTTPError as exc:
+        return f"Sensitivity calculator API error: {exc}"
+    return str(result)
 
 
 if __name__ == "__main__":

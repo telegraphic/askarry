@@ -579,6 +579,15 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
     meaning is kept as its *own* entry — key `"DM (Dispersion Measure)"`,
     `"DM (Dark Matter)"` — with its own separate occurrence/paper counts,
     instead of being silently summed together into one misleading total.
+
+    A second pass then scans every chunk again for *bare* mentions (no
+    parenthetical expansion) of whichever acronyms the first pass found to
+    have only one sense — e.g. once "SKA" is known to mean "Square Kilometre
+    Array" from a single definition, every other paper that just says "SKA"
+    without re-defining it is unambiguous and gets added as a source too.
+    Ambiguous acronyms (more than one sense, e.g. "DM") are skipped here since
+    a bare mention can't be assigned to one sense without the surrounding
+    expansion.
     """
     # acronym -> normalized expansion -> {"counts": {raw text: count}, "sources": {..}}
     raw: dict[str, dict[str, dict]] = {}
@@ -605,6 +614,7 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
             bucket["sources"].add(meta["source"])
 
     candidates: dict[str, dict] = {}
+    unambiguous_keys: dict[str, str] = {}  # acronym -> its sole display_key
     for acronym, senses in raw.items():
         ranked_senses = sorted(
             _cluster_senses(senses), key=lambda bucket: -sum(bucket["counts"].values())
@@ -618,5 +628,18 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
                 "sources": sorted(bucket["sources"]),
                 "category": classify_acronym(best_expansion),
             }
+        if not disambiguate:
+            unambiguous_keys[acronym] = display_key
+
+    if unambiguous_keys:
+        bare_re = re.compile(
+            r"\b(" + "|".join(re.escape(a) for a in unambiguous_keys) + r")\b"
+        )
+        source_sets = {key: set(c["sources"]) for key, c in candidates.items()}
+        for text, meta in zip(all_results["documents"], all_results["metadatas"] or []):
+            for match in bare_re.finditer(text):
+                source_sets[unambiguous_keys[match.group(1)]].add(meta["source"])
+        for key, sources in source_sets.items():
+            candidates[key]["sources"] = sorted(sources)
 
     return candidates

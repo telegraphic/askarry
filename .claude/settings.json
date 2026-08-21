@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s https://sensitivity-calculator.skao.int/api/v11/low/openapi.json -o /private/tmp/claude-839086819/-Users-daniel-price-Data-astronomy-rag/2b5a2276-cdc3-41bd-9ebc-e38fc104fa8b/scratchpad/low.json)",
+      "Bash(curl -s https://sensitivity-calculator.skao.int/api/v11/mid/openapi.json -o /private/tmp/claude-839086819/-Users-daniel-price-Data-astronomy-rag/2b5a2276-cdc3-41bd-9ebc-e38fc104fa8b/scratchpad/mid.json)",
+      "Bash(python -m pytest tests/test_sensitivity_calculator.py -q)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('mcp_server.py'\\).read\\(\\)\\)\")"
+    ]
+  }
+}

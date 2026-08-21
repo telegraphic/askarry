@@ -24,6 +24,7 @@ from .config import (
     BM25_WEIGHT,
     CONTEXT_EXPANSION_WINDOW,
     DOC_SOURCE_AASKAII,
+    DOC_SOURCE_PRIORITY,
     EMBEDDING_QUERY_PROMPT,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
@@ -373,7 +374,14 @@ def retrieve(
     # which doesn't track the final (cross-encoder) ranking order at all.
     # Squash to a 0-1 confidence via sigmoid so the UI and the low-confidence
     # check below both reflect what actually determined the ranking.
-    confidences = [_sigmoid(float(s)) for s in ce_scores]
+    # Apply the per-doc_source priority multiplier (DOC_SOURCE_PRIORITY) here,
+    # after relevance is established but before the final ranking, so an
+    # older/superseded source needs a genuinely stronger match to outrank an
+    # equally-relevant newer one, rather than always winning or losing.
+    confidences = [
+        _sigmoid(float(s)) * DOC_SOURCE_PRIORITY.get(chunk["doc_source"], 1.0)
+        for s, chunk in zip(ce_scores, rerank_pool)
+    ]
     ranked = sorted(
         zip(confidences, rerank_pool), key=lambda x: x[0], reverse=True
     )
