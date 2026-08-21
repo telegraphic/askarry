@@ -44,7 +44,13 @@ from fastmcp import FastMCP
 
 from rag import store
 from rag.bibliography import format_citation, list_toc_entries, lookup_citation
-from rag.config import MCP_RETRIEVAL_CANDIDATES, MCP_TOP_K
+from rag.config import (
+    DOC_SOURCE_SKA_CAPABILITIES,
+    MCP_RETRIEVAL_CANDIDATES,
+    MCP_TOP_K,
+    SKA_CAPABILITIES_DIR,
+    SUPPORTED_SUFFIXES,
+)
 from rag.retrieval import retrieve
 
 mcp = FastMCP(
@@ -116,6 +122,49 @@ def search_astronomy_docs(query: str, top_k: int = MCP_TOP_K) -> str:
 
     parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
     return "\n\n---\n\n".join(parts)
+
+
+@mcp.tool()
+def search_ska_capabilities(query: str, top_k: int = MCP_TOP_K) -> str:
+    """Search the SKA key capabilities technical documents for passages relevant to a query.
+
+    This is a separate, smaller document set from the AASKAII science papers
+    (see search_astronomy_docs) — technical material describing SKA's
+    engineering capabilities rather than science results. Same hybrid
+    search/rerank pipeline, scoped to just this document set.
+
+    Args:
+        query:  The question or topic to search for.
+        top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
+    """
+    chunks = retrieve(
+        query,
+        top_k=top_k,
+        use_hyde=False,
+        expansion_window=2,
+        where={"doc_source": DOC_SOURCE_SKA_CAPABILITIES},
+    )
+    if not chunks:
+        return "No relevant passages found for that query."
+
+    parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
+    return "\n\n---\n\n".join(parts)
+
+
+@mcp.tool()
+def list_ska_capability_docs() -> str:
+    """List all SKA key capabilities technical documents available to search.
+
+    Use this before search_ska_capabilities to discover what documents exist
+    in this separate (non-AASKAII) document set.
+    """
+    files = store.discover_files([SKA_CAPABILITIES_DIR], SUPPORTED_SUFFIXES)
+    if not files:
+        return (
+            "No SKA key capabilities documents found. Add PDF/HTML files to "
+            f"{SKA_CAPABILITIES_DIR} and run `python ingest.py`."
+        )
+    return "\n".join(f"- {f.name}" for f in files)
 
 
 @mcp.tool()

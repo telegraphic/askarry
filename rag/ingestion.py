@@ -29,6 +29,8 @@ from .bibliography import format_citation, lookup_citation
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
+    DOC_SOURCE_AASKAII,
+    DOC_SOURCE_DIRS,
     EMBEDDING_MODEL,
     INGEST_WORKERS,
     PDF_DIRS,
@@ -85,6 +87,17 @@ def _worker_parse_chunk(
     return source, texts, metadatas
 
 
+def _doc_source_for(source: str) -> str:
+    """Tag a chunk's originating collection by which configured directory it
+    lives under (see config.DOC_SOURCE_DIRS), defaulting to the AASKAII book
+    corpus for everything else."""
+    resolved = Path(source).resolve()
+    for directory, doc_source in DOC_SOURCE_DIRS.items():
+        if directory.resolve() in resolved.parents:
+            return doc_source
+    return DOC_SOURCE_AASKAII
+
+
 def _chunk_metadata(source: str, index: int, chunk) -> dict:
     """Extract rich metadata from a docling DocChunk for storage in ChromaDB.
 
@@ -127,6 +140,7 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
         "section_path": section_path,
         "caption": caption,
         "chunk_type": chunk_type,
+        "doc_source": _doc_source_for(source),
         # doc_title is injected later in the main process (ingest_files) once
         # the bibliography is available; set a placeholder here so the shape is
         # consistent for any caller that directly invokes _chunk_metadata.

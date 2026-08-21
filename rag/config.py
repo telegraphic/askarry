@@ -14,9 +14,25 @@ CHROMA_DIR = HERE / "chroma_db"                      # Persistent ChromaDB stora
 BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"    # AASKAII title/author lookup (see pdfs/build_bibliography.py)
 AASKAII_YEAR = 2026                                  # Publication year for all AASKAII chapters
 
-# All directories to scan during ingestion (edit freely).
+# SKA key capabilities technical documents — kept in their own subdirectory
+# and tagged with DOC_SOURCE_SKA_CAPABILITIES so they can be searched
+# separately from the AASKAII book chapters (see DOC_SOURCE_DIRS below).
+SKA_CAPABILITIES_DIR = PDF_DIR / "SKA_Key_Capabilities"
+
+# All directories to scan during ingestion (edit freely). PDF_DIR is scanned
+# recursively, so SKA_CAPABILITIES_DIR (a subdirectory of it) is already
+# covered — it isn't listed separately here to avoid double-discovery.
 # Non-existent paths are silently skipped.
 PDF_DIRS: list[Path] = [PDF_DIR]
+
+# Tags chunks by which document collection they came from (see
+# rag/ingestion.py::_doc_source_for). Anything not under a listed directory
+# defaults to DOC_SOURCE_AASKAII.
+DOC_SOURCE_AASKAII = "aaskaii"
+DOC_SOURCE_SKA_CAPABILITIES = "ska_capabilities"
+DOC_SOURCE_DIRS: dict[Path, str] = {
+    SKA_CAPABILITIES_DIR: DOC_SOURCE_SKA_CAPABILITIES,
+}
 
 # File extensions handled throughout the pipeline (ingestion, bibliography
 # lookup, the pdfs/ download & bibliography-build tooling).

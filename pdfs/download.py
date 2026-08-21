@@ -99,6 +99,10 @@ for url in sorted(pdf_links):
 
     outfile = folder / filename
 
+    if outfile.exists():
+        logger.info(f"SKIP {filename} (already downloaded)")
+        continue
+
     try:
 
         r = requests.get(

@@ -23,6 +23,7 @@ from . import store
 from .config import (
     BM25_WEIGHT,
     CONTEXT_EXPANSION_WINDOW,
+    DOC_SOURCE_AASKAII,
     EMBEDDING_QUERY_PROMPT,
     OLLAMA_MODEL,
     OLLAMA_NUM_CTX,
@@ -196,6 +197,7 @@ def _meta_to_chunk(meta: dict, text: str, score: float) -> dict:
         "section_path": meta.get("section_path", ""),
         "caption": meta.get("caption", ""),
         "doc_title": meta.get("doc_title", ""),
+        "doc_source": meta.get("doc_source", DOC_SOURCE_AASKAII),
         "score": score,
     }
 
@@ -247,6 +249,7 @@ def retrieve(
     on_progress: Callable[[float, str], None] | None = None,
     use_hyde: bool | None = None,
     expansion_window: int | None = None,
+    where: dict | None = None,
 ) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
 
@@ -268,6 +271,10 @@ def retrieve(
 
     *expansion_window* overrides ``CONTEXT_EXPANSION_WINDOW`` for this call.
     The MCP server passes ``2`` to give frontier models a wider passage context.
+
+    *where* is an optional ChromaDB metadata filter (e.g.
+    ``{"doc_source": "ska_capabilities"}``) scoping both the semantic and
+    BM25 search legs to matching chunks only. ``None`` searches everything.
 
     Each returned dict has at minimum:
         text         : str   — expanded passage text
@@ -309,6 +316,7 @@ def retrieve(
         query_embeddings=query_embedding,
         n_results=n_candidates,
         include=["documents", "metadatas", "distances"],
+        where=where,
     )
     semantic_hits = []
     for doc, meta, dist in zip(
@@ -327,8 +335,15 @@ def retrieve(
     expanded_query = _expand_query(query, acronyms)
     tokenised_query = expanded_query.lower().split()
     bm25_scores = bm25.get_scores(tokenised_query)
+    candidate_indices = range(len(bm25_scores))
+    if where:
+        candidate_indices = [
+            i
+            for i in candidate_indices
+            if all(bm25_docs[i]["meta"].get(k) == v for k, v in where.items())
+        ]
     top_bm25_indices = sorted(
-        range(len(bm25_scores)), key=lambda i: bm25_scores[i], reverse=True
+        candidate_indices, key=lambda i: bm25_scores[i], reverse=True
     )[:n_candidates]
     bm25_hits = []
     for i in top_bm25_indices:
