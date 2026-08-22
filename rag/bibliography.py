@@ -17,6 +17,7 @@ from rag.config import (
     PDF_DIRS,
     SECTION_ORDER,
     SUPPORTED_SUFFIXES,
+    doc_source_for,
 )
 
 
@@ -57,11 +58,15 @@ def _discover_pdf_stems() -> dict[str, Path]:
     return {path.stem: path for path in store.discover_files(PDF_DIRS, SUPPORTED_SUFFIXES)}
 
 
-def list_toc_entries() -> dict[str, list[dict]]:
+def list_toc_entries(doc_source: str | None = None) -> dict[str, list[dict]]:
     """
     Build the Table of Contents grouped by section (in book order), sorted
     alphabetically by title within each group. Local files with no matching
     bibliography entry are excluded.
+
+    When *doc_source* is given (see config.DOC_SOURCE_*), only chapters from
+    that report are included — so AASKA2015 and AASKAII chapters can be
+    browsed as separate tabs without mixing.
     """
     bibliography = load_bibliography()
     stems = _discover_pdf_stems()
@@ -70,6 +75,8 @@ def list_toc_entries() -> dict[str, list[dict]]:
     for chapter_id, path in stems.items():
         entry = bibliography.get(chapter_id)
         if entry is None:
+            continue
+        if doc_source is not None and doc_source_for(path) != doc_source:
             continue
         grouped.setdefault(entry["section"], []).append(
             {

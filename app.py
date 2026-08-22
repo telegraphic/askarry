@@ -12,6 +12,7 @@ import queue
 import re
 import threading
 import warnings
+from functools import partial
 from html import escape
 from pathlib import Path
 from urllib.parse import quote
@@ -27,6 +28,8 @@ from rag.config import (
     AUDIENCE_PHD,
     AUDIENCE_UI_LABELS,
     CONFIDENCE_THRESHOLD,
+    DOC_SOURCE_AASKA2015,
+    DOC_SOURCE_AASKAII,
     OLLAMA_MODEL,
     PDF_DIRS,
     TOP_K,
@@ -138,12 +141,12 @@ def _slugify(text: str) -> str:
     return slug or "section"
 
 
-def _render_toc(search: str = "") -> str:
+def _render_toc(search: str = "", doc_source: str | None = None) -> str:
     """Render the searchable Table of Contents: a section side menu plus
     collapsible sections for the entries themselves. Styling is done with
     Tailwind utility classes (loaded via the CDN script injected into
     <head>) rather than a hand-rolled <style> block."""
-    grouped = list_toc_entries()
+    grouped = list_toc_entries(doc_source)
     query = (search or "").strip().lower()
 
     nav_links = []
@@ -196,24 +199,30 @@ def _render_toc(search: str = "") -> str:
 # rag.ingestion.find_acronym_candidates. Rebuilding that scan is a bit slow
 # (regex over the full corpus text) so it's cached and only rebuilt when the
 # ChromaDB collection's chunk count changes, same pattern as the BM25/
-# retrieval acronym caches in rag/retrieval.py.
-_acronym_cache = store.CountCache()
+# retrieval acronym caches in rag/retrieval.py. Kept separate per doc_source
+# so AASKA2015 and AASKAII acronyms are scanned, and cached, independently.
+_acronym_caches: dict[str, store.CountCache] = {
+    DOC_SOURCE_AASKAII: store.CountCache(),
+    DOC_SOURCE_AASKA2015: store.CountCache(),
+}
 
 _ACRONYM_SORT_CHOICES = ["Most frequent", "Most papers", "Alphabetical"]
 
 
-def _get_acronym_candidates() -> dict[str, dict]:
+def _get_acronym_candidates(doc_source: str) -> dict[str, dict]:
     collection = store.get_chroma_collection()
-    return _acronym_cache.get(collection, lambda: find_acronym_candidates(collection))
+    return _acronym_caches[doc_source].get(
+        collection, lambda: find_acronym_candidates(collection, doc_source)
+    )
 
 
-def _build_acronym_rows(search: str, sort_by: str) -> list[list]:
+def _build_acronym_rows(search: str, sort_by: str, doc_source: str) -> list[list]:
     """Build the row data for the Acronyms tab Dataframe: [Acronym,
     Expansion, Occurrences, Papers], filtered by *search* and ordered by
     *sort_by*. The acronym is kept in column 0 so a row-select event
     (`evt.row_value[0]`) can identify which entry was clicked without extra
     bookkeeping state."""
-    candidates = _get_acronym_candidates()
+    candidates = _get_acronym_candidates(doc_source)
     query = (search or "").strip().lower()
 
     rows = []
@@ -223,7 +232,7 @@ def _build_acronym_rows(search: str, sort_by: str) -> list[list]:
         ):
             continue
         best_expansion = max(entry["expansions"], key=entry["expansions"].get)
-        count = sum(entry["expansions"].values())
+        count = entry["occurrence_count"]
         rows.append([acronym, best_expansion, count, len(entry["sources"])])
 
     if sort_by == "Alphabetical":
@@ -236,17 +245,17 @@ def _build_acronym_rows(search: str, sort_by: str) -> list[list]:
     return rows
 
 
-def _build_acronym_modal_html(acronym: str) -> str:
+def _build_acronym_modal_html(acronym: str, doc_source: str) -> str:
     """Render the modal shown when an acronym row is clicked: every distinct
     expansion seen (in case of ambiguity, e.g. DM = dark matter vs.
     dispersion measure) plus a linked list of the papers that use it."""
-    entry = _get_acronym_candidates().get(acronym)
+    entry = _get_acronym_candidates(doc_source).get(acronym)
     if entry is None:
         return f"### {escape(acronym)}\n\n_No details available._"
 
     expansions_by_count = sorted(entry["expansions"].items(), key=lambda kv: -kv[1])
     best_expansion, _ = expansions_by_count[0]
-    total = sum(entry["expansions"].values())
+    total = entry["occurrence_count"]
 
     lines = [f"### {escape(acronym)} — {escape(best_expansion)}"]
     if len(expansions_by_count) > 1:
@@ -260,15 +269,26 @@ def _build_acronym_modal_html(acronym: str) -> str:
     return "\n".join(lines)
 
 
-def _refresh_acronym_table(search: str, sort_by: str) -> list[list]:
-    return _build_acronym_rows(search, sort_by)
+def _refresh_acronym_table(search: str, sort_by: str, doc_source: str) -> list[list]:
+    return _build_acronym_rows(search, sort_by, doc_source)
 
 
-def _on_acronym_row_select(evt: gr.SelectData):
-    row = evt.row_value
-    if not row:
-        return gr.update(visible=False), ""
-    return gr.update(visible=True), _build_acronym_modal_html(row[0])
+def _make_acronym_row_select_handler(doc_source: str):
+    """Build a per-report row-select handler. A plain closure (rather than
+    `functools.partial`) so the `evt: gr.SelectData` annotation stays visible
+    to Gradio's `typing.get_type_hints` introspection, which decides whether
+    the event payload needs an explicit `inputs=` wire-up."""
+
+    def handler(evt: gr.SelectData):
+        row = evt.row_value
+        if not row:
+            return gr.update(elem_classes=["askarry-modal-overlay"]), ""
+        return (
+            gr.update(elem_classes=["askarry-modal-overlay", "is-open"]),
+            _build_acronym_modal_html(row[0], doc_source),
+        )
+
+    return handler
 
 
 def _load_theme() -> gr.themes.ThemeClass:
@@ -506,71 +526,87 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
             )
 
         with gr.Tab("Browse Chapters"):
-            toc_search = gr.Textbox(
-                label="Search",
-                placeholder="Filter by title, author, or section…",
-            )
-            toc_display = gr.Markdown(
-                value=_render_toc(),
-                latex_delimiters=_LATEX_DELIMITERS,
-                sanitize_html=False,
-            )
-            toc_search.change(_render_toc, inputs=[toc_search], outputs=[toc_display])
+            with gr.Tabs():
+                for report_label, doc_source in (
+                    ("AASKAII (2026)", DOC_SOURCE_AASKAII),
+                    ("AASKA (2015)", DOC_SOURCE_AASKA2015),
+                ):
+                    with gr.Tab(report_label):
+                        toc_search = gr.Textbox(
+                            label="Search",
+                            placeholder="Filter by title, author, or section…",
+                        )
+                        toc_display = gr.Markdown(
+                            value=_render_toc(doc_source=doc_source),
+                            latex_delimiters=_LATEX_DELIMITERS,
+                            sanitize_html=False,
+                        )
+                        toc_search.change(
+                            partial(_render_toc, doc_source=doc_source),
+                            inputs=[toc_search],
+                            outputs=[toc_display],
+                        )
 
         with gr.Tab("Acronyms"):
-            gr.Markdown(
-                "Acronyms discovered by scanning inline definitions across the "
-                "indexed papers (e.g. _\u201cCentral Signal Processor (CSP)\u201d_). "
-                "Click a row to see every paper that uses it."
-            )
-            with gr.Row():
-                acronym_search = gr.Textbox(
-                    label="Search",
-                    placeholder="Filter by acronym or expansion…",
-                    scale=3,
-                )
-                acronym_sort = gr.Radio(
-                    choices=_ACRONYM_SORT_CHOICES,
-                    value=_ACRONYM_SORT_CHOICES[0],
-                    label="Sort by",
-                    scale=2,
-                )
+            with gr.Tabs():
+                for report_label, doc_source in (
+                    ("AASKAII (2026)", DOC_SOURCE_AASKAII),
+                    ("AASKA (2015)", DOC_SOURCE_AASKA2015),
+                ):
+                    with gr.Tab(report_label):
+                        gr.Markdown(
+                            "Acronyms discovered by scanning inline definitions across the "
+                            "indexed papers (e.g. _\u201cCentral Signal Processor (CSP)\u201d_). "
+                            "Click a row to see every paper that uses it."
+                        )
+                        with gr.Row():
+                            acronym_search = gr.Textbox(
+                                label="Search",
+                                placeholder="Filter by acronym or expansion\u2026",
+                                scale=3,
+                            )
+                            acronym_sort = gr.Radio(
+                                choices=_ACRONYM_SORT_CHOICES,
+                                value=_ACRONYM_SORT_CHOICES[0],
+                                label="Sort by",
+                                scale=2,
+                            )
 
-            acronym_table = gr.Dataframe(
-                headers=["Acronym", "Expansion", "Occurrences", "Papers"],
-                datatype=["str", "str", "number", "number"],
-                value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0]),
-                interactive=False,
-                wrap=True,
-            )
+                        acronym_table = gr.Dataframe(
+                            headers=["Acronym", "Expansion", "Occurrences", "Papers"],
+                            datatype=["str", "str", "number", "number"],
+                            value=_build_acronym_rows("", _ACRONYM_SORT_CHOICES[0], doc_source),
+                            interactive=False,
+                            wrap=True,
+                        )
 
-            with gr.Group(visible=False, elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
-                 gr.Column(elem_classes=["askarry-modal-box"]):
-                acronym_modal_close = gr.Button(
-                    "✕ Close", size="sm", elem_classes=["askarry-modal-close"]
-                )
-                acronym_modal_content = gr.Markdown(
-                    latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False
-                )
+                        with gr.Group(elem_classes=["askarry-modal-overlay"]) as acronym_modal, \
+                             gr.Column(elem_classes=["askarry-modal-box"]):
+                            acronym_modal_close = gr.Button(
+                                "\u2715 Close", size="sm", elem_classes=["askarry-modal-close"]
+                            )
+                            acronym_modal_content = gr.Markdown(
+                                latex_delimiters=_LATEX_DELIMITERS, sanitize_html=False
+                            )
 
-            acronym_search.change(
-                _refresh_acronym_table,
-                inputs=[acronym_search, acronym_sort],
-                outputs=[acronym_table],
-            )
-            acronym_sort.change(
-                _refresh_acronym_table,
-                inputs=[acronym_search, acronym_sort],
-                outputs=[acronym_table],
-            )
-            acronym_table.select(
-                _on_acronym_row_select,
-                outputs=[acronym_modal, acronym_modal_content],
-            )
-            acronym_modal_close.click(
-                lambda: gr.update(visible=False),
-                outputs=[acronym_modal],
-            )
+                        acronym_search.change(
+                            partial(_refresh_acronym_table, doc_source=doc_source),
+                            inputs=[acronym_search, acronym_sort],
+                            outputs=[acronym_table],
+                        )
+                        acronym_sort.change(
+                            partial(_refresh_acronym_table, doc_source=doc_source),
+                            inputs=[acronym_search, acronym_sort],
+                            outputs=[acronym_table],
+                        )
+                        acronym_table.select(
+                            _make_acronym_row_select_handler(doc_source),
+                            outputs=[acronym_modal, acronym_modal_content],
+                        )
+                        acronym_modal_close.click(
+                            lambda: gr.update(elem_classes=["askarry-modal-overlay"]),
+                            outputs=[acronym_modal],
+                        )
 
 
 

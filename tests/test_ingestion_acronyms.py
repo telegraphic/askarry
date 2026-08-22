@@ -5,7 +5,7 @@ class _FakeCollection:
     def __init__(self, docs_and_sources):
         self._docs_and_sources = docs_and_sources
 
-    def get(self, include=None):
+    def get(self, include=None, where=None):
         documents = [text for text, _ in self._docs_and_sources]
         metadatas = [{"source": source} for _, source in self._docs_and_sources]
         return {"documents": documents, "metadatas": metadatas}

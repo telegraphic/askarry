@@ -46,6 +46,18 @@ DOC_SOURCE_DIRS: dict[Path, str] = {
     AASKA2015_DIR: DOC_SOURCE_AASKA2015,
 }
 
+
+def doc_source_for(source: str) -> str:
+    """Tag a file by which configured directory it lives under (see
+    DOC_SOURCE_DIRS), defaulting to the AASKAII book corpus for everything
+    else. Shared by rag/ingestion.py (chunk metadata) and rag/bibliography.py
+    (Table of Contents / acronym report grouping)."""
+    resolved = Path(source).resolve()
+    for directory, doc_source in DOC_SOURCE_DIRS.items():
+        if directory.resolve() in resolved.parents:
+            return doc_source
+    return DOC_SOURCE_AASKAII
+
 # Human-readable "book, year" label per doc_source, used when showing a
 # passage's provenance to the LLM (rag/generation.py, mcp_server.py) so it
 # can reason about recency directly instead of relying solely on the

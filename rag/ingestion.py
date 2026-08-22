@@ -29,12 +29,11 @@ from .bibliography import format_citation, lookup_citation
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
-    DOC_SOURCE_AASKAII,
-    DOC_SOURCE_DIRS,
     EMBEDDING_MODEL,
     INGEST_WORKERS,
     PDF_DIRS,
     SUPPORTED_SUFFIXES,
+    doc_source_for,
 )
 
 # HybridChunker/tokenizers count tokens on the *full* section text before
@@ -87,17 +86,6 @@ def _worker_parse_chunk(
     return source, texts, metadatas
 
 
-def _doc_source_for(source: str) -> str:
-    """Tag a chunk's originating collection by which configured directory it
-    lives under (see config.DOC_SOURCE_DIRS), defaulting to the AASKAII book
-    corpus for everything else."""
-    resolved = Path(source).resolve()
-    for directory, doc_source in DOC_SOURCE_DIRS.items():
-        if directory.resolve() in resolved.parents:
-            return doc_source
-    return DOC_SOURCE_AASKAII
-
-
 def _chunk_metadata(source: str, index: int, chunk) -> dict:
     """Extract rich metadata from a docling DocChunk for storage in ChromaDB.
 
@@ -140,7 +128,7 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
         "section_path": section_path,
         "caption": caption,
         "chunk_type": chunk_type,
-        "doc_source": _doc_source_for(source),
+        "doc_source": doc_source_for(source),
         # doc_title is injected later in the main process (ingest_files) once
         # the bibliography is available; set a placeholder here so the shape is
         # consistent for any caller that directly invokes _chunk_metadata.
@@ -552,12 +540,19 @@ def _cluster_senses(senses: dict[str, dict]) -> list[dict]:
     return clustered
 
 
-def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
+def find_acronym_candidates(
+    collection: chromadb.Collection, doc_source: str | None = None
+) -> dict[str, dict]:
     """Scan every indexed chunk for inline acronym definitions.
 
+    When *doc_source* is given (see config.DOC_SOURCE_*), only chunks tagged
+    with that doc_source are scanned — so e.g. AASKA2015 and AASKAII acronym
+    senses are discovered independently and never merged with each other.
+
     Returns {KEY: {"expansions": {text: count}, "sources": [absolute source
-    paths], "category": str}}, sorted by nothing in particular — callers
-    should rank by count. Sources are full paths (as stored in chunk
+    paths], "category": str, "occurrence_count": int}}, sorted by nothing in
+    particular — callers should rank by occurrence_count. Sources are full
+    paths (as stored in chunk
     metadata) rather than bare filenames so callers can build file links /
     bibliography lookups without re-resolving relative paths; derive a
     display name at render time. `category` is assigned via
@@ -585,13 +580,18 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
     have only one sense — e.g. once "SKA" is known to mean "Square Kilometre
     Array" from a single definition, every other paper that just says "SKA"
     without re-defining it is unambiguous and gets added as a source too.
-    Ambiguous acronyms (more than one sense, e.g. "DM") are skipped here since
-    a bare mention can't be assigned to one sense without the surrounding
-    expansion.
+    This pass also counts every one of those bare mentions towards
+    `"occurrence_count"`, so an acronym used constantly but only formally
+    defined once or twice (e.g. "SKA") reports a realistic total instead of
+    just its handful of definition-sites. Ambiguous acronyms (more than one
+    sense, e.g. "DM") are skipped here since a bare mention can't be assigned
+    to one sense without the surrounding expansion — their
+    `"occurrence_count"` falls back to just the counted definitions.
     """
     # acronym -> normalized expansion -> {"counts": {raw text: count}, "sources": {..}}
     raw: dict[str, dict[str, dict]] = {}
-    all_results = collection.get(include=["documents", "metadatas"])
+    where = {"doc_source": doc_source} if doc_source else None
+    all_results = collection.get(include=["documents", "metadatas"], where=where)
 
     for text, meta in zip(all_results["documents"], all_results["metadatas"] or []):
         for match in _INLINE_ACRONYM_RE.finditer(text):
@@ -627,6 +627,7 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
                 "expansions": bucket["counts"],
                 "sources": sorted(bucket["sources"]),
                 "category": classify_acronym(best_expansion),
+                "occurrence_count": sum(bucket["counts"].values()),
             }
         if not disambiguate:
             unambiguous_keys[acronym] = display_key
@@ -636,10 +637,15 @@ def find_acronym_candidates(collection: chromadb.Collection) -> dict[str, dict]:
             r"\b(" + "|".join(re.escape(a) for a in unambiguous_keys) + r")\b"
         )
         source_sets = {key: set(c["sources"]) for key, c in candidates.items()}
+        occurrence_counts = {key: 0 for key in unambiguous_keys.values()}
         for text, meta in zip(all_results["documents"], all_results["metadatas"] or []):
             for match in bare_re.finditer(text):
-                source_sets[unambiguous_keys[match.group(1)]].add(meta["source"])
+                key = unambiguous_keys[match.group(1)]
+                source_sets[key].add(meta["source"])
+                occurrence_counts[key] += 1
         for key, sources in source_sets.items():
             candidates[key]["sources"] = sorted(sources)
+            if key in occurrence_counts:
+                candidates[key]["occurrence_count"] = occurrence_counts[key]
 
     return candidates

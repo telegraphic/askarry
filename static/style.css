@@ -82,11 +82,12 @@ label above the track. */
 }
 
 /* Acronyms tab: pseudo-modal overlay (Gradio 6.14 has no native gr.Modal
-component). The gr.Group given elem_classes=["askarry-modal-overlay"] is
-pinned to fill the viewport as a dimmed, centered backdrop when Gradio makes
-it visible; `display` is intentionally left alone (no !important) so
-Gradio's own inline `display:none` toggle for visible=False still works. */
+component). Gradio's own visible=True/False toggle on nested containers is
+unreliable (the close button would leave the dimmed backdrop stuck on
+screen), so the overlay is always rendered and shown/hidden purely via the
+"is-open" class, set/cleared through elem_classes updates instead. */
 .askarry-modal-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     z-index: 1000;
@@ -94,6 +95,9 @@ Gradio's own inline `display:none` toggle for visible=False still works. */
     justify-content: center;
     background: rgba(0, 0, 0, 0.55);
     padding: 1.5rem;
+}
+.askarry-modal-overlay.is-open {
+    display: flex;
 }
 .askarry-modal-box {
     max-width: 640px;
