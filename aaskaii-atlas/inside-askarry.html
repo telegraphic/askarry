@@ -1,0 +1,323 @@
+<title>Inside Askarry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.62; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1220px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:220px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:20ch; }
+  header.masthead p.lede{ max-width:80ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stats{ display:flex; gap:28px; flex-wrap:wrap; margin-top:2px; }
+  .stat{ display:flex; flex-direction:column; }
+  .stat .n{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:20px; }
+  .stat .l{ font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.05em; }
+
+  nav.toc{ position:sticky; top:56px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:52px; }
+
+  .sec-block{ scroll-margin-top:70px; max-width:82ch; }
+  .sec-block h2{ font-size:23px; font-weight:700; margin-bottom:14px; }
+  .sec-block p{ color:var(--ink-soft); margin:0 0 14px; }
+  .sec-block p:last-child{ margin-bottom:0; }
+  .sec-block p b{ color:var(--ink); font-weight:600; }
+  .sec-block p i{ color:var(--ink); }
+  .sec-block.wide{ max-width:none; }
+
+  .lede-strong{ color:var(--ink); font-weight:600; }
+
+  /* key terms box */
+  .terms{ margin-top:18px; border:1px dashed var(--line); border-radius:12px; padding:18px 22px; background:var(--surface-2); max-width:82ch; }
+  .terms h3{ font-size:11.5px; margin-bottom:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; font-family:"IBM Plex Mono",monospace; font-weight:500; }
+  .terms dl{ margin:0; display:flex; flex-direction:column; gap:10px; }
+  .terms dt{ font-weight:600; color:var(--ink); font-size:13.5px; }
+  .terms dd{ margin:2px 0 0; color:var(--ink-soft); font-size:13px; }
+
+  /* diagram */
+  figure.diagram{ margin:0; max-width:920px; }
+  figure.diagram .fig-wrap{ border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:22px 18px; }
+  figure.diagram svg{ width:100%; height:auto; display:block; color:var(--ink-soft); }
+  figure.diagram svg text{ fill:var(--ink); font-family:"IBM Plex Sans", sans-serif; }
+  figure.diagram svg text.small{ fill:var(--ink-faint); font-size:11px; }
+  figure.diagram svg .node-fusion{ fill:var(--accent-both-tint); stroke:var(--accent-both); }
+  figure.diagram svg .node-fusion text{ fill:var(--accent-both); font-weight:600; }
+  figure.diagram svg .node{ fill:var(--surface-2); stroke:var(--line); }
+  figure.diagram svg .edge-dashed{ stroke-dasharray:5 4; opacity:0.75; }
+  figcaption{ margin-top:12px; font-size:12.5px; color:var(--ink-faint); max-width:82ch; }
+
+  .legend-row{ display:flex; gap:22px; flex-wrap:wrap; margin-top:16px; font-size:12px; color:var(--ink-soft); }
+  .legend-row span{ display:inline-flex; align-items:center; gap:7px; }
+  .legend-row .swatch{ width:22px; height:0; border-top:2px solid var(--ink-faint); display:inline-block; }
+  .legend-row .swatch.dashed{ border-top-style:dashed; }
+
+  /* worked example */
+  .trace{ display:flex; flex-direction:column; gap:0; max-width:82ch; margin-top:6px; }
+  .trace-step{ display:grid; grid-template-columns:28px 1fr; gap:14px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .trace-step:last-child{ border-bottom:none; }
+  .trace-step .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; color:var(--accent-mid); font-size:13px; }
+  .trace-step p{ margin:0; color:var(--ink-soft); font-size:13.8px; }
+  .trace-step p b{ color:var(--ink); font-weight:600; }
+
+  footer.notes{ padding-top:22px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.75; max-width:90ch; }
+  footer.notes h3{ font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em; font-family:"IBM Plex Mono",monospace; font-weight:500; margin-bottom:8px; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes code{ font-family:"IBM Plex Mono",monospace; background:var(--surface-2); padding:1px 5px; border-radius:4px; font-size:11.5px; }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="observing-mode-contention.html">I · Contention Map</a>
+      <a href="requirements-ledger.html">II · Requirements Ledger</a>
+      <a href="synergy-network.html">III · Synergy Network</a>
+      <a href="behind-the-atlas.html">IV · Behind the Atlas</a>
+      <a href="acronym-list.html">V · Acronym List</a>
+      <a href="chapter-directory.html">VI · Chapter Directory</a>
+      <a href="inside-askarry.html" class="current">VII · Inside Askarry</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII Atlas · Part VII</div>
+    <h1>Inside Askarry</h1>
+    <p class="lede">This page explains, in plain English, how the search tool behind this atlas works. It assumes no background in astronomy or machine learning, only a general sense of what a search engine does.</p>
+    <div class="stats">
+      <div class="stat"><span class="n">2</span><span class="l">search methods combined</span></div>
+      <div class="stat"><span class="n">480</span><span class="l">tokens per chunk, max</span></div>
+      <div class="stat"><span class="n">6</span><span class="l">tools exposed to an LLM</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">ways to ask it a question</span></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#problem">Why not just ask a model?</a>
+    <a href="#overview">The pipeline, in outline</a>
+    <div class="toc-group">Building the index</div>
+    <a href="#ingestion">Ingestion</a>
+    <a href="#indexing">Indexing</a>
+    <div class="toc-group">Answering a question</div>
+    <a href="#retrieval">Retrieval</a>
+    <a href="#generation">Generation</a>
+    <a href="#interfaces">Two front doors</a>
+    <div class="toc-group">Putting it together</div>
+    <a href="#example">A worked example</a>
+    <a href="#limits">What it doesn't fix</a>
+    <div class="toc-group">Atlas</div>
+    <a href="index.html">← Back to Atlas</a>
+  </nav>
+
+  <main>
+    <section class="sec-block" id="problem">
+      <h2>Why not just ask a language model?</h2>
+      <p>A large language model is trained once, on a fixed body of text, and then it stops learning. It answers questions covered by general knowledge reasonably well. It often fails on narrow or recent material, such as the contents of a specific 2026 SKA Observatory science book. One of two things happens then. The model either admits it doesn't know, which is honest but unhelpful, or it produces an answer that sounds confident and plausible but is wrong. This second failure has a name: <b>hallucination</b>. The model is not lying deliberately. It is doing what it was trained to do: predict plausible-sounding text. Plausible text is not necessarily true text.</p>
+      <p>Retrieval-augmented generation (<b>RAG</b>) changes the task instead of trying to fix the model's memory. The system first searches a fixed collection of real documents for the passages most likely to contain the answer. It then hands the model those passages and instructs it to answer <i>using only what is in front of it</i>. This resembles an open-book exam rather than a closed-book one. The model's job shrinks from recalling a fact to reading a handful of passages and summarizing what they say. Language models perform that second task far more reliably, because it does not depend on what survived in their training data.</p>
+      <p>Askarry is a RAG system built around one closed set of documents: the AASKAII science case and a smaller set of SKA engineering documents. The sections below describe how it turns a folder of PDFs into a system you can query. Each answer carries a citation, so you can verify it rather than simply trust it.</p>
+    </section>
+
+    <section class="sec-block wide" id="overview">
+      <h2>The pipeline, in outline</h2>
+      <p>The pipeline runs in two separate phases. The first phase runs once, offline, whenever new papers are added. It parses PDFs, cuts them into small pieces, and indexes those pieces in two different ways. The second phase runs every time someone asks a question. It matches the question against both indexes, merges and re-orders the two result lists, and hands the best passages to a language model to write an answer. The diagram below shows both phases. Dashed lines mark the one-time indexing work. Solid lines mark what happens per query.</p>
+      <figure class="diagram">
+        <div class="fig-wrap">
+          <svg viewBox="0 0 1040 860" role="img" aria-label="Pipeline diagram: AASKAII PDFs are ingested and chunked, then indexed both as vector embeddings and as a BM25 keyword index. A query searches both indexes; the two ranked lists are combined by Reciprocal Rank Fusion, re-ordered by a cross-encoder reranker, and expanded with neighbouring context. The result is handed either to a local Ollama model in the Gradio app, or to a frontier LLM such as Claude via MCP tools, to write a cited answer.">
+            <defs>
+              <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+              </marker>
+            </defs>
+
+            <!-- edges (drawn first, under nodes) -->
+            <g fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#ar)">
+              <path class="edge-dashed" d="M520,68 L520,100"/>
+              <path class="edge-dashed" d="M480,160 C 380,210 300,250 250,284"/>
+              <path class="edge-dashed" d="M560,160 C 660,210 740,250 790,284"/>
+              <path d="M480,244 C 400,262 300,272 260,284"/>
+              <path d="M560,244 C 660,262 760,272 800,284"/>
+              <path d="M260,356 C 380,378 440,388 500,398"/>
+              <path d="M780,356 C 660,378 600,388 540,398"/>
+              <path d="M520,454 L520,492"/>
+              <path d="M520,546 L520,584"/>
+              <path d="M500,638 C 420,652 320,662 260,676"/>
+              <path d="M540,638 C 620,652 720,662 780,676"/>
+              <path d="M260,738 C 360,758 420,766 490,776"/>
+              <path d="M780,738 C 680,758 620,766 550,776"/>
+            </g>
+
+            <!-- nodes -->
+            <g font-size="13.5" text-anchor="middle">
+              <rect class="node" x="390" y="16" width="260" height="52" rx="10"/>
+              <text x="520" y="47">AASKAII PDFs (corpus)</text>
+
+              <rect class="node" x="330" y="100" width="380" height="60" rx="10"/>
+              <text x="520" y="126">Ingest &amp; chunk</text>
+              <text x="520" y="144" class="small">Docling parse → HybridChunker, ~480-token pieces</text>
+
+              <rect class="node" x="420" y="196" width="200" height="48" rx="10"/>
+              <text x="520" y="225">Query (user or Claude)</text>
+
+              <rect class="node" x="40" y="284" width="400" height="72" rx="10"/>
+              <text x="240" y="308">Semantic search</text>
+              <text x="240" y="326" class="small">vector index — ChromaDB</text>
+              <text x="240" y="342" class="small">bge-large-en-v1.5 embeddings</text>
+
+              <rect class="node" x="600" y="284" width="400" height="72" rx="10"/>
+              <text x="800" y="308">BM25 keyword search</text>
+              <text x="800" y="326" class="small">keyword index — rank-bm25</text>
+              <text x="800" y="342" class="small">+ acronym query expansion</text>
+
+              <rect class="node node-fusion" x="330" y="396" width="380" height="58" rx="10"/>
+              <text x="520" y="420">Reciprocal Rank Fusion</text>
+              <text x="520" y="437" class="small" style="fill:var(--accent-both)">merges both ranked lists by rank position</text>
+
+              <rect class="node" x="330" y="492" width="380" height="54" rx="10"/>
+              <text x="520" y="514">Cross-encoder rerank</text>
+              <text x="520" y="530" class="small">cross-encoder/ms-marco-MiniLM-L-6-v2</text>
+
+              <rect class="node" x="330" y="584" width="380" height="54" rx="10"/>
+              <text x="520" y="606">Context expansion</text>
+              <text x="520" y="622" class="small">neighbouring chunks joined in</text>
+
+              <rect class="node" x="60" y="676" width="380" height="62" rx="10"/>
+              <text x="250" y="700">Local model — Ollama (Gemma)</text>
+              <text x="250" y="717" class="small">Gradio web app</text>
+
+              <rect class="node" x="600" y="676" width="380" height="62" rx="10"/>
+              <text x="790" y="700">Frontier LLM — Claude</text>
+              <text x="790" y="717" class="small">via MCP tools (this atlas's path)</text>
+
+              <rect class="node" x="330" y="776" width="380" height="48" rx="10"/>
+              <text x="520" y="805">Answer, grounded in cited passages</text>
+            </g>
+          </svg>
+        </div>
+        <div class="legend-row">
+          <span><i class="swatch dashed"></i> built once, when new papers are ingested</span>
+          <span><i class="swatch"></i> happens fresh for every query</span>
+        </div>
+        <figcaption>Two parallel search strategies feed into one fusion step, highlighted here. Every question is matched by both meaning and exact wording before re-ranking or generation happens.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sec-block" id="ingestion">
+      <h2>Ingestion: turning PDFs into searchable pieces</h2>
+      <p>A PDF is not searchable at a fine grain. You can search it for a word, but not for the passage that answers a specific question. Ingestion breaks each paper into small, self-contained pieces called <b>chunks</b>. Each chunk is short enough to search and reason over individually.</p>
+      <p>Askarry uses a library called <b>Docling</b> to parse each PDF into a structured document. Docling identifies headings, paragraphs, page numbers, and figure captions, rather than treating the PDF as one undifferentiated block of text. A component called <b>HybridChunker</b> then splits that structured document into pieces of roughly 480 tokens or fewer. A token is roughly three-quarters of a word, so 480 tokens is a little over one paragraph in most academic writing. This limit exists because the embedding and re-ranking models used later in the pipeline cap out at 512 tokens; chunks are kept comfortably under that ceiling. The chunker works from the document's actual structure rather than cutting text at a fixed character count. As a result, it rarely slices a sentence in half at an arbitrary point.</p>
+      <p>Every chunk is stored with metadata alongside its text. That metadata records which file and page the chunk came from, its position in the document, and the heading it falls under. It also records which of three document collections the chunk belongs to: the current AASKAII book, the older 2015 predecessor, or a separate set of SKA engineering specifications. This metadata lets the system show exactly where an answer came from, instead of merely asserting it.</p>
+    </section>
+
+    <section class="sec-block" id="indexing">
+      <h2>Indexing: two different ways of remembering the text</h2>
+      <p>Once the corpus is chunked, Askarry indexes it twice, using two different methods. Each method catches a different kind of question.</p>
+      <p>The first method builds a <b>vector index</b>. An embedding model, <b>BAAI/bge-large-en-v1.5</b>, reads each chunk and converts it into a long list of numbers called a vector. That vector represents the chunk's meaning. Chunks about similar topics end up as nearby points in this numerical space, even when they share few of the same words. This is what lets the system search by <i>meaning</i> rather than exact wording. A query about "detecting cold gas in galaxies" can still find a passage that only says "neutral hydrogen emission," because the embedding model has learned that the two phrases describe similar territory. Askarry stores these vectors in <b>ChromaDB</b>, a database built for fast nearest-neighbour lookups over large numbers of vectors.</p>
+      <p>The second method builds a <b>keyword index</b>, using an algorithm called <b>BM25</b>. BM25 scores how well a document matches a query based on which exact words the document contains, weighted by how rare and how frequent those words are. This is the same family of algorithm that underlies much of traditional web search. BM25 is strong exactly where embeddings are weak: it catches precise technical terms, acronyms, and instrument names, where exact wording matters more than general topic. Before running this search, Askarry expands the query with any acronym definitions it has learned. A question about "the CSP" also searches for "Central Signal Processor." This expansion measurably improves recall, because this corpus is written in acronym-heavy language.</p>
+      <p>Neither index alone is sufficient. Semantic search can miss a rare, precisely worded technical query. Keyword search can miss a well-phrased conceptual one. Askarry runs both searches for every query and combines the results; the next stage explains how.</p>
+    </section>
+
+    <section class="sec-block" id="retrieval">
+      <h2>Retrieval: finding the right passages</h2>
+      <p>Askarry searches every question against both indexes independently. This produces two ranked lists of candidate chunks, typically the top 20 or so from each. The engineering problem is that the two lists' scores are not directly comparable. A cosine similarity from the vector index and a BM25 score sit on completely different numerical scales. Simply adding the two scores together would let whichever scale happens to run larger dominate the result, for no principled reason.</p>
+      <p>Askarry solves this with <b>Reciprocal Rank Fusion</b> (RRF). RRF ignores the raw scores entirely and works from rank position instead. Each chunk earns a fusion score of <span class="num">1 / (60 + rank)</span> from each list it appears in, where <i>rank</i> is its position (1st, 2nd, 3rd, and so on) in that list. Askarry adds the two contributions together, weighting the keyword-search contribution at roughly half the semantic contribution. That weighting is tuned for how acronym-dense this corpus is. The constant 60 dampens the score: without it, the difference between ranking 1st and ranking 2nd would swing the fused score far more than such a small difference in relevance actually warrants. A chunk that ranks respectably in both lists will usually outscore a chunk that ranks first in only one list. This is the reason to run two searches instead of one.</p>
+      <p>Askarry hands the fused list to a <b>cross-encoder</b>, a second relevance model that is slower but more accurate. The embedding model used for semantic search reads the query and each chunk <i>separately</i> and then compares the two representations. That approach is fast enough to run over the whole corpus, but it is comparatively coarse. A cross-encoder reads the query and a candidate chunk <i>together</i>, as one input, so it can judge their relevance to each other far more precisely. This precision costs more compute, so it only makes sense once the field has already narrowed from thousands of chunks down to a few dozen. This retrieve-broadly-then-rerank-precisely pattern is standard in modern search systems for that reason. Askarry also applies a modest, tunable penalty to chunks from the outdated 2015 predecessor book. Current AASKAII material wins relevance ties as a result, without excluding the older source outright when it is genuinely the better match.</p>
+      <p>Finally, Askarry expands each surviving chunk with its immediate neighbours in the source document. By default it joins the chunk before and the chunk after into one combined passage. Chunk boundaries are somewhat arbitrary, and a sentence explaining a result can fall right at the edge of one. This expansion step reduces the chance that the passage handed to the language model is missing context it needs.</p>
+      <div class="terms">
+        <h3>Key terms</h3>
+        <dl>
+          <dt>Embedding</dt><dd>a numerical representation of a piece of text that places similar meanings near each other in a high-dimensional space.</dd>
+          <dt>BM25</dt><dd>a statistical formula for ranking documents by exact keyword match, accounting for word rarity and document length.</dd>
+          <dt>Reciprocal Rank Fusion</dt><dd>a way of combining two ranked lists using each item's rank position rather than its raw score, so incomparable scoring scales don't distort the result.</dd>
+          <dt>Cross-encoder</dt><dd>a model that scores a query and a passage jointly, rather than comparing separately-computed representations — slower, but more accurate.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sec-block" id="generation">
+      <h2>Generation: writing the answer</h2>
+      <p>Retrieval only finds passages. Generation turns them into prose. Askarry assembles the retrieved passages into a numbered context block and hands that block to a language model along with a system prompt. The prompt functions as a set of exam instructions. It tells the model to answer only from the passages provided, to cite every factual claim with a bracketed number matching its source passage, to state plainly when the passages lack a good answer instead of guessing, and to write in plain declarative sentences without promotional language. If the strongest match scores below a confidence threshold, Askarry adds an extra instruction telling the model to treat the material with visible scepticism instead of forcing an answer.</p>
+      <p>The prompt also supports two audience settings. When set to write for a PhD astronomer, the model uses standard notation and technical vocabulary without defining it. When set to write for a general reader, the model defines acronyms and terms on first use and explains equations in words instead of leaving them unexplained.</p>
+    </section>
+
+    <section class="sec-block" id="interfaces">
+      <h2>Two front doors</h2>
+      <p>Askarry offers two separate ways to ask it a question, and each uses a different model to write the final answer.</p>
+      <p>The first is a <b>Gradio web app</b>, the browser interface most people use directly. It runs the whole pipeline described above and then generates the answer with a small language model, <b>Gemma</b>, running locally through <b>Ollama</b>. No data leaves the machine it runs on. The trade-off is that a locally run model is less capable than a large frontier model.</p>
+      <p>The second is an <b>MCP server</b>, a small piece of software that exposes the retrieval pipeline as a set of callable tools to any MCP-capable assistant, such as Claude. In this mode, Askarry skips the local generation step entirely. Retrieval runs exactly as described above, and the assistant itself reads the returned passages and writes the answer, using its own larger reasoning capacity. Every document in this atlas was produced through this second path, by calling the retrieval tools directly rather than through the web app.</p>
+      <p>Askarry exposes six tools this way. Three mirror the pipeline already described. One searches the AASKAII passages. One lists the available papers. One retrieves every indexed chunk of a single named paper in order, for close reading of that one document rather than a search across all of them. A fourth and fifth tool repeat the search-and-list pair over a separate, smaller set of SKA engineering specifications. Askarry keeps these specifications apart from the science papers because they answer a different kind of question. The sixth tool is not a document search at all. It forwards a request directly to SKAO's live sensitivity-calculator web service and returns the freshly computed answer. It is the only tool in the set that consults a running system rather than an indexed text.</p>
+    </section>
+
+    <section class="sec-block wide" id="example">
+      <h2>A worked example</h2>
+      <p>Suppose someone asks: <i>"What sensitivity would a deep HI intensity mapping survey need to detect the cosmological signal at z ≈ 1?"</i> The steps below trace that question through the pipeline.</p>
+      <div class="trace">
+        <div class="trace-step"><span class="n">1</span><p>Askarry embeds the question and searches it against the vector index. This surfaces chunks discussing HI intensity mapping and cosmological sensitivity requirements, including chunks that never use the phrase "z ≈ 1" verbatim, because the embedding model recognises the surrounding concepts.</p></div>
+        <div class="trace-step"><span class="n">2</span><p>Askarry expands the same question with any acronyms it contains (<b>HI</b> becomes neutral atomic hydrogen) and searches it against the BM25 keyword index. This surfaces chunks that use the exact terms "intensity mapping" and specific redshift or sensitivity figures.</p></div>
+        <div class="trace-step"><span class="n">3</span><p>Reciprocal Rank Fusion merges the two ranked lists. A chunk ranked 2nd by meaning and 4th by keyword typically outranks a chunk ranked 1st by keyword alone but absent from the semantic list entirely.</p></div>
+        <div class="trace-step"><span class="n">4</span><p>The cross-encoder re-ranks the merged shortlist. It reads the full question against each candidate passage together and reorders the passages by how directly each one answers the question.</p></div>
+        <div class="trace-step"><span class="n">5</span><p>Askarry expands the top few passages with their neighbouring chunks. This keeps a sensitivity figure quoted in one chunk together with the survey parameters explained in the chunk just before it.</p></div>
+        <div class="trace-step"><span class="n">6</span><p>Askarry hands the passages to a language model, either Gemma locally or Claude via MCP, with instructions to answer only from them and cite every figure quoted. The answer comes back with bracketed citations pointing directly to the source papers.</p></div>
+      </div>
+    </section>
+
+    <section class="sec-block" id="limits">
+      <h2>What this design does, and doesn't, fix</h2>
+      <p>This pipeline substantially reduces hallucination, because it grades the model on comprehension of a supplied text rather than on recall from memory. It does not eliminate the risk entirely. The model still writes the final prose itself, so a careless summary of an accurately retrieved passage is still possible. Retrieval quality is bounded by what was actually ingested. A cleverer search algorithm cannot rescue a question about a topic the corpus never discusses. A question phrased very differently from how the corpus discusses it can still be missed by both search methods at once, though hybrid search makes this considerably less likely than either method alone. The system is also only as current as its last ingestion run. It has no awareness of anything published after that point.</p>
+    </section>
+
+    <footer class="notes">
+      <h3>Method &amp; provenance</h3>
+      <p>This account is drawn directly from Askarry's own source code: <code>rag/config.py</code>, <code>rag/ingestion.py</code>, <code>rag/retrieval.py</code>, <code>rag/generation.py</code>, and <code>mcp_server.py</code>. These files were read directly on 2026-08-23, rather than fetched from the project's public GitHub page. An earlier research pass did fetch that GitHub page. Its README contained a line promoting a specific data-handling product, in a way that did not fit the surrounding text or the repository's purpose. That line was treated as untrustworthy and left out of this account entirely. This is also why the description above is sourced from the code itself, rather than repeated from that earlier fetch.</p>
+      <p>This account quotes several figures directly from <code>rag/config.py</code>, as configured at the time of writing: chunk size, retrieval candidate counts, model names, and the RRF constant. None of these figures are estimated or approximated.</p>
+    </footer>
+  </main>
+</div>

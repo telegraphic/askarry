@@ -1,0 +1,320 @@
+<title>Behind the Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1200px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:210px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:18ch; }
+  header.masthead p.lede{ max-width:78ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:54px; }
+  section.intro{ max-width:78ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:24px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 20px; font-size:14.5px; }
+
+  /* stat tiles */
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:26px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  /* diagram */
+  .diagram-wrap{ border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:20px; overflow-x:auto; }
+  svg.flow{ width:100%; height:auto; display:block; min-width:880px; }
+  svg.flow text{ font-family:"IBM Plex Sans", sans-serif; fill:currentColor; }
+  svg.flow .mono{ font-family:"IBM Plex Mono", monospace; }
+  .box rect{ fill:var(--surface); stroke:var(--ink-soft); stroke-width:1.4; }
+  .box.mcp rect{ fill:var(--accent-mid-tint); stroke:var(--accent-mid); }
+  .box.agents rect{ fill:var(--accent-both-tint); stroke:var(--accent-both); }
+  .box text{ fill:var(--ink); font-weight:600; }
+  .box .sub{ fill:var(--ink-faint); font-weight:400; font-size:10px; }
+  .flow-edge{ stroke:currentColor; stroke-width:1.6; opacity:0.6; fill:none; marker-end:url(#arrow); }
+  .flow-edge.loop{ stroke:var(--accent-both); opacity:0.85; }
+  .flow-label{ font-family:"IBM Plex Mono", monospace; font-size:10px; fill:var(--ink-faint); }
+  figcaption{ margin-top:14px; font-size:13px; color:var(--ink-faint); max-width:80ch; }
+
+  /* mcp tool table */
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.data{ border-collapse:collapse; width:100%; min-width:760px; }
+  table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 14px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.data td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px; }
+  table.data tr:last-child td{ border-bottom:none; }
+  table.data tr:hover td{ background:var(--surface-2); }
+  td.tool{ font-family:"IBM Plex Mono", monospace; font-size:12px; font-weight:600; width:22%; white-space:nowrap; }
+  td.tool .used{ display:block; margin-top:4px; font-family:"IBM Plex Sans",sans-serif; font-weight:400; font-size:10.5px; }
+  .used.yes{ color:var(--accent-mid); } .used.no{ color:var(--ink-faint); }
+  td.desc{ color:var(--ink-soft); }
+
+  /* Q&A cards */
+  .qa-card{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:20px 22px; margin-bottom:16px; }
+  .qa-card .q-label{ font-family:"IBM Plex Mono",monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent-mid); margin-bottom:8px; }
+  .qa-card h3{ font-size:15.5px; margin-bottom:10px; }
+  .qa-card .opts{ display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+  .qa-card .opt{ display:flex; gap:8px; align-items:baseline; font-size:13px; color:var(--ink-soft); padding:6px 10px; border-radius:7px; background:var(--surface-2); }
+  .qa-card .opt.chosen{ background:var(--accent-mid-tint); color:var(--ink); font-weight:600; border:1px solid var(--accent-mid); }
+  .qa-card .opt .mark{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--accent-mid); }
+  .qa-card .answer{ font-size:13px; color:var(--ink-faint); border-top:1px dashed var(--line); padding-top:10px; }
+
+  /* taxonomy chips */
+  .chip-grid{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-family:"IBM Plex Mono", monospace; font-size:11.5px; padding:5px 11px; border-radius:20px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); }
+
+  /* pipeline steps */
+  .steps{ display:flex; flex-direction:column; gap:0; border-left:2px solid var(--line); margin-left:8px; }
+  .step{ position:relative; padding:0 0 26px 26px; }
+  .step:last-child{ padding-bottom:0; }
+  .step::before{ content:""; position:absolute; left:-7px; top:2px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--accent-mid); }
+  .step .step-n{ font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.05em; }
+  .step h4{ font-size:14.5px; margin:2px 0 6px; font-family:"Archivo",sans-serif; font-weight:700; }
+  .step p{ margin:0; color:var(--ink-soft); font-size:13px; max-width:74ch; }
+
+  footer.notes{ max-width:82ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="observing-mode-contention.html">I · Contention Map</a>
+      <a href="requirements-ledger.html">II · Requirements Ledger</a>
+      <a href="synergy-network.html">III · Synergy Network</a>
+      <a href="behind-the-atlas.html" class="current">IV · Behind the Atlas</a>
+      <a href="acronym-list.html">V · Acronym List</a>
+      <a href="chapter-directory.html">VI · Chapter Directory</a>
+      <a href="inside-askarry.html">VII · Inside Askarry</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII Atlas — Part IV</div>
+    <h1>Behind the Atlas</h1>
+    <p class="lede">This page explains how the first three documents were made. It describes the retrieval system that produced the numbers. It lists the questions that shaped the scope of the work. It states the taxonomies fixed before any searching started. It also marks the one point where a human judgment call sits inside otherwise sourced data.</p>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview</a>
+    <a href="#knowledge-base">The knowledge base</a>
+    <a href="#pipeline">Orchestration pipeline</a>
+    <a href="#questions">Questions actually asked</a>
+    <a href="#taxonomies">Fixed taxonomies</a>
+    <a href="#numbers">By the numbers</a>
+    <a href="#discipline">Sourcing discipline</a>
+  </nav>
+
+  <main>
+    <section class="intro" id="overview">
+      <h2>What this page is</h2>
+      <p>Parts I–III of this atlas present findings. This part shows the work behind them. A document-retrieval MCP server was queried through a fleet of parallel research agents. The process paused twice for a human decision. A small set of ground rules was fixed before research began. Those rules make the three documents comparable to each other, rather than three independently styled write-ups.</p>
+    </section>
+
+    <section class="sec-block" id="knowledge-base">
+      <div class="sec-head"><h2>The knowledge base</h2></div>
+      <p class="sec-dek">All three documents draw on one MCP (Model Context Protocol) server, <span class="chip" style="padding:2px 8px;">astronomy-rag</span>. It connects through the desktop bridge. It runs a hybrid retrieval pipeline over the AASKAII PDF corpus. Semantic vector search and BM25 keyword search run in parallel. Reciprocal Rank Fusion combines their results. A cross-encoder then re-ranks the combined list. Every search returns passages with a source title, section, and page number attached. That attached metadata is what makes line-by-line sourcing possible.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td class="tool">list_documents<span class="used yes">used — run once per research agent</span></td><td class="desc">This tool lists every paper in the database, grouped by AASKAII thematic section. Every agent calls it first. It confirms which papers belong to which of the 7 sections before any searching begins.</td></tr>
+          <tr><td class="tool">search_astronomy_docs<span class="used yes">used — the workhorse, ~250+ calls</span></td><td class="desc">This tool runs the main hybrid search. It takes a natural-language query and returns up to 20 ranked passages by default. Every science-driver, sensitivity figure, open question, and technique-keyword hit in all three documents came from this call.</td></tr>
+          <tr><td class="tool">get_document_chunks<span class="used yes">used — for deep single-paper reads</span></td><td class="desc">This tool retrieves all indexed chunks of one named paper in reading order. Agents used it when they needed a paper's full argument, not just the top-ranked snippets a keyword search would surface.</td></tr>
+          <tr><td class="tool">list_ska_capability_docs<span class="used no">available, not needed this pass</span></td><td class="desc">This tool lists a separate, smaller document set. That set describes SKAO's engineering capabilities rather than science results.</td></tr>
+          <tr><td class="tool">search_ska_capabilities<span class="used no">available, not needed this pass</span></td><td class="desc">This tool runs the same hybrid search, scoped to the capabilities document set above. It was not needed because the AASKAII papers themselves stated enough sensitivity and resolution figures directly.</td></tr>
+          <tr><td class="tool">query_sensitivity_calc<span class="used no">available, not called</span></td><td class="desc">This tool calls the live SKAO sensitivity-calculator REST API directly. It does not search documents. It was held in reserve for cross-checking a paper's quoted sensitivity against a fresh calculation. Every figure in the requirements ledger instead came from a paper's own stated number.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="pipeline">
+      <div class="sec-head"><h2>Orchestration pipeline</h2></div>
+      <p class="sec-dek">One MCP server is read by many short-lived research agents, not one long session. Each agent receives a narrow brief. Each agent runs its own searches. Each agent then hands back sourced findings for the orchestrating session to compile.</p>
+      <figure>
+        <div class="diagram-wrap">
+          <svg class="flow" viewBox="0 0 1180 460" role="img" aria-label="Pipeline diagram: Danny sends a request to the orchestrator session, which spawns seven section agents in parallel; each agent calls the astronomy-rag MCP server, which retrieves ranked passages from the 189-paper AASKAII corpus via hybrid search; agents return structured findings to the orchestrator, which later resumes the same agents by name for a Part II follow-up before synthesizing everything into the HTML pages.">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <!-- boxes -->
+            <g class="box"><rect x="30" y="60" width="140" height="56" rx="10"/><text x="100" y="84" text-anchor="middle" font-size="13">You</text><text x="100" y="100" text-anchor="middle" class="sub">Danny</text></g>
+
+            <g class="box"><rect x="250" y="60" width="180" height="56" rx="10"/><text x="340" y="84" text-anchor="middle" font-size="13">Orchestrator</text><text x="340" y="100" text-anchor="middle" class="sub">this session</text></g>
+
+            <g class="box agents"><rect x="520" y="30" width="220" height="64" rx="10"/><text x="630" y="56" text-anchor="middle" font-size="13">Section agent</text><text x="630" y="72" text-anchor="middle" class="sub">× 7, one per theme, parallel</text><text x="630" y="86" text-anchor="middle" class="sub">general-purpose subagent</text></g>
+
+            <g class="box mcp"><rect x="520" y="200" width="220" height="56" rx="10"/><text x="630" y="224" text-anchor="middle" font-size="13">astronomy-rag MCP</text><text x="630" y="240" text-anchor="middle" class="sub">hybrid search + rerank</text></g>
+
+            <g class="box"><rect x="520" y="340" width="220" height="56" rx="10"/><text x="630" y="364" text-anchor="middle" font-size="13">AASKAII corpus</text><text x="630" y="380" text-anchor="middle" class="sub">189 papers, 7 sections</text></g>
+
+            <g class="box"><rect x="880" y="60" width="230" height="56" rx="10"/><text x="995" y="84" text-anchor="middle" font-size="13">HTML pages</text><text x="995" y="100" text-anchor="middle" class="sub">this atlas, 4 documents</text></g>
+
+            <!-- edges -->
+            <line class="flow-edge" x1="170" y1="88" x2="248" y2="88"/>
+            <text class="flow-label" x="180" y="78">request + answers</text>
+
+            <line class="flow-edge" x1="430" y1="78" x2="518" y2="62"/>
+            <text class="flow-label" x="440" y="55">spawn, 1 prompt/section</text>
+
+            <line class="flow-edge" x1="630" y1="94" x2="630" y2="198"/>
+            <text class="flow-label" x="638" y="150">search_astronomy_docs()</text>
+
+            <line class="flow-edge" x1="630" y1="256" x2="630" y2="338"/>
+            <text class="flow-label" x="638" y="300">hybrid retrieval</text>
+
+            <path class="flow-edge" d="M 570 340 C 540 300, 540 260, 570 258" marker-end="url(#arrow)"/>
+            <text class="flow-label" x="440" y="300">ranked passages back</text>
+
+            <path class="flow-edge" d="M 740 220 C 800 150, 800 100, 742 88" marker-end="url(#arrow)"/>
+            <text class="flow-label" x="800" y="150">sourced findings</text>
+
+            <line class="flow-edge" x1="740" y1="70" x2="878" y2="78"/>
+            <text class="flow-label" x="770" y="62">structured tables</text>
+
+            <path class="flow-edge loop" d="M 340 118 C 340 200, 460 200, 518 60" marker-end="url(#arrow)"/>
+            <text class="flow-label" x="345" y="200" fill="var(--accent-both)">SendMessage: resume same agent,</text>
+            <text class="flow-label" x="345" y="214" fill="var(--accent-both)">Part II follow-up question</text>
+
+            <path class="flow-edge" d="M 995 118 C 995 180, 700 340, 742 368" marker-end="url(#arrow)"/>
+            <text class="flow-label" x="850" y="230">Part III: reconstructed</text>
+            <text class="flow-label" x="850" y="244">from a separate chat's summary</text>
+          </svg>
+        </div>
+        <figcaption>Each section agent is spawned once and does its own MCP searching. Each agent is resumed later by name for the Part II follow-up. This reuses the same conversational context with a new question, instead of starting the research over.</figcaption>
+      </figure>
+
+      <div class="steps" style="margin-top:28px;">
+        <div class="step"><span class="step-n">Step 1</span><h4>Load the deferred MCP tools</h4><p>The astronomy-rag tools are not in the base tool list. Each agent's first move is a <span class="chip" style="padding:1px 6px;">ToolSearch</span> call that names the exact tools it needs. Each agent then calls <span class="chip" style="padding:1px 6px;">list_documents</span> to see the section-by-paper map before it searches anything.</p></div>
+        <div class="step"><span class="step-n">Step 2</span><h4>Fan out one agent per thematic section</h4><p>Seven agents launched in one batch. Each agent received a self-contained brief. Each brief listed the full paper set for its section and the fixed observing-mode taxonomy to tag against. Each brief also instructed the agent to run several targeted searches per sub-theme, not one broad query.</p></div>
+        <div class="step"><span class="step-n">Step 3</span><h4>Track progress with a shared task list</h4><p><span class="chip" style="padding:1px 6px;">TaskCreate</span> and <span class="chip" style="padding:1px 6px;">TaskUpdate</span> kept one task per section visible throughout. Each task was marked in-progress on spawn and completed on return. This produced the same list a viewer would have seen updating live.</p></div>
+        <div class="step"><span class="step-n">Step 4</span><h4>Resume, don't restart, for follow-up questions</h4><p>Part II's open-questions and instrument-requirements asks went back to the <em>same seven agents by name</em> via <span class="chip" style="padding:1px 6px;">SendMessage</span>. Those agents already had the papers loaded. The follow-up therefore only needed new searches for what was not asked the first time. One attempted resume batch hit a transient API session limit. Retrying the same messages a few minutes later succeeded.</p></div>
+        <div class="step"><span class="step-n">Step 5</span><h4>Run corpus-wide sweeps where section boundaries don't apply</h4><p>The cross-cutting methods ranking needed the opposite approach from the section fan-out. Two fresh agents ran a fixed 16-keyword list as independent whole-corpus searches. Each agent then reported which of the 7 sections each technique surfaced in.</p></div>
+        <div class="step"><span class="step-n">Step 6</span><h4>Deliver as files, not published pages</h4><p>The first attempt to publish Part I as a hosted claude.ai Artifact was declined. Every document since, including this one, is instead delivered as a self-contained HTML file via direct file transfer. Each file is styled identically to what a published Artifact would have looked like.</p></div>
+      </div>
+    </section>
+
+    <section class="sec-block" id="questions">
+      <div class="sec-head"><h2>Questions actually asked</h2></div>
+      <p class="sec-dek">The process stopped and asked at two points in this project, rather than assuming an answer. Both stops happened because the choice materially changed the scope of work. Neither stop happened because the request was unclear.</p>
+
+      <div class="qa-card">
+        <div class="q-label">Asked before Part I began</div>
+        <h3>Which generation of the science book should the analysis cover?</h3>
+        <p style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">The corpus holds two overlapping books. The current 2026 AASKAII has 7 sections and about 189 papers. The older 2015 AASKA I adds 9 more sections and about 157 papers. Including both books would double the research effort.</p>
+        <div class="opts">
+          <div class="opt chosen"><span class="mark">chosen →</span> AASKAII only — current 2026 book, 7 sections, fastest, reflects the latest science case</div>
+          <div class="opt">AASKAII + legacy AASKA — all 16 sections, ~306 papers, roughly double the effort</div>
+          <div class="opt">Let me pick sections — a custom subset</div>
+        </div>
+      </div>
+
+      <div class="qa-card">
+        <div class="q-label">Asked before Part III began</div>
+        <h3>How to get the network graph from a different, unreachable conversation?</h3>
+        <p style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">Sessions do not share memory or files with each other. No published artifact or running session matched "the analysis project ideas chat." This was a genuine blocker, not a judgment call.</p>
+        <div class="opts">
+          <div class="opt">I'll attach/paste it here — the original file or a screenshot</div>
+          <div class="opt">It's a published artifact — link to it directly</div>
+          <div class="opt chosen"><span class="mark">answered →</span> Described the findings in writing instead of supplying the original file or link</div>
+        </div>
+        <div class="answer">Part III is therefore a <b>reconstruction from a written description</b>, not a re-derivation from the original dataset. That page's own footer flags this explicitly. It also flags two facilities, ngVLA and CTA/Fermi, that the description named as gaps rather than confirmed edges.</div>
+      </div>
+    </section>
+
+    <section class="sec-block" id="taxonomies">
+      <div class="sec-head"><h2>Fixed before any searching started</h2></div>
+      <p class="sec-dek">Both taxonomies below were written down before the first search query ran. This step ensured that seven independently working agents would tag the same underlying concept the same way. Without it, "wide continuum survey" and "deep continuum survey" could easily have become two names for one thing, and the contention matrix would have compared noise.</p>
+      <h3 style="font-size:14px;margin:22px 0 10px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-faint);">15 observing-mode categories (Part I &amp; II)</h3>
+      <div class="chip-grid">
+        <span class="chip">Deep HI intensity mapping</span><span class="chip">Deep/wide HI galaxy survey</span><span class="chip">Wide-field continuum survey</span><span class="chip">Ultra-deep continuum imaging</span><span class="chip">EoR / Cosmic Dawn 21-cm</span><span class="chip">Spectral line / maser survey</span><span class="chip">Polarimetry / RM grid</span><span class="chip">VLBI / astrometry</span><span class="chip">Pulsar timing array</span><span class="chip">Pulsar search survey</span><span class="chip">Transient / commensal / ToO</span><span class="chip">Solar/heliospheric imaging</span><span class="chip">Weak lensing</span><span class="chip">Zoom-mode spectroscopy</span><span class="chip">SETI / technosignature</span>
+      </div>
+      <h3 style="font-size:14px;margin:22px 0 10px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-faint);">16 technique keywords (Part II cross-cutting ranking)</h3>
+      <div class="chip-grid">
+        <span class="chip">Faraday rotation / RM</span><span class="chip">VLBI</span><span class="chip">HI intensity mapping</span><span class="chip">Machine learning / AI</span><span class="chip">Polarimetry</span><span class="chip">Pulsar timing</span><span class="chip">Foreground removal</span><span class="chip">Ionospheric calibration</span><span class="chip">Deconvolution / imaging algorithms</span><span class="chip">Spectral line / maser</span><span class="chip">Commensal / multi-messenger</span><span class="chip">Source finding / classification</span><span class="chip">VLBI astrometry</span><span class="chip">RFI mitigation</span><span class="chip">Zeeman effect</span><span class="chip">Citizen science</span>
+      </div>
+    </section>
+
+    <section class="sec-block" id="numbers">
+      <div class="sec-head"><h2>By the numbers</h2></div>
+      <div class="stat-row">
+        <div class="stat-tile"><div class="n">189</div><div class="l">papers covered</div></div>
+        <div class="stat-tile"><div class="n">7</div><div class="l">thematic sections</div></div>
+        <div class="stat-tile"><div class="n">16</div><div class="l">subagent runs</div></div>
+        <div class="stat-tile"><div class="n">1.1M+</div><div class="l">tokens, Part I fan-out alone</div></div>
+        <div class="stat-tile"><div class="n">2</div><div class="l">clarifying questions asked</div></div>
+        <div class="stat-tile"><div class="n">4</div><div class="l">HTML documents produced</div></div>
+        <div class="stat-tile"><div class="n">~250</div><div class="l">MCP search calls, estimated</div></div>
+        <div class="stat-tile"><div class="n">1</div><div class="l">Artifact publish declined → files used instead</div></div>
+      </div>
+    </section>
+
+    <section class="sec-block" id="discipline">
+      <div class="sec-head"><h2>Sourcing discipline</h2></div>
+      <p class="sec-dek">The same three rules were repeated verbatim in every agent's brief across both parts. A language model can quietly relax these rules under pressure to fill in a table cell, so the brief restated them each time.</p>
+      <div class="steps">
+        <div class="step"><span class="step-n">Rule 1</span><h4>Report only what a search actually returned</h4><p>Every agent was told explicitly not to guess a paper into a category it did not surface for. The Part II keyword-sweep agents both noted, unprompted, papers they suspected were relevant. They excluded those papers anyway because the search did not confirm the connection.</p></div>
+        <div class="step"><span class="step-n">Rule 2</span><h4>A blank cell means the paper didn't say, not that Claude didn't look</h4><p>Field of view and survey speed are blank for most pointed and triggered observations across the requirements ledger. Those values are genuinely absent from the source papers. They are not an unfilled gap in the search.</p></div>
+        <div class="step"><span class="step-n">Rule 3</span><h4>Flag reconstructions as reconstructions</h4><p>Part III states outright, in its own footer, that it rebuilds a finding from a written summary rather than the original dataset. This is the honest version of "citation needed" for a source this process could not reach.</p></div>
+      </div>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,282 @@
+<title>Synergy Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:flex; flex-direction:column; gap:44px; }
+  header.masthead{ display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:18ch; }
+  header.masthead p.lede{ max-width:78ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  figure{ margin:0; }
+  .diagram-wrap{ border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:20px; overflow-x:auto; }
+  svg.network{ width:100%; height:auto; display:block; min-width:920px; }
+  svg.network text{ font-family:"IBM Plex Sans", ui-sans-serif, sans-serif; fill:currentColor; }
+  svg.network .mono{ font-family:"IBM Plex Mono", monospace; }
+  figcaption{ margin-top:14px; font-size:13px; color:var(--ink-faint); max-width:80ch; }
+
+  .node-theme rect{ fill:var(--surface); stroke:var(--ink-soft); stroke-width:1.4; }
+  .node-theme text{ fill:var(--ink); font-weight:600; }
+  .node-fac rect{ fill:var(--accent-both-tint); stroke:var(--accent-both); stroke-width:1.4; }
+  .node-fac text{ fill:var(--ink); font-weight:500; }
+  .node-ghost rect{ fill:none; stroke:var(--ink-faint); stroke-width:1.2; stroke-dasharray:3 3; }
+  .node-ghost text{ fill:var(--ink-faint); font-style:italic; }
+  .sublabel{ font-size:9px; fill:var(--ink-faint); font-weight:400; }
+
+  .edge-hub{ stroke:currentColor; stroke-width:2; opacity:0.55; fill:none; }
+  .edge-med{ stroke:currentColor; stroke-width:1.6; opacity:0.5; fill:none; }
+  .edge-dash{ stroke:currentColor; stroke-width:1.3; opacity:0.4; stroke-dasharray:5 4; fill:none; }
+  .edge-ghost{ stroke:var(--ink-faint); stroke-width:1; opacity:0.5; stroke-dasharray:2 3; fill:none; }
+  .edge-bridge{ stroke:var(--accent-mid); stroke-width:2.6; opacity:0.9; fill:none; }
+  .edge-label{ font-family:"IBM Plex Mono", monospace; font-size:9.5px; fill:var(--accent-mid); font-weight:500; }
+
+  .cluster-wash{ opacity:0.5; }
+
+  .legend{ display:flex; flex-wrap:wrap; gap:22px; margin-top:18px; font-size:12.5px; color:var(--ink-soft); }
+  .legend .item{ display:flex; align-items:center; gap:8px; }
+  .legend svg{ width:34px; height:12px; flex:none; }
+  .legend line{ stroke:currentColor; }
+
+  section.reading{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .rcard{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:18px 20px; }
+  .rcard h3{ font-size:15px; margin-bottom:8px; }
+  .rcard p{ margin:0; color:var(--ink-soft); font-size:13.5px; }
+  .rcard .tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent-mid); margin-bottom:8px; }
+
+  footer.notes{ max-width:82ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="observing-mode-contention.html">I · Contention Map</a>
+      <a href="requirements-ledger.html">II · Requirements Ledger</a>
+      <a href="synergy-network.html" class="current">III · Synergy Network</a>
+      <a href="behind-the-atlas.html">IV · Behind the Atlas</a>
+      <a href="acronym-list.html">V · Acronym List</a>
+      <a href="chapter-directory.html">VI · Chapter Directory</a>
+      <a href="inside-askarry.html">VII · Inside Askarry</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part III</div>
+    <h1>Synergy Network</h1>
+    <p class="lede">The AASKAII papers state which external facilities SKAO <b>needs</b> for each science case. This diagram reconstructs those statements as a network linking science themes to the observatories, missions, and arrays each theme requires.</p>
+  </header>
+
+  <figure>
+    <div class="diagram-wrap">
+      <svg class="network" viewBox="0 0 1480 780" role="img" aria-label="Network diagram: SKAO science themes on the left connect heavily to Rubin/LSST and JWST as hub facilities, with ALMA paired tightly to Star Formation; a separate gravitational-wave cluster on the right links LISA, LIGO/Virgo/KAGRA, Einstein Telescope and CMB missions to the Gravitational Waves and Pulsars themes; Gaia is the single bridge connecting the two otherwise disconnected clusters back to Cosmology; long-tail facilities FAST, CHORD, DSA2000, eROSITA and Athena each connect to only one theme; ngVLA and CTA/Fermi appear as unconfirmed gaps.">
+
+        <!-- cluster background washes -->
+        <rect class="cluster-wash" x="0" y="20" width="990" height="700" rx="24" fill="var(--accent-low-tint)"/>
+        <rect class="cluster-wash" x="1000" y="20" width="470" height="700" rx="24" fill="var(--accent-mid-tint)"/>
+        <text x="30" y="50" class="mono" font-size="11" fill="var(--ink-faint)" letter-spacing="1">MULTI-WAVELENGTH SURVEY COMMUNITY</text>
+        <text x="1020" y="50" class="mono" font-size="11" fill="var(--ink-faint)" letter-spacing="1">GW / PTA COMMUNITY</text>
+
+        <!-- ===== EDGES (drawn first, under nodes) ===== -->
+        <!-- hub edges: Rubin -->
+        <g class="edge-hub">
+          <line x1="300" y1="88" x2="115" y2="282"/>
+          <line x1="300" y1="88" x2="305" y2="282"/>
+          <line x1="300" y1="88" x2="540" y2="282"/>
+          <line x1="300" y1="88" x2="735" y2="282"/>
+          <line x1="300" y1="88" x2="918" y2="282"/>
+        </g>
+        <!-- hub edges: JWST -->
+        <g class="edge-hub">
+          <line x1="480" y1="88" x2="115" y2="282"/>
+          <line x1="480" y1="88" x2="305" y2="282"/>
+          <line x1="480" y1="88" x2="540" y2="282"/>
+          <line x1="480" y1="88" x2="735" y2="282"/>
+          <line x1="480" y1="88" x2="918" y2="282"/>
+        </g>
+
+        <!-- ALMA <-> Star Formation (strong pair) -->
+        <line class="edge-hub" x1="230" y1="452" x2="230" y2="582"/>
+        <!-- ALMA -> Galaxy & AGN (secondary) -->
+        <line class="edge-med" x1="255" y1="588" x2="500" y2="316"/>
+        <!-- X-ray -> Galaxy & AGN -->
+        <line class="edge-med" x1="450" y1="452" x2="530" y2="318"/>
+
+        <!-- long-tail dashed edges -->
+        <line class="edge-dash" x1="60" y1="582" x2="105" y2="318"/>           <!-- CHORD -> Cosmology -->
+        <line class="edge-dash" x1="650" y1="452" x2="560" y2="318"/>          <!-- Athena -> Galaxy&AGN -->
+        <line class="edge-dash" x1="800" y1="452" x2="745" y2="318"/>          <!-- DSA2000 -> Transients -->
+        <line class="edge-dash" x1="950" y1="452" x2="925" y2="318"/>          <!-- eROSITA -> Dark&Dim -->
+        <line class="edge-dash" x1="985" y1="582" x2="1165" y2="480"/>          <!-- FAST -> Pulsars -->
+
+        <!-- ghost edges -->
+        <line class="edge-ghost" x1="120" y1="632" x2="215" y2="470"/>         <!-- ngVLA -> Star Formation -->
+        <line class="edge-ghost" x1="1070" y1="632" x2="1160" y2="495"/>        <!-- CTA/Fermi -> Pulsars -->
+
+        <!-- GW cluster edges -->
+        <g class="edge-med">
+          <line x1="1050" y1="198" x2="1170" y2="266"/>   <!-- LISA -> GW -->
+          <line x1="1050" y1="198" x2="1180" y2="450"/>   <!-- LISA -> Pulsars -->
+          <line x1="1360" y1="198" x2="1240" y2="266"/>   <!-- LIGO/Virgo/KAGRA -> GW -->
+          <line x1="1360" y1="198" x2="1250" y2="450"/>   <!-- LIGO/Virgo/KAGRA -> Pulsars -->
+          <line x1="1050" y1="562" x2="1175" y2="292"/>   <!-- Einstein Telescope -> GW -->
+          <line x1="1050" y1="562" x2="1185" y2="478"/>   <!-- Einstein Telescope -> Pulsars -->
+          <line x1="1360" y1="562" x2="1245" y2="292"/>   <!-- CMB missions -> GW -->
+          <line x1="1360" y1="562" x2="1255" y2="478"/>   <!-- CMB missions -> Pulsars -->
+          <line x1="1200" y1="98" x2="1200" y2="262"/>    <!-- Gaia -> GW -->
+          <line x1="1200" y1="98" x2="1210" y2="452"/>    <!-- Gaia -> Pulsars -->
+        </g>
+
+        <!-- the one bridge edge -->
+        <path class="edge-bridge" d="M 1180 92 C 800 40, 400 120, 130 288" />
+        <text class="edge-label" x="640" y="90" text-anchor="middle">only link between the two clusters</text>
+
+        <!-- ===== NODES ===== -->
+        <!-- hubs -->
+        <g class="node-fac">
+          <rect x="245" y="52" width="110" height="36" rx="18"/>
+          <text x="300" y="67" text-anchor="middle" font-size="12">Rubin/LSST</text>
+          <text x="300" y="80" text-anchor="middle" class="sublabel">5 themes · hub</text>
+        </g>
+        <g class="node-fac">
+          <rect x="435" y="52" width="90" height="36" rx="18"/>
+          <text x="480" y="67" text-anchor="middle" font-size="12">JWST</text>
+          <text x="480" y="80" text-anchor="middle" class="sublabel">5 themes · hub</text>
+        </g>
+
+        <!-- theme arc -->
+        <g class="node-theme">
+          <rect x="60" y="282" width="110" height="36" rx="18"/><text x="115" y="304" text-anchor="middle" font-size="12">Cosmology</text>
+        </g>
+        <g class="node-theme">
+          <rect x="210" y="282" width="190" height="36" rx="18"/><text x="305" y="304" text-anchor="middle" font-size="12">Epoch of Reionization</text>
+        </g>
+        <g class="node-theme">
+          <rect x="440" y="282" width="200" height="36" rx="18"/><text x="540" y="304" text-anchor="middle" font-size="12">Galaxy &amp; AGN Evolution</text>
+        </g>
+        <g class="node-theme">
+          <rect x="680" y="282" width="110" height="36" rx="18"/><text x="735" y="304" text-anchor="middle" font-size="12">Transients</text>
+        </g>
+        <g class="node-theme">
+          <rect x="830" y="282" width="175" height="36" rx="18"/><text x="918" y="304" text-anchor="middle" font-size="12">Dark &amp; Dim Universe</text>
+        </g>
+
+        <!-- Star Formation + ALMA pair -->
+        <g class="node-theme"><rect x="160" y="434" width="140" height="36" rx="18"/><text x="230" y="456" text-anchor="middle" font-size="12">Star Formation</text></g>
+        <g class="node-fac"><rect x="185" y="582" width="90" height="36" rx="18"/><text x="230" y="604" text-anchor="middle" font-size="12">ALMA</text></g>
+
+        <!-- X-ray / Athena -->
+        <g class="node-fac"><rect x="360" y="434" width="180" height="36" rx="18"/><text x="450" y="456" text-anchor="middle" font-size="11.5">X-ray (Chandra/XMM)</text></g>
+        <g class="node-fac"><rect x="615" y="434" width="70" height="36" rx="18"/><text x="650" y="456" text-anchor="middle" font-size="12">Athena</text></g>
+
+        <!-- long-tail facilities -->
+        <g class="node-fac"><rect x="20" y="582" width="80" height="36" rx="18"/><text x="60" y="604" text-anchor="middle" font-size="12">CHORD</text></g>
+        <g class="node-fac"><rect x="755" y="434" width="90" height="36" rx="18"/><text x="800" y="456" text-anchor="middle" font-size="12">DSA2000</text></g>
+        <g class="node-fac"><rect x="905" y="434" width="90" height="36" rx="18"/><text x="950" y="456" text-anchor="middle" font-size="12">eROSITA</text></g>
+        <g class="node-fac"><rect x="950" y="582" width="70" height="36" rx="18"/><text x="985" y="604" text-anchor="middle" font-size="12">FAST</text></g>
+
+        <!-- ghost / gap facilities -->
+        <g class="node-ghost"><rect x="80" y="614" width="80" height="36" rx="18"/><text x="120" y="636" text-anchor="middle" font-size="11">ngVLA</text></g>
+        <g class="node-ghost"><rect x="1013" y="614" width="115" height="36" rx="18"/><text x="1070" y="636" text-anchor="middle" font-size="11">CTA / Fermi</text></g>
+
+        <!-- GW cluster theme nodes -->
+        <g class="node-theme"><rect x="1113" y="262" width="175" height="36" rx="18"/><text x="1200" y="284" text-anchor="middle" font-size="12">Gravitational Waves</text></g>
+        <g class="node-theme"><rect x="1155" y="452" width="110" height="36" rx="18"/><text x="1210" y="474" text-anchor="middle" font-size="12">Pulsars</text></g>
+
+        <!-- GW cluster facilities -->
+        <g class="node-fac"><rect x="1010" y="180" width="80" height="36" rx="18"/><text x="1050" y="202" text-anchor="middle" font-size="12">LISA</text></g>
+        <g class="node-fac"><rect x="1282" y="180" width="155" height="36" rx="18"/><text x="1360" y="202" text-anchor="middle" font-size="11.5">LIGO/Virgo/KAGRA</text></g>
+        <g class="node-fac"><rect x="965" y="544" width="170" height="36" rx="18"/><text x="1050" y="566" text-anchor="middle" font-size="11.5">Einstein Telescope</text></g>
+        <g class="node-fac"><rect x="1297" y="544" width="125" height="36" rx="18"/><text x="1360" y="566" text-anchor="middle" font-size="12">CMB missions</text></g>
+        <g class="node-fac"><rect x="1160" y="62" width="80" height="36" rx="18"/><text x="1200" y="84" text-anchor="middle" font-size="12">Gaia</text></g>
+      </svg>
+    </div>
+    <figcaption>Rubin/LSST and JWST are the only facilities that connect to all five SKAO science themes on the left. The gravitational-wave and PTA facilities on the right form a nearly self-contained community. Gaia astrometry is the only link between the two clusters.</figcaption>
+  </figure>
+
+  <div class="legend">
+    <span class="item"><svg viewBox="0 0 34 12"><line x1="2" y1="6" x2="32" y2="6" stroke-width="2.4" opacity="0.6"/></svg> Hub facility (≥3 themes)</span>
+    <span class="item"><svg viewBox="0 0 34 12"><line x1="2" y1="6" x2="32" y2="6" stroke-width="1.8" opacity="0.55"/></svg> Confirmed synergy</span>
+    <span class="item"><svg viewBox="0 0 34 12"><line x1="2" y1="6" x2="32" y2="6" stroke-width="1.4" stroke-dasharray="5 4" opacity="0.45"/></svg> Single-theme, likely under-sampled</span>
+    <span class="item"><svg viewBox="0 0 34 12"><line x1="2" y1="6" x2="32" y2="6" stroke-width="1" stroke-dasharray="2 3" opacity="0.5" style="stroke:var(--ink-faint)"/></svg> Gap — not found in this pass</span>
+    <span class="item"><svg viewBox="0 0 34 12"><line x1="2" y1="6" x2="32" y2="6" stroke-width="2.6" style="stroke:var(--accent-mid)"/></svg> The one cross-cluster bridge</span>
+  </div>
+
+  <section class="reading">
+    <div class="rcard">
+      <span class="tag">Hub facilities</span>
+      <h3>Rubin/LSST and JWST carry the whole survey side</h3>
+      <p>Rubin/LSST and JWST each connect to five themes: cosmology, galaxy/AGN evolution, reionization, transients, and the dark/dim universe. The papers treat both facilities as necessary for every one of these science cases.</p>
+    </div>
+    <div class="rcard">
+      <span class="tag">Densest theme</span>
+      <h3>Galaxy &amp; AGN evolution pulls in almost everyone</h3>
+      <p>Rubin, JWST, ALMA, and X-ray facilities all connect to this theme. The papers require panchromatic SED decomposition, combining radio, optical/NIR, submillimeter, and X-ray data, to separate star formation from AGN activity.</p>
+    </div>
+    <div class="rcard">
+      <span class="tag">Isolated community</span>
+      <h3>Gravitational-wave science is nearly its own island</h3>
+      <p>LISA, LIGO/Virgo/KAGRA, Einstein Telescope, and CMB missions link almost exclusively to the Gravitational Waves and Pulsars themes. This community is largely separate from the galaxy-survey and cosmology side. Gaia astrometry is the only facility that crosses over between the two.</p>
+    </div>
+    <div class="rcard">
+      <span class="tag">Self-contained pair</span>
+      <h3>ALMA and star formation are a tight duo</h3>
+      <p>The papers discuss ALMA–SKA synergy almost entirely in spectral-line and young-stellar-object work. Few papers connect ALMA to cosmology. This tie is narrow but strong; ALMA does not function as a hub facility.</p>
+    </div>
+    <div class="rcard">
+      <span class="tag">Caveat</span>
+      <h3>The long tail is thin because the search was, not because the science is</h3>
+      <p>FAST, CHORD, DSA2000, eROSITA, and Athena each surfaced only one or two theme connections in this pass. The original search was driven by facility name rather than an exhaustive scan, so this count likely understates their real connections. The search found no confirmed edges for ngVLA or CTA/Fermi. This page marks both as open gaps.</p>
+    </div>
+  </section>
+
+  <footer class="notes">
+    <p><b>Provenance:</b> This diagram reconstructs a synergy-network analysis from a separate conversation. It is based on that conversation's written summary of findings, not on the original edge-weight dataset, which was not available here. Node placement and exact edge counts are an interpretive reconstruction. The summary directly states the clusters, the two hub facilities, the GW-community isolation, and the Gaia bridge. This page represents the finding accurately but is not a pixel-exact reproduction of the original graph.</p>
+    <p><b>Known gaps</b> (per the original analysis): The original targeted search did not include gamma-ray facilities (CTA, Fermi) for pulsar-wind-nebula synergies. It also did not include other radio facilities (ngVLA, VLBI networks). These facilities may have real connections that this analysis does not represent.</p>
+  </footer>
+</div>

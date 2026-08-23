@@ -1,0 +1,226 @@
+<title>AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  a{ color:inherit; text-decoration:none; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+  .num{ font-family:"IBM Plex Mono", monospace; font-variant-numeric:tabular-nums; }
+
+  .shell{ max-width:1100px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(16px,4vw,40px) 80px; display:flex; flex-direction:column; gap:48px; }
+
+  header.masthead{ display:flex; flex-direction:column; gap:16px; padding-bottom:30px; border-bottom:1px solid var(--line); }
+  header.masthead h1{ font-size:clamp(30px,4vw,46px); font-weight:800; max-width:16ch; }
+  header.masthead p.lede{ max-width:74ch; color:var(--ink-soft); font-size:16.5px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stats{ display:flex; gap:28px; flex-wrap:wrap; margin-top:6px; }
+  .stat{ display:flex; flex-direction:column; }
+  .stat .n{ font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:22px; }
+  .stat .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.05em; }
+
+  .doc-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+  .doc-card{
+    display:flex; flex-direction:column; gap:12px;
+    border:1px solid var(--line); border-radius:14px; background:var(--surface);
+    box-shadow:var(--shadow); padding:24px 26px; position:relative; overflow:hidden;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .doc-card:hover{ transform:translateY(-2px); box-shadow:0 4px 10px rgba(18,24,29,0.08), 0 16px 32px rgba(18,24,29,0.08); }
+  .doc-card .accent-bar{ position:absolute; top:0; left:0; right:0; height:4px; }
+  .doc-card .part{ font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .doc-card h2{ font-size:20px; margin-top:2px; }
+  .doc-card p{ margin:0; color:var(--ink-soft); font-size:13.8px; flex:1; }
+  .doc-card .contains{ display:flex; flex-direction:column; gap:5px; margin-top:2px; font-size:12px; color:var(--ink-faint); }
+  .doc-card .contains li{ list-style:none; }
+  .doc-card .contains ul{ margin:0; padding:0; display:flex; flex-direction:column; gap:4px; }
+  .doc-card .open{ margin-top:6px; font-size:13px; font-weight:600; display:inline-flex; align-items:center; gap:6px; }
+  .doc-card .open .arrow{ transition:transform 0.15s ease; }
+  .doc-card:hover .open .arrow{ transform:translateX(3px); }
+  .c-low .accent-bar{ background:var(--accent-low); } .c-low .open{ color:var(--accent-low); }
+  .c-mid .accent-bar{ background:var(--accent-mid); } .c-mid .open{ color:var(--accent-mid); }
+  .c-both .accent-bar{ background:var(--accent-both); } .c-both .open{ color:var(--accent-both); }
+
+  section.about{ max-width:76ch; }
+  section.about h2{ font-size:19px; margin-bottom:10px; }
+  section.about p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  footer.notes{ padding-top:22px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 8px; }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html" class="current">Home</a>
+      <a href="observing-mode-contention.html">I · Contention Map</a>
+      <a href="requirements-ledger.html">II · Requirements Ledger</a>
+      <a href="synergy-network.html">III · Synergy Network</a>
+      <a href="behind-the-atlas.html">IV · Behind the Atlas</a>
+      <a href="acronym-list.html">V · Acronym List</a>
+      <a href="chapter-directory.html">VI · Chapter Directory</a>
+      <a href="inside-askarry.html">VII · Inside Askarry</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII Science Book</div>
+    <h1>AASKAII Atlas</h1>
+    <p class="lede">This site presents exploratory analyses of the science chapters of <em><a href="https://www.skao.int/en/science-users/aaskaii"></a>Advancing Astrophysics with the SKA II</a></em>.
+       The analyses were done using AI tools by querying a RAG (retrieval augemented generation) system built from parsing
+      the AASKA and AASKA II documents, along with publicly-available technical information on
+     the SKA capabilities. </p>
+    <div class="stats">
+      <div class="stat"><span class="n">203</span><span class="l">papers</span></div>
+      <div class="stat"><span class="n">7</span><span class="l">technical documents</span></div>
+      <div class="stat"><span class="n">~160</span><span class="l">traced requirements &amp; questions</span></div>
+      <div class="stat"><span class="n">702</span><span class="l">acronyms mined</span></div>
+      <div class="stat"><span class="n">1.1M+</span><span class="l">tokens used</span></div>
+    </div>
+  </header>
+
+  <h2>AASKA II</h2>
+  <div class="doc-grid">
+    <a class="doc-card c-low" href="chapter-directory.html">
+      <div class="accent-bar"></div>
+      <!-- <span class="part">Part VI</span> -->
+      <h2>Browse Chapters</h2>
+      <p>This directory lists all 203 indexed chapters, grouped by book section. It is ported from the askarry app's Browse Chapters tab. Each title links to its original PDF on SKAO's public AASKAII page.</p>
+      <div class="contains"><ul>
+        <li>Grouped by book section, searchable by title/author</li>
+        <li>Direct links to each paper's PDF on skao.int</li>
+        <li>Ported straight from the app's own bibliography</li>
+      </ul></div>
+      <span class="open">Open the directory <span class="arrow">→</span></span>
+    </a>
+
+      <a class="doc-card c-mid" href="acronym-list.html">
+      <div class="accent-bar"></div>
+      <!-- <span class="part">Part V</span> -->
+      <h2>Browse Acronyms</h2>
+      <p>This table lists 702 acronyms mined from the corpus's own inline definitions. It is ported from the askarry app's Acronyms tab into a sortable, client-side table. Clicking a row shows paper-level detail for that acronym.</p>
+      <div class="contains"><ul>
+        <li>Searchable, sortable, category-filterable</li>
+        <li>Click any row for every paper that uses it</li>
+        <li>Ported straight from the app's own source &amp; database</li>
+      </ul></div>
+      <span class="open">Open the list <span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <h2>Data Analyses</h2>
+
+  <div class="doc-grid">
+    <a class="doc-card c-low" href="observing-mode-contention.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part I</span>
+      <h2>Observing Mode Map</h2>
+      <p>This document lists science drivers, sensitivity, and frequency range for all science sections. It cross-tabulates these against 15 SKA observing modes. The cross-tabulation shows which science drivers compete for the same telescope time.</p>
+      <div class="contains"><ul>
+        <li>Per-section driver &amp; sensitivity tables</li>
+        <li>15-mode contention matrix</li>
+        <li>Ranked hotspots (wide continuum, RM polarimetry, transients)</li>
+      </ul></div>
+      <span class="open">Open the map <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-mid" href="requirements-ledger.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part II</span>
+      <h2>Requirements Ledger</h2>
+      <p>This document records what the authors admit is still unsolved. It ranks which techniques recur across the most sections. It also includes a reverse-engineered instrument requirements register, with each entry traced line-by-line back to its source.</p>
+      <div class="contains"><ul>
+        <li>10 recurring open-question clusters</li>
+        <li>16-keyword cross-cutting methods ranking</li>
+        <li>~70 sourced requirements, REQ-A01–G12</li>
+      </ul></div>
+      <span class="open">Open the ledger <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-both" href="synergy-network.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part III</span>
+      <h2>Multimessenger Observations</h2>
+      <p>This document lists the external facilities the papers say SKAO needs for this science. Rubin/LSST and JWST act as universal hubs used across sections. The document also flags where the search likely missed connections.</p>
+      <div class="contains"><ul>
+        <li>Hub facilities vs. single-theme partners</li>
+        <li>The one bridge between two disconnected clusters</li>
+        <li>Flagged gaps: ngVLA, CTA/Fermi</li>
+      </ul></div>
+      <span class="open">Open the network <span class="arrow">→</span></span>
+    </a>
+</div>
+
+ <h2> Background </h2>
+
+  <div class="doc-grid">
+    <a class="doc-card c-low" href="inside-askarry.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part VII</span>
+      <h2>RAG/Database overview</h2>
+      <p>This document explains how data are retrieved from the AASKA corpus. It covers several aspects of retrieval augmented generation (RAG), such as hybrid search, rank fusion, re-ranking, and generation. </p>
+      <div class="contains"><ul>
+        <li>Written for a reader new to AI / RAG</li>
+        <li>Full pipeline diagram, ingest through to answer</li>
+        <li>A worked example traced step by step</li>
+      </ul></div>
+      <span class="open">Open the explainer <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-mid" href="behind-the-atlas.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part IV</span>
+      <h2>Atlas Overview</h2>
+      <p>This document explains how Parts I-III were produced. It describes the MCP knowledge-base tools used, the fixed taxonomies built before any searching started, and the exact questions asked. It also traces where the numbers above come from.</p>
+      <div class="contains"><ul>
+        <li>MCP tool-by-tool usage breakdown</li>
+        <li>7-agent parallel pipeline diagram</li>
+        <li>Every clarifying question &amp; answer, verbatim</li>
+      </ul></div>
+      <span class="open">Open the writeup <span class="arrow">→</span></span>
+    </a>
+  </div>
+
+
+  <footer class="notes">
+    <p>Keep all files in the same folder so the links above work. Each page is otherwise fully self-contained and opens on its own. The chapter directory links out to SKAO's own site for original PDFs.</p>
+  </footer>
+</div>

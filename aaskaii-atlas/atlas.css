@@ -1,0 +1,38 @@
+:root{
+  --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+  --surface:#FFFFFF; --surface-2:#EAEEF0;
+  --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+  --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+  --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+  --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
+  --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+  --surface:#10161B; --surface-2:#161E24;
+  --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+  --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+  --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+  --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+  --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+}
+
+nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
