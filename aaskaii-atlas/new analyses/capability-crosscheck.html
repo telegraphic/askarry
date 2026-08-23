@@ -1,0 +1,222 @@
+<title>Capability Cross-Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:230px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:20ch; }
+  header.masthead p.lede{ max-width:80ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-top:4px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:26px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:52px; }
+  section.intro{ max-width:80ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:23px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 18px; font-size:14.5px; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.data{ border-collapse:collapse; width:100%; min-width:760px; }
+  table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 13px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.data td{ padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px; color:var(--ink-soft); }
+  table.data tr:last-child td{ border-bottom:none; }
+  td.doc{ font-weight:600; color:var(--ink); width:26%; }
+
+  .req-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.req{ border-collapse:collapse; width:100%; min-width:1100px; }
+  table.req th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 13px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.req td{ padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:12.6px; }
+  table.req tr:last-child td{ border-bottom:none; }
+  td.reqid{ font-family:"IBM Plex Mono", monospace; font-size:11px; color:var(--ink-faint); width:48px; white-space:nowrap; }
+  td.goal{ font-weight:600; width:16%; }
+  td.goal .papers{ display:block; font-weight:400; color:var(--ink-faint); font-size:10.5px; margin-top:3px; font-family:"IBM Plex Mono", monospace; }
+  td.mono{ font-family:"IBM Plex Mono", monospace; font-size:11.4px; color:var(--ink-soft); }
+
+  .verdict{ display:inline-flex; align-items:center; gap:6px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; padding:4px 9px; border-radius:20px; white-space:nowrap; }
+  .verdict::before{ content:""; width:7px; height:7px; border-radius:50%; flex:none; }
+  .verdict.confirmed{ background:var(--accent-mid-tint); color:var(--accent-mid); } .verdict.confirmed::before{ background:var(--accent-mid); }
+  .verdict.partial{ background:var(--accent-low-tint); color:var(--accent-low); } .verdict.partial::before{ background:var(--accent-low); }
+  .verdict.notaddressed{ background:var(--surface-2); color:var(--ink-faint); border:1px solid var(--line); } .verdict.notaddressed::before{ background:var(--ink-faint); }
+  .verdict.contradicted{ background:var(--heat-4); color:#fff; } .verdict.contradicted::before{ background:#fff; }
+
+  .callout{ border:1px solid var(--heat-4); background:var(--accent-low-tint); border-radius:12px; padding:18px 22px; margin-top:18px; }
+  .callout h3{ font-size:14.5px; margin-bottom:8px; color:var(--heat-4); }
+  .callout p{ margin:0 0 8px; color:var(--ink-soft); font-size:13.5px; }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout q{ font-style:italic; }
+
+  .pattern-notes{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:16px; margin-top:6px; }
+  .pnote{ border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--surface); box-shadow:var(--shadow); }
+  .pnote h3{ font-size:15px; margin-bottom:8px; }
+  .pnote p{ margin:0; color:var(--ink-soft); font-size:13.5px; }
+
+  footer.notes{ max-width:84ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part IX</div>
+    <h1>Capability Cross-Check</h1>
+    <p class="lede">The instrument-requirements ledger (Part&nbsp;II·C) records what science papers say they need. It was never checked against what SKAO's own engineering documents say the telescopes can actually deliver. This page runs that check for the first time, using the separate, smaller "SKA key capabilities" document set (<code>search_ska_capabilities</code>) — six months into this atlas's existence, its two calculator-adjacent tools had never once been called.</p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n">7</div><div class="l">capability documents found</div></div>
+      <div class="stat-tile"><div class="n">12</div><div class="l">requirements cross-checked</div></div>
+      <div class="stat-tile"><div class="n">4</div><div class="l">AA4-scoped, confirmed not yet fundable</div></div>
+      <div class="stat-tile"><div class="n">2</div><div class="l">confirmed near-exact</div></div>
+      <div class="stat-tile"><div class="n">2</div><div class="l">not addressed at all</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview &amp; method</a>
+    <a href="#docs">The capability document set</a>
+    <a href="#table">Per-requirement verdicts</a>
+    <a href="#funding">The funding finding</a>
+    <a href="#patterns">Broader patterns</a>
+    <a href="#notes">Notes &amp; caveats</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" id="overview">
+      <h2>Scope &amp; method</h2>
+      <p>Twelve requirements were selected from the ledger for cross-checking, each picked to test a distinct kind of capability question: array-assembly stage (AA* vs. AA4), Band 5a/5b's 80-dish restriction, VLBI baseline reach, beamformer/correlator limits, and transient-buffer throughput. Each was checked against <code>search_ska_capabilities</code>, a document set that has never been touched by any earlier pass in this atlas, and given one of four verdicts: <b>confirmed</b>, <b>partially confirmed</b>, <b>not addressed</b>, or <b>contradicted</b> — assigned only on the basis of what the capability docs actually state, never assumed either way when they're silent.</p>
+    </section>
+
+    <section class="sec-block" id="docs">
+      <div class="sec-head"><h2>The capability document set</h2></div>
+      <p class="sec-dek">Seven documents, entirely engineering-facing — well suited to checking feasibility, not to validating science justification.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Document</th><th>Scope</th></tr></thead>
+        <tbody>
+          <tr><td class="doc">Dewdney et al. 2022 — SKA1 Design Baseline Description</td><td>The primary, ~1000+ page formal engineering spec for both telescopes: array-configuration tables, SEFD/min-detectable-flux constants per band, VLBI design, PSS/PST subsystems, transient-buffer design, correlator-beamformer architecture, synchronisation performance, RFI environment. Uses pre-AA* terminology — describes the full 197-dish/512-station design baseline as "SKA1."</td></tr>
+          <tr><td class="doc">Sridhar et al. 2025 — SKAO Staged Delivery, Array Assemblies &amp; Layouts</td><td>The current authoritative reference defining AA0.5→AA1→AA2→AA*→AA4, with baseline lengths and dish/station counts per stage, and an explicit note that <b>AA* itself is currently underfunded</b>.</td></tr>
+          <tr><td class="doc">SKAO-TEL-0002380 — SKA Low and Mid Subarray Templates</td><td>Standard subarray templates for both telescopes, each with a stated max baseline, defined for both AA* and AA4 contexts.</td></tr>
+          <tr><td class="doc">SKA Low Sensitivity Calculator User Guide</td><td>Subarray options, continuum/zoom/pulsar-search modes, worked sensitivity tables, confusion-noise model, known limitations.</td></tr>
+          <tr><td class="doc">Interacting with the SKAO Sensitivity Calculator</td><td>Short API tutorial with worked query examples against both telescopes in AA* and AA4 configurations.</td></tr>
+          <tr><td class="doc">SKA Observatory Establishment &amp; Delivery Plan (2021)</td><td>Operations/governance-facing: proposal categories, VLBI technical considerations (core-subarray beamforming, FoV/sensitivity trade-off), tied-array beams, scheduling.</td></tr>
+          <tr><td class="doc">Arumugam et al. 2025 — SKAO Science Data Products: A Summary</td><td>Observing/data-product modes — continuum/zoom imaging, PSS/PST/VLBI/transient-buffer/dynamic-spectrum — overlapping substantially with the Delivery Plan.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="table">
+      <div class="sec-head"><h2>Per-requirement verdicts</h2></div>
+      <div class="req-wrap"><table class="req">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Assumed capability</th><th>Capability-doc finding</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td class="reqid">A-06</td><td class="goal">Extragalactic continuum<span class="papers">Hale/Tabatabaei</span></td><td class="mono">AA4, 0.1–1 µJy/bm</td><td class="mono">AA4 exists as a distinct config, but funding "has not yet been fully secured" per Sridhar 2025; specific µJy target not independently quoted</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">C-09</td><td class="goal">Galactic-Plane survey<span class="papers">Traficante</span></td><td class="mono">600h(AA4) vs 1800h(AA*)</td><td class="mono">no matching passage found — only the underlying dish-count fact (144 vs 197) is confirmed</td><td><span class="verdict notaddressed">not addressed</span></td></tr>
+          <tr><td class="reqid">D-05</td><td class="goal">Radio-loud AGN evolution<span class="papers">Kondapally</span></td><td class="mono">Band2 AA4, ~0.2 µJy/bm</td><td class="mono">Dewdney Table 5-18 (197-antenna array): min. detectable flux (rms) Band2+L-band = 42.5 µJy·s⁻¹ᐟ² — dimensionally consistent but not an independent confirmation of 0.2 µJy specifically</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">E-05</td><td class="goal">Weak lensing/cosmic shear<span class="papers">Harrison</span></td><td class="mono">≥75km baselines, AA4</td><td class="mono">AA* max baseline = 108.0 km <i>only including the atypical outlier dish SKA008</i> (usually excluded); 36.0 km without it — the requirement sits right at AA*'s edge, not comfortably inside it</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">C-01</td><td class="goal">Disk substructure imaging<span class="papers">Garufi/Wu</span></td><td class="mono">Band5a, AA*→AA4</td><td class="mono">80-of-133 15m-dish equipping confirmed; but Dewdney's Band5a sensitivity table (SEFD=300 Jy) covers the <i>full</i> 133-dish design-baseline sub-array, not the smaller 80-dish AA* subset the paper's figures need</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">G-03</td><td class="goal">African VLBI extension<span class="papers">Bempong-Manful</span></td><td class="mono">baselines to 9000km</td><td class="mono">native SKA baselines cap at 150km(Mid)/20km(Low); intercontinental reach only via external Global VLBI Network participation, which is architecturally confirmed as supported — no specific African-network baseline or throughput figure found</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">E-09</td><td class="goal">PTA/GW, "1000-pulsar" scenario<span class="papers">—</span></td><td class="mono">near-all-sky simultaneous timing</td><td class="mono">Dewdney &amp; Establishment Plan: correlator-beamformer generates <b>up to 16 PST beams</b> per telescope — a hard architectural ceiling independent of array-assembly stage; doesn't scale with more dishes</td><td><span class="verdict contradicted">contradicted</span></td></tr>
+          <tr><td class="reqid">F-05</td><td class="goal">VLBI of compact objects<span class="papers">Lin/Kadler/Spingola</span></td><td class="mono">small FoV, flagged as key limitation</td><td class="mono">Dewdney §4.10: multi-beam VLBI "very limited fields of view compared with... single-beam radio telescopes"; Establishment Plan frames core-size as an explicit FoV-vs-sensitivity trade-off</td><td><span class="verdict confirmed">confirmed</span></td></tr>
+          <tr><td class="reqid">G-09</td><td class="goal">Transient buffer design baseline<span class="papers">—</span></td><td class="mono">100Gbps, 150TB/day, latency ≤62–900s</td><td class="mono">Dewdney Tables 7-3/7-6: Low network 100Gbps / 150TB per day / 900s buffering latency; Mid network 100Gbps [80×100Gbps links] / 62s latency — near-exact match</td><td><span class="verdict confirmed">confirmed</span></td></tr>
+          <tr><td class="reqid">D-08</td><td class="goal">SKA-Low RM grid<span class="papers">O'Sullivan</span></td><td class="mono">10,000 deg² in ~3,200h</td><td class="mono">no survey-speed/area passage matches; only generic point-source sensitivity constants exist, never tied to this specific survey claim</td><td><span class="verdict notaddressed">not addressed</span></td></tr>
+          <tr><td class="reqid">E-08</td><td class="goal">Cluster halos/SZ<span class="papers">Perrott/Vacca</span></td><td class="mono">Band5b, 80-dish AA* subarray</td><td class="mono">Dewdney's Band5b table (SEFD=349 Jy) again covers only the full 133-dish design baseline, not the AA*-specific 80-dish subset</td><td><span class="verdict partial">partial</span></td></tr>
+          <tr><td class="reqid">B-10</td><td class="goal">Exoplanet VLBI astrometry<span class="papers">Curiel</span></td><td class="mono">~10µas@1.4GHz, ~1µas@&gt;5GHz</td><td class="mono">Establishment Plan §6.4.4.3.1: "currently achievable (up to 1 microarcsec)" directly corroborates the &gt;5GHz figure; the 1.4GHz/10µas figure isn't separately addressed</td><td><span class="verdict partial">partial</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="funding">
+      <div class="sec-head"><h2>The funding finding</h2></div>
+      <div class="callout">
+        <h3>Four requirements assume a stage that isn't just "not yet built" — it's "not yet funded," and neither is the stage below it</h3>
+        <p>A-06, C-09, D-05, and E-05 all explicitly require AA4/design-baseline capability. Sridhar et al. (2025) confirms plainly that funding for the full design baseline "has not yet been fully secured" — but the same document goes further: <q>"Due to inflationary pressures caused by recent geopolitical events, the funding originally secured to construct AA* is no longer sufficient... [SKAO is] seeking additional funding."</q> That is: even <b>AA*</b>, the intermediate array this entire atlas and the YITL operations report treat as the near-term baseline, is confirmed as currently underfunded. Every AA4-scoped requirement in the ledger sits on ground that's doubly unconfirmed — the target stage and the stepping-stone beneath it.</p>
+      </div>
+    </section>
+
+    <section class="sec-block" id="patterns">
+      <div class="sec-head"><h2>Broader patterns</h2></div>
+      <div class="pattern-notes">
+        <div class="pnote"><h3>The 80-dish blind spot</h3><p>C-01 and E-08 share a distinct pattern: capability docs only ever quantify Band 5a/5b sensitivity for the <i>full 133-dish design-baseline</i> sub-array, never separately for the 80-dish subset actually equipped under AA*. Every Band-5-specific science case in the ledger implicitly assumes the smaller subarray behaves like the fully-populated one — an assumption the capability docs neither confirm nor deny, since they simply don't publish that number.</p></div>
+        <div class="pnote"><h3>Architecture-fixed, not funding-fixed, limits</h3><p>E-09, F-05, and B-10 hit fixed correlator/beamformer ceilings — 16 PST beams, VLBI's FoV-vs-sensitivity trade-off, VLBI astrometric precision — that are independent of array-assembly stage. These will persist even once AA4 is fully funded and built, unlike the AA*→AA4 gaps above which are purely capacity/funding issues.</p></div>
+        <div class="pnote"><h3>Where the docs simply go quiet</h3><p>C-09 and D-08 got no matching passage at all, despite both papers stating fairly specific figures. This doesn't mean the figures are wrong — it means this particular engineering corpus doesn't happen to address them, a genuine and useful "not addressed" rather than a disagreement.</p></div>
+      </div>
+    </section>
+
+    <footer class="notes" id="notes">
+      <p><b>Sourcing discipline:</b> confirmed/partial/not-addressed/contradicted verdicts reflect only what <code>search_ska_capabilities</code> actually returned; silence in the capability docs was reported as "not addressed," never treated as either confirmation or denial.</p>
+      <p><b>What this page is not:</b> a judgement on whether the science cases themselves are sound — only on whether the specific capability assumption each one leans on is currently documented as deliverable.</p>
+    </footer>
+
+  </main>
+</div>

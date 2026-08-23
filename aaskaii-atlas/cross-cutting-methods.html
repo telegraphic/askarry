@@ -1,0 +1,160 @@
+<title>Cross-Cutting Methods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:230px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:18ch; }
+  header.masthead p.lede{ max-width:78ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:60px; }
+  section.intro{ max-width:78ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:24px; font-weight:700; }
+  .sec-count{ font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 20px; font-size:14.5px; }
+
+  /* ---------- methods ranking ---------- */
+  .method-table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.methods{ border-collapse:collapse; width:100%; min-width:820px; }
+  table.methods th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.methods td{ padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; }
+  table.methods tr:last-child td{ border-bottom:none; }
+  table.methods tr:hover td{ background:var(--surface-2); }
+  td.rank-cell{ font-family:"IBM Plex Mono", monospace; font-weight:600; width:36px; }
+  td.method-name{ font-weight:600; width:22%; }
+  td.method-name .sub{ display:block; font-weight:400; color:var(--ink-faint); font-size:11px; margin-top:2px; }
+  td.method-count{ font-family:"IBM Plex Mono", monospace; white-space:nowrap; width:110px; }
+  td.method-papers{ color:var(--ink-soft); font-size:12.5px; }
+  .bar-track{ background:var(--surface-2); border-radius:4px; height:7px; width:100%; margin-top:5px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:4px; }
+  .bar-fill.mid{ background:var(--accent-mid); } .bar-fill.low{ background:var(--accent-low); } .bar-fill.both{ background:var(--accent-both); }
+
+  footer.notes{ max-width:82ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis</div>
+    <h1>Cross-Cutting Methods</h1>
+    <p class="lede">This page ranks which named techniques recur across the most AASKAII sections. A fixed vocabulary of 16 techniques was searched independently of section boundaries, so a method's rank reflects how load-bearing it is corpus-wide, not how often any one section happens to mention it.</p>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview &amp; method</a>
+    <a href="#methods-ranking">Methods ranking</a>
+    <a href="#notes">Notes &amp; caveats</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" id="overview">
+      <h2>Scope &amp; method</h2>
+      <p>This analysis uses the same corpus as the observing-mode contention map: the AASKAII book, 7 thematic sections, and roughly 189 papers. A separate pass ran 16 fixed technique keywords against the whole corpus, independent of section boundaries, to rank which methods are load-bearing across the most sections rather than specific to just one.</p>
+      <p>Sourcing follows the same rule throughout. We report a figure or claim only where a paper states it explicitly, and we source it back to that paper.</p>
+    </section>
+
+    <section class="sec-block" id="methods-ranking">
+      <div class="sec-head"><h2>Cross-cutting methods ranking</h2><span class="sec-count num">16 fixed keywords · corpus-wide search</span></div>
+      <p class="sec-dek">We searched a fixed vocabulary of 16 techniques independently of section boundaries. We then ranked each technique by how many of the 7 AASKAII sections use it as a load-bearing method rather than a passing mention. These counts are a lower bound because a 20-result search window will not surface every paper. The ranking of the top methods is nonetheless robust.</p>
+
+      <div class="method-table-wrap"><table class="methods">
+        <thead><tr><th>Rank</th><th>Technique</th><th>Sections</th><th>Coverage</th><th>Papers found</th></tr></thead>
+        <tbody>
+          <tr><td class="rank-cell num">1</td><td class="method-name">Faraday rotation / RM<span class="sub">rotation measure</span></td><td class="method-count num">6 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:86%"></div></div></td><td class="method-papers">11 papers — A, B, C, D, E, G (missing: F)</td></tr>
+          <tr><td class="rank-cell num">1</td><td class="method-name">Polarimetry<span class="sub">broadband, full-Stokes</span></td><td class="method-count num">6 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:86%"></div></div></td><td class="method-papers">10 papers — A, B, C, D, F, G (missing: E)</td></tr>
+          <tr><td class="rank-cell num">3</td><td class="method-name">VLBI<span class="sub">imaging &amp; astrometry, merged</span></td><td class="method-count num">4 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:57%"></div></div></td><td class="method-papers">~12 distinct papers — C, D, F, G</td></tr>
+          <tr><td class="rank-cell num">4</td><td class="method-name">RFI mitigation</td><td class="method-count num">3 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:43%"></div></div></td><td class="method-papers">5 papers — B, E, G</td></tr>
+          <tr><td class="rank-cell num">5</td><td class="method-name">Foreground removal<span class="sub">/ subtraction</span></td><td class="method-count num">2 / 7<span class="sub" style="text-transform:none;letter-spacing:0;">(3/7 per open-Qs pass)</span></td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">4 papers found by keyword; open-questions pass surfaced a 3rd section (A)</td></tr>
+          <tr><td class="rank-cell num">5</td><td class="method-name">Machine learning / AI</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">3 papers — E, G</td></tr>
+          <tr><td class="rank-cell num">7</td><td class="method-name">Spectral line / maser survey</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">2 papers — A, C</td></tr>
+          <tr><td class="rank-cell num">7</td><td class="method-name">Zeeman effect</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">3 papers — C, D</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Ionospheric calibration<span class="sub">as a dedicated paper topic</span></td><td class="method-count num">1 / 7<span class="sub" style="text-transform:none;letter-spacing:0;">(impact spans 3)</span></td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">5 papers, concentrated in G — but its impact (see open questions) is felt in B and D too</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">HI intensity mapping</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">4 papers — all in E</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Pulsar timing</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">3 papers — all in F</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Deconvolution / imaging algorithms</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">4 papers — all in G</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Source finding / classification</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">3 papers — all in G</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Commensal / multi-messenger observing<span class="sub">as a named technique</span></td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">2 papers — all in G</td></tr>
+          <tr><td class="rank-cell num">9</td><td class="method-name">Citizen science</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">2 papers — all in G</td></tr>
+        </tbody>
+      </table></div>
+
+      <p class="sec-dek" style="margin-top:18px;">The observing-mode contention map already showed that broad <i>observing modes</i>, such as wide continuum imaging or commensal transient monitoring, span 5 of 6 science sections. This pass asks a narrower question: which <i>named techniques</i> are load-bearing? Faraday rotation and polarimetry form the only technique that is genuinely both broad <b>and</b> deep. It is used materially in 6 of 7 sections, not just mentioned in passing. Everything else that looks broad in the contention map, including VLBI and transients, turns out at the technique level to be a family of related but distinct methods per section rather than one shared pipeline.</p>
+    </section>
+
+    <footer class="notes" id="notes">
+      <p><b>Methods ranking:</b> We chose 16 fixed keywords before searching: 8 came from the user's own examples, and 8 more span imaging, VLBI, RFI, and community-science techniques. We ran each keyword as an independent corpus-wide query with a 20-result window. The absolute paper counts are a lower bound. The full-read section passes behind both this document and the earlier contention map independently corroborate the ranking of Faraday rotation and polarimetry as the most cross-cutting technique.</p>
+    </footer>
+
+  </main>
+</div>

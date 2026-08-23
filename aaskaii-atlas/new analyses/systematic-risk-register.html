@@ -1,0 +1,305 @@
+<title>Systematic Risk Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:230px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:20ch; }
+  header.masthead p.lede{ max-width:80ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-top:4px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:26px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:52px; }
+  section.intro{ max-width:80ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:24px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 20px; font-size:14.5px; }
+
+  .rk-list{ display:flex; flex-direction:column; gap:14px; }
+  .rk-card{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:18px 22px; display:grid; grid-template-columns:64px 1fr; gap:20px; }
+  @media (max-width:640px){ .rk-card{ grid-template-columns:1fr; } }
+  .rk-badge{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
+  .rk-badge .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:22px; width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+  .rk-badge .lbl{ font-size:9.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.06em; text-align:center; }
+  .tier-3 .n{ background:var(--heat-4); color:#fff; }
+  .tier-2 .n{ background:var(--heat-2); color:var(--ink); }
+  .tier-1 .n{ background:var(--heat-0); color:var(--ink-soft); }
+  .rk-card h3{ font-size:16.5px; margin-bottom:6px; }
+  .rk-card .oq-sections{ display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
+  .sec-chip{ font-family:"IBM Plex Mono", monospace; font-size:10.5px; padding:2px 7px; border-radius:5px; background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+  .rk-card p.syn{ color:var(--ink-soft); margin:0 0 10px; font-size:13.5px; }
+  .rk-card ul.cite{ margin:0 0 10px; padding-left:1.1em; font-size:12.5px; color:var(--ink-soft); }
+  .rk-card ul.cite li{ margin-bottom:4px; }
+  .rk-card ul.cite b{ color:var(--ink); font-weight:600; }
+  .rk-card .diff{ font-size:12px; color:var(--ink-faint); border-top:1px dashed var(--line); padding-top:8px; margin-top:2px; }
+  .rk-card .diff b{ color:var(--ink-soft); }
+
+  .empty-box{ border:1px dashed var(--line); border-radius:12px; padding:18px 22px; background:var(--surface-2); margin-top:6px; }
+  .empty-box h3{ font-size:14px; margin-bottom:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.04em; font-family:"IBM Plex Mono",monospace; font-weight:500;}
+  .empty-box ul{ margin:0; padding-left:1.2em; font-size:13px; color:var(--ink-soft); }
+  .empty-box li{ margin-bottom:8px; }
+  .empty-box b{ color:var(--ink); }
+
+  footer.notes{ max-width:84ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part VIII</div>
+    <h1>Systematic Risk Register</h1>
+    <p class="lede">The Common Open Questions page (Part&nbsp;II·A) ranks unresolved <b>physics</b> — what causes the PTA background, what drives cosmic magnetism. This page is deliberately different: a register of named <b>engineering and operational</b> risks — calibration, RFI, compute cost, timing precision — that threaten data quality or feasibility regardless of what the science answer turns out to be. Ranked by how many of the 7 sections independently name each risk as a real constraint.</p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n">16</div><div class="l">risk keywords searched</div></div>
+      <div class="stat-tile"><div class="n">10</div><div class="l">risks confirmed &amp; ranked</div></div>
+      <div class="stat-tile"><div class="n">3</div><div class="l">tied for rank 1 (3 sections each)</div></div>
+      <div class="stat-tile"><div class="n">4</div><div class="l">keywords searched, no confirmed hit</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview &amp; method</a>
+    <a href="#register">Ranked register</a>
+    <a href="#empty">Searched, unconfirmed</a>
+    <a href="#notes">Notes &amp; caveats</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" id="overview">
+      <h2>Scope &amp; method</h2>
+      <p>16 systematic/engineering keywords were run as independent searches across the corpus: RFI mitigation/excision, ionospheric calibration (engineering framing), direction-dependent calibration, dynamic-range limitation, confusion limit, polarization leakage, computational cost/scaling, data rate/throughput, survey-speed limitation, beam/PSF sidelobes, timing/clock synchronization, commensal scheduling conflict, telescope availability/uptime, and the ML sim-to-real domain gap. A risk only makes the register if papers state it as a real, named engineering constraint — not a passing mention — and ranking follows section-count first, paper-count second, the same rule used throughout this atlas. Two out-of-scope engineering documents that share this database (a design-baseline specification and an operations delivery plan) surfaced heavily on several of these searches; those are <b>excluded</b> from the counts below since they aren't AASKAII science-book papers, but are noted where a risk is thoroughly engineered-around there yet only thinly discussed in the 189-paper corpus itself.</p>
+    </section>
+
+    <section class="sec-block" id="register">
+      <div class="sec-head"><h2>Ranked register</h2></div>
+      <div class="rk-list">
+
+        <div class="rk-card">
+          <div class="rk-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>RFI mitigation / excision</h3>
+            <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
+            <p class="syn">Named across solar radio science, intensity-mapping, and methods papers as a data-corrupting nuisance requiring active real-time countermeasures, independent of the science target. 6 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>G · ML and the SKA for Cosmic Dawn/EoR</b> — "RFI represents a major obstacle to the detection and characterization of the cosmological 21cm signal... its highly variable nature... can mimic or obscure genuine astronomical signals."</li>
+              <li><b>B · Solar/Heliospheric Calibration &amp; Imaging Framework</b> — dedicates §6.6 to distinguishing RFI from active solar emission, proposing thinned visibility recording since full-rate RFI-clean recording isn't tractable.</li>
+              <li><b>E · Fast Simultaneous Surveys with On-the-Fly Mapping</b> — describes excising "rogue antennas" that fall behind during fast scanning as a concrete operational RFI-adjacent step.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>VLBI timing, clock synchronisation &amp; correlator precision</h3>
+            <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">F</span><span class="sec-chip">G</span></div>
+            <p class="syn">Achieving the microarcsecond precision VLBI science needs depends on synchronisation, digitisation, and correlator sensitivity infrastructure — an engineering floor distinct from any single science case. 5 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>G · VLBI with SKAMPI</b> — the Effelsberg Direct Digitisation backend covers "the full signal chain... time distribution, digitisation, packetisation, and backend signal processing," built specifically to derisk this chain.</li>
+              <li><b>G · SKA VLBI Survey for Astrometry, Geodesy &amp; Astrophysics</b> — requires calibration against co-located GNSS receivers to hold geodetic precision.</li>
+              <li><b>B · Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI</b> — the detection floor is set by VLBA-class single-epoch precision (~100 µas), an instrumental ceiling, not a physics unknown.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>Polarisation leakage / instrumental-polarisation calibration accuracy</h3>
+            <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">C</span><span class="sec-chip">G</span></div>
+            <p class="syn">The precision with which instrumental polarisation response must be characterised, independent of what Zeeman or coronal signal is being chased. 4 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>C · Search for Seeds of The Cradle of Stars</b> — a whole subsection, "The Required Accuracy of Polarization Calibration," covers the precision needed to detect a Zeeman/Stokes-V signal at the ~0.05 K level.</li>
+              <li><b>B · Coronal Magnetography via Spectropolarimetry</b> — ties coronal-field measurement fidelity to attenuator/receiver polarimetric calibration precision (&lt;1 dB / ±2%).</li>
+              <li><b>G · Foreground Characterisation and Mitigation in CD/EoR</b> — treats leakage of Galactic synchrotron into Stokes I as a foreground-removal systematic requiring "extremely well-characterized instrumental responses."</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>Computational cost / compute scaling / SDP processing burden</h3>
+            <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
+            <p class="syn">A named tension between the raw scale of SKA data and the resolution/inference power science actually needs from it. 5 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>G · Source Finding and Characterisation for SKAO Science</b> — "the SDP will be among the largest HPC infrastructures ever built, processing exabytes of raw visibilities into science-ready catalogues."</li>
+              <li><b>G · The Role of Artificial Intelligence in the SKA Era</b> — "a persistent computational tension... between the need for cosmological volumes... and the sub-kpc resolution required," motivating AI-based deconvolution as cost mitigation.</li>
+              <li><b>G · A Non-Negativity Iterative Approach to Image Deconvolution</b> — built explicitly to reduce this cost (512×512 image in 1–2s on a laptop, quoted as a design target).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>Beam / PSF sidelobe artefacts</h3>
+            <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
+            <p class="syn">Imaging-fidelity systematics that threaten flagship products (weak lensing, source catalogues) regardless of the cosmology or population being measured. 5 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>G · Weak Lensing with the SKAO: Radio Shear Measurement</b> — "the multiplicative bias exceeds it by roughly an order of magnitude... likely reflects limitations of the shear estimator itself."</li>
+              <li><b>E · Methodological Frontiers in 21-cm Intensity Mapping</b> — §6.1 treats beam sidelobe structure as a named systematic requiring dedicated mitigation alongside foreground cleaning.</li>
+              <li><b>G · Commensal Image Plane Transient Search Methods</b> — sparse uv-coverage in short integrations "produces irregular point spread functions and structured noise, generating many artefacts."</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
+          <div>
+            <h3>Direction-dependent calibration — overfitting/signal-suppression risk</h3>
+            <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
+            <p class="syn">Deliberately narrower than the ionosphere entry below: this is about DD calibration's own free-parameter count risking eating the astrophysical signal, whatever causes the DD errors in the first place. 3 qualifying papers.</p>
+            <ul class="cite">
+              <li><b>E · CD/EoR Observational Lessons Learned</b> — "DD calibration involves a large number of free parameters, which increases the risk of overfitting and suppressing the 21-cm signal."</li>
+              <li><b>G · Foreground Characterisation and Mitigation in CD/EoR</b> — §3.3.2 treats DDEs as a distinct pipeline stage requiring joint source-subtraction/calibration solving.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-1"><span class="n">1</span><span class="lbl">section, 3 papers</span></div>
+          <div>
+            <h3>Ionosphere as a calibration/dynamic-range engineering constraint</h3>
+            <div class="oq-sections"><span class="sec-chip">G</span></div>
+            <p class="syn">Quantitative dynamic-range-vs-frequency behaviour, distinct from the science-limiting framing on the existing open-questions page.</p>
+            <ul class="cite">
+              <li><b>G · Studying Ionosphere Using SKA-Low and SKA-Mid</b> — derives quantitative dynamic-range degradation formulas from ionospheric phase error (δTEC) vs. frequency and averaging.</li>
+              <li><b>G · Foreground Characterisation and Mitigation in CD/EoR</b> — "the dynamic range required is formidable," driven directly by ionospheric turbulence.</li>
+            </ul>
+            <p class="diff"><b>How this differs from the open-questions page:</b> that page covers ionospheric calibration as a limit on <i>what science conclusions are reachable</i>. This entry reports the <i>mechanical, quantitative engineering behaviour</i> of the same effect — a calibration/data-quality problem that exists for SKA-Low regardless of which science case is running. Same physical cause, different register: "how do you calibrate around this" vs. "what does this stop us learning."</p>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-1"><span class="n">1</span><span class="lbl">section, 3 papers</span></div>
+          <div>
+            <h3>Sim-to-real / ML generalisation gap (production-readiness framing)</h3>
+            <div class="oq-sections"><span class="sec-chip">G</span></div>
+            <p class="syn">Confirmed independently as an operational-trust/robustness problem for deploying ML in production pipelines, not a scientific-mystery framing.</p>
+            <ul class="cite">
+              <li><b>G · The Role of Artificial Intelligence in the SKA Era</b> — U-Net deconvolution "trading extreme inference speed against risks of hallucinations and poor generalization."</li>
+              <li><b>G · ML and the SKA for Cosmic Dawn/EoR</b> — "rigorous validation against simulated datasets will be crucial... to transition from research prototypes... to operational components."</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-1"><span class="n">1</span><span class="lbl">section, 2 papers</span></div>
+          <div>
+            <h3>Dynamic-range limitation</h3>
+            <div class="oq-sections"><span class="sec-chip">G</span></div>
+            <p class="syn">Same two papers as the ionosphere entry quantify dynamic-range ceilings explicitly; listed separately since some papers treat dynamic range as a general imaging-fidelity target independent of the ionosphere specifically. Recurrence beyond G is weak in the 189-paper corpus.</p>
+          </div>
+        </div>
+
+        <div class="rk-card">
+          <div class="rk-badge tier-1"><span class="n">1</span><span class="lbl">section, 2 papers</span></div>
+          <div>
+            <h3>Data rate / throughput / archive volume</h3>
+            <div class="oq-sections"><span class="sec-chip">G</span></div>
+            <p class="syn">The 189-paper corpus treats this only in passing — the much more detailed data-volume/cost analysis (multi-exabyte storage, ~19,000 PB/yr uncompressed) lives in the out-of-scope engineering design-baseline documents, not the science book itself.</p>
+            <ul class="cite">
+              <li><b>G · Source Finding and Characterisation for SKAO Science</b> — "these instruments collectively produce petabyte-scale data products... processing exabytes of raw visibilities."</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="sec-block" id="empty">
+      <div class="sec-head"><h2>Searched, unconfirmed or thin</h2></div>
+      <div class="empty-box">
+        <h3>Reported explicitly rather than silently omitted</h3>
+        <ul>
+          <li><b>Telescope uptime / availability / maintenance risk</b> — extensive treatment exists (reliability/availability/maintainability analysis), but entirely in the out-of-scope engineering design-baseline and delivery-plan documents. Zero confirmed statements from the 189 AASKAII science-book papers themselves.</li>
+          <li><b>Survey-speed limitation / field-of-view tradeoff</b> — every hit from in-scope papers scored low relevance; no paper explicitly frames survey speed as a named constraint rather than a capability to exploit. Unconfirmed.</li>
+          <li><b>Confusion limit</b> — one clearly in-scope hit only: <i>Cosmology from Clustering of Continuum Galaxies</i> (E) notes a wide-area survey design "overcoming the effects of confusion which affects deep surveys such as MIGHTEE." Real, but a single paper/section — too thin to rank in the top register.</li>
+          <li><b>Commensal scheduling conflict</b> — two G-section papers (SETI; Commensal Image Plane Transient Search Methods) discuss commensality's technical tradeoffs, but both cluster in one section — noted, not promoted given the section-count ranking rule.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="notes" id="notes">
+      <p><b>Sourcing discipline:</b> a risk only appears above where papers state it as a real, confirmed constraint; where a keyword search came back thin or unconfirmed, that is reported directly (see above) rather than silently dropped.</p>
+      <p><b>Scope boundary:</b> an SKA1 engineering design-baseline specification and an SKA Observatory delivery plan share this database but are not among the 189 AASKAII science-book papers — hits from those two were excluded from every count above, but are noted inline wherever a risk is thoroughly engineered-around there while only thinly discussed in the science book itself (data rate/throughput; telescope uptime).</p>
+    </footer>
+
+  </main>
+</div>

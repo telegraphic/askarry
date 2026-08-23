@@ -1,0 +1,133 @@
+<title>Data Analyses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  a{ color:inherit; text-decoration:none; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1100px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(16px,4vw,40px) 80px; display:flex; flex-direction:column; gap:48px; }
+
+  header.masthead{ display:flex; flex-direction:column; gap:16px; padding-bottom:30px; border-bottom:1px solid var(--line); }
+  header.masthead h1{ font-size:clamp(30px,4vw,46px); font-weight:800; max-width:20ch; }
+  header.masthead p.lede{ max-width:74ch; color:var(--ink-soft); font-size:16.5px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .doc-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+  .doc-card{
+    display:flex; flex-direction:column; gap:12px;
+    border:1px solid var(--line); border-radius:14px; background:var(--surface);
+    box-shadow:var(--shadow); padding:24px 26px; position:relative; overflow:hidden;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .doc-card:hover{ transform:translateY(-2px); box-shadow:0 4px 10px rgba(18,24,29,0.08), 0 16px 32px rgba(18,24,29,0.08); }
+  .doc-card .accent-bar{ position:absolute; top:0; left:0; right:0; height:4px; }
+  .doc-card .part{ font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .doc-card h2{ font-size:20px; margin-top:2px; }
+  .doc-card p{ margin:0; color:var(--ink-soft); font-size:13.8px; flex:1; }
+  .doc-card .contains{ display:flex; flex-direction:column; gap:5px; margin-top:2px; font-size:12px; color:var(--ink-faint); }
+  .doc-card .contains li{ list-style:none; }
+  .doc-card .contains ul{ margin:0; padding:0; display:flex; flex-direction:column; gap:4px; }
+  .doc-card .open{ margin-top:6px; font-size:13px; font-weight:600; display:inline-flex; align-items:center; gap:6px; }
+  .doc-card .open .arrow{ transition:transform 0.15s ease; }
+  .doc-card:hover .open .arrow{ transform:translateX(3px); }
+  .c-low .accent-bar{ background:var(--accent-low); } .c-low .open{ color:var(--accent-low); }
+  .c-mid .accent-bar{ background:var(--accent-mid); } .c-mid .open{ color:var(--accent-mid); }
+  .c-both .accent-bar{ background:var(--accent-both); } .c-both .open{ color:var(--accent-both); }
+
+  footer.notes{ padding-top:22px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 8px; }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII Science Book</div>
+    <h1>Data Analyses</h1>
+    <p class="lede">Five exploratory cuts through the AASKAII corpus, each answering a different cross-cutting question: what competes for telescope time, what's still unsolved, which techniques recur, what the instrument must deliver, and which outside facilities the science depends on.</p>
+  </header>
+
+  <div class="doc-grid">
+    <a class="doc-card c-low" href="observing-mode-contention.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part I</span>
+      <h2>Observing Mode Map</h2>
+      <p>This document lists science drivers, sensitivity, and frequency range for all science sections. It cross-tabulates these against 15 SKA observing modes. The cross-tabulation shows which science drivers compete for the same telescope time.</p>
+      <div class="contains"><ul>
+        <li>Per-section driver &amp; sensitivity tables</li>
+        <li>15-mode contention matrix</li>
+        <li>Ranked hotspots (wide continuum, RM polarimetry, transients)</li>
+      </ul></div>
+      <span class="open">Open the map <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-mid" href="open-questions.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part II · A</span>
+      <h2>Common Open Questions</h2>
+      <p>This document records what the authors admit is still unsolved, ranked by how many of the 7 AASKAII sections independently raise the same problem.</p>
+      <div class="contains"><ul>
+        <li>10 recurring open-question clusters</li>
+        <li>Section-specific unknowns, flagged separately</li>
+        <li>~90 sourced statements traced to their papers</li>
+      </ul></div>
+      <span class="open">Open the questions <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-mid" href="cross-cutting-methods.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part II · B</span>
+      <h2>Cross-Cutting Methods</h2>
+      <p>This document ranks which techniques recur across the most sections, from a fixed 16-keyword search run independently of section boundaries.</p>
+      <div class="contains"><ul>
+        <li>16-keyword cross-cutting methods ranking</li>
+        <li>Coverage bars by section count</li>
+        <li>Faraday rotation &amp; polarimetry as the top cross-cutting method</li>
+      </ul></div>
+      <span class="open">Open the ranking <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-mid" href="instrument-requirements.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part II · C</span>
+      <h2>Instrument Requirements</h2>
+      <p>This document reverse-engineers an instrument requirements register, with each entry traced line-by-line back to its source science goal.</p>
+      <div class="contains"><ul>
+        <li>~70 sourced requirements, REQ-A01–G12</li>
+        <li>Sensitivity, resolution, FoV, frequency &amp; survey speed</li>
+        <li>Organised by section as a systems-engineering register</li>
+      </ul></div>
+      <span class="open">Open the ledger <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-both" href="synergy-network.html">
+      <div class="accent-bar"></div>
+      <span class="part">Part III</span>
+      <h2>Multimessenger Observations</h2>
+      <p>This document lists the external facilities the papers say SKAO needs for this science. Rubin/LSST and JWST act as universal hubs used across sections. The document also flags where the search likely missed connections.</p>
+      <div class="contains"><ul>
+        <li>Hub facilities vs. single-theme partners</li>
+        <li>The one bridge between two disconnected clusters</li>
+        <li>Flagged gaps: ngVLA, CTA/Fermi</li>
+      </ul></div>
+      <span class="open">Open the network <span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <footer class="notes">
+    <p>Each document is fully self-contained and opens on its own. Return to the <a href="index.html" style="text-decoration:underline;">home page</a> for the full atlas overview.</p>
+  </footer>
+</div>

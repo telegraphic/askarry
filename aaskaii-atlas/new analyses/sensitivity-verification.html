@@ -1,0 +1,186 @@
+<title>Sensitivity Verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:230px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:20ch; }
+  header.masthead p.lede{ max-width:80ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-top:4px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:26px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:52px; }
+  section.intro{ max-width:80ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:23px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 18px; font-size:14.5px; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.data{ border-collapse:collapse; width:100%; min-width:1080px; }
+  table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 13px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.data td{ padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:12.8px; }
+  table.data tr:last-child td{ border-bottom:none; }
+  table.data tr:hover td{ background:var(--surface-2); }
+  td.reqid{ font-family:"IBM Plex Mono", monospace; font-size:11px; color:var(--ink-faint); width:52px; white-space:nowrap; }
+  td.goal{ font-weight:600; width:17%; }
+  td.goal .papers{ display:block; font-weight:400; color:var(--ink-faint); font-size:10.5px; margin-top:3px; font-family:"IBM Plex Mono", monospace; }
+  td.mono{ font-family:"IBM Plex Mono", monospace; font-size:11.6px; color:var(--ink-soft); }
+
+  .verdict{ display:inline-flex; align-items:center; gap:6px; font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+  .verdict::before{ content:""; width:7px; height:7px; border-radius:50%; flex:none; }
+  .verdict.match{ background:var(--accent-mid-tint); color:var(--accent-mid); } .verdict.match::before{ background:var(--accent-mid); }
+  .verdict.diverge{ background:var(--accent-low-tint); color:var(--accent-low); } .verdict.diverge::before{ background:var(--accent-low); }
+  .verdict.unverifiable{ background:var(--surface-2); color:var(--ink-faint); border:1px solid var(--line); } .verdict.unverifiable::before{ background:var(--ink-faint); }
+
+  .callout{ border:1px solid var(--accent-low); background:var(--accent-low-tint); border-radius:12px; padding:18px 22px; margin-top:18px; }
+  .callout h3{ font-size:14.5px; margin-bottom:8px; color:var(--accent-low); }
+  .callout p{ margin:0; color:var(--ink-soft); font-size:13.5px; }
+
+  .method-note{ border:1px dashed var(--line); border-radius:12px; padding:16px 20px; background:var(--surface-2); font-size:13px; color:var(--ink-soft); margin-top:4px; }
+  .method-note b{ color:var(--ink); }
+
+  footer.notes{ max-width:84ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part V</div>
+    <h1>Sensitivity Verification</h1>
+    <p class="lede">The instrument-requirements ledger (Part&nbsp;II·C) recorded every sensitivity and resolution figure exactly as a paper stated it, with no independent check. This page runs a sample of those figures back through SKAO's <b>live</b> sensitivity-calculator API — not a document search, a real network call to the same backend astronomers use — to see which quoted numbers still hold up.</p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n">12</div><div class="l">figures checked</div></div>
+      <div class="stat-tile"><div class="n">5</div><div class="l">matched (≤10%)</div></div>
+      <div class="stat-tile"><div class="n">2</div><div class="l">diverged (20–30%)</div></div>
+      <div class="stat-tile"><div class="n">5</div><div class="l">not independently verifiable</div></div>
+      <div class="stat-tile"><div class="n">1</div><div class="l">likely misattribution found</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview &amp; method</a>
+    <a href="#table">Verification table</a>
+    <a href="#misattribution">The misattribution</a>
+    <a href="#notes">Notes &amp; caveats</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" id="overview">
+      <h2>Scope &amp; method</h2>
+      <p>Twelve entries were picked from the instrument-requirements ledger for having enough stated parameters (band, integration time, bandwidth, and ideally a weighting scheme) to attempt a fair recalculation. For each, the source sentence was re-located in the corpus, then <code>query_sensitivity_calc</code> was called against SKAO's real sensitivity-calculator API using the paper's own stated parameters wherever possible. A verdict of <b>diverges</b> or <b>matches</b> is only given when a parameter set could actually be justified from the paper's text; otherwise the entry is marked <b>not independently verifiable</b>, rather than forcing a comparison the source text doesn't support.</p>
+      <div class="method-note"><b>A capability quirk surfaced in the process:</b> Band 5a/5b calculator calls must use the "(15-m antennas only)" subarray label — the plain AA*/AA4 labels are rejected for those bands by the live API. This is a small but real detail: it confirms that Band 5a/5b really is scoped to the 80-of-144-dish subset in practice, not just in the science literature (see Part IX, Capability Cross-Check, for more on this).</div>
+    </section>
+
+    <section class="sec-block" id="table">
+      <div class="sec-head"><h2>Verification table</h2></div>
+      <p class="sec-dek">Where all four parameters — frequency, bandwidth, integration time, and weighting scheme — are stated in the paper, the live calculator reproduces the book's own figures to within a few percent, meaning the calculator itself hasn't drifted materially from what authors used at time of writing.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>ID</th><th>Paper — figure</th><th>Quoted</th><th>Calculator (live)</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td class="reqid">A-06</td><td class="goal">Extragalactic continuum<span class="papers">Hale &amp; Tabatabaei</span></td><td class="mono">Wide ~1 / Deep ~0.2 mJy/bm; AA4 0.1–1 µJy/bm</td><td class="mono">not run — no single citable parameter set; figure aggregates several tiers/bands/papers</td><td><span class="verdict unverifiable">unverifiable</span></td></tr>
+          <tr><td class="reqid">A-04</td><td class="goal">HI galaxy science<span class="papers">Wang et al.</span></td><td class="mono">Wide 10.4″, N≈789k; Ultra-deep 2.7″, N≈56k</td><td class="mono">galaxy counts depend on an assumed HI mass-function + RFI model, not the calculator alone</td><td><span class="verdict unverifiable">unverifiable</span></td></tr>
+          <tr><td class="reqid">C-09</td><td class="goal">Galactic-Plane survey<span class="papers">Traficante et al.</span></td><td class="mono">20 µJy/bm @14 GHz, 20s, AA4; ×3.1 time → AA*</td><td class="mono">14.4 µJy/bm (AA4) / 24.0 µJy/bm (AA*) — AA*/AA4 scaling matches paper's own √3.1 to 5%</td><td><span class="verdict diverge">diverges ~30%</span></td></tr>
+          <tr><td class="reqid">D-05</td><td class="goal">Radio-loud AGN evolution<span class="papers">Kondapally et al.</span></td><td class="mono">6.7h/167h (AA4), 28h/698h (AA*) for 1/0.2 µJy targets</td><td class="mono">6.79h / 169.6h / 27.85h / 696.2h — all within 1–2%</td><td><span class="verdict match">matches</span></td></tr>
+          <tr><td class="reqid">E-06</td><td class="goal">Reference continuum tiers<span class="papers">(shear/clustering)</span></td><td class="mono">0.05/0.2/1 µJy rms — Ultra-Deep/Deep/Wide</td><td class="mono">same underlying Prandoni model as D-05, independently validated on Deep/Wide to &lt;2%</td><td><span class="verdict match">matches</span></td></tr>
+          <tr><td class="reqid">D-10</td><td class="goal">Ultra-deep multi-band continuum<span class="papers">Algera, Prandoni</span></td><td class="mono">rms 0.4 (Band2, 10h) / 0.09 (Band5b, 3300h) µJy/bm</td><td class="mono">Band2: 0.824 µJy/bm at 10h (2× worse than quoted); Band5b re-run gave an unresolved anomaly</td><td><span class="verdict unverifiable">unverifiable</span></td></tr>
+          <tr><td class="reqid">C-01</td><td class="goal">Disk substructure imaging<span class="papers">Garufi, Wu</span></td><td class="mono">0.115 (AA*) / 0.049 (AA4) µJy/bm, 12.5 GHz, 1000h, robust=−1</td><td class="mono">0.108 µJy/bm (AA*, 15m-only) / 0.044 µJy/bm (AA4, 15m-only) — within 6–10%</td><td><span class="verdict match">matches</span></td></tr>
+          <tr><td class="reqid">B-11</td><td class="goal">TNO thermal detection<span class="papers">Santos-Sanz</span></td><td class="mono">5σ 1h/5h across 3 bands (2.3/2.8/4.6 cm), AA4</td><td class="mono">essentially exact reproduction at all 3 bands, ≤2% throughout</td><td><span class="verdict match">matches</span></td></tr>
+          <tr><td class="reqid">E-02</td><td class="goal">HI resolved galaxy survey<span class="papers">Nasirudin et al.</span></td><td class="mono">235.2 (AA*) / 167.6 (AA4) µJy, Band1, 3.55h</td><td class="mono">243.4 µJy (AA*) / 177.6 µJy (AA4) — 3.5–6% high, plausible calculator-version drift</td><td><span class="verdict match">matches</span></td></tr>
+          <tr><td class="reqid">D-02</td><td class="goal">HI &amp; the Cosmic Web survey<span class="papers">Pan et al.</span></td><td class="mono">0.836 / 0.418 / 0.209 mJy/bm, Band2, 3 time tiers, ~10″ beam</td><td class="mono">0.663 / 0.332 / 0.166 mJy/bm (natural weighting) — a systematic ~21% offset at all 3 tiers</td><td><span class="verdict diverge">diverges ~21%</span></td></tr>
+          <tr><td class="reqid">C-07</td><td class="goal">Starless-core polarization<span class="papers">"Bracco et al." (ledger)</span></td><td class="mono">σ_I 12.6 µJy/bm; σ_Q,U 0.24 µJy/bm, 50h</td><td class="mono">figure traced instead to Vacca et al.'s cluster-RM-grid chapter, Band2, not to Bracco's SKA-Low starless-core work — see callout below</td><td><span class="verdict unverifiable">misattributed</span></td></tr>
+          <tr><td class="reqid">A-08</td><td class="goal">Radio transients<span class="papers">Miller-Jones et al.</span></td><td class="mono">Mid 3σ≈20 µJy (1-min); Low 3σ≈150 µJy (1-min)</td><td class="mono">no source sentence found; sanity-check runs show the Low figure implies AA*-class sensitivity while the Mid figure implies AA4-class — internally inconsistent as one config</td><td><span class="verdict unverifiable">unverifiable</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="misattribution">
+      <div class="sec-head"><h2>The misattribution</h2></div>
+      <div class="callout">
+        <h3>C-07 traces to the wrong paper, band, and science case</h3>
+        <p>The ledger's figures for "starless-core synchrotron/polarization" (σ_I = 12.6 µJy/bm, σ_Q,U = 0.24 µJy/bm, 50h) were re-located verbatim — but in a different chapter entirely: Vacca et al.'s statistical-methods paper on rotation-measure grids in galaxy clusters, describing SKA-Mid AA4 Band&nbsp;2 (0.95–1.67 GHz) at 17″ resolution for <b>cluster diffuse polarization</b>, not SKA-Low 74–350 MHz for <b>starless molecular cores</b> as the ledger's row (C-07, citing Bracco et al.) states. Bracco et al.'s own paper does discuss SKA-Low core-detection integration times (e.g. &lt;100h with AA*, &lt;50h with AA4 for a single Orion-like core at 200–300 MHz), but no σ_I/σ_Q,U = 12.6/0.24 µJy figures were found anywhere in it. This looks like a citation swap introduced somewhere in the original requirements-ledger pass, not a live-calculator disagreement — worth a manual fix in Part&nbsp;II·C.</p>
+      </div>
+    </section>
+
+    <footer class="notes" id="notes">
+      <p><b>Reading the verdicts:</b> a <i>match</i> means the live calculator reproduced the paper's figure to within roughly 10% using parameters drawn directly from the paper's own text. A <i>divergence</i> means a real gap remained even after a good-faith parameter match — in both cases found here (C-09, D-02), the gap traces to a beam-size or resolution target implying an unstated weighting/taper choice, not to an error in either source. <i>Not independently verifiable</i> is used whenever the source text doesn't pin down enough of frequency, bandwidth, integration time, and weighting to justify a fair comparison — this was <b>not</b> treated as a strike against the ledger figure, only as a limit on what this pass could check.</p>
+      <p><b>Pattern:</b> every strong match came from a paper stating all four parameters explicitly (frequency, bandwidth, time, weighting). Every divergence or non-verifiable case was missing at least one — most often the weighting/taper scheme, which the calculator needs but which deep/ultra-deep tiers rarely spell out in the prose (it usually lives in a table or figure not fully captured by retrieval).</p>
+      <p><b>Not run:</b> galaxy-count and population-model figures (A-04) were explicitly excluded from calculator verification since they depend on an assumed mass function, not on raw sensitivity.</p>
+    </footer>
+
+  </main>
+</div>

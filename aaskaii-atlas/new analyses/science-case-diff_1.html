@@ -1,0 +1,269 @@
+<title>2015 vs 2026 Science-Case Diff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  ::selection{ background:var(--accent-mid-tint); }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .num{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1280px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:230px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:22ch; }
+  header.masthead p.lede{ max-width:80ch; color:var(--ink-soft); font-size:16px; margin:0; }
+  header.masthead p.lede b{ color:var(--ink); font-weight:600; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-top:4px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:26px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.toc .toc-group{ margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px; }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:54px; }
+  section.intro{ max-width:80ch; }
+  section.intro h2{ font-size:20px; margin-bottom:10px; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:23px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 18px; font-size:14.5px; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.data{ border-collapse:collapse; width:100%; min-width:640px; }
+  table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 13px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.data td{ padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px; }
+  table.data tr:last-child td{ border-bottom:none; }
+  table.data tr:hover td{ background:var(--surface-2); }
+
+  .persist-list{ display:flex; flex-direction:column; gap:14px; }
+  .p-card{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:18px 22px; }
+  .p-card h3{ font-size:15.5px; margin-bottom:10px; }
+  .p-card .years{ display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .yr{ font-family:"IBM Plex Mono",monospace; font-size:10.5px; padding:3px 9px; border-radius:20px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); }
+  .yr.y2015{ border-color:var(--accent-low); color:var(--accent-low); }
+  .yr.y2026{ border-color:var(--accent-mid); color:var(--accent-mid); }
+  .p-card .q{ margin:0 0 8px; padding:10px 14px; border-left:2px solid var(--line); color:var(--ink-soft); font-size:13px; font-style:italic; }
+  .p-card .q b{ font-style:normal; color:var(--ink); }
+  .p-card p.note{ margin:0; color:var(--ink-soft); font-size:13px; }
+
+  .remap-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.remap{ border-collapse:collapse; width:100%; min-width:880px; }
+  table.remap th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 13px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.remap td{ padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px; color:var(--ink-soft); }
+  table.remap tr:last-child td{ border-bottom:none; }
+  td.legacy{ font-weight:600; color:var(--ink); width:24%; }
+  td.legacy .n{ display:block; font-weight:400; color:var(--ink-faint); font-size:11px; font-family:"IBM Plex Mono",monospace; margin-top:3px;}
+  .arrow-cell{ text-align:center; color:var(--ink-faint); width:36px; }
+  td.dest .mode{ display:inline-flex; align-items:center; gap:6px; font-size:11.5px; padding:3px 9px 3px 7px; border-radius:20px; background:var(--surface-2); color:var(--ink); margin:0 4px 4px 0; }
+  td.dest .mode::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--accent-both); flex:none; display:inline-block; }
+
+  .callout{ border:1px solid var(--accent-both); background:var(--accent-both-tint); border-radius:12px; padding:18px 22px; margin-top:18px; }
+  .callout h3{ font-size:14.5px; margin-bottom:8px; color:var(--accent-both); }
+  .callout p{ margin:0; color:var(--ink-soft); font-size:13.5px; }
+
+  footer.notes{ max-width:84ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+  footer.notes b{ color:var(--ink-soft); }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part VI</div>
+    <h1>2015 vs 2026: A Science-Case Diff</h1>
+    <p class="lede">Every earlier pass in this atlas explicitly excluded the 2015 <i>"Advancing Astrophysics with the Square Kilometre Array"</i> proceedings in favour of the current AASKAII book. This page opens that legacy corpus for the first time and diffs it against the 2026 findings — what's new, what's been reorganised, what's quietly dropped, and which open questions the field has now carried unresolved for over a decade.</p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n">135</div><div class="l">2015 legacy papers found</div></div>
+      <div class="stat-tile"><div class="n">10</div><div class="l">legacy section headers</div></div>
+      <div class="stat-tile"><div class="n">6</div><div class="l">open questions unchanged since 2015</div></div>
+      <div class="stat-tile"><div class="n">4</div><div class="l">drivers genuinely new in 2026</div></div>
+      <div class="stat-tile"><div class="n">2</div><div class="l">chapter-level topics dropped entirely</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#overview">Overview &amp; method</a>
+    <a href="#map">Legacy section map</a>
+    <a href="#new">New in 2026</a>
+    <a href="#persistent">A decade unresolved</a>
+    <a href="#reorg">How 9 became 7</a>
+    <a href="#notes">Notes &amp; caveats</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" id="overview">
+      <h2>Scope &amp; method</h2>
+      <p>The astronomy-rag corpus turns out to hold the 2015 book too, distinguishable from AASKAII by a collection tag on every retrieved passage — <code>(Advancing Astrophysics with the Square Kilometre Array, 2015)</code> versus <code>(AASKAII, 2026)</code> — even though the document-listing tool doesn't surface that split on its own. Each of the 2015 book's section headers was searched directly for its dominant science drivers and for explicit open/unresolved-problem statements, then diffed against the 2026 cross-cutting-methods ranking and open-questions tiers already established elsewhere in this atlas.</p>
+    </section>
+
+    <section class="sec-block" id="map">
+      <div class="sec-head"><h2>The 2015 legacy section map</h2><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);">135 papers · 10 headers</span></div>
+      <p class="sec-dek">Nine thematic working-group chapters, plus one standalone opening overview (Braun et al.) covering the whole book's science case in miniature — treating that overview as introductory rather than a science-driver chapter gives exactly the "9 additional legacy sections" this atlas expected going in.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>2015 section</th><th>Papers</th><th>Where it went in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Magnetism</td><td class="num">19</td><td>Dissolved into a cross-cutting <i>technique</i> spanning 6 of AASKAII's 7 sections — see reorganisation map below.</td></tr>
+          <tr><td>The Continuum Universe</td><td class="num">19</td><td>Folded into E (Cosmos) &amp; D (Galaxies); strong lensing has no 2026 chapter of its own at all.</td></tr>
+          <tr><td>Synergies and Other Science</td><td class="num">19</td><td>VLBI content → G (Methods); multi-messenger content → F and the A overviews.</td></tr>
+          <tr><td>Cosmology</td><td class="num">18</td><td>Merged with EoR into 2026's single "The Cosmos" (E).</td></tr>
+          <tr><td>Epoch of Reionisation</td><td class="num">14</td><td>Folded into E, plus one WG-overview paper in A.</td></tr>
+          <tr><td>The Cradle of Life</td><td class="num">12</td><td>Dissolved three ways — disks/YSOs → C, exoplanet radio emission → B, SETI → G. No 2026 astrobiology chapter survives.</td></tr>
+          <tr><td>The Transient Universe</td><td class="num">12</td><td>Folded into F, plus an A-section overview (Miller-Jones et al.).</td></tr>
+          <tr><td>Fundamental Physics with Pulsars</td><td class="num">11</td><td>Absorbed into F (Extreme Universe) as one flavour of extreme astrophysics; lost standalone WG identity.</td></tr>
+          <tr><td>The Hydrogen Universe</td><td class="num">10</td><td>Folded into D and A; angular-momentum science (Obreschkow 2015) has no clear 2026 heir.</td></tr>
+          <tr><td>Main session (Braun et al., overview)</td><td class="num">1</td><td>Introductory framing paper, not a science-driver chapter.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="new">
+      <div class="sec-head"><h2>Genuinely new in 2026</h2></div>
+      <p class="sec-dek">Searched for but found no 2015 precursor of any kind:</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Driver</th><th>Why it's new</th></tr></thead>
+        <tbody>
+          <tr><td>Ionospheric calibration as a first-class limiting factor</td><td>2015 treats the ionosphere only implicitly inside instrument-design discussion; 2026 (Morgan et al., Datta et al.) makes it a dedicated tier-3 open question across B/D/G.</td></tr>
+          <tr><td>Machine learning / AI as a named cross-cutting method</td><td>Zero hits across ~20 targeted 2015 queries. 2015 forecasting is Fisher-matrix and manual-pipeline vocabulary throughout; ML/AI language is absent.</td></tr>
+          <tr><td>Long-period transients (LPTs)</td><td>2026's own citation trail (Miller-Jones et al.) dates the class to a 2022 discovery — after the 2015 book was written.</td></tr>
+          <tr><td>JWST-selected AGN / "Little Red Dots"</td><td>Post-JWST discovery (Mazzolari et al., section D); could not have existed in 2015.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="persistent">
+      <div class="sec-head"><h2>Open a decade, still open</h2></div>
+      <p class="sec-dek">Six problems the 2026 open-questions page ranks as tier-2 or tier-3 turn out to have a direct, explicit 2015 statement of the same unresolved issue — not a vague ancestor, a near-identical claim.</p>
+      <div class="persist-list">
+        <div class="p-card">
+          <h3>VLBI network gaps — too few southern/African baselines</h3>
+          <div class="years"><span class="yr y2015">2015 · Synergies</span><span class="yr y2026">2026 · C/F/G, tier-3</span></div>
+          <p class="q">Paragi et al. (2015): <b>"Key to the success of this approach will be the addition of a few (2-4) remote stations in Africa... to give good uv-coverage."</b></p>
+          <p class="note">2026 produced a direct-descendant chapter for exactly this gap: Bempong-Manful et al., "Extending the SKA Across Africa" — a decade-old infrastructure ask that spawned its own follow-on paper rather than closing.</p>
+        </div>
+        <div class="p-card">
+          <h3>Rapid-response / triggering infrastructure undefined</h3>
+          <div class="years"><span class="yr y2015">2015 · The Transient Universe</span><span class="yr y2026">2026 · B/F/G, tier-3</span></div>
+          <p class="q">Fender et al. (2015): <b>"Before 2012, no robotic override system... had ever been operated on a radio telescope... we consider it essential that the SKA implement such modes."</b></p>
+          <p class="note">2026's Anderson et al. still names SKA-Low repointing speed and SKA-Mid triggering latency as "not currently defined in the SKAO baseline documents" — the same design gap, still open.</p>
+        </div>
+        <div class="p-card">
+          <h3>FRB / compact-object progenitor physics unidentified</h3>
+          <div class="years"><span class="yr y2015">2015 · The Transient Universe</span><span class="yr y2026">2026 · E/F/G, tier-3</span></div>
+          <p class="q">Macquart et al. (2015): FRB scattering origin "as yet, undetermined" between host-galaxy ISM and intergalactic medium.</p>
+          <p class="note">2026 (Curtin et al., Qiu et al. on LPTs) still can't resolve the same IGM-vs-host ambiguity for the class's key observables.</p>
+        </div>
+        <div class="p-card">
+          <h3>Origin and amplification of cosmic magnetic fields</h3>
+          <div class="years"><span class="yr y2015">2015 · Magnetism</span><span class="yr y2026">2026 · A/E, tier-2</span></div>
+          <p class="q">Johnston-Hollitt et al. (2015): SKA2-era goal explicitly framed as "the origin and amplification of cosmic magnetic fields"; Bonafede et al. (2015) makes the origin question its paper title outright.</p>
+          <p class="note">Essentially unchanged in framing across a decade — 2026's tier-2 item restates the same open question almost verbatim.</p>
+        </div>
+        <div class="p-card">
+          <h3>EoR astrophysical-source uncertainty (feeds foreground contamination)</h3>
+          <div class="years"><span class="yr y2015">2015 · Epoch of Reionisation</span><span class="yr y2026">2026 · A/E/G, tier-3</span></div>
+          <p class="q">Koopmans et al. (2015): "very little is known about [the history of neutral hydrogen]... only a handful of observations." Iliev &amp; Semelin (2015): early-source physics "still highly uncertain."</p>
+          <p class="note">Maps directly onto 2026's still-open foreground-removal problem for 21-cm/HI cosmology.</p>
+        </div>
+        <div class="p-card">
+          <h3>Dark-matter substructure / missing-satellites tension</h3>
+          <div class="years"><span class="yr y2015">2015 · The Hydrogen Universe</span><span class="yr y2026">2026 · E</span></div>
+          <p class="q">2015 (Hydrogen Universe summary): ΛCDM substructure predictions "an order of magnitude larger than the numbers of satellite galaxies observed."</p>
+          <p class="note">Same tension persists directly into 2026's Lelli et al. dark-matter/modified-gravity chapter.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <h3>One near-miss: PTA gravitational-wave origin</h3>
+        <p>2026's tier-3 framing is specifically "astrophysical-binary vs. cosmological origin of the GW background, undetermined." The 2015 chapter (Janssen et al.) discusses PTA/GW only as a sensitivity/precision problem — pulsar-distance accuracy limiting angular resolution — not as an origin-ambiguity question. The science driver is continuous across both books, but this particular open-question framing appears to have sharpened considerably since 2015 rather than being carried over unchanged. Reported as "not stated" for 2015 rather than assumed.</p>
+      </div>
+    </section>
+
+    <section class="sec-block" id="reorg">
+      <div class="sec-head"><h2>How nine legacy chapters became seven AASKAII sections</h2></div>
+      <p class="sec-dek">The single strongest pattern in this diff: a standalone 2015 working-group chapter can become either a distributed cross-cutting technique, an absorbed sub-theme, or — twice — a topic with no 2026 chapter-level home at all.</p>
+      <div class="remap-wrap"><table class="remap">
+        <thead><tr><th>2015 chapter</th><th></th><th>2026 fate</th></tr></thead>
+        <tbody>
+          <tr><td class="legacy">Magnetism<span class="n">19 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">A</span><span class="mode">C</span><span class="mode">D</span><span class="mode">E</span><span class="mode">G</span> — became 2026's single most cross-cutting <i>technique</i> (Faraday rotation/polarimetry, rank 1 of 16), not a section at all.</td></tr>
+          <tr><td class="legacy">The Cradle of Life<span class="n">12 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">C</span> disks/YSOs · <span class="mode">B</span> exoplanet radio · <span class="mode">G</span> SETI — dissolved three ways, no 2026 astrobiology chapter survives; SETI demoted from dedicated science chapter to a "Methods" entry.</td></tr>
+          <tr><td class="legacy">The Continuum Universe<span class="n">19 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">E</span> SZ/lensing · <span class="mode">D</span> AGN/continuum — strong gravitational lensing has <b>no 2026 chapter</b>; a 2026 overview cites the 2015 chapter directly (McKean et al.) rather than restating the case.</td></tr>
+          <tr><td class="legacy">Cosmology + Epoch of Reionisation<span class="n">18 + 14 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">E</span> — two separate 2015 WGs merged into one 2026 section, "The Cosmos."</td></tr>
+          <tr><td class="legacy">Fundamental Physics w/ Pulsars<span class="n">11 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">F</span> — absorbed as one flavour of "extreme" astrophysics, losing standalone WG identity.</td></tr>
+          <tr><td class="legacy">The Hydrogen Universe<span class="n">10 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">D</span> · <span class="mode">A</span> — folded in; angular-momentum science (Obreschkow 2015) has no clear 2026 heir, a candidate genuinely-dropped driver.</td></tr>
+          <tr><td class="legacy">Synergies and Other Science<span class="n">19 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">G</span> VLBI · <span class="mode">F</span> multi-messenger — no 2026 counterpart section survives as a named whole.</td></tr>
+          <tr><td class="legacy">The Transient Universe<span class="n">12 papers</span></td><td class="arrow-cell">→</td><td class="dest"><span class="mode">F</span> · <span class="mode">A</span> overview — direct content continuity, loss of standalone-WG status.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout">
+        <h3>A dropped design philosophy, not just a dropped science case</h3>
+        <p>Wilkinson's 2015 chapter <i>"The SKA and the Unknown Unknowns"</i> argued explicitly that SKA's design should reserve capability margin for serendipitous discovery — a first-class design-philosophy chapter tracing back to the 2004 SKA science case. No 2026 equivalent was found; the closest is a passing "opening new discovery space" mention inside one transients overview, far narrower and not framed as a standalone argument. Of everything found in this diff, this is the clearest case of a chapter-level idea being dropped rather than merely reorganised.</p>
+      </div>
+    </section>
+
+    <footer class="notes" id="notes">
+      <p><b>Coverage:</b> each of the 10 legacy sections received 2–6 targeted searches — enough to establish dominant drivers and at least one explicit open-question quote per section, but not a paper-by-paper audit of all 135 legacy papers. A first-pass null result on some queries (Magnetism, Continuum-Universe, generic VLBI) was corrected by re-querying with title-anchored phrasing — the corpus's hybrid ranker sometimes favoured 2026 passages even on searches aimed squarely at 2015 topics, so an initial empty result was never treated as proof of absence.</p>
+      <p><b>Paper-count note:</b> this pass found 135 legacy papers (134 excluding the Braun et al. overview) against this atlas's working estimate of "~157" — reported as the exact tool output rather than reconciled to the earlier estimate, per this project's sourcing rule of reporting what a search actually returns.</p>
+      <p><b>One flagged non-finding:</b> the "angular momentum" driver (Obreschkow 2015) may simply be discussed inside a 2026 paper's body text without a title match — flagged as a candidate dropped driver, not a certainty.</p>
+    </footer>
+
+  </main>
+</div>

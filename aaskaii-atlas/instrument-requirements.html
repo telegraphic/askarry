@@ -1,4 +1,4 @@
-<title>Requirements Ledger</title>
+<title>Instrument Requirements</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -9,7 +9,6 @@
     --accent-low:#B96A21; --accent-low-tint:#B96A2117;
     --accent-mid:#146E77; --accent-mid-tint:#146E7717;
     --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
-    --heat-0:#E7EBED; --heat-1:#F0D9B8; --heat-2:#E7A468; --heat-3:#D96A4A; --heat-4:#C13B3B;
     --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
   }
   @media (prefers-color-scheme: dark){
@@ -19,7 +18,6 @@
       --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
       --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
       --accent-both:#A889D1; --accent-both-tint:#A889D11F;
-      --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
       --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
     }
   }
@@ -29,7 +27,6 @@
     --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
     --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
     --accent-both:#A889D1; --accent-both-tint:#A889D11F;
-    --heat-0:#1B2228; --heat-1:#3B3020; --heat-2:#6B3F22; --heat-3:#8C3B2C; --heat-4:#B4402E;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
   }
 
@@ -78,48 +75,7 @@
   .sec-count{ font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-faint); white-space:nowrap; }
   .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 20px; font-size:14.5px; }
 
-  /* ---------- open question cluster cards ---------- */
-  .oq-list{ display:flex; flex-direction:column; gap:14px; }
-  .oq-card{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:18px 22px; display:grid; grid-template-columns:64px 1fr; gap:20px; }
-  @media (max-width:640px){ .oq-card{ grid-template-columns:1fr; } }
-  .oq-badge{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
-  .oq-badge .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:22px; width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
-  .oq-badge .lbl{ font-size:9.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.06em; text-align:center; }
-  .tier-3 .n{ background:var(--heat-4); color:#fff; }
-  .tier-2 .n{ background:var(--heat-2); color:var(--ink); }
-  .tier-1 .n{ background:var(--heat-0); color:var(--ink-soft); }
-  .oq-card h3{ font-size:16.5px; margin-bottom:6px; }
-  .oq-card .oq-sections{ display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
-  .sec-chip{ font-family:"IBM Plex Mono", monospace; font-size:10.5px; padding:2px 7px; border-radius:5px; background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
-  .oq-card p.syn{ color:var(--ink-soft); margin:0 0 10px; font-size:13.5px; }
-  .oq-card ul.cite{ margin:0; padding-left:1.1em; font-size:12.5px; color:var(--ink-soft); }
-  .oq-card ul.cite li{ margin-bottom:4px; }
-  .oq-card ul.cite b{ color:var(--ink); font-weight:600; }
-
-  .singles{ margin-top:22px; border:1px dashed var(--line); border-radius:12px; padding:18px 22px; background:var(--surface-2); }
-  .singles h3{ font-size:14px; margin-bottom:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.04em; font-family:"IBM Plex Mono",monospace; font-weight:500;}
-  .singles ul{ margin:0; padding-left:1.2em; columns:2; column-gap:32px; font-size:13px; color:var(--ink-soft); }
-  @media (max-width:760px){ .singles ul{ columns:1; } }
-  .singles li{ margin-bottom:8px; break-inside:avoid; }
-  .singles b{ color:var(--ink); font-weight:600; }
-
-  /* ---------- methods ranking ---------- */
-  .method-table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
-  table.methods{ border-collapse:collapse; width:100%; min-width:820px; }
-  table.methods th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--surface-2); }
-  table.methods td{ padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; }
-  table.methods tr:last-child td{ border-bottom:none; }
-  table.methods tr:hover td{ background:var(--surface-2); }
-  td.rank-cell{ font-family:"IBM Plex Mono", monospace; font-weight:600; width:36px; }
-  td.method-name{ font-weight:600; width:22%; }
-  td.method-name .sub{ display:block; font-weight:400; color:var(--ink-faint); font-size:11px; margin-top:2px; }
-  td.method-count{ font-family:"IBM Plex Mono", monospace; white-space:nowrap; width:110px; }
-  td.method-papers{ color:var(--ink-soft); font-size:12.5px; }
-  .bar-track{ background:var(--surface-2); border-radius:4px; height:7px; width:100%; margin-top:5px; overflow:hidden; }
-  .bar-fill{ height:100%; border-radius:4px; }
-  .bar-fill.mid{ background:var(--accent-mid); } .bar-fill.low{ background:var(--accent-low); } .bar-fill.both{ background:var(--accent-both); }
-
-  /* ---------- requirements tables (reused pattern) ---------- */
+  /* ---------- requirements tables ---------- */
   .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); margin-top:6px;}
   table.data{ border-collapse:collapse; width:100%; min-width:1080px; }
   table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 12px; border-bottom:1px solid var(--line); background:var(--surface-2); }
@@ -141,21 +97,18 @@
   <a class="brand" href="index.html">AASKAII Atlas</a>
   <div class="links">
       <a href="index.html">Home</a>
-      <a href="observing-mode-contention.html">I · Contention Map</a>
-      <a href="requirements-ledger.html" class="current">II · Requirements Ledger</a>
-      <a href="synergy-network.html">III · Synergy Network</a>
-      <a href="behind-the-atlas.html">IV · Behind the Atlas</a>
-      <a href="acronym-list.html">V · Acronym List</a>
-      <a href="chapter-directory.html">VI · Chapter Directory</a>
-      <a href="inside-askarry.html">VII · Inside Askarry</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html" class="current">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
   </div>
 </div></nav>
 <div class="shell">
 
   <header class="masthead">
-    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part II</div>
-    <h1>Requirements Ledger</h1>
-    <p class="lede">This page makes three more cuts through the same AASKAII corpus. It lists the <b>open questions</b> the authors admit to and the <b>techniques</b> that recur across the most sections. It also reconstructs an <b>instrument requirements register</b>: every sensitivity, resolution, field-of-view, frequency, and survey-speed figure the papers state, traced back to the science goal that needs it.</p>
+    <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis</div>
+    <h1>Instrument Requirements Ledger</h1>
+    <p class="lede">This page reconstructs an <b>instrument requirements register</b>: every sensitivity, resolution, field-of-view, frequency, and survey-speed figure the papers state, traced back to the science goal that needs it and organised as a systems-engineering register rather than a science narrative.</p>
     <div class="section-pills">
       <span><i style="background:var(--accent-low)"></i>A · WG Overviews</span>
       <span><i style="background:var(--accent-low)"></i>B · Sun &amp; Planets</span>
@@ -169,11 +122,6 @@
 
   <nav class="toc">
     <a href="#overview">Overview &amp; method</a>
-    <div class="toc-group">Analysis 1</div>
-    <a href="#open-questions">Common open questions</a>
-    <div class="toc-group">Analysis 2</div>
-    <a href="#methods-ranking">Cross-cutting methods</a>
-    <div class="toc-group">Analysis 3</div>
     <a href="#req-a">A · WG Overviews</a>
     <a href="#req-b">B · Sun &amp; Planets</a>
     <a href="#req-c">C · Star Formation</a>
@@ -189,200 +137,10 @@
 
     <section class="intro" id="overview">
       <h2>Scope &amp; method</h2>
-      <p>This analysis uses the same corpus as the observing-mode contention map: the AASKAII book, 7 thematic sections, and roughly 189 papers. We reopened each of the 7 section research passes from that first analysis and asked two new questions of the same papers. First, what do the authors explicitly flag as unresolved? Second, what hard numbers do they quote as necessary for their science? A separate pass then ran 16 fixed technique keywords against the whole corpus, independent of section boundaries, to rank which methods are load-bearing across the most sections rather than specific to just one.</p>
+      <p>This analysis uses the same corpus as the observing-mode contention map: the AASKAII book, 7 thematic sections, and roughly 189 papers. We reopened each of the 7 section research passes and asked what hard numbers the authors quote as necessary for their science.</p>
       <p>Sourcing follows the same rule throughout. We report a figure or claim only where a paper states it explicitly, and we source it back to that paper. A gap in a table cell means the paper did not state a number for that axis. It does not mean the requirement does not exist.</p>
     </section>
 
-    <!-- ============ ANALYSIS 1: OPEN QUESTIONS ============ -->
-    <section class="sec-block" id="open-questions">
-      <div class="sec-head"><h2>Common open questions</h2><span class="sec-count num">~90 sourced statements → 10 recurring clusters</span></div>
-      <p class="sec-dek">This ranking counts how many of the 7 AASKAII sections independently raise the same unresolved problem. A high count means multiple independent teams flagged the same risk, much like a shared red risk on a roadmap.</p>
-
-      <div class="oq-list">
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>Foreground contamination is the limiting systematic for 21-cm &amp; HI intensity-mapping cosmology</h3>
-            <div class="oq-sections"><span class="sec-chip">A</span><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
-            <p class="syn">Galactic synchrotron and other foregrounds sit 4–5 orders of magnitude above the cosmological 21-cm signal. Every group working on EoR power-spectrum, HI intensity mapping, or 21-cm tomography names foreground removal as the field's central unsolved problem. The difficulty is removing the foregrounds without biasing the signal itself.</p>
-            <ul class="cite">
-              <li><b>A · Trott et al.</b> — separating cosmology from "gastrophysics" in the 21-cm signal is named the key challenge; whether it can be "cleaned" of astrophysics at all is unclear.</li>
-              <li><b>E · Cunnington/MeerKLASS, Wolz, Spinelli</b> — isolating the signal "without distorting or biasing its intrinsic cosmological information" remains unsolved; ground-pickup and calibration systematics compound it.</li>
-              <li><b>G · Burba et al.</b> — residual direction-dependent errors and ionospheric offsets "primarily constrain the upper limits" of CD/EoR power-spectrum measurements; deep-learning mitigation shows promise (correlation &gt;0.92) but isn't yet a settled solution.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>Ionospheric calibration sets a hard floor on low-frequency polarimetry, astrometry and EoR fidelity</h3>
-            <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">D</span><span class="sec-chip">G</span></div>
-            <p class="syn">Below roughly 350 MHz, the ionosphere becomes the limiting instrument, not the telescope. It caps rotation-measure precision and corrupts spectropolarimetry. Ionospheric calibration must be solved before EoR foreground removal can begin.</p>
-            <ul class="cite">
-              <li><b>D · O'Sullivan et al.</b> — residual ionospheric RM calibration error (~0.05 rad/m²) will dominate and prevent RM-precision gains even for high-S/N sources.</li>
-              <li><b>B · Patra et al.</b> — direction-dependent instrumental effects and ionospheric phase distortions cause polarization-leakage that's difficult to calibrate out at low frequencies.</li>
-              <li><b>G · Datta, Morgan, Burba et al.</b> — the ionosphere is "a primary limiting factor" on low-frequency interferometry; full characterisation of sub-km turbulent structure is not yet achieved.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>Transient and compact-object progenitor physics is still unidentified</h3>
-            <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">F</span><span class="sec-chip">G</span></div>
-            <p class="syn">FRBs, long-period transients, and jetted tidal disruption events are detected in growing numbers, but their physical origins remain unsettled. Observational programmes are outrunning theory in this area.</p>
-            <ul class="cite">
-              <li><b>F · Curtin et al.</b> — the physical nature/progenitor of FRB sources remains open; it's unclear whether magnetars can explain all of them, implying multiple channels may be needed.</li>
-              <li><b>F · Shu et al.</b> — the true abundance/rate of jetted TDEs is uncertain because they're easily misidentified as long GRBs or X-ray flashes.</li>
-              <li><b>G · Andersson et al.</b> — the long-period-transient luminosity function is "currently unknown," and whether their steep turnover is intrinsic or extrinsic is undetermined.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>PTA gravitational-wave-background origin — astrophysical or cosmological — remains undetermined</h3>
-            <div class="oq-sections"><span class="sec-chip">A</span><span class="sec-chip">E</span><span class="sec-chip">F</span></div>
-            <p class="syn">Three different working groups restate the same open question: does the nanohertz stochastic background come from supermassive black hole binaries, or from something cosmological? The "final parsec problem" for SMBH mergers remains unresolved under either explanation.</p>
-            <ul class="cite">
-              <li><b>A · Bellomo &amp; Cole</b> — current PTAs have a small, anisotropically-distributed pulsar sample giving a "highly non-uniform sky response," with certain angular modes poorly constrained.</li>
-              <li><b>F · Shannon et al.</b> — solar-system ephemeris uncertainty remains a limiting systematic; pulse jitter may set an ultimate timing floor independent of telescope sensitivity.</li>
-              <li><b>E · Cruz et al.</b> — even joint SKAO+astrometry analyses "remain below the sensitivity required to detect the kinematic dipole."</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>VLBI network gaps constrain astrometric reach and imaging fidelity</h3>
-            <div class="oq-sections"><span class="sec-chip">C</span><span class="sec-chip">F</span><span class="sec-chip">G</span></div>
-            <p class="syn">Long-baseline science keeps running into the same three limits. There are too few southern-hemisphere stations and too few low-frequency baselines. Even once baselines exist, the field of view is too small to support wide surveys.</p>
-            <ul class="cite">
-              <li><b>C · Rygl et al.</b> — the predominantly northern-hemisphere distribution of existing VLBI facilities is flagged as a key limiting systematic only southern SKA-VLBI can resolve.</li>
-              <li><b>F · VLBI of compact objects sub-theme</b> — small field of view is explicitly noted as a key VLBI limitation for large-area surveys; wide-field SKA-VLBI surveys remain an unsolved technical challenge.</li>
-              <li><b>G · Bempong-Manful; Timmerman/Kobayashi</b> — converting legacy African antennas into working VLBI stations "has proven far more challenging than initially anticipated"; low-frequency long baselines are "very limited" at SKA-Low frequencies.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-3"><span class="n">3</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>Rapid-response / triggering infrastructure isn't yet defined at the speed multi-messenger science needs</h3>
-            <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">F</span><span class="sec-chip">G</span></div>
-            <p class="syn">Researchers want SKAO to slew and start recording within seconds of an alert. No one has yet defined how fast that can actually happen, including the SKAO baseline design documents.</p>
-            <ul class="cite">
-              <li><b>G · Anderson et al.</b> — the SKA-Low repointing speed needed to catch coherent pre/during-merger signals (&lt;20 s) is explicitly "not currently defined in the SKAO baseline documents."</li>
-              <li><b>G · Anderson et al.</b> — sub-second triggering at 10 GHz for SKA-Mid is called "an unrealistic trigger time" given minutes-scale dish repointing.</li>
-              <li><b>B · burst-monitoring sub-theme</b> — a persistent 15:00–20:00 UT gap in synoptic solar-burst coverage is flagged as needing to be filled.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>Origin and amplification of cosmic magnetic fields remains unresolved at every scale</h3>
-            <div class="oq-sections"><span class="sec-chip">A</span><span class="sec-chip">E</span></div>
-            <p class="syn">Whether magnetic fields are primordial or dynamo-grown remains an open question, from the Milky Way to galaxy clusters. Cluster observations now show fields that are stronger, and appear earlier, than dynamo models predict.</p>
-            <ul class="cite">
-              <li><b>A · Vernstrom et al.</b> — the origin of cosmic magnetic fields is explicitly called "an open question"; the amplification mechanism "remains unresolved."</li>
-              <li><b>E · Loi et al.</b> — observed µG-level cluster fields at z~0.8 "challenge models predicting slower dynamo growth and call for reassessment of early cluster magnetisation."</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>AGN jet launching, collimation and feedback coupling to gas is still mechanistically unresolved</h3>
-            <div class="oq-sections"><span class="sec-chip">D</span><span class="sec-chip">F</span></div>
-            <p class="syn">Decades of VLBI observation have not settled how jets are launched and collimated. It also remains unclear whether, or how, jets quench star formation as they propagate outward.</p>
-            <ul class="cite">
-              <li><b>D · Maccagni et al.</b> — explicitly flagged "key open questions": how outflows are driven from circumnuclear to circumgalactic scale, and how efficiently feedback impacts star formation.</li>
-              <li><b>D · Hardcastle et al.</b> — no evidence yet of the energy dissipation expected if jets decelerate from core Γ~10 to kpc-scale Γ~1.5.</li>
-              <li><b>F · Spingola et al.</b> — how SMBHs accrete mass fast enough to reach ~10¹⁰ M☉ within the first Gyr is "one of the biggest open questions" in SMBH growth; jet-assisted accretion is only a proposed, unconfirmed solution.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-2"><span class="n">2</span><span class="lbl">of 7 sections</span></div>
-          <div>
-            <h3>The Milky Way's own large-scale structure is still not pinned down</h3>
-            <div class="oq-sections"><span class="sec-chip">C</span><span class="sec-chip">D</span></div>
-            <p class="syn">After four centuries of study, the authors describe the Milky Way's own spiral pattern, rotation curve, and solar motion as "only roughly constrained." This is an inside-looking-out problem. More maser parallax measurements are needed to fix it.</p>
-            <ul class="cite">
-              <li><b>C · Rygl et al.</b> — competing 4-arm vs. 2-arm-plus-outer-arm spiral models remain unresolved; only one HMSFR maser parallax exists beyond ~20 kpc.</li>
-              <li><b>D · Xu et al.</b> — solar height above the plane, solar peculiar motion, and the rotation curve at both R&lt;4 kpc and R&gt;12 kpc remain poorly constrained; the nature of the "3-kpc Arm" has been debated since 1957.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="oq-card">
-          <div class="oq-badge tier-1"><span class="n">1</span><span class="lbl">section, recurs 3×</span></div>
-          <div>
-            <h3>Machine-learning pipelines face a persistent sim-to-real domain gap</h3>
-            <div class="oq-sections"><span class="sec-chip">G</span></div>
-            <p class="syn">This issue is concentrated entirely in Methods &amp; Techniques, but three separate papers raise it independently. The applications differ — deconvolution, source-finding, lensing/AI — but the underlying problem is the same: models trained on simulations do not reliably generalise to real SKA data.</p>
-            <ul class="cite">
-              <li><b>G · Zhang &amp; Li</b> — deconvolution validated only in noise-free simulations; performance on real SKA-Low data not yet demonstrated.</li>
-              <li><b>G · Pal et al.</b> — ML source-finders "depend heavily on the quality and diversity of their training datasets"; realistic labelled simulations remain an open problem.</li>
-              <li><b>G · Denzel et al.</b> — sim-to-real domain gaps "remain a major challenge" across nearly all proposed AI applications in the chapter.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="singles">
-        <h3>Notable section-specific unknowns (not cross-cutting, but worth flagging)</h3>
-        <ul>
-          <li><b>B</b> — Definitive radio detection of star-planet magnetic interaction (M-SPI) remains elusive despite firm theoretical prediction (Vedantham).</li>
-          <li><b>B</b> — The core initiation mechanism of lightning is unknown — measured thunderstorm fields never approach dielectric breakdown strength (Hare).</li>
-          <li><b>C</b> — Whether pebble accretion can proceed under the turbulence driven by intense infall, crossing the "meter-size barrier," remains unclear (Wu/Garufi).</li>
-          <li><b>D</b> — The origin of ORC-like circular diffuse radio sources remains contested among four competing scenarios, on too small a sample to decide (Pal).</li>
-          <li><b>E</b> — Whether cosmological shear can be measured directly in the visibility plane, without full image reconstruction, is posed as an open question (Harrison).</li>
-          <li><b>F</b> — Despite a decade of the most sensitive searches, no pulsar has been found orbiting Sgr A*; whether scattering or true absence explains it is debated (Abbate).</li>
-          <li><b>F</b> — Hadronic-interaction properties governing air-shower development are "not precisely known," the dominant systematic on cosmic-ray mass measurements (Buitink).</li>
-          <li><b>G</b> — Measuring an RM and its error for a single polarised source is called "an extremely complex problem that as yet has no optimal solution" (Broadband Polarimetry chapter).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ ANALYSIS 2: METHODS RANKING ============ -->
-    <section class="sec-block" id="methods-ranking">
-      <div class="sec-head"><h2>Cross-cutting methods ranking</h2><span class="sec-count num">16 fixed keywords · corpus-wide search</span></div>
-      <p class="sec-dek">We searched a fixed vocabulary of 16 techniques independently of section boundaries. We then ranked each technique by how many of the 7 AASKAII sections use it as a load-bearing method rather than a passing mention. These counts are a lower bound because a 20-result search window will not surface every paper. The ranking of the top methods is nonetheless robust.</p>
-
-      <div class="method-table-wrap"><table class="methods">
-        <thead><tr><th>Rank</th><th>Technique</th><th>Sections</th><th>Coverage</th><th>Papers found</th></tr></thead>
-        <tbody>
-          <tr><td class="rank-cell num">1</td><td class="method-name">Faraday rotation / RM<span class="sub">rotation measure</span></td><td class="method-count num">6 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:86%"></div></div></td><td class="method-papers">11 papers — A, B, C, D, E, G (missing: F)</td></tr>
-          <tr><td class="rank-cell num">1</td><td class="method-name">Polarimetry<span class="sub">broadband, full-Stokes</span></td><td class="method-count num">6 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:86%"></div></div></td><td class="method-papers">10 papers — A, B, C, D, F, G (missing: E)</td></tr>
-          <tr><td class="rank-cell num">3</td><td class="method-name">VLBI<span class="sub">imaging &amp; astrometry, merged</span></td><td class="method-count num">4 / 7</td><td><div class="bar-track"><div class="bar-fill both" style="width:57%"></div></div></td><td class="method-papers">~12 distinct papers — C, D, F, G</td></tr>
-          <tr><td class="rank-cell num">4</td><td class="method-name">RFI mitigation</td><td class="method-count num">3 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:43%"></div></div></td><td class="method-papers">5 papers — B, E, G</td></tr>
-          <tr><td class="rank-cell num">5</td><td class="method-name">Foreground removal<span class="sub">/ subtraction</span></td><td class="method-count num">2 / 7<span class="sub" style="text-transform:none;letter-spacing:0;">(3/7 per open-Qs pass)</span></td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">4 papers found by keyword; open-questions pass surfaced a 3rd section (A)</td></tr>
-          <tr><td class="rank-cell num">5</td><td class="method-name">Machine learning / AI</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">3 papers — E, G</td></tr>
-          <tr><td class="rank-cell num">7</td><td class="method-name">Spectral line / maser survey</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">2 papers — A, C</td></tr>
-          <tr><td class="rank-cell num">7</td><td class="method-name">Zeeman effect</td><td class="method-count num">2 / 7</td><td><div class="bar-track"><div class="bar-fill mid" style="width:29%"></div></div></td><td class="method-papers">3 papers — C, D</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Ionospheric calibration<span class="sub">as a dedicated paper topic</span></td><td class="method-count num">1 / 7<span class="sub" style="text-transform:none;letter-spacing:0;">(impact spans 3)</span></td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">5 papers, concentrated in G — but its impact (see open questions) is felt in B and D too</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">HI intensity mapping</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">4 papers — all in E</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Pulsar timing</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">3 papers — all in F</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Deconvolution / imaging algorithms</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">4 papers — all in G</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Source finding / classification</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">3 papers — all in G</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Commensal / multi-messenger observing<span class="sub">as a named technique</span></td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">2 papers — all in G</td></tr>
-          <tr><td class="rank-cell num">9</td><td class="method-name">Citizen science</td><td class="method-count num">1 / 7</td><td><div class="bar-track"><div class="bar-fill low" style="width:14%"></div></div></td><td class="method-papers">2 papers — all in G</td></tr>
-        </tbody>
-      </table></div>
-
-      <p class="sec-dek" style="margin-top:18px;">The observing-mode contention map already showed that broad <i>observing modes</i>, such as wide continuum imaging or commensal transient monitoring, span 5 of 6 science sections. This pass asks a narrower question: which <i>named techniques</i> are load-bearing? Faraday rotation and polarimetry form the only technique that is genuinely both broad <b>and</b> deep. It is used materially in 6 of 7 sections, not just mentioned in passing. Everything else that looks broad in the contention map, including VLBI and transients, turns out at the technique level to be a family of related but distinct methods per section rather than one shared pipeline.</p>
-    </section>
-
-    <!-- ============ ANALYSIS 3: INSTRUMENT REQUIREMENTS ============ -->
     <section class="sec-block" id="req">
       <div class="sec-head"><h2>Instrument requirements ledger</h2><span class="sec-count num">~70 traced requirements</span></div>
       <p class="sec-dek">This register traces every stated sensitivity, resolution, field-of-view, frequency, and survey-speed figure back to the science goal that needs it. It is organised by section, in the form of a systems-engineering requirements register rather than a science narrative.</p>
@@ -522,8 +280,6 @@
     </section>
 
     <footer class="notes" id="notes">
-      <p><b>Open questions:</b> We extracted these by re-running each of the 7 section research passes against the same papers, using a second prompt that targeted explicit unresolved-problem framing such as "remains unclear," "open question," "key challenge," or "not yet known." Clustering the results into the 10 themes above is an interpretive step performed after collection. The section and paper counts trace back to the quoted statements, but the cluster boundaries reflect a judgment call, not an automated classification.</p>
-      <p><b>Methods ranking:</b> We chose 16 fixed keywords before searching: 8 came from the user's own examples, and 8 more span imaging, VLBI, RFI, and community-science techniques. We ran each keyword as an independent corpus-wide query with a 20-result window. The absolute paper counts are a lower bound. The full-read section passes behind both this document and the earlier contention map independently corroborate the ranking of Faraday rotation and polarimetry as the most cross-cutting technique.</p>
       <p><b>Instrument requirements:</b> Every cell is sourced from the paper's own stated numbers; none are derived or estimated. "Not stated" means the source paper reports sensitivity or resolution but does not report that particular axis. Field of view and survey speed are the most commonly omitted axes, because many science cases are pointed or triggered observations rather than survey-mode. We exclude historical 2015-book baseline figures, except where a 2026 paper cites them directly for comparison.</p>
     </footer>
 
