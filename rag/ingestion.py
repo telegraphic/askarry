@@ -425,7 +425,7 @@ def _normalize_spelling(word: str) -> str:
 # Acronym categorization
 # ---------------------------------------------------------------------------
 # Best-effort keyword classifier so the Acronyms UI tab can group/filter
-# entries (e.g. "Telescopes & Facilities" vs "Science & Astrophysics").
+# entries (e.g. "Telescopes & Instruments" vs "Science & Astrophysics").
 # Categories are checked in order and the first keyword match wins, so more
 # specific categories are listed first — e.g. "Convolutional Neural Network"
 # must be caught by the "neural network" keyword before the generic
@@ -440,16 +440,16 @@ _ACRONYM_CATEGORY_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
     )),
     ("Organizations & Programs", (
         "university", "institute", "council", "foundation", "agency",
-        "school", "center", "centre", "consortium", "programme", "program",
+        "school", "research center", "research centre", "data center",
+        "data centre", "science center", "science centre", "regional center",
+        "regional centre", "consortium", "programme", "program",
     )),
-    ("Instruments & Hardware", (
-        "processor", "converter", "receiver", "amplifier", "detector",
-        "camera", "instrument", "polarimeter", "spectrometer", "correlator",
-        "antenna", "feed", "field-programmable", "gate array",
-    )),
-    ("Telescopes & Facilities", (
+    ("Telescopes & Instruments", (
         "telescope", "array", "observatory", "interferometer",
-        "interferometry", "network", "dish",
+        "interferometry", "network", "dish", "processor", "converter",
+        "receiver", "amplifier", "detector", "camera", "instrument",
+        "polarimeter", "spectrometer", "correlator", "antenna", "feed",
+        "field-programmable", "gate array",
     )),
 ]
 # Exposed for UI category filters — includes the CATEGORY_SCIENCE fallback,
