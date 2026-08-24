@@ -132,7 +132,7 @@
   <header class="masthead">
     <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part IX</div>
     <h1>Capability Cross-Check</h1>
-    <p class="lede">The instrument-requirements ledger (Part&nbsp;II·C) records what science papers say they need. It was never checked against what SKAO's own engineering documents say the telescopes can actually deliver. This page runs that check for the first time, using the separate, smaller "SKA key capabilities" document set (<code>search_ska_capabilities</code>) — six months into this atlas's existence, its two calculator-adjacent tools had never once been called.</p>
+    <p class="lede">The instrument-requirements ledger (Part&nbsp;II·C) records what science papers say they need. No one had checked those claims against SKAO's own engineering documents, which describe what the telescopes can actually deliver. This page runs that check for the first time. It uses a separate, smaller document set called SKA key capabilities, accessed through the <code>search_ska_capabilities</code> tool. That tool includes two calculator-adjacent functions. Neither had been called once in six months of this atlas's existence, until now.</p>
     <div class="stat-row">
       <div class="stat-tile"><div class="n">7</div><div class="l">capability documents found</div></div>
       <div class="stat-tile"><div class="n">12</div><div class="l">requirements cross-checked</div></div>
@@ -155,12 +155,12 @@
 
     <section class="intro" id="overview">
       <h2>Scope &amp; method</h2>
-      <p>Twelve requirements were selected from the ledger for cross-checking, each picked to test a distinct kind of capability question: array-assembly stage (AA* vs. AA4), Band 5a/5b's 80-dish restriction, VLBI baseline reach, beamformer/correlator limits, and transient-buffer throughput. Each was checked against <code>search_ska_capabilities</code>, a document set that has never been touched by any earlier pass in this atlas, and given one of four verdicts: <b>confirmed</b>, <b>partially confirmed</b>, <b>not addressed</b>, or <b>contradicted</b> — assigned only on the basis of what the capability docs actually state, never assumed either way when they're silent.</p>
+      <p>This page selects twelve requirements from the ledger for cross-checking. Each requirement tests a different capability question: the array-assembly stage (AA* vs. AA4), the 80-dish restriction on Band 5a/5b, VLBI baseline reach, beamformer and correlator limits, or transient-buffer throughput. Each requirement is checked against <code>search_ska_capabilities</code>, a document set no earlier pass in this atlas has used. Each check receives one of four verdicts: <b>confirmed</b>, <b>partially confirmed</b>, <b>not addressed</b>, or <b>contradicted</b>. A verdict is assigned only when the capability documents state something directly. Silence in the documents is reported as "not addressed," not as confirmation or denial.</p>
     </section>
 
     <section class="sec-block" id="docs">
       <div class="sec-head"><h2>The capability document set</h2></div>
-      <p class="sec-dek">Seven documents, entirely engineering-facing — well suited to checking feasibility, not to validating science justification.</p>
+      <p class="sec-dek">This set contains seven documents. All are engineering-facing. They suit feasibility checks. They do not validate science justification.</p>
       <div class="table-wrap"><table class="data">
         <thead><tr><th>Document</th><th>Scope</th></tr></thead>
         <tbody>
@@ -199,23 +199,23 @@
     <section class="sec-block" id="funding">
       <div class="sec-head"><h2>The funding finding</h2></div>
       <div class="callout">
-        <h3>Four requirements assume a stage that isn't just "not yet built" — it's "not yet funded," and neither is the stage below it</h3>
-        <p>A-06, C-09, D-05, and E-05 all explicitly require AA4/design-baseline capability. Sridhar et al. (2025) confirms plainly that funding for the full design baseline "has not yet been fully secured" — but the same document goes further: <q>"Due to inflationary pressures caused by recent geopolitical events, the funding originally secured to construct AA* is no longer sufficient... [SKAO is] seeking additional funding."</q> That is: even <b>AA*</b>, the intermediate array this entire atlas and the YITL operations report treat as the near-term baseline, is confirmed as currently underfunded. Every AA4-scoped requirement in the ledger sits on ground that's doubly unconfirmed — the target stage and the stepping-stone beneath it.</p>
+        <h3>Four requirements assume a stage that is not funded, and the stage below it is not funded either</h3>
+        <p>Requirements A-06, C-09, D-05, and E-05 require AA4 or full design-baseline capability. Sridhar et al. (2025) states that funding for the full design baseline has not yet been fully secured. The same document goes further: <q>"Due to inflationary pressures caused by recent geopolitical events, the funding originally secured to construct AA* is no longer sufficient... [SKAO is] seeking additional funding."</q> This means <b>AA*</b> is also underfunded. This atlas and the YITL operations report both treat AA* as the near-term baseline. Every AA4-scoped requirement in the ledger therefore depends on two unfunded stages: AA4 itself, and the AA* stage beneath it.</p>
       </div>
     </section>
 
     <section class="sec-block" id="patterns">
       <div class="sec-head"><h2>Broader patterns</h2></div>
       <div class="pattern-notes">
-        <div class="pnote"><h3>The 80-dish blind spot</h3><p>C-01 and E-08 share a distinct pattern: capability docs only ever quantify Band 5a/5b sensitivity for the <i>full 133-dish design-baseline</i> sub-array, never separately for the 80-dish subset actually equipped under AA*. Every Band-5-specific science case in the ledger implicitly assumes the smaller subarray behaves like the fully-populated one — an assumption the capability docs neither confirm nor deny, since they simply don't publish that number.</p></div>
-        <div class="pnote"><h3>Architecture-fixed, not funding-fixed, limits</h3><p>E-09, F-05, and B-10 hit fixed correlator/beamformer ceilings — 16 PST beams, VLBI's FoV-vs-sensitivity trade-off, VLBI astrometric precision — that are independent of array-assembly stage. These will persist even once AA4 is fully funded and built, unlike the AA*→AA4 gaps above which are purely capacity/funding issues.</p></div>
-        <div class="pnote"><h3>Where the docs simply go quiet</h3><p>C-09 and D-08 got no matching passage at all, despite both papers stating fairly specific figures. This doesn't mean the figures are wrong — it means this particular engineering corpus doesn't happen to address them, a genuine and useful "not addressed" rather than a disagreement.</p></div>
+        <div class="pnote"><h3>The 80-dish blind spot</h3><p>C-01 and E-08 show the same gap. The capability documents quantify Band 5a/5b sensitivity only for the full 133-dish design-baseline subarray. They do not separately quantify sensitivity for the 80-dish subset that AA* actually equips. Every Band-5 science case in the ledger assumes the smaller subarray performs like the full array. The capability documents do not confirm or deny this assumption. They simply do not publish the number needed to check it.</p></div>
+        <div class="pnote"><h3>Architecture-fixed, not funding-fixed, limits</h3><p>Requirements E-09, F-05, and B-10 hit fixed correlator and beamformer ceilings. These ceilings include the 16-beam PST limit, the VLBI field-of-view-versus-sensitivity trade-off, and VLBI astrometric precision. These limits do not depend on array-assembly stage. They will persist even after AA4 is fully funded and built. This differs from the AA*-to-AA4 gaps described above, which are capacity and funding problems, not architectural ones.</p></div>
+        <div class="pnote"><h3>Where the docs simply go quiet</h3><p>C-09 and D-08 have no matching passage in the capability documents. Both papers state specific figures. The absence of a matching passage does not mean these figures are wrong. It means this engineering corpus does not address them. This is a genuine "not addressed" finding, not a disagreement.</p></div>
       </div>
     </section>
 
     <footer class="notes" id="notes">
-      <p><b>Sourcing discipline:</b> confirmed/partial/not-addressed/contradicted verdicts reflect only what <code>search_ska_capabilities</code> actually returned; silence in the capability docs was reported as "not addressed," never treated as either confirmation or denial.</p>
-      <p><b>What this page is not:</b> a judgement on whether the science cases themselves are sound — only on whether the specific capability assumption each one leans on is currently documented as deliverable.</p>
+      <p><b>Sourcing discipline:</b> Each verdict reflects only what <code>search_ska_capabilities</code> returned. Silence in the capability documents is reported as "not addressed." It is never treated as confirmation or denial.</p>
+      <p><b>What this page is not:</b> This page does not judge whether the science cases are sound. It checks only whether each capability assumption is currently documented as deliverable.</p>
     </footer>
 
   </main>

@@ -122,7 +122,7 @@
   <header class="masthead">
     <div class="eyebrow">SKAO · AASKAII — Cross-Corpus Analysis, Part VIII</div>
     <h1>Systematic Risk Register</h1>
-    <p class="lede">The Common Open Questions page (Part&nbsp;II·A) ranks unresolved <b>physics</b> — what causes the PTA background, what drives cosmic magnetism. This page is deliberately different: a register of named <b>engineering and operational</b> risks — calibration, RFI, compute cost, timing precision — that threaten data quality or feasibility regardless of what the science answer turns out to be. Ranked by how many of the 7 sections independently name each risk as a real constraint.</p>
+    <p class="lede">The Common Open Questions page (Part&nbsp;II·A) ranks unresolved <b>physics</b> questions, such as what causes the PTA background and what drives cosmic magnetism. This page covers a different subject: named <b>engineering and operational</b> risks. These risks include calibration, RFI, compute cost, and timing precision. Each risk threatens data quality or feasibility regardless of how the underlying science question is answered. This page ranks each risk by how many of the 7 sections independently name it as a real constraint.</p>
     <div class="stat-row">
       <div class="stat-tile"><div class="n">16</div><div class="l">risk keywords searched</div></div>
       <div class="stat-tile"><div class="n">10</div><div class="l">risks confirmed &amp; ranked</div></div>
@@ -142,7 +142,7 @@
 
     <section class="intro" id="overview">
       <h2>Scope &amp; method</h2>
-      <p>16 systematic/engineering keywords were run as independent searches across the corpus: RFI mitigation/excision, ionospheric calibration (engineering framing), direction-dependent calibration, dynamic-range limitation, confusion limit, polarization leakage, computational cost/scaling, data rate/throughput, survey-speed limitation, beam/PSF sidelobes, timing/clock synchronization, commensal scheduling conflict, telescope availability/uptime, and the ML sim-to-real domain gap. A risk only makes the register if papers state it as a real, named engineering constraint — not a passing mention — and ranking follows section-count first, paper-count second, the same rule used throughout this atlas. Two out-of-scope engineering documents that share this database (a design-baseline specification and an operations delivery plan) surfaced heavily on several of these searches; those are <b>excluded</b> from the counts below since they aren't AASKAII science-book papers, but are noted where a risk is thoroughly engineered-around there yet only thinly discussed in the 189-paper corpus itself.</p>
+      <p>This page runs 16 systematic and engineering keywords as independent searches across the corpus. The keywords cover RFI mitigation, ionospheric calibration, direction-dependent calibration, dynamic-range limitation, confusion limit, polarization leakage, computational cost, data rate, survey-speed limitation, beam sidelobes, timing synchronization, commensal scheduling conflict, telescope uptime, and the ML sim-to-real gap. A risk makes the register only when papers state it as a real, named engineering constraint. A passing mention does not qualify. Ranking follows section-count first and paper-count second, the same rule used throughout this atlas. Two engineering documents share this database but fall outside its scope: a design-baseline specification and an operations delivery plan. These two documents surfaced heavily on several searches. This page <b>excludes</b> them from every count below, because they are not AASKAII science-book papers. Where a risk is thoroughly engineered-around in those documents but only thinly discussed in the 189-paper corpus, this page notes that gap directly.</p>
     </section>
 
     <section class="sec-block" id="register">
@@ -154,7 +154,7 @@
           <div>
             <h3>RFI mitigation / excision</h3>
             <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
-            <p class="syn">Named across solar radio science, intensity-mapping, and methods papers as a data-corrupting nuisance requiring active real-time countermeasures, independent of the science target. 6 qualifying papers.</p>
+            <p class="syn">Solar radio science, intensity-mapping, and methods papers all name RFI as a data-corrupting nuisance. Each requires active, real-time countermeasures. This holds independent of the science target. 6 papers qualify.</p>
             <ul class="cite">
               <li><b>G · ML and the SKA for Cosmic Dawn/EoR</b> — "RFI represents a major obstacle to the detection and characterization of the cosmological 21cm signal... its highly variable nature... can mimic or obscure genuine astronomical signals."</li>
               <li><b>B · Solar/Heliospheric Calibration &amp; Imaging Framework</b> — dedicates §6.6 to distinguishing RFI from active solar emission, proposing thinned visibility recording since full-rate RFI-clean recording isn't tractable.</li>
@@ -168,7 +168,7 @@
           <div>
             <h3>VLBI timing, clock synchronisation &amp; correlator precision</h3>
             <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">F</span><span class="sec-chip">G</span></div>
-            <p class="syn">Achieving the microarcsecond precision VLBI science needs depends on synchronisation, digitisation, and correlator sensitivity infrastructure — an engineering floor distinct from any single science case. 5 qualifying papers.</p>
+            <p class="syn">VLBI science needs microarcsecond precision. Achieving that precision depends on synchronisation, digitisation, and correlator sensitivity infrastructure. This is an engineering floor distinct from any single science case. 5 papers qualify.</p>
             <ul class="cite">
               <li><b>G · VLBI with SKAMPI</b> — the Effelsberg Direct Digitisation backend covers "the full signal chain... time distribution, digitisation, packetisation, and backend signal processing," built specifically to derisk this chain.</li>
               <li><b>G · SKA VLBI Survey for Astrometry, Geodesy &amp; Astrophysics</b> — requires calibration against co-located GNSS receivers to hold geodetic precision.</li>
@@ -182,7 +182,7 @@
           <div>
             <h3>Polarisation leakage / instrumental-polarisation calibration accuracy</h3>
             <div class="oq-sections"><span class="sec-chip">B</span><span class="sec-chip">C</span><span class="sec-chip">G</span></div>
-            <p class="syn">The precision with which instrumental polarisation response must be characterised, independent of what Zeeman or coronal signal is being chased. 4 qualifying papers.</p>
+            <p class="syn">Papers require instrumental polarisation response to be characterised to a stated precision. This requirement holds independent of whether the target signal is Zeeman or coronal. 4 papers qualify.</p>
             <ul class="cite">
               <li><b>C · Search for Seeds of The Cradle of Stars</b> — a whole subsection, "The Required Accuracy of Polarization Calibration," covers the precision needed to detect a Zeeman/Stokes-V signal at the ~0.05 K level.</li>
               <li><b>B · Coronal Magnetography via Spectropolarimetry</b> — ties coronal-field measurement fidelity to attenuator/receiver polarimetric calibration precision (&lt;1 dB / ±2%).</li>
@@ -196,7 +196,7 @@
           <div>
             <h3>Computational cost / compute scaling / SDP processing burden</h3>
             <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
-            <p class="syn">A named tension between the raw scale of SKA data and the resolution/inference power science actually needs from it. 5 qualifying papers.</p>
+            <p class="syn">Papers name a tension between the raw scale of SKA data and the resolution or inference power science needs from it. 5 papers qualify.</p>
             <ul class="cite">
               <li><b>G · Source Finding and Characterisation for SKAO Science</b> — "the SDP will be among the largest HPC infrastructures ever built, processing exabytes of raw visibilities into science-ready catalogues."</li>
               <li><b>G · The Role of Artificial Intelligence in the SKA Era</b> — "a persistent computational tension... between the need for cosmological volumes... and the sub-kpc resolution required," motivating AI-based deconvolution as cost mitigation.</li>
@@ -210,7 +210,7 @@
           <div>
             <h3>Beam / PSF sidelobe artefacts</h3>
             <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
-            <p class="syn">Imaging-fidelity systematics that threaten flagship products (weak lensing, source catalogues) regardless of the cosmology or population being measured. 5 qualifying papers.</p>
+            <p class="syn">Imaging-fidelity systematics threaten flagship products, including weak lensing and source catalogues. This threat holds regardless of the cosmology or population being measured. 5 papers qualify.</p>
             <ul class="cite">
               <li><b>G · Weak Lensing with the SKAO: Radio Shear Measurement</b> — "the multiplicative bias exceeds it by roughly an order of magnitude... likely reflects limitations of the shear estimator itself."</li>
               <li><b>E · Methodological Frontiers in 21-cm Intensity Mapping</b> — §6.1 treats beam sidelobe structure as a named systematic requiring dedicated mitigation alongside foreground cleaning.</li>
@@ -224,7 +224,7 @@
           <div>
             <h3>Direction-dependent calibration — overfitting/signal-suppression risk</h3>
             <div class="oq-sections"><span class="sec-chip">E</span><span class="sec-chip">G</span></div>
-            <p class="syn">Deliberately narrower than the ionosphere entry below: this is about DD calibration's own free-parameter count risking eating the astrophysical signal, whatever causes the DD errors in the first place. 3 qualifying papers.</p>
+            <p class="syn">This entry is narrower than the ionosphere entry below. It concerns direction-dependent calibration's own free-parameter count. That parameter count risks suppressing the astrophysical signal, regardless of what causes the underlying DD errors. 3 papers qualify.</p>
             <ul class="cite">
               <li><b>E · CD/EoR Observational Lessons Learned</b> — "DD calibration involves a large number of free parameters, which increases the risk of overfitting and suppressing the 21-cm signal."</li>
               <li><b>G · Foreground Characterisation and Mitigation in CD/EoR</b> — §3.3.2 treats DDEs as a distinct pipeline stage requiring joint source-subtraction/calibration solving.</li>
@@ -237,12 +237,12 @@
           <div>
             <h3>Ionosphere as a calibration/dynamic-range engineering constraint</h3>
             <div class="oq-sections"><span class="sec-chip">G</span></div>
-            <p class="syn">Quantitative dynamic-range-vs-frequency behaviour, distinct from the science-limiting framing on the existing open-questions page.</p>
+            <p class="syn">Papers quantify dynamic-range behaviour as a function of frequency. This framing is distinct from the science-limiting framing on the existing open-questions page.</p>
             <ul class="cite">
               <li><b>G · Studying Ionosphere Using SKA-Low and SKA-Mid</b> — derives quantitative dynamic-range degradation formulas from ionospheric phase error (δTEC) vs. frequency and averaging.</li>
               <li><b>G · Foreground Characterisation and Mitigation in CD/EoR</b> — "the dynamic range required is formidable," driven directly by ionospheric turbulence.</li>
             </ul>
-            <p class="diff"><b>How this differs from the open-questions page:</b> that page covers ionospheric calibration as a limit on <i>what science conclusions are reachable</i>. This entry reports the <i>mechanical, quantitative engineering behaviour</i> of the same effect — a calibration/data-quality problem that exists for SKA-Low regardless of which science case is running. Same physical cause, different register: "how do you calibrate around this" vs. "what does this stop us learning."</p>
+            <p class="diff"><b>How this differs from the open-questions page:</b> That page covers ionospheric calibration as a limit on <i>which science conclusions are reachable</i>. This entry reports the <i>mechanical, quantitative engineering behaviour</i> of the same effect. That behaviour is a calibration and data-quality problem for SKA-Low, regardless of which science case is running. Both entries share the same physical cause. The open-questions page asks what this effect stops us from learning. This entry asks how to calibrate around it.</p>
           </div>
         </div>
 
@@ -251,7 +251,7 @@
           <div>
             <h3>Sim-to-real / ML generalisation gap (production-readiness framing)</h3>
             <div class="oq-sections"><span class="sec-chip">G</span></div>
-            <p class="syn">Confirmed independently as an operational-trust/robustness problem for deploying ML in production pipelines, not a scientific-mystery framing.</p>
+            <p class="syn">Papers confirm this independently as an operational-trust and robustness problem for deploying ML in production pipelines. It is not framed as a scientific mystery.</p>
             <ul class="cite">
               <li><b>G · The Role of Artificial Intelligence in the SKA Era</b> — U-Net deconvolution "trading extreme inference speed against risks of hallucinations and poor generalization."</li>
               <li><b>G · ML and the SKA for Cosmic Dawn/EoR</b> — "rigorous validation against simulated datasets will be crucial... to transition from research prototypes... to operational components."</li>
@@ -264,7 +264,7 @@
           <div>
             <h3>Dynamic-range limitation</h3>
             <div class="oq-sections"><span class="sec-chip">G</span></div>
-            <p class="syn">Same two papers as the ionosphere entry quantify dynamic-range ceilings explicitly; listed separately since some papers treat dynamic range as a general imaging-fidelity target independent of the ionosphere specifically. Recurrence beyond G is weak in the 189-paper corpus.</p>
+            <p class="syn">The same two papers cited in the ionosphere entry quantify dynamic-range ceilings explicitly. This page lists dynamic range separately, because some papers treat it as a general imaging-fidelity target independent of the ionosphere. Recurrence beyond section G is weak in the 189-paper corpus.</p>
           </div>
         </div>
 
@@ -273,7 +273,7 @@
           <div>
             <h3>Data rate / throughput / archive volume</h3>
             <div class="oq-sections"><span class="sec-chip">G</span></div>
-            <p class="syn">The 189-paper corpus treats this only in passing — the much more detailed data-volume/cost analysis (multi-exabyte storage, ~19,000 PB/yr uncompressed) lives in the out-of-scope engineering design-baseline documents, not the science book itself.</p>
+            <p class="syn">The 189-paper corpus treats this only in passing. The detailed data-volume and cost analysis, including multi-exabyte storage and roughly 19,000 PB per year uncompressed, lives in the out-of-scope engineering design-baseline documents, not in the science book itself.</p>
             <ul class="cite">
               <li><b>G · Source Finding and Characterisation for SKAO Science</b> — "these instruments collectively produce petabyte-scale data products... processing exabytes of raw visibilities."</li>
             </ul>
@@ -288,17 +288,17 @@
       <div class="empty-box">
         <h3>Reported explicitly rather than silently omitted</h3>
         <ul>
-          <li><b>Telescope uptime / availability / maintenance risk</b> — extensive treatment exists (reliability/availability/maintainability analysis), but entirely in the out-of-scope engineering design-baseline and delivery-plan documents. Zero confirmed statements from the 189 AASKAII science-book papers themselves.</li>
-          <li><b>Survey-speed limitation / field-of-view tradeoff</b> — every hit from in-scope papers scored low relevance; no paper explicitly frames survey speed as a named constraint rather than a capability to exploit. Unconfirmed.</li>
-          <li><b>Confusion limit</b> — one clearly in-scope hit only: <i>Cosmology from Clustering of Continuum Galaxies</i> (E) notes a wide-area survey design "overcoming the effects of confusion which affects deep surveys such as MIGHTEE." Real, but a single paper/section — too thin to rank in the top register.</li>
-          <li><b>Commensal scheduling conflict</b> — two G-section papers (SETI; Commensal Image Plane Transient Search Methods) discuss commensality's technical tradeoffs, but both cluster in one section — noted, not promoted given the section-count ranking rule.</li>
+          <li><b>Telescope uptime, availability, and maintenance risk:</b> Extensive reliability, availability, and maintainability analysis exists, but only in the out-of-scope engineering design-baseline and delivery-plan documents. The 189 AASKAII science-book papers contain zero confirmed statements on this risk.</li>
+          <li><b>Survey-speed limitation and field-of-view tradeoff:</b> Every hit from in-scope papers scored low relevance. No paper frames survey speed explicitly as a named constraint; papers instead frame it as a capability to exploit. This risk is unconfirmed.</li>
+          <li><b>Confusion limit:</b> Only one clearly in-scope hit exists. <i>Cosmology from Clustering of Continuum Galaxies</i> (section E) describes a wide-area survey design that overcomes "the effects of confusion which affects deep surveys such as MIGHTEE." This risk is real, but it appears in a single paper and section. That is too thin to rank in the top register.</li>
+          <li><b>Commensal scheduling conflict:</b> Two section-G papers, on SETI and on Commensal Image Plane Transient Search Methods, discuss commensality's technical tradeoffs. Both papers cluster in one section. This page notes the finding but does not promote it, following the section-count ranking rule.</li>
         </ul>
       </div>
     </section>
 
     <footer class="notes" id="notes">
-      <p><b>Sourcing discipline:</b> a risk only appears above where papers state it as a real, confirmed constraint; where a keyword search came back thin or unconfirmed, that is reported directly (see above) rather than silently dropped.</p>
-      <p><b>Scope boundary:</b> an SKA1 engineering design-baseline specification and an SKA Observatory delivery plan share this database but are not among the 189 AASKAII science-book papers — hits from those two were excluded from every count above, but are noted inline wherever a risk is thoroughly engineered-around there while only thinly discussed in the science book itself (data rate/throughput; telescope uptime).</p>
+      <p><b>Sourcing discipline:</b> A risk appears above only where papers state it as a real, confirmed constraint. Where a keyword search returned a thin or unconfirmed result, this page reports that result directly above, rather than dropping it silently.</p>
+      <p><b>Scope boundary:</b> An SKA1 engineering design-baseline specification and an SKA Observatory delivery plan share this database. Neither counts among the 189 AASKAII science-book papers. This page excludes hits from those two documents from every count above. It notes inline wherever a risk is thoroughly engineered-around in those documents but only thinly discussed in the science book itself, as with data rate/throughput and telescope uptime.</p>
     </footer>
 
   </main>

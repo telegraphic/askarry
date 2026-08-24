@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from rag.config import SECTION_ORDER
 
 PDF_INDEX = "Advancing Astrophysics with the SKA II _ SKAO.pdf"
-PAGE_URL = "https://www.skao.int/en/aaskaii"
+PAGE_URL = "https://www.skao.int/en/science-users/aaskaii"
 
 OUTPUT_DIR = Path("AASKAII")
 OUTPUT_DIR.mkdir(exist_ok=True)
