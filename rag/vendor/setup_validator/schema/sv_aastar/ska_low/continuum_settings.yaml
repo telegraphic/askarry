@@ -1,0 +1,6 @@
+params:
+  bandwidth:
+  - minmax
+  - min: 5.4 kHz
+    max: 300 MHz
+    unit: MHz

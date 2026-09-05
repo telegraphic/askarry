@@ -1,0 +1,219 @@
+<title>HI Galaxies Observing Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F6F7; --ink:#12181D; --ink-soft:#4A555D; --ink-faint:#7C8890; --line:#D8DEE2;
+    --surface:#FFFFFF; --surface-2:#EAEEF0;
+    --accent-low:#B96A21; --accent-low-tint:#B96A2117;
+    --accent-mid:#146E77; --accent-mid-tint:#146E7717;
+    --accent-both:#6A4E96; --accent-both-tint:#6A4E9617;
+    --shadow: 0 1px 2px rgba(18,24,29,0.06), 0 8px 24px rgba(18,24,29,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+      --surface:#10161B; --surface-2:#161E24;
+      --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+      --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+      --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0F13; --ink:#E8ECEE; --ink-soft:#9AA7AE; --ink-faint:#6C7880; --line:#232C32;
+    --surface:#10161B; --surface-2:#161E24;
+    --accent-low:#E2963F; --accent-low-tint:#E2963F1F;
+    --accent-mid:#3FBAC4; --accent-mid-tint:#3FBAC41F;
+    --accent-both:#A889D1; --accent-both-tint:#A889D11F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.35);
+  }
+
+  nav.atlas-nav{ position:sticky; top:0; z-index:80; background:var(--paper); border-bottom:1px solid var(--line); }
+  nav.atlas-nav .bar{ max-width:1280px; margin:0 auto; padding:11px clamp(16px,4vw,40px); display:flex; align-items:center; gap:20px; overflow-x:auto; scrollbar-width:none; }
+  nav.atlas-nav .bar::-webkit-scrollbar{ display:none; }
+  nav.atlas-nav .brand{ font-family:"Archivo",sans-serif; font-weight:800; font-size:13px; white-space:nowrap; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; flex:0 0 auto; }
+  nav.atlas-nav .links{ display:flex; gap:3px; white-space:nowrap; }
+  nav.atlas-nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px 11px; border-radius:20px; text-decoration:none; color:var(--ink-faint); flex:0 0 auto; }
+  nav.atlas-nav .links a:hover{ color:var(--ink); background:var(--surface-2); }
+  nav.atlas-nav .links a.current{ color:var(--ink); background:var(--surface-2); font-weight:600; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:15.5px; line-height:1.55; }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:"Archivo", ui-sans-serif, system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .eyebrow{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); }
+
+  .shell{ max-width:1200px; margin:0 auto; padding:clamp(24px,4vw,56px) clamp(16px,4vw,40px) 80px; display:grid; grid-template-columns:210px 1fr; gap:clamp(24px,4vw,48px); align-items:start; }
+  @media (max-width:880px){ .shell{ grid-template-columns:1fr; } nav.toc{ position:static !important; order:2; } }
+
+  header.masthead{ grid-column:1 / -1; display:flex; flex-direction:column; gap:16px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  header.masthead h1{ font-size:clamp(28px,3.4vw,42px); font-weight:800; max-width:22ch; }
+  header.masthead .lede{ display:flex; flex-direction:column; gap:14px; max-width:78ch; }
+  header.masthead .lede p{ color:var(--ink-soft); font-size:16px; margin:0; }
+
+  .downloads{ display:flex; gap:10px; flex-wrap:wrap; margin-top:0; }
+  .downloads a{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:600; padding:8px 14px; border-radius:20px; border:1px solid var(--line); background:var(--surface); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); }
+  .downloads a:hover{ background:var(--surface-2); }
+
+  nav.toc{ position:sticky; top:24px; display:flex; flex-direction:column; gap:2px; font-size:13px; }
+  nav.toc a{ text-decoration:none; color:var(--ink-soft); padding:7px 10px; border-radius:6px; }
+  nav.toc a:hover{ color:var(--ink); background:var(--surface-2); }
+
+  main{ min-width:0; display:flex; flex-direction:column; gap:48px; }
+  section.intro{ max-width:80ch; }
+  section.intro p{ color:var(--ink-soft); margin:0 0 12px; }
+
+  .sec-block{ scroll-margin-top:24px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .sec-head h2{ font-size:24px; font-weight:700; }
+  .sec-dek{ color:var(--ink-soft); max-width:84ch; margin:0 0 20px; font-size:14.5px; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
+  .stat-tile{ border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); padding:16px 18px; }
+  .stat-tile .n{ font-family:"IBM Plex Mono", monospace; font-weight:700; font-size:24px; }
+  .stat-tile .l{ font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em; margin-top:4px; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); background:var(--surface); }
+  table.data{ border-collapse:collapse; width:100%; min-width:640px; }
+  table.data th{ text-align:left; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:500; padding:11px 14px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+  table.data td{ padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px; }
+  table.data tr:last-child td{ border-bottom:none; }
+  table.data tr:hover td{ background:var(--surface-2); }
+  td.param{ font-family:"IBM Plex Mono", monospace; font-size:12px; font-weight:600; width:32%; white-space:nowrap; }
+  td.desc{ color:var(--ink-soft); }
+
+  .steps{ display:flex; flex-direction:column; gap:0; border-left:2px solid var(--line); margin-left:8px; }
+  .step{ position:relative; padding:0 0 22px 26px; }
+  .step:last-child{ padding-bottom:0; }
+  .step::before{ content:""; position:absolute; left:-7px; top:2px; width:12px; height:12px; border-radius:50%; background:var(--surface); border:2px solid var(--accent-mid); }
+  .step p{ margin:0; color:var(--ink-soft); font-size:13.5px; max-width:78ch; }
+
+  .chip-grid{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-family:"IBM Plex Mono", monospace; font-size:11.5px; padding:5px 11px; border-radius:20px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); }
+
+  .callout{ border-left:3px solid var(--accent-mid); background:var(--accent-mid-tint); border-radius:0 10px 10px 0; padding:14px 18px; font-size:13.5px; color:var(--ink-soft); max-width:82ch; }
+
+  footer.notes{ grid-column:1 / -1; max-width:82ch; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; line-height:1.7; }
+  footer.notes p{ margin:0 0 10px; }
+</style>
+
+<nav class="atlas-nav"><div class="bar">
+  <a class="brand" href="index.html">AASKAII Atlas</a>
+  <div class="links">
+      <a href="index.html">Home</a>
+      <a href="chapter-directory.html">Browse Chapters</a>
+      <a href="data-analyses.html">Data Analyses</a>
+      <a href="background.html">Background</a>
+      <a href="acronym-list.html">Acronyms</a>
+  </div>
+</div></nav>
+<div class="shell">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · AASKAII Atlas — Worked Example</div>
+    <h1>A 100-Hour HI Observing Proposal</h1>
+    <div class="lede">
+      <p><i>"Write an observing proposal for a small 100-hour program looking at HI in galaxies using AA*."</i></p>
+      <div class="downloads">
+        <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.pdf">Download PDF (AASKA II corpus only)</a>
+      </div>
+
+      <p><i>"Update this by 1) removing obvious signs of AI use, and 2) including some literature from outside the AASKA II corpus."</i></p>
+      <div class="downloads">
+        <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar_v2.pdf">Download PDF (with external citations)</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#what">What this is</a>
+    <a href="#case">Science case</a>
+    <a href="#setup">Observation setup</a>
+    <a href="#sensitivity">Sensitivity</a>
+    <a href="#plan">Analysis plan</a>
+    <a href="#caveats">Caveats</a>
+  </nav>
+
+  <main>
+    <section class="intro" id="what">
+      <h2>What this is</h2>
+      <p>Policies on the use of AI in proposal generation within the astronomy community are still evolving.
+        This page demonstrates how a large language model (LLM) can draft a proposal-shaped document from the AASKA II corpus, along with access to the sensitivity calculator API (made available via an MCP endpoint).
+        The draft is not a real proposal.
+        It is an illustrative example of what an LLM can produce when prompted with a specific task and given access to a relevant corpus of documents.</p>
+    </section>
+
+    <section class="sec-block" id="case">
+      <div class="sec-head"><h2>The science case, in one paragraph</h2></div>
+      <p class="sec-dek">Neutral hydrogen (HI) extends farther from a galaxy than any other gas component. HI also disturbs more easily than other gas components. These two properties make HI the earliest tracer of tidal stripping and ram-pressure stripping as a galaxy falls into a cluster. The proposal requests resolved 21-cm HI imaging of 12 galaxies. These galaxies sit in the outskirts and infall region of a nearby, low-mass cluster at roughly 20 Mpc. The imaging will map tidal tails, warps, and jellyfish gas tails. The proposal targets resolution and depth beyond what MeerKAT, ASKAP, and WSRT have reached.</p>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="n">12</span><span class="l">target galaxies</span></div>
+        <div class="stat-tile"><span class="n">100 h</span><span class="l">time requested</span></div>
+        <div class="stat-tile"><span class="n">15″</span><span class="l">angular resolution</span></div>
+        <div class="stat-tile"><span class="n">2.8 km/s</span><span class="l">native velocity resolution</span></div>
+      </div>
+    </section>
+
+    <section class="sec-block" id="setup">
+      <div class="sec-head"><h2>Observation setup</h2></div>
+      <p class="sec-dek">The proposal requests SKA-Mid Array Assembly * (AA*) in Band 2. The observation restricts the core sub-array to baselines of 2 km or less. This restriction trades some of AA*'s full collecting area for a beam that matches the few-kpc scale of tidal features.</p>
+      <div class="table-wrap"><table class="data">
+        <tbody>
+          <tr><td class="param">Array</td><td class="desc">SKA-Mid AA* — 80 SKA-Mid 15-m dishes + 64 MeerKAT dishes, core baselines ≤ 2 km</td></tr>
+          <tr><td class="param">Band / tuning</td><td class="desc">Band 2 (0.95–1.76 GHz), centred at 1413.3 MHz (cz ≈ 1500 km/s)</td></tr>
+          <tr><td class="param">Spectral setup</td><td class="desc">4 MHz zoom window, 13.4 kHz (≈2.8 km/s) native channels, smoothed to 8.3 km/s</td></tr>
+          <tr><td class="param">Synthesized beam</td><td class="desc">≈15.2″ × 12.6″ (robust = 0)</td></tr>
+          <tr><td class="param">On-source time</td><td class="desc">6.0 h/target × 12 targets = 72.0 h</td></tr>
+          <tr><td class="param">Calibration &amp; overheads</td><td class="desc">≈22.0 h (≈30%): bandpass/flux/phase calibration, pointing, slew, RFI margin</td></tr>
+          <tr><td class="param">Total requested</td><td class="desc">94.0 h, rounded to 100 h for contingency</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="sensitivity">
+      <div class="sec-head"><h2>Sensitivity budget</h2></div>
+      <p class="sec-dek">The draft attributes every figure below to the SKAO Sensitivity Calculator. This page does not re-verify these figures. The caveats section below explains why.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td class="param">Native channel rms (2.8 km/s, 6 h)</td><td class="desc">254 µJy/beam</td></tr>
+          <tr><td class="param">Smoothed rms (8.3 km/s)</td><td class="desc">≈147 µJy/beam</td></tr>
+          <tr><td class="param">3σ HI column density</td><td class="desc">≈2.1 × 10¹⁹ cm⁻²</td></tr>
+          <tr><td class="param">5σ integrated HI mass limit (D = 20 Mpc)</td><td class="desc">≈9 × 10⁵ M☉</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="sec-block" id="plan">
+      <div class="sec-head"><h2>Data reduction &amp; analysis plan</h2></div>
+      <div class="steps">
+        <div class="step"><p>Standard SDP pipelines will calibrate and image the data. This step includes bandpass, flux, and phase calibration. This step also includes RFI flagging and joint deconvolution for each target.</p></div>
+        <div class="step"><p>The pipeline will produce HI moment maps at native and smoothed resolution. These maps show intensity, velocity field, and velocity dispersion.</p></div>
+        <div class="step"><p>The team will classify each target's morphology and kinematics as disc, warp, truncation, or tail. The team will compare this classification against clustercentric distance and galaxy mass.</p></div>
+        <div class="step"><p>The team will extract rotation curves for targets with regular discs. The team will compare these curves against a mass-matched field sample.</p></div>
+        <div class="step"><p>The SKA Regional Centre Network will archive the visibilities, images, and derived products.</p></div>
+      </div>
+      <div class="chip-grid" style="margin-top:16px;">
+        <span class="chip">Wang et al. 2026</span>
+        <span class="chip">de Blok et al. 2026</span>
+        <span class="chip">Ramatsoku et al. 2026</span>
+        <span class="chip">Ignesti et al. 2026</span>
+        <span class="chip">Lelli et al. 2026</span>
+        <span class="chip">Nasirudin et al. 2026</span>
+        <span class="chip">Pan et al. 2026</span>
+      </div>
+    </section>
+
+    <section class="sec-block" id="caveats">
+      <div class="sec-head"><h2>Caveats</h2></div>
+      <div class="callout">
+        This page demonstrates Askarry drafting a proposal-shaped document from the corpus. It is not a vetted time-allocation request. The PI and co-I fields are placeholders. The "Fornax cluster" sample is illustrative. It is not a specific, pre-selected target list. This page did not independently re-run the sensitivity figures through the live SKAO Sensitivity Calculator. Treat every number on this page as a first-pass estimate. Check each number before you use it. The <a href="behind-the-atlas.html">known issues</a> logged for the rest of the atlas apply here too.
+      </div>
+    </section>
+  </main>
+
+  <footer class="notes">
+    <p>This page sources its content from <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.pdf">HI_Galaxies_SKA_Observing_Proposal_AAstar.pdf</a> and the matching <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.docx">.docx file</a>. A single prompt against the astronomy-rag MCP server generated that draft. The <a href="behind-the-atlas.html">Behind the Atlas</a> page describes that server.</p>
+  </footer>
+</div>

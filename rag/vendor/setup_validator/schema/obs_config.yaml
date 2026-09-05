@@ -1,0 +1,26 @@
+params:
+  context:
+  - oneof
+  - allowed_values:
+    - SV-AA2
+    - SV-AA*
+    - Cycle 0
+    - Cycle 1
+  telescope:
+  - oneof
+  - allowed_values:
+    - SKA-Low
+    - SKA-Mid
+rules:
+- check_subarray_templates_valid
+- check_beam_has_enabled_mode
+- check_subarray_overlap
+- check_continuum_bandwidth_valid
+- check_primary_beams
+- check_sum_pss_beams
+- check_sum_pst_beams
+- check_zoom_number_channels_valid
+- check_odp_images_valid
+- check_odp_image_cube_channels_valid
+- check_pst_odp_compatible_with_continuum
+- check_pst_flowthrough_data_rate

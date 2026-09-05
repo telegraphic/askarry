@@ -1,0 +1,83 @@
+{
+  "context": "Cycle 0",
+  "telescopeType": "SKA-Mid",
+  "subarrays": {
+    "1": {
+      "template": "Mid_full_AAstar",
+      "band": "Band 1",
+      "modes": {
+        "1": {
+          "continuum": true,
+          "zoom": false,
+          "pss": false,
+          "pst": true
+        }
+      },
+      "continuumSettings": {
+        "1": {
+          "centralFrequency": 700,
+          "bandwidth": 700,
+          "channelWidth": 13.4,
+          "enabled": true,
+          "odpList": [
+            {
+              "type": "calibrated_visibilities",
+              "label": "Calibrated visibilities 1",
+              "settings": {
+                "timeAveraging": 4,
+                "frequencyAveraging": 5
+              }
+            },
+            {
+              "type": "images",
+              "label": "Image 1",
+              "settings": {
+                "makeMfsStokesI": true,
+                "makeChannelImages": true,
+                "mfsStokesI": {
+                  "robustParameter": -1.2,
+                  "gaussianTaper": 0.05,
+                  "additionalImages": []
+                },
+                "channelImages": {
+                  "channelCount": 7,
+                  "polarizations": ["I"],
+                  "robustParameter": 0.234,
+                  "gaussianTaper": 0.123,
+                  "additionalImages": ["residual", "model"]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "zoomSettings": {
+        "1": {
+          "numberOfZoomChannels": 0,
+          "zoomMode": "",
+          "enabled": false
+        }
+      },
+      "pssSettings": {
+        "1": {
+          "numberOfBeams": 1125,
+          "centralFrequency": 700,
+          "bandwidth": 300,
+          "enabled": false
+        }
+      },
+      "pstSettings": {
+        "1": {
+          "enabled": true,
+          "beamsList": [
+            {
+              "type": "pulsar_timing",
+              "centralFrequency": 700,
+              "bandwidth": 700
+            }
+          ]
+        }
+      }
+    }
+  }
+}

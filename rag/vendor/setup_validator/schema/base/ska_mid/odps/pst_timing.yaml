@@ -1,0 +1,19 @@
+params:
+  centralFrequency:
+  - minmax
+  - min: $rx_low
+    max: $rx_high
+    unit: MHz
+  bandwidth:
+  - minmax2
+  - min: 108 kHz
+    max: $rx_bw
+    max2: 2500 MHz
+    unit: MHz
+rules:
+- check_band_upper
+- check_band_lower
+- check_pst_beams
+docs:
+  centralFrequency: Beam centre frequency (MHz)
+  bandwidth: Beam bandwidth (MHz)

@@ -1,0 +1,15 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  availableOdps:
+  - oneof
+  - allowed_values:
+    - "Pulsar Timing"
+    - "Detected Filterbank"
+    - "Flowthrough Archive"
+docs:
+  enabled: Mode enabled
+  availableOdps: Allowed output data products for the given context

@@ -1,0 +1,8 @@
+params:
+  bandwidth:
+  - minmax
+  - min: 3.6 kHz
+    max: 300 MHz
+    unit: MHz
+docs:
+  bandwidth: Beam bandwidth (MHz)

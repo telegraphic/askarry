@@ -1,0 +1,26 @@
+params:
+  bandwidth:
+  - minmax
+  - min: 3.6 kHz
+    max: 300 MHz
+    unit: MHz
+  frequencyResolution:
+  - minmax
+  - min: 2
+    max: 10000000
+    unit: Hz
+  timeResolution:
+  - minmax
+  - min: 1.0e-07
+    max: 10
+    unit: s
+  data_rate:
+  - minmax
+  - min: 0
+    max: 0.5
+    unit: Gbyte/s
+docs:
+  bandwidth: Beam bandwidth (MHz)
+  frequencyResolution: Frequency Resolution per channel
+  timeResolution: Time Resolution per timestep
+  data_rate: Frequency Resolution per channel

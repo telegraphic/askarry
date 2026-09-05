@@ -1,0 +1,7 @@
+params:
+  n_channel_zoom:
+  - minmax
+  - min: 1
+    max: 64000
+    step: 1
+    unit: ''

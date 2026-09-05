@@ -153,8 +153,15 @@ Restart Claude Desktop after editing the config. The following tools will appear
 | Tool | What it does |
 |------|--------------|
 | `search_astronomy_docs` | Hybrid semantic + BM25 search, re-ranked; returns passages with title, section, page, and relevance |
+| `search_ska_capabilities` | Same search, scoped to the SKA key-capabilities technical document set |
+| `list_ska_capability_docs` | List the SKA key-capabilities documents available to search |
 | `list_documents` | Table of contents grouped by AASKAII section |
 | `get_document_chunks` | All indexed chunks from a named paper in reading order |
+| `query_sensitivity_calc` | Live query to the SKAO sensitivity calculator REST API |
+| `validate_observing_setup_tool` | Validate an SKA observing configuration against the vendored ska-sci-ops-setup-validator rule engine |
+| `estimate_data_product_size_tool` | Estimate the data volume/rate of an SKA data product using the vendored odp-data-size-tool formulas |
+| `list_capability_schemas_tool` | List setup-validator schema names available to query for a telescope |
+| `describe_schema_tool` | Look up allowed values / min-max ranges / fixed values from the setup-validator schema — more authoritative than static capability docs |
 
 > **Note:** Run `python ingest.py` first so there is a populated ChromaDB index for the server to search. The MCP server is read-only and never calls Ollama.
 

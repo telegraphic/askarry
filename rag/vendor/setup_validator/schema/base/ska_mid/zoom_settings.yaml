@@ -1,0 +1,26 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - false
+    - true
+  numberOfZoomChannels:
+  - minmax
+  - min: 1
+    max: 55296
+    step: 1
+  channelWidth:
+  - oneof
+  - allowed_values:
+    - 210 Hz
+    - 420 Hz
+    - 840 Hz
+    - 1608 Hz
+    - 3.36 kHz
+    - 6.72 kHz
+    - 13.44 kHz
+    unit: Hz
+docs:
+  enabled: Enable mode
+  numberOfZoomChannels: Number of zoom channels
+  channelWidth: Channel width

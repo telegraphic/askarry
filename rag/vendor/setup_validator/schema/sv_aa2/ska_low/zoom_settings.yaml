@@ -1,0 +1,6 @@
+params:
+  numberOfZoomChannels:
+  - minmax
+  - min: 1
+    max: 4000
+    step: 1

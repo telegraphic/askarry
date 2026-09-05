@@ -1,0 +1,44 @@
+params:
+  mode:
+  - oneof
+  - allowed_values:
+    - continuum
+    - zoom
+  robustParameter:
+  - minmax
+  - min: -2
+    max: 2
+    unit: ''
+  gaussianTaper:
+  - minmax
+  - min: 0
+    max: 1
+    unit: ''
+  n_polarization:
+  - minmax
+  - min: 1
+    max: 4
+    step: 1
+    unit: ''
+  create_residual_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  create_psf_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  create_model_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+docs:
+  robustParameter: Robust parameter for weighting, (-2 to 2)
+  gaussianTaper: Gaussian taper for weighting, (0 to 1)
+  create_residual_image: Create residual image
+  create_psf_image: Create PSF image
+  create_model_image: Create model image
+  n_polarization: Number of polarizations in output images (1 to 4)

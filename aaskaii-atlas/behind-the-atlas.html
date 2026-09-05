@@ -163,7 +163,22 @@
       <h2>What this page is</h2>
       <p>Parts I–III of this atlas present findings. This part shows the work behind them. A document-retrieval MCP server was queried through a fleet of parallel research agents. The process paused twice for a human decision. A small set of ground rules was fixed before research began. Those rules make the three documents comparable to each other, rather than three independently styled write-ups.</p>
     </section>
+    <section class="sec-block">
+      <h2>Known issues</h2>
+      <p class="sec-dek">Note this is an exploratory prototype, and some clear issues are apparent. Some known issues:
 
+        <ul class="sec-dek">
+        <li>Not all PDFs are available on the AASKA II website, so some science cases are missing.</li>
+        <li>It invented a set of 7 science themes instead of using the book chapter sections, so the 2015 vs. 2026 science case comparison mixes the made-up themes with actual sections.</li>
+        <li>Some acronyms are mis-categorized (e.g. FPGA is listed as an Organization).</li>
+        <li>The 'contention' is really just a list of most used observing modes and not indicative of scheduling contention.</li>
+        <li>The nuances of construction are not reflected in the Capability Crosscheck, leading to some unreasoanble conclusions.</li>
+        <li>On Sensitivity verification page, it looks like it picked up a citation swap (i.e. a hallucination).</li>
+
+      </ul>
+
+     </p>
+    </section>
     <section class="sec-block" id="knowledge-base">
       <div class="sec-head"><h2>The knowledge base</h2></div>
       <p class="sec-dek">All three documents draw on one MCP (Model Context Protocol) server, <span class="chip" style="padding:2px 8px;">astronomy-rag</span>. It connects through the desktop bridge. It runs a hybrid retrieval pipeline over the AASKAII PDF corpus. Semantic vector search and BM25 keyword search run in parallel. Reciprocal Rank Fusion combines their results. A cross-encoder then re-ranks the combined list. Every search returns passages with a source title, section, and page number attached. That attached metadata is what makes line-by-line sourcing possible.</p>

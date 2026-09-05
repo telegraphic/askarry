@@ -1,0 +1,27 @@
+params:
+  template:
+  - oneof
+  - allowed_values:
+    - Mid_full_AAstar
+    - Mid_13.5m_AAstar
+    - Mid_15m_AAstar
+    - Mid_inner_r125m_AAstar
+    - Mid_inner_r250m_AAstar
+    - Mid_inner_r500m_AAstar
+    - Mid_inner_r1km_AAstar
+    - Mid_inner_r2km_AAstar
+    - Mid_inner_r4km_AAstar
+    - Mid_inner_r8km_AAstar
+    - Mid_inner_r16km_AAstar
+    - Mid_inner_r20km_AAstar
+    - Mid_inner_r32km_AAstar
+    - Mid_outer_r125m_AAstar
+    - Mid_outer_r250m_AAstar
+    - Mid_outer_r500m_AAstar
+    - Mid_outer_r1km_AAstar
+    - Mid_outer_r2km_AAstar
+    - Mid_outer_r4km_AAstar
+    - Mid_outer_r8km_AAstar
+    - Mid_4ant_band1_AAstar
+    - Mid_4ant_band2_AAstar
+    - Mid_4ant_band5a_AAstar

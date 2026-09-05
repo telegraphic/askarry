@@ -101,10 +101,9 @@
   <header class="masthead">
     <div class="eyebrow">SKAO · AASKAII Science Book</div>
     <h1>AASKAII Atlas</h1>
-    <p class="lede">This site presents exploratory analyses of the science chapters of <em><a href="https://www.skao.int/en/science-users/aaskaii"></a>Advancing Astrophysics with the SKA II</a></em>.
-       The analyses were done using AI tools by querying a RAG (retrieval augemented generation) system built from parsing
-      the AASKA and AASKA II documents, along with publicly-available technical information on
-     the SKA capabilities. </p>
+    <p class="lede">This site analyzes the science chapters of <em><a href="https://www.skao.int/en/science-users/aaskaii">Advancing Astrophysics with the SKA II</a></em>. An AI system generated the analyses. That system is a RAG (retrieval-augmented generation) pipeline. The pipeline was built from the AASKA and AASKA II documents. The pipeline also used publicly available SKA technical documentation. <br /> This site is a prototype. AI generated most of the text on this site. The <i><a href="behind-the-atlas.html">Atlas overview</a></i> page explains the method in full.</p>
+
+
     <div class="stats">
       <div class="stat"><span class="n">203</span><span class="l">papers</span></div>
       <div class="stat"><span class="n">7</span><span class="l">technical documents</span></div>
@@ -120,7 +119,7 @@
       <div class="accent-bar"></div>
       <!-- <span class="part">Part VI</span> -->
       <h2>Browse Chapters</h2>
-      <p>This directory lists all 203 indexed chapters, grouped by book section. It is ported from the askarry app's Browse Chapters tab. Each title links to its original PDF on SKAO's public AASKAII page.</p>
+      <p>This directory lists 203 indexed chapters. The list is grouped by book section. The Askarry app's Browse Chapters tab is the source. Each title links to the original PDF on SKAO's public AASKAII page.</p>
       <div class="contains"><ul>
         <li>Grouped by book section, searchable by title/author</li>
         <li>Direct links to each paper's PDF on skao.int</li>
@@ -133,7 +132,7 @@
       <div class="accent-bar"></div>
       <!-- <span class="part">Part V</span> -->
       <h2>Browse Acronyms</h2>
-      <p>This table lists 702 acronyms mined from the corpus's own inline definitions. It is ported from the askarry app's Acronyms tab into a sortable, client-side table. Clicking a row shows paper-level detail for that acronym.</p>
+      <p>This table lists 702 acronyms. The corpus's own inline definitions produced this list. The table is sortable and runs entirely in the browser. Clicking a row shows every paper that uses that acronym.</p>
       <div class="contains"><ul>
         <li>Searchable, sortable, category-filterable</li>
         <li>Click any row for every paper that uses it</li>
@@ -150,7 +149,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part I</span>
       <h2>Observing Mode Map</h2>
-      <p>This document lists science drivers, sensitivity, and frequency range for all science sections. It cross-tabulates these against 15 SKA observing modes. The cross-tabulation shows which science drivers compete for the same telescope time.</p>
+      <p>This document lists science drivers for each science section. It also lists sensitivity and frequency range for each section. It cross-tabulates these against 15 SKA observing modes. The cross-tabulation identifies which science drivers compete for the same telescope time.</p>
       <div class="contains"><ul>
         <li>Per-section driver &amp; sensitivity tables</li>
         <li>15-mode contention matrix</li>
@@ -163,7 +162,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part II · A</span>
       <h2>Common Open Questions</h2>
-      <p>This document records what the authors admit is still unsolved, ranked by how many of the 7 AASKAII sections independently raise the same problem.</p>
+      <p>This document records unsolved problems that the authors name directly. It ranks each problem by how many of the 7 AASKAII sections raise it independently.</p>
       <div class="contains"><ul>
         <li>10 recurring open-question clusters</li>
         <li>Section-specific unknowns, flagged separately</li>
@@ -176,7 +175,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part II · B</span>
       <h2>Cross-Cutting Methods</h2>
-      <p>This document ranks which techniques recur across the most sections, from a fixed 16-keyword search run independently of section boundaries.</p>
+      <p>This document ranks techniques by how many sections use them. A fixed 16-keyword search produced the ranking. The search ran independently of section boundaries.</p>
       <div class="contains"><ul>
         <li>16-keyword cross-cutting methods ranking</li>
         <li>Coverage bars by section count</li>
@@ -189,7 +188,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part II · C</span>
       <h2>Instrument Requirements</h2>
-      <p>This document reverse-engineers an instrument requirements register, with each entry traced line-by-line back to its source science goal.</p>
+      <p>This document reconstructs an instrument requirements register from the source papers. Each entry traces back to one specific science goal.</p>
       <div class="contains"><ul>
         <li>~70 sourced requirements, REQ-A01–G12</li>
         <li>Sensitivity, resolution, FoV, frequency &amp; survey speed</li>
@@ -202,7 +201,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part III</span>
       <h2>Multimessenger Observations</h2>
-      <p>This document lists the external facilities the papers say SKAO needs for this science. Rubin/LSST and JWST act as universal hubs used across sections. The document also flags where the search likely missed connections.</p>
+      <p>This document lists external facilities that the papers say SKAO needs for this science. Rubin/LSST and JWST appear as hubs used across most sections. The document also flags connections that the search likely missed.</p>
       <div class="contains"><ul>
         <li>Hub facilities vs. single-theme partners</li>
         <li>The one bridge between two disconnected clusters</li>
@@ -218,7 +217,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part V · A</span>
       <h2>Capability Cross-Check</h2>
-      <p>This page checks the Part&nbsp;II·C requirements ledger against SKAO's own "SKA key capabilities" engineering documents. It reports whether what papers ask for matches what the telescopes can deliver.</p>
+      <p>This page checks the Part&nbsp;II·C requirements ledger against SKAO's own SKA key-capabilities engineering documents. It reports whether the telescopes can deliver what the papers request.</p>
       <div class="contains"><ul>
         <li>7 capability documents found</li>
         <li>12 requirements cross-checked</li>
@@ -230,7 +229,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part V · B</span>
       <h2>Sensitivity Verification</h2>
-      <p>This page sends a sample of the requirements ledger's sensitivity and resolution figures to SKAO's live sensitivity-calculator API. It reports which quoted numbers still hold up.</p>
+      <p>This page sends a sample of sensitivity and resolution figures from the requirements ledger to SKAO's live sensitivity-calculator API. It reports which quoted numbers the calculator confirms.</p>
       <div class="contains"><ul>
         <li>12 figures checked against a live calculator call</li>
         <li>5 matched within 10%</li>
@@ -242,7 +241,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part V · C</span>
       <h2>Systematic Risk Register</h2>
-      <p>This register lists named engineering and operational risks, including calibration, RFI, compute cost, and timing precision. It ranks each risk by how many of the 7 sections independently name it as a real constraint.</p>
+      <p>This register lists engineering and operational risks. The risks include calibration, RFI, compute cost, and timing precision. It ranks each risk by how many of the 7 sections name it as a real constraint.</p>
       <div class="contains"><ul>
         <li>16 risk keywords searched</li>
         <li>10 risks confirmed &amp; ranked</li>
@@ -254,7 +253,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part V · D</span>
       <h2>2015 vs 2026 Science-Case Diff</h2>
-      <p>This page opens the 2015 "Advancing Astrophysics with the SKA" legacy corpus for the first time. It compares that corpus against the 2026 AASKAII findings and reports what is new, what has been reorganised, what has been dropped, and what remains unresolved a decade later.</p>
+      <p>This page opens the 2015 "Advancing Astrophysics with the SKA" legacy corpus for the first time. It compares that corpus against the 2026 AASKAII findings. It reports what is new. It reports what has been reorganised. It reports what has been dropped. It reports what remains unresolved a decade later.</p>
       <div class="contains"><ul>
         <li>135 2015 legacy papers found</li>
         <li>10 legacy section headers diffed</li>
@@ -270,7 +269,7 @@
       <div class="accent-bar"></div>
       <span class="part">Part VII</span>
       <h2>RAG/Database overview</h2>
-      <p>This document explains how data are retrieved from the AASKA corpus. It covers several aspects of retrieval augmented generation (RAG), such as hybrid search, rank fusion, re-ranking, and generation. </p>
+      <p>This document explains how the system retrieves data from the AASKA corpus. It describes retrieval-augmented generation (RAG). It explains hybrid search, rank fusion, re-ranking, and answer generation.</p>
       <div class="contains"><ul>
         <li>Written for a reader new to AI / RAG</li>
         <li>Full pipeline diagram, ingest through to answer</li>
@@ -283,13 +282,26 @@
       <div class="accent-bar"></div>
       <span class="part">Part IV</span>
       <h2>Atlas Overview</h2>
-      <p>This document explains how Parts I-III were produced. It describes the MCP knowledge-base tools used, the fixed taxonomies built before any searching started, and the exact questions asked. It also traces where the numbers above come from.</p>
+      <p>This document explains how Parts I-III were produced. It describes the MCP knowledge-base tools used. It describes the fixed taxonomies that were built before any searching started. It lists the exact questions that were asked. It also traces where the numbers above come from.</p>
       <div class="contains"><ul>
         <li>MCP tool-by-tool usage breakdown</li>
         <li>7-agent parallel pipeline diagram</li>
         <li>Every clarifying question &amp; answer, verbatim</li>
       </ul></div>
       <span class="open">Open the writeup <span class="arrow">→</span></span>
+    </a>
+
+    <a class="doc-card c-both" href="observing-proposal.html">
+      <div class="accent-bar"></div>
+      <span class="part">Use Case</span>
+      <h2>Draft Observing Proposal</h2>
+      <p>A single prompt to Askarry produced this proposal. The proposal requests 100 hours on SKA-Mid AA* to image HI in cluster-infall galaxies. The same corpus that supports the rest of the atlas sourced this proposal.</p>
+      <div class="contains"><ul>
+        <li>Full 5-page draft, as PDF &amp; DOCX</li>
+        <li>Science case, setup &amp; sensitivity summarised</li>
+        <li>Caveats on what to check before reuse</li>
+      </ul></div>
+      <span class="open">Open the proposal <span class="arrow">→</span></span>
     </a>
   </div>
 

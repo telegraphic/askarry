@@ -1,0 +1,8 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+docs:
+  enabled: Mode enabled

@@ -1,0 +1,51 @@
+params:
+  centralFrequency:
+  - minmax
+  - min: 50 MHz
+    max: 350 MHz
+    unit: MHz
+  bandwidth:
+  - minmax
+  - min: 3.6 kHz
+    max: 75 MHz
+    unit: MHz
+  n_polarization:
+  - minmax
+  - min: 1
+    max: 4
+    step: 1
+    unit: ''
+  timeAveraging:
+  - minmax
+  - min: 1
+    max: 1000
+    step: 1
+    unit: ''
+  frequencyAveraging:
+  - minmax
+  - min: 1
+    max: 1000
+    step: 1
+    unit: ''
+  frequencyResolution:
+  - minmax
+  - min: 2
+    max: 10000000
+    unit: Hz
+  timeResolution:
+  - minmax
+  - min: 1.0e-07
+    max: 10
+    unit: s
+  data_rate:
+  - minmax
+  - min: 0
+    max: 0.5
+    unit: Gbyte/s
+docs:
+  centralFrequency: Beam centre frequency (MHz)
+  bandwidth: Beam bandwidth (MHz)
+  n_polarization: Number of polarizations (stokes, 1-4)
+  frequencyResolution: Frequency Resolution per channel
+  timeResolution: Time Resolution per timestep
+  data_rate: Frequency Resolution per channel

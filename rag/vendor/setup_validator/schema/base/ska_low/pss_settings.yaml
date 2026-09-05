@@ -1,0 +1,29 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  numberOfBeams:
+  - minmax
+  - min: 1
+    max: 250
+    step: 1
+  centralFrequency:
+  - minmax
+  - min: 50 MHz
+    max: 350 MHz
+    unit: MHz
+  bandwidth:
+  - minmax
+  - min: 0.0145 MHz
+    max: 118 MHz
+    unit: MHz
+rules:
+- check_band_upper
+- check_band_lower
+docs:
+  enabled: Mode enabled
+  numberOfBeams: Number of PSS search beams
+  bandwidth: Observing bandwidth
+  centralFrequency: Central frequency for observation

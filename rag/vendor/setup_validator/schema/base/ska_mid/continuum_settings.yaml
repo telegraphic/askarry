@@ -1,0 +1,29 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  centralFrequency:
+  - minmax
+  - min: $rx_low
+    max: $rx_high
+    unit: MHz
+  bandwidth:
+  - minmax2
+  - min: 13.4 kHz
+    max: $rx_bw
+    max2: 5000 MHz
+    unit: MHz
+  channelWidth:
+  - equals
+  - ref_value: 13.4 kHz
+    unit: kHz
+rules:
+- check_band_upper
+- check_band_lower
+docs:
+  enabled: Mode enabled
+  centralFrequency: Central frequency for observation
+  bandwidth: Observing bandwidth
+  channelWidth: width of frequency channels

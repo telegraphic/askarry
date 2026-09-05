@@ -1,0 +1,7 @@
+params:
+  template:
+  - oneof
+  - allowed_values:
+    - Mid_full_AA2
+    - Mid_core_AA2
+    - Mid_outer_AA2

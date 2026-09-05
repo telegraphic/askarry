@@ -1,0 +1,6 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - false
+    - true

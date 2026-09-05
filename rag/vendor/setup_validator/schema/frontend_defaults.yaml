@@ -1,0 +1,279 @@
+skaMidDefaults:
+  Band 1:
+    centralFrequency: 700
+    maxCentralFrequency: 1050
+    minCentralFrequency: 350
+    continuumBandwidth: 700
+    maxContinuumBandwidth: 700
+    minContinuumBandwidth: 0.0134
+    pstBandwidth: 700
+    pstBeams: 1
+    minPstbeams: 1
+    maxPstBeams: 1
+    maxPstBandwidth: 700
+    minPstBandwidth: 0.0538
+    pssBandwidth: 300
+    maxPssBandwidth: 300
+    minPssBandwidth: 0.0145
+    numberOfZoomChannels: 1
+    maxNumberOfZoomChannels: 64000
+    minNumberOfZoomChannels: 1
+    maxChannelCount: 40
+  Band 2:
+    centralFrequency: 1355
+    maxCentralFrequency: 1760
+    minCentralFrequency: 950
+    continuumBandwidth: 810
+    maxContinuumBandwidth: 810
+    minContinuumBandwidth: 0.0134
+    pstBeams: 1
+    minPstbeams: 1
+    maxPstBeams: 1
+    pstBandwidth: 810
+    maxPstBandwidth: 800
+    minPstBandwidth: 0.0538
+    pssBandwidth: 300
+    maxPssBandwidth: 300
+    minPssBandwidth: 0.0145
+    numberOfZoomChannels: 1
+    maxNumberOfZoomChannels: 64000
+    minNumberOfZoomChannels: 1
+    maxChannelCount: 40
+  Band 5a:
+    centralFrequency: 6550
+    maxCentralFrequency: 8500
+    minCentralFrequency: 4600
+    continuumBandwidth: 3900
+    maxContinuumBandwidth: 3900
+    minContinuumBandwidth: 0.0134
+    pstBeams: 1
+    minPstbeams: 1
+    maxPstBeams: 1
+    pstBandwidth: 2500
+    maxPstBandwidth: 2500
+    minPstBandwidth: 0.0538
+    pssBandwidth: 300
+    maxPssBandwidth: 300
+    minPssBandwidth: 0.0145
+    numberOfZoomChannels: 1
+    maxNumberOfZoomChannels: 64000
+    minNumberOfZoomChannels: 1
+    maxChannelCount: 40
+  Band 5b:
+    centralFrequency: 11850
+    maxCentralFrequency: 15400
+    minCentralFrequency: 8300
+    continuumBandwidth: 5000
+    maxContinuumBandwidth: 5000
+    minContinuumBandwidth: 0.0134
+    pstBeams: 1
+    minPstbeams: 1
+    maxPstBeams: 1
+    pstBandwidth: 2500
+    maxPstBandwidth: 2500
+    minPstBandwidth: 0.0538
+    pssBandwidth: 300
+    maxPssBandwidth: 300
+    minPssBandwidth: 0.0145
+    numberOfZoomChannels: 1
+    maxNumberOfZoomChannels: 64000
+    minNumberOfZoomChannels: 1
+    maxChannelCount: 40
+skaMidDefaultBand: Band 1
+skaLowDefaults:
+  centralFrequency: 200
+  maxCentralFrequency: 350
+  minCentralFrequency: 50
+  continuumBandwidth: 300
+  maxContinuumBandwidth: 300
+  minContinuumBandwidth: 0.0054
+  pstBandwidth: 300
+  pstBeams: 1
+  minPstbeams: 1
+  maxPstBeams: 1
+  maxPstBandwidth: 300
+  minPstBandwidth: 0.0145
+  pssBandwidth: 118
+  maxPssBandwidth: 118
+  minPssBandwidth: 0.0145
+  numberOfZoomChannels: 1
+  maxNumberOfZoomChannels: 64000
+  minNumberOfZoomChannels: 1
+  maxChannelCount: 40
+skaMidContChannelWidth: 13.4
+skaLowContChannelWidth: 5.4
+defaultTimeAvgFactor: 1
+defaultFreqAvgFactor: 1
+defaultBriggsWeighting: 0.0
+defaultGaussianTaper: 0.0
+tabBaselineCutoff: 20000
+defaultChannelImageChannelCount: 1
+obsDurationByContext:
+  SV-AA2: 4 hr
+  SV-AA*: 8 hr (4 hr if zoom enabled)
+  Cycle 0: 50 hr (12 hr if zoom enabled)
+  Cycle 1: 50 hr (12 hr if zoom enabled)
+pssBeamsByContext:
+  SV-AA2:
+    skaMidPssBeams: 8
+    skaLowPssBeams: 0
+  SV-AA*:
+    skaMidPssBeams: 200
+    skaLowPssBeams: 9
+  Cycle 0:
+    skaMidPssBeams: 1125
+    skaLowPssBeams: 50
+  Cycle 1:
+    skaMidPssBeams: 1125
+    skaLowPssBeams: 50
+pstBeamTypesByContext:
+  SV-AA2:
+    SKA-Mid: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+    SKA-Low: ["detected_filterbank", "flowthrough_archive"]
+  SV-AA*:
+    SKA-Mid: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+    SKA-Low: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+  Cycle 0:
+    SKA-Mid: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+    SKA-Low: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+  Cycle 1:
+    SKA-Mid: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+    SKA-Low: ["pulsar_timing", "detected_filterbank", "flowthrough_archive"]
+maxStationBeamsByContext:
+  SV-AA2: 1
+  SV-AA*: 16
+  Cycle 0: 48
+  Cycle 1: 48
+maxSubarraysByContext:
+  SV-AA2: 1
+  SV-AA*: 1
+  Cycle 0: 4
+  Cycle 1: 16
+defaultSubarrayTemplates:
+  SKA-Mid:
+    SV-AA2: Mid_full_AA2
+    SV-AA*: Mid_full_AAstar
+    Cycle 0: Mid_full_AAstar
+    Cycle 1: Mid_full_AAstar
+  SKA-Low:
+    SV-AA2: Low_full_AA2
+    SV-AA*: Low_full_AAstar
+    Cycle 0: Low_full_AAstar
+    Cycle 1: Low_full_AAstar
+skaMidAAstarTemplateNames:
+- Mid_full_AAstar
+- Mid_13.5m_AAstar
+- Mid_15m_AAstar
+- Mid_inner_r125m_AAstar
+- Mid_inner_r250m_AAstar
+- Mid_inner_r500m_AAstar
+- Mid_inner_r1km_AAstar
+- Mid_inner_r2km_AAstar
+- Mid_inner_r4km_AAstar
+- Mid_inner_r8km_AAstar
+- Mid_inner_r16km_AAstar
+- Mid_inner_r20km_AAstar
+- Mid_inner_r32km_AAstar
+- Mid_outer_r125m_AAstar
+- Mid_outer_r250m_AAstar
+- Mid_outer_r500m_AAstar
+- Mid_outer_r1km_AAstar
+- Mid_outer_r2km_AAstar
+- Mid_outer_r4km_AAstar
+- Mid_outer_r8km_AAstar
+- Mid_4ant_band1_AAstar
+- Mid_4ant_band2_AAstar
+skaMidAAstarBand5TemplateNames:
+- Mid_15m_AAstar
+- Mid_15m_inner_r125m_AAstar
+- Mid_15m_inner_r250m_AAstar
+- Mid_15m_inner_r500m_AAstar
+- Mid_15m_inner_r1km_AAstar
+- Mid_15m_inner_r2km_AAstar
+- Mid_15m_inner_r4km_AAstar
+- Mid_15m_inner_r8km_AAstar
+- Mid_15m_outer_r125m_AAstar
+- Mid_15m_outer_r250m_AAstar
+- Mid_15m_outer_r500m_AAstar
+- Mid_15m_outer_r1km_AAstar
+- Mid_15m_outer_r2km_AAstar
+- Mid_15m_outer_r4km_AAstar
+- Mid_15m_outer_r8km_AAstar
+- Mid_4ant_band5a_AAstar
+skaLowAAstarTemplateNames:
+- Low_full_AAstar
+- Low_inner_r350m_AAstar
+- Low_inner_r700m_AAstar
+- Low_inner_r1.5km_AAstar
+- Low_inner_r3km_AAstar
+- Low_inner_r6km_AAstar
+- Low_inner_r12km_AAstar
+- Low_inner_r24km_AAstar
+- Low_outer_r350m_AAstar
+- Low_outer_r700m_AAstar
+- Low_outer_r1.5km_AAstar
+- Low_outer_r3km_AAstar
+- Low_outer_r6km_AAstar
+- Low_outer_r12km_AAstar
+- Low_outer_r24km_AAstar
+- Low_inner_400m_sparse_AAstar
+- Low_reduced_inner_400m_AAstar
+- Low_remote_phased_AAstar
+- Low_remote_single_AAstar
+- Low_4stat_AAstar
+- Low_substation_18m_inner_r1km_AAstar
+skaLowAA2TemplateNames:
+- Low_full_AA2
+skaMidAA2TemplateNames:
+- Mid_full_AA2
+skaMidZoomNames:
+- 0.21 kHz
+- 0.42 kHz
+- 0.84 kHz
+- 1.68 kHz
+- 3.36 kHz
+- 6.72 kHz
+skaLowZoomNames:
+- 0.226 kHz
+- 0.452 kHz
+- 0.904 kHz
+- 1.808 kHz
+additionalImageNames:
+- Residual
+- Model
+- PSF
+stokesNames:
+- I
+- Q
+- U
+- V
+polarizationNames:
+- X
+- Y
+pstFlowthroughBitDepthNames:
+- '1'
+- '2'
+- '4'
+- '8'
+- '16'
+- '32'
+contOdpTypeNames:
+- Calibrated Visibilities
+- Continuum Imaging
+- Spectral Imaging
+zoomOdpTypeNames:
+- Calibrated Visibilities
+- Spectral Imaging
+pstOdpTypeNames:
+- Pulsar Timing
+- Detected Filterbank
+- Flowthrough Archive
+telescopeContextOptions:
+- value: SV-AA2
+  label: SV-AA2
+- value: SV-AA*
+  label: SV-AA* (Mod)
+- value: Cycle 0
+  label: Cycle 0
+- value: Cycle 1
+  label: Cycle 1

@@ -1,0 +1,7 @@
+params:
+  template:
+  - oneof
+  - allowed_values:
+    - Low_full_AA2
+    - Low_core_AA2
+    - Low_outer_AA2

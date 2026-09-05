@@ -1,0 +1,13 @@
+params:
+  n_pst_odps:
+  - minmax
+  - min: 0
+    max: 8
+  n_image_odps_per_subarray:
+  - minmax
+  - min: 0
+    max: 16
+  n_zoom_image_odps_per_subarray:
+  - minmax
+  - min: 0
+    max: 8

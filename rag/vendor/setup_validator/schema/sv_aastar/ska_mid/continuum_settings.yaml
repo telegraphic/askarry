@@ -1,0 +1,7 @@
+params:
+  bandwidth:
+  - minmax2
+  - min: 13.4 kHz
+    max: $rx_bw
+    max2: 2500 MHz
+    unit: MHz

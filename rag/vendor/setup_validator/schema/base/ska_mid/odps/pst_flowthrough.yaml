@@ -1,0 +1,41 @@
+params:
+  centralFrequency:
+  - minmax
+  - min: $rx_low
+    max: $rx_high
+    unit: MHz
+  bandwidth:
+  - minmax2
+  - min: 108 kHz
+    max: $rx_bw
+    max2: 2500 MHz
+    unit: MHz
+  bitDepth:
+  - oneof
+  - allowed_values:
+    - 1
+    - 2
+    - 4
+    - 8
+    - 16
+  n_polarization:
+  - minmax
+  - min: 1
+    max: 2
+    step: 1
+    unit: ''
+  data_rate:
+  - minmax
+  - min: 0 Gbyte/s
+    max: 0.5 Gbyte/s
+    unit: Gbyte/s
+rules:
+- check_band_upper
+- check_band_lower
+- check_pst_beams
+docs:
+  centralFrequency: Beam centre frequency (MHz)
+  bandwidth: Beam bandwidth (MHz)
+  bitDepth: Bit depth
+  n_polarization: Number of polarizations to record (1 or 2)
+  data_rate: Estimated data rate (GB/s)

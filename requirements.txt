@@ -26,5 +26,13 @@ beautifulsoup4>=4.12.0
 # MCP server (Claude Desktop / frontier LLM access)
 fastmcp>=2.0.0
 
+# Vendored SKA setup-validator (rag/vendor/setup_validator/) and
+# odp-data-size-tool (rag/vendor/data_size/) core engines
+param>=2.2.0,<3
+numexpr>=2.10.2,<3
+simplejson>=3.20.1,<4
+astropy>=6.1,<7.0
+PyYAML>=6.0.2,<7
+
 # Testing
 pytest>=8.0.0

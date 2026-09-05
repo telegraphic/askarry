@@ -1,0 +1,16 @@
+params:
+  band:
+  - oneof
+  - allowed_values:
+    - Band 1
+    - Band 2
+    - Band 5a
+    - Band 5b
+  n_beam:
+  - minmax
+  - min: 1
+    max: 1
+    step: 1
+docs:
+  template: Subarray template to use
+  n_beam: Number of beams to configure within subarray

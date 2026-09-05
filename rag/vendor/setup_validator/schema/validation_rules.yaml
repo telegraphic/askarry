@@ -1,0 +1,86 @@
+check_band_upper:
+  name: check_band_upper
+  description: Check requested observation band does not exceed the receiver upper
+    limit
+  expr: centralFrequency + bandwidth/2 <= rx_high
+  errmsg: Requested band is outside the receiver limits.
+check_band_lower:
+  name: check_band_lower
+  description: Check requested observation band does not exceed the receiver lower
+    limit
+  expr: centralFrequency - bandwidth/2 >= rx_low
+  errmsg: Requested band is outside the receiver limits.
+check_primary_beams:
+  name: check_primary_beams
+  description: Check number of station beams is within the allowed range.
+  func: rag.vendor.setup_validator.rules.beams.number_of_beams_is_valid
+  errmsg: 'Subarray $sa: number of station beams ($n_beam) exceeds the maximum allowed
+    for the context ($n_max).'
+check_beam_has_enabled_mode:
+  name: check_beam_has_enabled_mode
+  description: Checks that each beam has at least one mode enabled.
+  errmsg: 'Some beams are not configured with any enabled modes: $errs'
+  func: rag.vendor.setup_validator.rules.beams.check_beam_has_enabled_mode
+check_pst_beams:
+  name: check_pst_beams
+  description: Check number of PST beams is within the allowed range
+  expr: timingModeBeams + dynamicSpectrumBeams + flowthroughModeBeams <= 8
+  errmsg: Number of PST beams exceeds the maximum allowed.
+check_sum_pst_beams:
+  name: check_sum_pst_beams
+  description: Check number of PST beams across subarrays is within allowed range.
+  func: rag.vendor.setup_validator.rules.pst.check_sum_pst_beams_is_valid
+  errmsg: Number of PST ODPs across subarrays ($n_beam) exceeds the maximum allowed
+    ($n_max).
+check_pst_odp_compatible_with_continuum:
+  name: check_pst_odp_compatible_with_continuum
+  description: Check PST ODPs require a bandwidth less than or equal to the max continuum
+    mode bandwidth.
+  func: rag.vendor.setup_validator.rules.pst.check_pst_odp_compatible_with_continuum
+  errmsg: 'PST ODPs + continuum mode exceed maximum allowed bandwidth: $errs'
+check_sum_pss_beams:
+  name: check_sum_pss_beams
+  description: Check if total number of PSS beams across subarrays is valid.
+  errmsg: Too many PSS beams across subarrays.
+  func: rag.vendor.setup_validator.rules.pss.check_sum_pss_beams_is_valid
+check_subarray_overlap:
+  name: check_subarray_overlap
+  description: Check if subarrays overlap (same antennas in both subarrays).
+  errmsg: Subarrays overlap. Please check the subarray configuration.
+  func: rag.vendor.setup_validator.rules.subarrays.subarrays_do_not_overlap
+check_subarray_templates_valid:
+  name: check_subarray_templates_valid
+  description: Check if subarray templates are valid (can be found in ska-ost-array-config).
+  errmsg: Subarray template is not valid.
+  func: rag.vendor.setup_validator.rules.subarrays.subarray_templates_are_valid
+check_continuum_bandwidth_valid:
+  name: check_continuum_bandwidth_valid
+  description: Check if total continuum bandwidth across beams is valid.
+  errmsg: Continuum bandwidth total across beams ($bw_total) is too large (context
+    allows $bw_max).
+  func: rag.vendor.setup_validator.rules.continuum.ska_low_continuum_bandwidth_is_valid
+check_zoom_number_channels_valid:
+  name: check_zoom_number_channels_valid
+  description: Check if total number of zoom channels is valid.
+  errmsg: Zoom channels total across beams ($n_chan_total) is too large (context allows
+    $n_max).
+  func: rag.vendor.setup_validator.rules.zoom.number_zoom_channels_valid
+check_odp_images_valid:
+  name: check_odp_images_valid
+  description: Check if total number of ODP images is valid.
+  errmsg: 'subarray $sa: Too many ODP $image_type outputs ($n_image) within subarray
+    (context allows $n_max).'
+  func: rag.vendor.setup_validator.rules.odps.check_number_images_is_valid
+check_odp_image_cube_channels_valid:
+  name: check_odp_image_cube_channels_valid
+  description: Check if number of channels in ODP is less than or equal to the number
+    of channels in the mode configuration.
+  errmsg: 'subarray $sa: $mode: Channels in ODP ($n_chan) not consistent with number
+    of channels in mode configuration ($n_chan_mode).'
+  func: rag.vendor.setup_validator.rules.odps.check_odp_image_cube_channels_valid
+check_pst_flowthrough_data_rate:
+  name: check_pst_flowthrough_data_rate
+  description: Check the computed data rate for PST flowthrough ODPs is within schema bounds.
+  func: rag.vendor.setup_validator.rules.pst.check_pst_flowthrough_data_rate
+  errmsg: 'beam $beam ODP $odp: computed flowthrough data rate ($data_rate) is outside
+    the allowed range [$dr_min, $dr_max].'

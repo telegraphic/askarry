@@ -1,0 +1,11 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - false
+    - true
+  availableOdpTypes:
+  - oneof
+  - allowed_values:
+    - "Detected Filterbank"
+    - "Flowthrough Archive"

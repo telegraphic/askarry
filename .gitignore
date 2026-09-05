@@ -15,3 +15,6 @@ pdfs/**
 !pdfs/download_errors.txt
 !pdfs/build_bibliography.py
 !pdfs/bibliography.json
+aaskaii-atlas-v0.zip
+.gitignore
+aaskaii-atlas.zip

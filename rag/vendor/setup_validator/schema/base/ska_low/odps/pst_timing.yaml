@@ -1,0 +1,14 @@
+params:
+  centralFrequency:
+  - minmax
+  - min: 50 MHz
+    max: 350 MHz
+    unit: MHz
+  bandwidth:
+  - minmax
+  - min: 3.6 kHz
+    max: 75 MHz
+    unit: MHz
+docs:
+  centralFrequency: Beam centre frequency (MHz)
+  bandwidth: Beam bandwidth (MHz)

@@ -1,0 +1,30 @@
+params:
+  template:
+  - oneof
+  - allowed_values:
+    - Low_full_AAstar
+    - Low_inner_r350m_AAstar
+    - Low_inner_r700m_AAstar
+    - Low_inner_r1.5km_AAstar
+    - Low_inner_r3km_AAstar
+    - Low_inner_r6km_AAstar
+    - Low_inner_r12km_AAstar
+    - Low_inner_r24km_AAstar
+    - Low_outer_r350m_AAstar
+    - Low_outer_r700m_AAstar
+    - Low_outer_r1.5km_AAstar
+    - Low_outer_r3km_AAstar
+    - Low_outer_r6km_AAstar
+    - Low_outer_r12km_AAstar
+    - Low_outer_r24km_AAstar
+    - Low_inner_400m_sparse_AAstar
+    - Low_reduced_inner_400m_AAstar
+    - Low_remote_phased_AAstar
+    - Low_remote_single_AAstar
+    - Low_4stat_AAstar
+    - Low_substation_18m_inner_r1km_AAstar
+  n_beam:
+  - minmax
+  - min: 1
+    max: 48
+    step: 1

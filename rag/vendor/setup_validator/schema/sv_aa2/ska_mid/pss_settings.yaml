@@ -1,0 +1,11 @@
+params:
+  enabled:
+  - oneof
+  - allowed_values:
+    - false
+    - true
+  numberOfBeams:
+  - minmax
+  - min: 1
+    max: 8
+    step: 1

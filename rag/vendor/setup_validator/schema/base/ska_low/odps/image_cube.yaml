@@ -1,0 +1,79 @@
+params:
+  mode:
+  - oneof
+  - allowed_values:
+    - continuum
+    - zoom
+  n_channel:
+  - minmax
+  - min: 1
+    max: 40
+    step: 1
+    unit: ''
+  n_channel_zoom:
+  - minmax
+  - min: 1
+    max: 4000
+    step: 1
+    unit: ''
+  n_channel_spectral:
+  - minmax
+  - min: 1
+    max: 4000
+    step: 1
+    unit: ''
+  n_polarization:
+  - minmax
+  - min: 1
+    max: 4
+    step: 1
+    unit: ''
+  n_polarization_zoom:
+  - minmax
+  - min: 1
+    max: 4
+    step: 1
+    unit: ''
+  n_polarization_spectral:
+  - minmax
+  - min: 1
+    max: 4
+    step: 1
+    unit: ''
+  robustParameter:
+  - minmax
+  - min: -2
+    max: 2
+    unit: ''
+  gaussianTaper:
+  - minmax
+  - min: 0
+    max: 1
+    unit: ''
+  create_residual_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  create_psf_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+  create_model_image:
+  - oneof
+  - allowed_values:
+    - true
+    - false
+docs:
+  mode: Either 'continuum' or 'zoom' mode
+  n_channel: Number of channels in the image cube
+  n_polarization: Number of polarizations in the image cube (1, 2, 3, or 4)
+  n_channel_zoom: Number of channels in the image cube (zoom mode)
+  n_polarization_zoom: Number of polarizations in the image cube, zoom mode (1, 2,
+    3, or 4)
+  robustParameter: Robust parameter for weighting, (-2 to 2)
+  gaussianTaper: Gaussian taper for weighting, (0 to 1)
+  create_residual_image: Create residual image
+  create_psf_image: Create PSF image
+  create_model_image: Create model image

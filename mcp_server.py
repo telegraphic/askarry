@@ -10,6 +10,18 @@ list_documents          Table of contents grouped by section.
 get_document_chunks     All indexed chunks from a named paper in reading order.
 query_sensitivity_calculator
                         Live query to the SKAO sensitivity calculator REST API.
+validate_observing_setup
+                        Validate an SKA telescope observing configuration against
+                        the vendored ska-sci-ops-setup-validator rule engine.
+estimate_data_product_size
+                        Estimate the data volume/rate of an SKA data product using
+                        the vendored odp-data-size-tool formulas.
+list_capability_schemas, describe_schema
+                        Introspect the setup-validator's schema directly (allowed
+                        subarray templates, min/max ranges, fixed values, per
+                        context/telescope) — more authoritative than static
+                        capability docs since it's the schema real configs are
+                        validated against.
 
 Usage
 -----
@@ -56,6 +68,9 @@ from rag.config import (
     SKA_CAPABILITIES_DIR,
     SUPPORTED_SUFFIXES,
 )
+from rag.data_product_estimator import estimate_data_product_size
+from rag.observing_setup_capabilities import describe_schema, list_capability_schemas
+from rag.observing_setup_validator import validate_observing_setup
 from rag.retrieval import retrieve
 from rag.sensitivity_calculator import query_sensitivity_calculator
 
@@ -358,6 +373,104 @@ def query_sensitivity_calc(telescope: str, endpoint: str, params: dict) -> str:
         return f"Invalid request: {exc}"
     except requests.HTTPError as exc:
         return f"Sensitivity calculator API error: {exc}"
+    return str(result)
+
+
+@mcp.tool()
+def validate_observing_setup_tool(obs_config: dict) -> str:
+    """Validate an SKA telescope observing configuration.
+
+    Runs the vendored ska-sci-ops-setup-validator rule engine (same rules the
+    real setup-validator frontend/backend enforces) against a full observing
+    configuration: subarrays, beams, and continuum/zoom/PSS/PST mode settings
+    with their output data products.
+
+    Args:
+        obs_config: Dict with keys "context" (e.g. "Cycle 0", "SV-AA*"),
+            "telescopeType" ("SKA-Low" or "SKA-Mid"), and "subarrays" (a dict
+            of per-subarray template/band/beam/mode settings). See
+            rag/vendor/setup_validator/schema/obs_config.yaml for the allowed
+            context/telescope values and full config shape.
+    """
+    try:
+        result = validate_observing_setup(obs_config)
+    except (KeyError, ValueError) as exc:
+        return f"Invalid request: {exc}"
+    return str(result)
+
+
+@mcp.tool()
+def estimate_data_product_size_tool(product_type: str, params: dict) -> str:
+    """Estimate the data volume (and rate, where applicable) of an SKA data product.
+
+    Uses the vendored odp-data-size-tool formulas for a single data product
+    instance (not a full observing setup).
+
+    Args:
+        product_type: One of "Image", "Image Cutout", "Gridded Visibilities",
+            "PSS", "PST Folded", "Dynamic Spectrum", "Flowthrough", "VLBI",
+            "Transient Dump", "Calibrated Vis".
+        params: Parameter values for that product type. Angular values
+            (resolution, fov) and durations are unit strings (e.g.
+            "1.000 arcsec", "3600.000 s"); bandwidths (bw, cbw) accept a
+            plain Hz number or a unit string (e.g. "300.000 MHz"); everything
+            else is a plain number/bool/string. See row_to_model in
+            rag/vendor/data_size/model_io.py for the exact required keys per
+            product_type.
+    """
+    try:
+        result = estimate_data_product_size(product_type, params)
+    except Exception as exc:
+        return f"Invalid request: {exc}"
+    return str(result)
+
+
+@mcp.tool()
+def list_capability_schemas_tool(telescope: str = "ska_low") -> str:
+    """List the setup-validator schema names available to query for a telescope.
+
+    Call this first to discover valid `schema` values for describe_schema_tool,
+    e.g. "subarray_config", "continuum_settings", "beam_config",
+    "pss_settings", "pst_settings", "zoom_settings", "obs_config_container",
+    "odps/calibrated_visibilities", "odps/image_cube", etc.
+
+    Args:
+        telescope: "ska_low"/"SKA-Low" or "ska_mid"/"SKA-Mid".
+    """
+    try:
+        result = list_capability_schemas(telescope)
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+    return "\n".join(result)
+
+
+@mcp.tool()
+def describe_schema_tool(schema: str, context: str | None = None, telescope: str | None = None) -> str:
+    """Look up allowed values / min-max ranges / fixed values for a setup-validator schema.
+
+    Reads the same validation schema the real setup-validator enforces —
+    this is the authoritative, up-to-date source for "what are my options?"
+    questions (e.g. which subarray templates exist for a given context and
+    telescope), more reliable than static capability documentation.
+
+    Some numeric bounds contain "$"-prefixed placeholders (e.g. "$rx_low",
+    "$rx_high") that are resolved at validation time against the selected
+    receiver band — these indicate the bound is band-dependent rather than
+    fixed.
+
+    Args:
+        schema: Schema name — see list_capability_schemas_tool for the set
+            available for a telescope.
+        context: Observing context, e.g. "base", "cycle_0", "cycle_1",
+            "sv_aa2"/"SV-AA2", "sv_aastar"/"SV-AA*". Omit to load only the
+            top-level (non-telescope-specific) schema, if one exists.
+        telescope: "ska_low"/"SKA-Low" or "ska_mid"/"SKA-Mid". Required
+            whenever context is given.
+    """
+    try:
+        result = describe_schema(schema, context=context, telescope=telescope)
+    except (KeyError, ValueError, FileNotFoundError) as exc:
+        return f"Invalid request: {exc}"
     return str(result)
 
 

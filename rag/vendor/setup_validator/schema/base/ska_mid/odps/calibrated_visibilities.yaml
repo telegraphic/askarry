@@ -1,0 +1,16 @@
+params:
+  n_time_averaging:
+  - minmax
+  - min: 1
+    max: 1000
+    step: 1
+    unit: ''
+  n_frequency_averaging:
+  - minmax
+  - min: 1
+    max: 1000
+    step: 1
+    unit: ''
+docs:
+  n_time_averaging: Time averaging factor (number of integrations)
+  n_frequency_averaging: Frequency averaging factor (number of channels)
