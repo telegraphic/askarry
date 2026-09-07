@@ -18,3 +18,7 @@ pdfs/**
 aaskaii-atlas-v0.zip
 .gitignore
 aaskaii-atlas.zip
+
+# Reference clone of the upstream Google Scholar MCP server (ported into
+# rag/google_scholar.py) - has its own nested .git and .venv, not ours to track
+google-scholar/

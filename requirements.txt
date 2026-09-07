@@ -26,6 +26,9 @@ beautifulsoup4>=4.12.0
 # MCP server (Claude Desktop / frontier LLM access)
 fastmcp>=2.0.0
 
+# Google Scholar search/author lookup (rag/google_scholar.py)
+scholarly>=1.7.0
+
 # Vendored SKA setup-validator (rag/vendor/setup_validator/) and
 # odp-data-size-tool (rag/vendor/data_size/) core engines
 param>=2.2.0,<3
@@ -33,6 +36,12 @@ numexpr>=2.10.2,<3
 simplejson>=3.20.1,<4
 astropy>=6.1,<7.0
 PyYAML>=6.0.2,<7
+
+# SKA-internal antenna-layout templates (subarray overlap/template validity
+# checks in rag/vendor/setup_validator/rules/subarrays.py, and
+# get_max_baseline_tool). Not on public PyPI:
+#   pip install --extra-index-url https://artefact.skao.int/repository/pypi-internal/simple ska-ost-array-config
+ska-ost-array-config>=4.5.0
 
 # Testing
 pytest>=8.0.0

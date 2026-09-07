@@ -42,7 +42,9 @@
       "Bash(.venv/bin/python -m pytest tests/ -q)",
       "Read(//Users/daniel.price/Data/ska-ost-array-config/src/ska_ost_array_config/**)",
       "Read(//Users/daniel.price/Data/sci-ops/setup-validator/ska-sci-ops-setup-validator-backend/tests/unit/ska_sci_ops_setup_validator/**)",
-      "Bash(cp ~/Data/sci-ops/setup-validator/ska-sci-ops-setup-validator-backend/tests/json/frontend/test_frontend_pass.json /Users/daniel.price/Data/astronomy-rag/tests/fixtures/setup_validator/frontend_pass.json *)"
+      "Bash(cp ~/Data/sci-ops/setup-validator/ska-sci-ops-setup-validator-backend/tests/json/frontend/test_frontend_pass.json /Users/daniel.price/Data/astronomy-rag/tests/fixtures/setup_validator/frontend_pass.json *)",
+      "Read(//Users/daniel.price/Data/sci-ops/setup-validator/ska-sci-ops-setup-validator-backend/src/ska_sci_ops_setup_validator/routers/**)",
+      "Bash(xargs -I{} echo {})"
     ],
     "additionalDirectories": [
       "/Users/daniel.price/Data/sci-ops/setup-validator/ska-sci-ops-setup-validator-backend/tests/json/frontend"

@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from rag.vendor.setup_validator.validation_schema import load_validation_schema
+from rag.vendor.setup_validator.frontend_defaults import get_defaults as _get_defaults
+from rag.vendor.setup_validator.validation_schema import get_rules, load_validation_schema
 
 _SCHEMA_ROOT = Path(__file__).resolve().parent / "vendor" / "setup_validator" / "schema"
 _BASE_TELESCOPE_DIRS = {"ska_low": "SKA-Low", "ska_mid": "SKA-Mid"}
@@ -71,3 +72,43 @@ def describe_schema(schema: str, context: str | None = None, telescope: str | No
             entry["doc"] = docs[param_id]
         described[param_id] = entry
     return described
+
+
+def describe_rules(schema: str, context: str | None = None, telescope: str | None = None) -> dict:
+    """Return the cross-field validation rules that apply to a schema.
+
+    Unlike describe_schema() (per-parameter bounds), this explains *why* a
+    combination of otherwise-individually-valid values can still fail — e.g.
+    "number of PST beams across subarrays exceeds the maximum allowed".
+
+    Args:
+        schema: Schema name — see list_capability_schemas().
+        context: Observing context, e.g. "cycle_0", "sv_aa2"/"SV-AA2".
+        telescope: "ska_low"/"SKA-Low" or "ska_mid"/"SKA-Mid". Required
+            whenever context is given.
+
+    Returns:
+        dict mapping rule name to {"description": ..., "errmsg": ..., and
+        either "expr" (a numexpr expression over the schema's params) or
+        "func" (a dotted Python function path evaluated against them)}.
+    """
+    return get_rules(schema, context=context, telescope=telescope)
+
+
+def get_context_defaults(context: str) -> dict:
+    """Return default/max values for continuum, PSS, and PST bandwidth, PST
+    beam count, and zoom/spectral channel counts, per telescope and (for
+    SKA-Mid) per receiver band, for a given observing context.
+
+    This is the same data the setup-validator frontend GUI pre-fills its
+    forms with — useful for constructing a new observing_setup from
+    scratch rather than checking one that already exists.
+
+    Args:
+        context: Observing context, e.g. "base", "cycle_0", "cycle_1",
+            "sv_aa2"/"SV-AA2", "sv_aastar"/"SV-AA*".
+
+    Returns:
+        dict with "skaMidDefaults" (per receiver band) and "skaLowDefaults".
+    """
+    return _get_defaults(context)

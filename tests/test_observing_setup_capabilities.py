@@ -1,6 +1,11 @@
 import pytest
 
-from rag.observing_setup_capabilities import describe_schema, list_capability_schemas
+from rag.observing_setup_capabilities import (
+    describe_rules,
+    describe_schema,
+    get_context_defaults,
+    list_capability_schemas,
+)
 
 
 def test_list_capability_schemas_includes_subarray_config():
@@ -33,3 +38,16 @@ def test_describe_schema_returns_equals_fixed_value():
     described = describe_schema("continuum_settings", context="base", telescope="ska_mid")
     assert described["channelWidth"]["type"] == "equals"
     assert described["channelWidth"]["ref_value"] == "13.4 kHz"
+
+
+def test_describe_rules_includes_pst_beam_limit_rule():
+    rules = describe_rules("obs_config")
+    assert "check_sum_pst_beams" in rules
+    assert rules["check_sum_pst_beams"]["func"].endswith("check_sum_pst_beams_is_valid")
+
+
+def test_get_context_defaults_returns_per_band_and_low_defaults():
+    defaults = get_context_defaults("SV-AA2")
+    assert "Band 1" in defaults["skaMidDefaults"]
+    assert defaults["skaMidDefaults"]["Band 1"]["maxContinuumBandwidth"] > 0
+    assert defaults["skaLowDefaults"]["maxContinuumBandwidth"] > 0

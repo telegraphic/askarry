@@ -162,8 +162,16 @@ Restart Claude Desktop after editing the config. The following tools will appear
 | `estimate_data_product_size_tool` | Estimate the data volume/rate of an SKA data product using the vendored odp-data-size-tool formulas |
 | `list_capability_schemas_tool` | List setup-validator schema names available to query for a telescope |
 | `describe_schema_tool` | Look up allowed values / min-max ranges / fixed values from the setup-validator schema — more authoritative than static capability docs |
+| `describe_rules_tool` | Cross-field validation rules (why a combination of otherwise-valid values can still fail) for a schema |
+| `get_context_defaults_tool` | Default/max bandwidth, beam-count, and channel-count values per telescope/band for an observing context |
+| `get_subarray_layout_tool` | Max baseline and station count for a subarray template (via ska_ost_array_config) |
+| `list_odps_tool` / `estimate_setup_data_volume_tool` | Bridge a validated observing setup to real data-volume numbers for every output data product it defines |
+| `resolve_subarray_name_tool` / `resolve_context_subarrays_tool` | Translate a subarray-template name across the sensitivity-calculator / ska_ost_array_config / setup-validator-schema naming vocabularies |
+| `search_google_scholar_key_words` | Search Google Scholar for articles matching a keyword query |
+| `search_google_scholar_advanced` | Search Google Scholar filtered by author and/or publication year range |
+| `get_author_info_tool` | Look up an author's affiliation, interests, citation count, and top publications on Google Scholar |
 
-> **Note:** Run `python ingest.py` first so there is a populated ChromaDB index for the server to search. The MCP server is read-only and never calls Ollama.
+> **Note:** Run `python ingest.py` first so there is a populated ChromaDB index for the server to search. The MCP server is read-only and never calls Ollama. The Google Scholar tools do live web scraping, same as `query_sensitivity_calc`'s outbound API calls.
 
 ---
 
