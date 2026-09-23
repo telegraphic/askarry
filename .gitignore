@@ -10,6 +10,7 @@ venv/
 
 # Project data (generated/local, not source)
 chroma_db/
+chroma_textbooks/
 pdfs/**
 !pdfs/download.py
 !pdfs/download_errors.txt

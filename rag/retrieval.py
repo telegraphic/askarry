@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import math
 import re
+from collections import defaultdict
+from pathlib import Path
 from typing import Callable
 
 import chromadb
@@ -22,6 +24,7 @@ from sentence_transformers import CrossEncoder, SentenceTransformer
 from . import store
 from .config import (
     BM25_WEIGHT,
+    CHROMA_DIR,
     CONTEXT_EXPANSION_WINDOW,
     DOC_SOURCE_AASKAII,
     DOC_SOURCE_PRIORITY,
@@ -40,9 +43,10 @@ from .config import (
 # Module-level cache — populated on first call to retrieve()
 _reranker: CrossEncoder | None = None
 # BM25 index and acronym lookup, both rebuilt whenever the collection size
-# changes (e.g. after ingest); see store.CountCache.
-_bm25_cache = store.CountCache()
-_acronyms_cache = store.CountCache()
+# changes (e.g. after ingest); see store.CountCache. One cache per ChromaDB
+# collection (keyed by collection.id) so the main and textbook indexes never share.
+_bm25_caches: defaultdict[str, store.CountCache] = defaultdict(store.CountCache)
+_acronyms_caches: defaultdict[str, store.CountCache] = defaultdict(store.CountCache)
 
 # Matches lines like "CSP   Central Signal Processor" or "CSP: Central Signal Processor"
 _ACRONYM_LINE_RE = re.compile(
@@ -51,11 +55,13 @@ _ACRONYM_LINE_RE = re.compile(
 )
 
 
-def _get_resources() -> tuple[SentenceTransformer, CrossEncoder, chromadb.Collection]:
+def _get_resources(
+    db_dir: Path = CHROMA_DIR,
+) -> tuple[SentenceTransformer, CrossEncoder, chromadb.Collection]:
     global _reranker
     if _reranker is None:
         _reranker = CrossEncoder(RERANKER_MODEL)
-    return store.get_embedding_model(), _reranker, store.get_chroma_collection()
+    return store.get_embedding_model(), _reranker, store.get_chroma_collection(db_dir)
 
 
 def warmup() -> None:
@@ -99,7 +105,7 @@ def _get_acronyms(collection: chromadb.Collection) -> dict[str, str]:
         )
         return acronyms
 
-    return _acronyms_cache.get(collection, _build)
+    return _acronyms_caches[str(collection.id)].get(collection, _build)
 
 
 def _expand_query(query: str, acronyms: dict[str, str]) -> str:
@@ -143,7 +149,7 @@ def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
         tokenised = [doc["text"].lower().split() for doc in bm25_docs]
         return BM25Okapi(tokenised), bm25_docs
 
-    return _bm25_cache.get(collection, _build)
+    return _bm25_caches[str(collection.id)].get(collection, _build)
 
 
 def _hyde_query(query: str) -> str:
@@ -251,6 +257,7 @@ def retrieve(
     use_hyde: bool | None = None,
     expansion_window: int | None = None,
     where: dict | None = None,
+    db_dir: Path = CHROMA_DIR,
 ) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
 
@@ -277,6 +284,9 @@ def retrieve(
     ``{"doc_source": "ska_capabilities"}``) scoping both the semantic and
     BM25 search legs to matching chunks only. ``None`` searches everything.
 
+    *db_dir* selects the ChromaDB store to search (default: the main index;
+    pass ``config.TEXTBOOKS_CHROMA_DIR`` for the separate textbook index).
+
     Each returned dict has at minimum:
         text         : str   — expanded passage text
         source       : str   — originating file path
@@ -292,11 +302,12 @@ def retrieve(
     top_k = top_k if top_k is not None else TOP_K
     _use_hyde = USE_HYDE if use_hyde is None else use_hyde
     _expansion_window = CONTEXT_EXPANSION_WINDOW if expansion_window is None else expansion_window
-    model, reranker, collection = _get_resources()
+    model, reranker, collection = _get_resources(db_dir)
 
     if collection.count() == 0:
+        flag = "" if db_dir == CHROMA_DIR else " --textbooks"
         raise RuntimeError(
-            "The vector store is empty. Run `python ingest.py` first."
+            f"The vector store at {db_dir} is empty. Run `python ingest.py{flag}` first."
         )
 
     # --- Optional HyDE ---

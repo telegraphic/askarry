@@ -29,11 +29,14 @@ from .bibliography import format_citation, lookup_citation
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
+    DOC_SOURCE_TEXTBOOK,
     EMBEDDING_MODEL,
     INGEST_WORKERS,
     PDF_DIRS,
     SUPPORTED_SUFFIXES,
+    TEXTBOOKS_DIR,
     doc_source_for,
+    textbook_title,
 )
 
 # HybridChunker/tokenizers count tokens on the *full* section text before
@@ -136,38 +139,47 @@ def _chunk_metadata(source: str, index: int, chunk) -> dict:
     }
 
 
-def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[str, int]:
+def ingest_files(
+    dirs: list[Path] | None = None, reset: bool = False, db_dir: Path = CHROMA_DIR
+) -> dict[str, int]:
     """
     Ingest all supported files found (recursively) in *dirs* into ChromaDB.
 
     Files whose resolved path is already recorded as a source in ChromaDB are
     skipped, so re-running only processes new files.
 
-    If *reset* is True, the existing ChromaDB store at CHROMA_DIR is deleted
+    If *reset* is True, the existing ChromaDB store at *db_dir* is deleted
     first, so every file is parsed and indexed from scratch.
+
+    *db_dir* selects the ChromaDB store (default: the main CHROMA_DIR index;
+    pass config.TEXTBOOKS_CHROMA_DIR for the textbook index). Files under
+    TEXTBOOKS_DIR are never added to the main index.
 
     Returns a dict mapping file path string → number of chunks indexed.
     """
     dirs = dirs if dirs is not None else PDF_DIRS
 
-    if reset and CHROMA_DIR.exists():
-        logger.info(f"Reindex: removing existing ChromaDB store at '{CHROMA_DIR}'")
-        shutil.rmtree(CHROMA_DIR)
+    if reset and db_dir.exists():
+        logger.info(f"Reindex: removing existing ChromaDB store at '{db_dir}'")
+        shutil.rmtree(db_dir)
         # Invalidate the in-memory handle so get_chroma_collection() opens a
         # fresh client against the new (empty) on-disk store rather than
         # returning a stale handle pointing at the deleted database.
-        store.reset_collection()
+        store.reset_collection(db_dir)
 
     # Embedding model lives in the main process only
     model = store.get_embedding_model()
     chunk_size = model.max_seq_length
 
-    collection = store.get_chroma_collection()
+    collection = store.get_chroma_collection(db_dir)
 
     existing_metadatas = collection.get(include=["metadatas"])["metadatas"] or []
     indexed_sources: set[str] = {m["source"] for m in existing_metadatas}
 
     all_files = store.discover_files(dirs, SUPPORTED_SUFFIXES)
+    if db_dir == CHROMA_DIR:
+        textbooks = TEXTBOOKS_DIR.resolve()
+        all_files = [fp for fp in all_files if textbooks not in fp.resolve().parents]
     if not all_files:
         return {}
 
@@ -219,7 +231,12 @@ def ingest_files(dirs: list[Path] | None = None, reset: bool = False) -> dict[st
         # lookup is fast (cached JSON) and happens here in the main process so
         # worker processes don't need the bibliography module loaded.
         bib_entry = lookup_citation(source)
-        doc_title = bib_entry["title"] if bib_entry else Path(source).stem
+        if bib_entry:
+            doc_title = bib_entry["title"]
+        elif doc_source_for(source) == DOC_SOURCE_TEXTBOOK:
+            doc_title = textbook_title(source)
+        else:
+            doc_title = Path(source).stem
         for meta in metadatas:
             meta["doc_title"] = doc_title
 

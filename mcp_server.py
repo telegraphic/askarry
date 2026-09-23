@@ -6,6 +6,10 @@ Tools
 -----
 search_astronomy_docs   Semantic + BM25 hybrid search, re-ranked; returns
                         passages with title, section hierarchy, page, relevance.
+search_textbooks        Same hybrid search over a separate radio-astronomy
+                        textbook index (interferometry, receivers, pulsars) —
+                        technical background, not SKA-specific facts.
+list_textbooks          Textbooks available to search_textbooks.
 list_documents          Table of contents grouped by section.
 get_document_chunks     All indexed chunks from a named paper in reading order.
 query_sensitivity_calculator
@@ -82,10 +86,15 @@ from rag.config import (
     DOC_SOURCE_AASKAII,
     DOC_SOURCE_LABELS,
     DOC_SOURCE_SKA_CAPABILITIES,
+    MCP_BACKGROUND_TOP_K,
     MCP_RETRIEVAL_CANDIDATES,
+    MCP_TEXTBOOK_TOP_K,
     MCP_TOP_K,
     SKA_CAPABILITIES_DIR,
     SUPPORTED_SUFFIXES,
+    TEXTBOOKS_CHROMA_DIR,
+    TEXTBOOKS_DIR,
+    textbook_title,
 )
 from rag.data_product_estimator import estimate_data_product_size
 from rag.google_scholar import get_author_info
@@ -173,6 +182,19 @@ mcp = FastMCP(
         "you) before calling continuum/zoom/pss calculate endpoints, to get "
         "a valid subarray_configuration name.\n"
         "\n"
+        "Technical background: search_textbooks covers a separate index of "
+        "standard radio-astronomy textbooks (Thompson/Moran/Swenson "
+        "interferometry & synthesis imaging, Tools of Radio Astronomy, "
+        "Essential Radio Astronomy, pulsar handbooks) — established "
+        "fundamentals such as interferometry, imaging/calibration theory, "
+        "receivers and noise, radiation processes, and pulsar physics/"
+        "timing. Use it (or pass include_background=True to "
+        "search_astronomy_docs / search_ska_capabilities) for derivations, "
+        "definitions, 'how does X work' questions, or when an SKA paper "
+        "assumes background the user may lack. Textbooks predate SKA and "
+        "never override SKA-specific numbers from the capability docs or "
+        "live tools. list_textbooks shows what's indexed.\n"
+        "\n"
         "Google Scholar tools (search_google_scholar_key_words, "
         "search_google_scholar_advanced, get_author_info_tool): good for "
         "science-justification/literature-review content, citation tracking, "
@@ -234,8 +256,46 @@ def _format_passage(i: int, chunk: dict) -> str:
     return "\n".join(lines)
 
 
+def _search(
+    query: str,
+    top_k: int,
+    where: dict | None = None,
+    include_background: bool = False,
+) -> str:
+    """Run the main-index search and render passages; optionally append the
+    top textbook passages for the same query, numbered after the main ones."""
+    chunks = retrieve(
+        query,
+        top_k=top_k,
+        use_hyde=False,          # never require Ollama in the MCP path
+        expansion_window=2,      # wider context per passage for frontier LLMs
+        where=where,
+    )
+    parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
+    out = "\n\n---\n\n".join(parts) if parts else "No relevant passages found for that query."
+    if include_background:
+        try:
+            background = retrieve(
+                query,
+                top_k=MCP_BACKGROUND_TOP_K,
+                use_hyde=False,
+                expansion_window=1,
+                db_dir=TEXTBOOKS_CHROMA_DIR,
+            )
+        except RuntimeError as exc:  # textbook store not ingested yet
+            return f"{out}\n\n## Technical background (textbooks)\n{exc}"
+        if background:
+            bg_parts = [
+                _format_passage(i, c) for i, c in enumerate(background, len(chunks) + 1)
+            ]
+            out += "\n\n## Technical background (textbooks)\n\n" + "\n\n---\n\n".join(bg_parts)
+    return out
+
+
 @mcp.tool()
-def search_astronomy_docs(query: str, top_k: int = MCP_TOP_K) -> str:
+def search_astronomy_docs(
+    query: str, top_k: int = MCP_TOP_K, include_background: bool = False
+) -> str:
     """Search the SKA astronomy document database for passages relevant to a query.
 
     Uses a hybrid pipeline: semantic vector search + BM25 keyword search,
@@ -250,22 +310,16 @@ def search_astronomy_docs(query: str, top_k: int = MCP_TOP_K) -> str:
     Args:
         query:  The question or topic to search for.
         top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
+        include_background: Also append a few textbook passages (see
+                search_textbooks) for underlying technical background.
     """
-    chunks = retrieve(
-        query,
-        top_k=top_k,
-        use_hyde=False,          # never require Ollama in the MCP path
-        expansion_window=2,      # wider context per passage for frontier LLMs
-    )
-    if not chunks:
-        return "No relevant passages found for that query."
-
-    parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
-    return "\n\n---\n\n".join(parts)
+    return _search(query, top_k, include_background=include_background)
 
 
 @mcp.tool()
-def search_ska_capabilities(query: str, top_k: int = MCP_TOP_K) -> str:
+def search_ska_capabilities(
+    query: str, top_k: int = MCP_TOP_K, include_background: bool = False
+) -> str:
     """Search the SKA key capabilities technical documents for passages relevant to a query.
 
     This is a separate, smaller document set from the AASKAII science papers
@@ -276,19 +330,61 @@ def search_ska_capabilities(query: str, top_k: int = MCP_TOP_K) -> str:
     Args:
         query:  The question or topic to search for.
         top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
+        include_background: Also append a few textbook passages (see
+                search_textbooks) for underlying technical background.
     """
-    chunks = retrieve(
+    return _search(
         query,
-        top_k=top_k,
-        use_hyde=False,
-        expansion_window=2,
+        top_k,
         where={"doc_source": DOC_SOURCE_SKA_CAPABILITIES},
+        include_background=include_background,
     )
+
+
+@mcp.tool()
+def search_textbooks(query: str, top_k: int = MCP_TEXTBOOK_TOP_K) -> str:
+    """Search radio-astronomy textbooks for technical background on a topic.
+
+    A separate index from the SKA papers: standard references on
+    interferometry and synthesis imaging, calibration, receivers and noise,
+    radiation processes, and pulsar physics/timing. Use for fundamentals,
+    derivations and definitions — not for SKA-specific numbers. Same hybrid
+    search/rerank pipeline as search_astronomy_docs.
+
+    Args:
+        query:  The question or topic to search for.
+        top_k:  Maximum number of passages to return (default: MCP_TEXTBOOK_TOP_K).
+    """
+    try:
+        chunks = retrieve(
+            query,
+            top_k=top_k,
+            use_hyde=False,
+            expansion_window=1,  # textbook chunks are dense; ±1 is plenty
+            db_dir=TEXTBOOKS_CHROMA_DIR,
+        )
+    except RuntimeError as exc:
+        return str(exc)
     if not chunks:
         return "No relevant passages found for that query."
+    return "\n\n---\n\n".join(_format_passage(i, c) for i, c in enumerate(chunks, 1))
 
-    parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
-    return "\n\n---\n\n".join(parts)
+
+@mcp.tool()
+def list_textbooks() -> str:
+    """List the textbooks available to search_textbooks (one line per book,
+    with its number of PDF files when split into chapters)."""
+    files = store.discover_files([TEXTBOOKS_DIR], SUPPORTED_SUFFIXES)
+    if not files:
+        return f"No textbooks found. Add PDFs to {TEXTBOOKS_DIR} and run `python ingest.py --textbooks`."
+    books: dict[str, int] = {}
+    for f in files:
+        title = textbook_title(f)
+        books[title] = books.get(title, 0) + 1
+    return "\n".join(
+        f"- {title}" + (f" ({n} chapter files)" if n > 1 else "")
+        for title, n in sorted(books.items())
+    )
 
 
 @mcp.tool()
