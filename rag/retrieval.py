@@ -135,6 +135,13 @@ def get_acronyms(db_dir: Path = CHROMA_DIR) -> dict[str, str]:
     return _get_acronyms(store.get_chroma_collection(db_dir))
 
 
+def rerank_score(query: str, text: str) -> float:
+    """Cross-encoder relevance of one passage to *query*, sigmoid-normalised
+    to 0-1 (same scale as retrieve()'s scores, before the doc_source priority)."""
+    _, reranker, _ = _get_resources()
+    return round(_sigmoid(float(reranker.predict([[query, text]])[0])), 4)
+
+
 def get_all_chunks(db_dir: Path = CHROMA_DIR) -> list[dict]:
     """Every indexed chunk as {"text", "meta"}, sharing the BM25 index's cache."""
     return _get_bm25(store.get_chroma_collection(db_dir))[1]

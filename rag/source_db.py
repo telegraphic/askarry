@@ -4,6 +4,10 @@ Database of astronomical sources named in the indexed papers.
     python -m rag.source_db                      # build/update sources.db (incremental)
     python -m rag.source_db --retry-unresolved   # also re-query past SIMBAD misses
 
+requests  observing requests stated in the papers (hours, position,
+          constraints), each backed by a verbatim quote; input to
+          rag.scheduling.lst_pressure
+
 Pipeline: regex-scan every indexed chunk for catalogue-style and common
 source names → look each distinct name up once in SIMBAD (batched, cached,
 including "not found") → store resolved sources and every mention in SQLite.
@@ -60,6 +64,43 @@ NAME_PATTERNS: list[str] = [
     r"Andromeda Galaxy|Coma Cluster|Virgo Cluster|Perseus Cluster|Bullet Cluster|Fornax Cluster",
     r"Proxima Cen(?:tauri)?|TRAPPIST-1|Barnard's Star",
 ]
+# Survey/deep fields: (pattern, SIMBAD name, curated position). SIMBAD knows
+# most fields only under a "NAME …" form, so the name as written is mapped
+# to that. Fields SIMBAD lacks carry a curated position with its source;
+# positions are never typed from memory. ELAIS-S1/N1 and Euclid Deep Field
+# South are extracted but stay unresolved: neither SIMBAD nor the corpus
+# gives a centre for them.
+SURVEY_FIELDS: list[tuple[str, str | None, dict | None]] = [
+    (r"COSMOS(?: [Ff]ield)?", "NAME COSMOS Field", None),
+    (r"E-?CDF-?S|Extended Chandra Deep Field[- ]South", "NAME ECDFS", None),
+    (r"CDF-?S|Chandra Deep Field[- ]South", "NAME CDFS", None),
+    (r"GOODS-?S|GOODS[- ]South", "NAME GOODS South Field", None),
+    (r"GOODS-?N|GOODS[- ]North", "NAME GOODS North Field", None),
+    (r"Lockman Hole", "NAME Lockman Hole", None),
+    (r"Hubble Deep Field[- ]South|HDF-?S", "NAME HDF-S", None),
+    (r"Hubble Deep Field(?:[- ]North)?|HDF(?:-?N)?", "NAME HDF", None),
+    (r"South Galactic Pole|SGP", "NAME SGP", None),
+    (r"Bo(?:ö|o)tes (?:[Ff]ield|Deep Field)|NDWFS", "NAME NOAO Deep Wide Field", None),
+    # deLeraAcedo01 p.13: "EoR0 (RA = 0 h, DEC = -27°), EoR1 (RA = 4 h,
+    # DEC = -27°) and EoR2 (RA = 10.3 h, DEC = -10°)".
+    (r"EoR0", None, {"ra": 0.0, "dec": -27.0, "source": "deLeraAcedo01 p.13"}),
+    (r"EoR1", None, {"ra": 60.0, "dec": -27.0, "source": "deLeraAcedo01 p.13"}),
+    (r"EoR2", None, {"ra": 154.5, "dec": -10.0, "source": "deLeraAcedo01 p.13"}),
+    (r"XMM-LSS", "NAME XMM-LSS Field", None),
+    (r"ELAIS[- ]?[NS]1", None, None),
+    (r"Euclid Deep Field[- ]South|EDF-?S", None, None),
+]
+NAME_PATTERNS += [pattern for pattern, _, _ in SURVEY_FIELDS]
+
+
+def _field(raw: str) -> tuple[str | None, dict | None] | None:
+    """(SIMBAD name, curated position) if *raw* is a known survey field."""
+    for pattern, simbad_name, curated in SURVEY_FIELDS:
+        if re.fullmatch(pattern, raw):
+            return simbad_name, curated
+    return None
+
+
 # Not glued to other tokens: rejects model/label names like "Jet-M01/M22".
 NAME_RE = re.compile(r"(?<![\w*/-])(?:" + "|".join(NAME_PATTERNS) + r")(?![\w*/])")
 
@@ -89,6 +130,17 @@ CREATE TABLE IF NOT EXISTS mentions (
     UNIQUE (source_path, chunk_index, name_key)
 );
 CREATE INDEX IF NOT EXISTS mentions_name ON mentions(name_key);
+CREATE TABLE IF NOT EXISTS requests (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    source_id INTEGER REFERENCES sources(id),
+    ra_deg REAL, dec_deg REAL,                              -- point target, or
+    ra_min REAL, ra_max REAL, dec_min REAL, dec_max REAL,   -- area (survey)
+    hours REAL NOT NULL, telescope TEXT NOT NULL, band TEXT, freq_mhz REAL,
+    sun TEXT, min_elevation REAL, commensal_group TEXT,
+    paper TEXT NOT NULL, book TEXT, page INTEGER, quote TEXT NOT NULL,
+    extracted_by TEXT, created_at TEXT
+);
 """
 
 
@@ -98,7 +150,11 @@ def name_key(name: str) -> str:
 
 
 def query_form(raw: str) -> str:
-    """SIMBAD-friendly spelling of a name as written ("PSRs B1913+16" → "PSR B1913+16")."""
+    """SIMBAD-friendly spelling of a name as written ("PSRs B1913+16" →
+    "PSR B1913+16"; "COSMOS" → "NAME COSMOS Field")."""
+    field = _field(raw)
+    if field and field[0]:
+        return field[0]
     return re.sub(r"^PSRs\b", "PSR", raw)
 
 
@@ -187,7 +243,17 @@ def resolve_pending(conn: sqlite3.Connection, query_fn=_query_simbad) -> dict:
     resolved = unresolved = 0
     for start in range(0, len(pending), SIMBAD_BATCH):
         batch = pending[start: start + SIMBAD_BATCH]
-        hits = _lookup([query_form(row["raw_name"]) for row in batch], query_fn)
+        # Curated fields never go to SIMBAD; everything else is looked up.
+        curated = {i: _field(row["raw_name"])[1] for i, row in enumerate(batch)
+                   if _field(row["raw_name"]) and _field(row["raw_name"])[1]}
+        to_query = [i for i in range(len(batch)) if i not in curated]
+        hits = [None] * len(batch)
+        for i, hit in zip(to_query, _lookup([query_form(batch[i]["raw_name"]) for i in to_query], query_fn)
+                          if to_query else []):
+            hits[i] = hit
+        for i, c in curated.items():
+            hits[i] = {"main_id": f"{batch[i]['raw_name']} field", "ra": c["ra"], "dec": c["dec"],
+                       "otype": "field", "rvz_redshift": None, "resolved_by": f"curated: {c['source']}"}
         for row, hit in zip(batch, hits):
             if hit is None:
                 conn.execute(
@@ -203,7 +269,8 @@ def resolve_pending(conn: sqlite3.Connection, query_fn=_query_simbad) -> dict:
                 "INSERT OR IGNORE INTO sources (main_id, ra_deg, dec_deg, gal_l_deg, gal_b_deg,"
                 " object_type, redshift, resolved_by, resolved_at) VALUES (?,?,?,?,?,?,?,?,?)",
                 (main_id, ra, dec, gal.l.deg if gal else None, gal.b.deg if gal else None,
-                 _clean(hit["otype"]), _clean(hit["rvz_redshift"]), "SIMBAD", _now()),
+                 _clean(hit["otype"]), _clean(hit["rvz_redshift"]),
+                 hit["resolved_by"] if isinstance(hit, dict) and "resolved_by" in hit else "SIMBAD", _now()),
             )
             source_id = conn.execute("SELECT id FROM sources WHERE main_id = ?", (main_id,)).fetchone()[0]
             conn.execute(
@@ -298,6 +365,98 @@ def source_mentions(conn: sqlite3.Connection, name: str, limit: int = 50) -> dic
         (row["id"], limit),
     ).fetchall()
     return {"found": True, "source": dict(row), "mentions": [dict(m) for m in mentions]}
+
+
+def _squash(text: str) -> str:
+    """Lowercase with all whitespace removed: PDF extraction spaces text
+    unpredictably ("10 . 3 h"), so quotes are compared in this form."""
+    return re.sub(r"\s+", "", text).lower()
+
+
+def find_quote(quote: str, paper: str, book: str | None = None) -> dict | None:
+    """The chunk of *paper* containing *quote* verbatim (whitespace- and
+    case-insensitive), or None."""
+    from rag.corpus_tools import build_filter
+    from rag.retrieval import get_all_chunks
+
+    sources = set(build_filter(book=book, paper=paper)["source"])
+    wanted = _squash(quote)
+    for c in get_all_chunks():
+        if c["meta"]["source"] in sources and wanted in _squash(c["text"]):
+            return c["meta"]
+    return None
+
+
+def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: str,
+                paper: str, quote: str, book: str | None = None,
+                ra: float | None = None, dec: float | None = None,
+                ra_range: list | None = None, dec_range: list | None = None,
+                band: str | None = None, freq_mhz: float | None = None,
+                sun: str = "any", min_elevation: float | None = None,
+                commensal_group: str | None = None, extracted_by: str | None = None) -> dict:
+    """Record an observing request stated in a paper.
+
+    Refused unless *quote* appears verbatim in *paper*: requests must come
+    from the text, not from an agent's inference. The position is ra/dec, an
+    area (ra_range + dec_range), or looked up from *name* in the sources
+    table (a name seen in the papers, e.g. "Cen A" or "COSMOS").
+    """
+    from rag.scheduling import SUN_MODES
+
+    if hours <= 0:
+        raise ValueError("hours must be positive")
+    telescope = telescope.lower().replace("ska-", "")
+    if telescope not in ("low", "mid"):
+        raise ValueError("telescope must be 'low' or 'mid'")
+    if sun not in SUN_MODES:
+        raise ValueError(f"sun must be one of {SUN_MODES}")
+    meta = find_quote(quote, paper, book)
+    if meta is None:
+        raise ValueError(f"Quote not found verbatim in paper {paper!r}; requests must quote the paper")
+
+    source_id = None
+    if ra is None and ra_range is None:
+        row = conn.execute(
+            "SELECT s.id, s.ra_deg, s.dec_deg FROM sources s JOIN names n ON n.source_id = s.id"
+            " WHERE n.name_key = ?", (name_key(name),)).fetchone()
+        if row is None or row["ra_deg"] is None:
+            raise ValueError(f"No position for {name!r}: give ra/dec or ra_range/dec_range")
+        source_id, ra, dec = row["id"], row["ra_deg"], row["dec_deg"]
+    if ra_range is not None and dec_range is None:
+        raise ValueError("ra_range needs dec_range")
+
+    cur = conn.execute(
+        """INSERT INTO requests (name, source_id, ra_deg, dec_deg, ra_min, ra_max, dec_min, dec_max,
+               hours, telescope, band, freq_mhz, sun, min_elevation, commensal_group,
+               paper, book, page, quote, extracted_by, created_at)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        (name, source_id, ra, dec, *(ra_range or (None, None)), *(dec_range or (None, None)),
+         hours, telescope, band, freq_mhz, sun, min_elevation, commensal_group,
+         Path(meta["source"]).stem, meta.get("doc_source"), meta.get("page_no", 0),
+         quote, extracted_by, _now()),
+    )
+    conn.commit()
+    return {"id": cur.lastrowid, "paper": Path(meta["source"]).stem, "page": meta.get("page_no", 0)}
+
+
+def list_requests(conn: sqlite3.Connection, telescope: str | None = None) -> list[dict]:
+    """Stored requests, shaped for rag.scheduling.lst_pressure."""
+    rows = conn.execute(
+        "SELECT * FROM requests" + (" WHERE telescope = ?" if telescope else "") + " ORDER BY id",
+        (telescope.lower().replace("ska-", ""),) if telescope else (),
+    ).fetchall()
+    out = []
+    for r in rows:
+        req = {k: r[k] for k in ("id", "name", "hours", "telescope", "band", "freq_mhz", "sun",
+                                 "commensal_group", "paper", "book", "page", "quote") if r[k] is not None}
+        if r["min_elevation"] is not None:
+            req["min_elevation"] = r["min_elevation"]
+        if r["ra_min"] is not None:
+            req["ra_range"], req["dec_range"] = [r["ra_min"], r["ra_max"]], [r["dec_min"], r["dec_max"]]
+        else:
+            req["ra"], req["dec"] = r["ra_deg"], r["dec_deg"]
+        out.append(req)
+    return out
 
 
 def unresolved_names(conn: sqlite3.Connection, limit: int = 200) -> list[dict]:

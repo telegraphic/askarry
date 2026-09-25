@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 import rag.source_db as sd
 
@@ -57,3 +58,47 @@ def test_resolve_and_query_roundtrip(tmp_path):
     assert [r["main_id"] for r in sd.query_sources(conn, dec_min=0)] == ["NAME Sgr 1935+2154"]
     assert len(sd.source_mentions(conn, "centaurus a")["mentions"]) == 2
     assert sd.unresolved_names(conn)[0]["raw_name"] == "PKS 9999-99"
+
+
+def test_survey_fields_map_to_simbad_or_curated():
+    assert sd.query_form("COSMOS") == "NAME COSMOS Field"
+    assert sd.query_form("GOODS-South") == "NAME GOODS South Field"
+    assert sd._field("EoR1")[1]["dec"] == -27.0
+    assert _names("fields: COSMOS, ECDFS, EoR0 and ELAIS-N1") == ["COSMOS", "ECDFS", "EoR0", "ELAIS-N1"]
+
+
+def test_curated_field_never_sent_to_simbad(tmp_path):
+    conn = sd.connect(tmp_path / "s.db")
+    chunks = [{"text": "Deep integrations on EoR0 and Cen A.",
+               "meta": {"source": "/x/AASKAII/The Cosmos/A01.pdf", "doc_source": "aaskaii", "chunk_index": 0}}]
+    sd.record_mentions(conn, chunks)
+    sent = []
+    sd.resolve_pending(conn, lambda names: sent.extend(names) or _fake_simbad(names))
+    assert sent == ["Cen A"]
+    row = conn.execute("SELECT * FROM sources WHERE main_id = 'EoR0 field'").fetchone()
+    assert row["dec_deg"] == -27.0 and row["resolved_by"].startswith("curated: deLeraAcedo01")
+
+
+def test_add_request_requires_verbatim_quote(tmp_path, monkeypatch):
+    conn = sd.connect(tmp_path / "s.db")
+    meta = {"source": "/x/AASKAII/The Cosmos/A01.pdf", "doc_source": "aaskaii", "page_no": 4}
+    monkeypatch.setattr(sd, "find_quote", lambda q, p, b=None: meta if "stated" in q else None)
+    with pytest.raises(ValueError, match="verbatim"):
+        sd.add_request(conn, "X", 10, "low", "A01", "invented text", ra=0, dec=-30)
+    with pytest.raises(ValueError, match="No position"):
+        sd.add_request(conn, "Unknown", 10, "low", "A01", "stated text")
+    out = sd.add_request(conn, "X", 10, "low", "A01", "stated text", ra=0, dec=-30, sun="night")
+    assert out == {"id": 1, "paper": "A01", "page": 4}
+    assert sd.list_requests(conn)[0]["ra"] == 0 and sd.list_requests(conn)[0]["sun"] == "night"
+
+
+def test_find_quote_ignores_pdf_spacing(monkeypatch):
+    import rag.corpus_tools as ct
+    import rag.retrieval as retrieval
+
+    src = "/x/AASKAII/The Cosmos/A01.pdf"
+    chunks = [{"text": "EoR2 (RA = 10 . 3 h , DEC = -10 ◦ )", "meta": {"source": src, "doc_source": "aaskaii"}}]
+    monkeypatch.setattr(retrieval, "get_all_chunks", lambda: chunks)
+    monkeypatch.setattr(ct, "get_all_chunks", lambda: chunks)
+    assert sd.find_quote("RA = 10 .3 h", "A01") is not None
+    assert sd.find_quote("RA = 11 h", "A01") is None

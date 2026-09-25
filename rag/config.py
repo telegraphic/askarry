@@ -45,6 +45,25 @@ SOURCES_DB_PATH = HERE / "sources.db"
 # Rebuildable offline: `python -m rag.citation_db`.
 CITATIONS_DB_PATH = HERE / "citations.db"
 
+# ---------------------------------------------------------------------------
+# Scheduling / LST-pressure analysis (rag/scheduling.py)
+# ---------------------------------------------------------------------------
+# UNVERIFIED DEFAULTS: every value below is a placeholder chosen for a first
+# relative analysis and needs an SKAO owner to confirm. Tool results echo
+# them under "assumptions". Site positions are not set here: they come from
+# ska_ost_array_config (LOW_ARRAY_REF / MID_ARRAY_REF).
+SCHEDULING = {
+    "night_sun_alt_deg": -18.0,          # "night" = Sun below this altitude
+    # "avoid_twilight" excludes Sun altitudes inside this band: about ±1 h
+    # around sunrise/sunset at the SKA sites' latitudes.
+    "twilight_sun_alt_band_deg": (-12.0, 12.0),
+    "min_sun_separation_deg": 0.0,       # 0 = no Sun-avoidance cut
+    "default_min_elevation_deg": 45.0,
+    "maintenance_fraction": 0.15,        # share of clock time not schedulable
+    "time_step_min": 10,                 # sampling of the year-long time grid
+    "lst_bin_h": 1,
+}
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
 # recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
 # are already covered — not listed separately here to avoid double-discovery.

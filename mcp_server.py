@@ -62,6 +62,12 @@ list_unresolved_sources_tool
                         Database of sources named in the papers (SIMBAD-resolved).
 build_citation_db_tool, top_cited_papers_tool, citing_papers_tool
                         Database of references cited by the papers (most-cited works).
+facility_network_tool   External facilities named per section, with co-mentions.
+verify_citation_tool    Check a paper's reference list contains a cited work.
+visibility_windows_tool, lst_pressure_tool
+                        Target visibility and LST pressure (unverified settings).
+add_observing_request_tool, list_observing_requests_tool
+                        Quote-backed observing requests for lst_pressure_tool.
 
 Resources
 ---------
@@ -103,7 +109,7 @@ import requests
 from fastmcp import FastMCP
 
 from rag import store
-from rag import citation_db, corpus_tools, source_db
+from rag import citation_db, corpus_tools, scheduling, source_db
 from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
     DOC_SOURCE_AASKAII,
@@ -253,7 +259,14 @@ mcp = FastMCP(
         "claimed paper; use compare_to_calculator_tool to check quoted "
         "sensitivities and validate_across_contexts_tool to check stage "
         "feasibility. Check list_missing_papers_tool before concluding a "
-        "topic is absent. The askarry://atlas/taxonomies resource holds the "
+        "topic is absent. Use facility_network_tool for which external "
+        "facilities the papers rely on, verify_citation_tool to check an "
+        "in-text citation exists in a paper's reference list, and "
+        "visibility_windows_tool / lst_pressure_tool for when targets can be "
+        "observed (record paper-stated requests with "
+        "add_observing_request_tool, which requires a verbatim quote). "
+        "Scheduling settings are unverified defaults: say so when reporting "
+        "results. The askarry://atlas/taxonomies resource holds the "
         "fixed category lists used by earlier analyses.\n"
         "\n"
         "Housekeeping: large search results can exceed output size limits — "
@@ -1024,7 +1037,8 @@ def keyword_coverage_tool(
 
 
 @mcp.tool()
-def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5) -> str:
+def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5,
+                      chunk_index: int | None = None, book: str | None = None) -> str:
     """Check that a quoted sentence or figure really comes from the paper it is attributed to.
 
     Run this on every sourced figure before publishing a table. It combines
@@ -1038,9 +1052,15 @@ def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5) -> st
             "sigma_Q,U = 0.24 uJy/beam at 50 hours".
         paper: Claimed source, as a Paper ID/filename stem or title substring.
         top_k: Ranked search matches to check across the whole corpus.
+        chunk_index: With paper, also check exactly this passage (the
+            "chunk N" shown next to each search result's Paper ID).
+        book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+
+    Number-free claims are judged by reranker score (cut-off 0.97, tuned on
+    labelled claims; see corpus_tools.VERIFY_MIN_SCORE).
     """
     try:
-        return json.dumps(corpus_tools.verify_quote(text, paper, top_k))
+        return json.dumps(corpus_tools.verify_quote(text, paper, top_k, chunk_index, book))
     except ValueError as exc:
         return f"Invalid request: {exc}"
 
@@ -1118,9 +1138,12 @@ def compare_to_calculator_tool(
     unit: str = "uJy/beam",
     quantity: str = "continuum",
     claimed_beam_arcsec: float | None = None,
+    endpoint: str = "continuum",
+    window_index: int = 0,
 ) -> str:
     """Check a paper's quoted sensitivity against the live sensitivity calculator,
-    sweeping every weighting scheme (natural, robust -2..2, uniform).
+    sweeping every weighting scheme (natural, robust -2..2, uniform) for
+    continuum and zoom; pulsar search ("pss") is a single call (no weighting).
 
     Papers often leave the weighting unstated, which is the usual reason a
     quoted figure fails to reproduce. This reports each variant's
@@ -1130,16 +1153,21 @@ def compare_to_calculator_tool(
 
     Args:
         telescope: "low" or "mid".
-        params: continuum/calculate params as for query_sensitivity_calc,
-            minus weighting_mode/robustness (the sweep sets those).
+        params: That endpoint's params as for query_sensitivity_calc, minus
+            weighting_mode/robustness (the sweep sets those).
         claimed_sensitivity: The paper's figure.
-        unit: "Jy/beam", "mJy/beam", "uJy/beam" (default) or "nJy/beam".
-        quantity: "continuum" (default) or "spectral" (per-channel figure).
+        unit: "Jy", "mJy", "uJy" or "nJy" (with or without "/beam"; pulsar
+            figures are plain flux densities).
+        quantity: continuum endpoint only: "continuum" (default) or
+            "spectral" (per-channel figure).
         claimed_beam_arcsec: Optional stated resolution, arcsec.
+        endpoint: "continuum" (default), "zoom" (spectral line) or "pss".
+        window_index: zoom only: which zoom window to compare.
     """
     try:
         return json.dumps(compare_to_calculator(
-            telescope, params, claimed_sensitivity, unit, quantity, claimed_beam_arcsec
+            telescope, params, claimed_sensitivity, unit, quantity, claimed_beam_arcsec,
+            endpoint, window_index,
         ))
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"
@@ -1362,6 +1390,160 @@ def citing_papers_tool(text: str, limit: int = 100) -> str:
         limit: Max cited works returned (default 100).
     """
     return json.dumps(citation_db.citing_papers(citation_db.connect(), text, limit))
+
+
+# ---------------------------------------------------------------------------
+# Facility network, in-text citation check, scheduling / LST pressure.
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
+                          min_shared_papers: int = 2) -> str:
+    """Which external facilities (Rubin/LSST, JWST, ngVLA, CTAO, LIGO, IceCube,
+    ALMA, …; about 80, curated in corpus_tools.FACILITIES) the papers name,
+    across how many sections and papers, and which are named together.
+
+    Returns per-facility counts and sections, facilities never named, and
+    co-mention edges (pairs sharing papers): the data for a synergy network,
+    computed rather than reconstructed. Counts are mentions: Planck, for
+    example, is often cited for cosmological parameters rather than as an
+    observing partner, so check a paper before calling it a synergy.
+
+    Args:
+        book: "aaskaii" (default), "aaska2015", "ska_capabilities" or null.
+        min_hits_per_paper: Mentions a paper needs to count (default 2).
+        min_shared_papers: Minimum shared papers for an edge (default 2).
+    """
+    try:
+        return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def verify_citation_tool(paper: str, citation: str, book: str | None = None) -> str:
+    """Check that a paper's reference list really contains a work it is said
+    to cite, e.g. citation="Vacca et al. 2025". Matches first author and year
+    against the citation database; also lists that author's other cited
+    years (a likely year mix-up). Complements verify_quote_tool, which checks
+    which corpus paper a figure comes from.
+
+    Args:
+        paper: Corpus Paper ID (filename stem) or title substring.
+        citation: "Surname [et al.] YEAR" in any common form.
+        book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+    """
+    try:
+        return json.dumps(corpus_tools.verify_citation(paper, citation, book))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def visibility_windows_tool(target: str, telescope: str, min_elevation: float | None = None,
+                            sun: str = "any", year_start: str | None = None) -> str:
+    """When a target can be observed from SKA-Low or SKA-Mid over a year.
+
+    Returns the maximum elevation, whether it ever reaches min_elevation, the
+    LST window above it, and usable hours per month and per LST bin under a
+    Sun constraint. Operational settings are unverified defaults
+    (config.SCHEDULING), echoed under "assumptions".
+
+    Args:
+        target: Object name (SIMBAD/NED), "ra dec" in degrees, or sexagesimal.
+        telescope: "low" or "mid".
+        min_elevation: Degrees (default 45).
+        sun: "night", "avoid_twilight" (skip about ±1 h around sunrise and
+            sunset) or "any" (default).
+        year_start: "YYYY-MM-DD" (default: next 1 January).
+    """
+    from rag.sky_lookup import to_skycoord
+
+    try:
+        c = to_skycoord(target)
+        return json.dumps(scheduling.visibility_windows(
+            c.ra.deg, c.dec.deg, telescope, min_elevation, sun, year_start))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
+                      from_db: bool = False, year_start: str | None = None) -> str:
+    """Requested vs available hours per LST bin (and month × LST) for a set of
+    observing requests: which LST ranges are oversubscribed.
+
+    Relative pressure between science cases, not a real allocation: supply
+    is clock time minus a maintenance share (unverified defaults, echoed
+    under "assumptions").
+
+    Args:
+        telescope: "low" or "mid".
+        requests: List of {"name", "hours", "ra"/"dec" or "ra_range"/
+            "dec_range" in degrees, optional "sun", "min_elevation",
+            "commensal_group"}. Requests in one commensal group share time.
+        from_db: Use the requests recorded with add_observing_request_tool
+            (added to any given requests).
+        year_start: "YYYY-MM-DD" (default: next 1 January).
+    """
+    reqs = list(requests or [])
+    if from_db:
+        reqs += source_db.list_requests(source_db.connect(), telescope)
+    if not reqs:
+        return "Invalid request: no requests given (pass requests or from_db=true)"
+    try:
+        return json.dumps(scheduling.lst_pressure(reqs, telescope, year_start))
+    except (ValueError, KeyError) as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def add_observing_request_tool(
+    name: str, hours: float, telescope: str, paper: str, quote: str,
+    book: str | None = None, ra: float | None = None, dec: float | None = None,
+    ra_range: list[float] | None = None, dec_range: list[float] | None = None,
+    band: str | None = None, freq_mhz: float | None = None, sun: str = "any",
+    min_elevation: float | None = None, commensal_group: str | None = None,
+    extracted_by: str | None = None,
+) -> str:
+    """Record an observing request stated in a paper (for lst_pressure_tool).
+
+    Refused unless quote appears verbatim in the paper (whitespace and case
+    are ignored): record only what the text says, never an inference.
+
+    Args:
+        name: Target or survey name. Without ra/dec or ranges, its position
+            is taken from the source database (e.g. "Cen A", "COSMOS").
+        hours: Requested hours as stated in the paper.
+        telescope: "low" or "mid".
+        paper: Paper ID (filename stem).
+        quote: Verbatim text from the paper stating the request.
+        book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+        ra, dec: Point target in degrees; or ra_range + dec_range for an area.
+        band, freq_mhz: Receiver band / frequency if stated.
+        sun: "night", "avoid_twilight" or "any", only if the paper says so.
+        min_elevation: Degrees, only if the paper says so.
+        commensal_group: Shared label for requests that can run commensally.
+        extracted_by: Who recorded it (agent or person).
+    """
+    try:
+        return json.dumps(source_db.add_request(
+            source_db.connect(), name, hours, telescope, paper, quote, book, ra, dec,
+            ra_range, dec_range, band, freq_mhz, sun, min_elevation, commensal_group, extracted_by))
+    except ValueError as exc:
+        return f"Refused: {exc}"
+
+
+@mcp.tool()
+def list_observing_requests_tool(telescope: str | None = None) -> str:
+    """Observing requests recorded from the papers, each with its quote,
+    paper and page.
+
+    Args:
+        telescope: Optional "low" or "mid" filter.
+    """
+    return json.dumps(source_db.list_requests(source_db.connect(), telescope))
 
 
 # Fixed taxonomies from the AASKAII Atlas run, so parallel agents tag the same

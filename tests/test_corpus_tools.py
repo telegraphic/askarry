@@ -96,4 +96,77 @@ def test_compare_to_calculator_picks_closest(monkeypatch):
     monkeypatch.setattr(sc, "query_sensitivity_calculator", fake)
     out = sc.compare_to_calculator("mid", {}, 1.0, claimed_beam_arcsec=1.0)
     assert out["closest"]["robustness"] == 0 and out["closest"]["pct_diff"] == 0.0
-    assert out["variants"][0]["sensitivity_ujy_beam"] == 0.9  # natural falls back to weighted_*
+    assert out["variants"][0]["sensitivity_ujy"] == 0.9  # natural falls back to weighted_*
+
+
+def test_paper_info_pdf_url_only_for_aaskaii(monkeypatch):
+    _fake_corpus(monkeypatch)
+    urls = {p["book"]: p["pdf_url"] for p in ct.paper_info("Smith01")}
+    assert [u for u in urls.values() if u] == ["https://www.skao.int/sites/default/files/documents/Smith01.pdf"]
+    assert None in urls.values()  # the AASKA2015 twin has no stored URL
+
+
+def test_build_filter_book_restricts_shared_paper_id(monkeypatch):
+    _fake_corpus(monkeypatch)
+    assert ct.build_filter(book="aaskaii", paper="Smith01")["source"] == [A]
+
+
+def test_verify_quote_checks_exact_chunk(monkeypatch):
+    _fake_corpus(monkeypatch)
+    # Same chunk number in both books' Smith01 (index 0 and 3 → both 0).
+    chunks = [dict(c, meta={**c["meta"], "chunk_index": i % 3}) for i, c in enumerate(CHUNKS)]
+    monkeypatch.setattr(ct, "get_all_chunks", lambda: chunks)
+    monkeypatch.setattr(ct, "retrieve", lambda *a, **k: [])
+    monkeypatch.setattr(ct, "rerank_score", lambda q, t: 0.99)
+    out = ct.verify_quote("12.6 uJy/beam in 50 hours", paper="Jones01", chunk_index=2)
+    assert out["chunk_match"]["page"] == 7 and out["verdict"] == "supported_by_claimed_paper"
+    try:
+        ct.verify_quote("x", paper="Smith01", chunk_index=0)  # ID in both books, no book=
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("expected ValueError for ambiguous paper ID")
+
+
+def test_facility_patterns_guard_common_words():
+    regexes = ct._facility_regexes()
+    hits = lambda name, text: any(r.search(text) for r in regexes[name])  # noqa: E731
+    assert hits("Planck", "Planck 2018 results") and not hits("Planck", "Planck's constant h")
+    assert hits("Rubin/LSST", "the Vera C. Rubin Observatory") and not hits("Rubin/LSST", "Rubin et al. (1980)")
+    assert hits("VLA", "the VLA and ngVLA") and not hits("VLA", "only ngVLA")
+    assert not hits("Fermi", "Fermi acceleration at shocks") and hits("Fermi", "Fermi-LAT sources")
+    assert not hits("FAST", "the FAST EM solver") and hits("FAST", "FAST telescope pulsars")
+    assert not hits("LIGO/Virgo/KAGRA", "the Virgo cluster")
+
+
+def test_verify_citation_matches_author_and_year(monkeypatch, tmp_path):
+    import rag.citation_db as cdb
+
+    conn = cdb.connect(tmp_path / "c.db")
+    conn.execute("INSERT INTO refs (ref_key, raw, first_author, year) VALUES ('k1', 'F. Govoni et al. A&A 2019', 'govoni', 2019)")
+    conn.execute("INSERT INTO refs (ref_key, raw, first_author, year) VALUES ('k2', 'F. Govoni et al. A&A 2005', 'govoni', 2005)")
+    for k in ("k1", "k2"):
+        conn.execute("INSERT INTO cites (ref_key, paper, source_path) VALUES (?, 'Jones01', ?)", (k, B))
+    conn.commit()
+    _fake_corpus(monkeypatch)
+    monkeypatch.setattr(cdb, "connect", lambda *a: conn)
+    assert ct.verify_citation("Jones01", "Govoni et al. 2019")["found"]
+    miss = ct.verify_citation("Jones01", "(Govoni et al., 2006a)")
+    assert not miss["found"] and miss["same_author_other_years"][0].startswith("2005")
+
+
+def test_compare_to_calculator_zoom_and_pss(monkeypatch):
+    def fake(telescope, endpoint, params):
+        if endpoint == "pss/calculate":
+            return {"folded_pulse_sensitivity": {"value": 4.2, "unit": "uJy"}, "warnings": []}
+        r = params.get("robustness", 5)
+        return {
+            "transformed_result": [{"total_spectral_sensitivity": {"value": (1 + abs(r)) * 1e-4},
+                                    "weighted_spectral_sensitivity": {"value": 9e-5}}],
+            "weighting": {"spectral_weighting": [{"beam_size": {"beam_maj_scaled": 1 / 3600, "beam_min_scaled": 1 / 3600}}]},
+        }
+    monkeypatch.setattr(sc, "query_sensitivity_calculator", fake)
+    z = sc.compare_to_calculator("mid", {}, 100, endpoint="zoom")
+    assert z["closest"]["robustness"] == 0 and z["closest"]["pct_diff"] == 0.0
+    p = sc.compare_to_calculator("low", {}, 4.0, unit="uJy", endpoint="pss")
+    assert len(p["variants"]) == 1 and p["closest"]["pct_diff"] == 5.0 and p["unit"] == "uJy"
