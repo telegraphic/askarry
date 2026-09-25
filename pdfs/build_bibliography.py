@@ -88,6 +88,9 @@ def build_bibliography(html: str) -> dict:
 def main() -> None:
     html = requests.get(PAGE_URL, timeout=60).text
     entries = build_bibliography(html)
+    # Keep the "AASKA2015/"-keyed entries written by build_bibliography_aaska2015.py.
+    existing = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else {}
+    entries |= {k: e for k, e in existing.items() if k.startswith("AASKA2015/")}
     OUTPUT_PATH.write_text(json.dumps(entries, indent=2, ensure_ascii=False))
     logger.info(f"Wrote {len(entries)} bibliography entries to {OUTPUT_PATH}")
 

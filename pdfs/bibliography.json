@@ -1,22 +1,11 @@
 {
   "McClure-Griffiths01": {
-    "title": "Galactic and Magellanic Evolution with the SKA",
+    "title": "Advancing Astrophysics with the SKA II: SKAO Science for Today's Generation",
     "authors": [
-      "N.M. McClure-Griffiths",
-      "S. Stanimirovic",
-      "C. Murray",
-      "D. Li",
-      "J.M. Dickey",
-      "E. Vazquez-Semadeni",
-      "J.E.G. Peek",
-      "M. Putman",
-      "S.E. Clark",
-      "M.A. Miville-Deschenes",
-      "J. Bland-Hawthorn",
-      "L. Staveley-Smith"
+      "Naomi McClure-Griffiths",
+      "SKAO Chief Scientist"
     ],
-    "section": "The Hydrogen Universe",
-    "year": 2015
+    "section": "Unclassified"
   },
   "Zucca01": {
     "title": "Solar, Heliospheric and Ionospheric Physics: Pathfinders, Precursors and SKAO Perspectives.",
@@ -33,22 +22,41 @@
     "section": "Science Working Group Overviews"
   },
   "Huege01": {
-    "title": "Precision measurements of cosmic ray air showers with the SKA",
+    "title": "Measuring High-Energy Cosmic Particles with the SKA",
     "authors": [
-      "T. Huege",
-      "J.D. Bray",
-      "S. Buitink",
-      "R. Dallier",
-      "R.D. Ekers",
-      "H. Falcke",
-      "C. James",
-      "L. Martin",
-      "B. Revenu",
-      "O. Scholten",
-      "F. Schröder"
+      "Tim Huege",
+      "Katharine Mulrey",
+      "Sjoerd Bouma",
+      "Justin Bray",
+      "Stijn Buitink",
+      "Arthur Corstanje",
+      "Vital De Henau",
+      "Edwin Dickinson",
+      "Brian Hare",
+      "Haoning He",
+      "Jörg Hörandel",
+      "Clancy James",
+      "Philipp Laub",
+      "Xingyu Li",
+      "Marten Lourens",
+      "Hermann-Josef Mathes",
+      "Anna Nelles",
+      "Subhadip Saha",
+      "Felix Schlüter",
+      "Olaf Scholten",
+      "Ralph Spencer",
+      "Christopher Sterpka",
+      "Karen Terveer",
+      "Satyendra Thoudam",
+      "Gia Trinh",
+      "Paulina Turekova",
+      "Darko Veberic",
+      "Keito Watanabe",
+      "Chao Zhang",
+      "Pengfei Zhang",
+      "Yi Zhang"
     ],
-    "section": "Synergies and Other Science",
-    "year": 2015
+    "section": "Science Working Group Overviews"
   },
   "Bianchi02": {
     "title": "Cradle of Life: From the Formation of Stars to Habitable Worlds with the SKAO",
@@ -447,20 +455,18 @@
     "section": "Sun, Earth and Planets"
   },
   "Nakariakov01": {
-    "title": "Solar and Heliospheric Physics with the Square Kilometre Array",
+    "title": "The Study of Quasi-Periodic Pulsations in Solar and Stellar Flares with SKA",
     "authors": [
-      "V. Nakariakov",
-      "M.M. Bisi",
-      "P.K. Browning",
-      "D. Maia",
-      "E.P. Kontar",
-      "D. Oberoi",
-      "P.T. Gallagher",
-      "I.H. Cairns",
-      "H. Ratcliffe"
+      "Valery M. Nakariakov",
+      "Atul Mohan",
+      "Vishal Upendran",
+      "Teresa Monsue",
+      "Hamish A. S. Reid",
+      "Dmitrii Y. Kolotkov",
+      "Sergey A. Belov",
+      "Kyung-Suk Cho"
     ],
-    "section": "Synergies and Other Science",
-    "year": 2015
+    "section": "Sun, Earth and Planets"
   },
   "Mondal01": {
     "title": "Unravelling the Nonthermal Emissions from the Quiet Solar Corona with the SKA",
@@ -1506,13 +1512,24 @@
     "section": "From the Milky Way to Distant Galaxies"
   },
   "Prandoni01": {
-    "title": "Revealing the Physics and Evolution of Galaxies and Galaxy Clusters with SKA Continuum Surveys",
+    "title": "Opening New Parameter Space Windows on galaxy/AGN Co-evolution with SKA Radio Continuum Surveys",
     "authors": [
-      "I. Prandoni",
-      "N. Seymour"
+      "Isabella Prandoni",
+      "Mark T. Sargent",
+      "Matteo Bonato",
+      "Dharam V. Lal",
+      "Mahdiyar Mousavi-Sadr",
+      "Masoumeh Ghasemi-Nodehi",
+      "Nicholas Seymour",
+      "Fatemeh S. Tabatabaei",
+      "Gianfranco De Zotti",
+      "Ivano Baronchelli",
+      "Elisabetta Liuzzo",
+      "Nicola Marchili",
+      "Marcella Massardi",
+      "Rosita Paladino"
     ],
-    "section": "The Continuum Universe",
-    "year": 2015
+    "section": "From the Milky Way to Distant Galaxies"
   },
   "Giulietti01": {
     "title": "Semi-empirical Predictions for Ultra-deep Radio Counts of Star-forming Galaxies with the SKAO",
@@ -2113,21 +2130,31 @@
     "section": "From the Milky Way to Distant Galaxies"
   },
   "Wolz01": {
-    "title": "Foreground Subtraction in Intensity Mapping with the SKA",
+    "title": "Cosmology with HI Intensity Mapping",
     "authors": [
-      "L. Wolz",
-      "F.B. Abdalla",
-      "D. Alonso",
-      "C. Blake",
-      "P. Bull",
-      "T.C. Chang",
-      "P. Ferreira",
-      "C.Y. Kuo",
-      "M. Santos",
-      "J.R. Shaw"
+      "Laura Wolz",
+      "Gabriele Autieri",
+      "Jose L. Bernal",
+      "Maria Berti",
+      "Phil Bull",
+      "Stefano Camera",
+      "Isabella Carucci",
+      "Zhaoting Chen",
+      "Steve Cunnington",
+      "Jose Fonseca",
+      "Keith Grainge",
+      "Jiakang Han",
+      "Wenkai Hu",
+      "Dionysios Karagiannis",
+      "Mario Santos",
+      "Marta Spinelli",
+      "Liantsoa F. Randrianjanahary",
+      "Cora Uhlemann",
+      "Matteo Viel",
+      "Bernhard Vos-Gines",
+      "Jingying Wang"
     ],
-    "section": "Cosmology",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "Cunnington01": {
     "title": "Single-dish HI Intensity Mapping with the SKAO: Precursor Progress with MeerKAT's Large Area Synoptic Survey (MeerKLASS)",
@@ -2457,24 +2484,39 @@
     "section": "The Cosmos"
   },
   "Camera01": {
-    "title": "Cosmology on the Largest Scales with the SKA",
+    "title": "Beyond ΛCDM with the SKA Observatory – I: Probing Gravity on Cosmological Scales",
     "authors": [
-      "S. Camera",
-      "A. Raccanelli",
-      "P. Bull",
-      "D. Bertacca",
-      "X. Chen",
-      "P. Ferreira",
-      "M. Kunz",
-      "R. Maartens",
-      "Y. Mao",
-      "M. Santos",
-      "P.R. Shapiro",
-      "M. Viel",
-      "Y. Xu"
+      "Stefano Camera",
+      "Chris Addis",
+      "Sêcloka L. Guedezounme",
+      "Federico Montano",
+      "Thomas Montandon",
+      "Marco Novara",
+      "Samantha J. Rossiter",
+      "Jacobo Asorey",
+      "Sveva Castello",
+      "Chris Clarkson",
+      "José Fonseca",
+      "Noemi Frusciante",
+      "Claudio Gomes",
+      "Nastassia Grimm",
+      "Ainulnabilah Nasirudin",
+      "Livia Oliveira",
+      "Francesco Pace",
+      "Camille Bonvin",
+      "Phil Bull",
+      "Enea Di Dio",
+      "Catherine Cress",
+      "Caroline Heneka",
+      "Hans-Rainer Klöckner",
+      "Roy Maartens",
+      "Carlos Martins",
+      "David Parkinson",
+      "Chandra S. Saraf",
+      "Ziad Sakr",
+      "Maria Berti"
     ],
-    "section": "Cosmology",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "Fonseca01": {
     "title": "Beyond ΛCDM with the SKA Observatory – II: Unveiling the Secrets of the Early Universe",
@@ -2578,32 +2620,25 @@
     "section": "The Cosmos"
   },
   "Vacca01": {
-    "title": "Statistical methods for the analysis of rotation measure grids in large scale structures in the SKA era",
+    "title": "Study of Polarized Emission in Radio Halos and Filaments in the SKA Telescopes Era",
     "authors": [
-      "V. Vacca",
-      "N. Oppermann",
-      "T.A. Ensslin",
-      "M. Selig",
-      "H. Junklewitz",
-      "M. Greiner",
-      "J. Jasche",
-      "C.A. Hales",
-      "M. Reneicke",
-      "E. Carretti",
-      "L. Feretti",
-      "C. Ferrari",
-      "G. Giovannini",
-      "F. Govoni",
-      "C. Horellou",
-      "S. Ideguchi",
-      "M. Johnston-Hollitt",
-      "M. Murgia",
-      "R. Paladino",
-      "R. Pizzo",
-      "A. Scaife"
+      "Valentina Vacca",
+      "Federica Govoni",
+      "Matteo Murgia",
+      "Paolo Marchegiani",
+      "Hui Li",
+      "Myriam Gitti",
+      "Francesca Loi",
+      "Luigina Feretti",
+      "Ettore Carretti",
+      "Elia Battistelli",
+      "Andrea Cabriolu",
+      "Torsten A. Enßin",
+      "Chiara Ferrari",
+      "Gabriele Giovannini",
+      "Richard A. Perley"
     ],
-    "section": "Magnetism",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "deGasperin01": {
     "title": "The Cosmic Ray Life Cycle in Galaxy Clusters",
@@ -2857,18 +2892,33 @@
     "section": "The Cosmos"
   },
   "Afonso01": {
-    "title": "Identifying the first generation of radio powerful AGN in the Universe with the SKA",
+    "title": "The Road to Identifying the Earliest Radio-Powerful AGN with the SKA",
     "authors": [
-      "J. Afonso",
-      "J. Casanellas",
-      "I. Prandoni",
-      "M. Jarvis",
-      "S. Lorenzoni",
-      "M. Magliocchetti",
-      "N. Seymour"
+      "Jose Afonso",
+      "Stergios Amarantidis",
+      "Stas Shabala",
+      "Ross J. Turner",
+      "Luca Ighina",
+      "Mojtaba Raouf",
+      "Nuno Covas",
+      "Pedro Martins",
+      "Nick Seymour",
+      "Alessandro Caccianiga",
+      "Alexander Hedge",
+      "Jess W. Broderick",
+      "Davi Barbosa",
+      "Isabella Prandoni",
+      "Sabyasachi Pal",
+      "Bruno Arsioli",
+      "Luis Barroso",
+      "Rodrigo Carvajal",
+      "João Tiago",
+      "Andrew Hopkins",
+      "Manuela Magliocchetti",
+      "Israel Matute",
+      "Ciro Pappalardo"
     ],
-    "section": "The Continuum Universe",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "Cuciti01": {
     "title": "The Large-Scale Structure of the Universe through the SKA Lenses",
@@ -2891,30 +2941,37 @@
     "section": "The Cosmos"
   },
   "Cassano01": {
-    "title": "Cluster Radio Halos at the crossroads between astrophysics and cosmology in the SKA era",
+    "title": "Radio Halos in Galaxy Clusters as Unveiled by the SKA Telescope",
     "authors": [
-      "R. Cassano",
-      "G. Bernardi",
-      "G. Brunetti",
-      "M. Brüggen",
-      "T. Clarke",
-      "D. Dallacasa",
-      "K. Dolag",
-      "S. Ettori",
-      "S. Giacintucci",
-      "C. Giocoli",
-      "M. Gitti",
-      "M. Johnston-Hollitt",
-      "R. Kale",
-      "M. Markevich",
-      "R.P. Norris",
-      "M.P. Pommier",
-      "G. Pratt",
-      "H.J.A. Rottgering",
-      "T. Venturi"
+      "Rossella Cassano",
+      "Gabriella Di Gennaro",
+      "Virginia Cuciti",
+      "Abhirup Datta",
+      "Marco Balboni",
+      "Gianni Bernardi",
+      "Annalisa Bonafede",
+      "Andrea Botteon",
+      "Marcus Brueggen",
+      "Gianfranco Brunetti",
+      "Swarna Chatterjee",
+      "Klaus Dolag",
+      "Stefano Ettori",
+      "Fabio Gastaldello",
+      "Simona Giacintucci",
+      "Carlo Giocoli",
+      "Myriam Gitti",
+      "Ruta Kale",
+      "Mamta Pandey‑Pommier",
+      "Koushika Sri Lakshmi Srikanth",
+      "Gabriel Pratt",
+      "Majidul Rahaman",
+      "Mariachiara Rossetti",
+      "Huub J.A. Röttgering",
+      "Ramananda Santra",
+      "Reinout J. van Weeren",
+      "Tiziana Venturi"
     ],
-    "section": "The Continuum Universe",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "Akahori01": {
     "title": "Magnetic Reconnection in Galaxy Clusters",
@@ -2930,24 +2987,25 @@
     "section": "The Cosmos"
   },
   "Gitti01": {
-    "title": "The SKA view of cool-core clusters: evolution of radio mini-halos and AGN feedback",
+    "title": "The SKA View of Cool-core Clusters: Evolution of Radio Mini-halos and AGN Feedback",
     "authors": [
-      "M. Gitti",
-      "P. Tozzi",
-      "G. Brunetti",
-      "R. Cassano",
-      "D. Dallacasa",
-      "A. Edge",
-      "S. Ettori",
-      "L. Feretti",
-      "C. Ferrari",
-      "S. Giacintucci",
-      "G. Giovannini",
-      "M. Hogan",
-      "T. Venturi"
+      "Myriam Gitti",
+      "Paolo Tozzi",
+      "Francesco Ubertosi",
+      "Annalisa Bonafede",
+      "Gianfranco Brunetti",
+      "Rossella Cassano",
+      "Stefano Ettori",
+      "Luigina Feretti",
+      "Marie-Lou Gendron-Marsolais",
+      "Simona Giacintucci",
+      "Julie Hlavacek-Larrondo",
+      "Alessandro Ignesti",
+      "Giulia Macario",
+      "Mamta Pandey-Pommier",
+      "Tiziana Venturi"
     ],
-    "section": "The Continuum Universe",
-    "year": 2015
+    "section": "The Cosmos"
   },
   "Kurahara01": {
     "title": "Unravelling Turbulence and Magnetic Fields in Galaxy Clusters with SKA and XRISM",
@@ -3189,30 +3247,20 @@
     "section": "The Extreme Universe"
   },
   "Keane01": {
-    "title": "A Cosmic Census of Radio Pulsars with the SKA",
+    "title": "A Square Kilometre Array Pulsar Census",
     "authors": [
-      "E. Keane",
-      "B. Bhattacharyya",
-      "M. Krämer",
-      "B.W. Stappers",
-      "S.D. Bates",
-      "M. Burgay",
-      "S. Chatterjee",
-      "D.J. Champion",
-      "R.P. Eatough",
-      "J.W.T. Hessels",
-      "G. Janssen",
-      "K.J. Lee",
-      "J. van Leeuwen",
-      "J. Margueron",
-      "M. Oertel",
-      "A. Possenti",
-      "S. Ransom",
-      "G. Theureau",
-      "P. Torne"
+      "Evan F Keane",
+      "Vanessa Graber",
+      "Lina Levin",
+      "Chia Min Tan",
+      "Owen A. Johnson",
+      "Cherry Ng",
+      "Celsa Pardo-Araujo",
+      "Michele Ronchi",
+      "Dany Vohl",
+      "Mengyao Xue"
     ],
-    "section": "Fundamental Physics with Pulsars",
-    "year": 2015
+    "section": "The Extreme Universe"
   },
   "Bagchi01": {
     "title": "Pulsars in Globular Clusters With the SKAO",
@@ -3350,18 +3398,22 @@
     "section": "The Extreme Universe"
   },
   "Gelfand01": {
-    "title": "Pulsar Wind Nebulae in the SKA era",
+    "title": "Understanding Pulsar Wind Nebulae with the SKA",
     "authors": [
-      "J. Gelfand",
-      "R. Breton",
-      "C.U. Ng",
-      "J. Hessels",
-      "B. Stappers",
-      "M. Roberts",
-      "A. Possenti"
+      "Joseph D. Gelfand",
+      "Chi-Yun Ng",
+      "Bettina Posselt",
+      "Mallory S. E. Roberts",
+      "Subir Bhattacharyya",
+      "Shi Dai",
+      "Rene Breton",
+      "Benjamin Stappers",
+      "Andrea Possenti",
+      "Jason Hessels",
+      "Yifan Sun",
+      "Moaz Abdelmaguid"
     ],
-    "section": "Fundamental Physics with Pulsars",
-    "year": 2015
+    "section": "The Extreme Universe"
   },
   "VenkatramanKrishnan01": {
     "title": "Testing Gravity with Binary Pulsars in the SKA Era",
@@ -3543,18 +3595,12 @@
     "section": "The Extreme Universe"
   },
   "Bignall01": {
-    "title": "Time domain studies of Active Galactic Nuclei with the Square Kilometre Array",
+    "title": "Time Domain Studies of Active Galactic Nuclei with the Square Kilometer Array",
     "authors": [
-      "H.E. Bignall",
-      "S.D. Croft",
-      "T. Hovatta",
-      "J.Y. Koay",
-      "J. Lazio",
-      "J.P. Macquart",
-      "C. Reynolds"
+      "Hayley E Bignall",
+      "Rajan Chhetri"
     ],
-    "section": "The Transient Universe",
-    "year": 2015
+    "section": "The Extreme Universe"
   },
   "Spingola01": {
     "title": "SKA–VLBI View of AGN Jets in the Early Universe",
@@ -4071,24 +4117,18 @@
   "Robishaw01": {
     "title": "Measuring Magnetic Fields Near and Far with the SKA via the Zeeman Effect",
     "authors": [
-      "T. Robishaw",
-      "J. Green",
-      "G. Surcis",
-      "W.H.T. Vlemmings",
-      "A. Richards",
-      "S. Etoka",
-      "T.L. Bourke",
-      "V. Fish",
-      "M.D. Gray",
-      "H. Imai",
-      "B. Kramer",
-      "J. McBride",
-      "E. Momjian",
-      "A.P. Sarma",
-      "A.A. Zijlstra"
+      "Timothy Robishaw",
+      "Marta Nowotka",
+      "Tao-Chung Ching",
+      "James A. Green",
+      "Anita M. S. Richards",
+      "Sandra Etoka",
+      "Malcolm Gray",
+      "Susan E. Clark",
+      "Tyler L. Bourke",
+      "Vincent Fish"
     ],
-    "section": "Magnetism",
-    "year": 2015
+    "section": "Methods and Techniques"
   },
   "Tripathi01": {
     "title": "Weak Lensing with the SKAO: Radio Shear Measurement",
@@ -4285,23 +4325,21 @@
     "section": "Methods and Techniques"
   },
   "Takahashi01": {
-    "title": "Overview of Complementarity and Synergy with Other Wavelengths in Cosmology in the SKA era",
+    "title": "VLBI-Enabled Precision Localization of Continuous Gravitational Wave Sources with Pulsar Timing Arrays in the SKA Era",
     "authors": [
-      "K. Takahashi",
-      "M.L. Brown",
-      "C. Burigana",
-      "C.A. Jackson",
-      "M. Jarvis",
-      "K.D. Thomas D. Kitching",
-      "J.P. Jean-Paul Kneib",
-      "M. Masamune Oguri",
-      "S. Prunet",
-      "H. Shan",
-      "J.L. Starck",
-      "D. Yamauchi"
+      "Keitaro Takahashi",
+      "Takuya Akahori",
+      "Kenta Fujisawa",
+      "Hiroshi Imai",
+      "Hajime Kita",
+      "Hideyuki Kobayashi",
+      "Hiroaki Misawa",
+      "Kotaro Niinuma",
+      "Tomoaki Oyama",
+      "Kazuhiro Takefuji",
+      "Fuminori Tsuchiya"
     ],
-    "section": "Synergies and Other Science",
-    "year": 2015
+    "section": "Methods and Techniques"
   },
   "Tremblay01": {
     "title": "Searching for Extraterrestrial Intelligence with the SKA",
@@ -4384,7 +4422,7 @@
     ],
     "section": "Methods and Techniques"
   },
-  "Braun01": {
+  "AASKA2015/Braun01": {
     "title": "Advancing Astrophysics with the Square Kilometre Array",
     "authors": [
       "R. Braun",
@@ -4396,7 +4434,7 @@
     "section": "Main session",
     "year": 2015
   },
-  "Koopmans01": {
+  "AASKA2015/Koopmans01": {
     "title": "The Cosmic Dawn and Epoch of Reionisation with SKA",
     "authors": [
       "L. Koopmans",
@@ -4447,7 +4485,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Ahn01": {
+  "AASKA2015/Ahn01": {
     "title": "Probing the First Galaxies and Their Impact on the   Intergalactic Medium through   21-cm Observations of the Cosmic Dawn  with the SKA",
     "authors": [
       "K. Ahn",
@@ -4458,7 +4496,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Chang01": {
+  "AASKA2015/Chang01": {
     "title": "Synergy of CO/[CII]/Lya Line Intensity Mapping with the SKA",
     "authors": [
       "T.C. Chang",
@@ -4472,7 +4510,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Chapman01": {
+  "AASKA2015/Chapman01": {
     "title": "Cosmic Dawn and Epoch of Reionization Foreground Removal with the SKA",
     "authors": [
       "E. Chapman",
@@ -4490,7 +4528,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Ciardi01": {
+  "AASKA2015/Ciardi01": {
     "title": "21-cm forest with the SKA",
     "authors": [
       "B. Ciardi",
@@ -4502,7 +4540,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Iliev01": {
+  "AASKA2015/Iliev01": {
     "title": "Epoch of Reionization modelling and simulations for SKA",
     "authors": [
       "I. Iliev",
@@ -4514,7 +4552,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Jelic01": {
+  "AASKA2015/Jelic01": {
     "title": "SKA - EoR correlations and cross-correlations: kSZ, radio galaxies, and NIR background",
     "authors": [
       "V. Jelic",
@@ -4526,7 +4564,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Maio01": {
+  "AASKA2015/Maio01": {
     "title": "Bulk Flows and End of the Dark Ages with the SKA",
     "authors": [
       "U. Maio",
@@ -4536,7 +4574,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Mellema01": {
+  "AASKA2015/Mellema01": {
     "title": "HI tomographic imaging of the Cosmic Dawn and Epoch of Reionization with SKA",
     "authors": [
       "G. Mellema",
@@ -4549,7 +4587,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Mesinger01": {
+  "AASKA2015/Mesinger01": {
     "title": "Constraining the Astrophysics of the Cosmic Dawn and the Epoch of Reionization with the SKA",
     "authors": [
       "A. Mesinger",
@@ -4563,7 +4601,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Pritchard01": {
+  "AASKA2015/Pritchard01": {
     "title": "Cosmology from EoR/Cosmic Dawn with the SKA",
     "authors": [
       "J. Pritchard",
@@ -4581,7 +4619,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Semelin01": {
+  "AASKA2015/Semelin01": {
     "title": "The physics of Reionization: processes relevant for SKA observations",
     "authors": [
       "B. Semelin",
@@ -4590,7 +4628,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Subrahmanyan01": {
+  "AASKA2015/Subrahmanyan01": {
     "title": "All-sky signals from recombination to reionization with the SKA",
     "authors": [
       "R. Subrahmanyan",
@@ -4601,7 +4639,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Wyithe01": {
+  "AASKA2015/Wyithe01": {
     "title": "Imaging HII Regions from Galaxies and Quasars During Reionisation with SKA",
     "authors": [
       "S. Wyithe",
@@ -4611,7 +4649,7 @@
     "section": "Epoch of Reionisation",
     "year": 2015
   },
-  "Maartens01": {
+  "AASKA2015/Maartens01": {
     "title": "Overview of Cosmology with the SKA",
     "authors": [
       "R. Maartens",
@@ -4622,7 +4660,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Abdalla01": {
+  "AASKA2015/Abdalla01": {
     "title": "Cosmology from HI galaxy surveys with the SKA",
     "authors": [
       "F.B. Abdalla",
@@ -4640,7 +4678,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Jarvis01": {
+  "AASKA2015/Jarvis01": {
     "title": "Cosmology with SKA Radio Continuum Surveys",
     "authors": [
       "M. Jarvis",
@@ -4655,7 +4693,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Santos01": {
+  "AASKA2015/Santos01": {
     "title": "Cosmology from a SKA HI intensity mapping survey",
     "authors": [
       "M. Santos",
@@ -4676,7 +4714,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Kirk01": {
+  "AASKA2015/Kirk01": {
     "title": "Cross correlation surveys with the Square Kilometre Array",
     "authors": [
       "D. Kirk",
@@ -4688,7 +4726,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Santos02": {
+  "AASKA2015/Santos02": {
     "title": "HI galaxy simulations for the SKA: number counts and bias",
     "authors": [
       "M. Santos",
@@ -4700,7 +4738,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Brown01": {
+  "AASKA2015/Brown01": {
     "title": "Weak gravitational lensing with the Square Kilometre Array",
     "authors": [
       "M.L. Brown",
@@ -4722,7 +4760,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Bull01": {
+  "AASKA2015/Bull01": {
     "title": "Measuring baryon acoustic oscillations with future SKA surveys",
     "authors": [
       "P. Bull",
@@ -4736,7 +4774,27 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Kloeckner01": {
+  "AASKA2015/Camera01": {
+    "title": "Cosmology on the Largest Scales with the SKA",
+    "authors": [
+      "S. Camera",
+      "A. Raccanelli",
+      "P. Bull",
+      "D. Bertacca",
+      "X. Chen",
+      "P. Ferreira",
+      "M. Kunz",
+      "R. Maartens",
+      "Y. Mao",
+      "M. Santos",
+      "P.R. Shapiro",
+      "M. Viel",
+      "Y. Xu"
+    ],
+    "section": "Cosmology",
+    "year": 2015
+  },
+  "AASKA2015/Kloeckner01": {
     "title": "Real time cosmology - A direct measure of the expansion rate of the Universe with the SKA",
     "authors": [
       "H.R. Kloeckner",
@@ -4752,7 +4810,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Patel01": {
+  "AASKA2015/Patel01": {
     "title": "Weak Lensing Simulations for the SKA",
     "authors": [
       "P. Patel",
@@ -4768,7 +4826,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Raccanelli01": {
+  "AASKA2015/Raccanelli01": {
     "title": "Measuring redshift-space distortion with future SKA surveys",
     "authors": [
       "A. Raccanelli",
@@ -4789,7 +4847,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Schwarz01": {
+  "AASKA2015/Schwarz01": {
     "title": "Testing foundations of modern cosmology with SKA all-sky surveys",
     "authors": [
       "D.J. Schwarz",
@@ -4806,7 +4864,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Wang01": {
+  "AASKA2015/Wang01": {
     "title": "Topology of neutral hydrogen distribution with the Square Kilometre Array",
     "authors": [
       "Y. Wang",
@@ -4822,7 +4880,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Colafrancesco01": {
+  "AASKA2015/Colafrancesco01": {
     "title": "Cosmology with galaxy clusters: studying the Dark Ages and the Epoch of Reionization in the SKA era",
     "authors": [
       "S. Colafrancesco",
@@ -4832,7 +4890,24 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Zhao01": {
+  "AASKA2015/Wolz01": {
+    "title": "Foreground Subtraction in Intensity Mapping with the SKA",
+    "authors": [
+      "L. Wolz",
+      "F.B. Abdalla",
+      "D. Alonso",
+      "C. Blake",
+      "P. Bull",
+      "T.C. Chang",
+      "P. Ferreira",
+      "C.Y. Kuo",
+      "M. Santos",
+      "J.R. Shaw"
+    ],
+    "section": "Cosmology",
+    "year": 2015
+  },
+  "AASKA2015/Zhao01": {
     "title": "Model-independent constraints on dark energy and modified gravity with the SKA",
     "authors": [
       "G. Zhao",
@@ -4844,7 +4919,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Knudsen01": {
+  "AASKA2015/Knudsen01": {
     "title": "Stacking of SKA data: comparing uv-plane and and image-plane stacking",
     "authors": [
       "K.K. Knudsen",
@@ -4856,7 +4931,7 @@
     "section": "Cosmology",
     "year": 2015
   },
-  "Kramer01": {
+  "AASKA2015/Kramer01": {
     "title": "Pulsar Science with the SKA",
     "authors": [
       "M. Kramer",
@@ -4865,7 +4940,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Janssen01": {
+  "AASKA2015/Janssen01": {
     "title": "Gravitational Wave Astronomy with the SKA",
     "authors": [
       "G. Janssen",
@@ -4887,7 +4962,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Karastergiou01": {
+  "AASKA2015/Karastergiou01": {
     "title": "Understanding pulsar magnetospheres with the SKA",
     "authors": [
       "A. Karastergiou",
@@ -4913,7 +4988,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Tauris01": {
+  "AASKA2015/Tauris01": {
     "title": "Understanding the Neutron Star Population with the SKA",
     "authors": [
       "T.M. Tauris",
@@ -4932,7 +5007,33 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Han01": {
+  "AASKA2015/Keane01": {
+    "title": "A Cosmic Census of Radio Pulsars with the SKA",
+    "authors": [
+      "E. Keane",
+      "B. Bhattacharyya",
+      "M. Krämer",
+      "B.W. Stappers",
+      "S.D. Bates",
+      "M. Burgay",
+      "S. Chatterjee",
+      "D.J. Champion",
+      "R.P. Eatough",
+      "J.W.T. Hessels",
+      "G. Janssen",
+      "K.J. Lee",
+      "J. van Leeuwen",
+      "J. Margueron",
+      "M. Oertel",
+      "A. Possenti",
+      "S. Ransom",
+      "G. Theureau",
+      "P. Torne"
+    ],
+    "section": "Fundamental Physics with Pulsars",
+    "year": 2015
+  },
+  "AASKA2015/Han01": {
     "title": "Three-dimensional Tomography of the Galactic and Extragalactic Magnetoionic Medium with the SKA",
     "authors": [
       "J. Han",
@@ -4951,7 +5052,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Shao01": {
+  "AASKA2015/Shao01": {
     "title": "Testing Gravity with Pulsars in the SKA Era",
     "authors": [
       "L. Shao",
@@ -4973,7 +5074,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Watts01": {
+  "AASKA2015/Watts01": {
     "title": "Probing the neutron star interior and the Equation of State of cold dense matter with the SKA",
     "authors": [
       "A. Watts",
@@ -4998,7 +5099,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Eatough01": {
+  "AASKA2015/Eatough01": {
     "title": "Observing Radio Pulsars in the Galactic Centre with the Square Kilometre Array",
     "authors": [
       "R. Eatough",
@@ -5016,7 +5117,21 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Hessels01": {
+  "AASKA2015/Gelfand01": {
+    "title": "Pulsar Wind Nebulae in the SKA era",
+    "authors": [
+      "J. Gelfand",
+      "R. Breton",
+      "C.U. Ng",
+      "J. Hessels",
+      "B. Stappers",
+      "M. Roberts",
+      "A. Possenti"
+    ],
+    "section": "Fundamental Physics with Pulsars",
+    "year": 2015
+  },
+  "AASKA2015/Hessels01": {
     "title": "Pulsars in Globular Clusters with the SKA",
     "authors": [
       "J. Hessels",
@@ -5032,7 +5147,7 @@
     "section": "Fundamental Physics with Pulsars",
     "year": 2015
   },
-  "Fender01": {
+  "AASKA2015/Fender01": {
     "title": "The Transient Universe with the Square Kilometre Array",
     "authors": [
       "R. Fender",
@@ -5047,7 +5162,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Burlon01": {
+  "AASKA2015/Burlon01": {
     "title": "The SKA View of Gamma-Ray Bursts",
     "authors": [
       "D. Burlon",
@@ -5062,7 +5177,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Corbel01": {
+  "AASKA2015/Corbel01": {
     "title": "Incoherent transient radio emission from stellar-mass compact objects in the SKA era",
     "authors": [
       "S. Corbel",
@@ -5082,7 +5197,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Donnarumma01": {
+  "AASKA2015/Donnarumma01": {
     "title": "SKA as a powerful hunter of jetted Tidal Disruption Events",
     "authors": [
       "I. Donnarumma",
@@ -5096,7 +5211,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Macquart01": {
+  "AASKA2015/Macquart01": {
     "title": "Fast Transients at Cosmological Distances with the SKA",
     "authors": [
       "J.P. Macquart",
@@ -5120,7 +5235,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Amati01": {
+  "AASKA2015/Amati01": {
     "title": "The SKA contribution to GRB cosmology",
     "authors": [
       "L. Amati",
@@ -5134,7 +5249,21 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Perez-Torres01": {
+  "AASKA2015/Bignall01": {
+    "title": "Time domain studies of Active Galactic Nuclei with the Square Kilometre Array",
+    "authors": [
+      "H.E. Bignall",
+      "S.D. Croft",
+      "T. Hovatta",
+      "J.Y. Koay",
+      "J. Lazio",
+      "J.P. Macquart",
+      "C. Reynolds"
+    ],
+    "section": "The Transient Universe",
+    "year": 2015
+  },
+  "AASKA2015/Perez-Torres01": {
     "title": "Core-collapse and Type Ia supernovae with the SKA",
     "authors": [
       "M. Perez-Torres",
@@ -5154,7 +5283,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "O'Brien01": {
+  "AASKA2015/O'Brien01": {
     "title": "Thermal radio emission from novae & symbiotics with the Square Kilometre Array",
     "authors": [
       "T. O'Brien",
@@ -5168,7 +5297,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Wang02": {
+  "AASKA2015/Wang02": {
     "title": "Investigations of supernovae and supernova remnants in the era of SKA",
     "authors": [
       "L. Wang",
@@ -5179,7 +5308,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Wilkinson01": {
+  "AASKA2015/Wilkinson01": {
     "title": "The SKA and the Unknown Unknowns",
     "authors": [
       "P. Wilkinson"
@@ -5187,7 +5316,7 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Yu01": {
+  "AASKA2015/Yu01": {
     "title": "Early Phase Detection and Coverage of Extragalactic and Galactic Black Hole X-ray Transients with SKA",
     "authors": [
       "W. Yu",
@@ -5198,7 +5327,16 @@
     "section": "The Transient Universe",
     "year": 2015
   },
-  "Jarvis02": {
+  "AASKA2015/Prandoni01": {
+    "title": "Revealing the Physics and Evolution of Galaxies and Galaxy Clusters with SKA Continuum Surveys",
+    "authors": [
+      "I. Prandoni",
+      "N. Seymour"
+    ],
+    "section": "The Continuum Universe",
+    "year": 2015
+  },
+  "AASKA2015/Jarvis02": {
     "title": "The star-formation history of the Universe with the SKA",
     "authors": [
       "M. Jarvis",
@@ -5218,7 +5356,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Smolcic01": {
+  "AASKA2015/Smolcic01": {
     "title": "Exploring AGN Activity over Cosmic Time with the SKA",
     "authors": [
       "V. Smolcic",
@@ -5236,7 +5374,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Beswick01": {
+  "AASKA2015/Beswick01": {
     "title": "SKA studies of nearby galaxies: star-formation, accretion processes and molecular gas across all environments",
     "authors": [
       "R.J. Beswick",
@@ -5261,7 +5399,47 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Ferrari01": {
+  "AASKA2015/Afonso01": {
+    "title": "Identifying the first generation of radio powerful AGN in the Universe with the SKA",
+    "authors": [
+      "J. Afonso",
+      "J. Casanellas",
+      "I. Prandoni",
+      "M. Jarvis",
+      "S. Lorenzoni",
+      "M. Magliocchetti",
+      "N. Seymour"
+    ],
+    "section": "The Continuum Universe",
+    "year": 2015
+  },
+  "AASKA2015/Cassano01": {
+    "title": "Cluster Radio Halos at the crossroads between astrophysics and cosmology in the SKA era",
+    "authors": [
+      "R. Cassano",
+      "G. Bernardi",
+      "G. Brunetti",
+      "M. Brüggen",
+      "T. Clarke",
+      "D. Dallacasa",
+      "K. Dolag",
+      "S. Ettori",
+      "S. Giacintucci",
+      "C. Giocoli",
+      "M. Gitti",
+      "M. Johnston-Hollitt",
+      "R. Kale",
+      "M. Markevich",
+      "R.P. Norris",
+      "M.P. Pommier",
+      "G. Pratt",
+      "H.J.A. Rottgering",
+      "T. Venturi"
+    ],
+    "section": "The Continuum Universe",
+    "year": 2015
+  },
+  "AASKA2015/Ferrari01": {
     "title": "Non-thermal emission from galaxy clusters: feasibility study with SKA",
     "authors": [
       "C. Ferrari",
@@ -5291,7 +5469,27 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Makhathini01": {
+  "AASKA2015/Gitti01": {
+    "title": "The SKA view of cool-core clusters: evolution of radio mini-halos and AGN feedback",
+    "authors": [
+      "M. Gitti",
+      "P. Tozzi",
+      "G. Brunetti",
+      "R. Cassano",
+      "D. Dallacasa",
+      "A. Edge",
+      "S. Ettori",
+      "L. Feretti",
+      "C. Ferrari",
+      "S. Giacintucci",
+      "G. Giovannini",
+      "M. Hogan",
+      "T. Venturi"
+    ],
+    "section": "The Continuum Universe",
+    "year": 2015
+  },
+  "AASKA2015/Makhathini01": {
     "title": "Morphological classification of radio sources for galaxy evolution and cosmology with the SKA",
     "authors": [
       "S. Makhathini",
@@ -5302,7 +5500,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Mancuso01": {
+  "AASKA2015/Mancuso01": {
     "title": "Radio Observations of Star Forming Galaxies in the SKA era",
     "authors": [
       "C. Mancuso",
@@ -5316,7 +5514,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "McAlpine01": {
+  "AASKA2015/McAlpine01": {
     "title": "The SKA view of the Interplay between SF and AGN Activity and its role in Galaxy Evolution",
     "authors": [
       "K. McAlpine",
@@ -5339,7 +5537,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "McKean01": {
+  "AASKA2015/McKean01": {
     "title": "Strong Gravitational Lensing with the SKA",
     "authors": [
       "J. McKean",
@@ -5356,7 +5554,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Murphy01": {
+  "AASKA2015/Murphy01": {
     "title": "The Astrophysics of Star Formation Across Cosmic Time at >10 GHz with the Square Kilometre Array",
     "authors": [
       "E. Murphy",
@@ -5378,7 +5576,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Norris01": {
+  "AASKA2015/Norris01": {
     "title": "The SKA Mid-frequency All-sky Continuum Survey: Discovering the unexpected and transforming radio-astronomy",
     "authors": [
       "R.P. Norris",
@@ -5393,7 +5591,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Orienti01": {
+  "AASKA2015/Orienti01": {
     "title": "The physics of the radio emission in the quiet side of the AGN population with the SKA",
     "authors": [
       "M. Orienti",
@@ -5405,7 +5603,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Wolter01": {
+  "AASKA2015/Wolter01": {
     "title": "Radio investigation of Ultra-Luminous X-ray (ULX) Sources in the SKA Era",
     "authors": [
       "A. Wolter",
@@ -5420,7 +5618,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Grainge01": {
+  "AASKA2015/Grainge01": {
     "title": "The SKA and Galaxy Cluster Science with the Sunyaev-Zel’dovich Effect",
     "authors": [
       "K. Grainge",
@@ -5435,7 +5633,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Zwart01": {
+  "AASKA2015/Zwart01": {
     "title": "Astronomy Below the Survey Threshold in the SKA Era",
     "authors": [
       "J. Zwart",
@@ -5460,7 +5658,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Kapinska01": {
+  "AASKA2015/Kapinska01": {
     "title": "Unravelling lifecycles and physics of radio-loud AGN in the SKA Era",
     "authors": [
       "A.D. Kapinska",
@@ -5473,7 +5671,7 @@
     "section": "The Continuum Universe",
     "year": 2015
   },
-  "Johnston-Hollitt01": {
+  "AASKA2015/Johnston-Hollitt01": {
     "title": "Using SKA Rotation Measures to Reveal the Mysteries of the Magnetised Universe",
     "authors": [
       "M. Johnston-Hollitt",
@@ -5504,7 +5702,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Agudo01": {
+  "AASKA2015/Agudo01": {
     "title": "Studies of Relativistic Jets in Active Galactic Nuclei with SKA",
     "authors": [
       "I. Agudo",
@@ -5533,7 +5731,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Beck01": {
+  "AASKA2015/Beck01": {
     "title": "Structure, dynamical impact and origin of magnetic fields in nearby galaxies in the SKA era",
     "authors": [
       "R. Beck",
@@ -5557,7 +5755,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Bonafede01": {
+  "AASKA2015/Bonafede01": {
     "title": "Unravelling the origin of large-scale magnetic fields in galaxy clusters and beyond through Faraday Rotation Measures with the SKA",
     "authors": [
       "A. Bonafede",
@@ -5581,7 +5779,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Haverkorn01": {
+  "AASKA2015/Haverkorn01": {
     "title": "Measuring magnetism in the Milky Way with the Square Kilometre Array",
     "authors": [
       "M. Haverkorn",
@@ -5608,7 +5806,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Vazza01": {
+  "AASKA2015/Vazza01": {
     "title": "Filaments of the radio cosmic web: opportunities and challenges for SKA",
     "authors": [
       "F. Vazza",
@@ -5622,7 +5820,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Colafrancesco02": {
+  "AASKA2015/Colafrancesco02": {
     "title": "Probing the nature of Dark Matter with the SKA",
     "authors": [
       "S. Colafrancesco",
@@ -5637,7 +5835,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Johnston-Hollitt02": {
+  "AASKA2015/Johnston-Hollitt02": {
     "title": "Using Tailed Radio Galaxies to Probe the Environment and Magnetic Field of Galaxy Clusters in the SKA Era",
     "authors": [
       "M. Johnston-Hollitt",
@@ -5647,7 +5845,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Dickinson01": {
+  "AASKA2015/Dickinson01": {
     "title": "SKA studies of in situ synchrotron radiation from molecular clouds",
     "authors": [
       "C. Dickinson",
@@ -5673,7 +5871,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Gaensler01": {
+  "AASKA2015/Gaensler01": {
     "title": "Broadband Polarimetry with the Square Kilometre Array: A Unique Astrophysical Probe",
     "authors": [
       "B. Gaensler",
@@ -5698,7 +5896,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Giovannini01": {
+  "AASKA2015/Giovannini01": {
     "title": "Mega-parsec scale magnetic fields in low density regions in the SKA era: filaments connecting galaxy clusters and groups",
     "authors": [
       "G. Giovannini",
@@ -5714,7 +5912,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Govoni01": {
+  "AASKA2015/Govoni01": {
     "title": "Cluster magnetic fields through the study of polarized radio halos in the SKA era",
     "authors": [
       "F. Govoni",
@@ -5741,7 +5939,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Heald01": {
+  "AASKA2015/Heald01": {
     "title": "Magnetic Field Tomography in Nearby Galaxies with the Square Kilometre Array",
     "authors": [
       "G. Heald",
@@ -5767,7 +5965,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Laing01": {
+  "AASKA2015/Laing01": {
     "title": "Kinematics and Dynamics of kiloparsec-scale Jets in Radio Galaxies with SKA",
     "authors": [
       "R. Laing"
@@ -5775,7 +5973,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Peng01": {
+  "AASKA2015/Peng01": {
     "title": "Giant radio galaxies as probes of the ambient WHIM in the era of the SKA",
     "authors": [
       "B. Peng",
@@ -5785,7 +5983,29 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Stil01": {
+  "AASKA2015/Robishaw01": {
+    "title": "Measuring Magnetic Fields Near and Far with the SKA via the Zeeman Effect",
+    "authors": [
+      "T. Robishaw",
+      "J. Green",
+      "G. Surcis",
+      "W.H.T. Vlemmings",
+      "A. Richards",
+      "S. Etoka",
+      "T.L. Bourke",
+      "V. Fish",
+      "M.D. Gray",
+      "H. Imai",
+      "B. Kramer",
+      "J. McBride",
+      "E. Momjian",
+      "A.P. Sarma",
+      "A.A. Zijlstra"
+    ],
+    "section": "Magnetism",
+    "year": 2015
+  },
+  "AASKA2015/Stil01": {
     "title": "Stacking for Cosmic Magnetism with SKA Surveys",
     "authors": [
       "J. Stil",
@@ -5794,7 +6014,7 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Taylor01": {
+  "AASKA2015/Taylor01": {
     "title": "SKA Deep Polarization and Cosmic Magnetism",
     "authors": [
       "R. Taylor",
@@ -5814,7 +6034,35 @@
     "section": "Magnetism",
     "year": 2015
   },
-  "Hoare01": {
+  "AASKA2015/Vacca01": {
+    "title": "Statistical methods for the analysis of rotation measure grids in large scale structures in the SKA era",
+    "authors": [
+      "V. Vacca",
+      "N. Oppermann",
+      "T.A. Ensslin",
+      "M. Selig",
+      "H. Junklewitz",
+      "M. Greiner",
+      "J. Jasche",
+      "C.A. Hales",
+      "M. Reneicke",
+      "E. Carretti",
+      "L. Feretti",
+      "C. Ferrari",
+      "G. Giovannini",
+      "F. Govoni",
+      "C. Horellou",
+      "S. Ideguchi",
+      "M. Johnston-Hollitt",
+      "M. Murgia",
+      "R. Paladino",
+      "R. Pizzo",
+      "A. Scaife"
+    ],
+    "section": "Magnetism",
+    "year": 2015
+  },
+  "AASKA2015/Hoare01": {
     "title": "SKA and the Cradle of Life",
     "authors": [
       "M. Hoare",
@@ -5843,7 +6091,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Siemion01": {
+  "AASKA2015/Siemion01": {
     "title": "Searching for Extraterrestrial Intelligence with the Square Kilometre Array",
     "authors": [
       "A. Siemion",
@@ -5870,7 +6118,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Testi01": {
+  "AASKA2015/Testi01": {
     "title": "Protoplanetary disks and the dawn of planets with SKA",
     "authors": [
       "L. Testi",
@@ -5893,7 +6141,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Umana01": {
+  "AASKA2015/Umana01": {
     "title": "The impact of SKA on Galactic Radioastronomy: continuum observations",
     "authors": [
       "G. Umana",
@@ -5914,7 +6162,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Green01": {
+  "AASKA2015/Green01": {
     "title": "Maser Astrometry with VLBI and the SKA",
     "authors": [
       "J. Green",
@@ -5929,7 +6177,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Zarka01": {
+  "AASKA2015/Zarka01": {
     "title": "Magnetospheric Radio Emissions from Exoplanets with the SKA",
     "authors": [
       "P. Zarka",
@@ -5939,7 +6187,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Anglada01": {
+  "AASKA2015/Anglada01": {
     "title": "Radio Jets in Young Stellar Objects with the SKA",
     "authors": [
       "G. Anglada",
@@ -5949,7 +6197,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Codella01": {
+  "AASKA2015/Codella01": {
     "title": "Complex organic molecules in protostellar environments in the SKA era",
     "authors": [
       "C. Codella",
@@ -5968,7 +6216,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Dickinson02": {
+  "AASKA2015/Dickinson02": {
     "title": "Studies of Anomalous Microwave Emission (AME) with the SKA",
     "authors": [
       "C. Dickinson",
@@ -5996,7 +6244,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Etoka01": {
+  "AASKA2015/Etoka01": {
     "title": "OH masers in the Milky Way and Local Group galaxies in the SKA era",
     "authors": [
       "S. Etoka",
@@ -6010,7 +6258,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Thompson01": {
+  "AASKA2015/Thompson01": {
     "title": "The ionised,radical and molecular Milky Way: spectroscopic surveys with the SKA",
     "authors": [
       "M. Thompson",
@@ -6026,7 +6274,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Loinard01": {
+  "AASKA2015/Loinard01": {
     "title": "SKA tomography of Galactic star-forming regions and spiral arms",
     "authors": [
       "L. Loinard",
@@ -6048,7 +6296,7 @@
     "section": "The Cradle of Life",
     "year": 2015
   },
-  "Staveley-Smith01": {
+  "AASKA2015/Staveley-Smith01": {
     "title": "HI Science with the Square Kilometre Array",
     "authors": [
       "L. Staveley-Smith",
@@ -6057,7 +6305,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Blyth01": {
+  "AASKA2015/Blyth01": {
     "title": "Exploring Neutral Hydrogen and Galaxy Evolution with the SKA",
     "authors": [
       "S. Blyth",
@@ -6079,7 +6327,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Blok01": {
+  "AASKA2015/Blok01": {
     "title": "The SKA view of the Neutral Interstellar Medium in Galaxies",
     "authors": [
       "W.J.G. de Blok",
@@ -6092,7 +6340,26 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Meyer01": {
+  "AASKA2015/McClure-Griffiths01": {
+    "title": "Galactic and Magellanic Evolution with the SKA",
+    "authors": [
+      "N.M. McClure-Griffiths",
+      "S. Stanimirovic",
+      "C. Murray",
+      "D. Li",
+      "J.M. Dickey",
+      "E. Vazquez-Semadeni",
+      "J.E.G. Peek",
+      "M. Putman",
+      "S.E. Clark",
+      "M.A. Miville-Deschenes",
+      "J. Bland-Hawthorn",
+      "L. Staveley-Smith"
+    ],
+    "section": "The Hydrogen Universe",
+    "year": 2015
+  },
+  "AASKA2015/Meyer01": {
     "title": "Connecting the Baryons: Multiwavelength Data for SKA HI Surveys",
     "authors": [
       "M. Meyer",
@@ -6105,7 +6372,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Popping01": {
+  "AASKA2015/Popping01": {
     "title": "Observations of the Intergalactic Medium and the Cosmic Web in the SKA era",
     "authors": [
       "A. Popping",
@@ -6118,7 +6385,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Power01": {
+  "AASKA2015/Power01": {
     "title": "Galaxy Formation & Dark Matter Modelling in the Era of the Square Kilometre Array",
     "authors": [
       "C. Power",
@@ -6138,7 +6405,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Morganti01": {
+  "AASKA2015/Morganti01": {
     "title": "Cool Outflows and HI absorbers with SKA",
     "authors": [
       "R. Morganti",
@@ -6148,7 +6415,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Obreschkow01": {
+  "AASKA2015/Obreschkow01": {
     "title": "The SKA as a Doorway to Angular Momentum",
     "authors": [
       "D. Obreschkow",
@@ -6161,7 +6428,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Oonk01": {
+  "AASKA2015/Oonk01": {
     "title": "The Physics of the Cold Neutral Medium: Low-frequency Radio Recombination Lines with the Square Kilometre Array",
     "authors": [
       "R. Oonk",
@@ -6175,7 +6442,7 @@
     "section": "The Hydrogen Universe",
     "year": 2015
   },
-  "Paragi01": {
+  "AASKA2015/Paragi01": {
     "title": "Very Long Baseline Interferometry with the SKA",
     "authors": [
       "Z. Paragi",
@@ -6264,7 +6531,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Bray01": {
+  "AASKA2015/Bray01": {
     "title": "Lunar detection of ultra-high-energy cosmic rays and neutrinos with the Square Kilometre Array",
     "authors": [
       "J.D. Bray",
@@ -6287,7 +6554,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Bacon01": {
+  "AASKA2015/Bacon01": {
     "title": "Synergy between the Large Synoptic Survey Telescope and the Square Kilometre Array",
     "authors": [
       "D.J. Bacon",
@@ -6315,7 +6582,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Kitching01": {
+  "AASKA2015/Kitching01": {
     "title": "Euclid & SKA Synergies",
     "authors": [
       "T. Kitching",
@@ -6332,7 +6599,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Quinn01": {
+  "AASKA2015/Quinn01": {
     "title": "Delivering SKA Science",
     "authors": [
       "P. Quinn",
@@ -6345,7 +6612,25 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Burigana01": {
+  "AASKA2015/Huege01": {
+    "title": "Precision measurements of cosmic ray air showers with the SKA",
+    "authors": [
+      "T. Huege",
+      "J.D. Bray",
+      "S. Buitink",
+      "R. Dallier",
+      "R.D. Ekers",
+      "H. Falcke",
+      "C. James",
+      "L. Martin",
+      "B. Revenu",
+      "O. Scholten",
+      "F. Schröder"
+    ],
+    "section": "Synergies and Other Science",
+    "year": 2015
+  },
+  "AASKA2015/Burigana01": {
     "title": "SKA synergy with Microwave Background studies",
     "authors": [
       "C. Burigana",
@@ -6370,7 +6655,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Ciliegi01": {
+  "AASKA2015/Ciliegi01": {
     "title": "Synergistic science with Euclid and SKA: the nature and history of Star Formation",
     "authors": [
       "P. Ciliegi",
@@ -6379,7 +6664,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Deane01": {
+  "AASKA2015/Deane01": {
     "title": "Multiple supermassive black hole systems: SKA’s future leading role",
     "authors": [
       "R. Deane",
@@ -6394,7 +6679,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Fuller01": {
+  "AASKA2015/Fuller01": {
     "title": "Star and Stellar Cluster Formation: ALMA-SKA Synergies",
     "authors": [
       "G. Fuller",
@@ -6406,7 +6691,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Giroletti01": {
+  "AASKA2015/Giroletti01": {
     "title": "The connection between radio and high energy emission in black hole powered systems in the SKA era",
     "authors": [
       "M. Giroletti",
@@ -6425,7 +6710,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Jones01": {
+  "AASKA2015/Jones01": {
     "title": "Enhancing Science from Future Space Missions and Planetary Radar with the SKA",
     "authors": [
       "D. Jones",
@@ -6434,7 +6719,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Paladino01": {
+  "AASKA2015/Paladino01": {
     "title": "Synergies between SKA and ALMA: observations of Nearby Galaxies",
     "authors": [
       "R. Paladino",
@@ -6448,7 +6733,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Antoniadis01": {
+  "AASKA2015/Antoniadis01": {
     "title": "Multi-wavelength, Multi-Messenger Pulsar Science in the SKA Era",
     "authors": [
       "J. Antoniadis",
@@ -6464,7 +6749,26 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Turriziani01": {
+  "AASKA2015/Takahashi01": {
+    "title": "Overview of Complementarity and Synergy with Other Wavelengths in Cosmology in the SKA era",
+    "authors": [
+      "K. Takahashi",
+      "M.L. Brown",
+      "C. Burigana",
+      "C.A. Jackson",
+      "M. Jarvis",
+      "K.D. Thomas D. Kitching",
+      "J.P. Jean-Paul Kneib",
+      "M. Masamune Oguri",
+      "S. Prunet",
+      "H. Shan",
+      "J.L. Starck",
+      "D. Yamauchi"
+    ],
+    "section": "Synergies and Other Science",
+    "year": 2015
+  },
+  "AASKA2015/Turriziani01": {
     "title": "Extragalactic jets in the SKA era: solving the mystery of Ultra High Energy Cosmic Rays?",
     "authors": [
       "S. Turriziani"
@@ -6472,7 +6776,7 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Wagg01": {
+  "AASKA2015/Wagg01": {
     "title": "Enabling the next generation of cm-wavelength studies of high-redshift molecular gas with the SKA",
     "authors": [
       "J. Wagg",
@@ -6490,7 +6794,23 @@
     "section": "Synergies and Other Science",
     "year": 2015
   },
-  "Carilli01": {
+  "AASKA2015/Nakariakov01": {
+    "title": "Solar and Heliospheric Physics with the Square Kilometre Array",
+    "authors": [
+      "V. Nakariakov",
+      "M.M. Bisi",
+      "P.K. Browning",
+      "D. Maia",
+      "E.P. Kontar",
+      "D. Oberoi",
+      "P.T. Gallagher",
+      "I.H. Cairns",
+      "H. Ratcliffe"
+    ],
+    "section": "Synergies and Other Science",
+    "year": 2015
+  },
+  "AASKA2015/Carilli01": {
     "title": "Square Kilometre Array key science: a progressive retrospective",
     "authors": [
       "C. Carilli"

@@ -11,10 +11,12 @@ venv/
 # Project data (generated/local, not source)
 chroma_db/
 chroma_textbooks/
+sources.db
 pdfs/**
 !pdfs/download.py
 !pdfs/download_errors.txt
 !pdfs/build_bibliography.py
+!pdfs/build_bibliography_aaska2015.py
 !pdfs/bibliography.json
 aaskaii-atlas-v0.zip
 .gitignore

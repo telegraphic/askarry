@@ -1,141 +1,77 @@
+"""Download AASKAII chapter PDFs from the SKAO website into AASKAII/<section>/.
+
+Re-runnable: chapters already present anywhere under AASKAII/ (whichever
+section folder they ended up in) are skipped, so only new papers download.
+
+    python pdfs/download.py
+"""
+
 import re
-import shutil
 import sys
 from pathlib import Path
-from urllib.parse import urljoin
 
 import requests
-from bs4 import BeautifulSoup
 from loguru import logger
-from pypdf import PdfReader
 
 # Allow running as `python pdfs/download.py` from the repo root (or from
 # inside pdfs/) while still importing the shared `rag` package.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from rag.config import SECTION_ORDER
 
-PDF_INDEX = "Advancing Astrophysics with the SKA II _ SKAO.pdf"
 PAGE_URL = "https://www.skao.int/en/science-users/aaskaii"
 
-OUTPUT_DIR = Path("AASKAII")
-OUTPUT_DIR.mkdir(exist_ok=True)
+HERE = Path(__file__).resolve().parent
+OUTPUT_DIR = HERE / "AASKAII"
+ERRORS_PATH = HERE / "download_errors.txt"
 
-# ------------------------------------------------------------
-# Extract topic mapping from downloaded webpage PDF
-# ------------------------------------------------------------
 
-def build_topic_map(pdf_file):
-
-    reader = PdfReader(pdf_file)
-
-    text = ""
-
-    for page in reader.pages:
-        text += "\n" + (page.extract_text() or "")
-
+def build_topic_map(html: str) -> dict[str, str]:
+    """Map each chapter PDF URL on the live page to the section heading that
+    precedes it. (The old version parsed a saved PDF of the page, where long
+    headings wrapped across lines and went unmatched, which misfiled every
+    "From the Milky Way to Distant Galaxies" chapter under the previous
+    section.)"""
+    headings = sorted(
+        (m.start(), h) for h in SECTION_ORDER for m in re.finditer(re.escape(h), html)
+    )
     topic_map = {}
-
-    current_topic = "Unclassified"
-
-    for line in text.splitlines():
-
-        line = line.strip()
-
-        for heading in SECTION_ORDER:
-            if heading in line:
-                current_topic = heading
-                break
-
-        m = re.findall(r"AASKAII/([A-Za-z0-9_-]+)", line)
-
-        for chapter in m:
-            topic_map[chapter] = current_topic
-
+    for m in re.finditer(r'https?://[^"\']+\.pdf', html, flags=re.IGNORECASE):
+        before = [h for pos, h in headings if pos < m.start()]
+        topic_map.setdefault(m.group(0), before[-1] if before else "Unclassified")
     return topic_map
 
 
-topic_map = build_topic_map(PDF_INDEX)
+def main() -> None:
+    html = requests.get(PAGE_URL, timeout=60).text
+    topic_map = build_topic_map(html)
+    logger.info(f"Found {len(topic_map)} candidate PDFs")
 
-logger.info(f"Mapped {len(topic_map)} chapters")
+    existing = {p.name.lower() for p in OUTPUT_DIR.rglob("*.pdf")}
+    failures = []
 
-# ------------------------------------------------------------
-# Scrape PDF links
-# ------------------------------------------------------------
-
-html = requests.get(PAGE_URL, timeout=60).text
-
-pdf_links = set(
-    re.findall(
-        r'https?://[^"\']+\.pdf',
-        html,
-        flags=re.IGNORECASE,
-    )
-)
-
-# fallback URLs taken from chapter identifiers
-for chapter in topic_map:
-    pdf_links.add(
-        f"https://www.skao.int/sites/default/files/documents/{chapter}.pdf"
-    )
-
-logger.info(f"Found {len(pdf_links)} candidate PDFs")
-
-# ------------------------------------------------------------
-# Download
-# ------------------------------------------------------------
-
-failures = []
-
-for url in sorted(pdf_links):
-
-    filename = url.split("/")[-1]
-
-    stem = Path(filename).stem
-
-    topic = topic_map.get(stem, "Unclassified")
-
-    folder = OUTPUT_DIR / topic
-    folder.mkdir(parents=True, exist_ok=True)
-
-    outfile = folder / filename
-
-    if outfile.exists():
-        logger.info(f"SKIP {filename} (already downloaded)")
-        continue
-
-    try:
-
-        r = requests.get(
-            url,
-            timeout=120,
-            allow_redirects=True,
-        )
-
-        if r.status_code == 404:
-            failures.append(url)
-            logger.warning(f"404  {filename}")
+    for url, topic in sorted(topic_map.items()):
+        filename = url.split("/")[-1]
+        if filename.lower() in existing:
             continue
 
-        r.raise_for_status()
+        try:
+            r = requests.get(url, timeout=120, allow_redirects=True)
+            if r.status_code == 404:
+                failures.append(url)
+                logger.warning(f"404  {filename}")
+                continue
+            r.raise_for_status()
+            folder = OUTPUT_DIR / topic
+            folder.mkdir(parents=True, exist_ok=True)
+            (folder / filename).write_bytes(r.content)
+            logger.info(f"OK   {filename} -> {topic}")
+        except Exception as e:
+            failures.append(f"{url} : {e}")
+            logger.error(f"FAIL {filename}")
 
-        outfile.write_bytes(r.content)
+    ERRORS_PATH.write_text("".join(f"{item}\n" for item in failures))
+    logger.info(f"Skipped {len(existing)} already downloaded; failures: {len(failures)}")
 
-        logger.info(f"OK   {filename} -> {topic}")
 
-    except Exception as e:
-
-        failures.append(f"{url} : {e}")
-
-        logger.error(f"FAIL {filename}")
-
-# ------------------------------------------------------------
-# Save error log
-# ------------------------------------------------------------
-
-with open("download_errors.txt", "w") as f:
-
-    for item in failures:
-        f.write(str(item) + "\n")
-
-logger.info("Downloaded successfully")
-logger.info(f"Failures: {len(failures)}")
+if __name__ == "__main__":
+    main()

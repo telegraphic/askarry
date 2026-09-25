@@ -130,6 +130,16 @@ def _expand_query(query: str, acronyms: dict[str, str]) -> str:
     return expanded
 
 
+def get_acronyms(db_dir: Path = CHROMA_DIR) -> dict[str, str]:
+    """Public accessor for the cached acronym→expansion lookup."""
+    return _get_acronyms(store.get_chroma_collection(db_dir))
+
+
+def get_all_chunks(db_dir: Path = CHROMA_DIR) -> list[dict]:
+    """Every indexed chunk as {"text", "meta"}, sharing the BM25 index's cache."""
+    return _get_bm25(store.get_chroma_collection(db_dir))[1]
+
+
 def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
     """Return a BM25 index over all documents in the collection.
 
@@ -150,6 +160,23 @@ def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
         return BM25Okapi(tokenised), bm25_docs
 
     return _bm25_caches[str(collection.id)].get(collection, _build)
+
+
+def _chroma_where(where: dict | None) -> dict | None:
+    """Translate a flat {key: value | [values]} filter into ChromaDB syntax
+    (list values → $in, several keys → $and)."""
+    if not where:
+        return None
+    clauses = [{k: {"$in": v} if isinstance(v, list) else v} for k, v in where.items()]
+    return clauses[0] if len(clauses) == 1 else {"$and": clauses}
+
+
+def matches_where(meta: dict, where: dict | None) -> bool:
+    """Python-side twin of _chroma_where, for filtering in-memory chunks."""
+    return not where or all(
+        meta.get(k) in v if isinstance(v, list) else meta.get(k) == v
+        for k, v in where.items()
+    )
 
 
 def _hyde_query(query: str) -> str:
@@ -280,8 +307,8 @@ def retrieve(
     *expansion_window* overrides ``CONTEXT_EXPANSION_WINDOW`` for this call.
     The MCP server passes ``2`` to give frontier models a wider passage context.
 
-    *where* is an optional ChromaDB metadata filter (e.g.
-    ``{"doc_source": "ska_capabilities"}``) scoping both the semantic and
+    *where* is an optional flat metadata filter (e.g.
+    ``{"doc_source": "ska_capabilities"}``; a list value means "any of") scoping both the semantic and
     BM25 search legs to matching chunks only. ``None`` searches everything.
 
     *db_dir* selects the ChromaDB store to search (default: the main index;
@@ -328,7 +355,7 @@ def retrieve(
         query_embeddings=query_embedding,
         n_results=n_candidates,
         include=["documents", "metadatas", "distances"],
-        where=where,
+        where=_chroma_where(where),
     )
     semantic_hits = []
     for doc, meta, dist in zip(
@@ -352,7 +379,7 @@ def retrieve(
         candidate_indices = [
             i
             for i in candidate_indices
-            if all(bm25_docs[i]["meta"].get(k) == v for k, v in where.items())
+            if matches_where(bm25_docs[i]["meta"], where)
         ]
     top_bm25_indices = sorted(
         candidate_indices, key=lambda i: bm25_scores[i], reverse=True

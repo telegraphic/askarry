@@ -45,6 +45,25 @@ search_google_scholar_key_words, search_google_scholar_advanced
                         author/year range.
 get_author_info_tool   Look up an author's affiliation, interests, citation
                         count, and top publications on Google Scholar.
+keyword_coverage_tool   Exact per-section/per-paper mention counts for terms.
+verify_quote_tool       Check a quoted figure/sentence against its claimed paper.
+get_paper_info_tool, list_missing_papers_tool
+                        Bibliography details; chapters missing from the index.
+lookup_acronym_tool, list_acronyms_tool
+                        Acronym senses, variants, categories and papers.
+compare_to_calculator_tool
+                        Quoted sensitivity vs. live calculator, all weightings.
+validate_across_contexts_tool
+                        One obs_config validated under every observing context.
+resolve_object_tool, ned_lookup_tool, cone_search_tool
+                        SIMBAD/NED object lookup via astroquery (read-only).
+build_source_db_tool, query_sources_tool, get_source_mentions_tool,
+list_unresolved_sources_tool
+                        Database of sources named in the papers (SIMBAD-resolved).
+
+Resources
+---------
+askarry://atlas/taxonomies  Fixed observing-mode / technique lists for analyses.
 
 Usage
 -----
@@ -75,13 +94,15 @@ Notes
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import requests
 from fastmcp import FastMCP
 
 from rag import store
-from rag.bibliography import format_citation, list_toc_entries, lookup_citation
+from rag import corpus_tools, source_db
+from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
     DOC_SOURCE_AASKAII,
     DOC_SOURCE_LABELS,
@@ -107,9 +128,10 @@ from rag.observing_setup_capabilities import (
     list_capability_schemas,
 )
 from rag.observing_setup_data_volume import estimate_setup_data_volume, list_odps
-from rag.observing_setup_validator import validate_observing_setup
+from rag.observing_setup_validator import validate_across_contexts, validate_observing_setup
 from rag.retrieval import retrieve
-from rag.sensitivity_calculator import query_sensitivity_calculator
+from rag.sensitivity_calculator import compare_to_calculator, query_sensitivity_calculator
+from rag.sky_lookup import cone_search, ned_lookup, resolve_object
 from rag.subarray_layout import get_subarray_layout
 from rag.subarray_names import resolve_context_subarrays, resolve_subarray_name
 
@@ -175,7 +197,7 @@ mcp = FastMCP(
         "\n"
         "Live vs. static data: query_sensitivity_calc, get_subarray_layout_"
         "tool, resolve_subarray_name_tool/resolve_context_subarrays_tool, and "
-        "the Google Scholar tools all call real external services/packages "
+        "the Google Scholar tools, and the SIMBAD/NED lookup tools all call real external services/packages "
         "over the network — results are live, not cached, and can change. "
         "Call query_sensitivity_calc's 'subarrays' endpoint (or "
         "resolve_context_subarrays_tool, which does the name translation for "
@@ -219,6 +241,19 @@ mcp = FastMCP(
         "for current SKAO timeline/policy pages, since those sit outside "
         "this dataset and change over time.\n"
         "\n"
+        "Corpus-wide analysis (counting, ranking, tabulating across papers): "
+        "use keyword_coverage_tool for 'how many sections/papers mention X' "
+        "— exact counts, not a tally of search hits. Scope searches with "
+        "search_astronomy_docs' book/section/paper filters instead of "
+        "prompt instructions, and use the real book sections from "
+        "list_documents(book=...) rather than inventing themes. Before "
+        "publishing any sourced figure, run verify_quote_tool on it with its "
+        "claimed paper; use compare_to_calculator_tool to check quoted "
+        "sensitivities and validate_across_contexts_tool to check stage "
+        "feasibility. Check list_missing_papers_tool before concluding a "
+        "topic is absent. The askarry://atlas/taxonomies resource holds the "
+        "fixed category lists used by earlier analyses.\n"
+        "\n"
         "Housekeeping: large search results can exceed output size limits — "
         "prefer specific queries and a modest top_k over broad, high-top_k "
         "ones."
@@ -245,6 +280,10 @@ def _format_passage(i: int, chunk: dict) -> str:
 
     book_label = DOC_SOURCE_LABELS.get(chunk.get("doc_source", DOC_SOURCE_AASKAII), "")
     lines = [f"[{i}] {doc_title} ({book_label})" if book_label else f"[{i}] {doc_title}"]
+    lines.append(f"    Paper ID: {bib_key(chunk['source'])} (chunk {chunk.get('chunk_index', 0)})")
+    book_section = section_of(chunk["source"])
+    if book_section:
+        lines.append(f"    Book section: {book_section}")
     if section:
         lines.append(f"    Section: {section}")
     if page:
@@ -261,6 +300,7 @@ def _search(
     top_k: int,
     where: dict | None = None,
     include_background: bool = False,
+    as_json: bool = False,
 ) -> str:
     """Run the main-index search and render passages; optionally append the
     top textbook passages for the same query, numbered after the main ones."""
@@ -271,6 +311,22 @@ def _search(
         expansion_window=2,      # wider context per passage for frontier LLMs
         where=where,
     )
+    if as_json:
+        return json.dumps([
+            {
+                "n": i,
+                "paper": bib_key(c["source"]),
+                "chunk_index": c["chunk_index"],
+                "title": c.get("doc_title") or (lookup_citation(c["source"]) or {}).get("title", ""),
+                "book": DOC_SOURCE_LABELS.get(c["doc_source"], c["doc_source"]),
+                "book_section": section_of(c["source"]),
+                "heading": c.get("section_path") or c.get("heading", ""),
+                "page": c.get("page_no", 0),
+                "score": c.get("score", 0.0),
+                "text": c["text"],
+            }
+            for i, c in enumerate(chunks, 1)
+        ])
     parts = [_format_passage(i, c) for i, c in enumerate(chunks, 1)]
     out = "\n\n---\n\n".join(parts) if parts else "No relevant passages found for that query."
     if include_background:
@@ -294,7 +350,13 @@ def _search(
 
 @mcp.tool()
 def search_astronomy_docs(
-    query: str, top_k: int = MCP_TOP_K, include_background: bool = False
+    query: str,
+    top_k: int = MCP_TOP_K,
+    include_background: bool = False,
+    book: str | None = None,
+    section: str | None = None,
+    paper: str | None = None,
+    as_json: bool = False,
 ) -> str:
     """Search the SKA astronomy document database for passages relevant to a query.
 
@@ -312,13 +374,29 @@ def search_astronomy_docs(
         top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
         include_background: Also append a few textbook passages (see
                 search_textbooks) for underlying technical background.
+        book:   Restrict to one document set: "aaskaii" (2026 book),
+                "aaska2015" (2015 book) or "ska_capabilities". Default: all.
+        section: Restrict to one book section, exactly as list_documents
+                names it (e.g. "The Cosmos", "Methods and Techniques").
+                Combine with book to avoid mixing the two books.
+        paper:  Restrict to one paper, by Paper ID/filename stem (e.g.
+                "Vacca01") or a title substring.
+        as_json: Return a JSON list of passages (paper, book, book_section,
+                page, score, text) instead of formatted text.
     """
-    return _search(query, top_k, include_background=include_background)
+    try:
+        where = corpus_tools.build_filter(book=book, section=section, paper=paper)
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+    return _search(query, top_k, where=where, include_background=include_background, as_json=as_json)
 
 
 @mcp.tool()
 def search_ska_capabilities(
-    query: str, top_k: int = MCP_TOP_K, include_background: bool = False
+    query: str,
+    top_k: int = MCP_TOP_K,
+    include_background: bool = False,
+    as_json: bool = False,
 ) -> str:
     """Search the SKA key capabilities technical documents for passages relevant to a query.
 
@@ -332,12 +410,14 @@ def search_ska_capabilities(
         top_k:  Maximum number of passages to return (default: MCP_TOP_K from config.py).
         include_background: Also append a few textbook passages (see
                 search_textbooks) for underlying technical background.
+        as_json: Return a JSON list of passages instead of formatted text.
     """
     return _search(
         query,
         top_k,
         where={"doc_source": DOC_SOURCE_SKA_CAPABILITIES},
         include_background=include_background,
+        as_json=as_json,
     )
 
 
@@ -404,13 +484,22 @@ def list_ska_capability_docs() -> str:
 
 
 @mcp.tool()
-def list_documents() -> str:
-    """List all astronomy papers in the database, grouped by AASKAII section.
+def list_documents(book: str | None = None) -> str:
+    """List all astronomy papers in the database, grouped by book section.
 
     Use this before searching to discover what documents are available,
     or to answer questions like "what papers cover gravitational waves?".
+    Each line ends with the paper's ID (filename stem), which the
+    search_astronomy_docs `paper` filter and other tools accept.
+
+    Args:
+        book: "aaskaii" (2026 book) or "aaska2015" (2015 book). Default: both,
+            with the two books' section names mixed together.
     """
-    toc = list_toc_entries()
+    try:
+        toc = list_toc_entries(corpus_tools.BOOKS[book] if book else None)
+    except KeyError:
+        return f"Invalid request: unknown book {book!r}; expected 'aaskaii' or 'aaska2015'."
     if not toc:
         return (
             "No documents found. Run `python ingest.py` in the project directory "
@@ -427,7 +516,7 @@ def list_documents() -> str:
                 author_str = f" — {surname} et al." if len(authors) > 1 else f" — {surname}"
             else:
                 author_str = ""
-            lines.append(f"- {entry['title']}{author_str}")
+            lines.append(f"- {entry['title']}{author_str} [{bib_key(entry['path'])}]")
         lines.append("")
 
     return "\n".join(lines)
@@ -438,8 +527,9 @@ def get_document_chunks(filename: str, max_chunks: int = 60) -> str:
     """Retrieve all indexed chunks from a specific document in reading order.
 
     Useful for summarising or deeply analysing a single paper. The document
-    is identified by filename stem (e.g. 'ska_mid_baseline_design') or full
-    filename including extension. Use list_documents() first to find names.
+    is identified by its paper ID from list_documents() (e.g. 'Vacca01', or
+    'AASKA2015/Vacca01' for the 2015 chapter with the same filename), filename
+    stem (e.g. 'ska_mid_baseline_design') or full filename including extension.
 
     Returns up to *max_chunks* consecutive passages (default 60). If the
     document has more chunks they are noted at the end.
@@ -452,15 +542,14 @@ def get_document_chunks(filename: str, max_chunks: int = 60) -> str:
     if collection.count() == 0:
         return "The vector store is empty. Run `python ingest.py` first."
 
-    stem = Path(filename).stem  # normalise — strip extension if present
+    wanted = Path(filename).with_suffix("").as_posix()  # strip extension if present
 
     # Step 1: fetch only metadatas to find the canonical source path (fast).
-    all_meta = collection.get(include=["metadatas"])
-    matching_source: str | None = None
-    for meta in all_meta["metadatas"]:
-        if Path(meta.get("source", "")).stem == stem:
-            matching_source = meta["source"]
-            break
+    # Exact paper ID first (e.g. "AASKA2015/Vacca01" vs AASKAII "Vacca01"),
+    # then bare filename stem.
+    sources = {m.get("source", "") for m in collection.get(include=["metadatas"])["metadatas"]}
+    matching_source = next((s for s in sources if bib_key(s) == wanted), None) or next(
+        (s for s in sorted(sources) if Path(s).stem == Path(wanted).name), None)
 
     if matching_source is None:
         return (
@@ -896,6 +985,354 @@ def get_author_info_tool(author_name: str) -> str:
     except StopIteration:
         return f"No Google Scholar author found matching {author_name!r}."
     return str(result)
+
+
+# ---------------------------------------------------------------------------
+# Corpus analysis tools (exact counts, verification, metadata) — built for
+# multi-agent sweeps like the AASKAII Atlas, where hand-tallied search hits
+# and misattributed figures were the weakest points.
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def keyword_coverage_tool(
+    terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1
+) -> str:
+    """Exact, repeatable counts of which book sections and papers mention each term.
+
+    Use this instead of running one search per keyword and tallying the
+    results by hand, e.g. for "how many sections use technique X" rankings.
+    It scans every indexed chunk literally (whole-word match), so it measures
+    mentions, not relevance: follow up with search_astronomy_docs(paper=...)
+    to see how a paper actually uses a term.
+
+    Args:
+        terms: Terms to count. Use "|" for synonyms counted as one term, e.g.
+            "Faraday rotation|rotation measure|RM". All-caps alternatives
+            match case-sensitively and also match their known expansion.
+        book: "aaskaii" (default), "aaska2015", "ska_capabilities", or null
+            for everything.
+        min_hits_per_paper: Mentions a paper needs before it counts as
+            covering a term (raise to 3-5 to drop passing mentions).
+    """
+    try:
+        return json.dumps(corpus_tools.keyword_coverage(terms, book, min_hits_per_paper))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5) -> str:
+    """Check that a quoted sentence or figure really comes from the paper it is attributed to.
+
+    Run this on every sourced figure before publishing a table. It combines
+    ranked search with a literal scan for chunks that contain every number
+    in *text*. Verdicts: "supported_by_claimed_paper", "found_in_other_paper"
+    (a likely citation swap: see literal_number_matches / search_matches for
+    the real source), "not_found", or with no paper "found"/"not_found".
+
+    Args:
+        text: The claim, ideally with its numbers, e.g.
+            "sigma_Q,U = 0.24 uJy/beam at 50 hours".
+        paper: Claimed source, as a Paper ID/filename stem or title substring.
+        top_k: Ranked search matches to check across the whole corpus.
+    """
+    try:
+        return json.dumps(corpus_tools.verify_quote(text, paper, top_k))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def get_paper_info_tool(name: str) -> str:
+    """Bibliographic details for a paper: title, authors, book, section,
+    formatted citation, and how many chunks are indexed (0 = listed in the
+    book but not searchable).
+
+    Args:
+        name: Paper ID/filename stem (exact), or a title or author substring.
+    """
+    return json.dumps(corpus_tools.paper_info(name))
+
+
+@mcp.tool()
+def list_missing_papers_tool(book: str | None = None) -> str:
+    """List book chapters that are in the bibliography but not indexed (so no
+    search can find them), plus indexed files with no bibliography entry.
+
+    Check this before claiming a topic is absent from a book: the paper
+    covering it may simply be missing from the index.
+
+    Args:
+        book: "aaskaii" or "aaska2015". Default: both.
+    """
+    try:
+        return json.dumps(corpus_tools.missing_papers(book))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def lookup_acronym_tool(acronym: str, book: str = "aaskaii") -> str:
+    """Every meaning of an acronym as defined inline in the corpus, with
+    spelling variants, usage count, and the papers that use it. Ambiguous
+    acronyms (e.g. DM = dispersion measure / dark matter) return one entry
+    per meaning.
+
+    Args:
+        acronym: e.g. "CSP", "DM".
+        book: "aaskaii" (default), "aaska2015", or "ska_capabilities".
+    """
+    try:
+        return json.dumps(corpus_tools.lookup_acronym(acronym, book))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def list_acronyms_tool(book: str = "aaskaii", category: str | None = None, limit: int = 100) -> str:
+    """The most-used acronyms in a book, most frequent first.
+
+    Categories come from a keyword heuristic on each expansion, so treat
+    them as a browsing aid, not an authoritative taxonomy.
+
+    Args:
+        book: "aaskaii" (default), "aaska2015", or "ska_capabilities".
+        category: Optional filter: "Methods & Software", "Organizations &
+            Programs", "Telescopes & Instruments", or "Science & Astrophysics".
+        limit: Max rows (default 100).
+    """
+    try:
+        return json.dumps(corpus_tools.list_acronyms(book, category, limit))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def compare_to_calculator_tool(
+    telescope: str,
+    params: dict,
+    claimed_sensitivity: float,
+    unit: str = "uJy/beam",
+    quantity: str = "continuum",
+    claimed_beam_arcsec: float | None = None,
+) -> str:
+    """Check a paper's quoted sensitivity against the live sensitivity calculator,
+    sweeping every weighting scheme (natural, robust -2..2, uniform).
+
+    Papers often leave the weighting unstated, which is the usual reason a
+    quoted figure fails to reproduce. This reports each variant's
+    sensitivity and % difference, the closest one, and all variants within
+    10%. Pass claimed_beam_arcsec when the paper states a resolution, so the
+    match must fit both noise and beam.
+
+    Args:
+        telescope: "low" or "mid".
+        params: continuum/calculate params as for query_sensitivity_calc,
+            minus weighting_mode/robustness (the sweep sets those).
+        claimed_sensitivity: The paper's figure.
+        unit: "Jy/beam", "mJy/beam", "uJy/beam" (default) or "nJy/beam".
+        quantity: "continuum" (default) or "spectral" (per-channel figure).
+        claimed_beam_arcsec: Optional stated resolution, arcsec.
+    """
+    try:
+        return json.dumps(compare_to_calculator(
+            telescope, params, claimed_sensitivity, unit, quantity, claimed_beam_arcsec
+        ))
+    except (ValueError, KeyError) as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def validate_across_contexts_tool(obs_config: dict, contexts: list[str] | None = None) -> str:
+    """Validate one observing configuration under every observing context
+    ("SV-AA2", "SV-AA*", "Cycle 0", "Cycle 1"), to see at which array-assembly
+    stage or cycle a paper's requirement becomes feasible.
+
+    Use this rather than static capability documents when judging whether a
+    requirement is deliverable: those describe the full AA4 design.
+
+    Args:
+        obs_config: Same shape as validate_observing_setup_tool; its own
+            "context" value is ignored.
+        contexts: Optional subset of contexts to check.
+    """
+    try:
+        return str(validate_across_contexts(obs_config, contexts))
+    except (KeyError, ValueError) as exc:
+        return f"Invalid request: {exc}"
+
+
+# ---------------------------------------------------------------------------
+# Astronomical object lookup (SIMBAD / NED via astroquery) — read-only.
+# ---------------------------------------------------------------------------
+
+
+def _sky_call(fn, *args) -> str:
+    try:
+        return json.dumps(fn(*args))
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+    except Exception as exc:  # network/service failures from astroquery
+        return f"Lookup service error: {exc}"
+
+
+@mcp.tool()
+def resolve_object_tool(name: str) -> str:
+    """Resolve an astronomical object name via SIMBAD (falling back to NED).
+
+    Returns position (degrees, sexagesimal, Galactic), SIMBAD object type,
+    redshift, and common aliases, or {"found": false}. Use it to turn a
+    source named in a paper (e.g. "Cen A", "PSR J0437-4715", "M83") into
+    coordinates, e.g. before a visibility/LST check. Survey fields such as
+    "EoR0" or "COSMOS" may not be in SIMBAD.
+
+    Args:
+        name: Object name as SIMBAD/NED would recognise it.
+    """
+    return _sky_call(resolve_object, name)
+
+
+@mcp.tool()
+def ned_lookup_tool(name: str) -> str:
+    """Look up an extragalactic object in NED: position, NED type, redshift
+    and recession velocity. Prefer resolve_object_tool for general use; use
+    this when the NED redshift/velocity specifically matters.
+
+    Args:
+        name: Object name, e.g. "NGC 5128".
+    """
+    return _sky_call(ned_lookup, name)
+
+
+@mcp.tool()
+def cone_search_tool(target: str, radius_arcmin: float = 5.0, max_results: int = 50,
+                     object_type: str | None = None) -> str:
+    """List SIMBAD objects within a radius of a target, nearest first.
+
+    Args:
+        target: An object name, "ra dec" in degrees, or sexagesimal
+            ("13:25:27.6 -43:01:09").
+        radius_arcmin: Search radius in arcminutes (default 5).
+        max_results: Max objects returned (n_found gives the full count).
+        object_type: Optional SIMBAD object-type code filter, e.g. "Psr"
+            (pulsar), "QSO", "G" (galaxy), "HII", "SNR".
+    """
+    return _sky_call(cone_search, target, radius_arcmin, max_results, object_type)
+
+
+# ---------------------------------------------------------------------------
+# Source database: sources named in the papers, resolved via SIMBAD.
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def build_source_db_tool(retry_unresolved: bool = False) -> str:
+    """Build or update the database of astronomical sources named in the
+    indexed papers (regex-extracted, resolved via SIMBAD).
+
+    Incremental: only names never seen before are sent to SIMBAD, so reruns
+    after an ingest are quick. The first build over the whole corpus takes
+    about a minute. Returns counts of sources, names and mentions.
+
+    Args:
+        retry_unresolved: Also re-query names SIMBAD previously couldn't resolve.
+    """
+    try:
+        return json.dumps(source_db.build_source_db(retry_unresolved=retry_unresolved))
+    except Exception as exc:  # SIMBAD/network failures
+        return f"Build failed (rerun to resume; progress is kept): {exc}"
+
+
+@mcp.tool()
+def query_sources_tool(
+    object_type: str | None = None,
+    book: str | None = None,
+    section: str | None = None,
+    paper: str | None = None,
+    dec_min: float | None = None,
+    dec_max: float | None = None,
+    min_papers: int = 1,
+    limit: int = 100,
+) -> str:
+    """List sources named in the papers, most-cited first, with position
+    (RA/Dec, Galactic), SIMBAD type, redshift, the papers that mention each,
+    and the names it appears under.
+
+    Use this to build target lists, e.g. for visibility/LST analyses (use a
+    Dec range to keep only sources that rise high enough at a site).
+    Objects with no SIMBAD position (e.g. GW events) have null coordinates
+    and are dropped by any dec_min/dec_max filter.
+
+    Args:
+        object_type: SIMBAD type code, e.g. "Psr", "G", "AGN", "SNR", "GlC".
+        book: "aaskaii", "aaska2015" or "ska_capabilities".
+        section: Book section, as list_documents names it.
+        paper: Paper ID (filename stem).
+        dec_min, dec_max: Declination range in degrees.
+        min_papers: Only sources mentioned in at least this many papers.
+        limit: Max rows (default 100).
+    """
+    book_tag = corpus_tools.BOOKS.get(book, book) if book else None
+    return json.dumps(source_db.query_sources(
+        source_db.connect(), object_type, book_tag, section, paper,
+        dec_min, dec_max, min_papers, limit,
+    ))
+
+
+@mcp.tool()
+def get_source_mentions_tool(name: str, limit: int = 50) -> str:
+    """A source and every passage in the papers that mentions it, under any
+    of its names (e.g. "Cen A" also finds "NGC 5128" and "Centaurus A"),
+    with paper, book, section, page and surrounding text.
+
+    Args:
+        name: Any name seen in the papers, or the SIMBAD main identifier.
+        limit: Max mentions returned (default 50).
+    """
+    return json.dumps(source_db.source_mentions(source_db.connect(), name, limit))
+
+
+@mcp.tool()
+def list_unresolved_sources_tool(limit: int = 200) -> str:
+    """Names found in the papers that SIMBAD couldn't resolve, most-mentioned
+    first: survey fields, truncated designations, typos or regex false
+    positives. Candidates for a curated field list.
+
+    Args:
+        limit: Max rows (default 200).
+    """
+    return json.dumps(source_db.unresolved_names(source_db.connect(), limit))
+
+
+# Fixed taxonomies from the AASKAII Atlas run, so parallel agents tag the same
+# concept the same way without each brief re-pasting the lists.
+ATLAS_TAXONOMIES = {
+    "observing_modes": [
+        "Deep HI intensity mapping", "Deep/wide HI galaxy survey",
+        "Wide-field continuum survey", "Ultra-deep continuum imaging",
+        "EoR / Cosmic Dawn 21-cm", "Spectral line / maser survey",
+        "Polarimetry / RM grid", "VLBI / astrometry", "Pulsar timing array",
+        "Pulsar search survey", "Transient / commensal / ToO",
+        "Solar/heliospheric imaging", "Weak lensing",
+        "Zoom-mode spectroscopy", "SETI / technosignature",
+    ],
+    "techniques": [
+        "Faraday rotation / RM", "VLBI", "HI intensity mapping",
+        "Machine learning / AI", "Polarimetry", "Pulsar timing",
+        "Foreground removal", "Ionospheric calibration",
+        "Deconvolution / imaging algorithms", "Spectral line / maser",
+        "Commensal / multi-messenger", "Source finding / classification",
+        "VLBI astrometry", "RFI mitigation", "Zeeman effect", "Citizen science",
+    ],
+}
+
+
+@mcp.resource("askarry://atlas/taxonomies", mime_type="application/json")
+def atlas_taxonomies() -> str:
+    """The 15 observing-mode categories and 16 technique keywords the AASKAII
+    Atlas fixed before searching; reuse them so repeated analyses stay comparable."""
+    return json.dumps(ATLAS_TAXONOMIES)
 
 
 if __name__ == "__main__":

@@ -156,3 +156,68 @@ def pss_calculate(telescope: str, **params) -> dict:
         integration_time_s                     optional; seconds
     """ + MID_EFFICIENCY_PARAMS
     return query_sensitivity_calculator(telescope, "pss/calculate", params)
+
+
+# Weighting schemes tried by compare_to_calculator when a paper doesn't say
+# which it used (the most common reason a quoted figure fails to reproduce).
+WEIGHTING_VARIANTS: list[dict] = [
+    {"weighting_mode": "natural"},
+    *({"weighting_mode": "robust", "robustness": r} for r in (-2, -1, 0, 1, 2)),
+    {"weighting_mode": "uniform"},
+]
+_JY_PER = {"jy/beam": 1.0, "mjy/beam": 1e-3, "ujy/beam": 1e-6, "µjy/beam": 1e-6, "njy/beam": 1e-9}
+
+
+def compare_to_calculator(
+    telescope: str,
+    params: dict,
+    claimed_sensitivity: float,
+    unit: str = "uJy/beam",
+    quantity: str = "continuum",
+    claimed_beam_arcsec: float | None = None,
+) -> dict:
+    """Re-run a paper's stated continuum-endpoint parameters under every
+    weighting scheme and report how far each lands from the claimed figure.
+
+    *params* are continuum/calculate params minus weighting_mode/robustness
+    (any given are overridden). *quantity* picks "continuum" or "spectral"
+    (the per-channel figure the same endpoint returns). Variants whose call
+    fails are reported with their error rather than aborting the sweep.
+    """
+    claimed_jy = claimed_sensitivity * _JY_PER[unit.lower().replace(" ", "")]
+    rows = []
+    for variant in WEIGHTING_VARIANTS:
+        try:
+            response = query_sensitivity_calculator(
+                telescope, "continuum/calculate", {**params, **variant}
+            )
+        except requests.HTTPError as exc:
+            rows.append({**variant, "error": str(exc)[:300]})
+            continue
+        result = response["transformed_result"]
+        # "total_*" (incl. confusion noise) is null for natural weighting.
+        got_jy = (result[f"total_{quantity}_sensitivity"]
+                  or result[f"weighted_{quantity}_sensitivity"])["value"]
+        # weighting.*.beam_size is always populated, in degrees.
+        beam_deg = response["weighting"][f"{quantity}_weighting"]["beam_size"]
+        beam = [round(beam_deg["beam_maj_scaled"] * 3600, 3), round(beam_deg["beam_min_scaled"] * 3600, 3)]
+        row = {
+            **variant,
+            "sensitivity_ujy_beam": round(got_jy * 1e6, 4),
+            "pct_diff": round(100 * (got_jy - claimed_jy) / claimed_jy, 1),
+            "beam_arcsec": beam,
+        }
+        if claimed_beam_arcsec:
+            mean_beam = sum(beam) / 2
+            row["beam_pct_diff"] = round(100 * (mean_beam - claimed_beam_arcsec) / claimed_beam_arcsec, 1)
+        rows.append(row)
+
+    ok = [r for r in rows if "pct_diff" in r]
+    closest = min(ok, key=lambda r: abs(r["pct_diff"]) + abs(r.get("beam_pct_diff", 0)), default=None)
+    return {
+        "claimed_ujy_beam": round(claimed_jy * 1e6, 4),
+        "quantity": quantity,
+        "closest": closest,
+        "within_10pct": [r for r in ok if abs(r["pct_diff"]) <= 10],
+        "variants": rows,
+    }

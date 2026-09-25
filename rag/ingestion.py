@@ -481,7 +481,9 @@ def classify_acronym(expansion: str) -> str:
     authoritative taxonomy — falls back to CATEGORY_SCIENCE."""
     text = expansion.lower()
     for category, keywords in _ACRONYM_CATEGORY_KEYWORDS:
-        if any(keyword in text for keyword in keywords):
+        # Whole words (plural allowed): a bare substring test let "program"
+        # match "Field-Programmable Gate Array" and file FPGA as an Organization.
+        if any(re.search(rf"\b{re.escape(k)}s?\b", text) for k in keywords):
             return category
     return CATEGORY_SCIENCE
 

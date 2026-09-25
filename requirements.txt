@@ -37,6 +37,9 @@ simplejson>=3.20.1,<4
 astropy>=6.1,<7.0
 PyYAML>=6.0.2,<7
 
+# SIMBAD/NED object lookup (rag/sky_lookup.py)
+astroquery>=0.4.11
+
 # SKA-internal antenna-layout templates (subarray overlap/template validity
 # checks in rag/vendor/setup_validator/rules/subarrays.py, and
 # get_max_baseline_tool). Not on public PyPI:

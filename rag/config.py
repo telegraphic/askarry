@@ -37,6 +37,10 @@ AASKA2015_YEAR = 2015
 TEXTBOOKS_DIR = PDF_DIR / "textbooks"
 TEXTBOOKS_CHROMA_DIR = HERE / "chroma_textbooks"
 
+# SQLite database of astronomical sources named in the papers, resolved via
+# SIMBAD (see rag/source_db.py). Rebuildable: `python -m rag.source_db`.
+SOURCES_DB_PATH = HERE / "sources.db"
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
 # recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
 # are already covered — not listed separately here to avoid double-discovery.
