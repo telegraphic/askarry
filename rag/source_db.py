@@ -142,7 +142,11 @@ CREATE TABLE IF NOT EXISTS requests (
     sun TEXT, min_elevation REAL, commensal_group TEXT,
     paper TEXT NOT NULL, book TEXT, page INTEGER, quote TEXT NOT NULL,
     extracted_by TEXT, created_at TEXT, position_note TEXT,
-    gal_l_min REAL, gal_l_max REAL, gal_b_min REAL, gal_b_max REAL, field TEXT
+    gal_l_min REAL, gal_l_max REAL, gal_b_min REAL, gal_b_max REAL, field TEXT,
+    -- Review layer: corrections sit beside the extraction, never over it.
+    review_status TEXT,              -- NULL (unreviewed) | accepted | rejected | duplicate
+    review_note TEXT, reviewed_hours REAL, reviewed_commensal_group TEXT,
+    reviewed_field TEXT, duplicate_of INTEGER, reviewed_by TEXT, reviewed_at TEXT
 );
 CREATE TABLE IF NOT EXISTS fields (
     field_key TEXT NOT NULL,
@@ -197,7 +201,10 @@ def connect(path: Path = SOURCES_DB_PATH) -> sqlite3.Connection:
 
 _ADDED_COLUMNS = {
     "requests": [("position_note", "TEXT"), ("gal_l_min", "REAL"), ("gal_l_max", "REAL"),
-                 ("gal_b_min", "REAL"), ("gal_b_max", "REAL"), ("field", "TEXT")],
+                 ("gal_b_min", "REAL"), ("gal_b_max", "REAL"), ("field", "TEXT"),
+                 ("review_status", "TEXT"), ("review_note", "TEXT"), ("reviewed_hours", "REAL"),
+                 ("reviewed_commensal_group", "TEXT"), ("reviewed_field", "TEXT"),
+                 ("duplicate_of", "INTEGER"), ("reviewed_by", "TEXT"), ("reviewed_at", "TEXT")],
     "fields": [("description", "TEXT"), ("ra_min", "REAL"), ("ra_max", "REAL"), ("dec_min", "REAL"),
                ("dec_max", "REAL"), ("gal_l_min", "REAL"), ("gal_l_max", "REAL"),
                ("gal_b_min", "REAL"), ("gal_b_max", "REAL")],
@@ -622,9 +629,47 @@ def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: st
             "placed": ra is not None or ra_range is not None or gal_b_range is not None}
 
 
+REVIEW_STATUSES = ("accepted", "rejected", "duplicate")
+
+
+def review_request(conn: sqlite3.Connection, request_id: int, status: str, note: str,
+                   hours: float | None = None, commensal_group: str | None = None,
+                   field: str | None = None, duplicate_of: int | None = None,
+                   reviewed_by: str | None = None) -> dict:
+    """Record a review decision on a request without altering what was
+    extracted. *hours*, *commensal_group* ("" clears it) and *field* (a
+    recorded survey field/area label, to place the request) override the
+    extracted values when the request is used."""
+    if status not in REVIEW_STATUSES:
+        raise ValueError(f"status must be one of {REVIEW_STATUSES}")
+    if not note:
+        raise ValueError("a review note is required")
+    if status == "duplicate" and duplicate_of is None:
+        raise ValueError("duplicate needs duplicate_of (the id of the request it repeats)")
+    if hours is not None and hours <= 0:
+        raise ValueError("hours must be positive")
+    if conn.execute("SELECT 1 FROM requests WHERE id = ?", (request_id,)).fetchone() is None:
+        raise ValueError(f"no request with id {request_id}")
+    if duplicate_of is not None and conn.execute("SELECT 1 FROM requests WHERE id = ?", (duplicate_of,)).fetchone() is None:
+        raise ValueError(f"no request with id {duplicate_of}")
+    if field and field_position(conn, field) is None:
+        raise ValueError(f"field {field!r} has no position; record its footprint with add_survey_field first")
+    conn.execute(
+        """UPDATE requests SET review_status = ?, review_note = ?, reviewed_hours = ?,
+               reviewed_commensal_group = ?, reviewed_field = ?, duplicate_of = ?,
+               reviewed_by = ?, reviewed_at = ? WHERE id = ?""",
+        (status, note, hours, commensal_group, field, duplicate_of, reviewed_by, _now(), request_id),
+    )
+    conn.commit()
+    return {"id": request_id, "status": status}
+
+
 def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
-                  extracted_by: str | None = None) -> list[dict]:
-    """Stored requests, shaped for rag.scheduling.lst_pressure."""
+                  extracted_by: str | None = None, reviewed_only: bool = False,
+                  include_rejected: bool = False) -> list[dict]:
+    """Stored requests, shaped for rag.scheduling.lst_pressure, with review
+    overrides applied. Rejected and duplicate requests are left out unless
+    *include_rejected*; *reviewed_only* keeps only accepted ones."""
     where, params = [], []
     if telescope:
         where.append("telescope = ?")
@@ -632,6 +677,10 @@ def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
     if extracted_by:
         where.append("extracted_by = ?")
         params.append(extracted_by)
+    if reviewed_only:
+        where.append("review_status = 'accepted'")
+    elif not include_rejected:
+        where.append("(review_status IS NULL OR review_status = 'accepted')")
     rows = conn.execute(
         "SELECT * FROM requests" + (" WHERE " + " AND ".join(where) if where else "") + " ORDER BY id",
         params,
@@ -639,12 +688,22 @@ def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
     out = []
     for r in rows:
         req = {k: r[k] for k in ("id", "name", "hours", "telescope", "band", "freq_mhz", "sun",
-                                 "commensal_group", "paper", "book", "page", "quote", "field") if r[k] is not None}
+                                 "commensal_group", "paper", "book", "page", "quote", "field",
+                                 "review_status", "review_note", "duplicate_of") if r[k] is not None}
+        if r["reviewed_hours"] is not None:
+            req["extracted_hours"], req["hours"] = r["hours"], r["reviewed_hours"]
+        if r["reviewed_commensal_group"] is not None:
+            req.pop("commensal_group", None)
+            if r["reviewed_commensal_group"]:
+                req["commensal_group"] = r["reviewed_commensal_group"]
         if r["min_elevation"] is not None:
             req["min_elevation"] = r["min_elevation"]
-        geom = _geometry(r)
+        geom = field_position(conn, r["reviewed_field"]) if r["reviewed_field"] else _geometry(r)
         if geom:
-            req.update(geom)
+            req.update({k: v for k, v in geom.items() if k in ("ra", "dec", "ra_range", "dec_range",
+                                                                 "gal_l_range", "gal_b_range")})
+            if r["reviewed_field"]:
+                req["reviewed_field"] = r["reviewed_field"]
         else:
             req["position_note"] = r["position_note"]
         out.append(req)

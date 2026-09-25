@@ -191,3 +191,36 @@ def test_live_lookup_places_and_caches(tmp_path, monkeypatch):
         sd.add_request(conn, "Nonexistent-X", 5, "mid", "B01", "q")
     assert calls.count("Nonexistent-X") == 1  # "not found" cached too
     assert len(sd.list_requests(conn, extracted_by=None)) == 2
+
+
+def test_review_layer_overrides_without_losing_extraction(tmp_path, monkeypatch):
+    from rag.scheduling import lst_pressure
+
+    conn = sd.connect(tmp_path / "s.db")
+    monkeypatch.setattr(sd, "find_quote", lambda q, p, b=None: {"source": f"/x/AASKAII/C/{p}.pdf", "page_no": 1})
+    a = sd.add_request(conn, "wide A", 10000, "low", "P1", "q", position_note="area only", commensal_group="Wide A")["id"]
+    b = sd.add_request(conn, "wide A again", 10000, "low", "P2", "q", position_note="area only")["id"]
+    c = sd.add_request(conn, "psr", 30, "low", "P3", "q", ra=0, dec=-30, commensal_group="programme")["id"]
+    d = sd.add_request(conn, "always-on", 8760, "low", "P4", "q", ra=0, dec=-30)["id"]
+    south = sd.add_survey_field(conn, "P1", "q", description="southern sky", ra_range=[0, 360], dec_range=[-90, 0])["field"]
+
+    with pytest.raises(ValueError, match="note"):
+        sd.review_request(conn, a, "accepted", "")
+    with pytest.raises(ValueError, match="duplicate_of"):
+        sd.review_request(conn, b, "duplicate", "same survey")
+    with pytest.raises(ValueError, match="no position"):
+        sd.review_request(conn, a, "accepted", "x", field="P9 area: nowhere")
+    sd.review_request(conn, a, "accepted", "footprint stated in P1", field=south)
+    sd.review_request(conn, b, "duplicate", "same survey as P1", duplicate_of=a)
+    sd.review_request(conn, c, "accepted", "separate target, not commensal", commensal_group="", hours=35)
+    sd.review_request(conn, d, "rejected", "commensal mode, no dedicated time")
+
+    reqs = {r["id"]: r for r in sd.list_requests(conn)}
+    assert set(reqs) == {a, c}
+    assert "ra_range" in reqs[a] and reqs[c]["hours"] == 35 and reqs[c]["extracted_hours"] == 30
+    assert "commensal_group" not in reqs[c]
+    assert len(sd.list_requests(conn, include_rejected=True)) == 4
+    raw = conn.execute("SELECT hours, commensal_group FROM requests WHERE id = ?", (c,)).fetchone()
+    assert tuple(raw) == (30, "programme")  # extraction untouched
+    out = lst_pressure(sd.list_requests(conn, reviewed_only=True), "low", year_start="2027-01-01", years=5)
+    assert out["total_demand_h"] == pytest.approx(10035) and out["planning_years"] == 5

@@ -62,6 +62,9 @@ SCHEDULING = {
     "maintenance_fraction": 0.15,        # share of clock time not schedulable
     "time_step_min": 10,                 # sampling of the year-long time grid
     "lst_bin_h": 1,
+    # Years of telescope time the requests compete for. Reference surveys
+    # are multi-year totals, so pressure against one year is meaningless.
+    "planning_years": 5,
 }
 
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned

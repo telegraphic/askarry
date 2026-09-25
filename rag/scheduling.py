@@ -169,7 +169,8 @@ def _request_positions(req: dict) -> list[tuple[float, float]]:
     return [(float(req["ra"]), float(req["dec"]))]
 
 
-def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = None) -> dict:
+def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = None,
+                 years: float | None = None) -> dict:
     """Spread each request's hours over the (month, LST-bin) cells where it
     is usable, in proportion to availability, and compare with clock time.
 
@@ -179,12 +180,15 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
     skipped. Within a commensal group only the per-cell maximum counts
     (commensal observations share the same time). Requests with no position
     are not spread over the sky: their hours are reported as "unplaced".
+    Supply is *years* (default config planning_years) of clock time, since
+    requested hours are totals over a programme, not per year.
     """
     year_start = year_start or _default_year_start()
     g = _grid(telescope, year_start)
     t_norm = telescope.lower().replace("ska-", "").replace("ska_", "")
     clock = _cells(g, np.ones_like(g["lst_h"], dtype=bool))
-    supply = clock * (1 - SCHEDULING["maintenance_fraction"])
+    years = SCHEDULING["planning_years"] if years is None else years
+    supply = clock * (1 - SCHEDULING["maintenance_fraction"]) * years
 
     demand = np.zeros_like(clock)
     groups: dict[str, np.ndarray] = {}
@@ -223,6 +227,7 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
     cell_pressure = np.divide(demand, supply, out=np.zeros_like(demand), where=supply > 0)
     return {
         "telescope": telescope,
+        "planning_years": years,
         "n_requests_used": len(used),
         "total_demand_h": round(float(demand.sum()), 1),
         "total_supply_h": round(float(supply.sum()), 1),

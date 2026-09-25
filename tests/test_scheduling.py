@@ -33,7 +33,7 @@ def test_lst_pressure_conserves_hours_and_commensal_max():
         {"name": "c2", "ra": 90, "dec": -30, "hours": 150, "commensal_group": "g"},
         {"name": "mid only", "ra": 0, "dec": -30, "hours": 999, "telescope": "mid"},
     ]
-    out = scheduling.lst_pressure(reqs, "low", year_start=YEAR)
+    out = scheduling.lst_pressure(reqs, "low", year_start=YEAR, years=1)
     assert out["never_visible"] == ["north"]
     assert out["total_demand_h"] == pytest.approx(500 + 2000 + 200)
     assert out["total_supply_h"] == pytest.approx(8760 * (1 - scheduling.SCHEDULING["maintenance_fraction"]), rel=1e-3)

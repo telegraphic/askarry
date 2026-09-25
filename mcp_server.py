@@ -66,8 +66,9 @@ facility_network_tool   External facilities named per section, with co-mentions.
 verify_citation_tool    Check a paper's reference list contains a cited work.
 visibility_windows_tool, lst_pressure_tool
                         Target visibility and LST pressure (unverified settings).
-add_observing_request_tool, list_observing_requests_tool
-                        Quote-backed observing requests for lst_pressure_tool.
+add_observing_request_tool, list_observing_requests_tool,
+review_observing_request_tool
+                        Quote-backed observing requests (with a review layer) for lst_pressure_tool.
 add_survey_field_tool, list_survey_fields_tool
                         Quote-backed registry of survey fields and unnamed survey areas.
 
@@ -1473,7 +1474,8 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
 @mcp.tool()
 def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
                       from_db: bool = False, year_start: str | None = None,
-                      extracted_by: str | None = None) -> str:
+                      extracted_by: str | None = None, reviewed_only: bool = False,
+                      years: float | None = None) -> str:
     """Requested vs available hours per LST bin (and month × LST) for a set of
     observing requests: which LST ranges are oversubscribed.
 
@@ -1492,14 +1494,18 @@ def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
         year_start: "YYYY-MM-DD" (default: next 1 January).
         extracted_by: With from_db, only requests with this tag (e.g. one
             extraction run), so pilot runs don't mix in.
+        reviewed_only: With from_db, only requests a reviewer accepted
+            (rejected and duplicate requests are always left out).
+        years: Years of telescope time the requests compete for (default:
+            config planning_years, an unverified default).
     """
     reqs = list(requests or [])
     if from_db:
-        reqs += source_db.list_requests(source_db.connect(), telescope, extracted_by)
+        reqs += source_db.list_requests(source_db.connect(), telescope, extracted_by, reviewed_only)
     if not reqs:
         return "Invalid request: no requests given (pass requests or from_db=true)"
     try:
-        return json.dumps(scheduling.lst_pressure(reqs, telescope, year_start))
+        return json.dumps(scheduling.lst_pressure(reqs, telescope, year_start, years))
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"
 
@@ -1603,15 +1609,50 @@ def list_survey_fields_tool() -> str:
 
 
 @mcp.tool()
-def list_observing_requests_tool(telescope: str | None = None, extracted_by: str | None = None) -> str:
-    """Observing requests recorded from the papers, each with its quote,
-    paper and page.
+def list_observing_requests_tool(telescope: str | None = None, extracted_by: str | None = None,
+                                 include_rejected: bool = False) -> str:
+    """Observing requests recorded from the papers, each with its id, quote,
+    paper, page and any review decision (review overrides applied).
 
     Args:
         telescope: Optional "low" or "mid" filter.
         extracted_by: Optional tag filter (one extraction run).
+        include_rejected: Also list requests reviewed as rejected/duplicate.
     """
-    return json.dumps(source_db.list_requests(source_db.connect(), telescope, extracted_by))
+    return json.dumps(source_db.list_requests(source_db.connect(), telescope, extracted_by,
+                                              include_rejected=include_rejected))
+
+
+@mcp.tool()
+def review_observing_request_tool(
+    request_id: int, status: str, note: str, hours: float | None = None,
+    commensal_group: str | None = None, field: str | None = None,
+    duplicate_of: int | None = None, reviewed_by: str | None = None,
+) -> str:
+    """Record a review decision on an extracted request. The extraction is
+    kept unchanged; the decision and any corrections are stored beside it
+    and applied when requests are listed or fed to lst_pressure_tool.
+
+    Args:
+        request_id: The request's id (from list_observing_requests_tool).
+        status: "accepted", "rejected" (not a competing SKA request, e.g. an
+            always-on commensal mode), or "duplicate" (repeats another row).
+        note: Why, citing the quote or page where relevant. Required.
+        hours: Corrected hours, if the extraction got the arithmetic wrong.
+        commensal_group: Corrected group label; "" removes it. Use one
+            canonical name per distinct survey tier.
+        field: Label of a recorded survey field/area with a position, to
+            place an unplaced request (record the footprint first with
+            add_survey_field_tool, quoting the paper that states it).
+        duplicate_of: For status "duplicate", the id of the request it repeats.
+        reviewed_by: Who reviewed it.
+    """
+    try:
+        return json.dumps(source_db.review_request(
+            source_db.connect(), request_id, status, note, hours, commensal_group, field,
+            duplicate_of, reviewed_by))
+    except ValueError as exc:
+        return f"Refused: {exc}"
 
 
 # Fixed taxonomies from the AASKAII Atlas run, so parallel agents tag the same
