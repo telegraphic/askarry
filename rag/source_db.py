@@ -4,6 +4,8 @@ Database of astronomical sources named in the indexed papers.
     python -m rag.source_db                      # build/update sources.db (incremental)
     python -m rag.source_db --retry-unresolved   # also re-query past SIMBAD misses
 
+fields    survey fields the papers name or define (one row per field per
+          paper, with the paper's stated centre/area and a verbatim quote)
 requests  observing requests stated in the papers (hours, position,
           constraints), each backed by a verbatim quote; input to
           rag.scheduling.lst_pressure
@@ -139,7 +141,20 @@ CREATE TABLE IF NOT EXISTS requests (
     hours REAL NOT NULL, telescope TEXT NOT NULL, band TEXT, freq_mhz REAL,
     sun TEXT, min_elevation REAL, commensal_group TEXT,
     paper TEXT NOT NULL, book TEXT, page INTEGER, quote TEXT NOT NULL,
-    extracted_by TEXT, created_at TEXT
+    extracted_by TEXT, created_at TEXT, position_note TEXT,
+    gal_l_min REAL, gal_l_max REAL, gal_b_min REAL, gal_b_max REAL, field TEXT
+);
+CREATE TABLE IF NOT EXISTS fields (
+    field_key TEXT NOT NULL,
+    name TEXT NOT NULL,              -- as written, or "<paper> area: <description>" if unnamed
+    description TEXT,                -- stated characteristics ("2% of the sky", "|b| < 5 deg")
+    ra_deg REAL, dec_deg REAL,       -- centre, if stated
+    ra_min REAL, ra_max REAL, dec_min REAL, dec_max REAL,          -- RA/Dec box, if stated
+    gal_l_min REAL, gal_l_max REAL, gal_b_min REAL, gal_b_max REAL,  -- Galactic box, if stated
+    area_deg2 REAL,
+    paper TEXT NOT NULL, book TEXT, page INTEGER, quote TEXT NOT NULL,
+    extracted_by TEXT, created_at TEXT,
+    PRIMARY KEY (field_key, paper)
 );
 """
 
@@ -171,7 +186,22 @@ def connect(path: Path = SOURCES_DB_PATH) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA)
+    # Databases built before these columns existed.
+    for table, cols in _ADDED_COLUMNS.items():
+        have = {r[1] for r in conn.execute(f"PRAGMA table_info({table})")}
+        for col, sql_type in cols:
+            if col not in have:
+                conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} {sql_type}")
     return conn
+
+
+_ADDED_COLUMNS = {
+    "requests": [("position_note", "TEXT"), ("gal_l_min", "REAL"), ("gal_l_max", "REAL"),
+                 ("gal_b_min", "REAL"), ("gal_b_max", "REAL"), ("field", "TEXT")],
+    "fields": [("description", "TEXT"), ("ra_min", "REAL"), ("ra_max", "REAL"), ("dec_min", "REAL"),
+               ("dec_max", "REAL"), ("gal_l_min", "REAL"), ("gal_l_max", "REAL"),
+               ("gal_b_min", "REAL"), ("gal_b_max", "REAL")],
+}
 
 
 def _now() -> str:
@@ -387,19 +417,166 @@ def find_quote(quote: str, paper: str, book: str | None = None) -> dict | None:
     return None
 
 
+def _check_quote(quote: str, paper: str, book: str | None) -> dict:
+    meta = find_quote(quote, paper, book)
+    if meta is None:
+        raise ValueError(f"Quote not found verbatim in paper {paper!r}; entries must quote the paper")
+    return meta
+
+
+def _field_key(name: str) -> str:
+    """Field names vary in hyphenation too: "ELAIS-N1" == "ELAIS N1" == "ELAISN1"."""
+    return name_key(name).replace("-", "")
+
+
+def _geometry(row) -> dict | None:
+    """Placeable geometry from a fields/requests row: a centre, an RA/Dec box
+    or a Galactic box (None if only an area or description is known)."""
+    if row["ra_min"] is not None:
+        return {"ra_range": [row["ra_min"], row["ra_max"]], "dec_range": [row["dec_min"], row["dec_max"]]}
+    if row["gal_b_min"] is not None:
+        return {"gal_l_range": [row["gal_l_min"], row["gal_l_max"]],
+                "gal_b_range": [row["gal_b_min"], row["gal_b_max"]]}
+    if row["ra_deg"] is not None:
+        return {"ra": row["ra_deg"], "dec": row["dec_deg"]}
+    return None
+
+
+def _live_lookup(name: str) -> dict:
+    """SIMBAD (then NED) lookup; module-level so tests can stub the network."""
+    from rag.sky_lookup import resolve_object
+
+    return resolve_object(name)
+
+
+def _resolve_live(conn: sqlite3.Connection, name: str) -> dict | None:
+    """Look up a target the papers' regex scan never saw (e.g. "OMC2", or a
+    name whose minus sign the PDF text lost) and cache the answer in the
+    sources/names tables, including "not found", so each name is asked once.
+    Network failures are not cached."""
+    key = name_key(name)
+    row = conn.execute("SELECT status FROM names WHERE name_key = ?", (key,)).fetchone()
+    if row and row["status"] == "unresolved":
+        return None
+    try:
+        hit = _live_lookup(query_form(name))
+    except Exception:  # network/service error: leave uncached, try again next time
+        return None
+    if not hit.get("found") or hit.get("ra_deg") is None:
+        conn.execute("INSERT OR REPLACE INTO names (name_key, raw_name, status, checked_at)"
+                     " VALUES (?, ?, 'unresolved', ?)", (key, name, _now()))
+        conn.commit()
+        return None
+    conn.execute(
+        "INSERT OR IGNORE INTO sources (main_id, ra_deg, dec_deg, gal_l_deg, gal_b_deg,"
+        " object_type, redshift, resolved_by, resolved_at) VALUES (?,?,?,?,?,?,?,?,?)",
+        (hit["name"], hit["ra_deg"], hit["dec_deg"], hit.get("gal_l_deg"), hit.get("gal_b_deg"),
+         hit.get("object_type"), hit.get("redshift"), f"{hit['service']} (live)", _now()),
+    )
+    source_id = conn.execute("SELECT id FROM sources WHERE main_id = ?", (hit["name"],)).fetchone()[0]
+    conn.execute("INSERT OR REPLACE INTO names (name_key, raw_name, source_id, status, checked_at)"
+                 " VALUES (?, ?, ?, 'resolved', ?)", (key, name, source_id, _now()))
+    conn.commit()
+    return {"ra": hit["ra_deg"], "dec": hit["dec_deg"], "from": f"{hit['service']} (live): {hit['name']}",
+            "source_id": source_id}
+
+
+def field_position(conn: sqlite3.Connection, name: str, live: bool = False) -> dict | None:
+    """Best known geometry for a survey field or target: one stated in a
+    paper (earliest recorded), else a position from the sources table
+    (SIMBAD or curated), else, with *live*, a SIMBAD/NED lookup (cached).
+    Adds "from" (where it came from)."""
+    for row in conn.execute("SELECT * FROM fields WHERE field_key = ? ORDER BY created_at",
+                            (_field_key(name),)):
+        geom = _geometry(row)
+        if geom:
+            return {**geom, "from": f"paper: {row['paper']} p.{row['page']}"}
+    row = conn.execute(
+        "SELECT s.id, s.ra_deg, s.dec_deg, s.resolved_by FROM sources s JOIN names n ON n.source_id = s.id"
+        " WHERE n.name_key = ? AND s.ra_deg IS NOT NULL", (name_key(name),)).fetchone()
+    if row:
+        return {"ra": row["ra_deg"], "dec": row["dec_deg"], "from": row["resolved_by"], "source_id": row["id"]}
+    if live and " area: " not in name:  # unnamed-area labels are never object names
+        return _resolve_live(conn, name)
+    return None
+
+
+def _pair(value, label: str) -> tuple:
+    if value is None:
+        return (None, None)
+    if len(value) != 2:
+        raise ValueError(f"{label} must be [min, max]")
+    return tuple(float(v) for v in value)
+
+
+def add_survey_field(conn: sqlite3.Connection, paper: str, quote: str, name: str | None = None,
+                     description: str | None = None, book: str | None = None,
+                     ra: float | None = None, dec: float | None = None,
+                     ra_range: list | None = None, dec_range: list | None = None,
+                     gal_l_range: list | None = None, gal_b_range: list | None = None,
+                     area_deg2: float | None = None, extracted_by: str | None = None) -> dict:
+    """Record a survey field or area as a paper states it: a named field
+    (COSMOS, ELAIS-N1) and/or an area defined by its characteristics (sky
+    coverage, Dec or Galactic-latitude limits, e.g. "20,000 deg2 of the
+    southern sky" or "|b| < 5 deg"). Only stated values are recorded. Refused
+    unless *quote* appears verbatim in the paper. Returns the label to use
+    in requests and the best known geometry."""
+    if not name and not description:
+        raise ValueError("give the field's name, or a description of the area for an unnamed one")
+    if (ra is None) != (dec is None) or (ra_range is None) != (dec_range is None):
+        raise ValueError("give ra with dec, and ra_range with dec_range")
+    if gal_b_range is not None and gal_l_range is None:
+        gal_l_range = [0, 360]
+    meta = _check_quote(quote, paper, book)
+    stem = Path(meta["source"]).stem
+    label = name or f"{stem} area: {description}"
+    conn.execute(
+        """INSERT OR REPLACE INTO fields (field_key, name, description, ra_deg, dec_deg,
+               ra_min, ra_max, dec_min, dec_max, gal_l_min, gal_l_max, gal_b_min, gal_b_max,
+               area_deg2, paper, book, page, quote, extracted_by, created_at)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        (_field_key(label), label, description, ra, dec,
+         *_pair(ra_range, "ra_range"), *_pair(dec_range, "dec_range"),
+         *_pair(gal_l_range, "gal_l_range"), *_pair(gal_b_range, "gal_b_range"),
+         area_deg2, stem, meta.get("doc_source"), meta.get("page_no", 0), quote, extracted_by, _now()),
+    )
+    conn.commit()
+    return {"field": label, "paper": stem, "page": meta.get("page_no", 0),
+            "geometry": field_position(conn, label, live=True)}
+
+
+def list_fields(conn: sqlite3.Connection) -> list[dict]:
+    """Recorded survey fields/areas: papers naming each, stated
+    characteristics, and best known geometry (None = unplaced)."""
+    out = []
+    for r in conn.execute(
+        """SELECT field_key, MIN(name) AS name, COUNT(*) AS n_papers, GROUP_CONCAT(paper) AS papers,
+                  MAX(area_deg2) AS area_deg2, GROUP_CONCAT(description, ' | ') AS description
+           FROM fields GROUP BY field_key ORDER BY n_papers DESC, name"""):
+        out.append({"name": r["name"], "n_papers": r["n_papers"], "papers": sorted(r["papers"].split(",")),
+                    "area_deg2": r["area_deg2"], "description": r["description"],
+                    "geometry": field_position(conn, r["name"])})
+    return out
+
+
 def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: str,
                 paper: str, quote: str, book: str | None = None,
                 ra: float | None = None, dec: float | None = None,
                 ra_range: list | None = None, dec_range: list | None = None,
                 band: str | None = None, freq_mhz: float | None = None,
                 sun: str = "any", min_elevation: float | None = None,
-                commensal_group: str | None = None, extracted_by: str | None = None) -> dict:
+                commensal_group: str | None = None, extracted_by: str | None = None,
+                position_note: str | None = None, field: str | None = None,
+                gal_l_range: list | None = None, gal_b_range: list | None = None) -> dict:
     """Record an observing request stated in a paper.
 
     Refused unless *quote* appears verbatim in *paper*: requests must come
-    from the text, not from an agent's inference. The position is ra/dec, an
-    area (ra_range + dec_range), or looked up from *name* in the sources
-    table (a name seen in the papers, e.g. "Cen A" or "COSMOS").
+    from the text, not from an agent's inference. Position, in order: ra/dec,
+    an RA/Dec box or a Galactic box as given; else the geometry of *field*
+    (or *name*) as a recorded survey field/area or a source (e.g. "Cen A",
+    "COSMOS"); else, only
+    if *position_note* explains why (e.g. "unnamed deep field"), the request
+    is stored unplaced and lst_pressure reports its hours separately.
     """
     from rag.scheduling import SUN_MODES
 
@@ -410,51 +587,66 @@ def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: st
         raise ValueError("telescope must be 'low' or 'mid'")
     if sun not in SUN_MODES:
         raise ValueError(f"sun must be one of {SUN_MODES}")
-    meta = find_quote(quote, paper, book)
-    if meta is None:
-        raise ValueError(f"Quote not found verbatim in paper {paper!r}; requests must quote the paper")
-
-    source_id = None
-    if ra is None and ra_range is None:
-        row = conn.execute(
-            "SELECT s.id, s.ra_deg, s.dec_deg FROM sources s JOIN names n ON n.source_id = s.id"
-            " WHERE n.name_key = ?", (name_key(name),)).fetchone()
-        if row is None or row["ra_deg"] is None:
-            raise ValueError(f"No position for {name!r}: give ra/dec or ra_range/dec_range")
-        source_id, ra, dec = row["id"], row["ra_deg"], row["dec_deg"]
     if ra_range is not None and dec_range is None:
         raise ValueError("ra_range needs dec_range")
+    meta = _check_quote(quote, paper, book)
+
+    if gal_b_range is not None and gal_l_range is None:
+        gal_l_range = [0, 360]
+    source_id = None
+    if ra is None and ra_range is None and gal_b_range is None:
+        pos = field_position(conn, field or name, live=True)
+        if pos:
+            source_id = pos.get("source_id")
+            ra, dec = pos.get("ra"), pos.get("dec")
+            ra_range, dec_range = pos.get("ra_range"), pos.get("dec_range")
+            gal_l_range, gal_b_range = pos.get("gal_l_range"), pos.get("gal_b_range")
+        elif not position_note:
+            raise ValueError(f"No position for {name!r}: give ra/dec or ra_range/dec_range, record the "
+                             "field with add_survey_field, or pass position_note to store it unplaced")
 
     cur = conn.execute(
         """INSERT INTO requests (name, source_id, ra_deg, dec_deg, ra_min, ra_max, dec_min, dec_max,
                hours, telescope, band, freq_mhz, sun, min_elevation, commensal_group,
-               paper, book, page, quote, extracted_by, created_at)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
-        (name, source_id, ra, dec, *(ra_range or (None, None)), *(dec_range or (None, None)),
+               paper, book, page, quote, extracted_by, created_at, position_note,
+               gal_l_min, gal_l_max, gal_b_min, gal_b_max, field)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        (name, source_id, ra, dec, *_pair(ra_range, "ra_range"), *_pair(dec_range, "dec_range"),
          hours, telescope, band, freq_mhz, sun, min_elevation, commensal_group,
          Path(meta["source"]).stem, meta.get("doc_source"), meta.get("page_no", 0),
-         quote, extracted_by, _now()),
+         quote, extracted_by, _now(), position_note,
+         *_pair(gal_l_range, "gal_l_range"), *_pair(gal_b_range, "gal_b_range"), field),
     )
     conn.commit()
-    return {"id": cur.lastrowid, "paper": Path(meta["source"]).stem, "page": meta.get("page_no", 0)}
+    return {"id": cur.lastrowid, "paper": Path(meta["source"]).stem, "page": meta.get("page_no", 0),
+            "placed": ra is not None or ra_range is not None or gal_b_range is not None}
 
 
-def list_requests(conn: sqlite3.Connection, telescope: str | None = None) -> list[dict]:
+def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
+                  extracted_by: str | None = None) -> list[dict]:
     """Stored requests, shaped for rag.scheduling.lst_pressure."""
+    where, params = [], []
+    if telescope:
+        where.append("telescope = ?")
+        params.append(telescope.lower().replace("ska-", ""))
+    if extracted_by:
+        where.append("extracted_by = ?")
+        params.append(extracted_by)
     rows = conn.execute(
-        "SELECT * FROM requests" + (" WHERE telescope = ?" if telescope else "") + " ORDER BY id",
-        (telescope.lower().replace("ska-", ""),) if telescope else (),
+        "SELECT * FROM requests" + (" WHERE " + " AND ".join(where) if where else "") + " ORDER BY id",
+        params,
     ).fetchall()
     out = []
     for r in rows:
         req = {k: r[k] for k in ("id", "name", "hours", "telescope", "band", "freq_mhz", "sun",
-                                 "commensal_group", "paper", "book", "page", "quote") if r[k] is not None}
+                                 "commensal_group", "paper", "book", "page", "quote", "field") if r[k] is not None}
         if r["min_elevation"] is not None:
             req["min_elevation"] = r["min_elevation"]
-        if r["ra_min"] is not None:
-            req["ra_range"], req["dec_range"] = [r["ra_min"], r["ra_max"]], [r["dec_min"], r["dec_max"]]
+        geom = _geometry(r)
+        if geom:
+            req.update(geom)
         else:
-            req["ra"], req["dec"] = r["ra_deg"], r["dec_deg"]
+            req["position_note"] = r["position_note"]
         out.append(req)
     return out
 

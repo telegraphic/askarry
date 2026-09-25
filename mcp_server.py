@@ -68,6 +68,8 @@ visibility_windows_tool, lst_pressure_tool
                         Target visibility and LST pressure (unverified settings).
 add_observing_request_tool, list_observing_requests_tool
                         Quote-backed observing requests for lst_pressure_tool.
+add_survey_field_tool, list_survey_fields_tool
+                        Quote-backed registry of survey fields and unnamed survey areas.
 
 Resources
 ---------
@@ -1470,7 +1472,8 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
 
 @mcp.tool()
 def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
-                      from_db: bool = False, year_start: str | None = None) -> str:
+                      from_db: bool = False, year_start: str | None = None,
+                      extracted_by: str | None = None) -> str:
     """Requested vs available hours per LST bin (and month × LST) for a set of
     observing requests: which LST ranges are oversubscribed.
 
@@ -1484,12 +1487,15 @@ def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
             "dec_range" in degrees, optional "sun", "min_elevation",
             "commensal_group"}. Requests in one commensal group share time.
         from_db: Use the requests recorded with add_observing_request_tool
-            (added to any given requests).
+            (added to any given requests). Requests without a position are
+            listed under "unplaced", not spread over the sky.
         year_start: "YYYY-MM-DD" (default: next 1 January).
+        extracted_by: With from_db, only requests with this tag (e.g. one
+            extraction run), so pilot runs don't mix in.
     """
     reqs = list(requests or [])
     if from_db:
-        reqs += source_db.list_requests(source_db.connect(), telescope)
+        reqs += source_db.list_requests(source_db.connect(), telescope, extracted_by)
     if not reqs:
         return "Invalid request: no requests given (pass requests or from_db=true)"
     try:
@@ -1505,7 +1511,9 @@ def add_observing_request_tool(
     ra_range: list[float] | None = None, dec_range: list[float] | None = None,
     band: str | None = None, freq_mhz: float | None = None, sun: str = "any",
     min_elevation: float | None = None, commensal_group: str | None = None,
-    extracted_by: str | None = None,
+    extracted_by: str | None = None, position_note: str | None = None,
+    field: str | None = None, gal_l_range: list[float] | None = None,
+    gal_b_range: list[float] | None = None,
 ) -> str:
     """Record an observing request stated in a paper (for lst_pressure_tool).
 
@@ -1513,37 +1521,97 @@ def add_observing_request_tool(
     are ignored): record only what the text says, never an inference.
 
     Args:
-        name: Target or survey name. Without ra/dec or ranges, its position
-            is taken from the source database (e.g. "Cen A", "COSMOS").
+        name: Target or survey-field name. Without ra/dec or ranges, its
+            position comes from a recorded survey field (add_survey_field_tool),
+            the source database (e.g. "Cen A", "COSMOS"), or a live SIMBAD/NED
+            lookup of the name (e.g. "OMC-2"; results are cached).
         hours: Requested hours as stated in the paper.
         telescope: "low" or "mid".
         paper: Paper ID (filename stem).
         quote: Verbatim text from the paper stating the request.
         book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
-        ra, dec: Point target in degrees; or ra_range + dec_range for an area.
+        ra, dec: Point target in degrees; or ra_range + dec_range, or
+            gal_l_range + gal_b_range, for an area.
         band, freq_mhz: Receiver band / frequency if stated.
         sun: "night", "avoid_twilight" or "any", only if the paper says so.
         min_elevation: Degrees, only if the paper says so.
         commensal_group: Shared label for requests that can run commensally.
         extracted_by: Who recorded it (agent or person).
+        position_note: When the paper gives no position (e.g. "unnamed deep
+            field", "targets not named"), say so here and the request is
+            stored unplaced: counted, but reported separately by
+            lst_pressure_tool instead of spread over the sky.
+        field: Label of a recorded survey field/area (from
+            add_survey_field_tool) to take the position from.
     """
     try:
         return json.dumps(source_db.add_request(
             source_db.connect(), name, hours, telescope, paper, quote, book, ra, dec,
-            ra_range, dec_range, band, freq_mhz, sun, min_elevation, commensal_group, extracted_by))
+            ra_range, dec_range, band, freq_mhz, sun, min_elevation, commensal_group, extracted_by,
+            position_note, field, gal_l_range, gal_b_range))
     except ValueError as exc:
         return f"Refused: {exc}"
 
 
 @mcp.tool()
-def list_observing_requests_tool(telescope: str | None = None) -> str:
+def add_survey_field_tool(
+    paper: str, quote: str, name: str | None = None, description: str | None = None,
+    book: str | None = None, ra: float | None = None, dec: float | None = None,
+    ra_range: list[float] | None = None, dec_range: list[float] | None = None,
+    gal_l_range: list[float] | None = None, gal_b_range: list[float] | None = None,
+    area_deg2: float | None = None, extracted_by: str | None = None,
+) -> str:
+    """Record a survey field or area as a paper states it: a named field
+    (COSMOS, ELAIS-N1, an EoR field) and/or an area defined only by its
+    characteristics (e.g. "20,000 deg2", "the southern sky", "2% of the
+    sky", "the Galactic plane, |b| < 5 deg"). Record only stated values.
+    Refused unless quote appears verbatim in the paper.
+
+    Returns the label to pass as `field` to add_observing_request_tool, and
+    the best known geometry: stated by any paper, else SIMBAD/curated from
+    the source database, else null (an area known only by its size stays
+    unplaced).
+
+    Args:
+        paper: Paper ID (filename stem).
+        quote: Verbatim text naming/defining the field and its stated values.
+        name: Field name as written; omit for an unnamed area.
+        description: Stated characteristics, required for an unnamed area
+            (e.g. "wide Band 2 survey, 2% of the sky").
+        book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+        ra, dec: Centre in degrees, if stated.
+        ra_range, dec_range: RA/Dec box in degrees, if stated ("southern
+            sky" = ra_range [0, 360], dec_range [-90, 0]).
+        gal_l_range, gal_b_range: Galactic box in degrees, if stated
+            (e.g. |b| < 5 deg: gal_b_range [-5, 5]; l defaults to all).
+        area_deg2: Area in square degrees, if stated.
+        extracted_by: Who recorded it.
+    """
+    try:
+        return json.dumps(source_db.add_survey_field(
+            source_db.connect(), paper, quote, name, description, book, ra, dec,
+            ra_range, dec_range, gal_l_range, gal_b_range, area_deg2, extracted_by))
+    except ValueError as exc:
+        return f"Refused: {exc}"
+
+
+@mcp.tool()
+def list_survey_fields_tool() -> str:
+    """Survey fields recorded from the papers: how many papers name each,
+    stated area, and best known position with where it came from."""
+    return json.dumps(source_db.list_fields(source_db.connect()))
+
+
+@mcp.tool()
+def list_observing_requests_tool(telescope: str | None = None, extracted_by: str | None = None) -> str:
     """Observing requests recorded from the papers, each with its quote,
     paper and page.
 
     Args:
         telescope: Optional "low" or "mid" filter.
+        extracted_by: Optional tag filter (one extraction run).
     """
-    return json.dumps(source_db.list_requests(source_db.connect(), telescope))
+    return json.dumps(source_db.list_requests(source_db.connect(), telescope, extracted_by))
 
 
 # Fixed taxonomies from the AASKAII Atlas run, so parallel agents tag the same

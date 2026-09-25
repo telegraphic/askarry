@@ -149,7 +149,17 @@ def visibility_windows(ra: float, dec: float, telescope: str, min_elevation: flo
 
 
 def _request_positions(req: dict) -> list[tuple[float, float]]:
-    """Point target, or a grid over an area request (ra_range/dec_range in deg)."""
+    """Point target, or a grid over an area request: ra_range/dec_range, or
+    gal_l_range/gal_b_range (e.g. the Galactic plane), in degrees."""
+    if "gal_b_range" in req:
+        from astropy.coordinates import SkyCoord
+
+        (l0, l1), (b0, b1) = req.get("gal_l_range", [0, 360]), req["gal_b_range"]
+        span = (l1 - l0) % 360 or 360
+        ls = np.repeat([(l0 + span * (i + 0.5) / 36) % 360 for i in range(36)], 5)
+        bs = np.tile(np.linspace(b0, b1, 5), 36)
+        icrs = SkyCoord(l=ls * u.deg, b=bs * u.deg, frame="galactic").icrs
+        return list(zip(icrs.ra.deg.tolist(), icrs.dec.deg.tolist()))
     if "ra_range" in req:
         (ra0, ra1), (dec0, dec1) = req["ra_range"], req["dec_range"]
         span = (ra1 - ra0) % 360 or 360
@@ -167,7 +177,8 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
     "ra_range"/"dec_range" (deg), optional "sun", "min_elevation",
     "commensal_group", "telescope"}. Requests for another telescope are
     skipped. Within a commensal group only the per-cell maximum counts
-    (commensal observations share the same time).
+    (commensal observations share the same time). Requests with no position
+    are not spread over the sky: their hours are reported as "unplaced".
     """
     year_start = year_start or _default_year_start()
     g = _grid(telescope, year_start)
@@ -177,9 +188,13 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
 
     demand = np.zeros_like(clock)
     groups: dict[str, np.ndarray] = {}
-    never, used = [], []
+    never, used, unplaced = [], [], []
     for req in requests:
         if req.get("telescope") and req["telescope"].lower().replace("ska-", "") != t_norm:
+            continue
+        if not {"ra", "ra_range", "gal_b_range"} & req.keys():
+            unplaced.append({"name": req.get("name", "?"), "hours": float(req["hours"]),
+                             "position_note": req.get("position_note")})
             continue
         min_el = req.get("min_elevation", SCHEDULING["default_min_elevation_deg"])
         avail = np.mean([_cells(g, _usable(g, ra, dec, min_el, req.get("sun", "any")))
@@ -215,5 +230,7 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
         "most_pressured_bins": sorted(bins, key=lambda b: -b["pressure"])[:5],
         "month_by_lst_pressure": [[round(float(x), 3) for x in row] for row in cell_pressure],
         "never_visible": never,
+        "unplaced_hours": round(sum(u["hours"] for u in unplaced), 1),
+        "unplaced": unplaced,
         "assumptions": assumptions(SCHEDULING["default_min_elevation_deg"], "per request", year_start),
     }
