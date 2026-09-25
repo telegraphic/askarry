@@ -156,3 +156,96 @@ def pss_calculate(telescope: str, **params) -> dict:
         integration_time_s                     optional; seconds
     """ + MID_EFFICIENCY_PARAMS
     return query_sensitivity_calculator(telescope, "pss/calculate", params)
+
+
+# Weighting schemes tried by compare_to_calculator when a paper doesn't say
+# which it used (the most common reason a quoted figure fails to reproduce).
+WEIGHTING_VARIANTS: list[dict] = [
+    {"weighting_mode": "natural"},
+    *({"weighting_mode": "robust", "robustness": r} for r in (-2, -1, 0, 1, 2)),
+    {"weighting_mode": "uniform"},
+]
+# Claimed-figure units → Jy. "/beam" is ignored: continuum/zoom figures are
+# per beam, pulsar-search figures are plain flux densities.
+_JY_PER = {"jy": 1.0, "mjy": 1e-3, "ujy": 1e-6, "µjy": 1e-6, "njy": 1e-9}
+
+
+def _to_jy(value: float, unit: str) -> float:
+    return value * _JY_PER[unit.lower().replace(" ", "").replace("/beam", "")]
+
+
+def _read_result(response: dict, endpoint: str, quantity: str, window: int) -> tuple[float, list | None]:
+    """(sensitivity in Jy, [beam_maj, beam_min] arcsec or None) from one response."""
+    if endpoint == "pss":
+        key = next(k for k in response if k.endswith("_sensitivity"))
+        return _to_jy(response[key]["value"], response[key]["unit"]), None
+    if endpoint == "zoom":
+        result = response["transformed_result"][window]
+        beam_deg = response["weighting"]["spectral_weighting"][window]["beam_size"]
+        quantity = "spectral"
+    else:
+        result = response["transformed_result"]
+        beam_deg = response["weighting"][f"{quantity}_weighting"]["beam_size"]
+    # "total_*" (incl. confusion noise) is null for natural weighting.
+    got = result[f"total_{quantity}_sensitivity"] or result[f"weighted_{quantity}_sensitivity"]
+    # weighting.*.beam_size is always populated, in degrees.
+    beam = [round(beam_deg["beam_maj_scaled"] * 3600, 3), round(beam_deg["beam_min_scaled"] * 3600, 3)]
+    return got["value"], beam
+
+
+def compare_to_calculator(
+    telescope: str,
+    params: dict,
+    claimed_sensitivity: float,
+    unit: str = "uJy/beam",
+    quantity: str = "continuum",
+    claimed_beam_arcsec: float | None = None,
+    endpoint: str = "continuum",
+    window_index: int = 0,
+) -> dict:
+    """Re-run a paper's stated calculator parameters and report how far the
+    result lands from the claimed figure.
+
+    *endpoint* "continuum" or "zoom" sweeps every weighting scheme (papers
+    often don't state it); "pss" (pulsar search, beamformed, no weighting) is
+    a single call compared as a plain flux density. *params* are that
+    endpoint's params minus weighting_mode/robustness. For continuum,
+    *quantity* picks "continuum" or "spectral" (per-channel); for zoom,
+    *window_index* picks the zoom window. Variants whose call fails are
+    reported with their error rather than aborting the sweep.
+    """
+    if endpoint not in ("continuum", "zoom", "pss"):
+        raise ValueError(f"Unknown endpoint {endpoint!r}; expected continuum, zoom or pss")
+    claimed_jy = _to_jy(claimed_sensitivity, unit)
+    rows = []
+    for variant in [{}] if endpoint == "pss" else WEIGHTING_VARIANTS:
+        try:
+            response = query_sensitivity_calculator(
+                telescope, f"{endpoint}/calculate", {**params, **variant}
+            )
+        except requests.HTTPError as exc:
+            rows.append({**variant, "error": str(exc)[:300]})
+            continue
+        got_jy, beam = _read_result(response, endpoint, quantity, window_index)
+        row = {
+            **variant,
+            "sensitivity_ujy": round(got_jy * 1e6, 4),
+            "pct_diff": round(100 * (got_jy - claimed_jy) / claimed_jy, 1),
+        }
+        if beam:
+            row["beam_arcsec"] = beam
+            if claimed_beam_arcsec:
+                row["beam_pct_diff"] = round(100 * (sum(beam) / 2 - claimed_beam_arcsec) / claimed_beam_arcsec, 1)
+        rows.append(row)
+
+    ok = [r for r in rows if "pct_diff" in r]
+    closest = min(ok, key=lambda r: abs(r["pct_diff"]) + abs(r.get("beam_pct_diff", 0)), default=None)
+    return {
+        "endpoint": endpoint,
+        "claimed_ujy": round(claimed_jy * 1e6, 4),
+        "unit": "uJy" if endpoint == "pss" else "uJy/beam",
+        "quantity": "folded/single pulse" if endpoint == "pss" else ("spectral" if endpoint == "zoom" else quantity),
+        "closest": closest,
+        "within_10pct": [r for r in ok if abs(r["pct_diff"]) <= 10],
+        "variants": rows,
+    }

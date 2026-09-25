@@ -28,3 +28,17 @@ def validate_observing_setup(obs_config: dict) -> dict:
     from rag.vendor.setup_validator.frontend_utils import validate
 
     return validate(obs_config)
+
+
+# Contexts accepted by the validator schema (schema/obs_config.yaml).
+CONTEXTS = ["SV-AA2", "SV-AA*", "Cycle 0", "Cycle 1"]
+
+
+def validate_across_contexts(obs_config: dict, contexts: list[str] | None = None) -> dict:
+    """Validate the same observing configuration under each observing context,
+    showing at which array-assembly stage/cycle a requirement becomes feasible.
+    The obs_config's own "context" value is ignored."""
+    return {
+        context: validate_observing_setup({**obs_config, "context": context})
+        for context in contexts or CONTEXTS
+    }

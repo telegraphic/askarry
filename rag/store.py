@@ -30,7 +30,7 @@ from .config import (
     OLLAMA_BASE_URL,
 )
 
-_collection: chromadb.Collection | None = None
+_collections: dict[str, chromadb.Collection] = {}  # keyed by str(db_dir)
 _embedding_model: SentenceTransformer | None = None
 _ollama_client: ollama.Client | None = None
 
@@ -39,29 +39,30 @@ _embedding_model_lock = threading.Lock()
 _ollama_client_lock = threading.Lock()
 
 
-def get_chroma_collection() -> chromadb.Collection:
-    """Return the process-cached ChromaDB collection, creating it if needed."""
-    global _collection
+def get_chroma_collection(db_dir: Path = CHROMA_DIR) -> chromadb.Collection:
+    """Return the process-cached ChromaDB collection stored under *db_dir*
+    (default: the main CHROMA_DIR index), creating it if needed. Each store
+    directory (e.g. config.TEXTBOOKS_CHROMA_DIR) gets its own cached handle."""
+    key = str(db_dir)
     with _collection_lock:
-        if _collection is None:
-            client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-            _collection = client.get_or_create_collection(
+        if key not in _collections:
+            client = chromadb.PersistentClient(path=key)
+            _collections[key] = client.get_or_create_collection(
                 name=COLLECTION_NAME,
                 metadata={"hnsw:space": "cosine"},
             )
-        return _collection
+        return _collections[key]
 
 
-def reset_collection() -> None:
-    """Clear the cached ChromaDB collection handle.
+def reset_collection(db_dir: Path = CHROMA_DIR) -> None:
+    """Clear the cached ChromaDB collection handle for *db_dir*.
 
     Must be called after the on-disk store is deleted (e.g. during --reindex)
     so the next call to get_chroma_collection() opens a fresh client instead
     of returning a stale handle pointing at the deleted database.
     """
-    global _collection
     with _collection_lock:
-        _collection = None
+        _collections.pop(str(db_dir), None)
 
 
 def get_embedding_model() -> SentenceTransformer:

@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import math
 import re
+from collections import defaultdict
+from pathlib import Path
 from typing import Callable
 
 import chromadb
@@ -22,6 +24,7 @@ from sentence_transformers import CrossEncoder, SentenceTransformer
 from . import store
 from .config import (
     BM25_WEIGHT,
+    CHROMA_DIR,
     CONTEXT_EXPANSION_WINDOW,
     DOC_SOURCE_AASKAII,
     DOC_SOURCE_PRIORITY,
@@ -40,9 +43,10 @@ from .config import (
 # Module-level cache — populated on first call to retrieve()
 _reranker: CrossEncoder | None = None
 # BM25 index and acronym lookup, both rebuilt whenever the collection size
-# changes (e.g. after ingest); see store.CountCache.
-_bm25_cache = store.CountCache()
-_acronyms_cache = store.CountCache()
+# changes (e.g. after ingest); see store.CountCache. One cache per ChromaDB
+# collection (keyed by collection.id) so the main and textbook indexes never share.
+_bm25_caches: defaultdict[str, store.CountCache] = defaultdict(store.CountCache)
+_acronyms_caches: defaultdict[str, store.CountCache] = defaultdict(store.CountCache)
 
 # Matches lines like "CSP   Central Signal Processor" or "CSP: Central Signal Processor"
 _ACRONYM_LINE_RE = re.compile(
@@ -51,11 +55,13 @@ _ACRONYM_LINE_RE = re.compile(
 )
 
 
-def _get_resources() -> tuple[SentenceTransformer, CrossEncoder, chromadb.Collection]:
+def _get_resources(
+    db_dir: Path = CHROMA_DIR,
+) -> tuple[SentenceTransformer, CrossEncoder, chromadb.Collection]:
     global _reranker
     if _reranker is None:
         _reranker = CrossEncoder(RERANKER_MODEL)
-    return store.get_embedding_model(), _reranker, store.get_chroma_collection()
+    return store.get_embedding_model(), _reranker, store.get_chroma_collection(db_dir)
 
 
 def warmup() -> None:
@@ -99,7 +105,7 @@ def _get_acronyms(collection: chromadb.Collection) -> dict[str, str]:
         )
         return acronyms
 
-    return _acronyms_cache.get(collection, _build)
+    return _acronyms_caches[str(collection.id)].get(collection, _build)
 
 
 def _expand_query(query: str, acronyms: dict[str, str]) -> str:
@@ -124,6 +130,23 @@ def _expand_query(query: str, acronyms: dict[str, str]) -> str:
     return expanded
 
 
+def get_acronyms(db_dir: Path = CHROMA_DIR) -> dict[str, str]:
+    """Public accessor for the cached acronym→expansion lookup."""
+    return _get_acronyms(store.get_chroma_collection(db_dir))
+
+
+def rerank_score(query: str, text: str) -> float:
+    """Cross-encoder relevance of one passage to *query*, sigmoid-normalised
+    to 0-1 (same scale as retrieve()'s scores, before the doc_source priority)."""
+    _, reranker, _ = _get_resources()
+    return round(_sigmoid(float(reranker.predict([[query, text]])[0])), 4)
+
+
+def get_all_chunks(db_dir: Path = CHROMA_DIR) -> list[dict]:
+    """Every indexed chunk as {"text", "meta"}, sharing the BM25 index's cache."""
+    return _get_bm25(store.get_chroma_collection(db_dir))[1]
+
+
 def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
     """Return a BM25 index over all documents in the collection.
 
@@ -143,7 +166,24 @@ def _get_bm25(collection: chromadb.Collection) -> tuple[BM25Okapi, list[dict]]:
         tokenised = [doc["text"].lower().split() for doc in bm25_docs]
         return BM25Okapi(tokenised), bm25_docs
 
-    return _bm25_cache.get(collection, _build)
+    return _bm25_caches[str(collection.id)].get(collection, _build)
+
+
+def _chroma_where(where: dict | None) -> dict | None:
+    """Translate a flat {key: value | [values]} filter into ChromaDB syntax
+    (list values → $in, several keys → $and)."""
+    if not where:
+        return None
+    clauses = [{k: {"$in": v} if isinstance(v, list) else v} for k, v in where.items()]
+    return clauses[0] if len(clauses) == 1 else {"$and": clauses}
+
+
+def matches_where(meta: dict, where: dict | None) -> bool:
+    """Python-side twin of _chroma_where, for filtering in-memory chunks."""
+    return not where or all(
+        meta.get(k) in v if isinstance(v, list) else meta.get(k) == v
+        for k, v in where.items()
+    )
 
 
 def _hyde_query(query: str) -> str:
@@ -251,6 +291,7 @@ def retrieve(
     use_hyde: bool | None = None,
     expansion_window: int | None = None,
     where: dict | None = None,
+    db_dir: Path = CHROMA_DIR,
 ) -> list[dict]:
     """Return the *top_k* most relevant chunks for *query*.
 
@@ -273,9 +314,12 @@ def retrieve(
     *expansion_window* overrides ``CONTEXT_EXPANSION_WINDOW`` for this call.
     The MCP server passes ``2`` to give frontier models a wider passage context.
 
-    *where* is an optional ChromaDB metadata filter (e.g.
-    ``{"doc_source": "ska_capabilities"}``) scoping both the semantic and
+    *where* is an optional flat metadata filter (e.g.
+    ``{"doc_source": "ska_capabilities"}``; a list value means "any of") scoping both the semantic and
     BM25 search legs to matching chunks only. ``None`` searches everything.
+
+    *db_dir* selects the ChromaDB store to search (default: the main index;
+    pass ``config.TEXTBOOKS_CHROMA_DIR`` for the separate textbook index).
 
     Each returned dict has at minimum:
         text         : str   — expanded passage text
@@ -292,11 +336,12 @@ def retrieve(
     top_k = top_k if top_k is not None else TOP_K
     _use_hyde = USE_HYDE if use_hyde is None else use_hyde
     _expansion_window = CONTEXT_EXPANSION_WINDOW if expansion_window is None else expansion_window
-    model, reranker, collection = _get_resources()
+    model, reranker, collection = _get_resources(db_dir)
 
     if collection.count() == 0:
+        flag = "" if db_dir == CHROMA_DIR else " --textbooks"
         raise RuntimeError(
-            "The vector store is empty. Run `python ingest.py` first."
+            f"The vector store at {db_dir} is empty. Run `python ingest.py{flag}` first."
         )
 
     # --- Optional HyDE ---
@@ -317,7 +362,7 @@ def retrieve(
         query_embeddings=query_embedding,
         n_results=n_candidates,
         include=["documents", "metadatas", "distances"],
-        where=where,
+        where=_chroma_where(where),
     )
     semantic_hits = []
     for doc, meta, dist in zip(
@@ -341,7 +386,7 @@ def retrieve(
         candidate_indices = [
             i
             for i in candidate_indices
-            if all(bm25_docs[i]["meta"].get(k) == v for k, v in where.items())
+            if matches_where(bm25_docs[i]["meta"], where)
         ]
     top_bm25_indices = sorted(
         candidate_indices, key=lambda i: bm25_scores[i], reverse=True

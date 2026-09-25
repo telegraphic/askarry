@@ -29,6 +29,44 @@ SKA_CAPABILITIES_DIR = PDF_DIR / "SKA_Key_Capabilities"
 AASKA2015_DIR = PDF_DIR / "AASKA2015"
 AASKA2015_YEAR = 2015
 
+# Radio-astronomy textbooks (technical background). Indexed into their own
+# ChromaDB store (TEXTBOOKS_CHROMA_DIR) via `python ingest.py --textbooks`,
+# and excluded from the main CHROMA_DIR index even though PDF_DIR is scanned
+# recursively (see rag/ingestion.py::ingest_files). Each book is either a
+# single PDF or a folder of per-chapter PDFs named after the book.
+TEXTBOOKS_DIR = PDF_DIR / "textbooks"
+TEXTBOOKS_CHROMA_DIR = HERE / "chroma_textbooks"
+
+# SQLite database of astronomical sources named in the papers, resolved via
+# SIMBAD (see rag/source_db.py). Rebuildable: `python -m rag.source_db`.
+SOURCES_DB_PATH = HERE / "sources.db"
+
+# SQLite database of references cited by the papers (see rag/citation_db.py).
+# Rebuildable offline: `python -m rag.citation_db`.
+CITATIONS_DB_PATH = HERE / "citations.db"
+
+# ---------------------------------------------------------------------------
+# Scheduling / LST-pressure analysis (rag/scheduling.py)
+# ---------------------------------------------------------------------------
+# UNVERIFIED DEFAULTS: every value below is a placeholder chosen for a first
+# relative analysis and needs an SKAO owner to confirm. Tool results echo
+# them under "assumptions". Site positions are not set here: they come from
+# ska_ost_array_config (LOW_ARRAY_REF / MID_ARRAY_REF).
+SCHEDULING = {
+    "night_sun_alt_deg": -18.0,          # "night" = Sun below this altitude
+    # "avoid_twilight" excludes Sun altitudes inside this band: about ±1 h
+    # around sunrise/sunset at the SKA sites' latitudes.
+    "twilight_sun_alt_band_deg": (-12.0, 12.0),
+    "min_sun_separation_deg": 0.0,       # 0 = no Sun-avoidance cut
+    "default_min_elevation_deg": 45.0,
+    "maintenance_fraction": 0.15,        # share of clock time not schedulable
+    "time_step_min": 10,                 # sampling of the year-long time grid
+    "lst_bin_h": 1,
+    # Years of telescope time the requests compete for. Reference surveys
+    # are multi-year totals, so pressure against one year is meaningless.
+    "planning_years": 5,
+}
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
 # recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
 # are already covered — not listed separately here to avoid double-discovery.
@@ -41,9 +79,11 @@ PDF_DIRS: list[Path] = [PDF_DIR]
 DOC_SOURCE_AASKAII = "aaskaii"
 DOC_SOURCE_SKA_CAPABILITIES = "ska_capabilities"
 DOC_SOURCE_AASKA2015 = "aaska2015"
+DOC_SOURCE_TEXTBOOK = "textbook"
 DOC_SOURCE_DIRS: dict[Path, str] = {
     SKA_CAPABILITIES_DIR: DOC_SOURCE_SKA_CAPABILITIES,
     AASKA2015_DIR: DOC_SOURCE_AASKA2015,
+    TEXTBOOKS_DIR: DOC_SOURCE_TEXTBOOK,
 }
 
 
@@ -58,6 +98,14 @@ def doc_source_for(source: str) -> str:
             return doc_source
     return DOC_SOURCE_AASKAII
 
+def textbook_title(source: str | Path) -> str:
+    """Book title for a file under TEXTBOOKS_DIR: the top-level entry's name
+    (a single-PDF book's stem, or a folder of per-chapter PDFs), so chapter
+    files like 'j.ctv5vdcww.10.pdf' are titled after their book."""
+    top = Path(source).resolve().relative_to(TEXTBOOKS_DIR.resolve()).parts[0]
+    return Path(top).stem.strip() if top.lower().endswith(".pdf") else top.strip()
+
+
 # Human-readable "book, year" label per doc_source, used when showing a
 # passage's provenance to the LLM (rag/generation.py, mcp_server.py) so it
 # can reason about recency directly instead of relying solely on the
@@ -66,6 +114,7 @@ DOC_SOURCE_LABELS: dict[str, str] = {
     DOC_SOURCE_AASKAII: f"AASKAII, {AASKAII_YEAR}",
     DOC_SOURCE_AASKA2015: f"Advancing Astrophysics with the SKA, {AASKA2015_YEAR}",
     DOC_SOURCE_SKA_CAPABILITIES: "SKA Key Capabilities",
+    DOC_SOURCE_TEXTBOOK: "Textbook",
 }
 
 # Relevance multiplier applied per doc_source at rerank time (see
@@ -142,6 +191,9 @@ RETRIEVAL_CANDIDATES = 20  # Broad first-stage fetch (per method) before fusion 
 # the reranker funnel meaningful when top_k is 20.
 MCP_TOP_K = 20
 MCP_RETRIEVAL_CANDIDATES = 50
+# Textbook passages are long and background-only, so return fewer of them.
+MCP_TEXTBOOK_TOP_K = 8
+MCP_BACKGROUND_TOP_K = 3   # textbook passages appended by include_background=True
 # Cross-encoder relevance (sigmoid of the reranker logit, 0-1) below which the
 # top retrieved chunk is considered a weak match. Used to warn the user in the
 # UI and to nudge the LLM to hedge rather than confidently answer from

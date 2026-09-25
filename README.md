@@ -116,6 +116,10 @@ python ingest.py
 
 # To wipe the existing ChromaDB store and reindex everything from scratch:
 python ingest.py --reindex
+
+# Textbooks in pdfs/textbooks/ go into their own store (chroma_textbooks/),
+# searched by the search_textbooks MCP tool; --reindex wipes only that store:
+python ingest.py --textbooks
 ```
 
 ### Step 2 — Launch the web UI
@@ -295,6 +299,7 @@ Local PDFs with no matching bibliography entry are silently excluded from the Ta
 | `PDF_DIR` | `pdfs/` | Local folder scanned recursively for PDFs and HTML files |
 | `PDF_DIRS` | `[PDF_DIR]` | List of all directories to ingest; edit to add/remove sources |
 | `CHROMA_DIR` | `chroma_db/` | Where ChromaDB persists the vector index on disk |
+| `TEXTBOOKS_DIR` / `TEXTBOOKS_CHROMA_DIR` | `pdfs/textbooks/` / `chroma_textbooks/` | Textbooks (one PDF, or a folder of chapter PDFs, per book) indexed separately via `python ingest.py --textbooks`; never added to the main index |
 | `COLLECTION_NAME` | `"astronomy"` | ChromaDB collection name; change this if you want separate indexes for different document sets |
 | `BIBLIOGRAPHY_PATH` | `pdfs/bibliography.json` | Title/author/section lookup for AASKAII chapters, used for citations and the Table of Contents tab (see `rag/bibliography.py`) |
 | `AASKAII_YEAR` | `2026` | Publication year shown in formatted citations for all AASKAII chapters |
@@ -347,6 +352,7 @@ astronomy-rag/
 │   ├── bibliography.json     ← Title/author/section lookup (see build_bibliography.py)
 │   └── build_bibliography.py ← One-time offline scraper for bibliography.json
 ├── chroma_db/                ← Auto-created by ingest.py
+├── chroma_textbooks/         ← Auto-created by ingest.py --textbooks
 ├── rag/
 │   ├── config.py             ← All tuneable settings
 │   ├── ingestion.py          ← docling → HybridChunker → ChromaDB

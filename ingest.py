@@ -5,6 +5,8 @@ Usage:
     python ingest.py                        # index all configured directories
     python ingest.py path/to/dir [more...]  # index specific directories only
     python ingest.py --reindex              # wipe ChromaDB and reindex everything from scratch
+    python ingest.py --textbooks            # index pdfs/textbooks into its own store (chroma_textbooks/)
+    python ingest.py --textbooks --reindex  # wipe and rebuild only the textbook store
     python ingest.py --list-acronyms        # scan indexed docs for inline acronym definitions
 """
 
@@ -15,7 +17,7 @@ import json
 import sys
 from pathlib import Path
 
-from rag.config import PDF_DIRS
+from rag.config import CHROMA_DIR, PDF_DIRS, TEXTBOOKS_CHROMA_DIR, TEXTBOOKS_DIR
 from rag.ingestion import find_acronym_candidates, ingest_files
 
 
@@ -31,6 +33,12 @@ def main() -> None:
         "--reindex",
         action="store_true",
         help="Delete the existing ChromaDB store and reindex all files from scratch",
+    )
+    parser.add_argument(
+        "--textbooks",
+        action="store_true",
+        help="Index pdfs/textbooks into the separate textbook ChromaDB store "
+             "instead of the main one (--reindex then wipes only that store)",
     )
     parser.add_argument(
         "--list-acronyms",
@@ -50,7 +58,12 @@ def main() -> None:
         list_acronyms(args.list_acronyms)
         return
 
-    dirs = args.dirs if args.dirs else PDF_DIRS
+    if args.textbooks:
+        dirs = args.dirs or [TEXTBOOKS_DIR]
+        db_dir = TEXTBOOKS_CHROMA_DIR
+    else:
+        dirs = args.dirs or PDF_DIRS
+        db_dir = CHROMA_DIR
 
     print("Ingestion directories:")
     for d in dirs:
@@ -58,7 +71,7 @@ def main() -> None:
         print(f"  {d}  {status}")
     print()
 
-    results = ingest_files(dirs, reset=args.reindex)
+    results = ingest_files(dirs, reset=args.reindex, db_dir=db_dir)
 
     if not results:
         print("No new files were indexed.")
