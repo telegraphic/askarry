@@ -1,0 +1,14245 @@
+(window.ATLAS = window.ATLAS || {})['prose'] = {
+ "sections": [
+  {
+   "letter": "A",
+   "section": "Science Working Group Overviews",
+   "section_summary": "The thirteen Science Working Group overviews summarise the science case of each SKAO community. Their requirements fall into a few recurring groups. Spectral-line work runs from the Galactic interstellar medium to cosmic dawn. Van Loon et al. treat masers, megamasers and recombination lines, Jing Wang et al. set out tiered HI galaxy surveys, Audard et al. cover the cycle of matter in the Milky Way, and Bianchi et al. cover astrochemistry and protoplanetary disks. These chapters depend on SKA-Mid Bands 2 and 5, on zoom-mode spectral resolution of 0.1-1 km/s, and on arcsecond-to-milliarcsecond beams. Continuum and polarimetric work (Hale et al., Vernstrom et al.) turns on survey speed and depth, which set how fast confusion-limited fields and dense rotation-measure grids can be built in Band 2 and with SKA-Low. Cosmology (Spinelli et al.) and Epoch of Reionisation science (Trott et al.) set out wide-area HI intensity mapping and 21-cm experiments of 1000 to 10,000 hours. The time-domain chapters form the remaining group: pulsars and pulsar timing arrays (Joshi et al., Bellomo et al.), transients (Miller-Jones et al.), solar and heliospheric physics (Zucca et al.) and cosmic-ray air showers (Huege et al.). These call on beamformed timing, fast imaging, millisecond cadence and commensal voltage buffering.\n\nThe observing modes the section relies on most are spectral-line and maser surveys, VLBI and astrometry, deep HI intensity mapping, pulsar timing arrays, and commensal or triggered transient observing. Several overviews give concrete survey setups. Vernstrom et al. tabulate the RM-grid densities reached at 0.5 and 2 uJy/beam in Band 2 and at 10 uJy/beam with SKA-Low, with integration times for AA* and AA4. Jing Wang et al. keep the 1,000-hour and 10,000-hour \"wedding cake\" HI tiers, now corrected for the measured RFI environment. Spinelli et al. assume a 5,000 deg2 Band 2 survey and a 20,000 deg2 Band 1 survey. Trott et al. restrict EoR work to 50-220 MHz and ask for short baselines with high surface-brightness sensitivity. Huege et al. show that SKA-Low can measure air showers at no cost to other programmes, as long as a particle-detector trigger can freeze the raw-voltage buffers in the tile processors. Zucca et al. set the solar requirements: snapshot dynamic range above 10^5, cadence of 50 ms or better, and data rates that can exceed 10 TB per hour.\n\nThe overviews differ sharply on AA* versus AA4. For EoR and Cosmic Dawn science, Trott et al. find that AA* and AA4 perform similarly. AA4 adds some core sensitivity and better surface-brightness sensitivity but does not change the uv-coverage in any qualitative way. Spinelli et al., in contrast, find that radio weak lensing and its cross-correlations cannot be done without AA4 baselines, while HI intensity mapping and continuum cosmology remain possible with AA*. Audard et al. report that twelve of thirteen Our Galaxy chapters ask for AA4. Bianchi et al. stress that protoplanetary-disk science needs the full AA4 SKA-Mid baselines. Van Loon et al. and Joshi et al. describe a gradient: AA* delivers first detections and roughly tenfold timing gains, and AA4 adds the sensitivity for tens-of-nanosecond timing and statistically complete samples. Bellomo et al. split their gravitational-wave targets between AA* and AA4 but urge that analysis begin during AA*. Several groups also ask for more than AA4. Van Loon et al. and Bianchi et al. both argue for a Band 6 receiver above 15 GHz, reaching up to about 24 GHz.",
+   "requirements": [
+    {
+     "id": "A-01",
+     "paper": "vanLoon01",
+     "page": 2,
+     "quote": "Beyond AA2, zoom modes will allow the spectral resolution of 0 . 1-1 km s -1 needed to kinematically and magnetically (Robishaw et al., 2026) resolve masers and cold gas emission and absorption lines.",
+     "science_driver": "Kinematic and magnetic (Zeeman) resolution of extragalactic masers and cold gas",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "array_stage": "AA2",
+     "frequency": null,
+     "resolution": "spectral resolution 0.1-1 km/s",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-02",
+     "paper": "vanLoon01",
+     "page": 2,
+     "quote": "But despite this, SKA-Mid still offers a generous field-of-view, \u223c 0. \u25e6 6 at 2 GHz, which makes it possible to map moderately extended objects such as nearby galaxies or star-forming regions in the LMC and SMC in a single pointing, or perform small sky surveys.",
+     "science_driver": "Single-pointing spectral-line mapping of nearby galaxies and Magellanic Cloud star-forming regions",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "array_stage": null,
+     "frequency": "2 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "~0.6 deg field of view at 2 GHz",
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-03",
+     "paper": "vanLoon01",
+     "page": 12,
+     "quote": "Our science working group strongly advocates for a band 6, extending the SKAO capabilities to frequencies > 15 GHz, up to \u223c 24 GHz.",
+     "science_driver": "Water maser (22 GHz) and ammonia surveys in nearby galaxies and low-J molecular lines at high redshift",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "array_stage": null,
+     "frequency": ">15 GHz up to ~24 GHz (Band 6)",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-04",
+     "paper": "Vernstrom01",
+     "page": 7,
+     "quote": "SKA-Mid, Frequency = 0.95-1.76 GHz. SKA-Mid, \ud835\udf0e ( \ud835\udf07 Jy/beam) = 0 . 5. SKA-Mid, Time Required for AA* (hr) = 11. SKA-Mid, Time Required for AA4 (hr) = 5. SKA-Mid, RMDensity (deg - 2 ) = \u223c 400.",
+     "science_driver": "Dense rotation-measure grids for cosmic magnetism",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "array_stage": "AA*",
+     "frequency": "0.95-1.76 GHz (Band 2)",
+     "resolution": null,
+     "sensitivity": "0.5 uJy/beam",
+     "fov_or_area": "RM density ~400 deg^-2",
+     "survey_speed_or_time": "11 h (AA*), 5 h (AA4)",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": null,
+      "bandwidth_mhz": 810,
+      "integration_h": 11,
+      "claimed_sensitivity": 0.5,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": null,
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-05",
+     "paper": "Vernstrom01",
+     "page": 7,
+     "quote": "SKA-Low, Frequency = 100-350 MHz. SKA-Low, \ud835\udf0e ( \ud835\udf07 Jy/beam) = 10. SKA-Low, Time Required for AA* (hr) = 1.25. SKA-Low, Time Required for AA4 (hr) = 0.5. SKA-Low, RMDensity (deg - 2 ) = \u223c 6",
+     "science_driver": "Low-frequency RM grids with high Faraday-depth precision",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "array_stage": "AA*",
+     "frequency": "100-350 MHz",
+     "resolution": null,
+     "sensitivity": "10 uJy/beam",
+     "fov_or_area": "RM density ~6 deg^-2",
+     "survey_speed_or_time": "1.25 h (AA*), 0.5 h (AA4)",
+     "calculator_params": {
+      "telescope": "low",
+      "band": null,
+      "freq_ghz": null,
+      "bandwidth_mhz": 250,
+      "integration_h": 1.25,
+      "claimed_sensitivity": 10,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": null,
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-06",
+     "paper": "Vernstrom01",
+     "page": 7,
+     "quote": "Most RM-grid and broadband polarimetric studies focus on SKA-Mid Band 2 (0.95-1.76 GHz), which provides an optimal balance between sensitivity, sky coverage, angular resolution, and Faraday depolarization (see Loi et al., 2026; Ma et al., 2026; Sakemi et al., 2026; Vacca et al., 2026a,b).",
+     "science_driver": "Choice of band for RM-grid and broadband polarimetry",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "array_stage": null,
+     "frequency": "Band 2, 0.95-1.76 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-07",
+     "paper": "Bianchi02",
+     "page": 5,
+     "quote": "On the other hand, SKA-Mid Band 5b continuum observations at very highangular resolution (from 0 . \u2032\u2032 05 to 0 . \u2032\u2032 15) at 12.5 GHz, will reveal variations in density, temperature, and composition of the dusty disk shedding light on the origin of substructures such as rings, gaps, spirals, and vortices (Wu et al., 2026).",
+     "science_driver": "Dust substructure in protoplanetary disks",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "array_stage": null,
+     "frequency": "12.5 GHz (Band 5b)",
+     "resolution": "0.05-0.15 arcsec",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-08",
+     "paper": "Bianchi02",
+     "page": 6,
+     "quote": "While deep integrations, representing a Key Science Project of approximately 1 000 hours, are essential to fully probe the chemical complexity of these regions, shorter observation times ( \u2272 10 hours) using the initial AA* array configuration will still enable early science with the detection of prominent species such as cyanoacetylene (HC3N) and cyanodiacetylene (HC5N) in nearby star forming regions.",
+     "science_driver": "Complex molecules and astrochemistry in star-forming regions",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "array_stage": "AA*",
+     "frequency": "Band 5b",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "~1000 h Key Science Project; <~10 h early science with AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-09",
+     "paper": "Bianchi02",
+     "page": 9,
+     "quote": "The science cases presented by the Cradle of Life working group emphasize the necessity of full baselines for SKA-Mid AA4, where high angular resolution is critical, particularly for studying protoplanetary disks.",
+     "science_driver": "High-resolution imaging of protoplanetary disks",
+     "telescope": "mid",
+     "mode": null,
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": "full AA4 baselines",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-10",
+     "paper": "Bellomo01",
+     "page": 7,
+     "quote": "Besancon et al. (2026), Science target = Memory effects. Besancon et al. (2026), Observing mode = Pulsar Timing. Besancon et al. (2026), Configuration = AA4.",
+     "science_driver": "Detection of gravitational-wave memory effects as a test of General Relativity",
+     "telescope": "both",
+     "mode": "Pulsar timing array",
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-11",
+     "paper": "Bellomo01",
+     "page": 6,
+     "quote": "However, given the wealth of surprises that GW Science has produced over the past decade, the analysis for all cases should begin already during AA \u2217 to test pipelines and start providing the first upper bounds.",
+     "science_driver": "Early gravitational-wave pipeline testing and upper limits",
+     "telescope": "both",
+     "mode": "Pulsar timing array",
+     "array_stage": "AA*",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-12",
+     "paper": "JingWang01",
+     "page": 2,
+     "quote": "For fiducial H i emission surveys, AA4 baselines up to about 30 km are useful, resulting in an angular resolution of 2 \u2032\u2032 for deep surveys at \ud835\udc67 \u2248 0 . 5.",
+     "science_driver": "Deep HI emission surveys of galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": "2 arcsec at z~0.5 (baselines up to ~30 km)",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-13",
+     "paper": "JingWang01",
+     "page": 9,
+     "quote": "Medium wide, \u03a9 (deg 2 ) (2) = 400. Medium wide, Frequency (MHz) (3) = 950-1420. Medium wide, beam (4) = 11\". Medium wide, \ud835\udc41 (5) = 57,300.",
+     "science_driver": "Medium-wide tier of the 1,000-h AA* HI galaxy surveys",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "array_stage": "AA*",
+     "frequency": "950-1420 MHz",
+     "resolution": "11 arcsec beam",
+     "sensitivity": null,
+     "fov_or_area": "400 deg^2",
+     "survey_speed_or_time": "1,000 h",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-14",
+     "paper": "JingWang01",
+     "page": 7,
+     "quote": "The survey designs (columns 1-3) remain consistent with SO15, comprising three 1,000-hr surveys (Tab 1 in SO15), and three 10,000-hr surveys (Tab 2 in SO15).",
+     "science_driver": "Tiered HI survey strategy",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "array_stage": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "three 1,000-h and three 10,000-h surveys",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-15",
+     "paper": "Huege01",
+     "page": 6,
+     "quote": "The size of the SKA-Low core region of roughly 1 km 2 determines the energy range that will be accessible for cosmic ray measurements, which will correspond roughly to 10 15 to 10 18 eV.",
+     "science_driver": "Cosmic-ray composition across the Galactic-to-extragalactic transition",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "array_stage": null,
+     "frequency": "50-350 MHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "~1 km^2 core",
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-16",
+     "paper": "Huege01",
+     "page": 7,
+     "quote": "This observing mode will allow fully commensal observations of air showers during 'regular' astronomical observations, which is a necessary requirement as cosmic-ray studies require the collection of large-statistics data sets, which in turn rely on full-duty-cycle observations.",
+     "science_driver": "Triggered raw-voltage buffer readout for air-shower detection",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "array_stage": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "full duty cycle, commensal",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-17",
+     "paper": "Trott01",
+     "page": 10,
+     "quote": "\ud835\udc47 \ud835\udc35 power, poly spectra, Redshift = 5 . 5 < \ud835\udc67 < 27. \ud835\udc47 \ud835\udc35 power, poly spectra, Freq. (MHz) = 50-220. \ud835\udc47 \ud835\udc35 power, poly spectra, Station size (m) = 38, 15-18. \ud835\udc47 \ud835\udc35 power, poly spectra, Data product = Visibilities, 50 kHz, 2s.",
+     "science_driver": "21-cm power spectrum and higher-order statistics during EoR and Cosmic Dawn",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "array_stage": null,
+     "frequency": "50-220 MHz",
+     "resolution": "50 kHz channels, 2 s",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-18",
+     "paper": "Trott01",
+     "page": 10,
+     "quote": "21cm Forest, Redshift = 5 . 5 < \ud835\udc67 < 10. 21cm Forest, Freq. (MHz) = 130-220. 21cm Forest, Station size (m) = 38. 21cm Forest, Data product = Image cubes, 5 kHz.",
+     "science_driver": "21-cm forest absorption against high-redshift radio sources",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "array_stage": null,
+     "frequency": "130-220 MHz",
+     "resolution": "5 kHz channels",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-19",
+     "paper": "Trott01",
+     "page": 13,
+     "quote": "The AA* and AA4 arrays yield similar estimation performance for EoR/CD tasks (see Figure 3).",
+     "science_driver": "Array-stage dependence of EoR/CD sensitivity (1000 h experiments)",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "array_stage": "AA*",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h experiments",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-20",
+     "paper": "Spinelli02",
+     "page": 8,
+     "quote": "Mid Band 2 Medium-deep Survey: Expected to cover around 5 000 deg 2 to a continuum depth of \u223c 3 \u00b5 Jy / beam as a series of mosaicked pointings, providing both continuum and Hi line galaxies.",
+     "science_driver": "Continuum and HI galaxy cosmology (clustering, weak lensing, 0<z<0.4)",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "array_stage": "AA4",
+     "frequency": "Band 2",
+     "resolution": null,
+     "sensitivity": "~3 uJy/beam continuum",
+     "fov_or_area": "~5000 deg^2",
+     "survey_speed_or_time": "10 000 hours",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-21",
+     "paper": "Spinelli02",
+     "page": 8,
+     "quote": "Mid Band 1 Wide Survey: This wider survey would cover \u223c 20 000 deg 2 (most of the Southern sky) over 10 000 hours.",
+     "science_driver": "HI intensity mapping and continuum cosmology over 0.35<z<3",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "array_stage": "AA4",
+     "frequency": "Band 1",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "~20 000 deg^2",
+     "survey_speed_or_time": "10 000 hours",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-22",
+     "paper": "Spinelli02",
+     "page": 12,
+     "quote": "With only AA* baselines, a high enough number density of resolved galaxies cannot be detected to measure the statistical signal.",
+     "science_driver": "Radio weak lensing and its cross-correlations",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": "long baselines (AA4)",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-23",
+     "paper": "Hale01",
+     "page": 3,
+     "quote": "Similarly, just 10m with SKA-Mid (Band-2) at AA4 is expected to improve upon the depth of MIGHTEE, and comparable depths in Band 5 to the COSMOS-XS survey are possible within \u223c 1 / 10th of the time.",
+     "science_driver": "Deep continuum surveys of star formation and AGN evolution",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "array_stage": "AA4",
+     "frequency": "Band 2; Band 5",
+     "resolution": null,
+     "sensitivity": "deeper than MIGHTEE in 10 min",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 min per pointing (Band 2)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-24",
+     "paper": "Hale01",
+     "page": 3,
+     "quote": "As presented in Figure 1 (see parameters used in the Figure), \u223c 1h of SKA-Low data at AA* will be comparable in depth to the LOFAR Deep Fields (Sabater et al., 2021; Tasse et al., 2021) which used \u223c 100 hours per field.",
+     "science_driver": "Low-frequency deep continuum fields",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "array_stage": "AA*",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "comparable to LOFAR Deep Fields",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~1 h",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-25",
+     "paper": "Joshi01",
+     "page": 8,
+     "quote": "With the AA4 upgrade, SKA-Mid will achieve tens-of-nanosecond timing accuracy, allowing detection of higher-order post-Newtonian corrections and direct verification of GR's predictions for black-hole multipole moments.",
+     "science_driver": "Strong-field gravity tests with relativistic binary pulsars",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "tens-of-nanosecond timing accuracy",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-26",
+     "paper": "Joshi01",
+     "page": 9,
+     "quote": "With the full AA4 , the SKA-Mid and SKA-Low telescopes will further provide sub\ud835\udf07 s precision times-of-arrival for more than double the number of currently monitored pulsars with a modest use of SKAO telescope time, largely due to a factor of four times the MeerKAT sensitivity.",
+     "science_driver": "SKAO pulsar timing array for nanohertz gravitational waves",
+     "telescope": "both",
+     "mode": "Pulsar timing array",
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "sub-microsecond TOA precision",
+     "fov_or_area": null,
+     "survey_speed_or_time": "modest telescope time",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-27",
+     "paper": "Zucca01",
+     "page": 11,
+     "quote": "Full-Stokes imaging from 50 MHz to 15.4 GHz with millisecond time resolution and \u223c 10 kHz spectral resolution provides the spectropolarimetric parameter space needed for the diagnostic techniques described above.",
+     "science_driver": "Solar, heliospheric and ionospheric spectropolarimetric diagnostics",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "array_stage": "AA4",
+     "frequency": "50 MHz to 15.4 GHz",
+     "resolution": "millisecond time resolution, ~10 kHz spectral resolution",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-28",
+     "paper": "Zucca01",
+     "page": 9,
+     "quote": "Key technical challenges include achieving snapshot dynamic range in excess of 10 5 against the bright solar disk, performing direction-dependent calibration in the presence of a dominant, time-variable extended source, and managing data rates that can exceed 10 TB hr -1 in spectropolarimetric imaging modes.",
+     "science_driver": "High-dynamic-range snapshot imaging of the Sun",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "array_stage": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "snapshot dynamic range >10^5",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-29",
+     "paper": "Zucca01",
+     "page": 4,
+     "quote": "Sharma et al. (2026) demonstrate that SKA1-Mid Band 5 observations (4.6-15.4 GHz) will resolve the spatial structure of gyrosynchrotron sources in individual flaring loops with \u223c 0.1 arcsec resolution, enabling spectral inversion to recover the magnetic field strength, nonthermal electron density, and energy spectral index as functions of position.",
+     "science_driver": "Particle acceleration and magnetic fields in solar flaring loops",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "array_stage": null,
+     "frequency": "Band 5, 4.6-15.4 GHz",
+     "resolution": "~0.1 arcsec",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-30",
+     "paper": "Audard01",
+     "page": 2,
+     "quote": "The survey, of 630 2 deg coverage ( -180 deg < \ud835\udc59 < 30 deg, | \ud835\udc4f | \u2264 1 . 5 deg) would make use of simultaneous observations to cover 10-15 GHz nominally.",
+     "science_driver": "Galactic plane continuum survey of star formation and stellar evolution",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "array_stage": null,
+     "frequency": "10-15 GHz",
+     "resolution": "smaller than 0.05 pc at up to 20 kpc",
+     "sensitivity": null,
+     "fov_or_area": "630 deg^2 (-180<l<30, |b|<=1.5)",
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-31",
+     "paper": "Audard01",
+     "page": 3,
+     "quote": "Schoedel et al. (2026) focus specifically on the Galactic center, covering an area of 2 . 0 deg \u00d7 0 . 4 deg, i.e., 290 pc \u00d7 60 pc, centered on Sgr A \u2217 using SKA-Mid in Bands 2, 5a and 5b (1.36, 6.55, and 11.85 GHz).",
+     "science_driver": "Star formation and stellar evolution in the Galactic centre",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "array_stage": null,
+     "frequency": "Bands 2, 5a, 5b (1.36, 6.55, 11.85 GHz)",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "2.0 deg x 0.4 deg",
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "A-32",
+     "paper": "Audard01",
+     "page": 6,
+     "quote": "The OG community has an extremely high demand for SKA-Mid in AA4 configuration: all chapters requested SKA-Mid, and all but one chapter requested AA4.",
+     "science_driver": "Cycle of matter in the Milky Way",
+     "telescope": "mid",
+     "mode": null,
+     "array_stage": "AA4",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "vanLoon01",
+     "page": 5,
+     "quote": "Determining whether OH megamaser emission is systematically linked to specific merger stages, however, requires substantially larger and statistically complete samples, complemented by multi-wavelength observations spanning the electromagnetic spectrum.",
+     "theme": "OH megamasers and merger stage",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Vernstrom01",
+     "page": 1,
+     "quote": "Magnetic fields are a fundamental component of astrophysical systems, yet many key questions about their origin, amplification, and role in structure formation and evolution remain unresolved.",
+     "theme": "origin of cosmic magnetism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bianchi02",
+     "page": 7,
+     "quote": "While a conclusive detection of radio emission from an exoplanet is still lacking, the unprecedented sensitivity of SKA-Low is expected to enable the first robust detections of magnetized giant exoplanets, opening a new observational window on planetary magnetic fields, atmospheric evolution, and habitability.",
+     "theme": "exoplanet radio emission",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bianchi02",
+     "page": 8,
+     "quote": "However, a definitive radio detection remains elusive, primarily because previous facilities lacked the required sensitivity and because long-term monitoring of promising systems has been limited.",
+     "theme": "magnetic star-planet interaction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bellomo01",
+     "page": 3,
+     "quote": "Establishing whether supermassive black hole binaries (SMBHBs) are the main sources that contribute to the nHz GW background (GWB), or whether there exists a cosmological component, remains a vibrant and important line of research.",
+     "theme": "origin of the nanohertz GW background",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "JingWang01",
+     "page": 6,
+     "quote": "These differences could be the result of different sample selection between studies, cosmic variance, or differences in the stacking techniques.",
+     "theme": "evolution of HI scaling relations",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Huege01",
+     "page": 3,
+     "quote": "The origin of high energy cosmic rays is one of astrophysics' greatest unsolved mysteries.",
+     "theme": "origin of high-energy cosmic rays",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Huege01",
+     "page": 11,
+     "quote": "Lightning is not well understood.",
+     "theme": "lightning initiation physics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Trott01",
+     "page": 8,
+     "quote": "The most popular explanations include increased star formation efficiencies and / or bursty star formation (e.g. Dekel et al. 2023; Ferrara et al. 2023; Mason et al. 2023; Hutter et al. 2025]), with unclear implications for the 21 cm signal (though see Davies et al. 2025; Chakraborty and Choudhury 2025; Dhandha et al. 2025).",
+     "theme": "bright high-z galaxies and the 21-cm signal",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Spinelli02",
+     "page": 2,
+     "quote": "However, multiple questions remain about the true physical nature of DM and DE, and whether GR holds on all scales.",
+     "theme": "nature of dark matter and dark energy",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Hale01",
+     "page": 5,
+     "quote": "The origin of the radio emission in RQAGN is still under debate (see e.g. Panessa et al., 2019; Njeri et al., 2026).",
+     "theme": "radio emission in radio-quiet AGN",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Hale01",
+     "page": 4,
+     "quote": "Firstly, AGN activity appears to be episodic but it is still unclear how long the AGN activity cycles last and what causes the switching on and off of radio jets.",
+     "theme": "AGN duty cycles",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Joshi01",
+     "page": 8,
+     "quote": "Nevertheless, the microphysics of matter above nuclear saturation density-and the transition between hadronic and exotic phases-remains uncertain.",
+     "theme": "dense-matter equation of state",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Joshi01",
+     "page": 7,
+     "quote": "The three-dimensional structure and global symmetry of the Milky Way's magnetic field remain incompletely characterized.",
+     "theme": "Galactic magnetic field structure",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Zucca01",
+     "page": 8,
+     "quote": "Solar energetic particle (SEP) events are a major space-weather hazard, yet the mechanisms by which particles are accelerated and released from the corona remain poorly understood.",
+     "theme": "solar energetic particle acceleration",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Zucca01",
+     "page": 4,
+     "quote": "Their origin is debated: competing models invoke magnetohydrodynamic (MHD) oscillations of flaring structures, periodic or bursty reconnection, and nonlinear wave-particle interactions.",
+     "theme": "quasi-periodic pulsations in flares",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Audard01",
+     "page": 3,
+     "quote": "However, such measurements are crucial to assess the importance of magnetic fields in the star formation process, as the few current observations suggest marginally supercritical conditions where the magnetic fields cannot prevent collapse but inhibit it, but it remains unclear if this is a biased result.",
+     "theme": "magnetic support in star formation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Miller-Jones01",
+     "page": 4,
+     "quote": "While several thousand have been detected to date (as either one-off events or repeating bursts), the nature of their progenitors remains unresolved, although the diversity of burst properties and host environments suggests that multiple progenitor channels may contribute (as discussed in the chapter by Curtin et al., 2026).",
+     "theme": "FRB progenitors",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Miller-Jones01",
+     "page": 7,
+     "quote": "Large regions of this complex, multi-dimensional parameter space remain to be explored.",
+     "theme": "unexplored transient parameter space",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "B",
+   "section": "Sun, Earth and Planets",
+   "section_summary": "The Sun, Earth and Planets section is dominated by solar and heliospheric physics, with a smaller group of papers on stars, exoplanets, the outer Solar System and terrestrial lightning. The solar chapters share a single observational premise. The radio Sun changes on sub-second and sub-MHz scales, and several bright and faint sources are often present on the disk at once, so the science depends on snapshot spectropolarimetric imaging with high dynamic range rather than on long synthesis integrations. Patra and Kansabanik want wideband, full-Stokes imaging to measure coronal and CME magnetic fields through free-free, gyroresonance and gyrosynchrotron emission and through Faraday rotation of background sources. Sharma, Kontar, Kumari, Morosan and Nakariakov focus on particle acceleration, radio-burst fine structure, solar energetic particles and quasi-periodic pulsations, and they ask for millisecond-to-sub-second cadence, kHz channels (including zoom and beamformed modes) and dense uv coverage. Mondal argues that SKA-Low sensitivity and a clean snapshot PSF are needed to characterise weak quiet-Sun transients carrying fluxes of tens of mSFU. Zhang, Raja and Chrysaphi turn propagation effects into diagnostics of coronal and solar-wind turbulence, using angular broadening of background sources along the solar track and the scattered images of solar bursts. Oberoi and Cheung set out the practical conditions that all of this depends on: attenuator characterisation, self-calibration in the strong-source regime, elastic correlator modes, triggered observing, and imaging tools that handle differential solar rotation and uniform weighting of the dense SKA-Mid core.\n\nThe observing modes are therefore almost entirely solar/heliospheric imaging, supplemented by tied-array and zoom configurations and by trigger-driven transient capture. For lightning, Hare requires raw-voltage buffer dumps rather than channelised data. The non-solar papers draw on other modes. Mohan and Vedantham use deep continuum and wide-field circular-polarisation surveys to reach active M dwarfs and star-planet interaction candidates; Vedantham proposes a southern-sky survey in 1 h pointings at 144 MHz with a Stokes V threshold near 140 microJy. Curiel relies on SKA-VLBI MultiView astrometry at 1-10 microarcsecond precision to find planets around ultracool dwarfs. Santos-Sanz needs deep Band 5b continuum integrations of about 5 h to detect thermal emission from trans-Neptunian objects at the 1.58 microJy (5 sigma) level.\n\nThe papers differ in what they expect from AA* compared with AA4. Several conclude that AA* already meets their core needs. Chrysaphi notes that the AA* frequency range covers every signal relevant to heliospheric turbulence and that a 6 km SKA-Low subarray already beats LOFAR in resolution. Hare expects AA* to give the baselines and sensitivity needed for new lightning science. For snapshot fidelity, however, the extra stations and intermediate baselines of AA4 matter. Cheung finds the AA* PSF less Gaussian for narrowband snapshots. Sharma points out that early SKA-Low assemblies lack the short baselines needed to image the extended disk. Mohan quotes 15.8 versus 10.2 microJy/beam in 1 h at 1.4 GHz for AA* and AA4. The most sensitivity-limited programmes depend on AA4: Santos-Sanz finds that AA* would detect only a few of the largest trans-Neptunian objects, Vedantham ties a substantial star-planet interaction yield to the roughly 10 microJy reach of SKA-Low AA4, and Curiel notes that AA* limits SKA-VLBI to one or perhaps four simultaneous beams.",
+   "requirements": [
+    {
+     "id": "B-01",
+     "paper": "Patra01",
+     "page": 19,
+     "quote": "The SKA- Low array (operating within 50-350 MHz) will provide a contiguous 300-MHz instantaneous bandwidth, while SKA-Mid will cover 0.35-15.4 GHz across four operational bands: Band 1 (350-1050 MHz), Band 2 (950-1760 MHz), Band 5a (4.6-8.5 GHz), and Band 5b (8.3-15.4 GHz).",
+     "science_driver": "Coronal magnetography via wideband spectropolarimetry",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "SKA-Low 50-350 MHz (300 MHz contiguous); SKA-Mid Bands 1, 2, 5a, 5b",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-02",
+     "paper": "Patra01",
+     "page": 6,
+     "quote": "However, estimating the magnetic field strength across a range of coronal heights through faint free-free circular emission requires wide-bandwidth sensitive radio observations.",
+     "science_driver": "Line-of-sight coronal magnetic field from weak free-free circular polarisation",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "wide bandwidth",
+     "resolution": null,
+     "sensitivity": "sensitive to faint circular polarisation",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-03",
+     "paper": "Mohan01",
+     "page": 9,
+     "quote": "The AA*(AA4) array would help achieve a root mean square (RMS) noise level of 15.8(10.2) \ud835\udf07 Jy/beam with 1 h and 0.81 GHz averaging in Band 2, centered at 1.4 GHz.",
+     "science_driver": "Quiescent radio emission from active stars (AD Leo-like) for solar-stellar comparison",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2, 1.4 GHz",
+     "resolution": null,
+     "sensitivity": "15.8 uJy/beam RMS (AA*)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.4,
+      "bandwidth_mhz": 810,
+      "integration_h": 1,
+      "claimed_sensitivity": 15.8,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null,
+      "weighting": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-04",
+     "paper": "Mohan01",
+     "page": 9,
+     "quote": "The AA*(AA4) array would help achieve a root mean square (RMS) noise level of 15.8(10.2) \ud835\udf07 Jy/beam with 1 h and 0.81 GHz averaging in Band 2, centered at 1.4 GHz.",
+     "science_driver": "Quiescent radio emission from active stars (AD Leo-like) for solar-stellar comparison",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2, 1.4 GHz",
+     "resolution": null,
+     "sensitivity": "10.2 uJy/beam RMS (AA4)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.4,
+      "bandwidth_mhz": 810,
+      "integration_h": 1,
+      "claimed_sensitivity": 10.2,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null,
+      "weighting": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-05",
+     "paper": "Mohan01",
+     "page": 8,
+     "quote": "Hence, the identification and tracking of flaring regions require wideband spectro-polarimetric imaging at sub-MHz and subsecond scales with sub-arcmin angular resolution, necessary to resolve active regions.",
+     "science_driver": "Sun-as-a-star framework: tracking flaring active regions",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "wideband",
+     "resolution": "sub-arcmin; sub-MHz and sub-second",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-06",
+     "paper": "Cheung01",
+     "page": 10,
+     "quote": "This would allow subarcsecond imaging under typical scattering conditions only at frequencies above 5 GHz.",
+     "science_driver": "High-resolution imaging of flaring coronal loops",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "above 5 GHz",
+     "resolution": "sub-arcsecond",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-07",
+     "paper": "Cheung01",
+     "page": 9,
+     "quote": "Therefore, we expect to detect fine structures down to \u2248 0 . 1 SFU at 5 GHz.",
+     "science_driver": "Fine structure in M-class flare emission from MHD simulations",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "5 GHz",
+     "resolution": null,
+     "sensitivity": "~0.1 SFU fine structure (dynamic range ~230)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-08",
+     "paper": "Cheung01",
+     "page": 10,
+     "quote": "AA4 may be a considerable improvement for high-fidelity imaging, especially in the snapshot, narrowband case considered here.",
+     "science_driver": "Snapshot narrowband flare imaging fidelity",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-09",
+     "paper": "PeijinZhang01",
+     "page": 17,
+     "quote": "cold-sky array sensitivities of \ud835\udc34 eff / \ud835\udc47 sys \u223c 10 3 m 2 K -1 correspond to \ud835\udf0e th \u2248 0 . 9mJybeam -1 in a 1 s, 5 MHz snapshot at 60 MHz; hot-sky conditions inflate \ud835\udc47 sys by \u223c 10 dB, yielding \u223c 9 mJy beam -1 .",
+     "science_driver": "Angular broadening of background sources as probe of coronal/solar-wind turbulence",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "60 MHz",
+     "resolution": null,
+     "sensitivity": "0.9 mJy/beam (cold sky), ~9 mJy/beam (hot sky) in 1 s, 5 MHz",
+     "fov_or_area": "sources within +/-10 deg of the solar track",
+     "survey_speed_or_time": "1 s snapshots",
+     "array_stage": null,
+     "calculator_params": {
+      "telescope": "low",
+      "band": null,
+      "freq_ghz": 0.06,
+      "bandwidth_mhz": 5,
+      "integration_h": 0.000278,
+      "claimed_sensitivity": 0.9,
+      "unit": "mJy/beam",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null,
+      "weighting": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-10",
+     "paper": "PeijinZhang01",
+     "page": 17,
+     "quote": "With the unbalanced background source distribution, we propose the observation strategy as Sourcedependent scheduling: (i) high-cadence ( \u0394 \ud835\udc61 \u2272 0 . 1 s) campaigns near Tau A conjunction; (ii) 1-5 s imaging in high-background windows ( \u2211 \ud835\udc46 10 \u25e6 \u2273 400 Jy); (iii) 10-30 s deep snapshots in moderate backgrounds ( 50 -400 Jy).",
+     "science_driver": "Year-round multi-source angular-broadening campaigns",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "<=0.1 s to 30 s cadence depending on background",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "source-dependent scheduling through the solar year",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-11",
+     "paper": "Sharma01",
+     "page": 12,
+     "quote": "For a 15 m SKAO dish, a typical solar radio disk of \u223c 0.6 deg angular scale, the frequencies > 1 . 9 GHz will resolve the solar disk. For SKA-mid science cases, for full solar disk sub-array beam modes, and mosaic stitching will be needed.",
+     "science_driver": "Particle acceleration diagnostics in flares across the solar disk",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "> 1.9 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "full solar disk (~0.6 deg) needs sub-array beams or mosaics",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-12",
+     "paper": "Sharma01",
+     "page": 13,
+     "quote": "At SKA-low frequencies, for the initial array assemblies (AA0.5 to AA2), the absence of the smaller baselines will make the imaging of the extended solar disk difficult.",
+     "science_driver": "Imaging of extended solar disk and weak impulsive sources",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA0.5-AA2 insufficient; AA* and AA4 preferred",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-13",
+     "paper": "Vedantham01",
+     "page": 16,
+     "quote": "Conducting a survey of the entire southern sky with 1 h integrations at 144 MHz and a bandwidth of approximately 50 MHz is expected to yield roughly 700 \u00b1 300 detections in circular polarisation (extrapolating from the detection rates presented by Callingham et al. (2023)). This estimate is based on a Stokes V sensitivity threshold of at least 5 \ud835\udf0e (corresponding to \u2273 140 \ud835\udf07 Jy), and assumes that the detection rate of variable circularly polarised sources in 1 h observations matches that observed in 8 h epochs.",
+     "science_driver": "Discovery of magnetic star-planet interaction candidates via circular polarisation",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": "144 MHz, ~50 MHz bandwidth",
+     "resolution": null,
+     "sensitivity": ">=140 uJy (5 sigma, Stokes V)",
+     "fov_or_area": "entire southern sky",
+     "survey_speed_or_time": "1 h per pointing",
+     "array_stage": null,
+     "calculator_params": {
+      "telescope": "low",
+      "band": null,
+      "freq_ghz": 0.144,
+      "bandwidth_mhz": 50,
+      "integration_h": 1,
+      "claimed_sensitivity": 140,
+      "unit": "uJy (5-sigma Stokes V threshold)",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null,
+      "weighting": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-14",
+     "paper": "Vedantham01",
+     "page": 12,
+     "quote": "SKA-Low AA4, being capable of \u223c 10 \ud835\udf07 Jy level sensitivity in modest integration times (1 hr) will be sensitive to a much larger fraction (a few tens of percent) of radio-emitting exoplanets.",
+     "science_driver": "Detectable fraction of M-SPI radio-emitting systems",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "~10 uJy in 1 h",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-15",
+     "paper": "Vedantham01",
+     "page": 17,
+     "quote": "These targets should be observed for at least 2 exoplanet orbits to check if they display recurring time-frequency signatures at the anticipated periodicity.",
+     "science_driver": "Confirming M-SPI periodicity in known exoplanet systems",
+     "telescope": "both",
+     "mode": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "at least 10 known exoplanet systems",
+     "survey_speed_or_time": "at least 2 orbits per target",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-16",
+     "paper": "Raja01",
+     "page": 2,
+     "quote": "For example, SKA-Low achieves \u223c 2-5 \ud835\udf07 Jy beam -1 in 1 hr, while SKA-Mid reaches \u223c 1-2 \ud835\udf07 Jy beam -1 , improving to \u223c 0.05-0.1 \ud835\udf07 Jy beam -1 in deep integrations (Dewdney et al., 2013; Braun et al., 2019).",
+     "science_driver": "Radio occultation and scintillation of many background sources near the ecliptic",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "SKA-Low ~2-5 uJy/beam, SKA-Mid ~1-2 uJy/beam in 1 h",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-17",
+     "paper": "Raja01",
+     "page": 30,
+     "quote": "In order to fit the theoretical GSF profile, we need short base line observations which fulfilled by the SKAO.",
+     "science_driver": "Inner (dissipation) scales of solar-wind turbulence",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "short baselines required",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-18",
+     "paper": "Kansabanik01",
+     "page": 14,
+     "quote": "To make heliopolarimetry a transformative tool for space-weather research, observations must extend to higher coronal heights and the inner heliosphere, where decreasing magnetic fields and electron densities make low frequencies ( \u223c 80-1000 MHz) essential for detecting the small RM variations.",
+     "science_driver": "CME magnetic fields via Faraday rotation of background sources",
+     "telescope": "both",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "~80-1000 MHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "wide field to sample many lines of sight across a CME",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-19",
+     "paper": "Kansabanik01",
+     "page": 19,
+     "quote": "A dedicated daytime SKA-low station beam could provide uninterrupted coverage, with only intervals containing coronagraph-identified CMEs saved and processed to minimize data volume.",
+     "science_driver": "Capturing CME gyrosynchrotron emission without advance warning",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "continuous daytime monitoring",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-20",
+     "paper": "Morosan01",
+     "page": 20,
+     "quote": "Recent observations have shown that the in Type II (Kumari et al., 2025), Type III (Mugundhan et al., 2018) and noise-storm activity (Mondal et al., 2024), the acceleration region can be \u223c tens of arc-sec to an arc-min at meter wavelengths.",
+     "science_driver": "Resolving solar energetic particle acceleration regions",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "metre wavelengths",
+     "resolution": "tens of arcsec to 1 arcmin",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-21",
+     "paper": "Morosan01",
+     "page": 20,
+     "quote": "Simultaneous observations are limited to the intersection of solar visibility at the two different sites, resulting in a restricted daily overlap window that varies seasonally.",
+     "science_driver": "Joint SKA-Low/SKA-Mid tracking of SEP-related bursts",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "restricted daily overlap window",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-22",
+     "paper": "Kontar01",
+     "page": 6,
+     "quote": "At 50 MHz, SKA-Low configured with a \u223c 6 km baseline would be able to tile a region of 2 . 5 R \u2299 radius centred on the Sun using 500 beams, achieving an angular beam width of 3 . 5 arcmin-nearly a factor of two improvement over LOFAR's 5 . 9 arcmin using 217 beams with a 3 . 5 km baseline.",
+     "science_driver": "Imaging solar radio spikes and fine structures",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "50 MHz",
+     "resolution": "3.5 arcmin beam width",
+     "sensitivity": null,
+     "fov_or_area": "2.5 solar radii tiled with 500 beams",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-23",
+     "paper": "Kontar01",
+     "page": 5,
+     "quote": "SKA-Low has a standard spectral resolution of 5 . 4 kHz with a maximum resolution of 226 Hz in zoom mode (Hampson et al., 2022).",
+     "science_driver": "Spike bandwidths and emission region sizes",
+     "telescope": "low",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": null,
+     "resolution": "5.4 kHz standard, 226 Hz zoom",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-24",
+     "paper": "Kontar01",
+     "page": 14,
+     "quote": "Second, high spatial resolution combined with a sufficiently wide field of view is required, so that fine coronal structures can be resolved while simultaneously covering the entire solar disk and the overlying corona extending to at least several solar radii.",
+     "science_driver": "Flare diagnostics from radio burst fine structures",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "high spatial resolution",
+     "sensitivity": null,
+     "fov_or_area": "entire solar disk plus corona to several solar radii",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-25",
+     "paper": "Kumari01",
+     "page": 27,
+     "quote": "A single station will have a field of view of \u2248 90 \ud835\udc5c , enabling solar monitoring of \u223c 6 hours. The SEFD of a single SKA station has been measured to be \u2248 5.4 kJy at 90 MHz, while it is 3.7 kJy at 310 MHz.",
+     "science_driver": "Synoptic solar radio burst monitoring with a station beam",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "90-310 MHz",
+     "resolution": null,
+     "sensitivity": "station SEFD ~5.4 kJy at 90 MHz, 3.7 kJy at 310 MHz",
+     "fov_or_area": "~90 deg station field of view",
+     "survey_speed_or_time": "~6 h daily monitoring",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-26",
+     "paper": "Kumari01",
+     "page": 27,
+     "quote": "With SKA's frequency resolution of \u2248 5 kHz and high time resolution \u223c few ms, fine structure bursts can be studied in an unprecedent way.",
+     "science_driver": "Type II/III fine structure and plasma turbulence",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "~5 kHz, few ms",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-27",
+     "paper": "Kumari01",
+     "page": 27,
+     "quote": "While obtaining a solar dedicated beam may not be possible with SKA-mid, opportunistic observations can be made using triggers from the SKA-Low monitor beam or from other solar telescope networks after the detection of solar flares.",
+     "science_driver": "Impulsive flare energy release in the microwave range",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "triggered",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-28",
+     "paper": "Oberoi01",
+     "page": 18,
+     "quote": "For example, for achieving an angular resolution of 5 \u2032\u2032 over a 1 \u25e6 field-of-view at 200 MHz, 100 kHz is the maximum channel resolution which can be used.",
+     "science_driver": "Snapshot solar imaging without bandwidth smearing",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "200 MHz",
+     "resolution": "5 arcsec; <=100 kHz channels",
+     "sensitivity": null,
+     "fov_or_area": "1 deg",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-29",
+     "paper": "Oberoi01",
+     "page": 18,
+     "quote": "In an 'active' mode, appropriate for typical type II/III activity, integration times of order 100s of \ud835\udc5a\ud835\udc60 and channel widths of order 100 kHz suffice, with moderate reductions in correlated bandwidth or baseline set.",
+     "science_driver": "Elastic correlator modes matched to solar variability",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "100s of ms, ~100 kHz",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-30",
+     "paper": "Oberoi01",
+     "page": 20,
+     "quote": "For the SKA-mid, they suggest using a set of 3 subarrays, of 4 antennas each, to simultaneously monitor solar activity in the 3 SKA-mid bands.",
+     "science_driver": "Internal trigger generation for solar activity",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "3 SKA-Mid bands",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "continuous monitoring subarrays",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-31",
+     "paper": "Chrysaphi01",
+     "page": 9,
+     "quote": "To achieve higher spatial resolutions than LOFAR at the AA* stage as well, the SKA-Low subarray containing stations within 6 km from the centre will need to be used (as a minimum), delivering an 8.5 km baseline (at both AA* and AA4).",
+     "science_driver": "Radio-wave propagation and heliospheric turbulence from solar burst imaging",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "70 MHz reference",
+     "resolution": "~1.73 arcmin at 70 MHz with 8.5 km baseline",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-32",
+     "paper": "Chrysaphi01",
+     "page": 9,
+     "quote": "To provide spatial resolutions that surpass those of LOFAR's outercore typically utilised in radio-wave propagation investigations of solar emissions (3.5 km baseline), SKA-Low observations at AA4 will need to be conducted-as a minimum-using the subarray that contains all stations within a radius of 3 km from the array centre, corresponding to a 5 km baseline.",
+     "science_driver": "Radio-wave propagation and heliospheric turbulence from solar burst imaging",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "5 km baseline minimum",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-33",
+     "paper": "Chrysaphi01",
+     "page": 10,
+     "quote": "The SKA frequency range at AA* will already suffice for conducting measurements of all radio signals relevant to the diagnosis of heliospheric turbulence, whether they originate from solar, extra-solar, or synthetic sources (Section 2).",
+     "science_driver": "Heliospheric turbulence from solar, extra-solar and spacecraft signals",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "SKA-Low 50-350 MHz; SKA-Mid AA* bands",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-34",
+     "paper": "Nakariakov01",
+     "page": 21,
+     "quote": "SKA-Mid will have more than 133 antennas enabling high dynamic range imaging at about 0.14 s and 13 kHz resolution.",
+     "science_driver": "Quasi-periodic pulsations in solar and stellar flares",
+     "telescope": "mid",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "0.14 s, 13 kHz",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-35",
+     "paper": "Nakariakov01",
+     "page": 22,
+     "quote": "The SKA-Mid and SKA-Low in the upcoming AA* configuration and the later AA4 configurations can hence let us explore sub-second-scale variability in the QPP sources across the 0.35-15 GHz band in a much better way with about an order of magnitude better spatial resolution for events ranging from nanoflares to major flares and CMEs.",
+     "science_driver": "Sub-second QPP variability from nanoflares to major flares",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "0.35-15 GHz",
+     "resolution": "sub-second",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*, AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-36",
+     "paper": "Curiel01",
+     "page": 3,
+     "quote": "As discussed in Chapter Ultra-Precise Astrometry (Rioja et al., 2026), we estimate an order of magnitude improvement for SKA-VLBI (i.e. up to 10 \ud835\udf07 as astrometric precision at 1.4 GHz and 1 \ud835\udf07 as above 5 GHz), assuming an upgraded network of antennas that match the SKA capabilities combined with next-generation technology.",
+     "science_driver": "Astrometric detection of planets around radio-bright ultracool and M dwarfs",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "1.4 GHz and above 5 GHz",
+     "resolution": "astrometric precision 10 uas at 1.4 GHz, 1 uas above 5 GHz",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-37",
+     "paper": "Curiel01",
+     "page": 3,
+     "quote": "The initial roll-out of SKA (AA*) will be limited to one (or maybe four) simultaneous beams.",
+     "science_driver": "MultiView calibration with multiple tied-array beams",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-38",
+     "paper": "Curiel01",
+     "page": 8,
+     "quote": "Since the radio emission is non-thermal in nature and the sources are expected to be variable, deep centimeter observations (obtaining a sensitivity between 1 and 10 \ud835\udf07 Jy/beam, in some cases even below the \ud835\udf07 Jy/beam limit) are required to guaranty the detection of the stars with high signal-to-noise ratio (S/N).",
+     "science_driver": "Detecting variable young and low-mass host stars for astrometry",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "centimetre wavelengths",
+     "resolution": null,
+     "sensitivity": "1-10 uJy/beam",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-39",
+     "paper": "Mondal01",
+     "page": 9,
+     "quote": "Mondal et al. (2023c) found that the bandwidth of these transients are less than 1 MHz. Most of them are unresolved in time with an instrumental resolution of 0.5 s with the longest ones also being shorter than 10 s (Mondal et al., 2020, 2023b).",
+     "science_driver": "Weak impulsive narrowband quiet-Sun emissions (WINQSEs)",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "better than 1 MHz and 0.5 s",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-40",
+     "paper": "Mondal01",
+     "page": 8,
+     "quote": "The flux density of WINQSEs is very low (Fig. 3, less than a few tens of mSFU) (Mondal et al., 2020, 2023b,c), with multiple of them usually being present simultaneously on the solar disc. Hence the image fidelity required to detect WINQSEs is quite high.",
+     "science_driver": "Quiet-Sun nonthermal transients and coronal heating",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "sources below a few tens of mSFU; high image fidelity",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-41",
+     "paper": "Mondal01",
+     "page": 9,
+     "quote": "To understand the signatures of the radio transients at EUV and X-ray, it is essential to have arcsecond resolution radio observations.",
+     "science_driver": "Associating quiet-Sun radio transients with EUV/X-ray counterparts",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "arcsecond",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-42",
+     "paper": "Hare01",
+     "page": 9,
+     "quote": "Once a trigger signal is received, we will save out a second or two of raw-voltages from a few antennas from every station.",
+     "science_driver": "Lightning initiation and leader propagation physics",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": "~100 ns integration in post-processing",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1-2 s raw-voltage dumps on trigger",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-43",
+     "paper": "Hare01",
+     "page": 9,
+     "quote": "We expect that SKA-LOW roll-out AA*will already provide the necessary baselines and sensitivity needed to perform extremely novel lightning science, however we also expect SKA-LOW AA4 to significantly improve the sensitivity and thus the extremely quiet lightning processes that can be observed.",
+     "science_driver": "Faint lightning processes",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* sufficient; AA4 improves",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-44",
+     "paper": "Santos-Sanz01",
+     "page": 8,
+     "quote": "Using a 5-hour integration time and a 5 \ud835\udf0e detection threshold, we find that a substantial fraction of these targets are within the reach of SKA-AA4 at its shortest operating central wavelength (2.3 cm), corresponding to the upper limit in frequency of Band 5b. At this wavelength, SKA-AA4 is expected to detect a sizeable subset of the brightest TNOs and Centaurs above the 1.58 \ud835\udf07 Jy threshold, making it the most productive band for thermal detections.",
+     "science_driver": "Thermal emission and subsurface emissivity of TNOs and Centaurs",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5b, 2.3 cm (12.9 GHz, 10.40-15.40 GHz)",
+     "resolution": null,
+     "sensitivity": "1.58 uJy (5 sigma) in 5 h",
+     "fov_or_area": "23 brightest known TNOs and Centaurs",
+     "survey_speed_or_time": "5 h per target",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 5b",
+      "freq_ghz": 12.9,
+      "bandwidth_mhz": 5000,
+      "integration_h": 5,
+      "claimed_sensitivity": 1.58,
+      "unit": "uJy (5-sigma)",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null,
+      "weighting": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "B-45",
+     "paper": "Santos-Sanz01",
+     "page": 8,
+     "quote": "Our simulations show that while SKA-AA* would only be capable of detecting the thermal emission from a few of the largest TNOs, the increased sensitivity of the SKA-AA4 enables detection of a significantly broader population, including several of the largest TNOs and Centaurs.",
+     "science_driver": "Sample size for TNO thermal radiometry",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 (AA* limited to a few largest TNOs)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Patra01",
+     "page": 23,
+     "quote": "Coronal magnetic field measurements remain one of the most critical challenges in solar and space-weather research.",
+     "theme": "coronal magnetic field measurement",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mohan01",
+     "page": 12,
+     "quote": "While the dearth of type II bursts in M dwarfs could be attributed to high Alfv\u00e9n speeds suppressing coronal shocks (Alvarado-G\u00f3mez et al., 2022), the general lack of type III/IV or any flare-linked radio bursts in several strong stellar flares remains difficult to reconcile with the standard flare model (e.g. Smith et al., 2005; MacGregor et al., 2018).",
+     "theme": "missing radio bursts in stellar flares",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cheung01",
+     "page": 12,
+     "quote": "A fundamental challenge remains the absence of a true reference ('ground truth') against which the performance of reconstruction methods can be quantitatively assessed and optimized.",
+     "theme": "validation of solar image reconstruction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cheung01",
+     "page": 10,
+     "quote": "The impact of these effects on the images is under investigation with the Karabo pipeline.",
+     "theme": "polarisation leakage in SKA-Mid solar imaging",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "PeijinZhang01",
+     "page": 17,
+     "quote": "It may be possible to recover these by re-inversion of a dirty image, but experimentation would be necessary.",
+     "theme": "visibility-level data products for scattering studies",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sharma01",
+     "page": 6,
+     "quote": "The spatial origin of spike sources is a puzzle, as many of the spike locations do not correlate with the high-energy X-ray source in the conventional flare model (Battaglia and Benz, 2009; Battaglia et al., 2021).",
+     "theme": "origin of solar radio spikes",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sharma01",
+     "page": 6,
+     "quote": "Further, the fragmentation of energy in spikes and their emission mechanism is a puzzle (Benz, 1985).",
+     "theme": "spike emission mechanism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Vedantham01",
+     "page": 16,
+     "quote": "To date, no published claim of a detection of sub-Alfv\u00e9nic M-SPI in the radio-band has satisfied this criterion.",
+     "theme": "secure detection of star-planet interaction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Vedantham01",
+     "page": 17,
+     "quote": "While a large number of exoplanets have now been detected, their co-evolution pathways with host stars remains largely unknown.",
+     "theme": "star-planet co-evolution",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Raja01",
+     "page": 2,
+     "quote": "Despite several decades of intense research through observations and modelling, solar wind heating, origin and evolution, and acceleration of solar wind is still poorly-understood.",
+     "theme": "solar wind heating and acceleration",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kansabanik01",
+     "page": 20,
+     "quote": "Despite this, circularly polarised thermal free-free emission from CME plasma has not yet been observationally confirmed.",
+     "theme": "CME magnetic fields from thermal emission",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kansabanik01",
+     "page": 21,
+     "quote": "Remote sensing of the CME magnetic field remains one of the most long-standing and formidable challenges in solar and heliospheric physics.",
+     "theme": "remote sensing of CME magnetic fields",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Morosan01",
+     "page": 18,
+     "quote": "However, whether particles can return into the low atmosphere is an open question.",
+     "theme": "precipitation of shock-accelerated particles",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kontar01",
+     "page": 16,
+     "quote": "Often, the images are likely to be due to scattering, but the variation of image size from one burst type to another suggests that we do not fully understand all processes responsible for the source size variations.",
+     "theme": "solar radio source sizes and scattering",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kumari01",
+     "page": 27,
+     "quote": "While solar bursts have been classified into five well-known and understood types (refer to Figure 9), there exists a plethora of fine structure bursts whose association with energy releases in the Sun is not very well understood.",
+     "theme": "fine structure bursts and energy release",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Oberoi01",
+     "page": 22,
+     "quote": "The community needs to develop tools for this purpose to fully make use of the extremely sensitive high-angular-resolution observations available with the SKA, particularly the SKA-Mid.",
+     "theme": "imaging with solar differential rotation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chrysaphi01",
+     "page": 5,
+     "quote": "The challenge lies in unlocking the ability to accurately describe the heliospheric environment on a regular basis, including its reaction to various transient solar events and its evolution with distance and time.",
+     "theme": "routine characterisation of heliospheric turbulence",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Nakariakov01",
+     "page": 2,
+     "quote": "An intensively studied phenomenon which is not described by the standard flare model are quasi-periodic pulsations (QPP) of the flaring emission.",
+     "theme": "origin of quasi-periodic pulsations",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Nakariakov01",
+     "page": 26,
+     "quote": "However, despite significant observational progress, detections remain limited by instrumental sensitivity, cadence, and incomplete spatial coverage-particularly for weak flares and for stellar events where spatially resolved information is unavailable.",
+     "theme": "QPP detection limits in weak and stellar flares",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Curiel01",
+     "page": 14,
+     "quote": "In addition, the nature of the radio emission of the JuMBOs is not clear.",
+     "theme": "radio emission from Jupiter-mass binary objects",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Curiel01",
+     "page": 3,
+     "quote": "Unfortunately, while the stellar space density of M-dwarfs is well established, the local fraction of radio-bright M-dwarfs at the relevant frequencies is not yet uniformly quantified for a robust estimate of the local density of M-dwarfs, so we will limit these calculations to ultra-cool dwarfs.",
+     "theme": "radio-bright fraction of M dwarfs",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mondal01",
+     "page": 9,
+     "quote": "While Mondal et al. (2020); Sharma et al. (2022); Mondal et al. (2023b) have demonstrated that these transients are ubiquitous in nature, it is not clear if these are the radio counterparts of the 'nanoflares'.",
+     "theme": "WINQSEs as nanoflare counterparts",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Hare01",
+     "page": 2,
+     "quote": "It is not understood why negative leaders emit VHF radiation, or why positive leaders should be so different in this respect.",
+     "theme": "VHF emission from lightning leaders",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Hare01",
+     "page": 8,
+     "quote": "The current hypothesis is that fast breakdown is a 'wave' of streamers that propagates in a very strong electric field without a hot conducting channel core, however this hypothesis is difficult to test (Liu et al., 2019).",
+     "theme": "physics of lightning fast breakdown",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Santos-Sanz01",
+     "page": 3,
+     "quote": "Nevertheless, it is not yet established that an emissivity of 0.7 remains valid at such long wavelengths.",
+     "theme": "centimetre emissivity of TNOs",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Santos-Sanz01",
+     "page": 6,
+     "quote": "However, a detailed assessment is still required to determine whether the SKA's sensitivity and spatial resolution will be sufficient to detect or resolve such structures, given the trade-off between higher sensitivity and lower angular resolution.",
+     "theme": "detectability of TNO ring systems",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "C",
+   "section": "Formation and Evolution of Stars",
+   "section_summary": "The Formation and Evolution of Stars section follows matter from cold prestellar cores through protostars, jets and planet-forming disks to evolved massive stars, supernova remnants and magnetars. Most of its science is built around SKA-Mid Band 5, and especially Band 5b (8.3-15.4 GHz). At these frequencies dust is optically thin, so the telescope can see into disk midplanes and dense envelopes that ALMA cannot reach. The astrochemistry chapters (Bianchi, Podio) target cyanopolyynes, carbon-chain radicals, benzonitrile and interstellar complex organic molecules with zoom-mode spectroscopy at 3-13 kHz resolution, with integrations of 10 to 1000 hours. The disk chapters (Garufi, Wu, Guidi) use Band 5b continuum to detect centimetre-sized pebbles and to resolve rings at about 0.05 arcsec, and they stack hydrogen recombination lines to separate photoevaporative from magnetised winds. Magnetic fields form a second strand. Bourke gives Zeeman forecasts for OH, CCS and C4H, and Loren-Anderson for carbon recombination lines. Bracco proposes synchrotron detection of starless cores with SKA-Low at 200 MHz and SKA-Mid Bands 1-2. Rygl uses maser surveys and time-domain maser monitoring.\n\nThe section relies mainly on four observing modes. The first is targeted spectral-line and maser observation, often with several zoom windows per band. The second is wide-field continuum surveying: Traficante's 630 deg2 Galactic-plane survey in Band 5b at 20 microJy/beam takes about 600 h, and Cavallaro's 70 percent sky survey in Band 2 targets ultracool dwarfs. The third is polarimetry, including Zeeman measurements, applied to jets, supernova remnants and dense cores. The fourth is SKA-VLBI astrometry, which Akahori uses for magnetar proper motions and parallaxes (50 microarcsec precision) and Ingallinera for OH masers in supernova remnants. Buemi, Ingallinera and Guidi all need matched beams in Band 2 and Band 5 to build spectral-index maps. Forbrich and Rygl add time-domain work coordinated with ALMA on accretion bursts and stellar flares. Several chapters (Sabatini, Forbrich, Bourke, Podio) press for a Band 6 receiver (15-50 GHz) to close the gap up to ALMA Band 1. Several chapters also count on the MeerKAT dishes receiving Band 5b receivers, which they estimate would raise line sensitivity by about 1.4 times.\n\nThe chapters agree broadly on what AA* and AA4 can each deliver. AA* already supports a substantial early programme. Bianchi finds that the lighter carbon chains in prestellar cores are detectable in 10 h at about 30 arcsec resolution. Rygl expects follow-up of maser flares and OH surveys of AGB stars once zoom mode is available. Bourke proposes AA* surveys of CCS and C4H to prepare for Zeeman work, and Sabatini reports most jet science as feasible from Science Verification onwards. Buemi's simulations show that AA* already partially resolves nebulae around Wolf-Rayet stars. In contrast, the demanding cases depend on the long baselines and full collecting area of AA4. Resolving the jet-launching region at about 4 au (Sabatini), resolving disk rings (Wu) and detecting faint disk lines on 100 au scales (Podio) all require AA4. Bracco finds that AA4 halves the time to detect a starless core with SKA-Low (below 50 h against below 100 h). The Galactic-plane survey grows from about 600 h at AA4 to about 1800 h at AA*, and its beam widens from 0.07 to 0.16 arcsec.",
+   "requirements": [
+    {
+     "id": "C-01",
+     "paper": "Bianchi01",
+     "page": 9,
+     "quote": "These values were calculated using the SKAO online sensitivity calculator for a spectral resolution of 3.36 kHz ( \u223c 0.1 km s -1 ) and telescope beams of 45 \u2032\u2032 \u00d7 43 \u2032\u2032 and 26 \u2032\u2032 \u00d7 25 \u2032\u2032 in Band 5a and Band 5b, respectively. The 3 \ud835\udf0e sensitivity is 50 mK, 15 mK and 5 mK for observing time of 10 hours, 100 hours and 1000 hours, respectively, in Band 5a.",
+     "science_driver": "Detection of cyanopolyynes, polyynyl radicals and benzonitrile in prestellar cores",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "Band 5a and Band 5b",
+     "sensitivity": "3 sigma 50/15/5 mK in 10/100/1000 h (Band 5a)",
+     "resolution": "45x43 arcsec (Band 5a), 26x25 arcsec (Band 5b); 3.36 kHz channels",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10, 100 and 1000 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5a",
+      "freq_ghz": null,
+      "bandwidth_mhz": 0.00336,
+      "integration_h": 10,
+      "claimed_sensitivity": 50,
+      "unit": "mK (3 sigma)",
+      "claimed_beam_arcsec": null,
+      "weighting": null,
+      "quantity": "line"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-02",
+     "paper": "Bianchi01",
+     "page": 17,
+     "quote": "Moreover, we have smoothed the spectra to 7.2 kHz ( \u223c 0.3 km s -1 at 7 GHz). Using the SKAO online sensitivity calculator in the AA* configuration in Band 5b, with 300 hours of observations we will obtain a spectral surfacebrightness sensitivity of 0.02 K with a synthesised beam-size of 8.17 \u2032\u2032 at the central frequency of 11.85 GHz.",
+     "science_driver": "Cyanopolyyne chemistry in low-metallicity star-forming regions of the outer Galaxy",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "Band 5b, 11.85 GHz",
+     "sensitivity": "0.02 K spectral surface brightness",
+     "resolution": "8.17 arcsec beam; 7.2 kHz channels",
+     "fov_or_area": null,
+     "survey_speed_or_time": "300 h",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5b",
+      "freq_ghz": 11.85,
+      "bandwidth_mhz": 0.0072,
+      "integration_h": 300,
+      "claimed_sensitivity": 0.02,
+      "unit": "K",
+      "claimed_beam_arcsec": 8.17,
+      "weighting": null,
+      "quantity": "line"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-03",
+     "paper": "Bianchi01",
+     "page": 15,
+     "quote": "Using the SKAO sensitivity calculator, we find that a deep integration of 1000 hours, at 12 GHz, with an angular resolution of 0 . \u2032\u2032 8 and a spectral resolution of 0.3 km s -1 , considering the addition of the MeerKAT dishes, will yield a r.m.s. of 18 \ud835\udf07 Jy beam -1 .",
+     "science_driver": "Key Science Project on long carbon chains in the OMC-2 protocluster (early Solar System analogue)",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "12 GHz",
+     "sensitivity": "18 microJy/beam rms",
+     "resolution": "0.8 arcsec; 0.3 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-04",
+     "paper": "Cavallaro01",
+     "page": 9,
+     "quote": "In particular, Band 5a, tuned at 6.6 GHz, maximizes the observing sensitivity, allowing to reach the noise of about 0.5 \ud835\udf07 Jy/beam in 1 hour of integration time, estimated using the SKAO Sensitivity Calculator for the AA4 configuration.",
+     "science_driver": "Incoherent gyro-synchrotron emission from hot magnetic B/A stars as indirect magnetometry",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a, 6.6 GHz",
+     "sensitivity": "0.5 microJy/beam",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-05",
+     "paper": "Cavallaro01",
+     "page": 14,
+     "quote": "Fig. 4 presents the results for a 70% sky survey with the AA4 SKA configuration, showing the detection curve together with reference lines for 30-minute and 1-hour integrations. The top axis indicates the corresponding 5 \ud835\udf0e point-source sensitivities, ranging from \u223c 8 \ud835\udf07 Jy for the shortest exposures to \u223c 1 . 5 \ud835\udf07 Jy for the deepest considered.",
+     "science_driver": "Discovery of thousands of radio-emitting ultracool dwarfs",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2",
+     "sensitivity": "5 sigma ~8 to ~1.5 microJy",
+     "resolution": null,
+     "fov_or_area": "70% of sky",
+     "survey_speed_or_time": "0.5-10 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-06",
+     "paper": "Cavallaro01",
+     "page": 7,
+     "quote": "With co-ordinated observations between the SKA-Low and SKA-Mid, one will be able to cover the frequency range of 0.05-1.8 GHz simultaneously, which will be pivotal in fully characterizing the phenomenon and thus enabling implementation of ECME as a versatile magnetospheric probe.",
+     "science_driver": "Wideband characterisation of electron cyclotron maser emission from magnetic massive stars",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "0.05-1.8 GHz simultaneous",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-07",
+     "paper": "Rygl01",
+     "page": 5,
+     "quote": "In 10 minutes using robust= -1 Briggs weighting, SKA-Mid AA4 2 can reach toward NGC 6334I \u223c 9 mJy/beam for gOHmasers and \u223c 5 mJy/beam for ex-OH, CH3OH and H2CO masers.",
+     "science_driver": "Systematic surveys of OH, methanol and formaldehyde masers in high-mass star formation",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Bands 2, 5a, 5b maser lines",
+     "sensitivity": "~9 mJy/beam (ground-state OH), ~5 mJy/beam (ex-OH, CH3OH, H2CO)",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 min",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-08",
+     "paper": "Rygl01",
+     "page": 6,
+     "quote": "For a typical distance of 3 kpc this would require \u223c 100 mas to resolve such a separation by 5 synthesised beams, which can be easily achieved with SKA-Mid. These objectives will further require a sensitivity (3 \ud835\udf0e ) better than 10 mJy beam -1 per 0.1 km s -1 spectral channel, and flexible frequency settings to cover multiple frequency ranges simultaneously per band.",
+     "science_driver": "Co-spatial multi-transition maser diagnostics of physical conditions",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "multiple zoom windows per band",
+     "sensitivity": "3 sigma < 10 mJy/beam per 0.1 km/s channel",
+     "resolution": "~100 mas",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-09",
+     "paper": "Rygl01",
+     "page": 16,
+     "quote": "With SKA-Mid, even in the initial phase, from AA* when the zoom mode becomes available, a sensitivity of 7 mJy beam -1 in \u223c 0.6 km s -1 spectral channel can be reached with an integration time of \u223c 2h30m for a pointing towards the Galactic Centre and a uniform weighting hence allowing the detection of this population with a 5 \ud835\udf0e down to a 35 mJy threshold.",
+     "science_driver": "1612 MHz OH masers from AGB stars in the far side of the Galaxy",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 2, 1612 MHz",
+     "sensitivity": "7 mJy/beam per ~0.6 km/s channel",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "~2h30m per pointing",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-10",
+     "paper": "Garufi01",
+     "page": 19,
+     "quote": "It is clear that using Natural weighting with modest tapering ensures the detection of a statistically significant number of disks - over 200 - in just one hour of observation, regardless of the disk size at centimeter wavelengths.",
+     "science_driver": "Demographics of pebbles in planet-forming disks of southern star-forming regions",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-11",
+     "paper": "Garufi01",
+     "page": 19,
+     "quote": "Imaging with Briggs weighting at Robust = 1, on the other hand, would allow us to spatially separate star-related processes from disk emission in up to 100 disks with only three hours of integration.",
+     "science_driver": "Separating disk dust emission from stellar and ionised-gas contributions",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "3 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-12",
+     "paper": "Garufi01",
+     "page": 8,
+     "quote": "The first avenue is particularly compelling because SKA-Mid AA4 configuration, with baselines extending to \u223c 150 km will be the first instrument capable of providing spatially resolved maps of the centimeter-wavelength emission from planet-forming disks.",
+     "science_driver": "Spatial distribution of pebbles in disks",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b",
+     "sensitivity": null,
+     "resolution": "baselines to ~150 km",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-13",
+     "paper": "Bracco01",
+     "page": 11,
+     "quote": "These integration times correspond to a signal-to-noise ratio of 5 at 200 MHz within the full 300 MHz bandwidth of SKA-Low, assuming a minimum elevation of 30 \u25e6 toward the Orion position listed in Table 1. Briggs weighting was considered in the sensitivity calculator (robust value = 0). The models predict that a single subcritical dense starless core in Orion could be detected at its center in fewer than 100 hours with AA*, and in less than 50 hours with AA4.",
+     "science_driver": "Low-frequency synchrotron emission from dense starless cores as a probe of magnetisation",
+     "telescope": "low",
+     "mode": null,
+     "frequency": "200 MHz, 300 MHz bandwidth",
+     "sensitivity": "S/N 5 at core peak",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "<100 h (AA*), <50 h (AA4)",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-14",
+     "paper": "Bracco01",
+     "page": 13,
+     "quote": "Using the Orion case reported in Tables 2 and 3 as a reference, the native angular resolution of SKA-Mid-i.e. \u223c 1 . 3 \u2032\u2032 \u00d7 1 . 2 \u2032\u2032 in Band 1 and \u223c 0 . 8 \u2032\u2032 \u00d7 0 . 7 \u2032\u2032 in Band 2-will provide, in one hour of integration time, a sensitivity of \u223c 2 . 5 \ud835\udf07 Jy beam -1 in Band 1 and \u223c 1 . 2 \ud835\udf07 Jy beam -1 in Band 2.",
+     "science_driver": "Prestellar-core synchrotron and commensal YSO jet studies in Orion",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 1 and Band 2",
+     "sensitivity": "~2.5 microJy/beam (Band 1), ~1.2 microJy/beam (Band 2)",
+     "resolution": "~1.3x1.2 arcsec (Band 1), ~0.8x0.7 arcsec (Band 2)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": null,
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "2",
+      "freq_ghz": 1.31,
+      "bandwidth_mhz": 720,
+      "integration_h": 1,
+      "claimed_sensitivity": 1.2,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": 0.8,
+      "weighting": "Briggs robust 0",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-15",
+     "paper": "Bracco01",
+     "page": 12,
+     "quote": "If detection of the prestellar-core peak brightness is feasible in a few molecular clouds using the \u223c 300 SKA-Low stations in the AA* configuration within a reasonable observation time, then accessing the greater sensitivity of AA4-with more than 500 stations-will be essential.",
+     "science_driver": "Statistical sample of detectable prestellar cores",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-16",
+     "paper": "Buemi01",
+     "page": 12,
+     "quote": "At higher frequencies, SKA-Mid Band 5a reaches 1 \ud835\udf07 Jy/beam (central frequency 6.55 GHz, continuum bandwidth 3.9 GHz wide, adopted observing time duration 20 minutes, image weighting \"Briggs\", with robust parameters fixed 0 and no tapering), still outperforming JVLA by a factor of \u223c 4 (estimated using the same time on source with a representative frequency fixed at 6 GHz, that is close to the central frequency of the Band 5a receiver and compatible with a bandwidth 3.9 GHz wide).",
+     "science_driver": "Stellar winds and circumstellar envelopes of evolved massive stars",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a, 6.55 GHz",
+     "sensitivity": "1 microJy/beam",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "20 min",
+     "array_stage": null,
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5a",
+      "freq_ghz": 6.55,
+      "bandwidth_mhz": 3900,
+      "integration_h": 0.333,
+      "claimed_sensitivity": 1,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": null,
+      "weighting": "Briggs robust 0, no taper",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-17",
+     "paper": "Buemi01",
+     "page": 15,
+     "quote": "Already with the AA* configuration, the shell becomes marginally resolved, while SKA-Mid AA4 will have enough resolution to reconstruct its morphology (Fig. 2), allowing studies of CSM structures in Local Group galaxies, and thus opening the possibility for population studies beyond the Milky Way.",
+     "science_driver": "Wolf-Rayet nebulae at Magellanic Cloud distances",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 2",
+     "sensitivity": null,
+     "resolution": "2 arcsec (AA*), 0.8 arcsec (AA4)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-18",
+     "paper": "Buemi01",
+     "page": 17,
+     "quote": "We assume detection thresholds of \u223c 9 / 50 \ud835\udf07 Jy for SKA-mid/low, respectively, versus typical detection thresholds in current surveys of \u223c 100 / 200 / 250 \ud835\udf07 Jy for SMGPS/EMU/LOFAR.",
+     "science_driver": "Radio detection of runaway-star bow shocks",
+     "telescope": "both",
+     "mode": "Wide-field continuum survey",
+     "frequency": "1.4 GHz (Mid), 300 MHz (Low)",
+     "sensitivity": "~9 microJy (Mid), ~50 microJy (Low) detection thresholds",
+     "resolution": "15 arcsec beam assumed",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-19",
+     "paper": "Guidi01",
+     "page": 14,
+     "quote": "In this example we show how we can detect and resolve the emission at SKA-Mid Band 5a and 5b, with 10 hours integration time, reaching a rms of about 1.1 and 1.3 \ud835\udf07 Jy/beam and achieving a peak SNR of about 4-8 and 8-13 (depending from the disk inclination), respectively.",
+     "science_driver": "Resolving free-free emission from photoevaporative and magnetised disk winds",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a and 5b",
+     "sensitivity": "~1.1 microJy/beam (5a), ~1.3 microJy/beam (5b)",
+     "resolution": "0.03x0.02 arcsec (5a), 0.05x0.04 arcsec (5b), robust -2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5a",
+      "freq_ghz": null,
+      "bandwidth_mhz": 3900,
+      "integration_h": 10,
+      "claimed_sensitivity": 1.1,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": null,
+      "weighting": "Briggs robust -2",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-20",
+     "paper": "Guidi01",
+     "page": 16,
+     "quote": "We considered an integration time of 10 hours with a spectral resolution of 0 . 25 km / s and a robust parameter of 2 for all the five models presented in Section 4.1, obtaining stacked cubes where the final noise is reduced by a factor of \u221a \ud835\udc5b where \ud835\udc5b = 12, and corresponds to 59 \ud835\udf07 Jy/beam with a beam of 0 . \u2032\u2032 1.",
+     "science_driver": "Stacked hydrogen recombination lines as wind-launching diagnostics",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "Band 5b (12 H-alpha lines)",
+     "sensitivity": "59 microJy/beam stacked",
+     "resolution": "0.1 arcsec; 0.25 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-21",
+     "paper": "Guidi01",
+     "page": 18,
+     "quote": "Therefore, a survey aimed at detecting free-free emission from a star forming region at 140 pc would take approximately 60 and 20 hours of SKA time in Band 5b and 5a, respectively.",
+     "science_driver": "Survey of free-free emission from a full disk population (e.g. Ophiuchus)",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b and 5a",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": "60 (5b) or 20 (5a) pointings",
+     "survey_speed_or_time": "~60 h (5b), ~20 h (5a)",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-22",
+     "paper": "Sabatini01",
+     "page": 19,
+     "quote": "For instance, in Band 5b ( \ud835\udf08 0 = 11.8 GHz; \u0394 \ud835\udf08 =5GHz)and5a( \ud835\udf08 0 = 6.55 GHz; \u0394 \ud835\udf08 =3.0 GHz), thermal jets can be detected with an rms noise of about 1 \ud835\udf07 Jy / beam in \u223c 30 min for a source in Orion ( \ud835\udc51 =390 pc; Tobin et al. 2020) using the AA4 configuration (with only 15-m antennas) and a synthesised beam of \u223c 0.1 \u2032\u2032 \u00d7 0.1 \u2032\u2032 (Briggs; robust=0).",
+     "science_driver": "3D velocities of faint thermal jet knots via proper motions",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b 11.8 GHz and Band 5a 6.55 GHz",
+     "sensitivity": "~1 microJy/beam",
+     "resolution": "~0.1x0.1 arcsec",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~30 min",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5b",
+      "freq_ghz": 11.8,
+      "bandwidth_mhz": 5000,
+      "integration_h": 0.5,
+      "claimed_sensitivity": 1,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": 0.1,
+      "weighting": "Briggs robust 0",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-23",
+     "paper": "Sabatini01",
+     "page": 12,
+     "quote": "Using the SKAO Sensitivity Calculator 6 in continuum mode (AA4 configuration), we estimated the integration times needed to reach an rms noise level of 2 \ud835\udf07 Jy/beam over the full bandwidth in Band 1 and 2 at a declination of -5 \u25e6 (Orion). To achieve a synthesised beam of \u223c 1 \u2032\u2032 \u00d7 1 \u2032\u2032 , we assumed Briggs weighting with robust = 0 in Band 1 and robust = 1 in Band 2. The requested rms is reached in \u223c 1.4 h in Band 1 (435 MHz bandwidth), and \u223c 11 min in Band 2 (720 MHz bandwidth).",
+     "science_driver": "Identifying non-thermal (synchrotron) YSO jets for magnetic-field studies",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 1 and Band 2",
+     "sensitivity": "2 microJy/beam rms",
+     "resolution": "~1x1 arcsec",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~1.4 h (Band 1), ~11 min (Band 2)",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "1",
+      "freq_ghz": null,
+      "bandwidth_mhz": 435,
+      "integration_h": 1.4,
+      "claimed_sensitivity": 2,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": 1,
+      "weighting": "Briggs robust 0",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-24",
+     "paper": "Sabatini01",
+     "page": 24,
+     "quote": "Firstly, studying the launch mechanism in the vicinity of YSOs will require physical resolutions of a few au around the YSO. This will only be possible by exploiting the maximum extension of the SKA-Mid baselines, which will likely become available starting from SKAO Cycle 1, providing an exceptional resolution of approximately 4 au in sources at a distance of 200 pc (see Sect. 3.3).",
+     "science_driver": "Jet launching region around young stellar objects",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5",
+     "sensitivity": null,
+     "resolution": "~4 au at 200 pc",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-25",
+     "paper": "Bourke01",
+     "page": 22,
+     "quote": "Ultimately, with the SKA-Mid a similar sensitivity can be obtained in a \u223c 6 \u2032\u2032 beam (0.012 pc) in only 5 minutes (a factor \u223c 10 improvement in resolution).",
+     "science_driver": "Mapping OH Zeeman magnetic fields in Orion B",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "OH 18 cm lines (Band 2)",
+     "sensitivity": "similar to VLA ~6 mJy/beam per channel",
+     "resolution": "~6 arcsec (0.012 pc)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "5 min",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-26",
+     "paper": "Bourke01",
+     "page": 23,
+     "quote": "In the protostellar case an integration time of \u223c 3 hrs is needed, and \u223c 8 hrs for the prestellar case. If the line is only 0.2 Jy then the times increase to \u223c 20 hrs and \u223c 65 hrs respectively.",
+     "science_driver": "CCS Zeeman detection of 300 and 100 microG fields in low-mass cores",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "CCS 11 GHz (Band 5b)",
+     "sensitivity": "3 sigma detection of 300/100 microG",
+     "resolution": "30 arcsec beam assumed",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~3-65 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-27",
+     "paper": "Bourke01",
+     "page": 25,
+     "quote": "These surveys can be undertaken with SKA-Mid AA* for CCS and C4H, as no comparable facility will exist prior with sufficient sensitivity and frequency coverage for this undertaking.",
+     "science_driver": "Preparatory surveys of Zeeman-sensitive thermal tracers",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5b",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-28",
+     "paper": "Forbrich01",
+     "page": 2,
+     "quote": "For SKA-Low, the typical continuum synthesised beam size will be about 5 \u2032\u2032 (both AA \u2217 and AA4), and in the case of SKA-Mid, the continuum synthesised beam size will initially (AA \u2217 ) range from about one arcsecond (Band 1, 0.8 GHz) to about 0.1 \u2032\u2032 at 12 GHz (Band 5b). With the advent of AA4, this will improve to 0.3 \u2032\u2032 and 0.02 \u2032\u2032 , respectively.",
+     "science_driver": "Matching SKA and ALMA angular resolution for joint star-formation studies",
+     "telescope": "both",
+     "mode": null,
+     "frequency": "Band 1 to Band 5b",
+     "sensitivity": null,
+     "resolution": "AA*: ~1 to ~0.1 arcsec; AA4: 0.3 to 0.02 arcsec (Mid); ~5 arcsec (Low)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-29",
+     "paper": "Forbrich01",
+     "page": 14,
+     "quote": "The proposed SKA-Mid Band 6 (15-50 GHz) would bridge this gap and open access to a range of key spectral diagnostics that are rarely observable elsewhere and not at the expected sensitivity (see SKA Memo 20-01).",
+     "science_driver": "Bridging 15-35 GHz gap to ALMA Band 1 (NH3, methanol K-ladders)",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 6, 15-50 GHz",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-30",
+     "paper": "Forbrich01",
+     "page": 12,
+     "quote": "The combination of angular resolution, field of view, and sensitivity significantly favours observations of targets with reasonably predictable variability rather than wide-area combined searches.",
+     "science_driver": "Simultaneous SKA-ALMA monitoring of stellar and protostellar flares",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-31",
+     "paper": "Wu01",
+     "page": 2,
+     "quote": "SKA-Mid Band 5b continuum observations, offering angular resolutions of \u223c 0 . 05 \u2032\u2032 ( \u223c 0 . 15 \u2032\u2032 ) with AA4 (AA*) at 12 . 5 GHz / 2 . 4 cm, will enable new progress at this frontier.",
+     "science_driver": "Imaging dust substructures (rings, gaps) in planet-forming disks",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b, 12.5 GHz",
+     "sensitivity": null,
+     "resolution": "~0.05 arcsec (AA4), ~0.15 arcsec (AA*)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-32",
+     "paper": "Wu01",
+     "page": 15,
+     "quote": "We find that detecting HL Tau's dust thermal emission with AA* requires modest integration times, while resolving its rings with AA4 requires deeper integrations.",
+     "science_driver": "HL Tau benchmark disk at centimetre wavelengths",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b, 12.5 GHz",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "30 to 1000 h considered",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-33",
+     "paper": "Wu01",
+     "page": 19,
+     "quote": "We therefore strongly advocate for access to calibrated visibilities during SKA Mid operations to enable the community to plan for the expansion of existing tools to exploit their analysis, ultimately enabling the highest scientific return from the observations.",
+     "science_driver": "Visibility-plane modelling of disk structure at sub-beam scales",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-34",
+     "paper": "Ingallinera01",
+     "page": 24,
+     "quote": "With an expected sensitivity of approximately 20 \ud835\udf07 Jy and an angular resolution of about 0 \u2032\u2032 . 8 at 15 GHz, the survey will allow the measurement of spatially resolved spectral indices with a resolution of roughly 500 AU at a distance of 20 kpc.",
+     "science_driver": "Resolved spectral indices of Galactic supernova remnants from the Band 5b plane survey",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 5b, 15 GHz",
+     "sensitivity": "~20 microJy",
+     "resolution": "~0.8 arcsec",
+     "fov_or_area": "Galactic plane",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-35",
+     "paper": "Ingallinera01",
+     "page": 20,
+     "quote": "For spectral line observations, to detect the 1720-MHz OH masers, with a 10-minute integration, the SKA AA4 phase will achieve a sensitivity of \u223c 13 mJy for line emission at a velocity resolution of 0.15 km s -1 (for comparison, AA* sensitivity would be \u223c 20 mJy).",
+     "science_driver": "1720 MHz OH masers tracing SNR-molecular cloud interaction",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "1720 MHz",
+     "sensitivity": "~13 mJy (AA4), ~20 mJy (AA*)",
+     "resolution": "0.15 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 min",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-36",
+     "paper": "Ingallinera01",
+     "page": 20,
+     "quote": "Using the native resolution for each band (with robust parameters discussed above) to achieve the highest possible resolution and to mitigate depolarisation introduced by beam averaging, the SKA will be able to detect the polarised emission from SNRs like those in our sample at frequencies up to SKA-MID Band 2 ( < 1 . 76 GHz).",
+     "science_driver": "Magnetic-field structure of supernova remnants",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "up to Band 2 (<1.76 GHz)",
+     "sensitivity": null,
+     "resolution": "native band resolution",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-37",
+     "paper": "Traficante01",
+     "page": 28,
+     "quote": "We aim to map a large portion of the GP visible from the SKA-Mid site, in South Africa, for a total of 630 deg 2 of the GP.",
+     "science_driver": "High-resolution census of ionised Galactic structures (HII regions, jets, PNe, SNRs)",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 5b, ~9.5 and ~14 GHz",
+     "sensitivity": "20 microJy/beam",
+     "resolution": "~0.07 arcsec",
+     "fov_or_area": "630 deg2 (-180 < l < 30 deg, |b| <= 1.5 deg)",
+     "survey_speed_or_time": "~600 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-38",
+     "paper": "Traficante01",
+     "page": 29,
+     "quote": "The exquisite sensitivity of the SKAO telescope allows us to reach a sensitivity of 20 \ud835\udf07 Jy/beam with only \u223c 20 s of integration time per pointing at 14 GHz (which is equivalent at \u223c 14 \ud835\udf07 Jy/beam per pointing at 10 GHz).",
+     "science_driver": "Per-pointing depth for the Galactic-plane survey",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "14 GHz",
+     "sensitivity": "20 microJy/beam",
+     "resolution": "~0.07 arcsec (natural weighting)",
+     "fov_or_area": "~6.0 arcmin per pointing",
+     "survey_speed_or_time": "~20 s per pointing",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5b",
+      "freq_ghz": 14,
+      "bandwidth_mhz": 2500,
+      "integration_h": 0.00556,
+      "claimed_sensitivity": 20,
+      "unit": "microJy/beam",
+      "claimed_beam_arcsec": 0.07,
+      "weighting": "natural",
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-39",
+     "paper": "Traficante01",
+     "page": 29,
+     "quote": "If we assume the AA* array configuration, the time requested to complete the GP survey at the same sensitivity of 20 \ud835\udf07 Jy increases by a factor \u2243 3 . 1, therefore the total time requested will be \u2243 1800 h.",
+     "science_driver": "Galactic-plane survey feasibility at AA*",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 5b",
+     "sensitivity": "20 microJy",
+     "resolution": "~0.16 arcsec",
+     "fov_or_area": "630 deg2",
+     "survey_speed_or_time": "~1800 h",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-40",
+     "paper": "LorenAnderson01",
+     "page": 6,
+     "quote": "Assuming that the compact component of the hierarchical structure has sizes and emission measures comparable to those of HC H ii regions (sizes \u223c 0 . 05 pc, EM \u223c 10 9 pc cm -6 ), observations of radio recombination lines with angular resolution better than 0.5 \u2032\u2032 are required to probe the dynamics of ionized gas. These observations need to be carried out in Band 5b of SKA since the continuum will be optically thick at lower frequencies.",
+     "science_driver": "Ionised-gas dynamics of hierarchical structure in HII regions",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5b",
+     "sensitivity": null,
+     "resolution": "better than 0.5 arcsec",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-41",
+     "paper": "LorenAnderson01",
+     "page": 8,
+     "quote": "At a resolution of 0 . 2 \u2032\u2032 , a specific intensity of \u223c 8 . 5 \u00d7 10 -15 erg s -1 cm -2 sr -1 Hz -1 is equivalent to 900 \ud835\udf07 Jy beam -1 . Taking into account the boost in the signal-to-noise ratio by smoothing the different recombination lines, one can achieve a 10 \ud835\udf0e detection in an integration time of \u223c 0 . 5 hr.",
+     "science_driver": "Stacked RRL detection of compact ionised components",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5b (H76alpha-H86alpha)",
+     "sensitivity": "10 sigma on 900 microJy/beam lines",
+     "resolution": "0.2 arcsec; 2.7 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~0.5 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-42",
+     "paper": "LorenAnderson01",
+     "page": 13,
+     "quote": "Using band 5b, smoothing the spectral resolution to 1/6 \ud835\udc61 \u210e of the CRRL linewidth, averaging 12 RRLs within the receiver bandwidth, and integrating for 10 hours, the Zeeman signature from two sources (G32.80+0.19, G70.29+1.60b) could be detected at more than the 3 \ud835\udf0e level.",
+     "science_driver": "Carbon RRL Zeeman measurements of magnetic fields in PDRs around UC HII regions",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 5b, ~9 GHz",
+     "sensitivity": ">3 sigma Zeeman detection",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-43",
+     "paper": "Podio01",
+     "page": 24,
+     "quote": "The AA4 configuration will make available the largest baselines (up to 160 km), and collecting area, thus allowing to detect line emission from the disk down to a 3 \ud835\udf0e sensitivity of 570 mK (120 \ud835\udf07 Jy/beam) and 180 mK (48 \ud835\udf07 Jy/beam) with 100 and 1000 hours integration times, respectively (sensitivities obtained with the SKA-Mid sensitivity calculator in Band 5 adopting a spectral resolution of 0.34 km s -1 and a beam of \u223c 1' -2', i.e. 100 -200 au for nearby disks, which allows avoiding beam dilution and recovering disk-integrated line intensities).",
+     "science_driver": "Organic molecules and cyanopolyynes in planet-forming disks",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "Band 5",
+     "sensitivity": "3 sigma 570 mK (120 microJy/beam) in 100 h; 180 mK (48 microJy/beam) in 1000 h",
+     "resolution": "~1-2 arcsec; 0.34 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "100 and 1000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-44",
+     "paper": "Podio01",
+     "page": 24,
+     "quote": "While the exploration of the chemistry of protostellar envelopes, accretion streamers, and outflows on a few hundreds to thousands au scales will be achieved using the initial AA \u2217 configuration of SKA-Mid Band 5, the characterization of the faint line emission from disk on 100 au scales will require the AA4 final configuration, including the MeerKAT antennas.",
+     "science_driver": "Array-stage split for envelope versus disk astrochemistry",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5",
+     "sensitivity": null,
+     "resolution": "100 au scales",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-45",
+     "paper": "Podio01",
+     "page": 10,
+     "quote": "The detection of larger iCOMs such as dimethylether (CH3OCH3), acetaldehyde (CH3CHO), glycolaldehyde (CH2OHCHO), ethylene glycol ((CH2OH)2), formamide (NH2CHO), methyl formate (HCOOCH3), acetone (CH3COCH3), and ethanol (C2H5OH) requires integration times of 1000 hours.",
+     "science_driver": "Complex organics in the inner regions of outbursting disks",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5a and 5b",
+     "sensitivity": null,
+     "resolution": "~1-2 arcsec; 0.34 km/s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-46",
+     "paper": "Akahori02",
+     "page": 9,
+     "quote": "As for the case of parallax measurement, motivated by previous PSR \ud835\udf0b project (See Sec 3.2), we require astrometric precision of 50 \ud835\udf07 as in position and 50 \ud835\udf07 as/yr in velocity.",
+     "science_driver": "Magnetar parallaxes and proper motions to identify host supernova remnants",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": "50 microarcsec position, 50 microarcsec/yr",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-47",
+     "paper": "Akahori02",
+     "page": 9,
+     "quote": "More specifically, at 12 GHz, the angular resolution will be 0.86 mas, 0.62 mas, and 0.57 mas for the baselines between SKA-Mid and, for example, Yebes 40m (distance 7700 km), Tianma 65m (10600 km), and Mizusawa 20m (11600 km), respectively (See also Rioja et al., 2026, for expected specifications in detail).",
+     "science_driver": "Resolving monthly magnetar motion during radio outbursts",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "12 GHz",
+     "sensitivity": null,
+     "resolution": "0.57-0.86 mas",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "C-48",
+     "paper": "Akahori02",
+     "page": 9,
+     "quote": "We expect that AA4 improves sensitivity by about 30% compared to AA*.",
+     "science_driver": "Survey volume for magnetar astrometry",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "sensitivity": "~30% better at AA4 than AA*",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Bianchi01",
+     "page": 10,
+     "quote": "However, the spatial distribution of these long carbon chains remains largely unknown because radio interferometers, such as the VLA, lack the necessary sensitivity and imaging fidelity to map their emission.",
+     "theme": "spatial distribution of long carbon chains",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bianchi01",
+     "page": 13,
+     "quote": "This finding has been interpreted as a result of the different local environment: in Orion protostellar feedback, external UV illumination from nearby stars, and local cosmic rays could inhibit the formation of iCOMs, instead favoring the formation of WCCC sources.",
+     "theme": "environmental origin of chemical diversity",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cavallaro01",
+     "page": 12,
+     "quote": "At present, the plasma supply mechanism in UCDs remains uncertain.",
+     "theme": "plasma supply in ultracool dwarf magnetospheres",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cavallaro01",
+     "page": 12,
+     "quote": "The sensitivity and spectral coverage of the SKA will make it possible to test whether UCD magnetospheres are in a steady state, analogous to continuously occurring centrifugal breakout events, which explain the time-stable radio emission observed in magnetic hot stars, or undergo loading-release cycles.",
+     "theme": "steady-state versus loading-release magnetospheres",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Rygl01",
+     "page": 5,
+     "quote": "Still, the question outlined by Breen et al. (2013) remains valid: While it is widely accepted that low-mass YSOs are unable to produce class II methanol masers, what is the lower mass limit on the stars that can produce them?",
+     "theme": "lower stellar mass limit for class II methanol masers",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Rygl01",
+     "page": 7,
+     "quote": "These masers appear to trace a very early phase of the star formation process, but the reason for their rarity is not clear.",
+     "theme": "rarity of formaldehyde masers",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Garufi01",
+     "page": 13,
+     "quote": "A key question is whether gas tracers emitting at SKA-Mid bands frequencies are bright enough to reconstruct the velocity field with sufficient fidelity (see chapter by Podio et al., 2026).",
+     "theme": "gas kinematics tracers for embedded planets",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Garufi01",
+     "page": 16,
+     "quote": "Regarding the disk extent in Band 5b, few observational constraints have been obtained to date (see e.g. TW Hya with VLA by Wilner et al., 2005), making this one of the primary objectives of SKAO (see Sect. 2.1.1).",
+     "theme": "centimetre-wavelength disk sizes",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bracco01",
+     "page": 2,
+     "quote": "Yet, the evolution of magnetic fields during this critical phase remains poorly understood.",
+     "theme": "magnetic field evolution in starless cores",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bracco01",
+     "page": 5,
+     "quote": "As a consequence, crucial information on how magnetic fields thread the transition from low-density to collapsing gas remains poorly constrained.",
+     "theme": "field threading from diffuse to collapsing gas",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Buemi01",
+     "page": 3,
+     "quote": "This evolutionary phase is characterised by phenomena not yet well understood of radiative and dynamic instability that lead to extreme mass loss, both through steady stellar winds and/or intense and short-lived events, which define the stellar quiescent and eruptive phases.",
+     "theme": "LBV instability and mass loss",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Buemi01",
+     "page": 3,
+     "quote": "Great uncertainty about the duration of this phase and the total amount of mass lost during the LBV phase prevents us from correctly reproducing the transition between O and Wolf-Rayet stars.",
+     "theme": "LBV duration and mass budget",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Guidi01",
+     "page": 21,
+     "quote": "It should also be noted that the sample size for disks with JWST with robust detections of ionized gas remains small (a few objects), so it is not yet clear how universal such winds are among different types of disks, masses, ages, and inclinations.",
+     "theme": "universality of ionised disk winds",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Guidi01",
+     "page": 13,
+     "quote": "Although the spectral resolution of SKA would allow us to discriminate between those models, identifying the dominant launching mechanism will be challenging.",
+     "theme": "disk wind launching mechanism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sabatini01",
+     "page": 15,
+     "quote": "As a result the exact value of the optical depth remains uncertain.",
+     "theme": "jet optical depth and mass-loss rates",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sabatini01",
+     "page": 23,
+     "quote": "About 50% show evidence for large ( > 100 \ud835\udf07 m) grains, leaving open whether dust growth is intrinsic or observationally biased.",
+     "theme": "early dust growth in protostellar envelopes",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bourke01",
+     "page": 5,
+     "quote": "The quantum mechanical calculation of \ud835\udc54 -factors is non-trivial, and accurate values for some transitions are still debated (\u00a73.8).",
+     "theme": "Zeeman g-factors of tracer transitions",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bourke01",
+     "page": 24,
+     "quote": "It is difficult to make clear predictions on the number of new Zeeman detections that will be made with the SKA (AA4) before the surveys below are undertaken.",
+     "theme": "yield of SKA Zeeman detections",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Forbrich01",
+     "page": 9,
+     "quote": "Growing evidence suggests that dust can begin to grow to mm-sizes much earlier than previously thought (e.g., Maureira et al., 2024), a result that cannot be fully explained by numerical simulations, which predict inefficient dust growth at the typical densities of collapsing protostellar envelopes ( \u223c 10 5 cm -3 ; e.g., Bate, 2022).",
+     "theme": "early dust growth and transport",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Wu01",
+     "page": 20,
+     "quote": "When, exactly, planet formation begins remains a fundamental open question, tightly linked to the onset of observable substructure within disks.",
+     "theme": "onset of planet formation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Wu01",
+     "page": 19,
+     "quote": "It is not clear how current visibility analysis tools would scale to such large datasets, or whether approaches based on alternative methods may be required.",
+     "theme": "scaling of visibility-plane analysis",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ingallinera01",
+     "page": 3,
+     "quote": "it is still debated what fraction of Galactic cosmic rays (CRs) up to \u223c 1 PeV originates in SNRs, as other sources such as pulsar wind nebulae and superbubbles may contribute comparably (Cristofari, 2021);",
+     "theme": "SNR contribution to Galactic cosmic rays",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ingallinera01",
+     "page": 3,
+     "quote": "it remains uncertain whether the current number of known or candidate Galactic SNRs-at least a factor of 2-3 lower than expected from stellar evolution models-reflects observational biases or an incomplete census (Brogan et al., 2006; Dubner and Giacani, 2015);",
+     "theme": "missing Galactic supernova remnants",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Traficante01",
+     "page": 10,
+     "quote": "At what scales the dynamics is dominated by the gravitational collapse, the turbulent motions or the feedback mechanisms is still unclear.",
+     "theme": "gravity, turbulence and feedback in fragmentation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "LorenAnderson01",
+     "page": 6,
+     "quote": "However, it is not clear how the hierarchical structure is formed in the H ii regions since a classical expanding ionization front creates either a uniform density Str\u00f6mgren sphere or a region with a density gradient.",
+     "theme": "origin of hierarchical structure in HII regions",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "LorenAnderson01",
+     "page": 9,
+     "quote": "The origin of CRs remains mysterious, especially for those with energy above a few Petaelectronvolts (PeVs).",
+     "theme": "origin of PeV cosmic rays",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Podio01",
+     "page": 19,
+     "quote": "By mapping this pebble population, SKA will not only quantify their impact on gas enrichment but also test whether their contribution alone can account for the observed chemical signatures in the gas.",
+     "theme": "pebble drift and gas-phase enrichment",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Akahori02",
+     "page": 1,
+     "quote": "However, this hypothesis is not well studied yet, because there is a lack of precise measurement of the proper motion of magnetar and of identification of the host SNR.",
+     "theme": "dynamo origin of magnetar fields",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Akahori02",
+     "page": 2,
+     "quote": "The discovery of such radio activity is relatively recent, having emerged over the past two decades, and the underlying emission mechanism remains poorly understood.",
+     "theme": "magnetar radio emission mechanism",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "D",
+   "section": "From the Milky Way to Distant Galaxies",
+   "section_summary": "The \"From the Milky Way to Distant Galaxies\" section covers three linked science drivers. The first is the magnetised, multiphase interstellar medium of the Milky Way. The second is the gas cycle and star formation in nearby galaxies. The third is the demography and physics of radio AGN, from parsec-scale jet bases to Mpc-scale lobes. On the Galactic side, Sun, Ma and Tahani set out Faraday rotation and Zeeman programmes to map magnetic fields in three dimensions. Sun02 and Miville-Deschenes use SKA-Low polarimetry and HI to map the Local Bubble, while XuYe and Imai rely on SKA-VLBI maser astrometry to map spiral structure and the nuclear stellar disk. Salas, Karska and Yamamoto place tight spectral demands on radio recombination lines, molecular absorption and cold neutral medium work, with channels as fine as 0.21 kHz and velocity resolution better than 0.5 km/s. For nearby galaxies, Rosolowsky, deBlok, Ramatsoku, Deg and HengxingPan set HI requirements in terms of column density and beam size. Typical targets are 1e19-1e20 cm^-2 at 10 arcsec in about 10 h, or 1 arcsec imaging that needs of order 100 h. The AGN papers rest mainly on Band 2 and Band 5 continuum surveys, which Prandoni and Kondapally frame as wide (about 1000 deg2 at 1 uJy/beam), deep (about 20-25 deg2 at 0.2 uJy/beam) and ultra-deep (1 deg2 at 0.05 uJy/beam) tiers. Other papers need milliarcsecond VLBI to isolate compact cores (Panessa, Baldi, DAmato).\n\nThe observing modes follow from these goals. Ultra-deep and wide-field continuum imaging dominate the extragalactic cases: star formation histories, faint AGN, dual AGN, JWST Little Red Dots and ultra-diffuse galaxies. Many of these papers ask for matched sub-arcsecond resolution from SKA-Low at 300 MHz up to Band 5b, so that spectra can be decomposed into thermal and non-thermal parts (Algera, Moldon, FangxiaAn, Tabatabaei). Polarimetry and RM-grid work is the next largest group. It ranges from an all-sky Band 2 RM grid at 2 arcsec (Sun01) to deep per-pointing Band 1 and Band 5 integrations of 20-450 h aimed at small-scale field structure (Ma). Spectral-line and maser modes cover water megamaser searches in Bands 5a/5b (Tarchi), CO J=1-0 at z of 7 or more in Band 5b (RanWang), and HI 21-cm absorption (Mahony). Several papers identify real gaps. Tarchi and Sawada-Satoh point out that nearby 22 GHz water masers fall above the 15.4 GHz ceiling. RanWang and Sawada-Satoh depend on a proposed Band 6 that is not part of the AA4 baseline, and Karska and Ma note that the Band 3 and 4 receivers are unfunded.\n\nSeveral papers compare AA* with AA4 quantitatively. For low-surface-brightness HI, deBlok finds that the extra AA4 dishes add little column-density sensitivity, because they sit on long baselines, so AA* already meets 10 arcsec, 10 h HI goals. HengxingPan likewise finds the AA*-AA4 gap narrows at high resolution. In contrast, arcsecond HI imaging depends on AA4. Rosolowsky reports a noise level 13 times higher at AA* than at AA4 for a 1 arcsec beam, and Maccagni ties sub-kpc HI in nearby AGN to AA4. For continuum, Prandoni expects about four times coarser resolution and more confusion at AA*, with Band 2 times about twice and Band 5a times about three times those at AA4. Sun01 finds that AA4 halves the RM-grid integration per pointing, but notes that its funding and timeline are uncertain. Consequently, a subset of programmes is designed to run at AA*: Vidal on AME, Salas on RRL surveys, DAmato on Band 5a dual-AGN confirmation, and Emig on RRL spectral energy distributions. The multi-tier continuum surveys, arcsecond HI and deepest polarimetry remain tied to the full AA4 design baseline.",
+   "requirements": [
+    {
+     "id": "D-01",
+     "paper": "Tahani01",
+     "page": 21,
+     "quote": "At 12.5 GHz, representative of this band, SKA-Mid is expected to achieve an array System equivalent flux density (SEFD) of 2.77 Jy and \ud835\udc34 eff / \ud835\udc47 sys of 998 m 2 /K, yielding a spectral line sensitivity of 85 \ud835\udf07 Jy/beam for one-hour integrations with the 210 Hz zoom channel resolution available across all bands.",
+     "science_driver": "CCS Zeeman measurements of magnetic fields in dense cores",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "12.5 GHz (Band 5b)",
+     "resolution": "210 Hz channels",
+     "sensitivity": "85 uJy/beam line sensitivity in 1 h",
+     "survey_speed_or_time": "1 h",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 5b",
+      "freq_ghz": 12.5,
+      "bandwidth_mhz": 0.00021,
+      "integration_h": 1,
+      "claimed_sensitivity": 85,
+      "unit": "uJy/beam",
+      "quantity": "line",
+      "weighting": null,
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-02",
+     "paper": "Tahani01",
+     "page": 20,
+     "quote": "This transformational capability addresses critical gaps in 3D field reconstruction: current facilities detect Zeeman signatures in only 25-30% of targeted molecular cores with integration times of 10-50 hr, while SKA-Mid is expected to detect comparable fields in a few hrs with detection rates exceeding \u223c 50%.",
+     "science_driver": "OH/HI Zeeman detection of line-of-sight fields in molecular cores",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 2 (OH lines)",
+     "survey_speed_or_time": "a few hours per core",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-03",
+     "paper": "Tahani01",
+     "page": 18,
+     "quote": "With 100 RMs per square degree, we estimate the number of points per cloud will be hundreds for the majority of nearby molecular clouds.",
+     "science_driver": "Faraday-rotation mapping of 3D magnetic fields in molecular clouds",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": "100 RMs per deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-04",
+     "paper": "Sun02",
+     "page": 1,
+     "quote": "An SKA-Low polarization survey covering the frequency range of 50-350 MHz will deliver high-sensitivity and high-resolution images of diffuse polarized emission that originates from the local interstellar medium (ISM) and is probably related with the LB.",
+     "science_driver": "3D Faraday tomography of the Local Bubble",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "50-350 MHz",
+     "fov_or_area": "polarization survey",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-05",
+     "paper": "Sun02",
+     "page": 8,
+     "quote": "The channel width of 0.05 MHz for the lowest frequency subband and 0.1 MHz for the rest of the subbands are expected to be sufficient for | RM | less than around 10 rad m -2 .",
+     "science_driver": "RM synthesis of diffuse Galactic polarization",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "50-350 MHz in 30 MHz subbands",
+     "resolution": "0.05-0.1 MHz channels",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-06",
+     "paper": "Sun02",
+     "page": 9,
+     "quote": "The number of stations within 1 km distance is 215 for AA* and 260 for AA4.",
+     "science_driver": "Surface-brightness sensitivity to diffuse polarized emission",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "resolution": "short baselines within 1 km",
+     "array_stage": "AA* and AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-07",
+     "paper": "Maccagni01",
+     "page": 2,
+     "quote": "Reaching in 10 hours neutral atomic hydrogen (HI) column density sensitivities \u223c 10 19 cm -2 at arcsecond resolution, SKA AA4 observations will trace the typical low column density of HI gas in AGN inflows and outflows, to understand the impact AGN feedback over the full galaxy and trace fuelling processes from the environment onto the SMBH.",
+     "science_driver": "HI in AGN feeding and feedback",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.4 GHz (HI)",
+     "resolution": "arcsecond",
+     "sensitivity": "N_HI ~1e19 cm^-2",
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-08",
+     "paper": "Maccagni01",
+     "page": 24,
+     "quote": "In Band 2, a wide-continuum survey with 1 hour of integration time per square degree will reach noise levels of 2 \ud835\udf07 Jy beam -1 (over 2 sub-bands 350 MHz wide, with robustness 0 and tapering 0.3' obtaining a PSF of 0 . 8 \u2032\u2032 ).",
+     "science_driver": "Resolving jets and lobes of radio AGN in a wide continuum survey",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2",
+     "resolution": "0.8 arcsec PSF",
+     "sensitivity": "2 uJy/beam",
+     "survey_speed_or_time": "1 h per deg2",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": null,
+      "bandwidth_mhz": 700,
+      "integration_h": 1,
+      "claimed_sensitivity": 2,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": "robust 0, taper 0.3 arcsec",
+      "claimed_beam_arcsec": 0.8
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-09",
+     "paper": "Maccagni01",
+     "page": 25,
+     "quote": "In Band 2, assuming to survey the sky with an hexagonal grid spacing with minimum distance for Nyquist sampling, it will be possible to survey 10000 deg 2 with \u223c 3433 pointings (assuming a primary beam FWHM of 1 degree).",
+     "science_driver": "Wide-area census of AGN feedback",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2",
+     "fov_or_area": "10000 deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-10",
+     "paper": "Maccagni01",
+     "page": 25,
+     "quote": "The main requirement will be to to obtain \u2272 3 \u2032\u2032 resolution across all bands for resolved spectral index studies. SKA-Low observations centred 300 MHz over 85 MHz will reach this requirement in 1 hour of observation.",
+     "science_driver": "Resolved spectral index maps of AGN jets",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": "300 MHz, 85 MHz bandwidth",
+     "resolution": "<=3 arcsec",
+     "survey_speed_or_time": "1 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-11",
+     "paper": "Baczko01",
+     "page": 10,
+     "quote": "With \u223c 30 mas resolution at 15 GHz, SKA-Mid will directly probe the innermost resolved regions of AGN jets and their coupling to the ISM directly, while sub-arcsecond observations at 1.4 GHz will reveal interactions between jets and circumnuclear gas.",
+     "science_driver": "AGN jet formation and jet-ISM coupling",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "1.4 and 15 GHz",
+     "resolution": "~30 mas at 15 GHz",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-12",
+     "paper": "Baczko01",
+     "page": 15,
+     "quote": "The combination of SKA-mid AA* as part of a global VLBI array will reach the desired sensitivity to also detect the extended emission with mas resolution, while the VLBA is limited in terms of high sensitivity, short baselines.",
+     "science_driver": "Mas-scale imaging of extended jet emission",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "resolution": "mas",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-13",
+     "paper": "Tarchi01",
+     "page": 5,
+     "quote": "This can be attained with a sensitivity (3 \ud835\udf0e ) 3 of \u223c 0.06 mJy for a 10-km/s channel (reachable in about 10 hours on-source per pointing, and hence, a total of \u223c 1000 hours for each of the three configurations necessary to cover the 5a and 5b bands).",
+     "science_driver": "Blind searches for high-redshift 22 GHz water megamasers",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Bands 5a and 5b",
+     "resolution": "10 km/s channels",
+     "sensitivity": "0.06 mJy (3 sigma)",
+     "fov_or_area": "~1 deg2",
+     "survey_speed_or_time": "10 h per pointing; ~1000 h per configuration",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-14",
+     "paper": "Tarchi01",
+     "page": 6,
+     "quote": "Furthermore, the highest frequency presently planned for SKA-Mid is 15.4 GHz, thus preventing the exploitation of its enhanced capabilities also for searches and detailed studies of 22-GHz water maser sources in nearby ( \ud835\udc67< 0.45) targets.",
+     "science_driver": "Water masers in nearby AGN",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "22 GHz (above 15.4 GHz limit)",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-15",
+     "paper": "RanWang01",
+     "page": 8,
+     "quote": "For a more precise calculation using the online SKA sensitivity calculator, in 10 hours of on-source integration time, we can expect a 1 \ud835\udf0e rms of 11 \ud835\udf07 Jy beam -1 per 100 km s -1 , assuming the AA4 configuration with 133 15-m antennas and pwv = 10 mm.",
+     "science_driver": "CO J=1-0 in starbursts at z~7",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5b",
+     "sensitivity": "11 uJy/beam per 100 km/s",
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-16",
+     "paper": "RanWang01",
+     "page": 5,
+     "quote": "Detection of the CO J =1-0 line from a star-forming galaxy with SFR on orders of 10 M \u2299 yr -1 at z \u223c 4 to 6 will require between hundreds to a thousand hours of exposure time with Band 6 with the SKA1AA4configuration, and will still be limited to the warm objects with Tkin \u2265 40 K considering the CMB effect (Figure 2).",
+     "science_driver": "Molecular gas in normal star-forming galaxies at z~4-6",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 6 (not in baseline)",
+     "survey_speed_or_time": "hundreds to a thousand hours",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-17",
+     "paper": "Baldi01",
+     "page": 5,
+     "quote": "With continuum sensitivities down to \u223c 0.25 \ud835\udf07 Jy beam -1 in 8 hours at 6 GHz, SKA-Mid is uniquely suited to detect and characterize the compact, weak radio cores of FR0s at z < 0.1 down to luminosities < 10 19 WHz -1 with 0 . 14 \u2032\u2032 resolution ( \u223c 250 pc, Briggs robust = 0).",
+     "science_driver": "Compact radio cores of FR0 galaxies",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "6 GHz",
+     "resolution": "0.14 arcsec",
+     "sensitivity": "0.25 uJy/beam",
+     "survey_speed_or_time": "8 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-18",
+     "paper": "Baldi01",
+     "page": 6,
+     "quote": "A SKA survey reaching \u223c 1 \ud835\udf07 Jy beam -1 at \u223c 1 GHz over 30 deg 2 will detect \u223c 3 \u00d7 10 5 low-power AGN (Prandoni and Seymour, 2015; Padovani, 2016).",
+     "science_driver": "Demographics of low-power compact AGN",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "~1 GHz",
+     "sensitivity": "1 uJy/beam",
+     "fov_or_area": "30 deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-19",
+     "paper": "deBlok01",
+     "page": 9,
+     "quote": "SKA-mid AA* will provide kiloparsec-scale resolution at 1.4GHz and reach the required sensitivity in 10hr integration with a 10 arcsec beam.",
+     "science_driver": "Cold gas inflow and outflow around nearby galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.4 GHz",
+     "resolution": "10 arcsec",
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-20",
+     "paper": "deBlok01",
+     "page": 4,
+     "quote": "The third aspect is that in order to observe a truly unexplored part of resolution-column density parameter space, observing times of \u223c 100 hours or more are essential.",
+     "science_driver": "Low column density HI parameter space",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.4 GHz",
+     "survey_speed_or_time": ">=100 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-21",
+     "paper": "deBlok01",
+     "page": 4,
+     "quote": "AA4 contains more dishes than AA*, but as these are preferentially located at large distances from the core (i.e., longer baselines), their contribution to the column density sensitivity is limited.",
+     "science_driver": "HI column density sensitivity at AA* versus AA4",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "array_stage": "AA* vs AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-22",
+     "paper": "DAmato01",
+     "page": 10,
+     "quote": "Based on the Anticipated Performance 1 and SKAO sensitivity calculator (SSC 2 ) predictions, the most suited band for our purpose - starting from AA* - configuration, will be Band 5a (4.6 - 8.5 GHz).",
+     "science_driver": "Confirming dual AGN candidates",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5a (4.6-8.5 GHz)",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-23",
+     "paper": "DAmato01",
+     "page": 10,
+     "quote": "Assuming a conservative 50% fractional bandwidth, with the SSC we estimate that just in 10 min observation such an emission can be observed at \u223c 7 \ud835\udf0e significance down to a resolution of 0.3\", using a visibility weighting suited to balance resolution and sensitivity (Briggs robustness = 0).",
+     "science_driver": "Resolving dual AGN components at sub-arcsecond separations",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5a",
+     "resolution": "0.3 arcsec",
+     "survey_speed_or_time": "10 min",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-24",
+     "paper": "Kondapally01",
+     "page": 7,
+     "quote": "Our scientific objectives can be primarily facilitated by two large-area SKA-Mid (AA4) surveys in band 2: a 1000 deg 2 wide-area survey reaching to noise-rms of \u223c 1 \ud835\udf07 Jy beam -1 , and a deep \u223c 25 deg 2 survey reaching to noise-rms of \u223c 0 . 2 \ud835\udf07 Jy beam -1 .",
+     "science_driver": "Evolution of radio AGN across cosmic time",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2",
+     "sensitivity": "1 uJy/beam (wide); 0.2 uJy/beam (deep)",
+     "fov_or_area": "1000 deg2 and 25 deg2",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-25",
+     "paper": "Kondapally01",
+     "page": 14,
+     "quote": "We caution that deep SKA-Low observations with integration times of \u2273 1 hr in the AA4 configuration would result noise-rms of 5-10 \ud835\udf07 Jy beam -1 but they would suffer from confusion limits.",
+     "science_driver": "Confusion limits for low-frequency AGN surveys",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "5-10 uJy/beam",
+     "survey_speed_or_time": ">=1 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-26",
+     "paper": "SabyasachiPal03",
+     "page": 9,
+     "quote": "Nevertheless, a plausible future science case is a wide-area SKA-Mid Band-2 continuum survey reaching sensitivities of order \ud835\udf0e \u223c 2 \ud835\udf07 Jy beam -1 rms over several thousand square degrees.",
+     "science_driver": "Statistics of radio-source asymmetry",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2",
+     "sensitivity": "2 uJy/beam",
+     "fov_or_area": "several thousand deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-27",
+     "paper": "Ignesti01",
+     "page": 8,
+     "quote": "For reference, an exposure time of 1 hr with SKA-Low and SKA-Mid band 2 in AA4 configuration taken in the full corresponding bandwidths 1 will result in continuum noise levels at 200 and 1300 MHz of, respectively, 11.1 and 2.7 \ud835\udf07 Jy beam -1 for similar angular resolution of 9 arcseconds with robust=0 , which would allow us to recover all the emission with a spectral \ud835\udefc \u2265 -0 . 8 2 , typically associated with the non-thermal plasma located at a few kpc from the stellar disk (Ignesti et al., 2023).",
+     "science_driver": "Ram-pressure-stripped radio tails",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "200 and 1300 MHz",
+     "resolution": "9 arcsec",
+     "sensitivity": "11.1 and 2.7 uJy/beam",
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-28",
+     "paper": "Ignesti01",
+     "page": 6,
+     "quote": "Concerning the study of polarized emission, with the exciting prospect of finally exploring the elusive extraplanar magnetic fields, SKA-Mid Band 2 will fall in the 'sweet spot' at 1.4 GHz in which it will be possible to detect a significant fraction of both the radio tail extent and its intrinsic polarized emission.",
+     "science_driver": "Magnetic fields in stripped tails",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "1.4 GHz (Band 2)",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-29",
+     "paper": "Rosolowsky01",
+     "page": 7,
+     "quote": "While AA4 of SKA-Mid will improve on collecting area at all baselines, it will most dramatically increase collecting area from 20 to 70 km baselines, which makes sensitive 21-cm observations at 1 \u2032\u2032 possible (obtaining a 5-10 \u00d7 resolution gain at comparable column densities of VIVA).",
+     "science_driver": "Atomic ISM at cloud scales in nearby galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.42 GHz",
+     "resolution": "1 arcsec",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-30",
+     "paper": "Rosolowsky01",
+     "page": 8,
+     "quote": "The noise level in AA \u2605 is 13 \u00d7 higher than in AA4 with the same observing time, making it unfeasible to improve the above simulated image due to the lack of long baseline coverage.",
+     "science_driver": "High-resolution HI imaging at AA* versus AA4",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.42 GHz",
+     "resolution": "1 arcsec",
+     "survey_speed_or_time": "100 h",
+     "array_stage": "AA* vs AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-31",
+     "paper": "Yoon01",
+     "page": 7,
+     "quote": "In this study, we use the SKA sensitivity calculator 1 to estimate the 3 \ud835\udf0e continuum sensitivity with 10 hour integration and maximum available bandwidth for three different angular resolutions: approximately 0.1, 0.3, and 1.0 \u2032\u2032 by changing the Briggs' weighting parameter and tapering scale, which results in approximately the same 3 \ud835\udf0e continuum sensitivity ( \u223c 1 \ud835\udf07 Jy).",
+     "science_driver": "AME contamination of free-free SFR tracers",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5b (8.3-15.4 GHz)",
+     "resolution": "0.1, 0.3 and 1.0 arcsec",
+     "sensitivity": "~1 uJy (3 sigma)",
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-32",
+     "paper": "Emig01",
+     "page": 11,
+     "quote": "For example, going from 1 hour integration per field to 8 hour integration per field 4 increases the number of detectable targets with the SKA-Low (SKA-Mid Band-1) from 167 700 (102 600) to 395 600 (262 200) as we can push down to continuum sources of \ud835\udc46 \u2273 10 mJy.",
+     "science_driver": "Extragalactic radio recombination line surveys",
+     "telescope": "both",
+     "mode": "Spectral line / maser survey",
+     "frequency": "SKA-Low and Mid Band 1",
+     "survey_speed_or_time": "1-8 h per field",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-33",
+     "paper": "Emig01",
+     "page": 12,
+     "quote": "The most discovery potential for RRLs with the SKA is expected to be (a) Low 50-350 MHz and (b) Mid Band1 350-1050 MHz.",
+     "science_driver": "Low-frequency RRLs over cosmic time",
+     "telescope": "both",
+     "mode": "Spectral line / maser survey",
+     "frequency": "50-350 MHz and 350-1050 MHz",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-34",
+     "paper": "XuYe01",
+     "page": 3,
+     "quote": "At 6.7 GHz, the typical system equivalent flux density (SEFD) for SKA-VLBI is \u223c 3.8 Jy, where the SEFD for AA4 of SKA-Mid is \u223c 2.6 Jy 1 .",
+     "science_driver": "Maser parallaxes of Galactic spiral structure",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "6.7 GHz",
+     "sensitivity": "SEFD ~3.8 Jy",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-35",
+     "paper": "XuYe01",
+     "page": 4,
+     "quote": "Using the SKA, doubling this sample would require only about 300 hours of observing time-yielding results comparable to those of the BeSSeL project, which accumulated several thousand hours of observations.",
+     "science_driver": "Doubling the maser parallax sample",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "survey_speed_or_time": "~300 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-36",
+     "paper": "Sawada-Satoh01",
+     "page": 6,
+     "quote": "For a spectral resolution of 0.21 kHz and an integration time of 10 hours, the resulting baseline sensitivities are approximately 2.3 mJy for SKA-Mid-Parkes and 7.8 mJy for SKA-Mid-HartRAO.",
+     "science_driver": "HI Zeeman splitting in circumnuclear absorbers",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "1.4 GHz HI",
+     "resolution": "0.21 kHz channels",
+     "sensitivity": "2.3-7.8 mJy baseline sensitivity",
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-37",
+     "paper": "Sawada-Satoh01",
+     "page": 7,
+     "quote": "Assuming that the sensitivity of the proposed Band 6 receiver is comparable to that of Band 5, the thermal noise level for SKA-Mid is estimated to be \u223c 1.7 mJy beam -1 for an integration time of 4 hours at a spectral resolution of 0.21 kHz.",
+     "science_driver": "Water maser Zeeman measurements at 22 GHz",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "22 GHz (proposed Band 6)",
+     "resolution": "0.21 kHz channels",
+     "sensitivity": "1.7 mJy/beam",
+     "survey_speed_or_time": "4 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-38",
+     "paper": "Prandoni01",
+     "page": 20,
+     "quote": "Nevertheless, the total exposure times required to carry out the designed multi-tier survey with AA4 are demanding: typically between ( 5 -10 )\u00d7 10 3 hours per tier in Band 2, and \u223c 3 \u00d7 10 3 hours per tier in Band 5.",
+     "science_driver": "Tiered continuum surveys of galaxy/AGN co-evolution",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Bands 2 and 5",
+     "survey_speed_or_time": "(5-10)e3 h per tier in Band 2; ~3e3 h per tier in Band 5",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-39",
+     "paper": "Prandoni01",
+     "page": 21,
+     "quote": "During the initial phase of SKAO operations in AA \u2217 , SKA-Mid will achieve a factor \u223c 4 poorer image resolution compared to AA4, implying larger contributions of confusion noise.",
+     "science_driver": "Confusion noise in deep continuum tiers",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "resolution": "factor ~4 poorer at AA*",
+     "array_stage": "AA* vs AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-40",
+     "paper": "Prandoni01",
+     "page": 12,
+     "quote": "We note that this survey is similar to the one proposed by Prandoni and Seymour (2015), with the only difference that we slightly adjusted the deep tier parameters: the rms sensitivity requirement decreased from 0.3 to 0.2 \ud835\udf07 Jy/bm to better match the Band 2 wide tier sensitivity, while the sky coverage was doubled (from 1 to 2 deg 2 ).",
+     "science_driver": "Band 5b deep tier for galaxy evolution",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5b",
+     "sensitivity": "0.2 uJy/beam",
+     "fov_or_area": "2 deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-41",
+     "paper": "Sakemi01",
+     "page": 7,
+     "quote": "Dashed lines mark the continuum sensitivity achievable by SKA-Mid AA4 in 10 hours (orange, 1.96 \ud835\udf07 Jy beam -1 ) and 100 hours (cyan, 0.62 \ud835\udf07 Jy beam -1 ) of integration time. Calculations assume an observing bandwidth of 30 MHz and SKA-Mid Band 2 (950-1760 MHz, centered at 1310 MHz); the imaging was performed using Briggs weighting (robust=1) with a synthesized beam size of 0.87 arcsec.",
+     "science_driver": "Polarized jets and bubbles of ultraluminous X-ray sources",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "1310 MHz (Band 2), 30 MHz bandwidth",
+     "resolution": "0.87 arcsec",
+     "sensitivity": "1.96 uJy/beam (10 h); 0.62 uJy/beam (100 h)",
+     "survey_speed_or_time": "10-100 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.31,
+      "bandwidth_mhz": 30,
+      "integration_h": 10,
+      "claimed_sensitivity": 1.96,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": "robust 1",
+      "claimed_beam_arcsec": 0.87
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-42",
+     "paper": "Vidal01",
+     "page": 19,
+     "quote": "Adopting a \ud835\udc62\ud835\udc63 -taper to obtain a 3 arcsec beam and a system temperature of 14.5 K, we recover the expected thermal noise level of \u223c 70 nJy beam -1 in a 3 h integration.",
+     "science_driver": "Mapping anomalous microwave emission in PDRs",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "resolution": "3 arcsec",
+     "sensitivity": "~70 nJy/beam",
+     "survey_speed_or_time": "3 h",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-43",
+     "paper": "Vidal01",
+     "page": 18,
+     "quote": "Angular resolutions of \u223c 1-3 arcsec are required to resolve the structure of AME in nearby PDRs and enable direct comparison with mid-IR and sub-mm tracers of small grains; these are readily achieved by SKA-Mid, which delivers sub-arcsecond resolution at GHz frequencies.",
+     "science_driver": "Spatial structure of AME",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "~1-15 GHz",
+     "resolution": "1-3 arcsec",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-44",
+     "paper": "Mao01",
+     "page": 10,
+     "quote": "To obtain at least 20 RMs through the CGM of \u223c 320 nearby galaxies, a sensitivity of 1 \ud835\udf07 Jy beam -1 must be achieved, corresponding to at least 8 hours on-source time in Band 1 and 2 hours on-source time in Band 2.",
+     "science_driver": "Magnetised circumgalactic medium of nearby galaxies",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Bands 1 and 2",
+     "sensitivity": "1 uJy/beam",
+     "survey_speed_or_time": ">=8 h (Band 1); 2 h (Band 2)",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-45",
+     "paper": "Mao01",
+     "page": 10,
+     "quote": "This requires 1 \ud835\udf07 Jy beam -1 sensitivity with robust= -1, an angular resolution of 0.43\"x0.38\", and 5 hours of on-source time per system in Band 2.",
+     "science_driver": "Magnetic fields in distant galaxies via polarized lensed sources",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2",
+     "resolution": "0.43x0.38 arcsec",
+     "sensitivity": "1 uJy/beam",
+     "survey_speed_or_time": "5 h per system",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-46",
+     "paper": "Mao01",
+     "page": 11,
+     "quote": "To reach a source density of \u223c 500 polarized sources per square deg (total of \u223c 5x10 5 polarized sources) requires a sensitivity of 0.1 \ud835\udf07 Jy beam -1 corresponding to 2 hours per pointing in Band 2 with robust=0.",
+     "science_driver": "Statistical RM detection of intervening galaxy magnetism",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2",
+     "sensitivity": "0.1 uJy/beam",
+     "survey_speed_or_time": "2 h per pointing",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-47",
+     "paper": "Bait01",
+     "page": 16,
+     "quote": "Nevertheless, SKA-Mid wide-area surveys ( \u223c 5 \ud835\udf07 Jy at 5 \ud835\udf0e , \u2273 1000 deg 2 ) can access high-SFR ( \u2273 10 \ud835\udc40 \u2299 yr -1 ) EELGs at \ud835\udc67 \u223c 1, while moderately deep surveys ( \u223c 1 \ud835\udf07 Jy at 5 \ud835\udf0e , \u223c 20 deg 2 ) with AA4 or AA \u2217 can yield samples of tens to a few hundreds of H \ud835\udefc -bright EELGs at \ud835\udc67 \u223c 1-2.",
+     "science_driver": "Radio continuum of Lyman-continuum emitters and EELGs",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "Band 2 (1.31 GHz)",
+     "sensitivity": "~5 uJy and ~1 uJy at 5 sigma",
+     "fov_or_area": ">=1000 deg2 and ~20 deg2",
+     "array_stage": "AA* or AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-48",
+     "paper": "Bait01",
+     "page": 10,
+     "quote": "Deeper AA \u2217 observations (e.g., 10 hr) or observations with the more sensitive AA4 configuration will extend detections to fainter F dustcorr H \ud835\udefd values and sources with higher thermal fractions.",
+     "science_driver": "Pointed observations of low-z LyC emitters",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Bands 2 and 5a",
+     "survey_speed_or_time": "~10 h",
+     "array_stage": "AA* or AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-49",
+     "paper": "Kudoh01",
+     "page": 9,
+     "quote": "The principal SKA-band requirements following from these forecasts are broad frequency coverage from \u223c 1 to 15.4 GHz, sensitivity to compact components at the \u223c 0.1-1 mJy level, and angular resolution sufficient to separate \u223c 100 pc, \u223c 10 pc, and sub-parsec structures in nearby ( \ud835\udc67 < 0 . 01 ) AGN.",
+     "science_driver": "Ionized gas structure in radio-quiet AGN",
+     "telescope": "both",
+     "mode": "VLBI / astrometry",
+     "frequency": "~1-15.4 GHz",
+     "resolution": "~100 pc, ~10 pc and sub-pc",
+     "sensitivity": "~0.1-1 mJy",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-50",
+     "paper": "Lal01",
+     "page": 7,
+     "quote": "With continuum sensitivities at 1.4 GHz and 200 MHz exceeding those of the upgraded GMRT's band-3 (and band-4), AA4 and AA \u2605 will be capable of probing average flux densities of order 0.18 \ud835\udf07 Jy and 0.21 \ud835\udf07 Jy, and 0.60 \ud835\udf07 Jy and 0.78 \ud835\udf07 Jy in long (= 100 hr) integrations for SKA-Mid and SKA-Low respectively, which is roughly an order of magnitude deeper than current stacking limits ( \u223c 1.5 \ud835\udf07 Jy).",
+     "science_driver": "Star formation in ultra-diffuse galaxies in clusters",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "1.4 GHz and 200 MHz",
+     "sensitivity": "0.18-0.78 uJy",
+     "survey_speed_or_time": "100 h",
+     "array_stage": "AA* and AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-51",
+     "paper": "Hardcastle01",
+     "page": 6,
+     "quote": "Covering the 20 \u25e6 MIGHTEE sky area to the same depth as MIGHTEE but at band 5a, taking account of a typical synchrotron spectral index, would require a few hundred hours of Mid observing time, assuming that a sensitivity of 0.7 \ud835\udf07 Jy beam -1 would be achieved over around 0.15 deg 2 in one hour.",
+     "science_driver": "High-resolution imaging of radio-galaxy populations",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5a",
+     "resolution": "~0.1 arcsec",
+     "sensitivity": "0.7 uJy/beam in 1 h",
+     "fov_or_area": "20 deg2",
+     "survey_speed_or_time": "a few hundred hours",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-52",
+     "paper": "Hardcastle01",
+     "page": 10,
+     "quote": "Using 5-minute snapshots in SKA band 5a, a sample ten times larger, with a sensitivity ten times higher and a resolution twice as good (plus in-band spectral index information), could be obtained in a two-day observing campaign after selection from a wide-area survey.",
+     "science_driver": "Hotspot physics in FRII radio galaxies",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 5a",
+     "survey_speed_or_time": "5-min snapshots; two-day campaign",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-53",
+     "paper": "Hardcastle01",
+     "page": 25,
+     "quote": "Mid band 1 is expected to achieve an rms sensitivity of \u223c 2 \ud835\udf07 Jy beam -1 within one hour of integration (centered at 797.5 MHz), while Low will reach \u223c 12 \ud835\udf07 Jy beam -1 at 200 MHz in the same time.",
+     "science_driver": "Spectral ageing of remnant and restarted radio galaxies",
+     "telescope": "both",
+     "mode": "Wide-field continuum survey",
+     "frequency": "797.5 MHz and 200 MHz",
+     "sensitivity": "~2 and ~12 uJy/beam",
+     "survey_speed_or_time": "1 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-54",
+     "paper": "Ramatsoku01",
+     "page": 10,
+     "quote": "According to the SKA-Mid sensitivity calculator (March 2026, version 2.4.1), within Band 2 (0.95 1.76 GHz) of AA4, and assuming all antennas are available, the desired column density sensitivity can be achieved with a rms noise level of rms \u2248 112 \ud835\udf07 Jy beam -1 per 26.9 kHz-wide channel. Assuming a Briggs weighting of \ud835\udc5f = 0 and a synthesised beam with a FWHM of 10 \u2032\u2032 \u00d7 10 \u2032\u2032 , this sensitivity corresponds to an integration time of approximately 7 hours over a spectral resolution of 5.7 kms -1 .",
+     "science_driver": "Resolved HI and environmental processes",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "Band 2",
+     "resolution": "10 arcsec",
+     "sensitivity": "112 uJy/beam per 26.9 kHz",
+     "survey_speed_or_time": "~7 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": null,
+      "bandwidth_mhz": 0.0269,
+      "integration_h": 7,
+      "claimed_sensitivity": 112,
+      "unit": "uJy/beam",
+      "quantity": "line",
+      "weighting": "robust 0",
+      "claimed_beam_arcsec": 10
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-55",
+     "paper": "Ramatsoku01",
+     "page": 11,
+     "quote": "Achieving this sensitivity requires an effective observing time of \u223c 13 hours per square degree, for a total of approximately 2600 hours.",
+     "science_driver": "Blind HI survey of voids, groups and filaments",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "Band 2",
+     "fov_or_area": "~200 deg2",
+     "survey_speed_or_time": "~13 h per deg2; ~2600 h total",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-56",
+     "paper": "Yamamoto01",
+     "page": 12,
+     "quote": "As discussed in Section 3.2, from the viewpoint of the sensitivity achievable within a realistic observing time, this requirement can only be met for targets located within a few hundred pc, for which an angular resolution of \u223c 4 arcsec is needed.",
+     "science_driver": "Atomic-to-molecular transition at 1000 AU scales",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "1.4 GHz HI",
+     "resolution": "~4 arcsec",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-57",
+     "paper": "Yamamoto01",
+     "page": 11,
+     "quote": "Based on our experience with ROHSA analyses, the phase separation of the H i degrades when the velocity resolution is coarser than 0.5 km s -1 .",
+     "science_driver": "Phase separation of cold neutral medium",
+     "telescope": "mid",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": "1.4 GHz HI",
+     "resolution": "<=0.5 km/s",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-58",
+     "paper": "Giulietti01",
+     "page": 6,
+     "quote": "Confusion limit affects only the Ultra-Deep survey, and a minimum angular resolution of 2 arcseconds is required for the AA \u2217 configuration to avoid it.",
+     "science_driver": "Ultra-deep counts of star-forming galaxies",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2 (1.4 GHz)",
+     "resolution": "2 arcsec",
+     "fov_or_area": "1 deg2",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-59",
+     "paper": "Giulietti01",
+     "page": 6,
+     "quote": "For the same rms sensitivities, but adopting the AA \u2217 configuration, the continuum integration times correspond to 11 111, 698, 28 hrs.",
+     "science_driver": "Tiered SFG surveys at AA*",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2",
+     "survey_speed_or_time": "11111, 698 and 28 h",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-60",
+     "paper": "Ma01",
+     "page": 19,
+     "quote": "we will require SKA-Mid AA4 observations with per-pointing integration time (target sensitivity) of 20-80 hr (0.26-0.52 \ud835\udf07 Jy / beam ) for Band 1, 20-40 hr (0.18-0.26 \ud835\udf07 Jy / beam ) for Band 2, 60-140 hr (0.06-0.09 \ud835\udf07 Jy / beam ) for Band 5a, and 200-450 hr (0.04-0.06 \ud835\udf07 Jy / beam ) for Band 5b.",
+     "science_driver": "Small-scale magnetic fields in the Milky Way and nearby galaxies",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Bands 1, 2, 5a, 5b",
+     "sensitivity": "0.04-0.52 uJy/beam",
+     "survey_speed_or_time": "20-450 h per pointing",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-61",
+     "paper": "Ma01",
+     "page": 21,
+     "quote": "A 50 hr per-pointing Band 1 survey will deliver a sensitivity of 0 . 3 \ud835\udf07 Jy per 1 . 3 \u2032\u2032 beam, corresponding to a polarised source density of 380-610 deg -2 , and thus leading to 3,800-6,100 RM and Faraday complexity measurements across the extent of each 10 deg 2 nearby molecular cloud.",
+     "science_driver": "Faraday complexity through nearby molecular clouds",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 1",
+     "resolution": "1.3 arcsec",
+     "sensitivity": "0.3 uJy/beam",
+     "fov_or_area": "10 deg2 per cloud",
+     "survey_speed_or_time": "50 h per pointing",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-62",
+     "paper": "Imai01",
+     "page": 5,
+     "quote": "Assuming a bandwidth of 5 kHz ( ' 0.9 km s 1 ) for OH maser detection and 2-bit quantization in signal recording, we calculated the 1noise level to be 10 mJy in integration of 1.5 hours and 7 mJy in 3 hours.",
+     "science_driver": "VLBI astrometry of OH masers in the nuclear stellar disk",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "1.6 GHz (Band 2)",
+     "resolution": "5 kHz channels",
+     "sensitivity": "10 mJy (1.5 h); 7 mJy (3 h)",
+     "survey_speed_or_time": "1.5-3 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-63",
+     "paper": "Karska01",
+     "page": 23,
+     "quote": "Using the SKA sensitivity calculator with an integration time of 600 s and assuming a robust weighting of 1 gives a sensitivity of \u223c 0.7 mJy beam -1 per 3.5 km s -1 channel in Band 2 and \u223c 1 mJy beam -1 per 4.5 km s -1 channel in Band 5b, with beam sizes of \u223c 1 arcsec and \u223c 0.1 arcsec, respectively.",
+     "science_driver": "Molecular line absorption surveys of the Galactic plane",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Bands 2 and 5b",
+     "resolution": "~1 and ~0.1 arcsec",
+     "sensitivity": "~0.7 and ~1 mJy/beam per channel",
+     "survey_speed_or_time": "600 s",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-64",
+     "paper": "Karska01",
+     "page": 11,
+     "quote": "The continuum survey with SKAO in Band 5b covering the 10-15 GHz frequency range with a sensitivity of approximately 20 \ud835\udf07 Jy and a resolution of \u2243 0 . 07 \u2032\u2032 is designed to identify hundreds of thousands of compact radio sources (Traficante et al., 2026).",
+     "science_driver": "Census of Galactic HII regions",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "10-15 GHz (Band 5b)",
+     "resolution": "0.07 arcsec",
+     "sensitivity": "~20 uJy",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-65",
+     "paper": "Moldon01",
+     "page": 11,
+     "quote": "SKA-Mid bands 2 and 5 (0.95-15.4 GHz) provide the sensitivity and resolution for robust thermal/non-thermal separation.",
+     "science_driver": "Thermal and non-thermal decomposition in nearby galaxies",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "0.95-15.4 GHz",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-66",
+     "paper": "HengxingPan01",
+     "page": 7,
+     "quote": "To effectively resolve a large number of H i galaxies at \ud835\udc67 \u2272 0 . 09, we require an angular resolution of \u2272 10 arcsec and an H i column density sensitivity of \u2272 10 20 atoms cm -2 (3 \ud835\udf0e over 16 km s -1 ), which the SKA AA4 and AA* can both satisfy with a target time of \u2273 20 minutes per pointing.",
+     "science_driver": "Resolved HI galaxies and the cosmic web",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "Band 2",
+     "resolution": "<=10 arcsec",
+     "sensitivity": "N_HI <=1e20 cm^-2",
+     "survey_speed_or_time": ">=20 min per pointing",
+     "array_stage": "AA* and AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-67",
+     "paper": "HengxingPan01",
+     "page": 8,
+     "quote": "Reaching the 10 18 cm -2 regime with AA4 and AA* alone requires significant time investments on the order of 100 hours per field to resolve galactic scales in the local Universe, resulting in a limited sky coverage of \u2272 10 deg 2 with SKA AA4 and AA*.",
+     "science_driver": "Diffuse circumgalactic HI accretion",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "Band 2",
+     "sensitivity": "N_HI ~1e18 cm^-2",
+     "fov_or_area": "<=10 deg2",
+     "survey_speed_or_time": "~100 h per field",
+     "array_stage": "AA* and AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-68",
+     "paper": "Deg01",
+     "page": 21,
+     "quote": "More critically, for primary targets, relatively brief integrations can reach \u223c 4 \u2032\u2032 resolutions (see also Table 1), while deep integrations of \u223c 100 hours can potentially reach \u223c 2 \u2032\u2032 or lower, enabling us to resolve the gas structure within the central kpc-the very region where competing DM models make their most divergent predictions.",
+     "science_driver": "Dark matter profiles of dwarf galaxies from HI kinematics",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1420 MHz",
+     "resolution": "~4 arcsec; ~2 arcsec in ~100 h",
+     "survey_speed_or_time": "~100 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-69",
+     "paper": "Deg01",
+     "page": 18,
+     "quote": "Achieving the fiducial surface density threshold of a 3 \ud835\udf0e detection at 1 M \u2299 pc -2 across 16 km s -1 using 13 kHz channels requires progressively longer integrations at finer resolutions.",
+     "science_driver": "Resolved HI in low-mass galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "Band 2",
+     "resolution": "13 kHz channels",
+     "sensitivity": "1 Msun/pc2 at 3 sigma",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-70",
+     "paper": "Bruni01",
+     "page": 10,
+     "quote": "SKA1-Low (50-350MHz) will probe optically thin, aging plasma and absorption turnovers with angular resolutions of \u223c 11 \u2032\u2032 at 110 MHz and \u223c 4 \u2032\u2032 at 300 MHz, and continuum sensitivities of \u223c 14-26 \ud835\udf07 Jy beam -1 hr -1 (for fractional bandwidth \u2243 0 . 3) in the AA4 baseline configuration (Dewdney et al., 2022).",
+     "science_driver": "Radio constraints on gamma-ray emitting radio galaxies",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": "110-300 MHz",
+     "resolution": "~11 arcsec to ~4 arcsec",
+     "sensitivity": "~14-26 uJy/beam per hr",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-71",
+     "paper": "Sun01",
+     "page": 9,
+     "quote": "According to the most recent SKA Observatory (SKAO) sensitivity calculator 1 , the rms sensitivity with AA* reaches about 3.4 \ud835\udf07 Jy beam -1 with Briggs weighting and robust of 0 for an integration time of 15 min.",
+     "science_driver": "All-sky RM grid for the Galactic magnetic field",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "1.31 GHz (Band 2)",
+     "sensitivity": "3.4 uJy/beam",
+     "survey_speed_or_time": "15 min per pointing",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.31,
+      "bandwidth_mhz": 720,
+      "integration_h": 0.25,
+      "claimed_sensitivity": 3.4,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": "robust 0",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-72",
+     "paper": "Sun01",
+     "page": 10,
+     "quote": "The maximum baseline is about 23 km for AA* after excluding the remote dish SKA-008, which leads to a resolution of 2 \u2032\u2032 specified for the RM grid survey.",
+     "science_driver": "RM grid resolution",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2",
+     "resolution": "2 arcsec",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-73",
+     "paper": "Sun01",
+     "page": 10,
+     "quote": "If the resolution of 2 \u2032\u2032 is kept by excluding long baselines, the collecting area for AA4 is about a factor 1.3 larger than AA* and the total time it takes for the survey is about 1.9 yr.",
+     "science_driver": "RM grid survey duration",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2",
+     "resolution": "2 arcsec",
+     "fov_or_area": "all sky",
+     "survey_speed_or_time": "~1.9 yr",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-74",
+     "paper": "Miville-Deschenes01",
+     "page": 26,
+     "quote": "For example, deeper integrations of 20 hours with SKA-mid AA4 7 would allow imaging of the Hi of the Local Bubble walls at 1 arcsec over a 1 \u25e6 field-of-view, corresponding to physical scales ranging from 1 mpc to a few pc.",
+     "science_driver": "Multi-phase HI structure in the Local Bubble walls",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": "1.4 GHz HI",
+     "resolution": "1 arcsec",
+     "fov_or_area": "1 deg field",
+     "survey_speed_or_time": "20 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-75",
+     "paper": "Miville-Deschenes01",
+     "page": 25,
+     "quote": "Such a survey could be done in less than 600 hours with AA4 4 , and maybe done commensally with other all-sky surveys conducted with SKA-mid.",
+     "science_driver": "HI absorption survey of the southern sky",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "1.4 GHz HI",
+     "fov_or_area": "~75% of the southern hemisphere",
+     "survey_speed_or_time": "<600 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-76",
+     "paper": "Schoedel01",
+     "page": 10,
+     "quote": "It is expected to reach a continuum rms noise of 1 . 1, 0 . 7, and 0 . 8 \ud835\udf07 Jy beam -1 at 1 . 31, 6 . 55, and 11 . 85 GHz in one-hour-long integrations (using the SKAO sensitivity calculator and assuming Briggs weighting, see Tab. 1).",
+     "science_driver": "Compact sources and pulsars at the Galactic Centre",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "1.31, 6.55 and 11.85 GHz",
+     "sensitivity": "1.1, 0.7, 0.8 uJy/beam",
+     "survey_speed_or_time": "1 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-77",
+     "paper": "Schoedel01",
+     "page": 10,
+     "quote": "In 10 h of observation, an rms noise of \u223c 0 . 2 \ud835\udf07 Jy beam -1 can be reached at 6 . 7 GHz, which implies the possibility to detect MSPs at the 7 \ud835\udf0e level with SKA1-Mid.",
+     "science_driver": "Imaging millisecond pulsars in the Galactic Centre",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "6.7 GHz",
+     "sensitivity": "~0.2 uJy/beam",
+     "survey_speed_or_time": "10 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-78",
+     "paper": "Salas01",
+     "page": 6,
+     "quote": "To match the surface-brightness sensitivity of GDIGS (10 mK), it takes \u2248 0 . 82 hours of AA \u2217 time, so it would take 370 hours to cover the same area to a similar depth, ignoring overheads.",
+     "science_driver": "Galactic diffuse ionized gas via RRLs",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "Band 5a",
+     "sensitivity": "10 mK",
+     "fov_or_area": "~37 deg2",
+     "survey_speed_or_time": "~0.82 h per pointing; 370 h",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-79",
+     "paper": "Salas01",
+     "page": 4,
+     "quote": "An order of magnitude leap in sensitivity and two orders of magnitude in angular resolution, with respect to current RRL surveys (Table 1), are required to connect observations of HRRLs to those in the mid-IR with JWST.",
+     "science_driver": "Linking WIM tracers across scales",
+     "telescope": "both",
+     "mode": "Spectral line / maser survey",
+     "resolution": "two orders of magnitude finer than current RRL surveys",
+     "sensitivity": "an order of magnitude deeper",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-80",
+     "paper": "Panessa01",
+     "page": 5,
+     "quote": "With SKA-VLBI routinely reaching rms \u2272 1 \ud835\udf07 Jy beam -1 in 8 hrs, 5 \ud835\udf0e detections of 5-10 \ud835\udf07 Jy cores are feasible, enabling the transition from mJy-biased pilot studies to a genuine census of nuclear radio components in intrinsically RQ systems.",
+     "science_driver": "Nuclear radio emission in radio-quiet AGN",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "resolution": "mas",
+     "sensitivity": "<=1 uJy/beam",
+     "survey_speed_or_time": "8 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-81",
+     "paper": "Panessa01",
+     "page": 10,
+     "quote": "A natural observing program is a volume-limited ( \ud835\udc37 \u2272 100 Mpc) sample of nearby Seyferts and high\ud835\udc3f / \ud835\udc3f Edd RQ AGN observed with SKA-VLBI at Band 5 for the core/jet base and polarization, and Band 2 for opacity and RM, with 8-10 epochs over a year and \ud835\udf07 Jy-level sensitivity per epoch.",
+     "science_driver": "Variability and core shifts in radio-quiet AGN",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "Bands 2 and 5",
+     "sensitivity": "uJy-level per epoch",
+     "survey_speed_or_time": "8-10 epochs over a year",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-82",
+     "paper": "Mahony01",
+     "page": 22,
+     "quote": "At higher redshift, a comparable 10 , 000 deg 2 survey with SKA-Low ( \ud835\udc67 > 3) would require only \u223c 500 pointings due to its much larger field of view ( \u223c 20 deg 2 ), corresponding to \u223c 1 , 000 observing hours in total at 2 hours per pointing.",
+     "science_driver": "HI 21-cm absorption at z>3",
+     "telescope": "low",
+     "mode": "Spectral line / maser survey",
+     "fov_or_area": "10000 deg2",
+     "survey_speed_or_time": "2 h per pointing; ~1000 h",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-83",
+     "paper": "Mahony01",
+     "page": 21,
+     "quote": "The increased sensitivity of AA4 would enable searches for absorption against fainter background sources, increasing the number of sightlines to 230 000 for sources with flux densities greater than 10 mJy.",
+     "science_driver": "Sightline statistics for HI absorption surveys",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-84",
+     "paper": "FangxiaAn01",
+     "page": 15,
+     "quote": "To explore the ultimate sensitivity limits achievable with SKA AA4, we additionally consider the Ultra-deep Tier, which is planned to cover 1 deg 2 down to a 1 \ud835\udf0e depth of \u223c 0 . 05 \ud835\udf07 Jy beam -1 at SKA-Mid Band 2.",
+     "science_driver": "Cosmic star formation history from radio SEDs",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2",
+     "sensitivity": "~0.05 uJy/beam",
+     "fov_or_area": "1 deg2",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-85",
+     "paper": "Dabhade01",
+     "page": 5,
+     "quote": "SKA1-Mid, operating over 0.35-15 GHz, will provide sub-arcsecond imaging at GHz frequencies, reaching ( \u223c 0 . 4 \u2032\u2032 ) resolution at 1.4 GHz and continuum sensitivities of ( \ud835\udf0e cont \u2248 2 \u00b5 Jy beam -1 ) in 1 hr (Braun et al., 2019).",
+     "science_driver": "Radio galaxies as tracers of the cosmic web",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "1.4 GHz",
+     "resolution": "~0.4 arcsec",
+     "sensitivity": "~2 uJy/beam",
+     "survey_speed_or_time": "1 hr",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-86",
+     "paper": "Algera01",
+     "page": 4,
+     "quote": "The proposed RMS noise in Band 2 (1 . 355 GHz) is approximately 0 . 4 \ud835\udf07 Jy / beam, which is then scaled to all other bands assuming a standard spectral index of \ud835\udefc = -0 . 70. In Band 5b, this corresponds to a noise level of 0 . 09 \ud835\udf07 Jy / beam.",
+     "science_driver": "Thermal free-free star formation history",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "80 MHz-11.85 GHz",
+     "sensitivity": "0.4 uJy/beam (Band 2); 0.09 uJy/beam (Band 5b)",
+     "fov_or_area": "0.25 deg2",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-87",
+     "paper": "Algera01",
+     "page": 4,
+     "quote": "In Bands 1 and 2, this requires an observing time of approximately 10 h each, while mosaicking is required to cover this field-of-view at higher frequencies.",
+     "science_driver": "Matched-depth multi-band survey",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Bands 1 and 2",
+     "fov_or_area": "0.25 deg2",
+     "survey_speed_or_time": "~10 h per band",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-88",
+     "paper": "Pandey-Pommier03",
+     "page": 4,
+     "quote": "The SKAVLBI will provide this capability by combining milliarcsecond angular resolution with \ud835\udf07 Jy-level sensitivity.",
+     "science_driver": "HI absorption against radio jets at pc scales",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "resolution": "mas",
+     "sensitivity": "uJy-level",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-89",
+     "paper": "Duncan01",
+     "page": 16,
+     "quote": "We also consider deeper, 50 h, integrations with the full AA4 configuration covering 10 deg 2 .",
+     "science_driver": "HI stacking with optical spectroscopic redshifts",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "fov_or_area": "10 deg2",
+     "survey_speed_or_time": "50 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-90",
+     "paper": "Duncan01",
+     "page": 16,
+     "quote": "From the SKAO Sensitivity Calculator, the equivalent per-channel RMS will be achieved by AA \u2605 in just 8 hours, opening the opportunity to cover substantially more area in the same amount of time.",
+     "science_driver": "HI detections at z~0.3",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "survey_speed_or_time": "8 h",
+     "array_stage": "AA*",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-91",
+     "paper": "Mazzolari01",
+     "page": 18,
+     "quote": "In particular, to detect AGN described by the first scenario, it will be enough to have observations of a few hours in SKA-Mid Band-2 ( \u223c 1.4 GHz) at \ud835\udc67 \u223c 3, and a few tens of hours for sources at \ud835\udc67 \u223c 5.",
+     "science_driver": "Radio properties of JWST AGN and Little Red Dots",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "~1.4 GHz (Band 2)",
+     "survey_speed_or_time": "a few hours (z~3) to a few tens of hours (z~5)",
+     "verification": "verbatim"
+    },
+    {
+     "id": "D-92",
+     "paper": "Tabatabaei01",
+     "page": 11,
+     "quote": "AA4 can map the RC emission from M51 analogs at z=1 at 0.9\" angular resolution in less than 10 hours in Band 2, reaching a 5 \ud835\udf0e detection.",
+     "science_driver": "Resolved radio continuum of distant star-forming galaxies",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "Band 2",
+     "resolution": "0.9 arcsec",
+     "survey_speed_or_time": "<10 h",
+     "array_stage": "AA4",
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Algera01",
+     "page": 2,
+     "quote": "Consequently, SFRs derived through the IRRC currently remain systematically uncertain.",
+     "theme": "reliability of radio SFR calibration",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Baczko01",
+     "page": 2,
+     "quote": "Despite decades of study, a comprehensive understanding of how AGN jets form, propagate, and dissipate remains elusive.",
+     "theme": "AGN jet life cycle",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Baczko01",
+     "page": 8,
+     "quote": "However, they often fail to produce outflows that can stay collimated to scales beyond kpc, making the origin of their large-scale jets still a mystery.",
+     "theme": "jet collimation beyond kpc scales",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bait01",
+     "page": 4,
+     "quote": "The balance between radiative and mechanical feedback and how it evolves with galaxy mass, metallicity, and star formation history is still an open question.",
+     "theme": "feedback in Lyman-continuum leakers",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Baldi01",
+     "page": 3,
+     "quote": "Whether FR0s represent the youth of a RG or signify a specific mode of the RLAGN phenomenon remains unclear, especially since current radio surveys are biased toward luminous or extended sources.",
+     "theme": "nature of FR0 radio galaxies",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bruni01",
+     "page": 9,
+     "quote": "Although leptonic models (synchrotron, SSC, EC) account for most of the observed properties, hadronic interactions remain a plausible contributor in environments with dense photon fields or efficient particle acceleration.",
+     "theme": "hadronic gamma-ray emission in radio galaxies",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "DAmato01",
+     "page": 12,
+     "quote": "As a result, the radio-selected population of high\ud835\udc67 DAGN is currently unknown.",
+     "theme": "demographics of high-z dual AGN",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Dabhade01",
+     "page": 15,
+     "quote": "The subsequent expansion and mixing of their lobes may distribute magnetised plasma over megaparsec scales, although the efficiency and volume filling factor of this process remain uncertain.",
+     "theme": "magnetisation of the cosmic web by radio lobes",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Deg01",
+     "page": 23,
+     "quote": "This capability will move the cusp-core debate from a model-dependent problem to a direct observational question.",
+     "theme": "cusp-core problem",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "FangxiaAn01",
+     "page": 4,
+     "quote": "However, the IRRC itself remains a subject of active debate.",
+     "theme": "infrared-radio correlation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Fromm01",
+     "page": 1,
+     "quote": "Despite their ubiquity, the physical origin and stability of these collimated synchrotron threads remain poorly understood.",
+     "theme": "origin of synchrotron threads in radio galaxies",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Hardcastle01",
+     "page": 21,
+     "quote": "Consequently, remnant radio galaxies (hereafter remnants) are expected to be intrinsically rare, and their short lifetimes and low space densities mean that their physical properties and demographics remain poorly constrained.",
+     "theme": "remnant radio galaxy demographics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "HengxingPan01",
+     "page": 2,
+     "quote": "Yet the pathways that deliver gas to disks and how these are regulated from the CGM to cosmic-web scales remain uncertain.",
+     "theme": "gas accretion from the cosmic web",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ignesti01",
+     "page": 5,
+     "quote": "A current open question regards the properties of the magnetic field and its role in regulating the ISM-ICM mixing.",
+     "theme": "magnetic fields in ram-pressure stripping",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Karska01",
+     "page": 3,
+     "quote": "However, the details of how molecular cloud formation occurs, both on small scales and in the galactic context, remain uncertain.",
+     "theme": "molecular cloud formation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kondapally01",
+     "page": 5,
+     "quote": "Hence, the luminosity function remains poorly constrained at the bright end due to the relatively small areas covered by these deep surveys, and also at the faint end (at high redshift) due to the small numbers of sources.",
+     "theme": "radio AGN luminosity function",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kudoh01",
+     "page": 2,
+     "quote": "While RL AGN are dominated by synchrotron radiation from powerful relativistic jets, the radio emission mechanism in RQ AGN remains poorly understood.",
+     "theme": "radio emission in radio-quiet AGN",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Lagos01",
+     "page": 9,
+     "quote": "Which explanation should be favoured remains debated.",
+     "theme": "dark matter content from HI rotation curves",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Lal01",
+     "page": 13,
+     "quote": "Clearly, improved selection tends to increase the number counts of faint sources but uncertainties remain, and different simulations predict different break locations and slopes in the luminosity function.",
+     "theme": "faint-end luminosity function of cluster dwarfs",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ma01",
+     "page": 11,
+     "quote": "A key open question is what fraction of this field strength arises from amplification by the small-scale dynamo and what fraction results from the tangling of the large-scale field.",
+     "theme": "origin of small-scale magnetic fields",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Maccagni01",
+     "page": 2,
+     "quote": "Moreover, it is unclear how short stochastic AGN episodes are connected with the long timescales of gas accretion and star formation.",
+     "theme": "AGN duty cycle and feeding",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Maccagni01",
+     "page": 4,
+     "quote": "Which fuelling mechanisms regulate the AGN duty-cycle is still hotly debated.",
+     "theme": "AGN fuelling mechanisms",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mahony01",
+     "page": 9,
+     "quote": "The evolution of the detection rate of H i absorption is still unclear and remains a subject of debate.",
+     "theme": "evolution of HI absorber incidence",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mao01",
+     "page": 12,
+     "quote": "Existing studies of the magnetized CGM in nearby galaxies rely on stacking approaches, and basic properties of the CGM field such as its extent, strength, and field geometry remain unknown.",
+     "theme": "magnetised circumgalactic medium",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mazzolari01",
+     "page": 17,
+     "quote": "However, large uncertainties remain for this scenario.",
+     "theme": "nature of Little Red Dots",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Miville-Deschenes01",
+     "page": 12,
+     "quote": "The key physics that remains poorly understood is their connection to the molecular gas structures at smaller scales, but our understanding is limited by the angular resolution and sensitivity of the existing observations.",
+     "theme": "HI-to-molecular connection",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Moldon01",
+     "page": 7,
+     "quote": "Resolved measurements across diverse environments will test whether the IMF used in SFR calibrations is universal or varies with metallicity, density, or star-formation intensity.",
+     "theme": "universality of the IMF",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Pandey-Pommier01",
+     "page": 1,
+     "quote": "However, the physical coupling between AGN activity and the multi-phase interstellar medium remains poorly constrained, particularly in radio-loud systems where mechanical feedback and multiphase outflows are expected to dominate.",
+     "theme": "AGN coupling to multiphase ISM",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Pandey-Pommier03",
+     "page": 9,
+     "quote": "The role of H i in AGN feedback, however, remains complex and still poorly understood, particularly in the way it interacts with molecular gas and regulates star formation processes.",
+     "theme": "role of HI in AGN feedback",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Panessa01",
+     "page": 11,
+     "quote": "For luminous quasars at \ud835\udc67 \u2273 6, the most open issues are the prevalence and duty cycle of relativistic outflows at the lowest detectable powers, and the physical origin of the faint radio population that dominates deep counts.",
+     "theme": "radio activity in z>6 quasars",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ramatsoku01",
+     "page": 8,
+     "quote": "Consequently, it remains unclear whether disturbed kinematics are exceptional or rather an intrinsic property of gas discs once a broad range of masses and environments is probed.",
+     "theme": "disturbed HI kinematics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Rosolowsky01",
+     "page": 14,
+     "quote": "The efficiencies, timescales, and global influence of feedback remain the single largest unknown in understanding star formation and the evolution of isolated galaxies (Grudi\u0107 and Hopkins, 2019).",
+     "theme": "stellar feedback efficiency",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "SabyasachiPal02",
+     "page": 8,
+     "quote": "Although the observational properties of circular diffuse radio sources and ORCs are becoming increasingly well documented, their physical origin remains uncertain.",
+     "theme": "origin of odd radio circles",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "SabyasachiPal03",
+     "page": 16,
+     "quote": "Although such structures have already been identified in a limited number of sources in current low-frequency surveys, their true occurrence rate remains uncertain because of sensitivity limitations.",
+     "theme": "occurrence of asymmetric radio structures",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sakemi01",
+     "page": 2,
+     "quote": "In particular, key open questions concern the role of magnetic fields in shaping outflows, launching jets, and mediating interactions with the surrounding interstellar medium.",
+     "theme": "magnetic fields in ULX outflows",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sakemi01",
+     "page": 8,
+     "quote": "However, the intrinsic polarization fraction in ULXs is currently unknown and may be significantly lower due to turbulent magnetic fields and internal Faraday depolarization.",
+     "theme": "ULX polarization fraction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Salas01",
+     "page": 3,
+     "quote": "The Galactic halo is ionized by the photons produced in the Galactic disk, however, the details of how these photons travel through the ISM to reach the halo are still not well understood.",
+     "theme": "ionization of the Galactic halo",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sasmal01",
+     "page": 4,
+     "quote": "Visual inspection remains essential for rare and complex radio sources, especially when diffuse emission, blended components, or ambiguous host associations make automated classification uncertain.",
+     "theme": "classification of irregular radio sources",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sawada-Satoh01",
+     "page": 5,
+     "quote": "Methanol maser transitions at 6.7 and 12.2 GHz are also covered by Band 5, although their Zeeman splitting coefficients are relatively small and remain uncertain.",
+     "theme": "methanol Zeeman coefficients",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Schoedel01",
+     "page": 9,
+     "quote": "This so-called missing pulsar problem is a key puzzle of GC astrophysics",
+     "theme": "missing pulsars at the Galactic Centre",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Schoedel01",
+     "page": 16,
+     "quote": "Its apparent base is offset from Sgr A*, and its physical origin remains uncertain.",
+     "theme": "Galactic Centre radio structures",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sun01",
+     "page": 5,
+     "quote": "Two of the characteristics of the small-scale magnetic field: structure and energy spectrum, are not yet clear.",
+     "theme": "small-scale Galactic magnetic field",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sun02",
+     "page": 4,
+     "quote": "Whether this holds for low frequencies needs further investigation.",
+     "theme": "RM recovery from diffuse emission at low frequency",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sun02",
+     "page": 11,
+     "quote": "Weare located inside the LB, the origin and evolution of which have not yet been solved.",
+     "theme": "origin of the Local Bubble",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tahani01",
+     "page": 17,
+     "quote": "Magnetic fields influence the formation and evolution of molecular clouds, however, the details remain poorly understood.",
+     "theme": "magnetic fields in cloud formation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tarchi01",
+     "page": 2,
+     "quote": "In addition, further importance for a better knowledge of the AGN phenomenon is represented by the yet debated accretion/ejection mechanisms taking place in the nuclear regions of radio-loud and, even more, radio-quiet AGN.",
+     "theme": "AGN accretion and ejection",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Vidal01",
+     "page": 3,
+     "quote": "It is not yet clear whether there is a common factor among these sources, related either to the dust grain properties (for example, size distribution or composition) or to the local environmental conditions (such as radiation field, density, or temperature), that promotes the emergence of AME.",
+     "theme": "origin of anomalous microwave emission",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "XuYe01",
+     "page": 8,
+     "quote": "The Galactic rotation curve remains poorly constrained in both the inner ( \ud835\udc45 < 4 kpc) and outer ( \ud835\udc45 > 12 kpc) regions.",
+     "theme": "Galactic rotation curve",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "XuYe01",
+     "page": 8,
+     "quote": "The vertical position of the Sun with respect to the Galactic plane ( \ud835\udc67 \u2299 ) remains debated, with estimates varying between 20 and 30 pc.",
+     "theme": "solar height above the plane",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Yamamoto01",
+     "page": 13,
+     "quote": "The formation of the CNM is governed by thermal instability, turbulence, and magnetic fields, but their relative roles at the CNM formation scale remain uncertain.",
+     "theme": "formation of the cold neutral medium",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Yoon01",
+     "page": 2,
+     "quote": "Although the leading theory of AME emission is electric dipole radiation from nanometer-size spinning dust particles (Draine and Lazarian, 1998; Ali-Ha\u00efmoud et al., 2009), the carrier of the AME and the physical conditions of the ISM for AME are still not clearly understood (Dickinson et al., 2018, for review).",
+     "theme": "AME carriers",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "deBlok01",
+     "page": 11,
+     "quote": "What remains very unclear is the amount of cold gas that couples to this feedback, and how far it travels from the disk.",
+     "theme": "cold gas in galactic fountains",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "E",
+   "section": "The Cosmos",
+   "section_summary": "The Cosmos section is organised around three connected science drivers: precision cosmology from large-scale structure, the physics of the high-redshift intergalactic medium during Cosmic Dawn and reionisation, and the non-thermal and magnetised content of galaxy clusters and the cosmic web. The cosmology chapters (Fonseca, Camera, Harrison, Wolz, Nasirudin, Bosi, Asorey) converge on a small set of reference surveys inherited from the Cosmology Red Book: a single-dish Wide Band 1 HI intensity-mapping survey of about 20,000 deg2 in roughly 10,000 h, a Medium-Deep Band 2 survey of about 5,000 deg2 serving both HI galaxy redshifts and radio weak lensing, and a Band 1 continuum survey of the southern sky that reaches a flux limit near 20 uJy. These surveys feed primordial non-Gaussianity, BAO and redshift-drift measurements, Nx2pt analyses and cross-correlations with gravitational-wave catalogues. A pulsar-timing strand (Cruz, Perna, Pasechnik, Jenkins, Ragavendra) requires roughly 200 millisecond pulsars timed at about 100 ns over 10-20 years. A fast-radio-burst strand (Caleb) uses fluence thresholds and survey fields of view to predict counts and baryon constraints.\n\nThe observing modes follow from these drivers. Deep HI intensity mapping is the most frequently invoked mode: single-dish scanning in Band 1 for BAO and cross-correlation work, and interferometric mapping (Mazumder, Elahi) for smaller-scale clustering at z of 1 to 3. The EoR and Cosmic Dawn chapters (Barkana, Acharya, Bag, Chakraborty, Cang, de Lera Acedo) set their integrations around 1000-1080 h on SKA-Low for power spectra, with longer integrations on selected fields for tomographic imaging. The cluster and magnetism chapters take a different approach. Pointed or tiered continuum observations of 1-50 h with SKA-Low and SKA-Mid (Cassano, Santra, Cuciti, Gitti, Arpan Pal, Aritra Basu) target radio halos, relics, mini-halos and fluctuation-dynamo filaments. Polarimetric RM grids use SKA-Low near 150 MHz (O'Sullivan) and SKA-Mid Band 2 (Loi, Vacca, Kurahara). Band 5 carries the tSZ imaging (Perrott) and the depolarisation-free measurements of cluster magnetic fields.\n\nHow AA* compares with AA4 depends on the science case. For surface-brightness and power-spectrum work the difference is modest. O'Sullivan finds only a small sensitivity loss at 5 arcsec, so an RM grid could begin with AA* and continue with AA4. Fonseca and Regis report that AA* gives constraints close to AA4 for primordial non-Gaussianity and for dark-matter searches in the SKA-Mid bands. Cunnington argues that single-dish intensity mapping is well suited to early AA* operations. Other cases depend on the full array. Harrison shows that radio weak lensing is unachievable with AA* at any depth, because its PSF cannot resolve enough galaxy shapes, while AA4 meets the required density of about 1 galaxy per arcmin2. Perrott finds that high-fidelity tSZ imaging needs the dense short baselines of AA4. Bag concludes that 21-cm tomographic imaging is superior with AA4, and Regis finds SKA-Low dark-matter limits about three times weaker with AA*. The section therefore treats AA* as the stage for statistical detections and early surveys, and AA4 as the stage for the high-resolution imaging these measurements need.",
+   "requirements": [
+    {
+     "id": "E-01",
+     "paper": "Pandey-Pommier02",
+     "page": 10,
+     "quote": "The SKA will overcome these challenges with \ud835\udf07 Jy sensitivity and high angular resolution, enabling detailed studies of cluster substructure, diffuse ICM emission, and large samples of strongly lensed galaxies beyond \ud835\udc67 \u223c 2.",
+     "science_driver": "Cluster lensing and faint lensed radio galaxies",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "uJy-level",
+     "resolution": "high angular resolution",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-02",
+     "paper": "Pandey-Pommier02",
+     "page": 10,
+     "quote": "The SKA Band 5 may also enable detections of dense molecular gas tracers (HCN and HCO + ) in highly magnified systems and star-forming distant lensed galaxies at \ud835\udc67 \u2273 5.",
+     "science_driver": "Dense molecular gas in strongly lensed high-z galaxies",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 5",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-03",
+     "paper": "OSullivan01",
+     "page": 5,
+     "quote": "Adopting 'Zoom Mode 4' from the SKA-Low Sensitivity Calculator User Guide 2 , we consider a frequency resolution of \u223c 100 kHz and a bandwidth of \u223c 200 MHz (for context, the LoTSS RM Grid used 97.6 kHz channels and 48 MHz of bandwidth). Using the SKA-Low sensitivity calculator for AA4, an integration time of 8 hrs with a Briggs robust imaging weighting of -1 gives an rms sensitivity of \u223c 5 \ud835\udf07 Jy/beam at an angular resolution of \u223c 5 \u2032\u2032 (2 to 3 times above the confusion noise at this resolution).",
+     "science_driver": "SKA-Low RM grid for the origin of cosmic magnetism",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": "~5 uJy/beam rms (AA4, 8 h)",
+     "resolution": "~5 arcsec",
+     "frequency": "~200 MHz bandwidth, ~100 kHz channels",
+     "fov_or_area": null,
+     "survey_speed_or_time": "8 h per field",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "low",
+      "freq_ghz": 0.15,
+      "band": "100-300 MHz",
+      "bandwidth_mhz": 200,
+      "integration_h": 8,
+      "claimed_sensitivity": 5,
+      "unit": "uJy/beam",
+      "weighting": "Briggs robust -1",
+      "claimed_beam_arcsec": 5,
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-04",
+     "paper": "OSullivan01",
+     "page": 6,
+     "quote": "For a Field of View (FoV) of 5 deg, a 10,000 deg 2 survey could be completed in \u223c 3,200 hours of observing time.",
+     "science_driver": "Wide-area SKA-Low RM grid",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "10,000 deg2 (FoV 5 deg)",
+     "survey_speed_or_time": "~3,200 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-05",
+     "paper": "OSullivan01",
+     "page": 7,
+     "quote": "Considering the modest sensitivity difference at 5 \u2032\u2032 between AA* and AA4, the wide-area survey could begin with AA* and continue with AA4, potentially without repeating sky areas (assuming the data quality is good).",
+     "science_driver": "Staged RM grid survey",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": "5 arcsec",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* then AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-06",
+     "paper": "Camera01",
+     "page": 17,
+     "quote": "Even with a moderate sky coverage of 5 000 deg 2 and a survey duration of approximately six months, a redshift-drift experiment is within reach of the SKA-Mid AA \u2217 .",
+     "science_driver": "Redshift drift and cosmography",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "5,000 deg2",
+     "survey_speed_or_time": "~6 months",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-07",
+     "paper": "Camera01",
+     "page": 9,
+     "quote": "The scaling of the detection significance versus the observed sky fraction, SNR ( \ud835\udc53 sky ) = \u221a\ufe01 \ud835\udc53 sky SNR ( 1 ) , shows that a 15 000 to 20 000 deg 2 Hi galaxy survey with AA4 specifications will reach a SNR \u223c 2 with a measurement of the faint-bright cross-power spectrum alone.",
+     "science_driver": "Testing gravity with relativistic clustering effects",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "15,000-20,000 deg2",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-08",
+     "paper": "Fonseca01",
+     "page": 4,
+     "quote": "The Wide Band 1 Survey covering 20 , 000 deg 2 with an integration time of approximately 10 , 000 hours in the sky will provide a wide continuum galaxy survey with a number density of sources of \ud835\udc5b \u2243 1 . 4arcmin -2 , and Hi intensity mapping (IM) survey in the redshift range \ud835\udc67 = 0 . 35 -3 (Bacon et al., 2020).",
+     "science_driver": "Primordial non-Gaussianity and inflation",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1",
+     "fov_or_area": "20,000 deg2",
+     "survey_speed_or_time": "~10,000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-09",
+     "paper": "Fonseca01",
+     "page": 12,
+     "quote": "Nevertheless, the combined power spectrum and bispectrum signal yields competitive constraints even for the AA* specifications, with the modified design having little impact on any of the PNG types considered here.",
+     "science_driver": "PNG from HI power spectrum and bispectrum",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-10",
+     "paper": "Asorey01",
+     "page": 21,
+     "quote": "The AA4 configuration of SKA can be used to perform a radio continuum survey of the entire Southern sky, using \u223c 15 000 individual pointings to cover \u223c 20 000 deg 2 .",
+     "science_driver": "Cosmology from continuum galaxy clustering",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "~20,000 deg2, ~15,000 pointings",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-11",
+     "paper": "Asorey01",
+     "page": 13,
+     "quote": "Therefore, we assume Band 1 of SKA-Mid in AA4 (centred at 780 MHz).",
+     "science_driver": "Continuum clustering survey design",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1, centred at 780 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-12",
+     "paper": "Asorey01",
+     "page": 18,
+     "quote": "As such, we suggest the ideal focus for a cosmology large area survey would avoid the Galactic plane and apply at least a 20 \ud835\udf07 Jy limit.",
+     "science_driver": "Isotropic source detection for angular clustering",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "flux limit >= 20 uJy",
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "avoid Galactic plane",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-13",
+     "paper": "Nasirudin01",
+     "page": 8,
+     "quote": "We also assume a total observing time of 10,000 hours over a survey area of 5,000 square degrees, which is consistent with previous SKA1-MID H i galaxy survey forecasts in the literature (Yahya et al., 2015; Square Kilometre Array Cosmology Science Working Group et al., 2020; Spinelli et al., 2021).",
+     "science_driver": "BAO and expansion history from HI galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "5,000 deg2",
+     "survey_speed_or_time": "10,000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-14",
+     "paper": "Nasirudin01",
+     "page": 8,
+     "quote": "For the survey assumptions adopted here, this results in an effective integration time of approximately \ud835\udc61 \ud835\udc5d \u2248 3 . 55 hours in Band 1 and \ud835\udc61 \ud835\udc5d \u2248 0 . 95 hours in Band 2 at the band centre.",
+     "science_driver": "HI galaxy survey depth per pointing",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1 and Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "3.55 h (Band 1) and 0.95 h (Band 2) per pointing",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-15",
+     "paper": "Nasirudin01",
+     "page": 14,
+     "quote": "For both array configurations and bands, the constraints are better than 10% from \ud835\udc67 \u2248 0 . 1 -0 . 5, reaching 2 -3% for \ud835\udc3b ( \ud835\udc67 ) at \ud835\udc67 \u2248 0 . 4 on both bands, for the GAEA AA4 predictions. These degrade by a factor of two or so if the simulation is changed to S 3 -SAX and/or the AA* array configuration is used.",
+     "science_driver": "H(z) and d_A(z) precision",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1 and Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-16",
+     "paper": "Harrison01",
+     "page": 5,
+     "quote": "This survey has sky area \ud835\udc34 sky = 5 , 000 deg 2 (expected to coincide with the DES survey footprint), number density of galaxies with shape measurements \ud835\udc5b gal = 2 . 7 arcmin -2 , median redshift \ud835\udc67 m = 1 . 1 and shape noise dispersion \ud835\udf0e \ud835\udf16 = 0 . 3.",
+     "science_driver": "Nx2pt cosmology with continuum galaxies",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": "5,000 deg2",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-17",
+     "paper": "Harrison01",
+     "page": 4,
+     "quote": "In designing these surveys there will be an optimal choice of trade-off between depth and area for a given amount of observing time (typically assumed to be 10,000 hours as consistent with expectations for large SKAO programmes).",
+     "science_driver": "Nx2pt survey design",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10,000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-18",
+     "paper": "Baker01",
+     "page": 7,
+     "quote": "Radio counterparts are generated at the central frequency of SKAO band 5a (6.55 GHz), and an event is considered detected if the afterglow peak flux exceeds 8.5 \ud835\udf07 Jy.",
+     "science_driver": "Radio afterglows of GW sources for standard sirens",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": "8.5 uJy peak flux",
+     "resolution": null,
+     "frequency": "Band 5a, 6.55 GHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-19",
+     "paper": "Baker01",
+     "page": 11,
+     "quote": "The measurements will use Band 1 of SKA-Mid (350-1050 MHz), corresponding to a redshift range of approximately 0 . 3 < \ud835\udc67 < 3 encompassing much of the post-reionisation Universe where large numbers of binary black hole mergers detectable by the SKAO-era GW network are expected to occur.",
+     "science_driver": "GW-HI intensity map cross-correlation",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1 (350-1050 MHz)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-20",
+     "paper": "Wolz01",
+     "page": 6,
+     "quote": "Wide Band 1 Survey : SKA-Mid AA4 in Band 1 with redshift range \ud835\udc67 = 0 . 35 -3 covering 20 , 000 deg 2 and an integration time of \ud835\udc61 tot = 10 , 000 hrs on sky.",
+     "science_driver": "HI intensity mapping cosmology",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1",
+     "fov_or_area": "20,000 deg2",
+     "survey_speed_or_time": "10,000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-21",
+     "paper": "Wolz01",
+     "page": 6,
+     "quote": "Deep SKA1-LOW Survey : SKA-Low AA4 with 100deg 2 sky coverage and an integration time of approximately \ud835\udc61 tot = 5 , 000 hrs on sky using data from sub-bands at frequencies 200 -350MHz, equivalent to 3 < \ud835\udc67 < 6.",
+     "science_driver": "High-redshift HI intensity mapping",
+     "telescope": "low",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "200-350 MHz",
+     "fov_or_area": "100 deg2",
+     "survey_speed_or_time": "~5,000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-22",
+     "paper": "Wolz01",
+     "page": 20,
+     "quote": "Forecasts indicate that, assuming an intensity mapping survey with SKA1-LOW with an area of \u2248 3 -6 deg 2 at \ud835\udc67 = 3 -5, we will be able to rule out a 4 keV DM model with 5000 hours of observations, with a statistical significance larger than 3 \ud835\udf0e (Carucci et al., 2015).",
+     "science_driver": "Warm dark matter constraints",
+     "telescope": "low",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "~3-6 deg2",
+     "survey_speed_or_time": "5000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-23",
+     "paper": "Majumdar01",
+     "page": 13,
+     "quote": "To estimate the system noise map, we considered 300 hours of SKA-Mid AA4 observations for each pointing in the interferometric mode.",
+     "science_driver": "21-cm bispectrum beyond the power spectrum",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "300 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-24",
+     "paper": "Majumdar01",
+     "page": 20,
+     "quote": "It is seen that even with 5000 hours of observation time at a channel-averaged spectral resolution of eight SKA-Mid channels, the 21-cm maps are highly noise-dominated.",
+     "science_driver": "Non-Gaussian statistics of 21-cm maps",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "5000 h per pointing",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-25",
+     "paper": "Sarkar01",
+     "page": 20,
+     "quote": "Even with 5000 h of integration per pointing and a spectral resolution corresponding to eight SKA-Mid channels, the 21-cm maps remain noise dominated, except near \ud835\udc67 \u2248 1 . 4 where the SNR approaches unity.",
+     "science_driver": "Multi-line LIM cross-correlations",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "5000 h per pointing",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-26",
+     "paper": "Sarkar01",
+     "page": 4,
+     "quote": "In its Band 1 (approximately 350-1050 MHz), SKA-Mid will cover redshifts \ud835\udc67 \u223c 0 . 35 up to \ud835\udc67 \u223c 3, thus spanning almost the entire post-EoR epoch.",
+     "science_driver": "21-cm LIM over the post-EoR epoch",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1 (350-1050 MHz)",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-27",
+     "paper": "Mayor01",
+     "page": 11,
+     "quote": "a Medium-Deep Band 2 SKA-MID survey covering 5 \u2032 000 deg 2 with a total integration time of about \ud835\udc61 tot = 10 \u2032 000 hours.",
+     "science_driver": "Tully-Fisher peculiar velocities",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": "5,000 deg2",
+     "survey_speed_or_time": "~10,000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-28",
+     "paper": "Mayor01",
+     "page": 11,
+     "quote": "The estimated time per pointing is of \ud835\udc61 \ud835\udc5d = 0 . 95 hours (see Table 1 in Nasirudin et al., 2026).",
+     "science_driver": "Tully-Fisher survey depth",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "0.95 h per pointing",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-29",
+     "paper": "Ragavendra01",
+     "page": 11,
+     "quote": "In particular, SKAO will monitor a much larger number of pulsars compared to current PTAs, with improved timing precision, and better prospects for identifying and subtracting the brightest continuous-wave sources.",
+     "science_driver": "GW background anisotropies from PNG and LSS",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-30",
+     "paper": "Cang01",
+     "page": 14,
+     "quote": "mock observations of 1D power spectrum of the 21 cm forest from 10 PSO J0309+27-like quasars (Belladitta et al., 2020) each over 50 hr by the SKA1-low was assumed.",
+     "science_driver": "21-cm forest and Cosmic Dawn IGM",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "10 background quasars",
+     "survey_speed_or_time": "50 h per source",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-31",
+     "paper": "Cang01",
+     "page": 23,
+     "quote": "Given these limitations, AA* and science-verification observations will likely first provide robust constraints from large-scale spectral statistics, such as the mean optical depth, the IGM spin temperature, and the ionization history, before enabling detailed individual-line studies and tighter model discrimination.",
+     "science_driver": "Staged 21-cm forest science",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-32",
+     "paper": "Caleb02",
+     "page": 7,
+     "quote": "Mid Band 2, \ud835\udc39 AA4 th Jy ms = 0.059.",
+     "science_driver": "FRB detection rates for cosmology",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": "fluence threshold 0.059 Jy ms (AA4, Band 2)",
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-33",
+     "paper": "Caleb02",
+     "page": 20,
+     "quote": "We found that with a catalog of FRBs detected with the AA4 configuration, the magnetic fields in intervening galaxies (Section 4.1) could be measured.",
+     "science_driver": "FRBs as probes of intervening magnetic fields",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-34",
+     "paper": "Chatterjee01",
+     "page": 2,
+     "quote": "Lessons from this technique will be valuable for the upcoming SKA-Mid, where we expect a better resolution ( < 2 \u2032\u2032 ) and sensitivity ( \u223c 7 /u1D707 Jy / beam ) of the OTF images with the AA4 configuration.",
+     "science_driver": "On-the-fly continuum mapping commensal with HI IM",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "~7 uJy/beam",
+     "resolution": "< 2 arcsec",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-35",
+     "paper": "Chatterjee01",
+     "page": 17,
+     "quote": "The OTF mapping technique developed using SKA-Mid pathfinder telescope MeerKAT has a high survey speed, able to achieve uniform sensitivity over a large sky area and can be performed in a commensal observation with HI IM experiments.",
+     "science_driver": "Commensal fast-scanning surveys",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "large sky area",
+     "survey_speed_or_time": "high survey speed",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-36",
+     "paper": "Pasini01",
+     "page": 12,
+     "quote": "SKA-Mid in AA4 configuration will instead provide \u223c 0 . 3 -0 . 5 \u2032\u2032 resolution at 1.4 GHz, deploying 197 antennas and achieving \u223c \ud835\udf07 Jy/beam sensitivity in \u223c 1 hour.",
+     "science_driver": "AGN feedback in galaxy groups",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~uJy/beam in ~1 h",
+     "resolution": "~0.3-0.5 arcsec",
+     "frequency": "1.4 GHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-37",
+     "paper": "Pasini01",
+     "page": 12,
+     "quote": "In Fig. 5 we show a rough estimate of the potential of SKA-Low and SKA-Mid in AA4 configuration to carry out all-sky surveys with just \u223c 1-hour integration time per pointing (per band). SKA-Low would reach rms noise \u223c 10 \ud835\udf07 Jy/beam with a resolution of \u223c 6 \u2032\u2032 at 300 MHz, while SKA-Mid would open a new window on the sub\ud835\udf07 Jy/beam regime with a resolution of \u223c 0 . 5 \u2032\u2032 .",
+     "science_driver": "All-sky surveys of group radio sources",
+     "telescope": "both",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "~10 uJy/beam (Low); sub-uJy/beam (Mid)",
+     "resolution": "~6 arcsec (Low, 300 MHz); ~0.5 arcsec (Mid)",
+     "frequency": "300 MHz (Low)",
+     "fov_or_area": "all-sky",
+     "survey_speed_or_time": "~1 h per pointing per band",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-38",
+     "paper": "Barkana01",
+     "page": 9,
+     "quote": "For both layouts, we adopt a fiducial setup with a total integration time of 1080 hours, a bandwidth of 10 MHz, and a power spectrum binning of \u0394 ln \ud835\udc58 = 0 . 5.",
+     "science_driver": "Cosmic Dawn and EoR 21-cm power spectrum",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "10 MHz bandwidth",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1080 h",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-39",
+     "paper": "Barkana01",
+     "page": 28,
+     "quote": "Nevertheless, several foreground-free modes remain accessible for ruling out non-cold DM scenarios, even with a 1000-hour observation using the AA* layout. This capability improves substantially with the AA4 configuration, where a greater number of modes become available for discriminating among dark matter models.",
+     "science_driver": "Dark matter signatures in the 21-cm signal",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-40",
+     "paper": "Bag01",
+     "page": 17,
+     "quote": "Producing high-fidelity image data will however be quite challenging and likely require substantial amounts of observing time ( > 1000 hours) on selected fields and superb calibration and foreground removal techniques.",
+     "science_driver": "21-cm tomographic imaging of the EoR",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "selected fields",
+     "survey_speed_or_time": "> 1000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-41",
+     "paper": "Bag01",
+     "page": 4,
+     "quote": "We can therefore conclude that the AA4 version of SKA-Low will have superior imaging to the AA* one.",
+     "science_driver": "21-cm imaging capability by array stage",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 over AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-42",
+     "paper": "Bag01",
+     "page": 14,
+     "quote": "SKA-Low will be able to detect ionized regions of size \u2265 5 -10 cMpc, corresponding to angular scales exceeding 5 arcminutes at redshifts \ud835\udc67 = 7 -10.",
+     "science_driver": "Detection of individual ionized bubbles",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": "> 5 arcmin scales",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-43",
+     "paper": "Acharya01",
+     "page": 13,
+     "quote": "We simulate the SKA-Low sensitivity with 21 cmSense (Pober et al., 2013, 2014; Murray et al., 2024), for two surveys with the AA \u2217 layout: 180 days (1080 hrs) and 18 days (108 hrs), observing a single sky patch for 6 hours each day",
+     "science_driver": "Inferring cosmology and astrophysics from the 21-cm signal",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "single sky patch",
+     "survey_speed_or_time": "1080 h and 108 h (6 h per day)",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-44",
+     "paper": "Acharya01",
+     "page": 14,
+     "quote": "Fig. 4 illustrates that only 108hrs of SKA AA \u2217 observations are sufficient to constrain the IGM neutral fraction down to \u223c percent-level: the EoR midpoint is recovered to within \u00b1 0 . 02 ( 0 . 04 ) for 1080hrs (108hrs) at 95% CI.",
+     "science_driver": "Reionization history",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "108 h",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-45",
+     "paper": "Acharya01",
+     "page": 11,
+     "quote": "SKA-Low is projected to measure the diagonal elements of the 21 cm EoR MAPS (autofrequency) at intermediate scales ( \u2113 \u223c 1000) with 1000 hours of data at \u2273 3 \ud835\udf0e in foreground-free scenarios (Mondal et al., 2020) - the scenario we consider in our forecasts (Sec. 3.1.3).",
+     "science_driver": "21-cm MAPS detection",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-46",
+     "paper": "Mazumder01",
+     "page": 10,
+     "quote": "The total observation datasets are assumed to consist of 100 trackings of different pointings, each with 10 hr of observation time.",
+     "science_driver": "Interferometric HI intensity mapping at z of 1-3",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "100 pointings",
+     "survey_speed_or_time": "10 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-47",
+     "paper": "Mazumder01",
+     "page": 10,
+     "quote": "Thus, it will be possible to map out the Hi distribution with \u223c 1arcmin resolution at redshift \ud835\udc67 = 1 with high sensitivity using the SKA-Mid array.",
+     "science_driver": "Small-scale HI clustering",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": "~1 arcmin at z = 1",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-48",
+     "paper": "Mazumder01",
+     "page": 18,
+     "quote": "It assumes an SKAO 'medium-deep' type radio survey covering 100 square degrees with 1000 hours observing time and an overlapping survey with a volume density 10 -4 for galaxy number counts.",
+     "science_driver": "HI-galaxy cross-correlation",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1",
+     "fov_or_area": "100 deg2",
+     "survey_speed_or_time": "1000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-49",
+     "paper": "Akahori01",
+     "page": 8,
+     "quote": "Based on the SKAO's sensitivity calculator with those values, at Band 2 1.31 GHz, the synthesized beam size and the sensitivity are 0 . \u2032\u2032 75 \u00d7 0 . \u2032\u2032 22 and 6.86 \ud835\udf07 Jy/beam, respectively, for AA*.",
+     "science_driver": "Magnetic reconnection at cluster cold fronts",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "6.86 uJy/beam",
+     "resolution": "0.75 x 0.22 arcsec",
+     "frequency": "Band 2, 1.31 GHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-50",
+     "paper": "Akahori01",
+     "page": 8,
+     "quote": "Even for AA4, the synthesized beam size and the sensitivity are 0 . \u2032\u2032 19 \u00d7 0 . \u2032\u2032 18 and 4.39 \ud835\udf07 Jy/beam, respectively.",
+     "science_driver": "Resolving Alfven scales at cold fronts",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "4.39 uJy/beam",
+     "resolution": "0.19 x 0.18 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-51",
+     "paper": "Spinelli01",
+     "page": 5,
+     "quote": "Since the noise level decreases with the square root of the number of dishes, the SKA-Mid AA4 configuration, with 197 dishes, is expected to achieve a lower noise level than the AA* configuration, which includes 144 dishes.",
+     "science_driver": "Foreground removal in single-dish HI IM",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 (197 dishes) vs AA* (144 dishes)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-52",
+     "paper": "Elahi01",
+     "page": 13,
+     "quote": "Considering SKA-Mid AA*, 50 h of observation will be sufficient to make a detection at length scale \ud835\udc58 \u223c 0 . 1 Mpc -1 provided one performs a wideband ( \u223c 200 MHz bandwidth) analysis.",
+     "science_driver": "Post-EoR interferometric 21-cm detection at z ~ 2",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "~200 MHz bandwidth near 450 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "50 h",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-53",
+     "paper": "Elahi01",
+     "page": 12,
+     "quote": "We consider 932 frequency channels, with a channel width of \u0394 \ud835\udf08 = 53 . 76 kHz, resulting in \u2248 50 MHz bandwidth. We set 6 hours of observation tracking a target field that transits the SKA-Mid site on 16th June 2025.",
+     "science_driver": "AA* noise simulation for post-EoR IM",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "~50 MHz bandwidth, 53.76 kHz channels",
+     "fov_or_area": null,
+     "survey_speed_or_time": "6 h track",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-54",
+     "paper": "deLeraAcedo01",
+     "page": 17,
+     "quote": "The SKAO log-periodic antenna (SKALA) has been carefully designed to deliver broadband, spectrally smooth performance over the full 50-350 MHz band required by CD and EoR observations.",
+     "science_driver": "Spectrally smooth response for CD/EoR",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "50-350 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-55",
+     "paper": "Pasechnik01",
+     "page": 19,
+     "quote": "Compared to the current PTAs such as NANOGrav, EPTA/InPTA, PPTA and CPTA, SKAO will dramatically expand both the number of precisely timed MSPs and the timing precision achievable for each pulsar.",
+     "science_driver": "Cosmological phase transitions in the nHz GW band",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-56",
+     "paper": "Santra01",
+     "page": 6,
+     "quote": "In its full AA4 configuration, SKA-Low will reach continuum sensitivities of 5 -10 \ud835\udf07 Jy beam -1 for deep (10 -20 hr) integrations with 3 -8 \u2032\u2032 resolution, corresponding to \u223c 21 -50 kpc at z \u223c 0.87.",
+     "science_driver": "High-redshift ICM (El Gordo)",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "5-10 uJy/beam",
+     "resolution": "3-8 arcsec",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10-20 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-57",
+     "paper": "Santra01",
+     "page": 7,
+     "quote": "With rms sensitivities of \u223c 1 -2 \ud835\udf07 Jy beam -1 in 10 hr and \u223c 0.1 \ud835\udf07 Jy beam -1 in 50 hr integrations, SKA-Mid will detect emission down to a few \ud835\udf07 Jy arcsec -2 when smoothed to 5-10 \u2032\u2032 resolution (Table 1).",
+     "science_driver": "Diffuse ICM emission at high redshift",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~1-2 uJy/beam (10 h); ~0.1 uJy/beam (50 h)",
+     "resolution": "5-10 arcsec smoothed",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10-50 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-58",
+     "paper": "Santra01",
+     "page": 10,
+     "quote": "SKA-Low will markedly improve the situation, reaching \u223c 20 \ud835\udf07 Jy beam -1 at \u223c 10 \u2032\u2032 resolution in just one hour at 150 MHz and opening access to much fainter halos.",
+     "science_driver": "Radio halo detection at high redshift",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "~20 uJy/beam",
+     "resolution": "~10 arcsec",
+     "frequency": "150 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-59",
+     "paper": "Cruz01",
+     "page": 7,
+     "quote": "We assume a total of \ud835\udc41 psr = 200 monitored millisecond pulsars, a cadence of 14 days, and a total observation time of 10 years.",
+     "science_driver": "Kinematic anisotropies in the SGWB",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "200 MSPs",
+     "survey_speed_or_time": "14-day cadence over 10 years",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-60",
+     "paper": "Cruz01",
+     "page": 2,
+     "quote": "By observing hundreds of millisecond pulsars at sub-100 ns timing precision and with nearly all-sky coverage, the SKAO will improve GW sensitivity by an order of magnitude.",
+     "science_driver": "PTA sensitivity to the SGWB",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": "sub-100 ns timing precision",
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "nearly all-sky",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-61",
+     "paper": "ArpanPal01",
+     "page": 11,
+     "quote": "In Fig. 3 we show the sensitivities for a range of arrays for an integration time of 4h, bandwidth of 75 MHz 1 , a central frequency of 200 MHz and robust = -1 weighting for visibilities. The time 4h was chosen to represent the expected observing time for a typical target in the SKA-Low AA2 Science Verification.",
+     "science_driver": "Merger shocks and radio relics",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "200 MHz, 75 MHz bandwidth",
+     "fov_or_area": null,
+     "survey_speed_or_time": "4 h per target",
+     "array_stage": "AA2",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-62",
+     "paper": "ArpanPal01",
+     "page": 17,
+     "quote": "The approximately eight-fold improvement in sensitivity over LOFAR (Braun et al., 2019) will allow SKA-Low to reach surface brightness levels of order 0.1 \ud835\udf07 Jy arcsec -2 in deep integrations, probing fossil electron populations with \ud835\udefe \u223c 10 2 -10 3 -well into the energy range relevant for re-acceleration by weak merger shocks (Brunetti and Jones, 2014).",
+     "science_driver": "Fossil electrons and shock re-acceleration",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~0.1 uJy/arcsec2",
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "deep integrations",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-63",
+     "paper": "ArpanPal01",
+     "page": 19,
+     "quote": "On the upstream side, in the most favourable cases where streaming instabilities amplify the field to \u223c 1 \ud835\udf07 G, the precursor surface brightness at 150 MHz reaches \u223c 0.01-0.1 \ud835\udf07 Jy arcsec -2 , potentially within reach of deep ( \u2273 100 h) SKA-Low observations tapered to \u223c 100 kpc scales.",
+     "science_driver": "Shock precursors ahead of relics",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~0.01-0.1 uJy/arcsec2",
+     "resolution": "tapered to ~100 kpc",
+     "frequency": "150 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": ">= 100 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-64",
+     "paper": "Caleb01",
+     "page": 16,
+     "quote": "The predicted number of FRBs detected per accumulated year of observation at \ud835\udc67 > 6 for the SKA-low and SKA-mid (bands 1 and 2) AA4 array is \u223c 1 and \u223c 10, respectively.",
+     "science_driver": "High-redshift FRBs and reionization",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "SKA-Low; SKA-Mid Bands 1 and 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "per accumulated year",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-65",
+     "paper": "Caleb01",
+     "page": 16,
+     "quote": "The primary takeaway from Figure 7 is that while CGM scattering may be just beyond the detection ability of current experiments, such as CHIME, it will be well within the range of SKA-Low, for both AA \u2217 and AA4 configurations.",
+     "science_driver": "CGM scattering of FRBs",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-66",
+     "paper": "Regis01",
+     "page": 9,
+     "quote": "We use predictions and noise that are band-averaged in three ranges: 50 to 300 MHz (SKA-Low), with 10 hour sensitivity 8 . 6(22) \ud835\udf07 Jy/beam for AA4(AA*); 350 to 900 MHz (SKA-Mid Band 1), similar to the MeerKAT UHF band, with 2 . 5 \ud835\udf07 Jy/beam; and 1.1 to 3.1 GHz (SKA-Mid Bands 2&3), similar to ATCA observations in Regis et al.",
+     "science_driver": "WIMP searches in dwarf galaxies",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "8.6 (22) uJy/beam Low AA4 (AA*); 2.5 uJy/beam Mid Band 1",
+     "resolution": null,
+     "frequency": "50-300 MHz; 350-900 MHz; 1.1-3.1 GHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4 and AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-67",
+     "paper": "Regis01",
+     "page": 18,
+     "quote": "In Fig. 7 we show the parameter space that can be probed through 20 epoch observations of 20 lens systems using the AA* and/or AA4 array layout of SKA-Mid as the blue dash-dotted line.",
+     "science_driver": "Ultralight axion-like particle dark matter via lensed polarization",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2 + 5a",
+     "fov_or_area": "20 lens systems",
+     "survey_speed_or_time": "20 epochs",
+     "array_stage": "AA* and/or AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-68",
+     "paper": "Regis01",
+     "page": 9,
+     "quote": "Thus, the projected SKA performance allows for cutting edge limits on WIMP properties even in the intermediate AA* configuration.",
+     "science_driver": "WIMP limits at AA*",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-69",
+     "paper": "Cassano01",
+     "page": 8,
+     "quote": "For a one-hour SKA-Low observation, we estimate an rms noise of \ud835\udc39 rms = 20 \ud835\udf07 Jy , beam -1 with a 10-arcsec beam (using Briggs = 0) at a central frequency of 150 MHz.",
+     "science_driver": "Radio halo population statistics",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "20 uJy/beam",
+     "resolution": "10 arcsec",
+     "frequency": "150 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-70",
+     "paper": "Cassano01",
+     "page": 14,
+     "quote": "As shown in Fig. 4, SKA-Low surveys in AA4 configuration will have access to a large fraction of these clusters, specifically: more than 4600 clusters at \ud835\udc67 < 0 . 6 and more than 700 at ( \ud835\udc67 \u2273 0 . 6).",
+     "science_driver": "Radio halos across the southern sky",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "southern sky",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-71",
+     "paper": "Cunnington01",
+     "page": 19,
+     "quote": "SKA-Mid AA4 will aim to conduct a cosmological HI intensity-mapping survey over \u223c 20 , 000 deg 2 , covering the redshift range 0 . 3 < \ud835\udc67 < 3 with Band 1 (350-1050 MHz).",
+     "science_driver": "Single-dish HI intensity mapping cosmology",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 1 (350-1050 MHz)",
+     "fov_or_area": "~20,000 deg2",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-72",
+     "paper": "Cunnington01",
+     "page": 4,
+     "quote": "Because singledish intensity mapping requires only total-power measurements from each antenna, the data rates and processing requirements are dramatically reduced compared to conventional interferometric observations, making this technique ideally suited for early operations with the SKA-Mid AA \u2217 configuration.",
+     "science_driver": "Early-operations HI IM",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-73",
+     "paper": "Vacca01",
+     "page": 4,
+     "quote": "The Magnetism SKAO Science Working Group identified as top priority a polarimetric survey in Band2, with 1 MHz of channel width, 2 \u2032\u2032 of spatial resolution, and 15 min of observing time, with the aim of achieving a sensitivity of \u223c 4 \ud835\udf07 Jy/beam per Stokes parameter (Heald et al., 2020).",
+     "science_driver": "Polarized emission from radio halos and filaments",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": "~4 uJy/beam per Stokes parameter",
+     "resolution": "2 arcsec",
+     "frequency": "Band 2, 1 MHz channels",
+     "fov_or_area": null,
+     "survey_speed_or_time": "15 min per pointing",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-74",
+     "paper": "Vacca01",
+     "page": 7,
+     "quote": "For an equipartition scenario, we show that an observing time of 50 h and a spatial resolution of 17 \u2032\u2032 are necessary in order to map diffuse synchrotron emission in polarization both at the centre of galaxy clusters and in their periphery as well as along filaments connecting them.",
+     "science_driver": "Mapping cluster and filament magnetic fields",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": "17 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "50 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-75",
+     "paper": "Perna01",
+     "page": 8,
+     "quote": "The SKAO telescopes are expected to monitor about 200 millisecond pulsars with a fortnightly cadence; however, current estimates suggest the possible detection of up to 1000 millisecond pulsars for the design baseline.",
+     "science_driver": "PTA-astrometry synergy for the GW background",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "~200 (up to 1000) MSPs",
+     "survey_speed_or_time": "fortnightly cadence",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-76",
+     "paper": "Perna01",
+     "page": 9,
+     "quote": "Our estimates suggest that, after 20 years of observations, SKAO could detect multipoles up to \u2113 \u223c 8, with SNR 2 \u2243 44 . 3 for five hundred pulsars, and up to \u2113 \u223c 10 with SNR 2 \u2243 55 . 7 in the most idealistic scenario where roughly one thousand pulsars are monitored.",
+     "science_driver": "Angular structure of the GW background",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "500-1000 pulsars",
+     "survey_speed_or_time": "20 years",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-77",
+     "paper": "Chakraborty01",
+     "page": 13,
+     "quote": "For fiducial SKA1-Low 1000h observations, both for AA* and AA4 antenna configurations, the anti-correlation at small to intermediate (few tens of cMpc) scales has been reported to be detectable, depending on the assumed galaxy survey characteristics.",
+     "science_driver": "21cm-galaxy cross-correlation during the EoR",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 h",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-78",
+     "paper": "Chakraborty01",
+     "page": 20,
+     "quote": "with 100-200 hours of SKA1-Low observations, ionised regions larger than \u223c 20 cMpc around galaxies could be detected in a Universe that is up to 50% ionised.",
+     "science_driver": "Ionised bubbles around galaxies",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "100-200 h",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-79",
+     "paper": "Lelli01",
+     "page": 11,
+     "quote": "If we set a 3 /u1D70E column density sensitivity of 1 M /circledot pc -2 for a synthesized beam of 4.3 \u2032\u2032 (Briggs' Robust parameter of 1) and spectral channels of 3.1 km s -1 , we expect that we will spatially resolve about 20,000 galaxies by covering 150 square degrees in about 900 hours of SKA-Mid AA4.",
+     "science_driver": "HI rotation curves for dark matter and modified gravity",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": "3-sigma 1 Msun/pc2 over 3.1 km/s channels",
+     "resolution": "4.3 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": "150 deg2",
+     "survey_speed_or_time": "~900 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-80",
+     "paper": "Lelli01",
+     "page": 14,
+     "quote": "A very deep ( \u223c 10,000 hours) Band-1 survey with SKA-Mid AA4 is needed to spatially resolve massive ( /u1D440 HI /similarequal 10 10 M /circledot ) disks at /u1D467 /similarequal 1, given the better angular resolution of \u223c 1 \u2032\u2032 achievable with AA4.",
+     "science_driver": "HI kinematics at z ~ 1",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": null,
+     "resolution": "~1 arcsec",
+     "frequency": "Band 1",
+     "fov_or_area": "pencil beam",
+     "survey_speed_or_time": "~10,000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-81",
+     "paper": "Lelli01",
+     "page": 10,
+     "quote": "An HI column density of \u223c 5 M /circledot pc -2 (typical of the inner galaxy regions) over 16 km s -1 could be detected with spatial and spectral resolutions of \u223c 1 . 3 \u2032\u2032 and \u223c 3 . 1 km s -1 , respectively, with an integration of about 20 hours with SKA-Mid AA4 Band-2.",
+     "science_driver": "High-resolution HI kinematics of nearby galaxies",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "sensitivity": "~5 Msun/pc2 over 16 km/s",
+     "resolution": "~1.3 arcsec, ~3.1 km/s",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~20 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-82",
+     "paper": "deGasperin01",
+     "page": 10,
+     "quote": "The final products will have a resolution of about 8 \u2032\u2032 (robust 0) and a sensitivity of 10 \ud835\udf07 Jy beam -1 (including confusion, derived using the SKA Sensitivity Calculator 2 ).",
+     "science_driver": "Cosmic-ray life cycle in clusters",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "10 uJy/beam including confusion",
+     "resolution": "~8 arcsec",
+     "frequency": "125-275 MHz",
+     "fov_or_area": "up to declination +30 deg",
+     "survey_speed_or_time": "1 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "low",
+      "freq_ghz": null,
+      "band": "125-275 MHz",
+      "bandwidth_mhz": 150,
+      "integration_h": 1,
+      "claimed_sensitivity": 10,
+      "unit": "uJy/beam",
+      "weighting": "robust 0",
+      "claimed_beam_arcsec": 8,
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-83",
+     "paper": "deGasperin01",
+     "page": 10,
+     "quote": "The footprint would be covered in 5625 hrs (1 hr per pointing) going about an order of magnitude deeper than the LOFAR Two Meter Sky Survey, see Fig. 6 (Shimwell et al., 2017).",
+     "science_driver": "Low-frequency survey of cluster diffuse emission",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "5625 h (1 h per pointing)",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-84",
+     "paper": "Loi01",
+     "page": 4,
+     "quote": "We obtained a sensitivity \ud835\udf0e \ud835\udc44\ud835\udc48 of 2.2 and 0.5 \ud835\udf07 Jy/beam in the case of the SKA-mid mosaic and targeted observation, respectively, above the expected confusion limit in polarization (Loi et al., 2019b).",
+     "science_driver": "Dense RM grids for intracluster magnetic fields",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": "sigma_QU 2.2 uJy/beam (mosaic), 0.5 uJy/beam (targeted)",
+     "resolution": "0.84 x 0.73 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-85",
+     "paper": "Loi01",
+     "page": 4,
+     "quote": "We investigate a mosaic of 15 minutes observations per pointing, following the requirement reported in (Heald et al., 2020), and a 10 hours targeted observation.",
+     "science_driver": "RM grid observing strategy",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "15 min per pointing (mosaic); 10 h (targeted)",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-86",
+     "paper": "Cuciti01",
+     "page": 17,
+     "quote": "In detail, we estimated the sensitivity of the SKA-Low band 1 in AA4 configuration assuming 1 hour integration time, with Briggs weighting scheme and Robust parameter equal to 1 (to slightly decrease the resolution). We obtained rms = 21.2 \ud835\udf07 Jy/beam with beam =13 . 1 \u2032\u2032 \u00d7 10 . 6 \u2032\u2032 , corresponding to 0 . 13 \ud835\udf07 Jy/arcsec 2 (Top right panel in Fig. 6).",
+     "science_driver": "Synchrotron emission from the shocked cosmic web",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "21.2 uJy/beam",
+     "resolution": "13.1 x 10.6 arcsec",
+     "frequency": "200 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-87",
+     "paper": "Cuciti01",
+     "page": 17,
+     "quote": "To increase the sensitivity to the diffuse emission, we estimated the noise that we could achieve with 10 hours observation with SKA-Mid band 1, considering that we will use the full resolution, untapered image (estimated noise rms=0 . 7 \ud835\udf07 Jy/beam, with beam=1 . 33 \u2032\u2032 \u00d7 1 . 14 \u2032\u2032 ) to subtract point sources and then we will taper down to 28 . 1 \u2032\u2032 , achieving an rms noise of 3 . 2 \ud835\udf07 Jy/beam, corresponding to 0 . 0025 \ud835\udf07 Jy/arcsec 2 (Bottom right panel in Fig. 6).",
+     "science_driver": "Cosmic web emission with point-source subtraction",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "0.7 uJy/beam untapered; 3.2 uJy/beam tapered",
+     "resolution": "1.33 x 1.14 arcsec; tapered 28.1 arcsec",
+     "frequency": "Band 1",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-88",
+     "paper": "Afonso01",
+     "page": 22,
+     "quote": "Using Briggs weighting (robust parameter = 0, slightly favouring sensitivity over angular resolution), the SKAO Sensitivity Calculator (AA4 configuration) indicates that \u223c 4 hours on-source per pointing are sufficient to reach the required \u223c 2 \ud835\udf07 Jy rms sensitivity in each sub-band, at an angular resolution of \u223c 0 . 6 \u2032\u2032 -1 \u2032\u2032 across the ten sub-bands.",
+     "science_driver": "Earliest radio-loud AGN at z ~ 7",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~2 uJy rms per sub-band",
+     "resolution": "~0.6-1 arcsec",
+     "frequency": "Band 2, ten sub-bands",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~4 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-89",
+     "paper": "Afonso01",
+     "page": 22,
+     "quote": "Adopting a noise effective area of 0.55 deg 2 (Prandoni et al., 2026) per pointing, a 20 deg 2 Band 2 survey would require \u223c 150 hours.",
+     "science_driver": "Deep-field search for high-z RAGN",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": "20 deg2",
+     "survey_speed_or_time": "~150 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-90",
+     "paper": "Afonso01",
+     "page": 23,
+     "quote": "A deep, broadband ( \u223c 100 MHz) image centred at 200 MHz, using an optimised Briggs weighting and robust parameter to balance sensitivity against confusion, can reach \u223c 4 . 5 \ud835\udf07 Jy rms in \u223c 25 hours per pointing (depending on sky position and elevation constraints), remaining above the continuum confusion noise floor.",
+     "science_driver": "Low-frequency spectra of high-z RAGN",
+     "telescope": "low",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "~4.5 uJy rms",
+     "resolution": null,
+     "frequency": "200 MHz, ~100 MHz bandwidth",
+     "fov_or_area": null,
+     "survey_speed_or_time": "~25 h per pointing",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "low",
+      "freq_ghz": 0.2,
+      "band": null,
+      "bandwidth_mhz": 100,
+      "integration_h": 25,
+      "claimed_sensitivity": 4.5,
+      "unit": "uJy/beam",
+      "weighting": null,
+      "claimed_beam_arcsec": null,
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-91",
+     "paper": "Gitti01",
+     "page": 12,
+     "quote": "Assuming that typically a detection requires a signal to noise ratio \ud835\udc46 / \ud835\udc41 \u223c 5, these values correspond to an rms noise of 0.2 \ud835\udf07 Jy per beam, which can be achieved with 30 hours of on-source observing time with the AA4 SKA-Mid telescope at Band 2.",
+     "science_driver": "Radio-mode AGN feedback in BCGs to z ~ 2",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "0.2 uJy/beam rms",
+     "resolution": "~0.75 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "30 h on-source",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-92",
+     "paper": "Gitti01",
+     "page": 8,
+     "quote": "We consider the radio observational performances of the full Design Baseline (Array Assembly 4, AA4) of the SKA-Mid telescope at Band 2 with rms of \u223c 4 \ud835\udf07 Jy/beam at \u223c 8 \u2032\u2032 resolution (Briggs 0 image weighting and \u223c 4 \u2032\u2032 tapering).",
+     "science_driver": "Mini-halo survey in cool-core clusters",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "~4 uJy/beam",
+     "resolution": "~8 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-93",
+     "paper": "Gitti01",
+     "page": 8,
+     "quote": "We estimated that the observational performances adopted in that work (rms \u223c 20 \ud835\udf07 Jy/beam at \u223c 8 \u2032\u2032 resolution, with Briggs 0 image weighting) can be achieved with 10 minutes of on-source observing time with the AA4 SKA-Low telescope, where higher resolution images ( \u223c 3 \u2032\u2032 , with uniform weighting) can be used to account for the central BCG contribution.",
+     "science_driver": "Mini-halo survey with SKA-Low",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "~20 uJy/beam",
+     "resolution": "~8 arcsec",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 min on-source",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-94",
+     "paper": "Perrott01",
+     "page": 5,
+     "quote": "As reference observing setup, we consider an on-source integration time of 10 hours and two spectral bands each covering a 2 . 5 GHz bandwidth (consistent with Table 1).",
+     "science_driver": "Thermal SZ imaging of massive halos",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "0.402 uJy/beam (8.3-10.8 GHz, Table 1)",
+     "resolution": "3.3 x 3.0 arcsec",
+     "frequency": "Band 5b",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h on-source",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "freq_ghz": null,
+      "band": "5b (8.3-10.8 GHz)",
+      "bandwidth_mhz": 2500,
+      "integration_h": 10,
+      "claimed_sensitivity": 0.402,
+      "unit": "uJy/beam",
+      "weighting": null,
+      "claimed_beam_arcsec": 3.3,
+      "quantity": "continuum"
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-95",
+     "paper": "Perrott01",
+     "page": 17,
+     "quote": "Although some limited SZ science may be done with AA*, unlocking the SKA's potential as an effective high-resolution tSZ instrument relies crucially on the increased density of short baselines offered by the full AA4 configuration.",
+     "science_driver": "High-fidelity tSZ imaging",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 5",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-96",
+     "paper": "AritraBasu01",
+     "page": 18,
+     "quote": "By adding a rms noise of 0 . 3 \u00b5 Jy beam -1 for a 15-h observations with the SKA's AA4 in Band 2 at 0 . 9 \u2032\u2032 resolution, we find that a representative radio halo of 50 mJy flux density would be comfortably detectable.",
+     "science_driver": "Fluctuation-dynamo filaments in the ICM",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "0.3 uJy/beam",
+     "resolution": "0.9 arcsec",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "survey_speed_or_time": "15 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-97",
+     "paper": "AritraBasu01",
+     "page": 18,
+     "quote": "Also, in the context of detecting polarized emission from radio halos, at least, 15-20 hr of on-source observations at Band 5a is required for robust characterization (see Fig. 7).",
+     "science_driver": "Polarized halo emission above 3 GHz",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 5a",
+     "fov_or_area": null,
+     "survey_speed_or_time": "15-20 h on-source",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-98",
+     "paper": "AritraBasu01",
+     "page": 17,
+     "quote": "Detecting characteristic filaments generated by the action of a fluctuation dynamo requires high spatial resolution ( \u223c 1 kpc ), corresponding to angular resolution \u2272 1 . 5 \u2032\u2032 (see Sec. 3.1).",
+     "science_driver": "Resolving dynamo filaments",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": null,
+     "resolution": "<= 1.5 arcsec (~1 kpc)",
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-99",
+     "paper": "Kurahara01",
+     "page": 16,
+     "quote": "The SKA AA4 Band 1 is expected to significantly outperform current facilities in both spatial resolution and sensitivity, reaching a sensitivity of 1 \ud835\udf0e 0 . 5 \ud835\udf07 Jy beam 1 with 10 hours of integration under natural weighting (see SKA Mid Sensitivity Calculator Documentation).",
+     "science_driver": "Turbulence and magnetic fields in clusters with XRISM",
+     "telescope": "mid",
+     "mode": "Ultra-deep continuum imaging",
+     "sensitivity": "0.5 uJy/beam (1 sigma)",
+     "resolution": null,
+     "frequency": "Band 1",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-100",
+     "paper": "Kurahara01",
+     "page": 18,
+     "quote": "In contrast, SKA-MID Band 2 is expected to enable high-density RM grids of 100 deg 2 with roughly 10-hour integration per field (Heald et al., 2020).",
+     "science_driver": "RM grids behind clusters",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": "Band 2",
+     "fov_or_area": "~100 polarized sources per deg2",
+     "survey_speed_or_time": "~10 h per field",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-101",
+     "paper": "Jenkins01",
+     "page": 3,
+     "quote": "We assume a 15-year timing campaign with the SKAOatacadence of two observations per week, with rms timing noise of 100 ns (1 \u00b5 s for J0514 -4002A and J0514 -4002E).",
+     "science_driver": "Microhertz GW background via binary resonance",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "sensitivity": "100 ns rms timing noise",
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "15 years, two observations per week",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-102",
+     "paper": "Bosi01",
+     "page": 5,
+     "quote": "The sky coverage of both SKAO surveys is expected to be around \u0394\u03a9 = 20 000 deg 2 for 10 000 hours of observation, corresponding to an observed fraction of the sky \ud835\udc53 sky of approximately 50%.",
+     "science_driver": "Clustering of GW sources with radio tracers",
+     "telescope": "mid",
+     "mode": "Deep HI intensity mapping",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": "20,000 deg2",
+     "survey_speed_or_time": "10,000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-103",
+     "paper": "Bosi01",
+     "page": 6,
+     "quote": "We simulated the RC sources baseline catalog by imposing a continuum flux density limit for the AA4 configuration of \ud835\udc46 \ud835\udf08 c = 22 . 8 \ud835\udf07 Jy at central frequency \ud835\udf08 c = 797 . 5 MHz, following the work of Bacon et al.",
+     "science_driver": "Continuum source catalogue for GW cross-correlation",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "sensitivity": "22.8 uJy flux limit",
+     "resolution": null,
+     "frequency": "797.5 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-104",
+     "paper": "Harrison02",
+     "page": 8,
+     "quote": "For SKA-Mid AA4 such a survey is achievable with \u223c 10 , 000 hours of observing time allowing integration to a depth of 2 . 9 \ud835\udf07 Jy / beam using the lowest third of Band 2 (0 . 95-1 . 22 GHz).",
+     "science_driver": "Radio cosmic shear",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "sensitivity": "2.9 uJy/beam",
+     "resolution": null,
+     "frequency": "0.95-1.22 GHz",
+     "fov_or_area": "5,000 deg2",
+     "survey_speed_or_time": "~10,000 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-105",
+     "paper": "Harrison02",
+     "page": 4,
+     "quote": "In order to detect the cosmic shear signal a density of 1 gal / arcmin -2 is required. Though this is easily achieved with AA4 it is unachievable with AA* no matter the noise level reached.",
+     "science_driver": "Shape-measurement source density",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "sensitivity": null,
+     "resolution": null,
+     "frequency": null,
+     "fov_or_area": ">= 1 galaxy per arcmin2",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 required (not AA*)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "E-106",
+     "paper": "Harrison02",
+     "page": 4,
+     "quote": "Detailed simulations to optimise radio weak lensing surveys (Bonaldi et al., 2016) show that the highest signal-to-noise on the shear signal, and the greatest cosmological information, is obtained from a survey operating in SKA-Mid Band 2 (centred at 1050 MHz), with a PSF size of 0 . 55 arcsec and integrating to a depth of 2 . 9 \ud835\udf07 Jy / beam.",
+     "science_driver": "Optimal radio weak lensing survey",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "sensitivity": "2.9 uJy/beam",
+     "resolution": "PSF 0.55 arcsec",
+     "frequency": "Band 2, centred at 1050 MHz",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4-like",
+     "calculator_params": null,
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Pandey-Pommier02",
+     "page": 8,
+     "quote": "However, current observations remain limited to determine whether these hybrid sources correspond to a distinct evolutionary stage or arise from multiple physical mechanisms.",
+     "theme": "nature of hybrid AGN/star-forming lensed sources",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "OSullivan01",
+     "page": 10,
+     "quote": "No obvious physical origin for these wiggles could be identified, and it remains to be determined if they persist in samples with higher statistical significance or not.",
+     "theme": "structure in RM statistics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "OSullivan01",
+     "page": 12,
+     "quote": "One of the most challenging aspects of the RRM ( \ud835\udc67 ) analysis (Section 4.2) is the robust isolation of the GRM from the true extragalactic RM.",
+     "theme": "Galactic RM foreground subtraction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Camera01",
+     "page": 3,
+     "quote": "Fromatheoretical standpoint, the cosmological constant problem remains one of the deepest puzzles in modern physics.",
+     "theme": "cosmological constant problem",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Fonseca01",
+     "page": 13,
+     "quote": "These investigations have placed significant constraints on deviations from a power-law PPS but have yet to uncover definitive evidence of features.",
+     "theme": "features in the primordial power spectrum",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Asorey01",
+     "page": 19,
+     "quote": "However, with real observations, there will likely be additional systematic uncertainties which we cannot account for in these simulations which, alongside the effects of 1-halo clustering at large \u2113 , will affect uncertainties in \ud835\udc36 \u2113 and likely increase their size.",
+     "theme": "continuum clustering systematics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Nasirudin01",
+     "page": 2,
+     "quote": "The first, and most obvious, is that neutral hydrogen gas is a crucial ingredient of star formation, and understanding how its abundance, distribution, and lifecycle change over time remains an important open question.",
+     "theme": "cosmic evolution of neutral hydrogen",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Baker01",
+     "page": 3,
+     "quote": "As the measurements became increasingly precise, a persistent and unresolved discrepancy, known as the Hubble tension, emerged (Di Valentino et al., 2021).",
+     "theme": "Hubble tension",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Wolz01",
+     "page": 3,
+     "quote": "However, advanced measurements also opened more questions as inconsistencies and discrepancies between different cosmological probes and surveys have been found, often termed tensions , see Di Valentino et al.",
+     "theme": "cosmological tensions",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Sarkar01",
+     "page": 24,
+     "quote": "Although cross-correlations suppress many contaminants, correlated interlopers and spatially correlated continuum emission can still leak into the signal, making tomographic checks and anisotropy tests essential.",
+     "theme": "interloper contamination in LIM cross-correlations",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mayor01",
+     "page": 23,
+     "quote": "The recent development of an ' \ud835\udc3b 0 tension' between Cepheid-based and TRGB-based calibrations underscores the importance of understanding systematic differences between primary distance indicators",
+     "theme": "Tully-Fisher distance calibration",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ragavendra01",
+     "page": 5,
+     "quote": "Although the detection of a Hellings-Downs correlation pattern in pulsar timing residuals is a distinctive signature of a GW signal, it does not reveal its origin.",
+     "theme": "origin of the nHz GW background",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cang01",
+     "page": 14,
+     "quote": "Such results would be important as the X-ray background radiation and the history of its sources are still largely unconstrained.",
+     "theme": "X-ray heating of the early IGM",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Caleb02",
+     "page": 15,
+     "quote": "The exact mechanism responsible for FRBs is still under debate.",
+     "theme": "FRB emission mechanism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chatterjee01",
+     "page": 19,
+     "quote": "However, combining two different antenna design may pose some challenge toward imaging and flux-scale accuracy.",
+     "theme": "heterogeneous-array imaging",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Pasini01",
+     "page": 13,
+     "quote": "These estimates heavily depend on the poorly constrained evolution of polarised source counts in different source populations, another open question to be examined with SKA.",
+     "theme": "evolution of polarised source counts",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Ronconi01",
+     "page": 23,
+     "quote": "In practice, the main telescope specifications that affect the simulation design are the assumed survey area, depth, angular resolution, and limiting flux, many of which remain to be finalized at the time of writing.",
+     "theme": "undefined survey specifications",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Barkana01",
+     "page": 10,
+     "quote": "The majority of the EoR galaxy population is below the detection limit and their properties are largely unknown (Yue et al., 2016, 2018).",
+     "theme": "faint EoR galaxy population",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Barkana01",
+     "page": 26,
+     "quote": "While disputed at 95% significance by the SARAS experiment (Singh et al., 2022), with further measurements expected to resolve this tension, the tentative EDGES signal has inspired theories that can be probed over a wide range of possible parameters, independently of whether EDGES turns out to be correct.",
+     "theme": "EDGES global signal",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Acharya01",
+     "page": 28,
+     "quote": "Extracting this cosmological information is complicated by degeneracies between cosmology and astrophysics, and unless such degeneracies are overcome, cosmological constraints will remain limited (e.g., Lopez-Honorez et al., 2016; Agius et al., 2025).",
+     "theme": "cosmology-astrophysics degeneracies in 21-cm",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Mazumder01",
+     "page": 18,
+     "quote": "direct cross-correlation between interferometric intensity maps and other large-scale structure tracers is yet to be achieved",
+     "theme": "interferometric HI IM cross-correlation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Akahori01",
+     "page": 1,
+     "quote": "This presents a new puzzle because the standard mechanism in galaxy clusters, Fermi acceleration, is not naturally expected there.",
+     "theme": "particle re-acceleration at cold fronts",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Akahori01",
+     "page": 2,
+     "quote": "However, understanding how the gas has been heated remains a fundamental question in the structure formation of the Universe.",
+     "theme": "heating of the intracluster gas",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Spinelli01",
+     "page": 3,
+     "quote": "Another critical challenge, coupled with calibration and map-making, lies in isolating the faint 21 cm signal without distorting or biasing its intrinsic cosmological information.",
+     "theme": "21-cm foreground separation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Elahi01",
+     "page": 14,
+     "quote": "Despite the expected statistical power of such a survey, foreground leakage from instrumental systematics remain a major concern for making a high significance detection of the cosmological signal and extracting robust cosmological constraints.",
+     "theme": "instrumental foreground leakage",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "deLeraAcedo01",
+     "page": 3,
+     "quote": "Many radio interferometers have taken enough data such that a detection of the 21-cm EoR signal could be made given the theoretical thermal noise floor; however, a definitive measurement has yet to be made.",
+     "theme": "first EoR 21-cm detection",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Pasechnik01",
+     "page": 21,
+     "quote": "The central challenge for SKAO is therefore not only to detect a SGWB, but also to use spectral, angular and statistical information to discriminate between these possibilities and to test the consistency of any FOPT interpretation.",
+     "theme": "cosmological versus astrophysical SGWB",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Santra01",
+     "page": 2,
+     "quote": "However, the origin and amplification of these fields remain poorly understood, especially at high redshift (e.g., Subramanian et al., 2006; Lehle et al., 2025).",
+     "theme": "origin of cosmic magnetism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cruz01",
+     "page": 3,
+     "quote": "a measurement with GW would be instrumental as independent probe of kinematic anisotropies - possibly also clarifying some existing tensions between CMB measurements and large-scale structure surveys",
+     "theme": "cosmic dipole tension",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "ArpanPal01",
+     "page": 13,
+     "quote": "The origin and strength of magnetic fields in radio relics represent one of the most pressing open problems.",
+     "theme": "magnetic fields in radio relics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "ArpanPal01",
+     "page": 19,
+     "quote": "The physical origin of this difference in occurrence rates is not understood.",
+     "theme": "relic and halo occurrence rates",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Caleb01",
+     "page": 14,
+     "quote": "However, the total mass, density, and temperature distribution of the CGM remain poorly constrained.",
+     "theme": "baryons in the circumgalactic medium",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Regis01",
+     "page": 2,
+     "quote": "However, the nature of this 'dark matter' (DM) remains completely unknown.",
+     "theme": "nature of dark matter",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Vacca01",
+     "page": 1,
+     "quote": "Despite technological progress, detecting this polarized signal is still very challenging.",
+     "theme": "polarization of radio halos and filaments",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Perna01",
+     "page": 2,
+     "quote": "Despite this experimental success, one of the major challenges the community will face is establishing if the origin of this GWB is astrophysical or cosmological (Agazie et al., 2023a; Afzal et al., 2023).",
+     "theme": "origin of the nHz GW background",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chakraborty01",
+     "page": 4,
+     "quote": "The sources of reionization remain a key outstanding issue in the field (see reviews in, e.g., Mesinger 2016; Dayal and Ferrara 2018).",
+     "theme": "sources of reionization",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Lelli01",
+     "page": 24,
+     "quote": "Understanding the nature of DM is one of the most outstanding challenges of modern physics.",
+     "theme": "dark matter versus modified gravity",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "deGasperin01",
+     "page": 7,
+     "quote": "It is fair to say that both acceleration and fading mechanisms in radio relics is still unclear and very much linked to the fate of aged CRs of AGN origin that only deep low-frequency radio observations can explore.",
+     "theme": "cosmic-ray acceleration in relics",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "deGasperin01",
+     "page": 6,
+     "quote": "However, radio emission from the accretion-shock, or other clear detections, have remained elusive.",
+     "theme": "accretion shocks",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Cuciti01",
+     "page": 24,
+     "quote": "Their origin is still unclear and the available statistics is still scarce, owing to their extreme low surface brightness, but the current data suggest that megahalos might be a common phenomenon that could be unveiled with deeper observations, such as those provided by SKA.",
+     "theme": "origin of megahalos",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Afonso01",
+     "page": 10,
+     "quote": "This observational bias has restricted our view of early AGN activity to the brightest and most accessible systems, while the fainter, potentially more numerous radio population remains largely unconstrained.",
+     "theme": "faint radio AGN at high redshift",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Gitti01",
+     "page": 7,
+     "quote": "In fact, although a correspondence between radio mini-halos and cool cores is well recognized, it is still not clear whether these radio sources are intrinsically common or rare in CC clusters.",
+     "theme": "mini-halo occurrence in cool cores",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Perrott01",
+     "page": 19,
+     "quote": "These cavities are generally considered to be an indicator of AGN feedback injecting energy into the ICM and disrupting cooling flow activity, however there is an open question regarding the contents of the cavities which SZ observations can aid in answering.",
+     "theme": "contents of AGN cavities",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "AritraBasu01",
+     "page": 11,
+     "quote": "Whether radio emission in phoenixes is a direct tracer of underlying ICM magnetic fields, or has other physical origin, is an open question.",
+     "theme": "nature of radio phoenixes",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kurahara01",
+     "page": 18,
+     "quote": "The origin of large-scale non-thermal structures \u0336 such as mega-halos, cold-front -associated turbulence, and early-stage radio bridges \u0336 also remains uncertain due to the extreme faintness of these components and the difficulty of disentangling them from embedded or background sources.",
+     "theme": "origin of large-scale non-thermal structures",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Jenkins01",
+     "page": 2,
+     "quote": "Despite these successes, large swathes of the GW frequency spectrum remain completely unexplored, including many decades in frequency between the bands probed by PTAs and ground-based interferometers such as LIGO and Virgo.",
+     "theme": "microhertz GW gap",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bosi01",
+     "page": 14,
+     "quote": "However, drawing this connection is not straightforward, and even in the ABH scenario our understanding of GW progenitors remains limited.",
+     "theme": "GW progenitor populations",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Harrison02",
+     "page": 13,
+     "quote": "Such systematics robustness remains a compelling feature, with the presence or absence of an ' \ud835\udc46 8 tension' in existing weak lensing data still unclear.",
+     "theme": "S8 tension",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "F",
+   "section": "The Extreme Universe",
+   "section_summary": "The Extreme Universe section gathers the compact-object, transient and astroparticle science cases, and its demands fall into three technical families. The largest is pulsar work. Keane et al. set out the census strategy that underpins most of the other pulsar chapters: real-time searches with 500 (250) tied-array beams on SKA-Low and 1500 (1125) beams on SKA-Mid at AA4 (AA*), using 10-minute pointings and an inner-kilometre sub-array. Several chapters build on that population. JunXu uses it for rotation measures of the Galactic magnetic field, Tiburzi for dispersion and scintillation studies of the ionised medium, Bagchi and Abbate for pulsars in globular clusters and the Galactic Centre, and Shannon, Venkatraman Krishnan, Basu, Oswald and Levin for timing arrays, tests of gravity, glitches, magnetospheres and neutron-star evolution. The second family covers time-domain astronomy: fast radio bursts (Curtin), long-period transients (Qiu), radio stars (Driessen), supernovae (Chandra; An), tidal disruption events (An; Shu), gravitational-wave counterparts (Colombo; Capelo) and neutrino fields (R\u00f6sch). These cases depend on commensal or triggered observations and on the transient buffer, and they ask for SKA-Mid continuum depths of roughly 1 to 10 microJy per beam in 10 minutes to a few hours.\n\nThe third family is VLBI with a phased SKA-Mid. It is the most frequently cited technique in the section. In this mode the SKA becomes the most sensitive element of global arrays, reaching image noise of a few microJy per beam in about an hour with beams of 0.5 to 1 mas at 8 to 15 GHz. This capability drives the proposed programmes on gamma-ray bursts (Giarratana), colliding-wind binaries (Marcote), X-ray binaries (An; Lin), jets at high redshift (Spingola), blazars and novae (Kadler; Lico), and space VLBI (Kovalev). Band 5 recurs throughout the section. It reduces free-free absorption and scattering, which is why the Galactic Centre searches, the core-shift measurements and the studies of young supernova shocks all rely on it. For the same reason, Bignall, Abbate and Tiburzi each argue that Bands 3 and 4 are needed to close the 1.76 to 4.6 GHz gap. A small group of astroparticle chapters (Buitink, Corstanje, Watanabe, Nelles) uses the dense core of SKA-Low as a detector of air showers between 50 and 350 MHz.\n\nThe papers are candid about the difference between AA* and AA4, and the difference matters most where sensitivity compounds over time or where the core is thinned. The air-shower programmes state that AA* already holds about 90 per cent of the core antennas and is sufficient for their goals. Capelo, in a similar vein, finds that the number of radio counterparts to LISA sources barely changes between the two stages. In contrast, Keane shows that the SKA-Mid core is more hollowed out at AA* than the SKA-Low core, so pulsar survey speed suffers more on Mid. Venkatraman Krishnan concludes that binary-pulsar tests need AA4, which halves the uncertainties on post-Keplerian parameters and reaches a given precision one to two years sooner. Tiburzi, Basu and the VLBI chapters likewise treat AA4 as the stage that extends programmes demonstrated at AA* to fainter, more distant or quiescent sources and larger samples. Consequently, the section's programmes are designed to begin in AA* with the brightest targets and to reach their full scientific return only with AA4.",
+   "requirements": [
+    {
+     "id": "F-01",
+     "paper": "Rosch01",
+     "page": 2,
+     "quote": "For SKA-Mid observations at band 1 or band 2, the FoV will be large enough to cover the entire 90% localization region of the triggered neutrino fields.",
+     "science_driver": "Census of variable/transient radio sources in IceCube neutrino localization regions",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 1 or Band 2",
+     "fov_or_area": "entire 90% neutrino localization region",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-02",
+     "paper": "Rosch01",
+     "page": 5,
+     "quote": "Observing at band 1 or band 2, or using the mosaicing approach at higher frequencies, we expect to detect an increase in the flux density at a level of \u223c 100 \ud835\udf07 Jy or below for possible TDEs in the observed neutrino fields.",
+     "science_driver": "Detection of TDE counterparts to high-energy neutrinos",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 1 or Band 2 (or mosaicing at higher frequencies)",
+     "fov_or_area": null,
+     "sensitivity": "~100 uJy or below",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-03",
+     "paper": "Keane01",
+     "page": 12,
+     "quote": "The PSS specifications for SKA-Low AA4 (AA*) are that 500 (250) tied-array Stokes I beams of 100-MHz bandwidth are available for real-time Fourier domain acceleration searches and single pulse searches.",
+     "science_driver": "SKA pulsar census",
+     "telescope": "low",
+     "mode": "Pulsar search survey",
+     "frequency": "100 MHz per beam",
+     "fov_or_area": "500 (250) tied-array beams",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 (AA*)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-04",
+     "paper": "Keane01",
+     "page": 9,
+     "quote": "We note that the PSS can perform real-time Fourier domain acceleration searches on pointings as long as 10 min, and real-time single pulse searches on pointings of up to 30 min, on 1500 (1125) tiedarray Stokes I beams in AA4 (AA*).",
+     "science_driver": "SKA pulsar census",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": null,
+     "fov_or_area": "1500 (1125) tied-array beams",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "10 min pointings (acceleration search), up to 30 min (single pulse)",
+     "array_stage": "AA4 (AA*)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-05",
+     "paper": "Keane01",
+     "page": 11,
+     "quote": "The corresponding field of view that can be tiled out for such a sub-array is 0 : 62 deg 2 (1 : 62 deg 2 ) in Band 2 (Band 1).",
+     "science_driver": "Optimal sub-array for pulsar survey speed",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "Band 2 (Band 1)",
+     "fov_or_area": "0.62 deg2 (1.62 deg2) for inner 1 km sub-array",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-06",
+     "paper": "Beri01",
+     "page": 4,
+     "quote": "For instance, the full AA \u2217 SKA-Mid array with 144 antennas operating in Band 2 will achieve a sensitivity of \u223c 3 \ud835\udf07 Jy beam -1 over a 15-minute exposure, increasing the current MeerKAT sensitivity by a factor \u223c 7, enabling the detection of jet ejecta from many more BH XRBs in outburst, including observations of the faint, receding jet components, that are required to directly measure the jet speed and inclination angle.",
+     "science_driver": "Jet ejecta from black hole X-ray binaries",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "sensitivity": "~3 uJy/beam",
+     "resolution": null,
+     "survey_speed_or_time": "15-minute exposure",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-07",
+     "paper": "Beri01",
+     "page": 7,
+     "quote": "For instance, 10 minutes of integration with SKA-Mid in Band 5a will achieve a Briggs-weighted sensitivity of approximately 3.4 \ud835\udf07 Jy beam -1 per 1 GHz-wide sub-band.",
+     "science_driver": "Radio/X-ray correlation of accreting compact objects",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a",
+     "fov_or_area": null,
+     "sensitivity": "~3.4 uJy/beam per 1 GHz sub-band",
+     "resolution": null,
+     "survey_speed_or_time": "10 minutes",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "5a",
+      "freq_ghz": null,
+      "bandwidth_mhz": 1000,
+      "integration_h": 0.1667,
+      "claimed_sensitivity": 3.4,
+      "unit": "uJy/beam",
+      "weighting": "briggs",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-08",
+     "paper": "Beri01",
+     "page": 8,
+     "quote": "The higher angular resolution of SKA (approximately 140 \u00d7 120 mas in Band 5a) will also reduce measurement uncertainties in cases where extended radio emission contaminates flux density determinations, thereby improving the accuracy of radio luminosity estimates.",
+     "science_driver": "Accurate radio luminosities of XRBs",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "~140 x 120 mas",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-09",
+     "paper": "Buitink01",
+     "page": 12,
+     "quote": "The frequency of interference minimum depends on the geometry of the shower and the antenna position, but usually falls in the 75 -250 MHz range.",
+     "science_driver": "Anomalous air showers and cosmic-ray composition",
+     "telescope": "low",
+     "mode": null,
+     "frequency": "75-250 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-10",
+     "paper": "Lin01",
+     "page": 4,
+     "quote": "With an integration time, \ud835\udf0f , of 10 sec (enabling observations of \u223c 10,000 sources across three bands in 100 hr), AA2 achieves a sensitivity of \u223c 53-86 \ud835\udf07 Jy at 1.6, 8.0, and 15 GHz.",
+     "science_driver": "Surveys for compact binaries via spectral flatness",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "1.6, 8.0 and 15 GHz",
+     "fov_or_area": "~10,000 sources",
+     "sensitivity": "~53-86 uJy",
+     "resolution": null,
+     "survey_speed_or_time": "10 s per source; 100 hr total",
+     "array_stage": "AA2",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-11",
+     "paper": "Lin01",
+     "page": 5,
+     "quote": "For a 15 \ud835\udc40 \u2299 sBH in a BHXB with \ud835\udc40 2 = 1 \ud835\udc40 \u2299 and \ud835\udc47 = 30 days, Equation (2) yields \ud835\udc51 max of \u223c 0.05, \u223c 0.23, and \u223c 8.46 kpc for AA \u2217 , AA4, and SKA-VLBI, respectively.",
+     "science_driver": "Astrometric detection of compact objects in binaries",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "10 min integration",
+     "array_stage": "AA*, AA4, SKA-VLBI",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-12",
+     "paper": "Marcote01",
+     "page": 5,
+     "quote": "In the AA4 configuration, SKA-mid dishes phased up for VLBI will become the most sensitive (equivalent) dish in any existing VLBI network, yielding image rms levels of a few \u00b5 Jy beam -1 in \u2272 1 h at GHz frequencies for typical VLBI configurations.",
+     "science_driver": "Population studies of wind-driven Galactic binaries",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "GHz frequencies",
+     "fov_or_area": null,
+     "sensitivity": "a few uJy/beam",
+     "resolution": null,
+     "survey_speed_or_time": "<~1 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-13",
+     "paper": "Marcote01",
+     "page": 7,
+     "quote": "Sensitive SKA-VLBI observations at the lowest frequencies ( \u223c 100 MHz, with SKA-Low antennas) would also allow us to explore, for the first time, the existence of extended (halo-like) emission on larger scales.",
+     "science_driver": "Extended emission of gamma-ray binaries",
+     "telescope": "low",
+     "mode": "VLBI / astrometry",
+     "frequency": "~100 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-14",
+     "paper": "Tiburzi01",
+     "page": 13,
+     "quote": "More than half of the observable pulsar population will have resolved scintillation from a 1024-channel observation with Band 5a (4600 MHz to 8500 MHz).",
+     "science_driver": "Galactic plasma turbulence from pulsar scintillation",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5a (4600-8500 MHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "1024 frequency channels",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-15",
+     "paper": "Tiburzi01",
+     "page": 28,
+     "quote": "This is because: (a) a bandwidth of at least 8 MHz is normally required, to capture the full spread of Galactic velocities while leaving sufficient spectral baseline for calibration; (b) the raw frequency channel width should ideally be no more than \u223c 1 kHz ( \u223c 0.2 km s -1 ), to permit the resolution of narrow, cold Hi lines (though data can later be binned to improve S/N as desired).",
+     "science_driver": "AU-scale HI absorption against pulsars",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "HI 21 cm, >=8 MHz bandwidth",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "channel width <~1 kHz (~0.2 km/s)",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-16",
+     "paper": "JunXu01",
+     "page": 7,
+     "quote": "Based on the anticipated pulsar performance of SKA1-Mid AA4 and AA*, we have \ud835\udc34 eff / \ud835\udc47 sys \u2248 1700 (or 1200) m 2 /K, SEFD=2 \ud835\udc58 B \ud835\udc47 sys / \ud835\udc34 eff =1.7 (or 2.4) Jy for AA4 (or AA*), 300 MHz bandwidth with 3720 frequency channels (resolution 80.64 kHz).",
+     "science_driver": "Pulsar rotation measures and Galactic magnetic field",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "300 MHz bandwidth, 3720 channels",
+     "fov_or_area": null,
+     "sensitivity": "SEFD 1.7 (2.4) Jy",
+     "resolution": "80.64 kHz channels",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 (AA*)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-17",
+     "paper": "JunXu01",
+     "page": 6,
+     "quote": "The sensitivity curves for different DMs of the SKA1-Mid AA4 and AA* are given by adopting an SNR of 50, an integration time of 60 minutes, a sampling time of 50 \ud835\udf07 s and a spin-period-dependent pulse duty cycle (with a typical value of 0.1 for \ud835\udc43 < 10 ms but declining with \ud835\udc43 -1 / 2 when \ud835\udc43 > 10 ms).",
+     "science_driver": "RMs of known pulsars lacking RM values",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "SNR 50",
+     "resolution": "50 us sampling",
+     "survey_speed_or_time": "60 minutes per pulsar",
+     "array_stage": "AA4 and AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-18",
+     "paper": "Shu01",
+     "page": 4,
+     "quote": "The naturally weighted map \ud835\udc5f\ud835\udc5a\ud835\udc60 for a global multi-baseline imaging including SKA-Mid reaches a few \ud835\udf07 Jy/beam, e.g., \u223c 3 \ud835\udf07 Jy/beam in \u223c 1 hour integration, depending on the actual antennas in operation and processed bandwidth.",
+     "science_driver": "Jets and outflows of tidal disruption events",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "~3 uJy/beam",
+     "resolution": null,
+     "survey_speed_or_time": "~1 hour",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-19",
+     "paper": "Shu01",
+     "page": 4,
+     "quote": "If the target is bright enough in the SKA-Mid bands (i.e., > \u223c 0.5 mJy), 3-4 long ( > \u223c 8 h) SKA+VLBI tracks can be scheduled, spanning a few weeks to months post trigger.",
+     "science_driver": "Size and proper-motion measurements of TDE outflows",
+     "telescope": "vlbi",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "targets >~0.5 mJy",
+     "resolution": null,
+     "survey_speed_or_time": "3-4 tracks of >~8 h over weeks to months",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-20",
+     "paper": "Shu01",
+     "page": 4,
+     "quote": "The intercontinental baselines imply a spatial resolution of \ud835\udf03 beam \u2243 \ud835\udf06 / \ud835\udc35 max \u2248 1 mas at 8 GHz and \u2248 0.5 mas at 15 GHz.",
+     "science_driver": "Resolving TDE jets",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "8 and 15 GHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "~1 mas at 8 GHz, ~0.5 mas at 15 GHz",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-21",
+     "paper": "Abbate01",
+     "page": 14,
+     "quote": "The integration time was assumed to be 4 hr. The central frequency of band 5a, band 5b part1, band 5b part2 are 6.6, 9.55 and 14.15 GHz, respectively, each with a 2.5-GHz bandwidth.",
+     "science_driver": "Pulsar searches in the Galactic Centre",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "6.6, 9.55, 14.15 GHz, 2.5 GHz bandwidth each",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "4 hr",
+     "array_stage": "AA4 and AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-22",
+     "paper": "Abbate01",
+     "page": 20,
+     "quote": "This will allow a complete coverage of the interested area in 5-6 h in band 3 and 20-30 h in band 5a.",
+     "science_driver": "Galactic Centre pulsar search coverage",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "Band 3 and Band 5a",
+     "fov_or_area": "Galactic Centre region",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "5-6 h (band 3), 20-30 h (band 5a)",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-23",
+     "paper": "Abbate01",
+     "page": 14,
+     "quote": "For the case of AA4, the survey is anticipated to detect 84%, 79%, 66% of the whole GC pulsar population, and 60%, 59%, 43% of the GC MSP population.",
+     "science_driver": "Galactic Centre pulsar yield",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "Band 5a, 5b",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-24",
+     "paper": "Colombo01",
+     "page": 8,
+     "quote": "Current estimates for SKAMID1 \ud835\udf0e sensitivity, assuming the AA* configuration, 10-minute integration time, and Briggs image weighting, are 6.1, 3.1, 3.7 \ud835\udf07 Jy beam -1 in Bands 2, 5a, 5b, respectively.",
+     "science_driver": "Radio afterglows of GW-detected neutron star mergers",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Bands 2, 5a, 5b",
+     "fov_or_area": null,
+     "sensitivity": "6.1, 3.1, 3.7 uJy/beam (1 sigma)",
+     "resolution": null,
+     "survey_speed_or_time": "10 minutes",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-25",
+     "paper": "Colombo01",
+     "page": 5,
+     "quote": "The blue contours show the corresponding distribution for the subset of afterglows with peak flux densities above the SKAO-AA4 10-min 5 \ud835\udf0e sensitivity (8.5 \ud835\udf07 Jy in Band5A), highlighting the characteristic peak times of SKAO-detectable events.",
+     "science_driver": "GRB afterglows from Einstein Telescope BNS mergers",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 5a",
+     "fov_or_area": null,
+     "sensitivity": "8.5 uJy (5 sigma)",
+     "resolution": null,
+     "survey_speed_or_time": "10 min",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-26",
+     "paper": "Giarratana01",
+     "page": 3,
+     "quote": "To simulate each VLBI observation, we considered a standard frequency setup with central frequency of 5 GHz (band 5a for the SKA-Mid 2 ) and a bandwidth of 512 MHz (recording rate of 4 Gbps), which are standard values for current VLBI experiments.",
+     "science_driver": "Size and proper motion of GRB afterglows",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "5 GHz (Band 5a), 512 MHz bandwidth",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-27",
+     "paper": "Giarratana01",
+     "page": 3,
+     "quote": "we assumed a standard phase-referencing experiment of 24 hr, with a cycle time of 6 minutes: 4 minutes on the target, and 2 minutes on a hypothetical phase calibrator.",
+     "science_driver": "VLBI imaging of faint GRB afterglows",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "24 hr phase-referencing experiment",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-28",
+     "paper": "Giarratana01",
+     "page": 12,
+     "quote": "Finally, routine fibre-connected e-VLBI with sub-array triggers would allow observations within 12-24 hours post-burst, capturing key reverseshock peaks and early superluminal motion that are otherwise missed.",
+     "science_driver": "Early-time GRB afterglow VLBI",
+     "telescope": "vlbi",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "response within 12-24 hours post-burst",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-29",
+     "paper": "Watanabe01",
+     "page": 4,
+     "quote": "Its large number of antennas is well-suited for an interferometric approach, and the increased frequency bandwidth up to 350 MHz allows more signal to be captured.",
+     "science_driver": "Interferometric reconstruction of air-shower radio emission",
+     "telescope": "low",
+     "mode": null,
+     "frequency": "up to 350 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-30",
+     "paper": "Qiu01",
+     "page": 11,
+     "quote": "A sub-array consisting 16 SKA-Low stations will be able to search for LPTs above 7 mJy at 1-minute timescale resolution.",
+     "science_driver": "Discovery of long-period transients",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "7 mJy",
+     "resolution": "1-minute time resolution",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-31",
+     "paper": "Qiu01",
+     "page": 12,
+     "quote": "As long as station primary beams are well-behaved and the bandpass has no sharp drop-off at the top end, 270-320 MHz is likely to be most effective for LPT searches (otherwise 200-250 MHz).",
+     "science_driver": "Optimal frequency for LPT searches",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "270-320 MHz (otherwise 200-250 MHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-32",
+     "paper": "Qiu01",
+     "page": 11,
+     "quote": "Shallow continuum surveys will provide 100 \ud835\udf07 Jy per 30 minute epoch images, which potentially enables the discovery of LPTs through traditional image-based radio transient surveys.",
+     "science_driver": "Image-based discovery of LPTs",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "100 uJy per epoch",
+     "resolution": null,
+     "survey_speed_or_time": "30 minute epochs",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-33",
+     "paper": "Capelo01",
+     "page": 6,
+     "quote": "The vertical line shows the assumed spectral flux density limit of SKA-Mid (array assembly 4: AA4) at 2 \ud835\udf07 Jy (for \u223c 4 hours of observing time in Band 2; see text for details).",
+     "science_driver": "Radio counterparts of LISA massive black hole binaries",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 2 (1.4 GHz)",
+     "fov_or_area": null,
+     "sensitivity": "2 uJy (5 sigma)",
+     "resolution": null,
+     "survey_speed_or_time": "~4 hours",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "2",
+      "freq_ghz": 1.4,
+      "bandwidth_mhz": 808,
+      "integration_h": 4,
+      "claimed_sensitivity": 2,
+      "unit": "uJy (5 sigma)",
+      "weighting": null,
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-34",
+     "paper": "Capelo01",
+     "page": 11,
+     "quote": "In order to compute the number of EM counterparts, we further impose a GW SNR > 10 and a sky localization \u0394\u03a9 < 10 deg 2 (as in M22), obtaining the distributions shown in Figure 4 and the numbers of detections given in Table 3.",
+     "science_driver": "Follow-up of LISA sky localizations",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": "sky localization < 10 deg2",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-35",
+     "paper": "Capelo01",
+     "page": 13,
+     "quote": "SKAO (AA4) - with 174 pulsars and 20 yr of total observation time (Shannon et al., 2025).",
+     "science_driver": "PTA detection of massive black hole binaries",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "frequency": null,
+     "fov_or_area": "174 pulsars",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "20 yr",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-36",
+     "paper": "Corstanje01",
+     "page": 7,
+     "quote": "As the AA* subset of this array already contains about 90 % of the full array, this will already be sufficient for carrying out the complete cosmic-ray science operations.",
+     "science_driver": "Cosmic rays in the Galactic-extragalactic transition",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": "inner core",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-37",
+     "paper": "Corstanje01",
+     "page": 15,
+     "quote": "In this case, we chose a 50 to 100 MHz bandwidth filter to have a relatively strong weight on \ud835\udc3f ; for higher frequencies, the sensitivity appears to lean more towards \ud835\udc45 .",
+     "science_driver": "Air-shower profile reconstruction",
+     "telescope": "low",
+     "mode": null,
+     "frequency": "50-100 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-38",
+     "paper": "Pathak01",
+     "page": 5,
+     "quote": "The full commensal wide and deep surveys of SKA1-MID band 3 and band 5 (Agudo et al., 2015) will have highly sensitive polarimetric capabilities which will enable power estimations of AGNs and distinguish between jet and star formation emission over a wide range of red-shifts.",
+     "science_driver": "Magnetized accretion disk-jet systems",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 3 and Band 5",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-39",
+     "paper": "AvishekBasu01",
+     "page": 23,
+     "quote": "For a canonical pulsar near the zenith, SKA-Low can reach a timing precision of \u223c 2 \ud835\udf07 s after 4 min using 271 elements within 10 km (AA*), improving to \u223c 1 \ud835\udf07 s with 404 elements (AA4).",
+     "science_driver": "Glitch detection and neutron star interiors",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "timing precision ~2 us (AA*), ~1 us (AA4)",
+     "resolution": null,
+     "survey_speed_or_time": "4 min",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-40",
+     "paper": "AvishekBasu01",
+     "page": 23,
+     "quote": "Both SKA-Low and Mid will have the capability to form up to 16 concurrent (subarray) beams for pulsar timing in AA4.",
+     "science_driver": "Glitch monitoring cadence",
+     "telescope": "both",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": "16 concurrent beams",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-41",
+     "paper": "AvishekBasu01",
+     "page": 20,
+     "quote": "Simulations assume the ENG EoS (Lattimer and Prakash, 2001) and 3 hr monthly observations with full arrays.",
+     "science_driver": "Neutron star mass measurements and equation of state",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "3 hr monthly",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-42",
+     "paper": "Lico01",
+     "page": 7,
+     "quote": "When linked with existing arrays such as the EVN and global VLBI networks, the phased SKA-Mid will deliver sub-milliarcsecond resolution across a wide 1.4-15 GHz frequency range (Bempong-Manful et al., 2026).",
+     "science_driver": "Nova ejecta geometry and shocks",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "1.4-15 GHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "sub-milliarcsecond",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-43",
+     "paper": "Lico01",
+     "page": 6,
+     "quote": "The higher frequency bands of SKA-Mid, particularly band 5b at 8.3 - 15.4 GHz where both the free-free and synchrotron emission opacity decreases, are crucial for resolving the compact structures in the early phases that follow the nova outburst.",
+     "science_driver": "Early-phase nova structure",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 5b (8.3-15.4 GHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-44",
+     "paper": "Bagchi01",
+     "page": 19,
+     "quote": "Thus, it can achieve an rms noise of about 2.6 \ud835\udf07 Jy for a 2-hr integration.",
+     "science_driver": "Pulsar searches in globular clusters",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "1250-1550 MHz",
+     "fov_or_area": "1000-m radius core",
+     "sensitivity": "~2.6 uJy rms",
+     "resolution": null,
+     "survey_speed_or_time": "2 hr",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "2",
+      "freq_ghz": 1.4,
+      "bandwidth_mhz": 300,
+      "integration_h": 2,
+      "claimed_sensitivity": 2.6,
+      "unit": "uJy",
+      "weighting": null,
+      "quantity": "pss",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-45",
+     "paper": "Bagchi01",
+     "page": 19,
+     "quote": "Analogously, using the full AA \u2217 array, the limiting sensitivity will be about 5 \ud835\udf07 Jy, whereas for the full AA4 array, the limiting sensitivity will be about 3.5 \ud835\udf07 Jy.",
+     "science_driver": "Faint MSPs in globular clusters",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": "1400 MHz",
+     "fov_or_area": null,
+     "sensitivity": "~5 uJy (AA*), ~3.5 uJy (AA4) limiting",
+     "resolution": null,
+     "survey_speed_or_time": "2 hr",
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-46",
+     "paper": "Bagchi01",
+     "page": 19,
+     "quote": "The 600-m (radius) core of the SKA-LOW, operating from 250 -450 MHz, can achieve about 30 \ud835\udf07 Jy sensitivity for 2 hr integrations (depending on the line-of-sight; for clusters in the Galactic bulge, the sky temperature will reduce the sensitivity a bit).",
+     "science_driver": "Low-DM globular cluster pulsar searches",
+     "telescope": "low",
+     "mode": "Pulsar search survey",
+     "frequency": "250-450 MHz",
+     "fov_or_area": "600-m radius core",
+     "sensitivity": "~30 uJy",
+     "resolution": null,
+     "survey_speed_or_time": "2 hr",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-47",
+     "paper": "Kadler01",
+     "page": 5,
+     "quote": "The shortest time scales observed (possibly during rare flaring events and often more significant in polarized emission rather than total intensity) are indicative of the highest-relativistic plasma in AGN jets, which makes Band 5b (8.3-15.4 GHz) most important in the SKA context.",
+     "science_driver": "High-energy emission processes in blazar jets",
+     "telescope": "mid",
+     "mode": "VLBI / astrometry",
+     "frequency": "Band 5b (8.3-15.4 GHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-48",
+     "paper": "Kadler01",
+     "page": 5,
+     "quote": "In the southern hemisphere, 15 GHz monitoring observations with a phased sub-array of the SKA core could yield even more sensitive data.",
+     "science_driver": "Variability monitoring of TeV blazars",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "15 GHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-49",
+     "paper": "Castignani01",
+     "page": 22,
+     "quote": "Assuming use of Band 2 of SKAO-MID, centred at 1.31 GHz with 0.72 GHz of bandwidth, and an exposure time of 10 h, the sensitivity calculator returns a resolution of 0.2 arcsec and a sensitivity of 4 \ud835\udf07 Jy/beam, which turns to 1 \ud835\udf07 Jy/beam at a coarser resolution of 1 arcsec.",
+     "science_driver": "Radio counterparts of gamma-ray sources",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 2, 1.31 GHz, 0.72 GHz bandwidth",
+     "fov_or_area": null,
+     "sensitivity": "4 uJy/beam (1 uJy/beam at 1 arcsec)",
+     "resolution": "0.2 arcsec",
+     "survey_speed_or_time": "10 h",
+     "array_stage": null,
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "2",
+      "freq_ghz": 1.31,
+      "bandwidth_mhz": 720,
+      "integration_h": 10,
+      "claimed_sensitivity": 4,
+      "unit": "uJy/beam",
+      "weighting": null,
+      "quantity": "continuum",
+      "claimed_beam_arcsec": 0.2
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-50",
+     "paper": "Spingola01",
+     "page": 15,
+     "quote": "SKA-AA4 as a phased-array with the international baselines will already provide a sufficient sensitivity and angular resolution to detect and spatially resolve even faint jets at low surface brightness out to \ud835\udc67 > 6.",
+     "science_driver": "AGN jets in the early Universe",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-51",
+     "paper": "Spingola01",
+     "page": 15,
+     "quote": "To recover the rest-frame \u223c 1-3 GHz regime where extended steep-spectrum jets and lobes are brighter, SKA-Low and SKA-Mid Band 1 become essential.",
+     "science_driver": "Extended jets and lobes at high redshift",
+     "telescope": "both",
+     "mode": null,
+     "frequency": "SKA-Low and SKA-Mid Band 1",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-52",
+     "paper": "Spingola01",
+     "page": 11,
+     "quote": "(2024) estimate that \u223c 2000 radio AGN at \ud835\udc67 > 6 and \u223c 30 at \ud835\udc67 > 10 are detectable in the SKA-Mid Wide survey (over an area of 1000 deg 2 , Prandoni and Seymour 2015) with a 5 \ud835\udf07 Jy detection limit, including sources whose radio emission may not originate from jets (but from e.g., star formation or AGN winds).",
+     "science_driver": "High-redshift radio AGN census",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": null,
+     "fov_or_area": "1000 deg2",
+     "sensitivity": "5 uJy detection limit",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-53",
+     "paper": "Chandra01",
+     "page": 9,
+     "quote": "With one hour 5 \ud835\udf0e sensitivities of 6 \ud835\udf07 Jy / beam (SKA1-Mid) and 75 \ud835\udf07 Jy / beam, (SKA-Low) in AA4, we can extrapolate the Rose et al.",
+     "science_driver": "Late-time radio emission from supernovae",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "6 uJy/beam (Mid), 75 uJy/beam (Low), 5 sigma",
+     "resolution": null,
+     "survey_speed_or_time": "1 hour",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-54",
+     "paper": "Chandra01",
+     "page": 10,
+     "quote": "Hence the optimum trigger strategy is to trigger SNe IIb, Ib and Ic within 2-7 days, SNe IIP within 5-10 days and SNe IIn from a couple of weeks to a month.",
+     "science_driver": "Supernova progenitor mass loss",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "triggers within 2-7 d (IIb/Ib/Ic), 5-10 d (IIP), weeks-month (IIn)",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-55",
+     "paper": "Chandra01",
+     "page": 7,
+     "quote": "Both panels assume a CCSN rate of \ud835\udc41 \u2248 10 ( \ud835\udc37 / 30 Mpc ) 3 yr -1 and a yearly survey area of 10,000 deg 2 .",
+     "science_driver": "Supernova detection rates",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": "10,000 deg2 per year",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-56",
+     "paper": "VenkatramanKrishnan01",
+     "page": 22,
+     "quote": "All observations are assumed to be at L-band, with a central frequency of 1.3GHz and a bandwidth of 0.8 GHz.",
+     "science_driver": "Tests of gravity with binary pulsars",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "1.3 GHz, 0.8 GHz bandwidth",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-57",
+     "paper": "VenkatramanKrishnan01",
+     "page": 22,
+     "quote": "Based on the increase of surface area from MeerKAT to SKA AA and SKA AA4, and assuming the same integration time and bandwidth as in the MeerKAT timing experiments, the ToA uncertainty is reduced to 39% in the SKA AA and to 28% in the SKA AA4.",
+     "science_driver": "Binary pulsar timing precision",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "ToA uncertainty 39% (AA*) and 28% (AA4) of MeerKAT",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-58",
+     "paper": "VenkatramanKrishnan01",
+     "page": 28,
+     "quote": "The point source sensitivity of a VLBI array containing SKA1-mid (AA4) plus other southern antennas providing at least a 30 arcminute field of view at L band is a factor of four better than the current VLBA, driving an astrometric improvement of the same order and making it possible to make precise parallax measurements for sources up to distances of 10 kpc and even beyond (as current-generation surveys can already provide 10% level parallax accuracy out to 2.5 kpc routinely; Deller et al., 2019) .",
+     "science_driver": "Pulsar parallaxes for gravity tests",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "L band",
+     "fov_or_area": "at least 30 arcminute field of view",
+     "sensitivity": "factor of four better than VLBA",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-59",
+     "paper": "Besancon01",
+     "page": 12,
+     "quote": "(2013) concluded that an rms timing of about 30 ns in 1 hour integration could be achieved.",
+     "science_driver": "Gravitational-wave memory effects",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "~30 ns rms timing",
+     "resolution": null,
+     "survey_speed_or_time": "1 hour",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-60",
+     "paper": "Curtin01",
+     "page": 12,
+     "quote": "Once AA4 becomes available, the localisation precision of SKA-Mid alone will be of order 15 mas.",
+     "science_driver": "FRB host galaxies and local environments",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "localisation ~15 mas",
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-61",
+     "paper": "Curtin01",
+     "page": 9,
+     "quote": "Host Galaxies & High-Redshift Sources: Given SKA-Low's maximum baseline of 65 km, we can expect the localization capability to approach \u223c 250 mas for a 10 \ud835\udf0e detection at 200 MHz if data from the full-array is stored within the transient buffer and calibration solutions can be applied with sufficient accuracy to limit systematic astrometric errors to below this level.",
+     "science_driver": "Localizing low-frequency FRBs",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "200 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "localization ~250 mas",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-62",
+     "paper": "Curtin01",
+     "page": 11,
+     "quote": "While the maximum transient buffer bandwidth for SKA-Mid is currently 400 MHz, simultaneous observations with SKA-Low could test the full emission bandwidth of the thus-far non-repeating FRB sources.",
+     "science_driver": "FRB spectral extent",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "400 MHz transient buffer bandwidth",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-63",
+     "paper": "Shannon01",
+     "page": 20,
+     "quote": "For SKA-mid AA4 is forecast 1 to have a system equivalent flux density (SEFD) of 1.7 Jy and AA \u2217 is expected to have a SEFD of 2.4 Jy in band 2, compared to the 6 -7 Jy SEFD for MeerKAT.",
+     "science_driver": "SKAO pulsar timing array",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "sensitivity": "SEFD 1.7 Jy (AA4), 2.4 Jy (AA*)",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4 and AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-64",
+     "paper": "Shannon01",
+     "page": 31,
+     "quote": "Barring that, monitoring in bands 1 and 2 (350-1760 MHz) is a baseline requirement for PTA science.",
+     "science_driver": "PTA frequency coverage for DM correction",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "frequency": "Bands 1 and 2 (350-1760 MHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-65",
+     "paper": "Shannon01",
+     "page": 21,
+     "quote": "The use of sub-arrays saves 2.8 hours per epoch, assuming all pulsars would be observed for at least 256 s with the full array.",
+     "science_driver": "Efficient PTA observing strategy",
+     "telescope": "mid",
+     "mode": "Pulsar timing array",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "saves 2.8 hours per epoch; >=256 s per pulsar",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-66",
+     "paper": "Driessen01",
+     "page": 10,
+     "quote": "If SKA-Low AA \u2217 conducts a wide-field survey with 8 h pointings at 144 MHz with a bandwidth of \u2248 50 MHz, a 5 \ud835\udf0e Stokes V detection will need to be \u2248 50 \ud835\udf07 Jy based on current expected array sensitivity for AA \u2217 and a robust parameter of 0.",
+     "science_driver": "Circularly polarised radio stars",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": "144 MHz, ~50 MHz bandwidth",
+     "fov_or_area": null,
+     "sensitivity": "~50 uJy (5 sigma Stokes V)",
+     "resolution": null,
+     "survey_speed_or_time": "8 h pointings",
+     "array_stage": "AA*",
+     "calculator_params": {
+      "telescope": "low",
+      "band": null,
+      "freq_ghz": 0.144,
+      "bandwidth_mhz": 50,
+      "integration_h": 8,
+      "claimed_sensitivity": 50,
+      "unit": "uJy (5 sigma, Stokes V)",
+      "weighting": "robust 0",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-67",
+     "paper": "Driessen01",
+     "page": 9,
+     "quote": "Assuming the current projected SKA-Mid AA \u2217 1 h integration continuum sensitivity of \u223c 20 \u00b5 Jy and \u223c 10 \u00b5 Jy in Band 1 and Band 2 respectively, 1 h pointings with SKA-Mid will push the 5 \ud835\udf0e 10 15 erg s -1 Hz -1 completeness horizon out to \u223c 100pc and probe the luminosity distribution down to 10 13 erg s -1 Hz -1 for systems within \u223c 10 pc.",
+     "science_driver": "Coherent bursts from M dwarfs",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 1 and Band 2",
+     "fov_or_area": null,
+     "sensitivity": "~20 uJy (Band 1), ~10 uJy (Band 2)",
+     "resolution": null,
+     "survey_speed_or_time": "1 h pointings",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-68",
+     "paper": "Driessen01",
+     "page": 10,
+     "quote": "The SKA-Mid Array AA \u2217 is predicted to reach the same depth when observing with Band 2 in approximately 3 h.",
+     "science_driver": "Radio star source counts",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "sensitivity": "~1 uJy",
+     "resolution": null,
+     "survey_speed_or_time": "~3 h",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-69",
+     "paper": "TaoAn03",
+     "page": 12,
+     "quote": "In AA \u2217 , Band 2 commensal visits at 3-7 d cadence reach 50-100 \ud835\udf07 Jy at 5 \ud835\udf0e , and stacking ten visits lowers the threshold to 10-30 \ud835\udf07 Jy, corresponding to \ud835\udc3f \ud835\udf08 \u2273 10 28 erg s -1 Hz -1 at \ud835\udc37 \ud835\udc3f \u2272 500 Mpc.",
+     "science_driver": "Discovery of radio TDEs",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Band 2",
+     "fov_or_area": null,
+     "sensitivity": "50-100 uJy (5 sigma); 10-30 uJy stacked",
+     "resolution": null,
+     "survey_speed_or_time": "3-7 d cadence",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-70",
+     "paper": "TaoAn03",
+     "page": 12,
+     "quote": "Depending on source brightness and cadence, such a program would require of order 100-200 hr yr -1 and would already define the range of jet and outflow properties, test the classification strategy, and anchor the first SKA measurements of CNM structure.",
+     "science_driver": "TDE follow-up programme",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "Bands 2 and 5",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "100-200 hr per year",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-71",
+     "paper": "TaoAn03",
+     "page": 9,
+     "quote": "SKA-Low covers 50-350 MHz and reaches \u223c 13 \ud835\udf07 Jy beam -1 in a 1 hr integration at 150 MHz.",
+     "science_driver": "Late-time optically thin TDE emission",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "150 MHz",
+     "fov_or_area": null,
+     "sensitivity": "~13 uJy/beam",
+     "resolution": null,
+     "survey_speed_or_time": "1 hr",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-72",
+     "paper": "Bignall01",
+     "page": 6,
+     "quote": "ASKAP is able to detect significant intra-hour variability for source flux densities down to \u223c 1 mJy; SKA-Mid AA4 will go more than an order of magnitude fainter, albeit with a smaller field of view.",
+     "science_driver": "Interstellar scintillation of compact AGN",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "more than an order of magnitude below ~1 mJy",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-73",
+     "paper": "Bignall01",
+     "page": 9,
+     "quote": "For detailed modelling of ESEs and ISS, SKA-Mid Bands 3 and 4 would be highly desirable to close the gap in frequency coverage between 1.76 and 4.6 GHz, as the most extreme variability of AGN due to interstellar propagation is often seen in this region (Kedziora-Chudczer et al., 2001).",
+     "science_driver": "Extreme scattering events",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Bands 3 and 4 (1.76-4.6 GHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-74",
+     "paper": "Bignall01",
+     "page": 9,
+     "quote": "a relatively fast and shallow all-sky survey, repeated on a quasi-regular basis would be extremely valuable for investigating AGN intrinsic variability (preferably SKA-Mid Band 5) and slow refractive scintillation (SKA-Low and SKA-Mid Band 1), among many other transient science applications, across the entire observable sky.",
+     "science_driver": "AGN variability statistics",
+     "telescope": "both",
+     "mode": "Wide-field continuum survey",
+     "frequency": "SKA-Mid Band 5; SKA-Low and Band 1",
+     "fov_or_area": "all-sky",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "repeated on a quasi-regular basis",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-75",
+     "paper": "TaoAn01",
+     "page": 4,
+     "quote": "For AA* we therefore adopt a conservative single-epoch astrometric error budget of \ud835\udf0e \ud835\udf0b \u2272 10 -20 \ud835\udf07 as for well calibrated, mJy-level targets, improving further in AA4 thanks to higher SNR and denser calibrator grids.",
+     "science_driver": "X-ray binary astrometric census",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "mJy-level targets",
+     "resolution": "astrometric error <~10-20 uas",
+     "survey_speed_or_time": null,
+     "array_stage": "AA* (improving in AA4)",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-76",
+     "paper": "TaoAn01",
+     "page": 16,
+     "quote": "In AA \u2217 , campaigns will target the brightest transients ( \ud835\udc46 \ud835\udf08 \u2273 1 mJy), establishing the methodology and building the first systematic sample.",
+     "science_driver": "XRB jet VLBI movies",
+     "telescope": "vlbi",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "targets >~1 mJy",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-77",
+     "paper": "TaoAn01",
+     "page": 15,
+     "quote": "We therefore envisage an EP-driven trigger logic that prioritises rapid SKA snapshots for classification and flux-density assessment, followed by a small number of long ( \u2273 8 h) SKA+VLBI tracks during the first 1-3 days for the best candidates, enabling AUscale kinematics and astrometric registration.",
+     "science_driver": "Early jet ejection in XRB outbursts",
+     "telescope": "vlbi",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": ">~8 h tracks during first 1-3 days",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-78",
+     "paper": "Oswald01",
+     "page": 10,
+     "quote": "The SKA Band 5b will for the first time, offer the requested sensitivity to enable high-radio-frequency ( > 10 GHz) study of pulsar emission for a large number of samples.",
+     "science_driver": "Pulsar emission physics at high frequency",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Band 5b (>10 GHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-79",
+     "paper": "Oswald01",
+     "page": 22,
+     "quote": "Broadband studies of these objects, both known and yet-to-be identified, with the SKA-Mid telescope in subarray mode covering the 0.3-15 GHz range of Bands 1, 2 and 5, will provide unique insights into the impulse response of neutron star magnetospheres following explosive events.",
+     "science_driver": "Magnetar magnetospheres",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": "Bands 1, 2 and 5 (0.3-15 GHz)",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-80",
+     "paper": "Gelfand01",
+     "page": 14,
+     "quote": "However, the longest baselines of the SKA will provide the sub-arcsecond angular resolution needed to measure small-scale pulsar proper motion vectors, and to study small-scale structures within PWNe.",
+     "science_driver": "Pulsar wind nebulae structure",
+     "telescope": "mid",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "sub-arcsecond",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-81",
+     "paper": "Levin01",
+     "page": 14,
+     "quote": "With the SKAO, in the 'Detected Filterbank' observing mode, data can be sampled as fast as every 100 ns and use the full width of the observing band 8 for a small number of beams (up to 16).",
+     "science_driver": "Neutron star population studies",
+     "telescope": "both",
+     "mode": null,
+     "frequency": "full observing band",
+     "fov_or_area": "up to 16 beams",
+     "sensitivity": null,
+     "resolution": "100 ns sampling",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-82",
+     "paper": "Levin01",
+     "page": 6,
+     "quote": "(2025) with the full AA*/AA4 SKA-Mid 6 , would give an improvement of a factor of 2.4 (AA*) to 3 (AA4) of their \u223c 10 \ud835\udf07 J sensitivity limit.",
+     "science_driver": "Radio searches of SNRs and CCOs",
+     "telescope": "mid",
+     "mode": "Pulsar search survey",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": "factor 2.4 (AA*) to 3 (AA4) below ~10 uJy",
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* and AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-83",
+     "paper": "Kovalev01",
+     "page": 13,
+     "quote": "Although the present chapter focuses primarily on SKA-Mid, SKA-Low also offers unique opportunities for Space VLBI at low frequencies ( \u223c 50-350 MHz).",
+     "science_driver": "Space VLBI with SKA telescopes",
+     "telescope": "low",
+     "mode": "VLBI / astrometry",
+     "frequency": "~50-350 MHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-84",
+     "paper": "Kovalev01",
+     "page": 7,
+     "quote": "Its broad bandwidth (0.35-15.4 GHz) combined with space VLBI resolution enables reliable RM measurements of faint features while resolving the transverse structure where toroidal signatures peak.",
+     "science_driver": "Jet magnetic field structure",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "0.35-15.4 GHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": "space VLBI resolution",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-85",
+     "paper": "TaoAn02",
+     "page": 3,
+     "quote": "Hour-scale integrations yield \ud835\udf0e rms \u2272 2 \ud835\udf07 Jy beam -1 (Band 5), enabling the detection and imaging of ordinary core-collapse SNe throughout the local 30-50 Mpc volume.",
+     "science_driver": "VLBI imaging of supernova shocks",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "Band 5",
+     "fov_or_area": null,
+     "sensitivity": "<~2 uJy/beam",
+     "resolution": null,
+     "survey_speed_or_time": "hour-scale",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-86",
+     "paper": "TaoAn02",
+     "page": 10,
+     "quote": "For this nearby sample, four 2-4 h epochs at 5-8 GHz will measure the expansion index \ud835\udc5a and axis ratio \ud835\udc4e / \ud835\udc4f to 5-10%, providing a quantitative test of type-dependent asymmetry, directly imaging CSM structure in IIn/Ibn events, and pushing most normal SNe Ia to mass-loss limits of / \ud835\udc40 \u2272 10 -9 \ud835\udc40 \u2299 yr -1 ( \ud835\udc63 \ud835\udc64 / 100 km s -1 ) -1 .",
+     "science_driver": "Supernova expansion and asymmetry",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "5-8 GHz",
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "four 2-4 h epochs",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-87",
+     "paper": "TaoAn02",
+     "page": 8,
+     "quote": "For spectroscopically classified SNe within \u2272 50 Mpc we will trigger rapid follow up ( \u2272 24 hr from discovery or classification) with SKA-Mid (continuum plus in-band spectra) to capture the rise through SSA, constrain the explosion epoch, and set a welldefined phase zero for subsequent kinematic modelling (see detailed discussion of rapid-response triggering for SKA radio transients in Anderson et al.",
+     "science_driver": "Early supernova radio rise",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "fov_or_area": null,
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": "<~24 hr response",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "F-88",
+     "paper": "Nelles01",
+     "page": 7,
+     "quote": "Given the already dense instrumentation foreseen in the inner core for the SKA-Low staged delivery of AA*, we anticipate to be able to reach all of these science goals with AA*, given enough time allocation.",
+     "science_driver": "PeV gamma-ray detection with SKA-Low",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "fov_or_area": "inner core",
+     "sensitivity": null,
+     "resolution": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Rosch01",
+     "page": 2,
+     "quote": "The origin of high-energy astrophysical neutrinos detected by the IceCube and, as recently reported (KM3NeT Collaboration et al., 2025), by the KM3NeT neutrino observatories is a hotly debated topic in astroparticle physics.",
+     "theme": "origin of high-energy neutrinos",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Keane01",
+     "page": 21,
+     "quote": "In doing so, we are eschewing information from more recent surveys but with the completeness of the searches, and reporting thereof being unclear, we choose this conservative approach.",
+     "theme": "completeness of pulsar survey records",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Beri01",
+     "page": 6,
+     "quote": "Nevertheless, many aspects of the underlying physics remain unresolved despite steady progress over recent decades.",
+     "theme": "accretion-ejection coupling",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Buitink01",
+     "page": 3,
+     "quote": "Where they come from and how they are accelerated remain large open questions in astrophysics (Blumer et al., 2009).",
+     "theme": "origin of cosmic rays",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Marcote01",
+     "page": 7,
+     "quote": "Furthermore, SKA-VLBI observations at higher frequencies ( \u223c 15 GHz) will help to resolve the long-standing question regarding the origin of the bulk of the radio emission in \u03b3 Bs.",
+     "theme": "radio emission of gamma-ray binaries",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Marcote01",
+     "page": 8,
+     "quote": "These wide binaries remain elusive to optical and high-energy data, as their large separations produce minimal radial velocity shifts and weaker or no high-energy emission.",
+     "theme": "hidden wide binary population",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tiburzi01",
+     "page": 9,
+     "quote": "Despite significant observational and theoretical progress, the compact plasma structures (AU-scale and smaller) responsible for scintillation remain poorly understood.",
+     "theme": "small-scale interstellar plasma structure",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Shu01",
+     "page": 6,
+     "quote": "The origin of radio emissions in TDEs remains an open question in high-energy astrophysics.",
+     "theme": "origin of TDE radio emission",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Shu01",
+     "page": 3,
+     "quote": "In addition, it remains puzzling why only a small fraction ( < 1%) of TDEs launch successful jets.",
+     "theme": "jet formation in TDEs",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Watanabe01",
+     "page": 20,
+     "quote": "The origin of this bias is not yet known, and is under investigation.",
+     "theme": "air-shower reconstruction bias",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Qiu01",
+     "page": 13,
+     "quote": "In the case of the isolated progenitor scenario it remains unclear whether these sources are simply the slow tail of the canonical pulsar/magnetar population or an exotic sub-class of neutron star.",
+     "theme": "nature of long-period transients",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Qiu01",
+     "page": 13,
+     "quote": "The binarity of most systems is unclear, and is hindered by their low galactic latitude which impedes optical observations.",
+     "theme": "binarity of long-period transients",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Corstanje01",
+     "page": 12,
+     "quote": "Technical limitations are not yet known, but are expected around an order of magnitude indicated by the area shaded in red.",
+     "theme": "technical limits of cosmic-ray reconstruction",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Lico01",
+     "page": 4,
+     "quote": "These capabilities (detailed in Section 3) address the key open questions in nova physics: how mass is ejected (mass, velocity and geometry), how shocks form and accelerate particles, what fraction of the ejecta remains bound, and how repeated mass-loss shapes the circumstellar environment.",
+     "theme": "nova mass ejection and shocks",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kadler01",
+     "page": 2,
+     "quote": "Equally puzzling was the highly significant association of a burst of lower-energy neutrinos with TXS0506+056 during a period of low gamma-ray emission.",
+     "theme": "neutrino-blazar association",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Spingola01",
+     "page": 14,
+     "quote": "Among the physical properties measured in jetted AGN \ud835\udc67 > 4, the estimate of \ud835\udc47 b of high\ud835\udc67 blazars seems to be controversial",
+     "theme": "brightness temperature of high-z blazars",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chandra01",
+     "page": 12,
+     "quote": "SKA's exceptional sensitivity will transform our ability to measure pre-supernova mass loss across all core-collapse subtypes, uncover episodic or eruptive mass-loss episodes, and probe the poorly understood circumstellar environments of stripped-envelope supernovae-including the possible role of central engines.",
+     "theme": "circumstellar environments of stripped-envelope SNe",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Curtin01",
+     "page": 1,
+     "quote": "However, the nature of FRB sources remains an open question in astrophysics.",
+     "theme": "nature of FRB sources",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Curtin01",
+     "page": 8,
+     "quote": "Population of Low-Frequency FRBs: FRB emission below the CHIME band ( < 400 MHz) has been challenging to detect and hence the FRB rate in SKA-Low's spectral range is poorly understood.",
+     "theme": "low-frequency FRB rate",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "TaoAn03",
+     "page": 4,
+     "quote": "However, the mapping from these ingredients to jet launching, Lorentz factor, and opening angle remains unclear.",
+     "theme": "TDE jet launching",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "TaoAn03",
+     "page": 6,
+     "quote": "Whether these intermittent accretion episodes contribute a significant fraction of SMBH mass growth remains debated (Lu and Kumar, 2018; Dai et al., 2021), because radiative energetics alone underconstrain the mass actually accreted versus expelled in winds or jets.",
+     "theme": "TDE contribution to SMBH growth",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Bignall01",
+     "page": 4,
+     "quote": "As the origin of the ESE lenses is not yet known, nor even the event rate accurately determined, measurement of a larger number of events through monitoring many thousands of compact AGN would greatly advance this field (Section 3.1.1).",
+     "theme": "origin of extreme scattering events",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "TaoAn01",
+     "page": 5,
+     "quote": "The formation and early evolution of relativistic jets from X-ray binaries remain among the most compelling puzzles in high-energy astrophysics (Mirabel and Rodr\u00edguez, 1994, 1999; Fender et al., 2004).",
+     "theme": "XRB jet formation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "TaoAn01",
+     "page": 17,
+     "quote": "By comparing core shifts and inferred magnetic profiles across different accretion states and compact-object types, CoSMOS will test whether jet magnetization evolves systematically during outbursts and whether black-hole and neutron-star jets occupy the same parameter space.",
+     "theme": "jet magnetization in XRBs",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Oswald01",
+     "page": 11,
+     "quote": "An important puzzle presented to us is why pulsars are variable at all timescales imaginable.",
+     "theme": "pulsar emission variability",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Oswald01",
+     "page": 24,
+     "quote": "LPTs have even longer periods (up to 6.45 hours discovered so far) (Lee et al., 2025) and it is as yet unclear whether these also originate from neutron stars, or from an alternative source or physical mechanism, such as from White Dwarfs (Rea et al., 2024).",
+     "theme": "nature of long-period transients",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Gelfand01",
+     "page": 8,
+     "quote": "While the notion that PWNe are primarily powered by the rotation energy of neutron stars was established nearly \u223c 6 decades ago (e.g., Pacini 1968; Goldreich and Julian 1969), as described below their remains several unanswered fundamental questions regarding the nature of these sources, especially concerning their ability to generate the highest energy photons - and therefore, among the highest energy particles - observed from the Milky Way.",
+     "theme": "PWNe as PeV accelerators",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Levin01",
+     "page": 13,
+     "quote": "While there is now ample evidence that this scenario is broadly correct, many details remain poorly understood.",
+     "theme": "MSP recycling scenario",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kovalev01",
+     "page": 8,
+     "quote": "Another long-standing open question is the nature of jet components and the transverse jet structure.",
+     "theme": "transverse structure of AGN jets",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kovalev01",
+     "page": 9,
+     "quote": "Whether the physical origin of the compact radio emission is due to weak outflow activity, advection dominated accretion flow, or star formation has long been debated.",
+     "theme": "origin of compact radio emission in low-luminosity nuclei",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "TaoAn02",
+     "page": 9,
+     "quote": "Comparing these maps with optical line profiles and X ray light curves will test whether the most extreme CSM configurations arise from brief eruptive episodes or from long lived, binary driven equatorial outflows.",
+     "theme": "origin of dense supernova CSM",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Nelles01",
+     "page": 5,
+     "quote": "The transition between a SNR and a PWN is gradual, and it is not yet clear from where the highest \ud835\udefe -emission is detected.",
+     "theme": "sites of PeV gamma-ray emission",
+     "verification": "verbatim"
+    }
+   ]
+  },
+  {
+   "letter": "G",
+   "section": "Methods and Techniques",
+   "section_summary": "The Methods and Techniques section gathers the calibration, imaging, inference and array-extension work that other SKA science cases depend on, rather than a single astrophysical target. Its papers fall into five groups. Cosmic magnetism is the first, and there polarimetric inference turns rotation-measure grids and Faraday spectra into magnetic-field constraints: Vacca, Carcamo and Chan model the Galactic foreground, run Faraday tomography across the SKA-Low and SKA-Mid bands, and forward-model polarised skies from MHD simulations. The second group treats the 21-cm signal from Cosmic Dawn and the Epoch of Reionisation (EoR), where foreground and systematics control dominates (Burba, Acharya, Zhang). Calibration against the ionosphere is the third (Morgan, Datta). The fourth is time-domain operations, meaning commensal image-plane searches, rapid-response triggering and technosignature searches (Andersson, Anderson, Tremblay). A large VLBI cluster forms the fifth. It proposes extending both telescopes to intercontinental baselines for astrometry, geodesy, tests of general relativity and pulsar parallaxes (Chen, Bempong-Manful, Li, Kobayashi, Timmerman, Xu, Wongphechauxsorn, Takahashi). Around these groups sit data-science chapters on source finding, AI, citizen science and radio weak-lensing shear measurement.\n\nThe observing modes follow from these groups. VLBI and astrometry dominate numerically, and the stated demands are concrete. Li quotes a 15 \u03bcJy sensitivity at 15 GHz in 300 s over 0.256 GHz, which yields single-epoch astrometric precision of about 2 \u03bcas. Kobayashi estimates fringe-detection limits near 0.1\u20130.2 mJy on SKA-Low baselines at 320 MHz. Takahashi calls for about 30 one-hour epochs over 2\u20133 years to reach distances good to 1 pc for millisecond pulsars used in pulsar timing arrays. Polarimetry and RM-grid work rests on the Band 2 survey of 30,000 deg\u00b2 at 2\u2033 and 4 \u03bcJy that Vacca cites, and on the calculator estimates in Carcamo. The EoR chapters require calibration errors below about 10\u207b\u2075 and sky models complete to 1\u201310 mJy. The time-domain chapters depend less on raw sensitivity than on data products: fast snapshot imaging, transient buffers, zoom channels at 14 Hz and 210 Hz, and tied-array beams. The ionosphere chapters mainly need station-level imaging and access to visibilities.\n\nMost chapters say their methods work from AA*, so the difference between AA* and AA4 is usually one of depth rather than feasibility. Andersson states that the commensal transient tools apply to all deployments from AA* onward, and Tremblay sizes the technosignature data products explicitly for AA*. Carcamo gives Band 2 sensitivities of 5.4 \u03bcJy/beam at AA* and 2.9 \u03bcJy/beam at AA4 for a 16-hour RM-grid pointing. Robishaw is where the gap between stages matters most. Zeeman detection in LMC masers takes 3 minutes with AA4 against 10 minutes with AA*, but a search for OH masers in M31 needs 36 hours with AA4 and an impractical 115 hours with AA*. Morgan, in contrast, expects the smaller AA* core to matter little for ionospheric science, while the extra outer stations of AA4 would help refractive-shift and parallax measurements. Several VLBI proposals go beyond both stages, because they need baselines of thousands of kilometres from new stations in Africa, Australia and Asia.",
+   "requirements": [
+    {
+     "id": "G-01",
+     "paper": "LeZhang01",
+     "page": 5,
+     "quote": "A 4-hour observation is simulated with 10 s integration and 100 kHz frequency resolution, and the PSF at 106 MHz is constructed with the natural weighting (Bonaldi et al., 2025).",
+     "science_driver": "Non-negative iterative deconvolution for faint diffuse emission and EoR imaging",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "frequency": "106 MHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "4 h observation, 10 s integration, 100 kHz channels",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-02",
+     "paper": "Vacca02",
+     "page": 3,
+     "quote": "The Magnetism SKAO Science Working Group identified as a top priority a polarimetric survey with SKA-Mid over 30,000 square degrees in band 2 (950-1760 MHz) at 2 \u2032\u2032 down to a sensitivity of 4 \ud835\udf07 Jy corresponding to an observing time of about 15 min per pointing (Heald et al., 2020).",
+     "science_driver": "Separating Galactic and extragalactic Faraday rotation to constrain magnetisation of the large-scale structure",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2 (950-1760 MHz)",
+     "resolution": "2 arcsec",
+     "sensitivity": "4 uJy",
+     "fov_or_area": "30,000 deg2",
+     "survey_speed_or_time": "about 15 min per pointing",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": null,
+      "bandwidth_mhz": 810,
+      "integration_h": 0.25,
+      "claimed_sensitivity": 4,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": null,
+      "claimed_beam_arcsec": 2
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-03",
+     "paper": "Vacca02",
+     "page": 6,
+     "quote": "O'Sullivan et al. compute that, for a survey over 10,000 deg 2 of the sky with 8 h pointings, a conservative 80 \ud835\udf07 Jy/beam sensitivity can be assumed, corresponding to about 60,000 polarized sources.",
+     "science_driver": "Low-frequency RM grid probing weakly magnetised cosmic-web filaments",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "80 uJy/beam",
+     "fov_or_area": "10,000 deg2",
+     "survey_speed_or_time": "8 h pointings",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-04",
+     "paper": "Vacca02",
+     "page": 10,
+     "quote": "Results by Taylor and Legodi (2024) show that the ionospheric stability is better by a factor up to ten during night-time with respect to day-time observations, indicating that night-time observations must be preferred, especially when larger areas are observed with short pointings spread out over long times.",
+     "science_driver": "Keeping ionospheric RM residuals below extragalactic Faraday signal",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "night-time scheduling preferred",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-05",
+     "paper": "AlexAndersson01",
+     "page": 1,
+     "quote": "The tools and methods presented in this chapter can be used for all SKA-Mid and SKA-Low array deployments from AA \u2217 inclusive.",
+     "science_driver": "Commensal image-plane transient searches",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-06",
+     "paper": "AlexAndersson01",
+     "page": 4,
+     "quote": "In the SKAO-era a snaphshot fast imaging pipeline will run on the SKAO Central Processing Facilities, in near-real-time. The SKAOfast imaging pipeline will enter science verification in Cycle 1, with shared risk observations from Cycle 2.",
+     "science_driver": "Model-subtracted snapshot imaging for second-to-minute transients",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "near-real-time snapshot imaging",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-07",
+     "paper": "AlexAndersson01",
+     "page": 12,
+     "quote": "At LOFAR frequencies of 150 MHz (SKA-LOW regime), dispersion smear can be as large as 10 seconds for DMs larger than 50 pc cm -3 .",
+     "science_driver": "Image-plane dedispersion to recover long-period transients in the Galactic plane",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "150 MHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-08",
+     "paper": "Chen01",
+     "page": 11,
+     "quote": "For a galaxy 500 kpc away, the expected maser flux density would be \u223c 2-92 mJy, enabling corresponding astrometric precision better than \u223c 20 \ud835\udf07 as using 2-hr integration and a bandwidth of \u223c 200 kHz with phase-reference observations.",
+     "science_driver": "Geometric distances to nearby galaxies via 6.7 GHz methanol maser astrometry",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "6.7 GHz",
+     "resolution": "astrometric precision better than ~20 uas",
+     "sensitivity": "maser flux ~2-92 mJy",
+     "fov_or_area": null,
+     "survey_speed_or_time": "2 h integration, ~200 kHz bandwidth",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-09",
+     "paper": "Chen01",
+     "page": 9,
+     "quote": "For example, adopting \u0394 \ud835\udf08 = 10 kHz gives \ud835\udc46 fd = 10 . 06 mJy at 6.7 GHz for \ud835\udf0f = 180 s, and \ud835\udc46 fd = 13 . 98 mJy at 12.2 GHz for \ud835\udf0f = 120 s on the SKA-Mid-JRT baseline.",
+     "science_driver": "Spectral-line fringe detection for extragalactic masers on SKA-Mid-Jingdong baseline",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "6.7 and 12.2 GHz",
+     "resolution": null,
+     "sensitivity": "10.06 mJy (6.7 GHz), 13.98 mJy (12.2 GHz) fringe detection limit",
+     "fov_or_area": null,
+     "survey_speed_or_time": "180 s / 120 s coherent integration, 10 kHz channel",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-10",
+     "paper": "Chen01",
+     "page": 10,
+     "quote": "Utilizing multi-view phase-referencing observations (Rioja and Dodson, 2020) at 15 GHz, the centroid of the radio core can be measured with a precision of a few \ud835\udf07 as and monitored throughout the jet formation process.",
+     "science_driver": "Horizon-scale jet formation in the low-luminosity AGN M60*",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "15 GHz",
+     "resolution": "a few uas centroid precision",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "monitoring over days to years",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-11",
+     "paper": "Bempong-Manful01",
+     "page": 11,
+     "quote": "Extending from Morocco to Mauritius, the continental array would achieve baselines of up to 9000 km, delivering angular resolutions comparable to or exceeding those of currently operational VLBI arrays.",
+     "science_driver": "African VLBI network for compact sources, jets and transients",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": "baselines up to 9000 km",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-12",
+     "paper": "Bempong-Manful01",
+     "page": 11,
+     "quote": "By using SKA-Mid-standard receivers, the proposed African antennas would add critical support for Band 1 (0.35-1.05 GHz), overlapping with VLBI UHF band, - a frequency range currently underrepresented in global VLBI.",
+     "science_driver": "Low-frequency VLBI bridging SKA-Low and higher-frequency VLBI",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "Band 1 (0.35-1.05 GHz)",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-13",
+     "paper": "Carcamo01",
+     "page": 19,
+     "quote": "For a representative RM-grid setup (16 h integration, Band 2, 1.35 GHz central frequency, 0.5 GHz bandwidth, position 03:38, -35 \u25e6 27 \u2032 ), SKA-Mid reaches \u223c 5.4 \ud835\udf07 Jy beam -1 (1 \ud835\udf0e ) in the AA* configuration and \u223c 2.9 \ud835\udf07 Jy beam -1 at full AA4 (roughly 4 and 7 times fainter than current POSSUM depths, respectively), so that more background sources per square degree become usable for RM measurements.",
+     "science_driver": "Denser RM grids for Faraday tomography of clusters, Galaxy and cosmic web",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "Band 2, 1.35 GHz",
+     "resolution": null,
+     "sensitivity": "5.4 uJy/beam (AA*), 2.9 uJy/beam (AA4)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "16 h integration",
+     "array_stage": "AA* and AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.35,
+      "bandwidth_mhz": 500,
+      "integration_h": 16,
+      "claimed_sensitivity": 5.4,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": null,
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-14",
+     "paper": "Carcamo01",
+     "page": 10,
+     "quote": "As shown in Table 1, SKA-Low (50-350 MHz) offers the finest full Faraday depth resolution at 0.0545 rad m -2 (with a nominal resolution of 0.0984 rad m -2 ), making it ideal for detailed studies of magnetic field structures with very fine-scale features.",
+     "science_driver": "Fine Faraday-depth resolution for thin Faraday sources",
+     "telescope": "low",
+     "mode": "Polarimetry / RM grid",
+     "frequency": "50-350 MHz",
+     "resolution": "Faraday depth resolution 0.0545 rad m-2",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-15",
+     "paper": "Burba01",
+     "page": 9,
+     "quote": "Simulations indicate that in-field sources need to be modelled down to at least \u223c 1 -10 mJy to prevent significant unmodeled confusion noise in deep integrations (Procopio et al., 2017; Murray et al., 2017).",
+     "science_driver": "Foreground sky-model completeness for 21-cm EoR power spectra",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "sky model complete to ~1-10 mJy",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-16",
+     "paper": "Burba01",
+     "page": 9,
+     "quote": "The dynamic range required is formidable, and the calibration and imaging must suppress foregrounds (up to tens of thousands of K in brightness) to the \u223c mKlevel of the 21-cm signal, implying calibration errors must be kept below \u223c 10 -5 (0.001%) in relative terms (Datta et al., 2010; Vedantham et al., 2012; Morales et al., 2012).",
+     "science_driver": "Foreground suppression for 21-cm detection",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "calibration errors below ~1e-5",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-17",
+     "paper": "Li01",
+     "page": 1,
+     "quote": "With 300-sec integration, SKAVLBI can achieve a sensitivity of \u223c 15 \ud835\udf07 Jy at 15 GHz over a bandwidth of 0.256 GHz.",
+     "science_driver": "Solar and Jovian light deflection tests of general relativity (PPN gamma)",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "15 GHz",
+     "resolution": null,
+     "sensitivity": "~15 uJy",
+     "fov_or_area": null,
+     "survey_speed_or_time": "300 s integration, 0.256 GHz bandwidth",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-18",
+     "paper": "Li01",
+     "page": 4,
+     "quote": "With a superb sensitivity of \u223c 65 \ud835\udf07 Jy (10-sec integration at 15 GHz), SKA-Mid AA \u2217 can support preliminary light deflection measurements by mapping sources along ephemeris-derived lens trajectories.",
+     "science_driver": "Early light-deflection measurements",
+     "telescope": "mid",
+     "mode": "VLBI / astrometry",
+     "frequency": "15 GHz",
+     "resolution": null,
+     "sensitivity": "~65 uJy in 10 s",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 s integration",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-19",
+     "paper": "Kobayashi01",
+     "page": 5,
+     "quote": "Assuming a bandwidth of 32 MHz and an integration time of 1000 seconds, the fringe detection sensitivity is estimated to be around 0.2 mJy between SKA-LOW and GMRT and 0.1 mJy between SKA-LOW and FAST at 7 \ud835\udf0e detection.",
+     "science_driver": "Low-frequency VLBI astrometry of foreground sources and millisecond pulsars",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "320 MHz",
+     "resolution": "~25 mas at 320 MHz",
+     "sensitivity": "0.1-0.2 mJy fringe detection (7 sigma)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1000 s, 32 MHz bandwidth",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-20",
+     "paper": "Kobayashi01",
+     "page": 3,
+     "quote": "The required precision includes positional accuracy on the order of milliarcseconds and flux density accuracy within 1% (Datta et al. (2010)), which can only be achieved through VLBI observations.",
+     "science_driver": "Bright-source catalogue for EoR foreground removal",
+     "telescope": "low",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": "milliarcsecond positional accuracy",
+     "sensitivity": "flux accuracy within 1%",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-21",
+     "paper": "Kobayashi01",
+     "page": 6,
+     "quote": "An estimation accuracy of 0.1 TEC for the ionospheric propagation path is required to achieve this precision.",
+     "science_driver": "Pulsar parallax to 1% at 100 pc",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "320 MHz",
+     "resolution": null,
+     "sensitivity": "0.1 TEC ionospheric accuracy",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-22",
+     "paper": "Timmerman01",
+     "page": 4,
+     "quote": "With these stations, LAMBDA will be able to reach baselines of up to \u223c 4000 km in length, offering an angular resolution better than 0.1 arcseconds at an observing frequency of 150 MHz, which closely matches the capabilities of the SKA-Mid.",
+     "science_driver": "Sub-arcsecond low-frequency imaging and resolved spectral indices",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "150 MHz",
+     "resolution": "better than 0.1 arcsec",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-23",
+     "paper": "Timmerman01",
+     "page": 5,
+     "quote": "For this purpose, it is valuable that the SKA-Low can be configured into four to eight separate sub-arrays (or VLBI beams).",
+     "science_driver": "Short baselines for diffuse emission recovery in LAMBDA VLBI",
+     "telescope": "low",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-24",
+     "paper": "Acharya02",
+     "page": 18,
+     "quote": "As power spectra require less integration time to achieve sensitivity for signal detection, they are expected to precede high-fidelity imaging.",
+     "science_driver": "Simulation-based inference of EoR astrophysics from 21-cm power spectra",
+     "telescope": "low",
+     "mode": "EoR / Cosmic Dawn 21-cm",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-25",
+     "paper": "Robishaw01",
+     "page": 11,
+     "quote": "For a channel resolution of 0.16 km s -1 , AA4 would require 3 min to detect Zeeman splitting in such a source (10 min for AA \u2217 ).",
+     "science_driver": "Zeeman magnetic fields from OH masers in the Magellanic Clouds",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "18 cm OH",
+     "resolution": "0.16 km/s channels",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "3 min (AA4), 10 min (AA*)",
+     "array_stage": "AA4 and AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-26",
+     "paper": "Robishaw01",
+     "page": 11,
+     "quote": "This would require 36 h of AA4 integration time with a velocity resolution of 0.62 km s -1 , and an impractical 115 h with AA \u2217 .",
+     "science_driver": "Search for OH masers in M31",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "18 cm OH",
+     "resolution": "0.62 km/s",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "36 h (AA4), 115 h (AA*)",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-27",
+     "paper": "Robishaw01",
+     "page": 4,
+     "quote": "More accurate Zeeman-splitting measurements would be obtained using AA4 in 10 h, with visibilities tapered to a resolution of 3 . \u2032 5 in 0.04 km s -1 channels, yielding an rms noise of \u223c 2.5 mJy beam -1 (30 mK).",
+     "science_driver": "Cometary coma magnetic fields from OH Zeeman splitting",
+     "telescope": "mid",
+     "mode": "Spectral line / maser survey",
+     "frequency": "18 cm OH main lines",
+     "resolution": "3.5 arcmin taper, 0.04 km/s channels",
+     "sensitivity": "~2.5 mJy/beam (30 mK)",
+     "fov_or_area": null,
+     "survey_speed_or_time": "10 h",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-28",
+     "paper": "Morgan01",
+     "page": 15,
+     "quote": "According to the SKA sensitivity calculator, for an extragalactic field, a single SKA-low baseline can achieve a sensitivity of \u223c 133 mJy with 30 MHz bandwidth and 4 s integration time (the sensitivity of a single station as an interferometer should be very similar).",
+     "science_driver": "Ionospheric scintillation measurements with single baselines or stations",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "~133 mJy per baseline",
+     "fov_or_area": null,
+     "survey_speed_or_time": "4 s integration, 30 MHz bandwidth",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-29",
+     "paper": "Morgan01",
+     "page": 16,
+     "quote": "Imaging cadence of \u223c 5 s would probably be sufficient, a single channel with fractional bandwidth of < 10% would provide useful results, though there would certainly be value in having multiple spectral channels, especially at the bottom of the band, and under extreme ionospheric conditions, since dynamic spectra of strong scintillation provide more information than a single timeseries (and allow the use of the secondary spectrum approach).",
+     "science_driver": "Amplitude scintillation monitoring of the ionosphere with station all-sky images",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "all-sky station images",
+     "survey_speed_or_time": "~5 s imaging cadence",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-30",
+     "paper": "Morgan01",
+     "page": 17,
+     "quote": "The slightly smaller number of core stations in AA* is unlikely to make much difference for ionospheric science, though the increased number of outer stations in AA4 relative to AA* will be very useful for refractive shift measurements, particularly for parallax measurements.",
+     "science_driver": "Refractive-shift and parallax ionospheric tomography",
+     "telescope": "low",
+     "mode": null,
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* adequate; AA4 preferred for outer stations",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-31",
+     "paper": "GemmaAnderson01",
+     "page": 11,
+     "quote": "At frequencies such as 10 GHz, sub-second triggering would be required to catch simultaneous radio emission, an unrealistic trigger time for SKA-Mid given the \u223c minutes required to re-point the Australian SKA Pathfinder (ASKAP; Hotan et al., 2021) and MeerKAT.",
+     "science_driver": "Prompt coherent emission from GRBs and compact-object mergers",
+     "telescope": "mid",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "10 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "sub-second trigger latency needed",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-32",
+     "paper": "GemmaAnderson01",
+     "page": 9,
+     "quote": "SKA-Low would also need to use subarraying and potentially apodising to create multiple beams to cover large sky area of the highest sensitivity regions provided by LVK, which has been explored for both MWA(see Figure 3; Tian et al., 2023a) and LOFAR (Gourdji et al., 2023).",
+     "science_driver": "Rapid-response coverage of gravitational-wave localisations",
+     "telescope": "low",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "large LVK sky regions via subarrays",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-33",
+     "paper": "Tremblay01",
+     "page": 8,
+     "quote": "For a 1 hour imaging observation toward the Galactic Center using AA*, we can achieve a sensitivity of 22mJy beam -1 sensitivity at 14 Hz spectral resolution.",
+     "science_driver": "Narrowband technosignature searches toward the Galactic Centre",
+     "telescope": "low",
+     "mode": "SETI / technosignature",
+     "frequency": null,
+     "resolution": "14 Hz spectral resolution",
+     "sensitivity": "22 mJy/beam",
+     "fov_or_area": null,
+     "survey_speed_or_time": "1 h",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-34",
+     "paper": "Tremblay01",
+     "page": 14,
+     "quote": "For AA*, it is anticipated that SDP can deliver up to 64,000 zoom channels within an image cube, which would place the maximum processed bandwidth for SKA-Low for 14 Hz channels at 0.9 MHz, and for SKA-Mid, a 13.4 MHz bandwidth for 210 Hz zoom channels.",
+     "science_driver": "Zoom-mode narrowband technosignature searches",
+     "telescope": "both",
+     "mode": "Zoom-mode spectroscopy",
+     "frequency": null,
+     "resolution": "14 Hz (Low), 210 Hz (Mid) channels",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "0.9 MHz (Low) / 13.4 MHz (Mid) processed bandwidth",
+     "array_stage": "AA*",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-35",
+     "paper": "MingHuiXu01",
+     "page": 6,
+     "quote": "To measure ionospheric-free group delay precisely that is needed for geodesy and astrometry, two or more frequency bands with separation of a factor of larger than 1.7 and with a broad bandwidth per band ( > 0.5 GHz) should be used.",
+     "science_driver": "Southern-sky geodetic and absolute astrometric VLBI survey",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "two or more bands separated by factor >1.7",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": ">0.5 GHz bandwidth per band",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-36",
+     "paper": "MingHuiXu01",
+     "page": 3,
+     "quote": "Considering the floor of the accuracy of VLBI absolute astrometry of 0.10.2 mas due to systematic errors (Petrov and Kovalev, 2025), we can expect an accuracy of absolute astrometry of 5-10 mas or better from the SKA if we will take the systematic errors into account.",
+     "science_driver": "Absolute astrometry with the SKA-Mid array alone",
+     "telescope": "mid",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": "5-10 mas absolute astrometry",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-37",
+     "paper": "Datta01",
+     "page": 21,
+     "quote": "At higher frequencies, interferometers such as the VLA and MeerKAT require RM accuracies of \u2272 0 . 1 rad m -2 at metre wavelengths to constrain the EVPA to within \u223c 5 \u25e6 (Perley et al., 2026).",
+     "science_driver": "Ionospheric Faraday rotation calibration for polarimetry",
+     "telescope": "mid",
+     "mode": "Polarimetry / RM grid",
+     "frequency": null,
+     "resolution": null,
+     "sensitivity": "RM accuracy <~0.1 rad m-2",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-38",
+     "paper": "Datta01",
+     "page": 2,
+     "quote": "Even assuming a phase stability of about ten degrees for instruments such as the Square Kilometre Array (SKA), their sensitivity between 70 and 1420 MHz corresponds to roughly 1 to 10 mTEC.",
+     "science_driver": "Interferometric TEC measurement of ionospheric structure",
+     "telescope": "both",
+     "mode": null,
+     "frequency": "70-1420 MHz",
+     "resolution": null,
+     "sensitivity": "1-10 mTEC",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-39",
+     "paper": "Wongphecauxson01",
+     "page": 9,
+     "quote": "Currently, SKAMPI will only overlap with SKA-Mid Band2 over a narrow band of 10 MHz (1.75-1.76 GHz), with SKA-Mid Band 5b over a 3.55 GHz band (11.85-15.4 GHz) and with band3 over 1.3 GHz (1.8 - 3.1 GHz).",
+     "science_driver": "VLBI with the SKAMPI dish demonstrator",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "1.75-1.76, 1.8-3.1, 11.85-15.4 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-40",
+     "paper": "Wongphecauxson01",
+     "page": 5,
+     "quote": "For SKAMPI, the SEFD at S-band was assumed to be 360 Jy, based on the first measurement (J\u00fcnemann et al., in prep.).",
+     "science_driver": "SKAMPI contribution to EVN and LBA VLBI arrays",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "S-band (2 GHz)",
+     "resolution": null,
+     "sensitivity": "SEFD 360 Jy",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-41",
+     "paper": "Takahashi01",
+     "page": 7,
+     "quote": "Regular VLBI observations with SKA1-Mid and global baselines for \u223c 1 hr per epoch over \u223c 30 epochs spanning \u223c 2-3 years.",
+     "science_driver": "Sub-parsec MSP parallaxes to localise PTA continuous-wave sources",
+     "telescope": "vlbi",
+     "mode": "VLBI / astrometry",
+     "frequency": "~1.4 GHz",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "~1 h per epoch, ~30 epochs over 2-3 years",
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-42",
+     "paper": "Takahashi01",
+     "page": 4,
+     "quote": "Consequently, to achieve arcminute-scale localization, distances to several PTA MSPs must be determined with uncertainties \u2272 1 pc.",
+     "science_driver": "Host-galaxy identification of nanohertz GW sources",
+     "telescope": "vlbi",
+     "mode": "Pulsar timing array",
+     "frequency": null,
+     "resolution": "distance uncertainty <~1 pc",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-43",
+     "paper": "Takahashi01",
+     "page": 7,
+     "quote": "These capabilities underlie MultiView astrometry and are intended to deliver \u223c 10 \ud835\udf07 as astrometric precision in practice, not merely in principle.",
+     "science_driver": "Multi-beam MultiView calibration for MSP astrometry",
+     "telescope": "mid",
+     "mode": "VLBI / astrometry",
+     "frequency": null,
+     "resolution": "~10 uas astrometric precision",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-44",
+     "paper": "Tripathi01",
+     "page": 3,
+     "quote": "Observations span 8 hours with integration time per visibility \ud835\udf0f int = 300s, resulting in 1,853,376 visibilities for each source.",
+     "science_driver": "Radio shape and shear measurement for weak lensing",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "frequency": "1.4 GHz (Band 2)",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "8 h, 300 s visibility integration",
+     "array_stage": "AA4",
+     "calculator_params": null,
+     "verification": "verbatim"
+    },
+    {
+     "id": "G-45",
+     "paper": "Tripathi01",
+     "page": 4,
+     "quote": "After testing different values, we adopt \ud835\udc45 = -0 . 5 as an effective compromise between resolution and sensitivity 2 , resulting in an RMS pixel noise of \ud835\udf0e \u2248 0 . 71 \ud835\udf07 Jy.",
+     "science_driver": "Imaging noise for radio weak-lensing shape measurement",
+     "telescope": "mid",
+     "mode": "Weak lensing",
+     "frequency": "1.4 GHz",
+     "resolution": null,
+     "sensitivity": "0.71 uJy rms",
+     "fov_or_area": null,
+     "survey_speed_or_time": "8 h",
+     "array_stage": "AA4",
+     "calculator_params": {
+      "telescope": "mid",
+      "band": "Band 2",
+      "freq_ghz": 1.4,
+      "bandwidth_mhz": 420,
+      "integration_h": 8,
+      "claimed_sensitivity": 0.71,
+      "unit": "uJy/beam",
+      "quantity": "continuum",
+      "weighting": "robust -0.5",
+      "claimed_beam_arcsec": null
+     },
+     "verification": "verbatim"
+    }
+   ],
+   "open_questions": [
+    {
+     "paper": "Vacca02",
+     "page": 3,
+     "quote": "Despite magnetic fields been observed up to galaxy cluster scales and in filaments between clusters through synchrotron emission (e.g., Govoni et al. 2019, Vernstrom et al. 2023), firm constraints on magneto-genesis scenarios have been not placed yet.",
+     "theme": "origin of cosmic magnetism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chan01",
+     "page": 3,
+     "quote": "Yet the origin, strength, and structure of these vast magnetic fields remain poorly constrained (Vazza et al., 2018; Br\u00fcggen et al., 2020).",
+     "theme": "origin of cosmic magnetism",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Chan01",
+     "page": 9,
+     "quote": "However, the differences between primordial and astrophysical seeding are often subtle and can overlap, particularly in regions dominated by nonlinear evolution such as galaxy clusters.",
+     "theme": "primordial versus astrophysical magnetic seeding",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "LeZhang01",
+     "page": 6,
+     "quote": "This choice is motivated by the assumption that lower-amplitude modes would be noise-dominated, although the present test cases are noise-free.",
+     "theme": "deconvolution performance with noise",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "AlexAndersson01",
+     "page": 10,
+     "quote": "However, at the SKAO AA* sensitivity predictions, the rate of variable and transient sources will likely be too great for such citizen science efforts to be employed on the entire SKAO datastream.",
+     "theme": "scaling transient classification",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Burba01",
+     "page": 3,
+     "quote": "Moreover, the widely used assumption of foreground spectral smoothness can break down in the presence of polarized emission affected by Faraday rotation, introducing additional spectral complexity (Spinelli et al., 2019a; Sobey et al., 2018).",
+     "theme": "foreground spectral smoothness",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Li01",
+     "page": 5,
+     "quote": "Note that there is a controversy over the interpretation of the retarded term (e.g., Will, 2003; Fomalont and Kopeikin, 2007; Will, 2014). SKA-VLBI may provide an opportunity to resolve this controversy.",
+     "theme": "speed of gravity interpretation",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Kobayashi01",
+     "page": 6,
+     "quote": "Moreover, while the development of a robust methodology to account for the possibility that, in this frequency band, the calibrator is extended rather than point-like remains a topic for future work, such corrections should, in principle, be implementable provided that the calibrator exhibits no significant variability over the duration of the astrometry observations.",
+     "theme": "extended calibrators in low-frequency VLBI",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Timmerman01",
+     "page": 4,
+     "quote": "While the size of the MWA would provide good sensitivity, the long-term future of the MWAfacility, e.g. past cycle 0 or 1 of SKA-Low, is still being decided.",
+     "theme": "availability of short VLBI baselines",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Acharya02",
+     "page": 3,
+     "quote": "Given the relatively recent rise of artificial intelligence techniques in astronomy, it would be fair to say that it is as-yet unclear what the ultimate impact of ML on the SKA will be.",
+     "theme": "impact of machine learning on SKA",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Acharya02",
+     "page": 18,
+     "quote": "Furthermore, first results from the SKA Science Data Challenge 3b on inference (SDC3b 4 ), where the global ionization fraction at three different redshifts was to be blindly derived from 2DPS generated with two different simulators, point towards current posterior estimators to be susceptible to model misspecification both from signal and noise modelling; this has also been pointed out previously (Zhou and La Plante, 2022).",
+     "theme": "robustness of EoR simulation-based inference",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Robishaw01",
+     "page": 11,
+     "quote": "Although Busch (2024) has recently used the Green Bank Telescope (GBT) to detect thermal 18 cm OH emission in the Andromeda Galaxy, OH masers have yet to be detected in M31.",
+     "theme": "extragalactic OH maser magnetometry",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Morgan01",
+     "page": 12,
+     "quote": "Cronyn (1972) provide a theoretical framework for working instead with interferometric visibilities, which, to our knowledge has never been tested.",
+     "theme": "visibility scintillation methods",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "GemmaAnderson01",
+     "page": 10,
+     "quote": "The only tentative association between a BNS merger and FRB was reported for GW190425 and CHIME FRB 20190425A by Moroianu et al. (2023), however, further modelling suggests this is a chance coincidence (Bhardwaj et al., 2024).",
+     "theme": "coherent radio counterparts to mergers",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tremblay01",
+     "page": 3,
+     "quote": "Although there has been a great deal of growth in this field, the greatest challenge remains to expand the sensitivity, sky coverage, emission modalities, and signal detection and filtering algorithms to set more stringent limits on the prevalence of technological life in the Universe.",
+     "theme": "prevalence of technosignatures",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Datta01",
+     "page": 15,
+     "quote": "Nevertheless, a more comprehensive characterization of the finite inner and outer scales at the Murchison Radio-astronomy Observatory (MRO) remains necessary.",
+     "theme": "ionospheric turbulence scales at SKA-Low site",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Denzel01",
+     "page": 16,
+     "quote": "The relevance of federated approaches will depend on how data access policies and SRC governance evolve, particularly with respect to proprietary data periods and the eventual opening of archival datasets to the broader community.",
+     "theme": "federated learning in SKA data infrastructure",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Wongphecauxson01",
+     "page": 7,
+     "quote": "Future technical tests can characterize the phase stability of the receiver and the efficiency of the EDD VLBI backend in more detail.",
+     "theme": "SKAMPI VLBI system performance",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tripathi01",
+     "page": 11,
+     "quote": "These sidelobe effects are particularly problematic at low radio frequencies (e.g., SKA-Low), though their impact on SKA-Mid observations remains uncertain.",
+     "theme": "source separation for radio weak lensing",
+     "verification": "verbatim"
+    },
+    {
+     "paper": "Tripathi01",
+     "page": 12,
+     "quote": "Shear estimates from simulated data showed additive biases consistent with SKA-Mid weak lensing targets (Brown et al., 2015), but multiplicative biases an order of magnitude too high.",
+     "theme": "radio shear calibration",
+     "verification": "verbatim"
+    }
+   ]
+  }
+ ],
+ "rejected": [],
+ "sensitivity": [
+  {
+   "id": "A-04",
+   "verdict": "match",
+   "claimed": "0.5 uJy/beam (AA*, 11 h, Band 2 0.95-1.76 GHz)",
+   "calculator": "0.512 uJy/beam (AA* full, robust 0, 1.31 GHz/720 MHz); 0.550 uJy/beam (AA* 15-m only, natural, 1.355 GHz/810 MHz)",
+   "ratio": 0.98,
+   "note": "The mixed AA* array cannot use 810 MHz in Band 2 because the calculator caps the window at about 1.67 GHz, so the full-band case was run on the 15-m-only subarray (10.0% off). The full AA* at 720 MHz is 2.3% off with robust 0."
+  },
+  {
+   "id": "A-05",
+   "verdict": "diverge",
+   "claimed": "10 uJy/beam (AA*, 1.25 h, 100-350 MHz)",
+   "calculator": "8.91 uJy/beam (LOW_AAstar_all, robust 0, 225 MHz/250 MHz, confusion included)",
+   "ratio": 1.12,
+   "note": "The closest weighting (robust 0) is 10.9% off, just outside the threshold. Natural gives 5.29 and robust -1 gives 12.5. The centre was taken as the band midpoint, 225 MHz."
+  },
+  {
+   "id": "B-03",
+   "verdict": "match",
+   "claimed": "15.8 uJy/beam (AA*, 1 h, 810 MHz)",
+   "calculator": "16.51 uJy/beam (AA* 15-m only, uniform, 1.355 GHz/810 MHz)",
+   "ratio": 0.96,
+   "note": "1.4 GHz +/- 405 MHz lies outside the calculator's Band 2 range, and the mixed AA* refuses more than 720 MHz. The run therefore used the 15-m-only subarray centred at 1.355 GHz. Only uniform weighting matches (4.5%); natural is 1.82. With the full AA* at 1.31 GHz/720 MHz, uniform gives 17.98 (ratio 0.88)."
+  },
+  {
+   "id": "B-04",
+   "verdict": "match",
+   "claimed": "10.2 uJy/beam (AA4, 1 h, 810 MHz)",
+   "calculator": "10.63 uJy/beam (AA4 15-m only, uniform, 1.355 GHz/810 MHz)",
+   "ratio": 0.96,
+   "note": "Same band-edge workaround as B-03. Uniform matches within 4.2% (beam 0.18 arcsec); natural is 1.09."
+  },
+  {
+   "id": "B-09",
+   "verdict": "diverge",
+   "claimed": "0.9 mJy/beam (cold sky, 1 s, 5 MHz, 60 MHz)",
+   "calculator": "7.25 mJy/beam (LOW_AAstar_all, natural, the best weighting)",
+   "ratio": 0.124,
+   "note": "The paper's Aeff/Tsys of about 1e3 m2/K is far above the calculator's Low sensitivity at 60 MHz. Even natural weighting is 8x noisier than the cold-sky claim. The hot-sky figure of about 9 mJy is closer (9/7.25 = 1.24) but still outside 10%."
+  },
+  {
+   "id": "B-13",
+   "verdict": "match",
+   "claimed": ">=140 uJy 5-sigma Stokes V (1 sigma = 28 uJy), 1 h, 144 MHz, 50 MHz",
+   "calculator": "27.25 uJy/beam thermal (28.14 including confusion), LOW_AAstar_all, robust -1",
+   "ratio": 1.03,
+   "note": "The array is not stated, so AA* was assumed; AA4 is closest at robust 0 with 22.5 (ratio 1.25). Stokes V has no confusion, so the weighted thermal value was used. Robust 0 thermal is 15.4, so the match depends on robust -1."
+  },
+  {
+   "id": "B-44",
+   "verdict": "match",
+   "claimed": "1.58 uJy 5-sigma (1 sigma = 0.316 uJy), 5 h, Band 5b, AA4",
+   "calculator": "0.3166 uJy/beam (AA4 15-m only, natural, 12.9 GHz/5 GHz)",
+   "ratio": 1,
+   "note": "Band 5b needs the 15-m-only subarray. Natural weighting matches within 0.2% and robust 1 within 3%."
+  },
+  {
+   "id": "C-01",
+   "verdict": "unverifiable",
+   "claimed": "3-sigma 50 mK in 10 h (Band 5a, 3.36 kHz, 45x43 arcsec beam)",
+   "calculator": null,
+   "ratio": null,
+   "note": "No line or centre frequency is given; 3.36 kHz ~ 0.1 km/s implies about 10 GHz, which is outside Band 5a. A 45-arcsec beam also needs a taper and weighting the paper does not give. Without the frequency the K-to-Jy conversion and the beam cannot be reproduced."
+  },
+  {
+   "id": "C-02",
+   "verdict": "unverifiable",
+   "claimed": "0.02 K at 7.2 kHz, 300 h, AA*, Band 5b 11.85 GHz, 8.17 arcsec beam",
+   "calculator": "Bracket only: about 0.032 K (robust 0 + 64-arcsec taper, 7.0-arcsec beam) and about 0.005 K (natural, 9.3-arcsec beam), both scaled from 13.44 kHz to 7.2 kHz",
+   "ratio": null,
+   "note": "The calculator has no 7.2 kHz channel (zoom offers 210 Hz x 2^n, nearest 6.72 kHz). The mixed AA* is not allowed in Band 5b, and a custom 80-dish zoom returns no beam or K values. The weighting and taper behind the 8.17-arcsec beam are not stated. Continuum-mode runs on the AA* 15-m-only subarray bracket the claim but cannot pin it down."
+  },
+  {
+   "id": "C-14",
+   "verdict": "match",
+   "claimed": "~1.2 uJy/beam at 0.8x0.7 arcsec (Band 2, 1 h)",
+   "calculator": "1.267 uJy/beam, beam 0.78x0.70 arcsec (AA4, robust 0, 1.31 GHz/720 MHz, Orion dec -5)",
+   "ratio": 0.95,
+   "note": "The Band 2 figure matches in both noise (5.6%) and beam. The companion Band 1 figure (2.5 uJy/beam at 1.3 arcsec, 435 MHz, robust 0) gives 2.79 (ratio 0.90, 11.4% off), just outside 10%. The array is not stated; AA4 was assumed."
+  },
+  {
+   "id": "C-16",
+   "verdict": "diverge",
+   "claimed": "1 uJy/beam (Band 5a 6.55 GHz, 3.9 GHz, 20 min, robust 0, no taper)",
+   "calculator": "1.218 uJy/beam (AA4 15-m only, robust 0)",
+   "ratio": 0.82,
+   "note": "At the paper's stated robust 0 the calculator is 22% noisier. Natural (0.96) and robust 1 (0.99) do fall within 10%, but those are not the stated weighting. AA* 15-m only at robust 0 gives 2.15. The array is not stated."
+  },
+  {
+   "id": "C-19",
+   "verdict": "match",
+   "claimed": "~1.1 uJy/beam (Band 5a, 10 h, 3.9 GHz)",
+   "calculator": "1.074 uJy/beam (AA4 15-m only, robust -2, 6.55 GHz)",
+   "ratio": 1.02,
+   "note": "Matches at robust -2 (the extracted weighting). Assumptions: full 3.9 GHz Band 5a centred at 6.55 GHz, and AA4 because the array is not stated. Robust 0 would give 0.22."
+  },
+  {
+   "id": "C-22",
+   "verdict": "diverge",
+   "claimed": "~1 uJy/beam, 0.1x0.1 arcsec (Band 5b 11.8 GHz, 5 GHz, 30 min, AA4 15-m, robust 0)",
+   "calculator": "1.189 uJy/beam, beam 0.077x0.069 arcsec (robust 0)",
+   "ratio": 0.84,
+   "note": "The stated robust 0 gives 19% more noise and a beam 27% smaller than claimed. Robust 1 reproduces both the noise (0.96) and the 0.1-arcsec beam, so the paper may have used robust 1. The Band 5a case (6.55 GHz, 3 GHz) at robust 0 gives 1.14 (ratio 0.88)."
+  },
+  {
+   "id": "C-23",
+   "verdict": "diverge",
+   "claimed": "2 uJy/beam in ~1.4 h (Band 1, 435 MHz, robust 0) and ~11 min (Band 2, 720 MHz, robust 1), AA4, dec -5",
+   "calculator": "Band 1: 2.354 uJy/beam, beam 1.27x1.14 arcsec (robust 0). Band 2: 2.258 uJy/beam, beam 1.13x1.02 arcsec (robust 1)",
+   "ratio": 0.85,
+   "note": "At the stated weightings, reaching 2 uJy/beam would take about 1.9 h in Band 1 and about 14 min in Band 2. The Band 2 ratio is 0.89. Band 1 was centred at 0.7975 GHz, the 0.58-1.015 GHz window that gives 435 MHz."
+  },
+  {
+   "id": "C-38",
+   "verdict": "match",
+   "claimed": "20 uJy/beam in ~20 s at 14 GHz",
+   "calculator": "18.28 uJy/beam, beam 0.059 arcsec (AA4 15-m only, robust 0, 2.5 GHz bandwidth)",
+   "ratio": 1.09,
+   "note": "The quote states no weighting and the closest variant, robust 0, is 8.6% off. The extracted natural weighting would give 14.4 (ratio 1.39, diverge). The 2.5 GHz bandwidth and the AA4 array are not in the quote."
+  },
+  {
+   "id": "D-01",
+   "verdict": "diverge",
+   "claimed": "85 uJy/beam per 210 Hz channel in 1 h at 12.5 GHz",
+   "calculator": "3367 uJy/beam (custom 133 SKA dishes, natural, zoom 210 Hz)",
+   "ratio": 0.025,
+   "note": "The mixed AA4 is not allowed in Band 5b, so a custom 133x15-m array was used. Natural is the lowest-noise weighting, so other weightings are worse. The paper's own SEFD of 2.77 Jy implies about 2.25 mJy (radiometer equation), so the 85 uJy figure is inconsistent with its own inputs."
+  },
+  {
+   "id": "D-08",
+   "verdict": "diverge",
+   "claimed": "2 uJy/beam, PSF 0.8 arcsec (Band 2, 1 h, 2x350 MHz, robust 0, taper 0.3 arcsec)",
+   "calculator": "1.156 uJy/beam over 700 MHz; 1.635 uJy/beam per 350 MHz sub-band; beam 0.86x0.85 arcsec (AA4, robust 0, taper 0.25 arcsec)",
+   "ratio": 1.22,
+   "note": "The calculator offers only a 0.25-arcsec taper, not 0.3. The beam matches, but the claimed noise is higher than the calculator even per 350 MHz sub-band (ratio 1.22), or 1.73 if the figure refers to the full 700 MHz."
+  },
+  {
+   "id": "D-41",
+   "verdict": "diverge",
+   "claimed": "1.96 uJy/beam (10 h), 0.62 (100 h), 30 MHz, Band 2 1.31 GHz, robust 1, 0.87 arcsec",
+   "calculator": "1.360 uJy/beam, beam 1.04x1.02 arcsec (AA4, robust 1, 10 h)",
+   "ratio": 1.44,
+   "note": "At the stated robust 1 the claim is 44% higher and the beam is larger than the stated 0.87 arcsec. Robust 0 gives 1.78 (9.3% off) with a 0.71-arcsec beam, so the paper's figure sits between the two. The 100 h value scales by sqrt(10) and diverges the same way."
+  },
+  {
+   "id": "D-54",
+   "verdict": "diverge",
+   "claimed": "112 uJy/beam per 26.9 kHz, 7 h, AA4, robust 0, 10x10 arcsec",
+   "calculator": "88.6 uJy/beam at 6.9 arcsec (taper 4) to 99.5 uJy/beam at 19.5 arcsec (taper 16); AA4 zoom at 1.416 GHz, 13.44 kHz x averaging 2",
+   "ratio": 1.2,
+   "note": "The maximum zoom resolution is 13.44 kHz, so 26.88 kHz was reached with spectral_averaging_factor 2. No taper gives exactly 10 arcsec; interpolating to 10 arcsec gives about 91-93 uJy/beam. The frequency (1.416 GHz) was derived from 26.9 kHz = 5.7 km/s. The claim is about 20% higher."
+  },
+  {
+   "id": "D-71",
+   "verdict": "match",
+   "claimed": "3.4 uJy/beam (AA*, robust 0, 15 min)",
+   "calculator": "3.382 uJy/beam (AA*, robust 0, Band 2 1.31 GHz/720 MHz)",
+   "ratio": 1.01,
+   "note": "Matches at the stated weighting (0.5%). The 1.31 GHz centre and 720 MHz bandwidth are the Band 2 defaults, not stated in the quote."
+  },
+  {
+   "id": "E-03",
+   "verdict": "match",
+   "claimed": "~5 uJy/beam at ~5 arcsec (AA4, 8 h, 200 MHz bandwidth, robust -1)",
+   "calculator": "5.364 uJy/beam, beam 4.8x4.1 arcsec (LOW_AA4_all, robust -1, 200 MHz centre)",
+   "ratio": 0.93,
+   "note": "Matches at the stated weighting and beam when centred at 200 MHz, the middle of 100-300 MHz. Centring at 150 MHz instead (the extracted freq_ghz) gives 8.87 (ratio 0.56)."
+  },
+  {
+   "id": "E-82",
+   "verdict": "match",
+   "claimed": "10 uJy/beam including confusion, ~8 arcsec, robust 0",
+   "calculator": "9.838 uJy/beam total, beam 8.1x7.3 arcsec (LOW_AA4_all, robust 0, 200 MHz/150 MHz)",
+   "ratio": 1.02,
+   "note": "Matches in noise and beam. The 1 h integration and the AA4 array are not in the quote. At robust 0 the result is confusion-dominated, so it barely depends on integration time."
+  },
+  {
+   "id": "E-90",
+   "verdict": "diverge",
+   "claimed": "~4.5 uJy rms, 25 h, 200 MHz, ~100 MHz bandwidth",
+   "calculator": "5.00 uJy/beam (LOW_AA4_all, robust -1)",
+   "ratio": 0.9,
+   "note": "The closest weighting is 11.2% off, just outside 10%. Robust 0 gives 8.4 (confusion) and AA* is worse (natural 2.83, robust -1 7.10). The calculator offers only integer robust values, so the paper's optimised robust may sit between -1 and 0. The array is not stated."
+  },
+  {
+   "id": "E-94",
+   "verdict": "diverge",
+   "claimed": "0.402 uJy/beam, 3.3 arcsec (8.3-10.8 GHz, 2.5 GHz, 10 h)",
+   "calculator": "0.5505 uJy/beam at 2.8 arcsec (robust 0) and 0.518 at 5.1 arcsec (robust 1), AA4 15-m only, taper 16 arcsec, 9.55 GHz",
+   "ratio": 0.73,
+   "note": "A 3.3-arcsec beam needs a taper; the 16-arcsec taper brackets it, with noise of about 0.52-0.55 uJy/beam. Only the untapered natural value (0.26, 0.13-arcsec beam) is lower than the claim, and its beam does not fit. The array and weighting are not stated."
+  },
+  {
+   "id": "F-07",
+   "verdict": "match",
+   "claimed": "~3.4 uJy/beam per 1 GHz sub-band, 10 min, Band 5a, Briggs",
+   "calculator": "3.401 uJy/beam (AA4 15-m only, robust 0, 6.55 GHz/1 GHz)",
+   "ratio": 1,
+   "note": "Robust 0 matches exactly. The sub-band centre (6.55 GHz) and the AA4 array are assumptions. AA* 15-m only gives natural 4.47 (ratio 0.76)."
+  },
+  {
+   "id": "F-33",
+   "verdict": "match",
+   "claimed": "2 uJy limit, taken as 5 sigma (1 sigma = 0.4 uJy), AA4, 4 h, Band 2",
+   "calculator": "0.428 uJy/beam (AA4, natural, 1.31 GHz/720 MHz)",
+   "ratio": 0.93,
+   "note": "Matches only if 2 uJy is a 5-sigma limit, as the extraction assumes; as a 1-sigma rms no weighting gets near 2. The mixed AA4 cannot do 808 MHz around 1.4 GHz, so 1.31 GHz/720 MHz was used."
+  },
+  {
+   "id": "F-44",
+   "verdict": "unverifiable",
+   "claimed": "~2.6 uJy rms in 2 h",
+   "calculator": null,
+   "ratio": null,
+   "note": "The PSS endpoint needs pulsar_mode, DM, intrinsic pulse width and period, and the quote gives none of them. The array is also not stated. As an imaging cross-check only, the AA4 Band 2 continuum natural rms at 1.4 GHz/300 MHz/2 h is 0.92 uJy/beam."
+  },
+  {
+   "id": "F-49",
+   "verdict": "match",
+   "claimed": "4 uJy/beam at 0.2 arcsec (Band 2 1.31 GHz, 720 MHz, 10 h)",
+   "calculator": "3.653 uJy/beam, beam 0.19x0.18 arcsec (AA4, uniform)",
+   "ratio": 1.09,
+   "note": "Uniform weighting matches noise (8.7%) and beam. The array is not stated; AA4 was assumed. The secondary 1 uJy/beam at 1 arcsec was not checked; robust 1 or natural at about 1.1 arcsec gives 0.27-0.28."
+  },
+  {
+   "id": "F-66",
+   "verdict": "diverge",
+   "claimed": "~50 uJy 5-sigma Stokes V (1 sigma = 10 uJy), AA*, 8 h, 144 MHz, 50 MHz, robust 0",
+   "calculator": "7.78 uJy/beam thermal (21.4 including confusion), LOW_AAstar_all, robust 0",
+   "ratio": 1.28,
+   "note": "Stokes V has no confusion, so the thermal value applies: 5 x 7.78 = 38.9 uJy against the claimed 50. Including Stokes I confusion noise would instead give ratio 0.47. Either way it is outside 10%."
+  },
+  {
+   "id": "G-02",
+   "verdict": "diverge",
+   "claimed": "4 uJy at 2 arcsec, 15 min, Band 2",
+   "calculator": "3.38 uJy/beam at 2.0x1.7 arcsec (AA*, robust 0); AA4 with a 1-arcsec taper brackets 2 arcsec at 4.23 (1.4 arcsec, robust -1) and 2.51 (2.6 arcsec, robust 0)",
+   "ratio": 1.18,
+   "note": "Among beam-matched setups the claim is about 15-20% above the calculator. The array is not stated. The 810 MHz full band is refused for mixed arrays, so 1.31 GHz/720 MHz was used. Robust -1 with the taper matches the noise (5.7%) but its beam is 1.4 arcsec, not 2."
+  },
+  {
+   "id": "G-13",
+   "verdict": "match",
+   "claimed": "5.4 uJy/beam (AA*), 2.9 uJy/beam (AA4); 16 h, 1.35 GHz, 0.5 GHz, 03:38 -35:27",
+   "calculator": "AA*: 5.394 uJy/beam (uniform); AA4: 3.460 uJy/beam (uniform)",
+   "ratio": 1,
+   "note": "The AA* figure matches exactly with uniform weighting. The companion AA4 figure does not: 2.9/3.46 = 0.84. Natural weighting would give 0.36 (AA*) and 0.25 (AA4)."
+  },
+  {
+   "id": "G-45",
+   "verdict": "unverifiable",
+   "claimed": "0.71 uJy rms at robust -0.5",
+   "calculator": "Bracket: 0.520 uJy/beam (robust 0) to 0.828 uJy/beam (robust -1), AA4, Band 2 1.4 GHz/420 MHz, 8 h",
+   "ratio": null,
+   "note": "The calculator accepts only integer robust values (-2..2), so robust -0.5 cannot be run. The claim lies inside the robust 0 to -1 bracket. The array, bandwidth and time come from the extraction, not the quote."
+  }
+ ],
+ "capability": [
+  {
+   "id": "A-01",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): Mid zoom enabled=[False] in sv_aa2; enabled in sv_aastar/cycle_0 with 210 Hz-13.44 kHz channels (0.04-2.8 km/s at 1.4 GHz)",
+   "note": "Not possible at AA2 as the paper wants, because zoom is disabled in SV-AA2. Available from SV-AA*."
+  },
+  {
+   "id": "A-02",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(subarray_config,ska_mid): only Band 1 (0.35-1.05), 2 (0.95-1.76), 5a (4.6-8.5), 5b (8.3-15.4 GHz)",
+   "note": "2 GHz lies in the 1.76-4.6 GHz gap (Band 3 range), which no context provides."
+  },
+  {
+   "id": "A-03",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid maxCentralFrequency 15400 MHz (Band 5b) in every context; no Band 6",
+   "note": "15-24 GHz (Band 6) is outside both the design baseline and every context."
+  },
+  {
+   "id": "A-04",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 2 810 MHz BW, Stokes IQUV; sens-calc AA* Band 2 1 h robust0 1.7 uJy/beam",
+   "note": "Band 2 polarimetry is offered at AA*. 0.5 uJy/beam needs about 12 h per pointing, so it is feasible with multiple SBs."
+  },
+  {
+   "id": "A-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz, 300 MHz BW, Stokes IQUV; sens-calc LOW_AAstar_all 1 h 200 MHz 9.5 uJy thermal",
+   "note": "10 uJy/beam over 100-350 MHz is reachable in about 1-2 h at AA*."
+  },
+  {
+   "id": "A-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(subarray_config): Band 2 in all Mid contexts; stokesNames I,Q,U,V",
+   "note": "Band 2 polarimetry is available."
+  },
+  {
+   "id": "A-07",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b 12.5 GHz uniform beam 0.078x0.024 arcsec (SKA008-elongated); Staged Delivery: AA* 36 km compact, AA4 159.6 km",
+   "note": "About 0.15 arcsec is achievable at AA*. A well-sampled 0.05 arcsec beam needs AA4 baselines."
+  },
+  {
+   "id": "A-08",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5b + zoom enabled sv_aastar/cycle_0; Band 5 on 80 15-m dishes at AA*",
+   "note": "Band 5b spectral-line work is available at AA* with the reduced Band-5 dish count."
+  },
+  {
+   "id": "A-09",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "resolve_context_subarrays: only AA2/AA* templates; Staged Delivery Tbl 1: AA4 159.6 km vs AA* 36 km (108 km with SKA008)",
+   "note": "Full AA4 baselines exist only in the design baseline."
+  },
+  {
+   "id": "A-10",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: pulsar_timing PST in all Mid/Low AA* contexts; AA4 dish/station counts only in design docs",
+   "note": "The PTA mode exists now, but the paper's AA4 performance needs the full 197 dishes / 512 stations."
+  },
+  {
+   "id": "A-11",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults pstBeamTypesByContext: pulsar_timing Mid all contexts, Low from SV-AA*; PST beams Mid 8/16, Low 2/8 (sv_aastar/cycle_0)",
+   "note": "PTA timing is offered at AA* on both telescopes."
+  },
+  {
+   "id": "A-12",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_inner_r20km_AAstar holds 141 of 144 AA* dishes; AA* max compact baseline 36 km",
+   "note": "AA* reaches 30 km, but it has almost no collecting area on long baselines. HI surface-brightness sensitivity at 2 arcsec needs AA4."
+  },
+  {
+   "id": "A-13",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 2 950-1760 MHz, zoom enabled; sens-calc AA* Band 2 robust0 beam ~2 arcsec (taper to 11 arcsec possible)",
+   "note": "An 11-arcsec HI survey at 950-1420 MHz is supported at AA*."
+  },
+  {
+   "id": "A-14",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): zoom enabled sv_aastar/cycle_0; Bands 1/2 available",
+   "note": "The HI survey mode (Band 1/2 spectral) is available."
+  },
+  {
+   "id": "A-15",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_inner_r350m/r700m_AAstar (137/204 stations); 300 MHz BW",
+   "note": "The Low core and full band are available at AA*."
+  },
+  {
+   "id": "A-16",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low PSS 9 (sv_aastar)/schema 250 (cycle_0) beams, PST types incl. filterbank",
+   "note": "Low transient and commensal modes exist at AA*. SV-AA2 has 0 Low PSS beams."
+  },
+  {
+   "id": "A-17",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 5.4 kHz channels (average to 50 kHz), 300 MHz BW covering 50-220 MHz",
+   "note": "Supported. The Low visibility dump time is not exposed in the schema, but 2 s is a standard cadence."
+  },
+  {
+   "id": "A-18",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: skaLowContChannelWidth 5.4 kHz",
+   "note": "5 kHz channels over 130-220 MHz are available."
+  },
+  {
+   "id": "A-19",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar 307 stations; 300 MHz BW",
+   "note": "Low AA* EoR observing is supported."
+  },
+  {
+   "id": "A-20",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery doc: AA4 197 dishes; validator has only AA* templates",
+   "note": "The survey speed quoted assumes AA4."
+  },
+  {
+   "id": "A-21",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery doc: AA4 197 dishes; no AA4 template in any context",
+   "note": "This AA4 intensity-mapping survey needs the full dish count. The autocorrelation product is not exposed in the schema."
+  },
+  {
+   "id": "A-22",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery Tbl 1: AA4 159.6 km vs AA* 36 km",
+   "note": "The long baselines needed exist only at AA4."
+  },
+  {
+   "id": "A-23",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery doc: AA4 197 dishes vs AA* 144 (80 with Band 5)",
+   "note": "This depth assumes AA4 sensitivity."
+  },
+  {
+   "id": "A-24",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 1 h 200 MHz: 12.3 uJy incl. confusion, 7.7 arcsec",
+   "note": "Depths at the level of the LOFAR Deep Fields are reachable at AA* in hours."
+  },
+  {
+   "id": "A-25",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PST timing exists; AA4 197-dish sensitivity only in design docs",
+   "note": "Timing at the tens-of-ns level assumes AA4 sensitivity."
+  },
+  {
+   "id": "A-26",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PST timing exists at AA*; AA4 only in design docs",
+   "note": "The TOA precision quoted is for AA4."
+  },
+  {
+   "id": "A-27",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Mid bands leave a 1.76-4.6 GHz gap; design minimum Mid visibility integration 0.14 s",
+   "note": "Millisecond imaging and continuous 50 MHz-15.4 GHz coverage are not provided. Only beamformed PST dynamic spectra reach ms resolution."
+  },
+  {
+   "id": "A-28",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema/describe_rules: no dynamic-range parameter",
+   "note": "The schemas and documents are silent on snapshot dynamic range."
+  },
+  {
+   "id": "A-29",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km gives ~0.14-0.4 arcsec across Band 5; AA4 159.6 km",
+   "note": "A clean 0.1 arcsec solar beam needs AA4."
+  },
+  {
+   "id": "A-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b uniform ~0.08 arcsec; required 0.05 pc at 20 kpc = 0.5 arcsec",
+   "note": "Resolution is met at AA*. The 630 deg2 Band 5b mosaic is very large."
+  },
+  {
+   "id": "A-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(subarray_config): Bands 2, 5a, 5b in all Mid contexts",
+   "note": "All three bands and mosaicking are available."
+  },
+  {
+   "id": "A-32",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "resolve_context_subarrays: no AA4 template in any context",
+   "note": "This is an AA4-only requirement with no other parameter given."
+  },
+  {
+   "id": "B-01",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 300 MHz contiguous BW (sv_aastar/cycle_0); Mid Bands 1,2,5a,5b",
+   "note": "Fully matched at AA*. SV-AA2 Low offers only 150 MHz."
+  },
+  {
+   "id": "B-02",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: stokesNames I,Q,U,V; wide BW on both telescopes",
+   "note": "Stokes V imaging is supported."
+  },
+  {
+   "id": "B-03",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h robust0 1.7 uJy/beam",
+   "note": "15.8 uJy/beam is reached in minutes at AA*."
+  },
+  {
+   "id": "B-04",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 197 dishes; no AA4 template in validator",
+   "note": "The paper states the AA4 figure. The same depth is also reachable at AA* with more time."
+  },
+  {
+   "id": "B-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "design baseline Mid min integration 0.14 s; channels 13.4 kHz (Mid)/5.4 kHz (Low)",
+   "note": "Sub-second and sub-MHz are met on Mid. The Low visibility dump time is not stated in the schemas."
+  },
+  {
+   "id": "B-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b uniform 0.08x0.02 arcsec; Band 5a/5b in AA* contexts",
+   "note": "Sub-arcsecond resolution above 5 GHz is met at AA*."
+  },
+  {
+   "id": "B-07",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only in design docs",
+   "note": "The fine-structure sensitivity is quoted for AA4."
+  },
+  {
+   "id": "B-08",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: no AA4 template",
+   "note": "This AA4 solar requirement has no other parameter."
+  },
+  {
+   "id": "B-09",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz incl. 60 MHz; 5 MHz BW allowed",
+   "note": "The band and setup exist. The mJy level in 1 s was not verified with the calculator."
+  },
+  {
+   "id": "B-10",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(odps/calibrated_visibilities,low): only averaging factors; Low dump time not given",
+   "note": "Low imaging cadence of 0.1 s or better is not stated anywhere. Only PST dynamic spectra reach sub-second."
+  },
+  {
+   "id": "B-11",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a/5b >4.6 GHz; maxSubarrays cycle_0 = 4 (sv_aastar = 1)",
+   "note": "Mosaicking above 1.9 GHz (Band 5) is possible. Split subarrays need Cycle 0."
+  },
+  {
+   "id": "B-12",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar 307 stations",
+   "note": "AA* Low is available in SV-AA*/Cycle 0."
+  },
+  {
+   "id": "B-13",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 144 MHz, Stokes V; sens-calc Low AA* 1 h 9.5 uJy (300 MHz BW)",
+   "note": "28 uJy rms in Stokes V with 50 MHz is reachable in about 1-2 h per field."
+  },
+  {
+   "id": "B-14",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 1 h: 12.3 uJy incl. confusion (9.5 thermal)",
+   "note": "10 uJy in 1 h needs AA4's 512 stations."
+  },
+  {
+   "id": "B-15",
+   "verdict": "not_addressed",
+   "contexts_checked": [],
+   "evidence": null,
+   "note": "This is a target-list requirement with no capability to check."
+  },
+  {
+   "id": "B-16",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 1 h: 9.5 uJy thermal + 7.8 uJy confusion; AA* Mid Band 2 1 h 1.7 uJy",
+   "note": "The Mid 1-2 uJy/1 h is met at AA*. Low 2-5 uJy/beam in 1 h is below the Low thermal+confusion floor, even scaled to AA4."
+  },
+  {
+   "id": "B-17",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_inner_r125m/Low_inner_r350m AA* templates",
+   "note": "Short-baseline subarrays are available."
+  },
+  {
+   "id": "B-18",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz + Mid Band 1 350-1050 MHz",
+   "note": "80-1000 MHz is covered by the two telescopes."
+  },
+  {
+   "id": "B-19",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low PSS/PST beams in SV-AA*/Cycle 0",
+   "note": "Low transient modes exist."
+  },
+  {
+   "id": "B-20",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): inner r700m-r6km AA* templates",
+   "note": "Tens of arcsec to 1 arcmin at metre wavelengths is easily met."
+  },
+  {
+   "id": "B-21",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no solar-specific mode",
+   "note": "This is a generic solar requirement, and the schemas have no solar mode."
+  },
+  {
+   "id": "B-22",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings,cycle_0,low): max 250 beams; design baseline 500 Low PSS beams; PST max 8",
+   "note": "500 tied-array beams exist only in the Low AA4 design. The 3.5 arcmin beam is easy."
+  },
+  {
+   "id": "B-23",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: skaLowContChannelWidth 5.4 kHz; describe_schema(zoom_settings,sv_aastar,low): 226 Hz",
+   "note": "This is an exact match to the schema."
+  },
+  {
+   "id": "B-24",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low station beams 16 (sv_aastar)/48 (cycle_0); Mid mosaics",
+   "note": "Wide solar and coronal coverage is supported by multiple station beams."
+  },
+  {
+   "id": "B-25",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz covers 90-310 MHz",
+   "note": "This describes station properties, and the band is available."
+  },
+  {
+   "id": "B-26",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(odps/pst_dynamic_spectrum): time res >=1e-7 s, freq res >=2 Hz",
+   "note": "Available via beamformed PST dynamic spectra, not via imaging."
+  },
+  {
+   "id": "B-27",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings,cycle_0,mid): 1125 beams; sv_aastar 200",
+   "note": "Mid transient modes are available."
+  },
+  {
+   "id": "B-28",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 300 MHz uniform 2.3x1.8 arcsec (so ~3.4 arcsec at 200 MHz); 5.4 kHz channels",
+   "note": "5 arcsec at 200 MHz with 100 kHz channels or finer is met at AA*."
+  },
+  {
+   "id": "B-29",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Low visibility dump time absent from schemas/retrieved docs",
+   "note": "Low imaging cadence of hundreds of ms is not stated. Only PST dynamic spectra confirm sub-second."
+  },
+  {
+   "id": "B-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Mid Bands 1,2,5a,5b; maxSubarrays cycle_0 = 4",
+   "note": "Several Mid bands are available. Simultaneous bands need subarrays, which means Cycle 0."
+  },
+  {
+   "id": "B-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_inner_r6km/r12km_AAstar",
+   "note": "An 8.5 km baseline subset is available at AA*."
+  },
+  {
+   "id": "B-32",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Low AA* 73.4 km max baseline (= AA4); Low_outer_r6km_AAstar 62 stations",
+   "note": "Baselines of at least 5 km already exist at AA*."
+  },
+  {
+   "id": "B-33",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz; Mid AA* Bands 1,2,5a,5b",
+   "note": "Matched at AA*."
+  },
+  {
+   "id": "B-34",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "design baseline Mid min integration 0.14 s; get_context_defaults skaMidContChannelWidth 13.4 kHz",
+   "note": "This matches the Mid correlator minimum exactly. The schema does not expose dump time."
+  },
+  {
+   "id": "B-35",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Mid bands cover 0.35-1.76 and 4.6-15.4 GHz; min integration 0.14 s",
+   "note": "Sub-second imaging is available, but 1.76-4.6 GHz is not covered."
+  },
+  {
+   "id": "B-36",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "list_capability_schemas: no VLBI schema in any context; VLBI beams only in design-baseline docs",
+   "note": "The VLBI mode is not offered in any current context."
+  },
+  {
+   "id": "B-37",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "The paper says AA*, but VLBI is absent from every validator context."
+  },
+  {
+   "id": "B-38",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "B-39",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Low dump time absent from schemas; PST dynamic spectrum only",
+   "note": "Resolution finer than 1 MHz is met, but Low imaging at 0.5 s or better is not stated."
+  },
+  {
+   "id": "B-40",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no image-fidelity/dynamic-range parameter",
+   "note": "The flux level is trivial, but fidelity is not addressed."
+  },
+  {
+   "id": "B-41",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 300 MHz uniform 2.3x1.8 arcsec; AA* max baseline = AA4",
+   "note": "About 2 arcsec is reachable at the top of the band. True 1 arcsec is not."
+  },
+  {
+   "id": "B-42",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(odps/pst_flowthrough,cycle_0,low): raw voltage beams 3.6 kHz-300 MHz",
+   "note": "Flowthrough voltages allow ~100 ns post-processing."
+  },
+  {
+   "id": "B-43",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low transient-capable PSS/PST at SV-AA*",
+   "note": "The paper says AA* suffices."
+  },
+  {
+   "id": "B-44",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 dishes at AA* vs 133 at AA4",
+   "note": "The depth quoted assumes AA4."
+  },
+  {
+   "id": "B-45",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 dishes at AA*",
+   "note": "The paper says AA* is limited to the largest TNOs."
+  },
+  {
+   "id": "C-01",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 3.36 kHz valid; AA4 Band-5 dishes only in design",
+   "note": "The channel width is OK, but the mK sensitivity is for AA4."
+  },
+  {
+   "id": "C-02",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 6.72 kHz channels; Band 5b in AA* contexts",
+   "note": "Close match to 7.2 kHz channels at AA*."
+  },
+  {
+   "id": "C-03",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 13.44/6.72 kHz (0.34/0.17 km/s at 12 GHz); Band 5b AA* beam <0.8 arcsec",
+   "note": "The mode and resolution are met. The 18 uJy/beam line sensitivity was not verified."
+  },
+  {
+   "id": "C-04",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only in design",
+   "note": "The depth quoted is for AA4."
+  },
+  {
+   "id": "C-05",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 197 dishes",
+   "note": "This AA4 all-sky survey depth needs the full array."
+  },
+  {
+   "id": "C-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz, Mid Bands 1/2; maxSubarrays cycle_0 = 4",
+   "note": "Simultaneous Mid Bands 1+2 needs split subarrays (Cycle 0). Coordinating Low and Mid is not in the schema."
+  },
+  {
+   "id": "C-07",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only in design",
+   "note": "The maser sensitivity quoted is for AA4."
+  },
+  {
+   "id": "C-08",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km gives ~0.15-0.3 arcsec in Band 5",
+   "note": "A ~100 mas maser beam needs AA4 baselines."
+  },
+  {
+   "id": "C-09",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 3.36 kHz = 0.6 km/s at 1612 MHz",
+   "note": "Available at AA*."
+  },
+  {
+   "id": "C-10",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes vs 133 at AA4",
+   "note": "Needs Band 5b with all dishes."
+  },
+  {
+   "id": "C-11",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "Needs Band 5b with all dishes."
+  },
+  {
+   "id": "C-12",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery Tbl 1: AA4 159.6 km; AA* 36 km",
+   "note": "150 km baselines exist only at AA4."
+  },
+  {
+   "id": "C-13",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 300 MHz BW at 200 MHz",
+   "note": "Supported at AA*."
+  },
+  {
+   "id": "C-14",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.8 arcsec in Band 2 needs AA4."
+  },
+  {
+   "id": "C-15",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): only AA* templates",
+   "note": "AA4 Low only."
+  },
+  {
+   "id": "C-16",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a 3.9 GHz BW (cycle_0); 80 Band-5 dishes",
+   "note": "1 uJy/beam is feasible with long integrations. The exact time was not computed."
+  },
+  {
+   "id": "C-17",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "The AA* 2 arcsec case is available. The 0.8 arcsec case needs AA4."
+  },
+  {
+   "id": "C-18",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h; Low AA* 12 uJy/1 h",
+   "note": "The thresholds are shallow."
+  },
+  {
+   "id": "C-19",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "20-50 mas beams need AA4."
+  },
+  {
+   "id": "C-20",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km (~0.15 arcsec at 10 GHz)",
+   "note": "A 0.1 arcsec RRL image needs AA4. 0.25 km/s channels are available (6.72 kHz)."
+  },
+  {
+   "id": "C-21",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a/5b in AA* contexts",
+   "note": "Mosaicking with Band 5 is available."
+  },
+  {
+   "id": "C-22",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "Depth plus 0.1 arcsec is for AA4."
+  },
+  {
+   "id": "C-23",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "1 arcsec in Bands 1/2 needs AA4."
+  },
+  {
+   "id": "C-24",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "0.02 arcsec needs AA4."
+  },
+  {
+   "id": "C-25",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 spectral 13.4 kHz 1 h: 0.39 mJy/beam at ~2 arcsec",
+   "note": "6 arcsec at ~6 mJy/beam per channel is reachable at AA*, even though the paper labels it AA4."
+  },
+  {
+   "id": "C-26",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "Zeeman sensitivity is for AA4."
+  },
+  {
+   "id": "C-27",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5b + zoom in sv_aastar/cycle_0",
+   "note": "Available."
+  },
+  {
+   "id": "C-28",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec, Band 5b ~0.08-0.1 arcsec; Low ~5 arcsec",
+   "note": "The AA* resolutions quoted are consistent. The AA4 values need AA4."
+  },
+  {
+   "id": "C-29",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid max 15.4 GHz",
+   "note": "Band 6 is not provided."
+  },
+  {
+   "id": "C-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PSS/PST on both telescopes",
+   "note": "Generic transient support exists."
+  },
+  {
+   "id": "C-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km gives ~0.14 arcsec at 12.5 GHz",
+   "note": "The AA* 0.15 arcsec case is available. The AA4 0.05 arcsec case needs AA4."
+  },
+  {
+   "id": "C-32",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5b in AA* contexts",
+   "note": "Available."
+  },
+  {
+   "id": "C-33",
+   "verdict": "not_addressed",
+   "contexts_checked": [],
+   "evidence": null,
+   "note": "No parameters are given."
+  },
+  {
+   "id": "C-34",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b 1 h uniform 10.4 uJy/beam; natural weighting gives a larger beam, above 0.8 arcsec",
+   "note": "20 uJy at 0.8 arcsec per pointing is met at AA*. Survey speed is lower than AA4."
+  },
+  {
+   "id": "C-35",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 840 Hz = 0.15 km/s at 1720 MHz",
+   "note": "The AA* ~20 mJy case is available."
+  },
+  {
+   "id": "C-36",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template in any context",
+   "note": "Paper states AA4; the Band 2 polarimetry mode exists at AA*."
+  },
+  {
+   "id": "C-37",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "0.07 arcsec needs AA4."
+  },
+  {
+   "id": "C-38",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "0.07 arcsec at 14 GHz needs AA4."
+  },
+  {
+   "id": "C-39",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b uniform 0.08x0.02 arcsec, 10.4 uJy/1 h",
+   "note": "The AA* survey at ~0.16 arcsec is available."
+  },
+  {
+   "id": "C-40",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b beams well below 0.5 arcsec",
+   "note": "Resolution below 0.5 arcsec is met at AA*."
+  },
+  {
+   "id": "C-41",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "The line sensitivity is for AA4."
+  },
+  {
+   "id": "C-42",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "The Zeeman detection is for AA4."
+  },
+  {
+   "id": "C-43",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "The mK sensitivity is for AA4."
+  },
+  {
+   "id": "C-44",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* ~0.1-0.15 arcsec in Band 5",
+   "note": "100 au is met only for sources within ~1 kpc at AA*. More distant sources need AA4."
+  },
+  {
+   "id": "C-45",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 6.72 kHz = 0.3 km/s at 6.7 GHz; 1-2 arcsec easy",
+   "note": "The stated parameters are met at AA*."
+  },
+  {
+   "id": "C-46",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "C-47",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "C-48",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "D-01",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc zoom AA4 (15-m) Band 5b 12.5 GHz 210 Hz 1 h natural: 3.4 mJy/beam",
+   "note": "210 Hz zoom exists, but 85 uJy/beam per 210 Hz in 1 h is about 40x beyond even AA4."
+  },
+  {
+   "id": "D-02",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2 + zoom in sv_aastar/cycle_0",
+   "note": "OH in Band 2 is available."
+  },
+  {
+   "id": "D-03",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 2 IQUV; sens-calc AA* 1.7 uJy/1 h",
+   "note": "An RM grid is feasible at AA*."
+  },
+  {
+   "id": "D-04",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz IQUV",
+   "note": "Available."
+  },
+  {
+   "id": "D-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: 5.4 kHz channels; frequency averaging to 0.05-0.1 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "D-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_inner_r350m/r700m_AAstar",
+   "note": "Short baselines within 1 km are available."
+  },
+  {
+   "id": "D-07",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "Arcsecond HI column-density sensitivity needs AA4."
+  },
+  {
+   "id": "D-08",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec; uniform 0.74x0.22 arcsec at 18 uJy/1 h",
+   "note": "A clean 0.8 arcsec PSF at 2 uJy needs AA4."
+  },
+  {
+   "id": "D-09",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2 in all AA* contexts",
+   "note": "Available. Depth not specified."
+  },
+  {
+   "id": "D-10",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 300 MHz 85 MHz uniform: 2.3x1.8 arcsec, 102 uJy/1 h",
+   "note": "3 arcsec or better needs uniform weighting, which costs a lot of sensitivity. AA4 has the same max baseline."
+  },
+  {
+   "id": "D-11",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "30 mas at 15 GHz needs AA4."
+  },
+  {
+   "id": "D-12",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "The paper says AA*, but VLBI is not offered."
+  },
+  {
+   "id": "D-13",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 sensitivity."
+  },
+  {
+   "id": "D-14",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid max 15.4 GHz",
+   "note": "22 GHz is not provided."
+  },
+  {
+   "id": "D-15",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "AA4 sensitivity."
+  },
+  {
+   "id": "D-16",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid max 15.4 GHz",
+   "note": "Band 6 is not in the baseline."
+  },
+  {
+   "id": "D-17",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "Depth plus 0.14 arcsec is for AA4."
+  },
+  {
+   "id": "D-18",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h robust0 1.7 uJy/beam",
+   "note": "About 3 h per pointing. 30 deg2 is feasible."
+  },
+  {
+   "id": "D-19",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec robust; zoom enabled",
+   "note": "10 arcsec HI is available."
+  },
+  {
+   "id": "D-20",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2 zoom",
+   "note": "Available."
+  },
+  {
+   "id": "D-21",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_full_AAstar",
+   "note": "An AA* HI survey is possible, at reduced performance compared with AA4."
+  },
+  {
+   "id": "D-22",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a in AA* contexts",
+   "note": "Available."
+  },
+  {
+   "id": "D-23",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km gives ~0.26 arcsec at 6.5 GHz",
+   "note": "0.3 arcsec in Band 5a is met."
+  },
+  {
+   "id": "D-24",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 survey depths."
+  },
+  {
+   "id": "D-25",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy incl. confusion",
+   "note": "The AA4 Low depth is stated."
+  },
+  {
+   "id": "D-26",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h 1.7 uJy/beam",
+   "note": "Depth per pointing is met. A survey of several thousand deg2 needs thousands of hours."
+  },
+  {
+   "id": "D-27",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 depths."
+  },
+  {
+   "id": "D-28",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 2 IQUV",
+   "note": "Available."
+  },
+  {
+   "id": "D-29",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 spectral robust0 2.2x1.8 arcsec",
+   "note": "1 arcsec HI needs AA4."
+  },
+  {
+   "id": "D-30",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 uniform spectral 1.1x0.95 arcsec but ~7x noise penalty",
+   "note": "1 arcsec HI is realistic only at AA4."
+  },
+  {
+   "id": "D-31",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 Band 5b depth."
+  },
+  {
+   "id": "D-32",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz; Mid Band 1",
+   "note": "Available."
+  },
+  {
+   "id": "D-33",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350, Mid Band 1 350-1050 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "D-34",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "D-35",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "D-36",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "D-37",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid max 15.4 GHz",
+   "note": "Band 6 (22 GHz) is not provided."
+  },
+  {
+   "id": "D-38",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template in any context",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "D-39",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* 36 km vs AA4 159.6 km (~4.4x)",
+   "note": "AA* is available with the ~4x poorer resolution the paper acknowledges."
+  },
+  {
+   "id": "D-40",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* (15-m) Band 5b 1 h uniform 10.4 uJy; Band 5 on 80 dishes",
+   "note": "0.2 uJy over 2 deg2 in Band 5b needs about 200 pointings. That is only plausible with AA4 survey speed."
+  },
+  {
+   "id": "D-41",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.87 arcsec needs AA4."
+  },
+  {
+   "id": "D-42",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h 1.7 uJy/beam",
+   "note": "70 nJy needs about 600 h. Cycle 0 caps an SB at 50 h, so this means many SBs, and confusion may limit it."
+  },
+  {
+   "id": "D-43",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1-5b (gap 1.76-4.6 GHz)",
+   "note": "1-3 arcsec is available in the offered bands, but not at 1.76-4.6 GHz."
+  },
+  {
+   "id": "D-44",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Available."
+  },
+  {
+   "id": "D-45",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 uniform 0.74x0.22 arcsec (elongated) at 18 uJy/1 h",
+   "note": "A 0.4 arcsec beam at 1 uJy needs AA4."
+  },
+  {
+   "id": "D-46",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h; confusion 0.04 uJy at 2 arcsec",
+   "note": "About 300 h across multiple SBs."
+  },
+  {
+   "id": "D-47",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "The paper says AA* or AA4. The wide tier is a large time investment."
+  },
+  {
+   "id": "D-48",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 2 and 5a in AA* contexts",
+   "note": "Available."
+  },
+  {
+   "id": "D-49",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "The sub-pc (VLBI) component needs design-baseline VLBI. The coarser scales are available at AA*."
+  },
+  {
+   "id": "D-50",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h; Low AA* confusion 7.8 uJy at 7.7 arcsec",
+   "note": "Sub-uJy at 1.4 GHz is feasible with deep integration. At 200 MHz, Low would be confusion-limited."
+  },
+  {
+   "id": "D-51",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* 36 km gives ~0.26 arcsec at 6.5 GHz",
+   "note": "0.1 arcsec in Band 5a needs AA4."
+  },
+  {
+   "id": "D-52",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a",
+   "note": "Available."
+  },
+  {
+   "id": "D-53",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 200 MHz 12.3 uJy; Mid Band 1 available",
+   "note": "Met at AA*."
+  },
+  {
+   "id": "D-54",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 HI sensitivity."
+  },
+  {
+   "id": "D-55",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "D-56",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 spectral ~2.2 arcsec robust0",
+   "note": "4 arcsec HI is met."
+  },
+  {
+   "id": "D-57",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 1.68 kHz = 0.35 km/s at 1.42 GHz",
+   "note": "Available in SV-AA*/Cycle 0, not SV-AA2."
+  },
+  {
+   "id": "D-58",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "Met."
+  },
+  {
+   "id": "D-59",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2",
+   "note": "Available."
+  },
+  {
+   "id": "D-60",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 depths."
+  },
+  {
+   "id": "D-61",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "1.3 arcsec at Band 1 needs AA4."
+  },
+  {
+   "id": "D-62",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "D-63",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec robust",
+   "note": "~1 arcsec in Band 2 and ~0.1 arcsec in Band 5b need AA4."
+  },
+  {
+   "id": "D-64",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "0.07 arcsec needs AA4."
+  },
+  {
+   "id": "D-65",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "D-66",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec; zoom",
+   "note": "Available at AA*."
+  },
+  {
+   "id": "D-67",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: AA* core templates",
+   "note": "Deep low-column-density HI is possible at AA* with low resolution."
+  },
+  {
+   "id": "D-68",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 HI resolution and sensitivity."
+  },
+  {
+   "id": "D-69",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 sensitivity."
+  },
+  {
+   "id": "D-70",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy at 7.7 arcsec",
+   "note": "Stated AA4 Low."
+  },
+  {
+   "id": "D-71",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Met at AA*."
+  },
+  {
+   "id": "D-72",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "Met."
+  },
+  {
+   "id": "D-73",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "This AA4 all-sky survey needs AA4 survey speed."
+  },
+  {
+   "id": "D-74",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec robust",
+   "note": "1 arcsec HI needs AA4."
+  },
+  {
+   "id": "D-75",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 survey."
+  },
+  {
+   "id": "D-76",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h; Bands 5a/5b available",
+   "note": "Feasible with deep integrations."
+  },
+  {
+   "id": "D-77",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a 3.9 GHz BW (cycle_0)",
+   "note": "Needs long integrations. Not computed."
+  },
+  {
+   "id": "D-78",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a + zoom in AA* contexts",
+   "note": "Paper says AA*."
+  },
+  {
+   "id": "D-79",
+   "verdict": "not_addressed",
+   "contexts_checked": [],
+   "evidence": null,
+   "note": "The relative claim cannot be checked."
+  },
+  {
+   "id": "D-80",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "D-81",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "D-82",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low zoom + 48 station beams (cycle_0)",
+   "note": "Available."
+  },
+  {
+   "id": "D-83",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "D-84",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "0.05 uJy is an AA4 depth."
+  },
+  {
+   "id": "D-85",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.4 arcsec at 1.4 GHz needs AA4."
+  },
+  {
+   "id": "D-86",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 80 MHz up, Mid Bands 1-5b",
+   "note": "The bands are available. The depths need very long integrations."
+  },
+  {
+   "id": "D-87",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1 and 2",
+   "note": "Available."
+  },
+  {
+   "id": "D-88",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "D-89",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "D-90",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_full_AAstar; zoom",
+   "note": "Available."
+  },
+  {
+   "id": "D-91",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2",
+   "note": "Available."
+  },
+  {
+   "id": "D-92",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.9 arcsec needs AA4."
+  },
+  {
+   "id": "E-01",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h at ~2 arcsec",
+   "note": "uJy-level imaging is available at AA*."
+  },
+  {
+   "id": "E-02",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5 + zoom",
+   "note": "Available."
+  },
+  {
+   "id": "E-03",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 9.5 uJy thermal, confusion 7.8 uJy at 7.7 arcsec",
+   "note": "The AA4 Low depth is stated."
+  },
+  {
+   "id": "E-04",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low station beams 16/48",
+   "note": "A wide Low polarisation survey is available."
+  },
+  {
+   "id": "E-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* uniform ~2-3.4 arcsec (300-200 MHz)",
+   "note": "5 arcsec is met at AA*."
+  },
+  {
+   "id": "E-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 1/2 zoom",
+   "note": "Paper says AA*."
+  },
+  {
+   "id": "E-07",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-08",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 700 MHz BW; design doc: continuum mode delivers autocorrelations",
+   "note": "Band 1 is available. Autocorrelation output is not exposed in the schema."
+  },
+  {
+   "id": "E-09",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 in AA* contexts",
+   "note": "Same autocorrelation caveat."
+  },
+  {
+   "id": "E-10",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-11",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4. Band 1 exists at AA*."
+  },
+  {
+   "id": "E-12",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "A 20 uJy flux limit is easy."
+  },
+  {
+   "id": "E-13",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 1/2 zoom",
+   "note": "Available."
+  },
+  {
+   "id": "E-14",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1, 2",
+   "note": "Available."
+  },
+  {
+   "id": "E-15",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1, 2",
+   "note": "Available."
+  },
+  {
+   "id": "E-16",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "AA4 weak lensing."
+  },
+  {
+   "id": "E-17",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "Weak lensing needs sub-arcsec shapes, which means AA4."
+  },
+  {
+   "id": "E-18",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a 2.5/3.9 GHz BW",
+   "note": "8.5 uJy peak is feasible at AA*."
+  },
+  {
+   "id": "E-19",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 350-1050 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-20",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-21",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): only AA* templates",
+   "note": "Stated AA4 Low."
+  },
+  {
+   "id": "E-22",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): AA* templates",
+   "note": "Available."
+  },
+  {
+   "id": "E-23",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-24",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1/2",
+   "note": "Generic intensity mapping. Autocorrelations are not exposed in the schema."
+  },
+  {
+   "id": "E-25",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1/2",
+   "note": "Same caveat as E-24."
+  },
+  {
+   "id": "E-26",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 350-1050 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-27",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 2 zoom",
+   "note": "Available."
+  },
+  {
+   "id": "E-28",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 1/2 zoom",
+   "note": "Available."
+  },
+  {
+   "id": "E-29",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing PST in all contexts",
+   "note": "Available."
+  },
+  {
+   "id": "E-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings,low): 226 Hz+",
+   "note": "The 21-cm forest spectral mode is available."
+  },
+  {
+   "id": "E-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar",
+   "note": "Available."
+  },
+  {
+   "id": "E-32",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "The AA4 fluence threshold is stated."
+  },
+  {
+   "id": "E-33",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-34",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 survey."
+  },
+  {
+   "id": "E-35",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): Mid 200/1125 beams",
+   "note": "Available."
+  },
+  {
+   "id": "E-36",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.3-0.5 arcsec needs AA4."
+  },
+  {
+   "id": "E-37",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-38",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low BW up to 300 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-39",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): AA* templates",
+   "note": "Available."
+  },
+  {
+   "id": "E-40",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): AA* templates",
+   "note": "Available."
+  },
+  {
+   "id": "E-41",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Low AA4 512 stations",
+   "note": "AA4 is preferred."
+  },
+  {
+   "id": "E-42",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low core templates",
+   "note": "Scales above 5 arcmin are available."
+  },
+  {
+   "id": "E-43",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar",
+   "note": "Available."
+  },
+  {
+   "id": "E-44",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar",
+   "note": "Available."
+  },
+  {
+   "id": "E-45",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-46",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-47",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_inner_r1km/r2km_AAstar",
+   "note": "1 arcmin at 710 MHz needs baselines of about 1.4 km, which the AA* core has."
+  },
+  {
+   "id": "E-48",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-49",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 uniform 1 h: 0.74x0.22 arcsec, 18 uJy/beam",
+   "note": "This matches the AA* uniform PSF. 6.86 uJy needs about 7 h."
+  },
+  {
+   "id": "E-50",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "0.19 arcsec needs AA4."
+  },
+  {
+   "id": "E-51",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: MID_AAstar_all 144 dishes",
+   "note": "The AA* 144-dish case is available. The AA4 197-dish case needs AA4."
+  },
+  {
+   "id": "E-52",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 350-1050 MHz, 700 MHz BW",
+   "note": "Available."
+  },
+  {
+   "id": "E-53",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: 13.4 kHz channels x4 averaging = 53.76 kHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-54",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-55",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing",
+   "note": "Available."
+  },
+  {
+   "id": "E-56",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy incl. confusion",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-57",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h 1.7 uJy -> ~0.24 uJy in 50 h",
+   "note": "0.1 uJy in 50 h exceeds AA* and is marginal even at AA4."
+  },
+  {
+   "id": "E-58",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy at 7.7 arcsec (200 MHz)",
+   "note": "Met at AA*."
+  },
+  {
+   "id": "E-59",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-60",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing, 8/16 PST beams",
+   "note": "The mode is available. Precision was not verified."
+  },
+  {
+   "id": "E-61",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2"
+   ],
+   "evidence": "get_context_defaults(sv_aa2): Low_full_AA2, 150 MHz max BW",
+   "note": "Available even at SV-AA2."
+  },
+  {
+   "id": "E-62",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 9.5 uJy/7.7 arcsec beam (~0.15 uJy/arcsec2)",
+   "note": "Reachable at AA* in a few hours."
+  },
+  {
+   "id": "E-63",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): core templates for tapering",
+   "note": "Feasible, but the tapered image will be confusion-limited."
+  },
+  {
+   "id": "E-64",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-65",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low transient modes",
+   "note": "Available."
+  },
+  {
+   "id": "E-66",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy; Mid Band 1/2 available; no band 1.76-4.6 GHz",
+   "note": "The Low AA* figure and Mid Band 1 are met. The 1.76-3.1 GHz part is not offered."
+  },
+  {
+   "id": "E-67",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 2 and 5a IQUV",
+   "note": "Available."
+  },
+  {
+   "id": "E-68",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid/Low full AA*",
+   "note": "Available."
+  },
+  {
+   "id": "E-69",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy at 7.7 arcsec",
+   "note": "Met."
+  },
+  {
+   "id": "E-70",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-71",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-72",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1",
+   "note": "Available."
+  },
+  {
+   "id": "E-73",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec, 1.7 uJy/1 h",
+   "note": "Met."
+  },
+  {
+   "id": "E-74",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec (taper to 17 arcsec)",
+   "note": "17 arcsec is met at AA*."
+  },
+  {
+   "id": "E-75",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid PST 8/16 beams",
+   "note": "The mode is available. Programme size is a scheduling question."
+  },
+  {
+   "id": "E-76",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid PST",
+   "note": "Available."
+  },
+  {
+   "id": "E-77",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): AA* templates",
+   "note": "Available."
+  },
+  {
+   "id": "E-78",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "E-79",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 only",
+   "note": "AA4 HI sensitivity."
+  },
+  {
+   "id": "E-80",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "1 arcsec at Band 1 needs AA4."
+  },
+  {
+   "id": "E-81",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust ~2 arcsec",
+   "note": "1.3 arcsec HI needs AA4."
+  },
+  {
+   "id": "E-82",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy incl. confusion",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-83",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-84",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust0 2.0x1.7 arcsec",
+   "note": "0.84 arcsec needs AA4."
+  },
+  {
+   "id": "E-85",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-86",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 200 MHz 12.3 uJy at 7.7 arcsec",
+   "note": "The per-pointing depth is met at AA*. Survey speed is lower."
+  },
+  {
+   "id": "E-87",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "1.3 arcsec at Band 1 needs AA4."
+  },
+  {
+   "id": "E-88",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust ~2 arcsec",
+   "note": "0.6-1 arcsec needs AA4."
+  },
+  {
+   "id": "E-89",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-90",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 9.5 uJy thermal, 7.8 uJy confusion",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-91",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust ~2 arcsec",
+   "note": "0.75 arcsec needs AA4."
+  },
+  {
+   "id": "E-92",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1 h 1.7 uJy robust0",
+   "note": "4 uJy at 8 arcsec per pointing is met at AA*. Survey speed is lower."
+  },
+  {
+   "id": "E-93",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy at 7.7 arcsec",
+   "note": "20 uJy at 8 arcsec is met per pointing."
+  },
+  {
+   "id": "E-94",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "AA4 depth."
+  },
+  {
+   "id": "E-95",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-96",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 robust ~2 arcsec",
+   "note": "0.9 arcsec needs AA4."
+  },
+  {
+   "id": "E-97",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5a IQUV",
+   "note": "Available."
+  },
+  {
+   "id": "E-98",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 ~2 arcsec robust; Band 5 sub-arcsec",
+   "note": "1.5 arcsec or better is met in Band 5, and in Band 2 with robust <0."
+  },
+  {
+   "id": "E-99",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 depth."
+  },
+  {
+   "id": "E-100",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Available."
+  },
+  {
+   "id": "E-101",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing",
+   "note": "The mode is available. Precision was not verified."
+  },
+  {
+   "id": "E-102",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "E-103",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 1 700 MHz BW",
+   "note": "A 22.8 uJy flux limit (~4.6 uJy rms) is shallow for AA*. Survey speed is lower."
+  },
+  {
+   "id": "E-104",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 weak-lensing survey."
+  },
+  {
+   "id": "E-105",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "The paper says AA* is insufficient."
+  },
+  {
+   "id": "E-106",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 uniform 0.74x0.22 arcsec elongated",
+   "note": "A 0.55 arcsec round PSF needs AA4."
+  },
+  {
+   "id": "F-01",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1/2",
+   "note": "Available."
+  },
+  {
+   "id": "F-02",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Easy."
+  },
+  {
+   "id": "F-03",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings,cycle_0,low): max 250 beams, 118 MHz BW; sv_aastar 9 beams",
+   "note": "The AA* 250-beam case is available in Cycle 0 only. 500 beams need AA4."
+  },
+  {
+   "id": "F-04",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings,cycle_0,mid): max 1125 beams (sv_aastar 200)",
+   "note": "The AA* 1125-beam case is available in Cycle 0. 1500 beams need AA4."
+  },
+  {
+   "id": "F-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_inner_r1km_AAstar; PSS 1125 beams (cycle_0)",
+   "note": "An inner 1 km beamformed search is possible at AA*. The AA4 FoV figures differ slightly."
+  },
+  {
+   "id": "F-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Met."
+  },
+  {
+   "id": "F-07",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5a BW 2.5/3.9 GHz",
+   "note": "Paper says AA*."
+  },
+  {
+   "id": "F-08",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA* compact 36 km gives ~0.26 arcsec at 6.5 GHz",
+   "note": "140x120 mas needs AA4."
+  },
+  {
+   "id": "F-09",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-10",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2"
+   ],
+   "evidence": "get_context_defaults(sv_aa2): Mid Bands 2, 5a, 5b with 800 MHz BW, Mid_full_AA2 (64 dishes; 32 with Band 5)",
+   "note": "Available in SV-AA2."
+  },
+  {
+   "id": "F-11",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "VLBI is not offered in any context."
+  },
+  {
+   "id": "F-12",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "F-13",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas(ska_low): no VLBI mode",
+   "note": "Low VLBI is design-baseline only."
+  },
+  {
+   "id": "F-14",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(continuum_settings): 13.4 kHz channels + frequency averaging",
+   "note": "Available."
+  },
+  {
+   "id": "F-15",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: zoom 840 Hz; max zoom channels 4000 (sv_aastar) / 16000 (cycle_0)",
+   "note": "8 MHz at 0.84 kHz needs ~9500 channels, so Cycle 0 is required. SV-AA* gives only ~3.4 MHz."
+  },
+  {
+   "id": "F-16",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): 300 MHz max BW; design PSS 3720 x 80.64 kHz channels",
+   "note": "The AA* SEFD case is available."
+  },
+  {
+   "id": "F-17",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(odps/pst_dynamic_spectrum): time res >=1e-7 s",
+   "note": "50 us sampling is available."
+  },
+  {
+   "id": "F-18",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-19",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-20",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-21",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PST detected_filterbank Band 5 up to 2500 MHz (8/16 beams); PSS capped at 300 MHz",
+   "note": "2.5 GHz bandwidth is possible only via PST filterbank beams, not PSS."
+  },
+  {
+   "id": "F-22",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no Band 3",
+   "note": "Band 3 is not provided. Band 5a is available."
+  },
+  {
+   "id": "F-23",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: Band 5 on 80 AA* dishes",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-24",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h; Bands 5a/5b in AA*",
+   "note": "Paper says AA*."
+  },
+  {
+   "id": "F-25",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-26",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "VLBI not offered."
+  },
+  {
+   "id": "F-27",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-28",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-29",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low max 350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h ~12 uJy",
+   "note": "7 mJy in 1 min is easy."
+  },
+  {
+   "id": "F-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-32",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy",
+   "note": "Easy."
+  },
+  {
+   "id": "F-33",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-34",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Mid Bands 1/2 mosaics",
+   "note": "Available."
+  },
+  {
+   "id": "F-35",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-36",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_inner_r350m_AAstar",
+   "note": "Available."
+  },
+  {
+   "id": "F-37",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low min 50 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-38",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no Band 3",
+   "note": "Band 3 is not provided. Band 5 is available."
+  },
+  {
+   "id": "F-39",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low pulsar_timing from SV-AA* (not SV-AA2)",
+   "note": "The AA* case is available."
+  },
+  {
+   "id": "F-40",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults(cycle_0): PST beams Mid 16, Low 8",
+   "note": "16 beams on Low exist only in the design baseline."
+  },
+  {
+   "id": "F-41",
+   "verdict": "not_addressed",
+   "contexts_checked": [],
+   "evidence": null,
+   "note": "No parameters are given."
+  },
+  {
+   "id": "F-42",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-43",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5b",
+   "note": "Available."
+  },
+  {
+   "id": "F-44",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays: Mid_inner_r1km_AAstar; PSS Band 2 300 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-45",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): Mid PSS",
+   "note": "The AA* case is available."
+  },
+  {
+   "id": "F-46",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings,low): 50-350 MHz",
+   "note": "350-450 MHz is above the Low range."
+  },
+  {
+   "id": "F-47",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-48",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 5b to 15.4 GHz",
+   "note": "Available."
+  },
+  {
+   "id": "F-49",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 uniform 0.74x0.22 arcsec",
+   "note": "0.2 arcsec in Band 2 needs AA4."
+  },
+  {
+   "id": "F-50",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "F-51",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low + Mid Band 1",
+   "note": "Available."
+  },
+  {
+   "id": "F-52",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Available."
+  },
+  {
+   "id": "F-53",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-54",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): Mid PSS",
+   "note": "Available."
+  },
+  {
+   "id": "F-55",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  },
+  {
+   "id": "F-56",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Band 2 810 MHz BW (800 MHz sv_aa2)",
+   "note": "Available."
+  },
+  {
+   "id": "F-57",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing",
+   "note": "The AA* case is available."
+  },
+  {
+   "id": "F-58",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "AA4 VLBI."
+  },
+  {
+   "id": "F-59",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PST timing exists; AA4 sensitivity only in design docs",
+   "note": "~30 ns timing assumes full-array sensitivity."
+  },
+  {
+   "id": "F-60",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Staged Delivery: AA4 159.6 km",
+   "note": "15 mas localisation needs AA4."
+  },
+  {
+   "id": "F-61",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 300 MHz uniform 2.3x1.8 arcsec (~3.4 arcsec at 200 MHz)",
+   "note": "250 mas is reachable only with high S/N, above ~7."
+  },
+  {
+   "id": "F-62",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no transient-buffer schema; design TB max 150 MHz (Low), 300 MHz (Mid)",
+   "note": "A 400 MHz transient buffer is beyond the design for Low and is not in any context."
+  },
+  {
+   "id": "F-63",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid Band 2 pulsar_timing",
+   "note": "The AA* case is available."
+  },
+  {
+   "id": "F-64",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PST in Bands 1/2",
+   "note": "Available."
+  },
+  {
+   "id": "F-65",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Mid pulsar_timing",
+   "note": "Available."
+  },
+  {
+   "id": "F-66",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 300 MHz 9.5 uJy thermal",
+   "note": "10 uJy rms in Stokes V at 144 MHz with 50 MHz takes about 10 h."
+  },
+  {
+   "id": "F-67",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Available."
+  },
+  {
+   "id": "F-68",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "~1 uJy in about 3 h."
+  },
+  {
+   "id": "F-69",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Easy."
+  },
+  {
+   "id": "F-70",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 2, 5a, 5b",
+   "note": "Available."
+  },
+  {
+   "id": "F-71",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 200 MHz 12.3 uJy incl. confusion",
+   "note": "13 uJy at 150 MHz is near the confusion limit."
+  },
+  {
+   "id": "F-72",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "Below 100 uJy is trivially met at AA*."
+  },
+  {
+   "id": "F-73",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no Band 3/4",
+   "note": "1.76-4.6 GHz is not provided."
+  },
+  {
+   "id": "F-74",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Low + Mid Bands 1, 5",
+   "note": "Available."
+  },
+  {
+   "id": "F-75",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "VLBI is not offered at AA*."
+  },
+  {
+   "id": "F-76",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "VLBI not offered."
+  },
+  {
+   "id": "F-77",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-78",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5b",
+   "note": "Available."
+  },
+  {
+   "id": "F-79",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Bands 1, 2, 5a, 5b",
+   "note": "Available."
+  },
+  {
+   "id": "F-80",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 5b uniform 0.08x0.02 arcsec",
+   "note": "Sub-arcsecond is met in Band 5."
+  },
+  {
+   "id": "F-81",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pst_dynamic_spectrum): 1e-7 s; get_context_defaults(cycle_0): PST beams Mid 16, Low 8",
+   "note": "16 beams on Low need the design baseline. Mid is OK in Cycle 0."
+  },
+  {
+   "id": "F-82",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): Mid PSS",
+   "note": "The AA* case is available."
+  },
+  {
+   "id": "F-83",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas(ska_low): no VLBI mode",
+   "note": "Low VLBI is design-baseline only."
+  },
+  {
+   "id": "F-84",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-85",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-86",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "F-87",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(pss_settings): Mid PSS",
+   "note": "Available."
+  },
+  {
+   "id": "F-88",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_inner_r350m_AAstar",
+   "note": "Available."
+  },
+  {
+   "id": "G-01",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 50-350 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "G-02",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 all-sky survey."
+  },
+  {
+   "id": "G-03",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy",
+   "note": "80 uJy per pointing is shallow. Survey speed is lower than AA4."
+  },
+  {
+   "id": "G-04",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: IQUV",
+   "note": "Available."
+  },
+  {
+   "id": "G-05",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PSS/PST both telescopes",
+   "note": "Available."
+  },
+  {
+   "id": "G-06",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: PSS/PST both telescopes",
+   "note": "Available."
+  },
+  {
+   "id": "G-07",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults: Low 150 MHz",
+   "note": "Available."
+  },
+  {
+   "id": "G-08",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-09",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-10",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-11",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Baselines of 9000 km mean VLBI, which is design-baseline only."
+  },
+  {
+   "id": "G-12",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-13",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 1.7 uJy/1 h",
+   "note": "The AA* 5.4 uJy case is available."
+  },
+  {
+   "id": "G-14",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc LOW_AAstar_all 200 MHz/300 MHz: RMSF FWHM 0.098 rad/m2",
+   "note": "The full 50-350 MHz band is available at AA*. The calculator's FWHM of 0.098 is coarser than the 0.0545 quoted, probably because of a different definition."
+  },
+  {
+   "id": "G-15",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc Low AA* 1 h 12.3 uJy",
+   "note": "mJy completeness is easy."
+  },
+  {
+   "id": "G-16",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_rules: no calibration-accuracy rules",
+   "note": "Silent."
+  },
+  {
+   "id": "G-17",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-18",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode; Band 5b at AA* in schema",
+   "note": "The sensitivity is plausible at AA*, but VLBI beamforming is not offered."
+  },
+  {
+   "id": "G-19",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-20",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas(ska_low): no VLBI mode",
+   "note": "mas positions at Low need VLBI."
+  },
+  {
+   "id": "G-21",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-22",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-23",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas(ska_low): no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-24",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): AA* templates",
+   "note": "Available."
+  },
+  {
+   "id": "G-25",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 840 Hz = 0.15 km/s at 1.667 GHz",
+   "note": "Available."
+  },
+  {
+   "id": "G-26",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 3.36 kHz = 0.6 km/s at 1.667 GHz",
+   "note": "The stated parameter is met at AA*."
+  },
+  {
+   "id": "G-27",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings): 210 Hz = 0.04 km/s; sens-calc AA* Band 2 spectral 0.39 mJy/13.4 kHz/1 h",
+   "note": "A 3.5 arcmin taper uses core dishes, which are nearly the same at AA* and AA4. Reachable in hours."
+  },
+  {
+   "id": "G-28",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no per-baseline sensitivity",
+   "note": "Silent."
+  },
+  {
+   "id": "G-29",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas(ska_low): no station all-sky imaging product",
+   "note": "Silent."
+  },
+  {
+   "id": "G-30",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "resolve_context_subarrays(low): Low_full_AAstar 307 stations",
+   "note": "The paper says AA* is adequate."
+  },
+  {
+   "id": "G-31",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: Band 5b",
+   "note": "Available."
+  },
+  {
+   "id": "G-32",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "get_context_defaults: maxSubarrays SV-AA* 1, Cycle 0 4, Cycle 1 16; station beams 48",
+   "note": "Subarrays need Cycle 0 or later."
+  },
+  {
+   "id": "G-33",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(odps/pst_dynamic_spectrum): freq res >=2 Hz; Low zoom min 226 Hz",
+   "note": "14 Hz is only possible via beamformed PST dynamic spectra, not imaging."
+  },
+  {
+   "id": "G-34",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema(zoom_settings,low): min 226 Hz; Mid 210 Hz available",
+   "note": "Mid 210 Hz zoom is OK. 14 Hz zoom channels on Low are not offered."
+  },
+  {
+   "id": "G-35",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-36",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Tagged as VLBI astrometry, which is design-baseline only."
+  },
+  {
+   "id": "G-37",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "sens-calc AA* Band 2 RMSF FWHM 53 rad/m2",
+   "note": "<0.1 rad/m2 accuracy needs very high S/N, or Band 1 for a narrower RMSF."
+  },
+  {
+   "id": "G-38",
+   "verdict": "not_addressed",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_rules: no ionospheric-calibration parameters",
+   "note": "Silent."
+  },
+  {
+   "id": "G-39",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no band covering 1.8-3.1 GHz",
+   "note": "1.8-3.1 GHz is not provided."
+  },
+  {
+   "id": "G-40",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema: no 2 GHz band",
+   "note": "S-band is not an SKA band."
+  },
+  {
+   "id": "G-41",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-42",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "Design-baseline VLBI only."
+  },
+  {
+   "id": "G-43",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "list_capability_schemas: no VLBI mode",
+   "note": "10 uas astrometry needs VLBI."
+  },
+  {
+   "id": "G-44",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4 weak lensing."
+  },
+  {
+   "id": "G-45",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "no AA4 template",
+   "note": "Stated AA4."
+  }
+ ],
+ "counts": {
+  "quotes": 682,
+  "rejected": 0
+ }
+};

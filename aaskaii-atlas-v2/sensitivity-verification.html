@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensitivity Verification · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Sensitivity Verification</h1>
+    <p class="lede">Where a chapter states a sensitivity together with the observing parameters behind it, the figure can be recomputed. This page sends every such requirement in the register to the live SKAO sensitivity calculator, sweeping the weighting schemes because chapters rarely state which one they assumed, and reports whether the chapter's number survives.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section class="prose" id="reading"><h2>What the check shows</h2></section>
+    <section class="prose"><h2>Why figures diverge</h2>
+      <p>The divergences share a small number of causes, which the checking agent recorded row by row. One is weighting: four chapters reproduce closely under a weighting other than the one they state, which suggests that the stated weighting was not the one used. A second group of chapters computed their noise from their own assumptions about system temperature or effective area, and the two largest divergences, by factors of eight and forty, arise where those assumptions depart from the calculator's model of the array. Finally, the calculator imposes limits that a chapter may not have faced: the mixed AA* array refuses more than 720 MHz of Band 2 bandwidth, zoom channels stop at 13.44 kHz, and tapers come in fixed steps, so several checks had to approximate the chapter's setup and say so.</p>
+    </section>
+    <section id="checks"><h2>Every check</h2></section>
+  </main>
+</div>
+<script src="data/chapters.js"></script>
+<script src="data/prose.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters"]);
+document.getElementById("eyebrow").textContent = masthead("sensitivity-verification.html");
+const P = ATLAS.prose;
+const req = Object.fromEntries(P.sections.flatMap(s => s.requirements).map(r => [r.id, r]));
+const rows = P.sensitivity.map(c => ({...c, paper: req[c.id]?.paper, quote: req[c.id]?.quote}));
+const n = v => rows.filter(r => r.verdict === v).length;
+const stats = document.getElementById("stats");
+[[rows.length, "requirements checked"], [n("match"), "match within 10%"], [n("diverge"), "diverge"], [n("unverifiable"), "unverifiable"]]
+  .forEach(([v, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(v)), el("span", {class: "l"}, l))));
+document.getElementById("reading").append(el("p", {},
+  `Of the ${rows.length} requirements whose chapters state enough to rerun the calculator, ${n("match")} reproduce within ten per cent for at least one weighting scheme, ${n("diverge")} do not, and ${n("unverifiable")} could not be tested because a parameter the calculator needs is missing or the setup lies outside what it models. ` +
+  `A divergence is not by itself an error in the chapter: it most often reflects an assumption the chapter does not state, such as a different elevation, bandwidth after flagging or array configuration, which the note beside each row records where the checking agent could identify it. Version 1 checked twelve figures by hand; this page checks every figure that can be checked.`));
+const pill = v => el("span", {class: `pill ${v === "match" ? "good" : v === "diverge" ? "bad" : "neutral"}`}, v);
+table(document.getElementById("checks"), [
+  {key: "id", label: "ID", render: r => el("a", {href: `instrument-requirements.html#${r.id}`}, r.id)},
+  {key: "paper", label: "Chapter", render: r => paper(r.paper)},
+  {key: "claimed", label: "Claimed", render: r => r.claimed ?? "—"},
+  {key: "calculator", label: "Calculator", render: r => r.calculator ?? "—"},
+  {key: "ratio", label: "Ratio", num: true, dp: 2, render: r => r.ratio == null ? "—" : fmt(r.ratio, 2)},
+  {key: "verdict", label: "Verdict", render: r => pill(r.verdict)},
+  {key: "note", label: "Note", cls: "muted"},
+], rows, {search: true, placeholder: "Filter checks…", sortKey: "verdict", desc: false});
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AASKAII Atlas v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>.card.pending{ opacity:0.5; pointer-events:none; }</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow">SKAO · Advancing Astrophysics with the SKA II</div>
+    <h1>The AASKAII Atlas</h1>
+    <p class="lede">The atlas reads the whole of <i>Advancing Astrophysics with the SKA II</i> and reports what the book asks of the telescopes: which observing modes and techniques it relies on, which facilities it pairs with, how much time it requests and where on the sky, and which of its stated requirements survive a check against the sensitivity calculator and the defined observing contexts. Every figure is computed from the book by a script that can be rerun, and every quotation has been checked against the chapter it is attributed to.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="analyses"><h2>Analyses</h2><div id="c-analyses"></div></section>
+    <section><h2>Verification</h2><div id="c-verification"></div></section>
+    <section><h2>Reference</h2><div id="c-reference"></div></section>
+    <section><h2>Method and use case</h2><div id="c-method"></div></section>
+  </main>
+</div>
+<script src="data/chapters.js"></script>
+<script src="data/acronyms.js"></script>
+<script src="data/time_demand.js"></script>
+<script src="data/facilities.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters", "acronyms", "time_demand", "facilities"]);
+// Pages whose prose is still being written by the section agents.
+const PENDING = new Set();
+const n = ATLAS.chapters.sections.reduce((a, s) => a + s.papers.length, 0), T = ATLAS.time_demand.telescopes;
+const stats = document.getElementById("stats");
+[[n, "chapters"], [ATLAS.chapters.sections.filter(s => SECTIONS.includes(s.section)).length, "book sections"], [ATLAS.acronyms.acronyms.length, "acronyms"],
+ [ATLAS.facilities.facilities.length, "external facilities named"], [T.mid.accepted_hours + T.low.accepted_hours, "hours requested (reviewed)"]]
+  .forEach(([v, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(v)), el("span", {class: "l"}, l))));
+[["c-analyses", ["Analyses"]], ["c-verification", ["Verification"]], ["c-reference", ["Reference"]], ["c-method", ["Method", "Use case"]]]
+  .forEach(([id, groups]) => {
+    const host = document.getElementById(id);
+    host.append(el("div", {class: "cards"}, PAGES.filter(p => groups.includes(p[3])).map(([f, part, title, g, dek]) =>
+      el("a", {class: "card" + (PENDING.has(f) ? " pending" : ""), href: f},
+        el("span", {class: "part"}, `PART ${part}`), el("h3", {}, title), el("p", {}, dek),
+        el("span", {class: "tag"}, PENDING.has(f) ? "in progress" : g)))));
+  });
+</script>
+</body>
+</html>

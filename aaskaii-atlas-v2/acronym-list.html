@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acronyms · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Acronyms</h1>
+    <p class="lede">Every acronym that an AASKAII chapter defines in the form "Full Name (ABC)" appears below, with its most common expansion, the number of times it occurs and the number of chapters that use it. The list is produced by the same extractor that powers acronym expansion in search, so it reflects what the retrieval system itself knows.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="list"><h2>All acronyms</h2>
+      <p class="note">Categories come from a keyword heuristic on the expansion (<code>rag/ingestion.py::classify_acronym</code>) and are a browsing aid rather than a taxonomy. The v1 fault that filed FPGA under Organizations is fixed: the classifier now matches whole words, so "Field-Programmable Gate Array" no longer triggers on "program".</p>
+    </section>
+  </main>
+</div>
+<script src="data/acronyms.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["acronyms"]);
+document.getElementById("eyebrow").textContent = masthead("acronym-list.html");
+const A = ATLAS.acronyms.acronyms;
+const cats = {};
+A.forEach(a => cats[a.category] = (cats[a.category] || 0) + 1);
+const stats = document.getElementById("stats");
+[["acronyms", A.length], ...Object.entries(cats).sort((a, b) => b[1] - a[1])]
+  .forEach(([l, n]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+const rows = A.map(a => ({...a, other: Object.keys(a.variants).filter(v => v !== a.expansion).join("; ")}));
+table(document.getElementById("list"), [
+  {key: "acronym", label: "Acronym", render: r => el("b", {}, r.acronym)},
+  {key: "expansion", label: "Expansion"},
+  {key: "category", label: "Category"},
+  {key: "occurrence_count", label: "Uses", num: true},
+  {key: "n_papers", label: "Chapters", num: true},
+  {key: "other", label: "Other spellings", cls: "muted"},
+], rows, {search: true, placeholder: "Filter acronyms or expansions…", sortKey: "occurrence_count"});
+</script>
+</body>
+</html>

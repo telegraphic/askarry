@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instrument Requirements · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>td b{ white-space:nowrap; } td details summary{ cursor:pointer; color:var(--ink-soft); } td details p{ margin:6px 0 0; font-style:italic; color:var(--ink-soft); max-width:60ch; }</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Instrument Requirements</h1>
+    <p class="lede">The register collects the concrete demands that AASKAII chapters place on the telescopes: sensitivity, angular resolution, field of view or survey area, frequency, observing time and the array stage at which each becomes possible. Every row carries the sentence it was taken from, and every sentence has been matched against the chapter it is attributed to before it was admitted.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section class="prose"><h2>How the register was built</h2>
+      <p>One agent read each of the seven book sections, searching every chapter for stated requirements and copying the sentence that states each one. A script then looked for every quoted sentence in the chapter it names; a row survives only if the sentence is there verbatim, or, when a quotation runs across two of the passages into which the chapter was indexed, if each of its sentences is. Every one of the 682 quotations the agents returned passed this test, so no row had to be dropped. Fields are left empty when the chapter does not state a value, so an empty cell records the chapter's silence rather than a gap in the extraction.</p>
+      <p>The register is therefore a sample of what the book asks for, weighted toward chapters that state their requirements in numbers; it is not a complete specification. The <a href="sensitivity-verification.html">sensitivity page</a> reruns the rows that give enough parameters through the SKAO calculator, and the <a href="capability-crosscheck.html">capability page</a> asks which array stage can deliver each one.</p>
+    </section>
+    <section id="bysec"><h2>Requirements per section</h2></section>
+    <section id="reg"><h2>The register</h2>
+      <div class="controls" id="filters"></div>
+    </section>
+  </main>
+</div>
+<script src="data/chapters.js"></script>
+<script src="data/prose.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters"]);
+document.getElementById("eyebrow").textContent = masthead("instrument-requirements.html");
+const P = ATLAS.prose;
+const rows = P.sections.flatMap(s => s.requirements.map(r => ({...r, section: s.section})));
+const stats = document.getElementById("stats");
+[[rows.length, "requirements"], [new Set(rows.map(r => r.paper)).size, "chapters"],
+ [rows.filter(r => r.calculator_params).length, "with calculator parameters"], [P.counts.rejected, "quotes rejected in checking"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+bars(document.getElementById("bysec"), SECTIONS.map(s => ({label: s, value: rows.filter(r => r.section === s).length})), {unit: " requirements"});
+
+const host = document.getElementById("reg"), box = el("div");
+const sel = (label, values) => { const s = el("select", {}, el("option", {value: ""}, label), values.map(v => el("option", {value: v}, v))); return s; };
+const fSec = sel("All sections", SECTIONS), fTel = sel("Both telescopes", ["mid", "low", "both", "vlbi"]),
+  fMode = sel("All modes", [...new Set(rows.map(r => r.mode).filter(Boolean))].sort());
+document.getElementById("filters").append(fSec, fTel, fMode);
+const cell = v => v ?? "—";
+function draw() {
+  const rs = rows.filter(r => (!fSec.value || r.section === fSec.value) && (!fTel.value || r.telescope === fTel.value) && (!fMode.value || r.mode === fMode.value));
+  box.replaceChildren();
+  table(box, [
+    {key: "id", label: "ID", render: r => el("b", {}, r.id)},
+    {key: "paper", label: "Chapter", render: r => el("span", {}, paper(r.paper), r.page ? el("span", {class: "muted"}, ` p.${r.page}`) : null)},
+    {key: "science_driver", label: "Science driver", render: r => el("details", {}, el("summary", {}, r.science_driver),
+      el("p", {}, `"${r.quote}"`), el("span", {class: `pill ${r.verification === "verbatim" ? "good" : "warn"}`}, r.verification))},
+    {key: "telescope", label: "Tel.", render: r => el("span", {class: r.telescope}, r.telescope)},
+    {key: "array_stage", label: "Stage", render: r => cell(r.array_stage)},
+    {key: "sensitivity", label: "Sensitivity", render: r => cell(r.sensitivity)},
+    {key: "resolution", label: "Resolution", render: r => cell(r.resolution)},
+    {key: "fov_or_area", label: "Area / FoV", render: r => cell(r.fov_or_area)},
+    {key: "frequency", label: "Frequency", render: r => cell(r.frequency)},
+    {key: "survey_speed_or_time", label: "Time", render: r => cell(r.survey_speed_or_time)},
+  ], rs, {search: true, placeholder: "Filter by chapter, driver, value or quote…", rowId: r => r.id});
+}
+[fSec, fTel, fMode].forEach(s => s.onchange = draw);
+host.append(box);
+draw();
+</script>
+</body>
+</html>

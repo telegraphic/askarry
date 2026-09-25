@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citation Landscape · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>
+  .secgrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; }
+  .secgrid .figure h3{ font-size:15px; margin-bottom:8px; }
+  .secgrid ol{ margin:0; padding-left:20px; font-size:13px; color:var(--ink-soft); }
+  .secgrid li{ margin-bottom:6px; }
+  .secgrid li .num{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Citation Landscape</h1>
+    <p class="lede">The reference lists of the AASKAII chapters show which earlier works the book builds on. Counting, for every cited work, how many chapters cite it separates the shared foundations of the science case from the literature of individual communities.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section class="prose"><h2>What the book stands on</h2>
+      <p>The most widely cited work is the anticipated-performance paper for SKA Phase 1 by Braun and collaborators, which about forty chapters cite; it is the common source for sensitivities across the book, and its prominence explains why so many chapters quote figures that agree with one another. The next tier consists of the reference papers of the precursor and pathfinder surveys, above all LOFAR and its two-metre sky survey, together with the Magnetism Science Working Group's survey definitions and the review literature on cluster radio emission. Several AASKAII chapters also cite one another, which is visible in the list as works dated 2026.</p>
+      <p>Per section the pattern changes: solar and planetary chapters cite the LOFAR instrument paper and Kontar's studies of radio-wave scattering in the corona, stellar-formation chapters cite the review of high-mass star formation by Motte and collaborators, and the extreme-universe chapters cite the ATNF pulsar catalogue of Manchester and collaborators. Reference strings are parsed automatically, so a small number of entries have their author field taken from a journal abbreviation; the table shows the raw reference so that each entry can be judged on its own.</p>
+    </section>
+    <section id="top"><h2>Most-cited works</h2></section>
+    <section><h2>By book section</h2><div class="secgrid" id="bysec"></div></section>
+  </main>
+</div>
+<script src="data/citations.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["citations"]);
+document.getElementById("eyebrow").textContent = masthead("citation-landscape.html");
+const C = ATLAS.citations;
+const stats = document.getElementById("stats");
+[[C.overall[0].n_papers, "chapters cite the top work"], [C.overall.filter(r => r.n_papers >= 10).length, "works cited by 10+ chapters"],
+ [Object.keys(C.by_section).length, "sections"]].forEach(([n, l]) =>
+  stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+const link = r => r.doi ? el("a", {href: `https://doi.org/${r.doi}`}, r.raw) : r.arxiv ? el("a", {href: `https://arxiv.org/abs/${r.arxiv}`}, r.raw) : r.raw;
+table(document.getElementById("top"), [
+  {key: "raw", label: "Reference (as parsed)", render: r => link(r)},
+  {key: "year", label: "Year", num: true, render: r => r.year ?? "—"},
+  {key: "n_papers", label: "Citing chapters", num: true},
+  {key: "papers", label: "Cited by", render: r => papers(r.papers, 3)},
+], C.overall.slice(0, 40), {search: true, placeholder: "Filter references…", sortKey: "n_papers"});
+const host = document.getElementById("bysec");
+SECTIONS.forEach(s => {
+  const rs = (C.by_section[s] || []).slice(0, 6);
+  host.append(el("div", {class: "figure"}, el("h3", {}, s),
+    el("ol", {}, rs.map(r => el("li", {}, el("span", {class: "num"}, `${r.n_papers}× `), link(r), el("div", {class: "muted"}, "cited by ", papers(r.papers, 3)))))));
+});
+</script>
+</body>
+</html>

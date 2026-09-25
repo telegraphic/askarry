@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-Cutting Methods · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Cross-Cutting Methods</h1>
+    <p class="lede">Sixteen techniques recur across the book, from Faraday rotation to citizen science. The table ranks them by the number of the seven book sections in which at least one chapter relies on them, and then by the number of chapters, which separates methods that bind the science case together from those that serve a single community.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="matrix"><h2>Chapters per section</h2>
+      <p class="muted">Each cell gives the number of chapters in that section that name the technique at least twice; hover a cell for the section's size.</p>
+    </section>
+    <section class="prose"><h2>How to read the counts</h2><p>The counts come from an exact scan of every indexed chunk rather than from search results, so they are complete rather than lower bounds. A chapter counts when the technique's terms occur at least twice; the terms appear under the matrix. Two VLBI entries are kept apart deliberately: "VLBI" counts any use of the technique, while "VLBI astrometry" counts only chapters that speak of astrometric work.</p>
+      <p class="note">What changed from v1: v1 counts were lower bounds from a 20-hit search window and merged the two VLBI keywords.</p>
+    </section>
+    <section id="who"><h2>Which chapters</h2>
+      <p class="muted">Open an entry for the chapters behind each count, grouped by section; each ID opens its row in the chapter directory and its PDF tag the online copy.</p>
+    </section>
+    <section id="terms"><h2>Search terms</h2></section>
+  </main>
+</div>
+<script src="data/methods.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["methods"]);
+document.getElementById("eyebrow").textContent = masthead("cross-cutting-methods.html");
+const D = ATLAS["methods"];
+const inSec = (it, s) => (it.sections[s] || {}).n_papers || 0;
+const real = it => SECTIONS.filter(s => inSec(it, s) > 0).length;
+const items = [...D.items].sort((a, b) => real(b) - real(a) || b.n_papers - a.n_papers);
+const stats = document.getElementById("stats");
+[[items.length, "techniques tracked"], [items.filter(i => real(i) >= 5).length, "in 5+ of 7 sections"],
+ [items.filter(i => real(i) === 0).length, "in no section"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+heatSections(document.getElementById("matrix"), items, "Technique", inSec, {denominator: D.papers_per_section});
+sectionPapers(document.getElementById("who"), items, (it, s) => (it.sections[s] || {}).papers);
+table(document.getElementById("terms"), [
+  {key: "label", label: "Technique"},
+  {key: "term", label: "Terms matched", render: r => el("code", {}, r.term.split("|").join(" · "))},
+  {key: "n_papers", label: "Chapters", num: true},
+  {key: "total_mentions", label: "Mentions", num: true},
+], items, {sortKey: "n_papers"});
+</script>
+</body>
+</html>

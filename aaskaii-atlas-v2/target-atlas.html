@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Target &amp; Field Atlas · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>
+  #sky svg{ width:100%; height:auto; display:block; }
+  #sky .grid{ stroke:var(--line); stroke-width:1; fill:none; }
+  #sky .lim{ stroke-width:1.5; stroke-dasharray:6 4; }
+  #sky circle{ fill:var(--accent-mid); fill-opacity:0.55; stroke:var(--accent-mid); stroke-width:0.8; }
+  #sky circle:hover{ fill-opacity:1; }
+  #sky rect.field{ fill:var(--accent-low); fill-opacity:0.035; stroke:var(--accent-low); stroke-opacity:0.35; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Target &amp; Field Atlas</h1>
+    <p class="lede">The chapters name several hundred individual objects and dozens of survey fields. Each object name was extracted from the text and resolved against SIMBAD, and each survey footprint was recorded only when a chapter states it, so the map below shows where on the sky the book's science is actually aimed.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="sky"><h2>Named objects on the sky</h2>
+      <figure class="figure"><div id="svg"></div>
+        <figcaption>Right ascension runs from 24 h on the left to 0 h on the right; declination from −90° to +90°. Circle area scales with the number of chapters naming the object. Shaded bands show survey footprints stated as declination ranges. The dashed lines bound the declinations that reach 45° elevation (the default scheduling limit) at the SKA-Mid (teal) and SKA-Low (orange) sites.</figcaption>
+      </figure>
+    </section>
+    <section class="prose"><h2>Reading the map</h2>
+      <p>The book's attention concentrates where the southern sites give it the best access. The Galactic Centre is the most frequently named object, cited by thirty-one chapters, and the COSMOS field and the two Magellanic Clouds follow; the Galactic plane appears as a dense stripe of named sources through the southern sky. The map nevertheless shows how much of the book's attention lies beyond easy reach: 125 of the 301 objects with positions sit north of Dec +14°, above which no source reaches 45° elevation at the SKA-Mid site, and Cygnus A and the Andromeda Galaxy, each named by a dozen or more chapters, are among them. Many of these are comparison objects from northern-hemisphere work rather than SKA targets, but where a chapter does request time on one, the request appears as never visible on the <a href="time-demand.html">time-demand page</a> unless a lower elevation limit is accepted.</p>
+      <p>Resolution is automatic and therefore imperfect. SIMBAD sometimes returns a catalogue designation rather than the familiar name (Cygnus A, for example, appears under its MCG number), and a small number of names could not be resolved at all. The table lists every resolved object with the names as the chapters wrote them, so each entry can be checked against its sources.</p>
+    </section>
+    <section id="objs"><h2>Resolved objects</h2></section>
+    <section id="fields"><h2>Survey fields and areas</h2>
+      <p class="muted">Fields as the chapters name or define them. "Position" states where the geometry comes from: a chapter's own statement, or a SIMBAD position for a named field; areas known only by their size remain unplaced.</p>
+    </section>
+  </main>
+</div>
+<script src="data/sources.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["sources"]);
+document.getElementById("eyebrow").textContent = masthead("target-atlas.html");
+const S = ATLAS.sources, objs = S.sources.filter(o => o.ra_deg != null && o.dec_deg != null);
+const LAT = {mid: -30.71, low: -26.82}, MINEL = 45;
+const stats = document.getElementById("stats");
+[[objs.length, "objects resolved"], [objs.filter(o => o.n_papers >= 3).length, "named by 3+ chapters"],
+ [S.fields.length, "fields and areas"], [S.fields.filter(f => f.geometry).length, "fields with a position"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+
+const W = 960, H = 500, px = ra => 40 + (W - 60) * (1 - ra / 360), py = dec => 20 + (H - 50) * (90 - dec) / 180;
+let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Sky map of named objects">`;
+S.fields.forEach(f => { const g = f.geometry; if (!g || !g.dec_range || !g.ra_range) return;
+  const [r0, r1] = g.ra_range, [d0, d1] = g.dec_range;
+  s += `<rect class="field" x="${px(r1)}" y="${py(d1)}" width="${px(r0) - px(r1)}" height="${py(d0) - py(d1)}"><title>${f.name}: Dec ${d0}° to ${d1}° (${g.from})</title></rect>`; });
+for (let d = -60; d <= 60; d += 30) s += `<line class="grid" x1="${px(360)}" x2="${px(0)}" y1="${py(d)}" y2="${py(d)}"/><text x="${px(360) - 6}" y="${py(d) + 4}" text-anchor="end" font-size="11">${d}°</text>`;
+for (let h = 0; h <= 24; h += 6) s += `<line class="grid" x1="${px(h * 15)}" x2="${px(h * 15)}" y1="${py(90)}" y2="${py(-90)}"/><text x="${px(h * 15)}" y="${H - 12}" text-anchor="middle" font-size="11">${h}h</text>`;
+s += `<rect class="grid" x="${px(360)}" y="${py(90)}" width="${px(0) - px(360)}" height="${py(-90) - py(90)}"/>`;
+[["mid", "var(--accent-mid)"], ["low", "var(--accent-low)"]].forEach(([t, c]) => [LAT[t] + 90 - MINEL, LAT[t] - 90 + MINEL].forEach(d =>
+  s += `<line class="lim" stroke="${c}" x1="${px(360)}" x2="${px(0)}" y1="${py(d)}" y2="${py(d)}"><title>SKA-${t}: 45° elevation limit at Dec ${d.toFixed(1)}°</title></line>`));
+const maxN = Math.max(...objs.map(o => o.n_papers));
+[...objs].sort((a, b) => b.n_papers - a.n_papers).forEach(o =>
+  s += `<circle cx="${px(o.ra_deg)}" cy="${py(o.dec_deg)}" r="${(2 + 10 * Math.sqrt(o.n_papers / maxN)).toFixed(1)}"><title>${o.names_as_written.join(" / ")} (${o.main_id.replace(/\s+/g, " ")}, ${o.object_type}): ${o.n_papers} chapters</title></circle>`);
+document.getElementById("svg").innerHTML = s + "</svg>";
+
+table(document.getElementById("objs"), [
+  {key: "name", label: "Name as written"},
+  {key: "main_id", label: "SIMBAD identifier", cls: "muted"},
+  {key: "object_type", label: "Type"},
+  {key: "ra_deg", label: "RA (°)", num: true, dp: 2},
+  {key: "dec_deg", label: "Dec (°)", num: true, dp: 2},
+  {key: "n_papers", label: "Chapters", num: true},
+  {key: "papers", label: "Named in", render: r => papers(r.papers, 4)},
+], objs.map(o => ({...o, name: o.names_as_written[0], main_id: o.main_id.replace(/\s+/g, " ")})),
+  {search: true, placeholder: "Filter by name, identifier or type…", sortKey: "n_papers"});
+
+const where = g => !g ? "unplaced" : g.dec_range ? `Dec ${g.dec_range[0]}° to ${g.dec_range[1]}°` :
+  g.gal_b_range ? `|b| ≤ ${Math.max(...g.gal_b_range.map(Math.abs))}°, l ${g.gal_l_range[0]}°–${g.gal_l_range[1]}°` :
+  g.ra != null ? `RA ${fmt(g.ra, 1)}°, Dec ${fmt(g.dec, 1)}°` : "—";
+table(document.getElementById("fields"), [
+  {key: "name", label: "Field"},
+  {key: "n_papers", label: "Chapters", num: true},
+  {key: "area_deg2", label: "Area (deg²)", num: true},
+  {key: "pos", label: "Position"},
+  {key: "src", label: "Source", cls: "muted"},
+  {key: "papers", label: "Named in", render: r => papers(r.papers, 4)},
+], S.fields.map(f => ({...f, pos: where(f.geometry), src: f.geometry ? f.geometry.from : "—"})),
+  {search: true, placeholder: "Filter fields…", sortKey: "n_papers"});
+</script>
+</body>
+</html>

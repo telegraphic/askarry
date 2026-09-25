@@ -1,0 +1,1057 @@
+(window.ATLAS = window.ATLAS || {})['methods'] = {
+ "generated": {
+  "git_sha": "a037c7f",
+  "date": "2026-09-25",
+  "args": {
+   "terms": {
+    "Faraday rotation / RM": "Faraday rotation|rotation measure|Faraday depth|RM synthesis",
+    "VLBI": "VLBI",
+    "HI intensity mapping": "intensity mapping",
+    "Machine learning / AI": "machine learning|deep learning|neural network|artificial intelligence",
+    "Polarimetry": "polarimetry|polarimetric",
+    "Pulsar timing": "pulsar timing",
+    "Foreground removal": "foreground removal|foreground subtraction|foreground mitigation|foreground avoidance",
+    "Ionospheric calibration": "ionospheric calibration|ionospheric",
+    "Deconvolution / imaging algorithms": "deconvolution|CLEAN|imaging algorithm",
+    "Spectral line / maser": "maser|spectral line",
+    "Commensal / multi-messenger": "commensal|multi-messenger|multimessenger",
+    "Source finding / classification": "source finding|source-finding|source finder|source classification",
+    "VLBI astrometry": "VLBI astrometry|astrometric",
+    "RFI mitigation": "RFI mitigation|RFI excision|RFI flagging",
+    "Zeeman effect": "Zeeman",
+    "Citizen science": "citizen science|Radio Galaxy Zoo"
+   },
+   "min_hits_per_paper": 2
+  }
+ },
+ "papers_per_section": {
+  "From the Milky Way to Distant Galaxies": 53,
+  "The Cosmos": 49,
+  "The Extreme Universe": 38,
+  "Methods and Techniques": 24,
+  "Sun, Earth and Planets": 18,
+  "Formation and Evolution of Stars": 16,
+  "Science Working Group Overviews": 13
+ },
+ "items": [
+  {
+   "label": "Faraday rotation / RM",
+   "term": "Faraday rotation|rotation measure|Faraday depth|RM synthesis",
+   "total_mentions": 691,
+   "n_papers": 56,
+   "n_sections": 7,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 17,
+     "papers": [
+      "Bruni01",
+      "Dabhade01",
+      "Hardcastle01",
+      "Ignesti01",
+      "Ma01",
+      "Mao01",
+      "Miville-Deschenes01",
+      "Moldon01",
+      "SabyasachiPal02",
+      "SabyasachiPal03",
+      "Sakemi01",
+      "Sasmal01",
+      "Sawada-Satoh01",
+      "Sun01",
+      "Sun02",
+      "Tabatabaei01",
+      "Tahani01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 14,
+     "papers": [
+      "Akahori01",
+      "AritraBasu01",
+      "ArpanPal01",
+      "Barkana01",
+      "Caleb02",
+      "Cuciti01",
+      "Kurahara01",
+      "Loi01",
+      "OSullivan01",
+      "Pasini01",
+      "Regis01",
+      "Santra01",
+      "Vacca01",
+      "deGasperin01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 10,
+     "papers": [
+      "Castignani01",
+      "Curtin01",
+      "JunXu01",
+      "Kovalev01",
+      "Oswald01",
+      "Pathak01",
+      "Qiu01",
+      "TaoAn01",
+      "TaoAn02",
+      "Tiburzi01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 8,
+     "papers": [
+      "Burba01",
+      "Carcamo01",
+      "Chan01",
+      "Datta01",
+      "Denzel01",
+      "Morgan01",
+      "Robishaw01",
+      "Vacca02"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 3,
+     "papers": [
+      "Bourke01",
+      "Ingallinera01",
+      "Sabatini01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 2,
+     "papers": [
+      "Kansabanik01",
+      "Oberoi01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Miller-Jones01",
+      "Vernstrom01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "VLBI",
+   "term": "VLBI",
+   "total_mentions": 1747,
+   "n_papers": 74,
+   "n_sections": 7,
+   "sections": {
+    "The Extreme Universe": {
+     "n_papers": 25,
+     "papers": [
+      "Beri01",
+      "Bignall01",
+      "Castignani01",
+      "Chandra01",
+      "Colombo01",
+      "Curtin01",
+      "Driessen01",
+      "Giarratana01",
+      "Kadler01",
+      "Keane01",
+      "Kovalev01",
+      "Levin01",
+      "Lico01",
+      "Lin01",
+      "Marcote01",
+      "Pathak01",
+      "Rosch01",
+      "Shannon01",
+      "Shu01",
+      "Spingola01",
+      "TaoAn01",
+      "TaoAn02",
+      "TaoAn03",
+      "Tiburzi01",
+      "VenkatramanKrishnan01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 21,
+     "papers": [
+      "Baczko01",
+      "Baldi01",
+      "Bruni01",
+      "DAmato01",
+      "Fromm01",
+      "Hardcastle01",
+      "Imai01",
+      "Kudoh01",
+      "Ma01",
+      "Maccagni01",
+      "Mahony01",
+      "Miville-Deschenes01",
+      "Moldon01",
+      "Pandey-Pommier03",
+      "Panessa01",
+      "Prandoni01",
+      "SabyasachiPal03",
+      "Sakemi01",
+      "Sawada-Satoh01",
+      "Tarchi01",
+      "XuYe01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 14,
+     "papers": [
+      "Bempong-Manful01",
+      "Chen01",
+      "GemmaAnderson01",
+      "Hota01",
+      "Kobayashi01",
+      "LeZhang01",
+      "Li01",
+      "MingHuiXu01",
+      "Morgan01",
+      "Robishaw01",
+      "Takahashi01",
+      "Timmerman01",
+      "Tremblay01",
+      "Wongphecauxson01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 6,
+     "papers": [
+      "Akahori02",
+      "Bourke01",
+      "Cavallaro01",
+      "Ingallinera01",
+      "Rygl01",
+      "Sabatini01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 3,
+     "papers": [
+      "Curiel01",
+      "PeijinZhang01",
+      "Santos-Sanz01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 3,
+     "papers": [
+      "Joshi01",
+      "Miller-Jones01",
+      "vanLoon01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 2,
+     "papers": [
+      "Afonso01",
+      "deLeraAcedo01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "HI intensity mapping",
+   "term": "intensity mapping",
+   "total_mentions": 254,
+   "n_papers": 20,
+   "n_sections": 3,
+   "sections": {
+    "The Cosmos": {
+     "n_papers": 16,
+     "papers": [
+      "Baker01",
+      "Bosi01",
+      "Camera01",
+      "Chakraborty01",
+      "Chatterjee01",
+      "Cunnington01",
+      "Elahi01",
+      "Fonseca01",
+      "Harrison01",
+      "Majumdar01",
+      "Mazumder01",
+      "Nasirudin01",
+      "Ronconi01",
+      "Sarkar01",
+      "Spinelli01",
+      "Wolz01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 3,
+     "papers": [
+      "Bellomo01",
+      "Spinelli02",
+      "Trott01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 1,
+     "papers": [
+      "Mahony01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Machine learning / AI",
+   "term": "machine learning|deep learning|neural network|artificial intelligence",
+   "total_mentions": 249,
+   "n_papers": 26,
+   "n_sections": 7,
+   "sections": {
+    "The Cosmos": {
+     "n_papers": 10,
+     "papers": [
+      "Acharya01",
+      "Asorey01",
+      "Bag01",
+      "Barkana01",
+      "Cang01",
+      "Lelli01",
+      "Majumdar01",
+      "Ronconi01",
+      "Sarkar01",
+      "Spinelli01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 8,
+     "papers": [
+      "Acharya02",
+      "AlexAndersson01",
+      "Burba01",
+      "Denzel01",
+      "Hota01",
+      "SabyasachiPal01",
+      "Tremblay01",
+      "Tripathi01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 3,
+     "papers": [
+      "Lagos01",
+      "Miville-Deschenes01",
+      "Sasmal01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Miller-Jones01",
+      "Trott01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 1,
+     "papers": [
+      "Levin01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 1,
+     "papers": [
+      "Nakariakov01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 1,
+     "papers": [
+      "Wu01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Polarimetry",
+   "term": "polarimetry|polarimetric",
+   "total_mentions": 242,
+   "n_papers": 39,
+   "n_sections": 7,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 12,
+     "papers": [
+      "Bruni01",
+      "Dabhade01",
+      "Hardcastle01",
+      "Ma01",
+      "Mao01",
+      "Moldon01",
+      "Panessa01",
+      "SabyasachiPal02",
+      "SabyasachiPal03",
+      "Sakemi01",
+      "Sawada-Satoh01",
+      "Tahani01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 8,
+     "papers": [
+      "Cheung01",
+      "Kansabanik01",
+      "Kumari01",
+      "Mohan01",
+      "Morosan01",
+      "Oberoi01",
+      "Patra01",
+      "Sharma01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 7,
+     "papers": [
+      "Castignani01",
+      "Kadler01",
+      "Oswald01",
+      "Shannon01",
+      "Shu01",
+      "TaoAn01",
+      "TaoAn02"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 4,
+     "papers": [
+      "Chan01",
+      "Datta01",
+      "Denzel01",
+      "Vacca02"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 3,
+     "papers": [
+      "ArpanPal01",
+      "Regis01",
+      "Vacca01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 3,
+     "papers": [
+      "Bourke01",
+      "Bracco01",
+      "Ingallinera01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Vernstrom01",
+      "Zucca01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Pulsar timing",
+   "term": "pulsar timing",
+   "total_mentions": 271,
+   "n_papers": 27,
+   "n_sections": 5,
+   "sections": {
+    "The Extreme Universe": {
+     "n_papers": 11,
+     "papers": [
+      "Abbate01",
+      "AvishekBasu01",
+      "Bagchi01",
+      "Besancon01",
+      "Capelo01",
+      "Keane01",
+      "Levin01",
+      "Oswald01",
+      "Shannon01",
+      "Tiburzi01",
+      "VenkatramanKrishnan01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 7,
+     "papers": [
+      "Chen01",
+      "Denzel01",
+      "GemmaAnderson01",
+      "Kobayashi01",
+      "Takahashi01",
+      "Tremblay01",
+      "Wongphecauxson01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 6,
+     "papers": [
+      "Camera01",
+      "Cruz01",
+      "Jenkins01",
+      "Pasechnik01",
+      "Perna01",
+      "Ragavendra01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Bellomo01",
+      "Joshi01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 1,
+     "papers": [
+      "DAmato01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Foreground removal",
+   "term": "foreground removal|foreground subtraction|foreground mitigation|foreground avoidance",
+   "total_mentions": 128,
+   "n_papers": 19,
+   "n_sections": 3,
+   "sections": {
+    "The Cosmos": {
+     "n_papers": 13,
+     "papers": [
+      "Acharya01",
+      "Bag01",
+      "Barkana01",
+      "Camera01",
+      "Chakraborty01",
+      "Cunnington01",
+      "Elahi01",
+      "Fonseca01",
+      "Majumdar01",
+      "Mazumder01",
+      "Spinelli01",
+      "Wolz01",
+      "deLeraAcedo01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 5,
+     "papers": [
+      "Acharya02",
+      "Burba01",
+      "Denzel01",
+      "Kobayashi01",
+      "LeZhang01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 1,
+     "papers": [
+      "Trott01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Ionospheric calibration",
+   "term": "ionospheric calibration|ionospheric",
+   "total_mentions": 362,
+   "n_papers": 22,
+   "n_sections": 6,
+   "sections": {
+    "Methods and Techniques": {
+     "n_papers": 10,
+     "papers": [
+      "Acharya02",
+      "Burba01",
+      "Datta01",
+      "Li01",
+      "MingHuiXu01",
+      "Morgan01",
+      "Takahashi01",
+      "Timmerman01",
+      "Tremblay01",
+      "Vacca02"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 4,
+     "papers": [
+      "Chrysaphi01",
+      "Kansabanik01",
+      "Kumari01",
+      "Oberoi01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 3,
+     "papers": [
+      "Kovalev01",
+      "Qiu01",
+      "Tiburzi01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 2,
+     "papers": [
+      "Ma01",
+      "XuYe01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 2,
+     "papers": [
+      "OSullivan01",
+      "deLeraAcedo01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 1,
+     "papers": [
+      "Zucca01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Deconvolution / imaging algorithms",
+   "term": "deconvolution|CLEAN|imaging algorithm",
+   "total_mentions": 131,
+   "n_papers": 16,
+   "n_sections": 6,
+   "sections": {
+    "Methods and Techniques": {
+     "n_papers": 6,
+     "papers": [
+      "Acharya02",
+      "Carcamo01",
+      "Denzel01",
+      "LeZhang01",
+      "SabyasachiPal01",
+      "Tripathi01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 4,
+     "papers": [
+      "Cheung01",
+      "Mondal01",
+      "Oberoi01",
+      "PeijinZhang01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 3,
+     "papers": [
+      "Chatterjee01",
+      "Lelli01",
+      "Spinelli01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 1,
+     "papers": [
+      "Sun02"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 1,
+     "papers": [
+      "Tiburzi01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 1,
+     "papers": [
+      "Wu01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Spectral line / maser",
+   "term": "maser|spectral line",
+   "total_mentions": 532,
+   "n_papers": 37,
+   "n_sections": 7,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 11,
+     "papers": [
+      "Deg01",
+      "Duncan01",
+      "Emig01",
+      "Imai01",
+      "Karska01",
+      "Lagos01",
+      "Mahony01",
+      "Pandey-Pommier01",
+      "Sawada-Satoh01",
+      "Tarchi01",
+      "XuYe01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 8,
+     "papers": [
+      "Bianchi01",
+      "Bourke01",
+      "Cavallaro01",
+      "Forbrich01",
+      "Ingallinera01",
+      "Rygl01",
+      "Sabatini01",
+      "Traficante01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 6,
+     "papers": [
+      "Bempong-Manful01",
+      "Chen01",
+      "Hota01",
+      "Robishaw01",
+      "Timmerman01",
+      "Tremblay01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 4,
+     "papers": [
+      "Audard01",
+      "Bianchi02",
+      "Spinelli02",
+      "vanLoon01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 4,
+     "papers": [
+      "Mohan01",
+      "Patra01",
+      "Sharma01",
+      "Vedantham01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 2,
+     "papers": [
+      "Castignani01",
+      "Kovalev01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 2,
+     "papers": [
+      "Regis01",
+      "Sarkar01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Commensal / multi-messenger",
+   "term": "commensal|multi-messenger|multimessenger",
+   "total_mentions": 208,
+   "n_papers": 35,
+   "n_sections": 7,
+   "sections": {
+    "The Extreme Universe": {
+     "n_papers": 16,
+     "papers": [
+      "AvishekBasu01",
+      "Bignall01",
+      "Capelo01",
+      "Castignani01",
+      "Chandra01",
+      "Colombo01",
+      "Curtin01",
+      "Kovalev01",
+      "Levin01",
+      "Marcote01",
+      "Qiu01",
+      "Shannon01",
+      "Shu01",
+      "TaoAn02",
+      "TaoAn03",
+      "VenkatramanKrishnan01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 5,
+     "papers": [
+      "Baldi01",
+      "DAmato01",
+      "Emig01",
+      "Karska01",
+      "Maccagni01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 4,
+     "papers": [
+      "AlexAndersson01",
+      "GemmaAnderson01",
+      "Takahashi01",
+      "Tremblay01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 4,
+     "papers": [
+      "Bellomo01",
+      "Huege01",
+      "Joshi01",
+      "Miller-Jones01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 3,
+     "papers": [
+      "Caleb01",
+      "Chatterjee01",
+      "Wolz01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 2,
+     "papers": [
+      "Forbrich01",
+      "Ingallinera01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 1,
+     "papers": [
+      "Oberoi01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Source finding / classification",
+   "term": "source finding|source-finding|source finder|source classification",
+   "total_mentions": 64,
+   "n_papers": 5,
+   "n_sections": 3,
+   "sections": {
+    "Methods and Techniques": {
+     "n_papers": 3,
+     "papers": [
+      "AlexAndersson01",
+      "Denzel01",
+      "SabyasachiPal01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 1,
+     "papers": [
+      "Asorey01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 1,
+     "papers": [
+      "Sasmal01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "VLBI astrometry",
+   "term": "VLBI astrometry|astrometric",
+   "total_mentions": 460,
+   "n_papers": 29,
+   "n_sections": 7,
+   "sections": {
+    "The Extreme Universe": {
+     "n_papers": 10,
+     "papers": [
+      "Abbate01",
+      "Beri01",
+      "Curtin01",
+      "Kovalev01",
+      "Lin01",
+      "Shannon01",
+      "TaoAn01",
+      "TaoAn03",
+      "Tiburzi01",
+      "VenkatramanKrishnan01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 6,
+     "papers": [
+      "Chen01",
+      "Kobayashi01",
+      "Li01",
+      "MingHuiXu01",
+      "Takahashi01",
+      "Tremblay01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 4,
+     "papers": [
+      "DAmato01",
+      "Imai01",
+      "Schoedel01",
+      "XuYe01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 3,
+     "papers": [
+      "Akahori02",
+      "Ingallinera01",
+      "Rygl01"
+     ]
+    },
+    "The Cosmos": {
+     "n_papers": 3,
+     "papers": [
+      "Chatterjee01",
+      "Cruz01",
+      "Perna01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Bellomo01",
+      "Joshi01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 1,
+     "papers": [
+      "Curiel01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "RFI mitigation",
+   "term": "RFI mitigation|RFI excision|RFI flagging",
+   "total_mentions": 38,
+   "n_papers": 8,
+   "n_sections": 5,
+   "sections": {
+    "The Cosmos": {
+     "n_papers": 3,
+     "papers": [
+      "Chatterjee01",
+      "Cunnington01",
+      "deLeraAcedo01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 2,
+     "papers": [
+      "Acharya02",
+      "Denzel01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 1,
+     "papers": [
+      "Besancon01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 1,
+     "papers": [
+      "JingWang01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 1,
+     "papers": [
+      "Oberoi01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Zeeman effect",
+   "term": "Zeeman",
+   "total_mentions": 473,
+   "n_papers": 17,
+   "n_sections": 6,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 5,
+     "papers": [
+      "Ma01",
+      "Miville-Deschenes01",
+      "Sawada-Satoh01",
+      "Tahani01",
+      "Yamamoto01"
+     ]
+    },
+    "Formation and Evolution of Stars": {
+     "n_papers": 4,
+     "papers": [
+      "Bourke01",
+      "Bracco01",
+      "LorenAnderson01",
+      "Rygl01"
+     ]
+    },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "Audard01",
+      "Vernstrom01"
+     ]
+    },
+    "The Extreme Universe": {
+     "n_papers": 2,
+     "papers": [
+      "Castignani01",
+      "JunXu01"
+     ]
+    },
+    "Methods and Techniques": {
+     "n_papers": 2,
+     "papers": [
+      "Denzel01",
+      "Robishaw01"
+     ]
+    },
+    "Sun, Earth and Planets": {
+     "n_papers": 2,
+     "papers": [
+      "Patra01",
+      "Vedantham01"
+     ]
+    }
+   }
+  },
+  {
+   "label": "Citizen science",
+   "term": "citizen science|Radio Galaxy Zoo",
+   "total_mentions": 44,
+   "n_papers": 5,
+   "n_sections": 2,
+   "sections": {
+    "Methods and Techniques": {
+     "n_papers": 4,
+     "papers": [
+      "AlexAndersson01",
+      "Denzel01",
+      "Hota01",
+      "SabyasachiPal01"
+     ]
+    },
+    "From the Milky Way to Distant Galaxies": {
+     "n_papers": 1,
+     "papers": [
+      "Sasmal01"
+     ]
+    }
+   }
+  }
+ ]
+};

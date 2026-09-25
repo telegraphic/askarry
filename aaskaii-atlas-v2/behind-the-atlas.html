@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behind the Atlas · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>pre{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 16px; overflow-x:auto; font-size:13px; }</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Behind the Atlas</h1>
+    <p class="lede">Version 1 of the atlas was assembled in August 2026 by sixteen agent runs working with the six tools the retrieval server then offered, so most of its figures were tallied by hand or reconstructed from search results. Version 2 separates what can be computed from what must be read: a script computes every count directly from the indexed book, agents read the chapters only to extract requirements and open questions, and a second script checks every sentence the agents quote before any page uses it.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section class="prose"><h2>How version 2 was built</h2>
+      <p>The first stage is deterministic. <code>scripts/build_atlas_data.py</code> calls the corpus tools that now exist for the purpose, among them exact keyword coverage, the facility network, the citation and source databases and the scheduling model, and writes one JSON file per page with the commit and date it was built from. Every figure on the reference and analysis pages comes from those files, so rerunning the script regenerates the atlas's numbers rather than asking an agent to recount them. Counts are restricted to the book's chapters: the index also holds re-downloaded copies of a few chapters and two documents that are not chapters, and counting them would have credited some chapters twice.</p>
+      <p>The second stage reads. Seven agents, one for each book section, searched every chapter of their section for stated instrument requirements and for statements of open questions, copying the sentence behind each and writing a summary of the section's demands. Two further agents then worked through the results: one reran every requirement that states enough parameters through the live sensitivity calculator, and the other asked, for every requirement, whether the defined observing contexts or only the full AA4 design can deliver it. The third stage is again mechanical. <code>scripts/verify_atlas_quotes.py</code> looks for each quoted sentence in the chapter it names and admits a row only if the sentence is there, which is how version 2 guards against the citation swap that version 1 published.</p>
+    </section>
+    <section id="run"><h2>The run in numbers</h2></section>
+    <section id="fixed"><h2>Version 1 issues and how version 2 resolves them</h2></section>
+    <section class="prose"><h2>Known limitations</h2>
+      <p>Several limits remain, and they are stated here rather than left for a reader to discover. Keyword counts measure how often a chapter names a mode, technique or risk, not how much weight it gives it; a chapter counts once it names a term twice. The requirement register samples what chapters state in numbers and is not a specification of the telescopes. Eleven chapters have no PDF on skao.int, ten because they are not yet on the book's page and one because its listed link is broken, so they contribute no counts; the directory lists them with a link to the book's page. The index also contains a stray file, filed as <code>Bianchi01</code> among the working-group overviews, which is in fact a copy of the Cradle of Life overview (<code>Bianchi02</code>); the atlas counts it once under the right identifier, but the index itself should be corrected.</p>
+      <p>The time-demand analysis rests on one reviewed extraction of observing requests and on scheduling settings that are unverified defaults, so it measures relative pressure between science cases rather than an allocation. The section summaries, finally, are the reading agents' synthesis: they were written from what the agents retrieved and in the voice the atlas asks for, but unlike the quotations they were not checked sentence by sentence.</p>
+    </section>
+    <section class="prose"><h2>Rebuilding the atlas</h2>
+      <pre>python scripts/build_atlas_data.py        # every count, from the index and databases
+python scripts/verify_atlas_quotes.py     # check agent quotes, write data/prose.json
+python -m http.server 8765 --directory aaskaii-atlas-v2</pre>
+      <p>The agent stage is the Claude Code workflow <code>scripts/atlas_prose_workflow.js</code>, run with <code>args.argsPath</code> pointing to <code>data/agents/workflow_args.json</code>, which the build script writes: the per-section chapter lists and coverage counts. Its raw output is kept in <code>data/agents/sections.json</code>, so the verification step can be rerun without repeating the reading.</p>
+    </section>
+  </main>
+</div>
+<script src="data/prose.js"></script>
+<script src="data/chapters.js"></script>
+<script src="data/tools.js"></script>
+<script src="data/run.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters", "tools"]);
+document.getElementById("eyebrow").textContent = masthead("behind-the-atlas.html");
+const P = ATLAS.prose, R = ATLAS.run || {};
+const nReq = P.sections.reduce((a, s) => a + s.requirements.length, 0), nQ = P.sections.reduce((a, s) => a + s.open_questions.length, 0);
+const stats = document.getElementById("stats");
+[[ATLAS.tools.tools.filter(t => t.kind === "tool").length, "MCP tools (v1: 6)"], [R.agents ?? 9, "agents"], [P.counts.quotes, "quotes checked"],
+ [P.counts.rejected, "quotes rejected"]].forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+table(document.getElementById("run"), [{key: "k", label: "Measure"}, {key: "v", label: "Value", num: true}, {key: "n", label: "Note", cls: "muted"}], [
+  {k: "Section agents", v: 7, n: "one per book section"},
+  {k: "Verification agents", v: 2, n: "sensitivity calculator; observing contexts"},
+  {k: "Agent runs", v: R.agent_runs ?? null, n: "nine agents; four section agents ran twice because the run was paused at a usage limit and resumed"},
+  {k: "Tool calls by the agents", v: R.tool_calls ?? null, n: "counted from the agent transcripts, including interrupted runs"},
+  {k: "Output tokens by the agents", v: R.output_tokens ?? null, n: "counted from the agent transcripts"},
+  {k: "Requirements extracted", v: nReq, n: "all quotes found in the named chapter"},
+  {k: "Open questions extracted", v: nQ, n: ""},
+  {k: "Requirements rerun through the calculator", v: P.sensitivity.length, n: "those stating enough parameters"},
+  {k: "Requirements checked against observing contexts", v: P.capability.length, n: ""},
+  {k: "Restarts", v: R.restarts ?? 1, n: "the run was paused once at an account usage limit and resumed from its cache"},
+]);
+table(document.getElementById("fixed"), [{key: "a", label: "Version 1"}, {key: "b", label: "Version 2"}], [
+  {a: "Seven invented science themes in place of the book's sections", b: "The book's own seven sections throughout (Chapter Directory)"},
+  {a: "'Contention' map that measured only how often modes are mentioned", b: "Renamed the Observing-Mode Map; real competition for time computed on the Time Demand page"},
+  {a: "Keyword counts as lower bounds from 20-result search windows", b: "Exact counts over every indexed passage, with the search terms listed"},
+  {a: "Synergy graph reconstructed from a written summary; ngVLA and CTA/Fermi never searched", b: "Counted from the text for 78 curated facilities; ngVLA, CTAO and Fermi all present"},
+  {a: "A citation swap (C-07) in the sensitivity check", b: "Every quotation checked against its chapter before publication"},
+  {a: "Twelve sensitivities checked by hand", b: "Every requirement stating enough parameters rerun through the calculator"},
+  {a: "Capability verdicts from design documents alone", b: "Verdicts from the validator's per-context schemas, documents only as a fallback"},
+  {a: "FPGA filed as an Organization among the acronyms", b: "Classifier matches whole words; category marked as heuristic"},
+  {a: "Tool list of six, inconsistent Part numbering", b: "Tool list read from the server code; numbering defined once"},
+  {a: "Only the directory linked to chapter PDFs", b: "Every chapter ID links to its directory entry and its PDF on skao.int"},
+]);
+</script>
+</body>
+</html>

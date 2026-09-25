@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observing Proposal · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>.dl{ display:flex; gap:12px; flex-wrap:wrap; } .dl a{ font-size:14px; padding:8px 14px; border:1px solid var(--line); border-radius:8px; background:var(--surface); text-decoration:none; } .dl a:hover{ border-color:var(--accent-mid); }</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>A 100-Hour HI Observing Proposal</h1>
+    <p class="lede">A single prompt, "Write an observing proposal for a small 100-hour program looking at HI in galaxies using AA*", produced the draft below from the AASKAII corpus and the live sensitivity calculator. Version 1 published it without rerunning its figures; this version reruns them through the calculator and the setup validator, and the sensitivity budget survives the check.</p>
+    <div class="stats" id="stats"></div>
+    <div class="dl">
+      <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.pdf">Draft PDF (AASKAII corpus only)</a>
+      <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar_v2.pdf">Revised PDF (with external literature)</a>
+      <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.docx">Draft .docx</a>
+    </div>
+  </header>
+  <main>
+    <section class="prose"><h2>The science case</h2>
+      <p>Neutral hydrogen extends farther from a galaxy than any other gas component and is disturbed more easily, which makes it the earliest tracer of tidal and ram-pressure stripping as a galaxy falls into a cluster. The draft therefore requests resolved 21-cm imaging of twelve galaxies in the outskirts and infall region of the Fornax cluster at about 20 Mpc, aiming to map tidal tails, warps and gas tails at a resolution and depth beyond what MeerKAT, ASKAP and WSRT have reached. The sample is illustrative rather than pre-selected, and the investigator fields are placeholders; the page presents the draft as a demonstration of what the corpus supports, not as a vetted request.</p>
+    </section>
+    <section id="setup"><h2>Observation setup</h2></section>
+    <section id="check"><h2>Figures rechecked</h2>
+      <p class="muted">Each figure in the draft set against the live SKAO sensitivity calculator (<code>compare_to_calculator_tool</code>, zoom endpoint, weighting swept) and the setup validator (<code>validate_across_contexts_tool</code>). Pointing: Fornax cluster centre, 03:38:29 −35:27:03.</p>
+    </section>
+    <section class="prose"><h2>What the check shows</h2>
+      <p>The draft's central number holds. With the AA* inner 2-km subarray, a 4 MHz zoom window of 13.44 kHz channels and six hours on source, the calculator returns 250 µJy/beam per channel at robust 0 with a 15.4″ × 12.5″ beam, within two per cent of the draft's 254 µJy/beam and its quoted beam; no other weighting comes within ten per cent, which confirms that the draft assumed robust 0 even though it names the weighting only in passing. The smoothed noise and the column-density limit follow from that figure by standard scaling, and both reproduce.</p>
+      <p>The setup is valid in the SV-AA*, Cycle 0 and Cycle 1 contexts but not in SV-AA2, where zoom mode is unavailable and the inner 2-km template does not yet exist; consequently the programme could run only once AA* science verification begins. Two items remain unchecked. The HI-mass limit depends on an assumed line width that the draft does not state, and the draft defines no output data products, so no data-volume estimate can be made without inventing them.</p>
+      <p class="note">One practical lesson for users of the calculator tools: the calculator's zoom endpoint accepts the subarray <i>label</i> ("AA* (MID_inner_r2km)"), not the <i>name</i> ("MID_inner_r2km_aastar") that its subarray list also returns; the name is refused with a validation error.</p>
+    </section>
+    <section class="prose" id="refs"><h2>AASKAII chapters the draft draws on</h2></section>
+  </main>
+</div>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters"]);
+document.getElementById("eyebrow").textContent = masthead("observing-proposal.html");
+const stats = document.getElementById("stats");
+[["12", "target galaxies"], ["100 h", "time requested"], ["≈15″", "angular resolution"], ["2.8 km/s", "native velocity resolution"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, n), el("span", {class: "l"}, l))));
+table(document.getElementById("setup"), [{key: "k", label: "Item"}, {key: "v", label: "Draft value"}], [
+  {k: "Array", v: "SKA-Mid AA*, inner subarray with baselines ≤ 2 km (47 SKA-Mid + 53 MeerKAT dishes)"},
+  {k: "Band and tuning", v: "Band 2, centred at 1413.3 MHz (cz ≈ 1500 km/s)"},
+  {k: "Spectral setup", v: "4 MHz zoom window, 13.44 kHz (≈ 2.8 km/s) channels, smoothed to 8.3 km/s"},
+  {k: "On-source time", v: "6.0 h per target × 12 targets = 72.0 h"},
+  {k: "Calibration and overheads", v: "≈ 22 h (≈ 30%)"},
+  {k: "Total requested", v: "94 h, rounded to 100 h"},
+]);
+const pill = (cls, t) => el("span", {class: `pill ${cls}`}, t);
+table(document.getElementById("check"), [
+  {key: "q", label: "Quantity"}, {key: "d", label: "Draft"}, {key: "c", label: "Recheck"},
+  {key: "v", label: "Verdict", render: r => r.v},
+], [
+  {q: "Channel rms (13.44 kHz, 6 h)", d: "254 µJy/beam", c: "250.2 µJy/beam, robust 0", v: pill("good", "match (−1.5%)")},
+  {q: "Synthesised beam", d: "≈ 15.2″ × 12.6″", c: "15.4″ × 12.5″", v: pill("good", "match (+1.2%)")},
+  {q: "Smoothed rms (8.3 km/s)", d: "≈ 147 µJy/beam", c: "254/√3 = 147 µJy/beam", v: pill("good", "consistent")},
+  {q: "3σ column density", d: "≈ 2.1 × 10¹⁹ cm⁻²", c: "1.10×10²¹ · 0.441 mJy · 8.3 km/s / (15.2″ × 12.6″) = 2.1 × 10¹⁹", v: pill("good", "consistent")},
+  {q: "5σ HI mass (20 Mpc)", d: "≈ 9 × 10⁵ M☉", c: "line width not stated", v: pill("neutral", "unverifiable")},
+  {q: "Setup validity", d: "AA*", c: "valid in SV-AA*, Cycle 0, Cycle 1; invalid in SV-AA2", v: pill("good", "valid from AA*")},
+  {q: "Data volume", d: "not given", c: "no data products defined", v: pill("neutral", "not estimated")},
+]);
+document.getElementById("refs").append(el("p", {}, "The draft cites these chapters; each links to its entry in the directory and to its PDF: ",
+  papers(["JingWang01", "deBlok01", "Ramatsoku01", "Ignesti01", "Lelli01", "Nasirudin01", "HengxingPan01"], 20),
+  ". The revised PDF adds outside literature, among it THINGS, ALFALFA, WALLABY and MHONGOOSE."));
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter Directory · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Chapter Directory</h1>
+    <p class="lede">The directory lists every chapter of <i>Advancing Astrophysics with the SKA II</i> under the seven sections the book itself uses, with a link to each chapter's PDF on skao.int. Eleven chapters have no PDF on skao.int yet, so the search tools cannot read them; they are listed all the same, marked as not indexed, with a link to the book's page on skao.int. Version 1 of the atlas grouped chapters under themes of its own devising; this version follows the book, so every count elsewhere in the atlas refers to the same seven sections.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="list"><h2>All chapters</h2>
+      <p class="muted">Each title opens the chapter's PDF on skao.int. Paper IDs elsewhere in the atlas link here, and their small <span class="paper"><a class="pdf" href="#">PDF</a></span> tag opens the same copy.</p>
+    </section>
+  </main>
+</div>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["chapters"]);
+document.getElementById("eyebrow").textContent = masthead("chapter-directory.html");
+const D = ATLAS.chapters;
+const rows = D.sections.flatMap(s => s.papers.map(p => ({...p, section: s.section,
+  first: (p.authors[0] || "").split(" ").slice(-1)[0] + (p.authors.length > 1 ? " et al." : "")})));
+const stats = document.getElementById("stats");
+[[rows.length, "chapters"], [D.sections.filter(s => SECTIONS.includes(s.section)).length, "book sections"], [rows.filter(r => r.indexed).length, "indexed for search"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+table(document.getElementById("list"), [
+  {key: "paper", label: "ID", render: r => el("code", {}, r.paper)},
+  {key: "title", label: "Title", render: r => r.pdf_url ? el("a", {href: r.pdf_url, target: "_blank", rel: "noopener"}, r.title)
+    : el("span", {}, r.title, " ", el("a", {class: "muted", href: AASKAII_PAGE, target: "_blank", rel: "noopener"}, "(no PDF online yet)"))},
+  {key: "first", label: "Authors"},
+  {key: "section", label: "Section"},
+  {key: "indexed", label: "Search", render: r => el("span", {class: `pill ${r.indexed ? "good" : "neutral"}`}, r.indexed ? "indexed" : "not indexed")},
+], rows, {search: true, placeholder: "Filter by title, author, section or ID…", rowId: r => r.paper});
+// Rows are built after load, so the browser's own jump to #ID has already missed; redo it.
+function jump() {
+  const row = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (row) row.scrollIntoView({block: "center"});
+}
+addEventListener("load", () => requestAnimationFrame(jump));  // after the browser's own scroll restoration
+addEventListener("hashchange", jump);
+</script>
+</body>
+</html>

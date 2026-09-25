@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systematic Risk Register · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Systematic Risk Register</h1>
+    <p class="lede">Engineering and calibration risks threaten data quality regardless of which science question a chapter pursues. The register counts, for sixteen named risks, how many chapters in each book section discuss them at least twice, and ranks them by breadth across sections.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section id="matrix"><h2>Chapters per section</h2>
+      <p class="muted">Each cell gives the number of chapters in that section that name the risk at least twice; hover a cell for the section's size.</p>
+    </section>
+    <section class="prose"><h2>How to read the counts</h2><p>A mention count is not a judgement that a chapter treats the risk as a binding constraint; it is the evidence from which such a judgement would start. The register therefore reports breadth and leaves severity to the chapters themselves, which a reader can open from the <a href="chapter-directory.html">directory</a>. Two terms were added to the fourteen that version 1 named in its method note (primary-beam modelling and bandpass or gain stability), bringing the list to the sixteen it claimed. Commensal scheduling conflict registers no chapter at the two-mention threshold, which confirms version 1's finding that the book does not treat it as a named risk.</p>
+      <p class="note">What changed from v1: v1 excluded engineering documents by hand and could not confirm four risks; this scan covers only the AASKAII book, so the exclusion is automatic.</p>
+    </section>
+    <section id="who"><h2>Which chapters</h2>
+      <p class="muted">Open an entry for the chapters behind each count, grouped by section; each ID opens its row in the chapter directory and its PDF tag the online copy.</p>
+    </section>
+    <section id="terms"><h2>Search terms</h2></section>
+  </main>
+</div>
+<script src="data/risks.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["risks"]);
+document.getElementById("eyebrow").textContent = masthead("systematic-risk-register.html");
+const D = ATLAS["risks"];
+const inSec = (it, s) => (it.sections[s] || {}).n_papers || 0;
+const real = it => SECTIONS.filter(s => inSec(it, s) > 0).length;
+const items = [...D.items].sort((a, b) => real(b) - real(a) || b.n_papers - a.n_papers);
+const stats = document.getElementById("stats");
+[[items.length, "risks tracked"], [items.filter(i => real(i) >= 5).length, "in 5+ of 7 sections"],
+ [items.filter(i => real(i) === 0).length, "in no section"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+heatSections(document.getElementById("matrix"), items, "Risk", inSec, {denominator: D.papers_per_section});
+sectionPapers(document.getElementById("who"), items, (it, s) => (it.sections[s] || {}).papers);
+table(document.getElementById("terms"), [
+  {key: "label", label: "Risk"},
+  {key: "term", label: "Terms matched", render: r => el("code", {}, r.term.split("|").join(" · "))},
+  {key: "n_papers", label: "Chapters", num: true},
+  {key: "total_mentions", label: "Mentions", num: true},
+], items, {sortKey: "n_papers"});
+</script>
+</body>
+</html>

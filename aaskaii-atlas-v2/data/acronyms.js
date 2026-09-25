@@ -1,0 +1,8169 @@
+(window.ATLAS = window.ATLAS || {})['acronyms'] = {
+ "generated": {
+  "git_sha": "a037c7f",
+  "date": "2026-09-25",
+  "args": {
+   "book": "aaskaii"
+  }
+ },
+ "acronyms": [
+  {
+   "acronym": "SKA",
+   "expansion": "Square Kilometre Array",
+   "variants": {
+    "Square Kilometre Array": 72,
+    "Square Kilometer Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 10349,
+   "n_papers": 219,
+   "papers": []
+  },
+  {
+   "acronym": "SKAO",
+   "expansion": "Square Kilometre Array Observatory",
+   "variants": {
+    "Square Kilometre Array Observatory": 59,
+    "Square Kilometer Array Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2463,
+   "n_papers": 136,
+   "papers": []
+  },
+  {
+   "acronym": "AGN",
+   "expansion": "active galactic nuclei",
+   "variants": {
+    "active galactic nuclei": 44,
+    "Active galactic nuclei": 5,
+    "Active Galactic Nuclei": 15,
+    "active galactic nucleus": 7,
+    "Active Galactic Nucleus": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2019,
+   "n_papers": 96,
+   "papers": []
+  },
+  {
+   "acronym": "VLBI",
+   "expansion": "Very Long Baseline Interferometry",
+   "variants": {
+    "Very Long Baseline Interferometry": 28,
+    "very long baseline interferometry": 18,
+    "Very Long baseline Interferometry": 1,
+    "Very long baseline interferometry": 2,
+    "Very Large Baseline Interferometry": 2,
+    "very long baseline interferometers": 1,
+    "very long baseline interferometer": 1,
+    "Very Long Baseline Interferometer": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1689,
+   "n_papers": 99,
+   "papers": []
+  },
+  {
+   "acronym": "AA",
+   "expansion": "array assemblies",
+   "variants": {
+    "array assemblies": 2,
+    "Array Assemblies": 2,
+    "Array Assembly": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1339,
+   "n_papers": 143,
+   "papers": []
+  },
+  {
+   "acronym": "RM",
+   "expansion": "rotation measure",
+   "variants": {
+    "rotation measure": 42,
+    "Rotation measure": 2,
+    "Rotation Measure": 15,
+    "rotation measures": 2,
+    "rotation measurement": 1,
+    "Rotation Measures": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1083,
+   "n_papers": 53,
+   "papers": []
+  },
+  {
+   "acronym": "ISM",
+   "expansion": "inter stellar medium",
+   "variants": {
+    "inter stellar medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 810,
+   "n_papers": 91,
+   "papers": []
+  },
+  {
+   "acronym": "GW",
+   "expansion": "gravitational wave",
+   "variants": {
+    "gravitational waves": 7,
+    "gravitational wave": 11,
+    "Gravitational waves": 1,
+    "Gravitational Wave": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 798,
+   "n_papers": 27,
+   "papers": []
+  },
+  {
+   "acronym": "OH",
+   "expansion": "of hydroxyl",
+   "variants": {
+    "of hydroxyl": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 668,
+   "n_papers": 38,
+   "papers": []
+  },
+  {
+   "acronym": "ALMA",
+   "expansion": "Atacama Large Millimeter Array",
+   "variants": {
+    "Atacama Large Millimeter Array": 5
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 552,
+   "n_papers": 77,
+   "papers": []
+  },
+  {
+   "acronym": "ICM",
+   "expansion": "intra cluster medium",
+   "variants": {
+    "intra cluster medium": 7,
+    "Intra Cluster Medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 473,
+   "n_papers": 27,
+   "papers": []
+  },
+  {
+   "acronym": "SNR",
+   "expansion": "Signalto noise ratio",
+   "variants": {
+    "Signalto noise ratio": 1,
+    "signalto noise ratio": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 417,
+   "n_papers": 60,
+   "papers": []
+  },
+  {
+   "acronym": "PTA",
+   "expansion": "pulsar timing array",
+   "variants": {
+    "Pulsar Timing Arrays": 5,
+    "Pulsar timing arrays": 4,
+    "pulsar timing array": 6,
+    "pulsar timing arrays": 3,
+    "Pulsar Timing Array": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 378,
+   "n_papers": 14,
+   "papers": []
+  },
+  {
+   "acronym": "AME",
+   "expansion": "anomalous microwave emission",
+   "variants": {
+    "anomalous microwave emission": 6,
+    "Anomalous Microwave Emission": 5,
+    "Anomalous microwave emission": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 368,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "VLA",
+   "expansion": "Very Large Array",
+   "variants": {
+    "Very Large Array": 26,
+    "very large array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 359,
+   "n_papers": 95,
+   "papers": []
+  },
+  {
+   "acronym": "FRB",
+   "expansion": "fast radio bursts",
+   "variants": {
+    "fast radio bursts": 10,
+    "Fast Radio Bursts": 9,
+    "Fast radio bursts": 5,
+    "Fast Radio Burst": 1,
+    "fast radio burst": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 302,
+   "n_papers": 23,
+   "papers": []
+  },
+  {
+   "acronym": "CNM",
+   "expansion": "cold neutral medium",
+   "variants": {
+    "cold neutral medium": 11,
+    "Cold Neutral Medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 301,
+   "n_papers": 14,
+   "papers": []
+  },
+  {
+   "acronym": "SFR",
+   "expansion": "star formation rate",
+   "variants": {
+    "star formation rate": 14,
+    "star formation rates": 3,
+    "Star Formation Rate": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 297,
+   "n_papers": 31,
+   "papers": []
+  },
+  {
+   "acronym": "IGM",
+   "expansion": "inter galactic medium",
+   "variants": {
+    "inter galactic medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 286,
+   "n_papers": 35,
+   "papers": []
+  },
+  {
+   "acronym": "MWA",
+   "expansion": "Murchison Widefield Array",
+   "variants": {
+    "Murchison Widefield Array": 9
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 283,
+   "n_papers": 46,
+   "papers": []
+  },
+  {
+   "acronym": "CME",
+   "expansion": "coronal mass ejections",
+   "variants": {
+    "Coronal mass ejections": 2,
+    "coronal mass ejections": 15,
+    "Coronal Mass Ejections": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 275,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "ASKAP",
+   "expansion": "Australian Square Kilometre Array Pathfinder",
+   "variants": {
+    "Australian Square Kilometre Array Pathfinder": 8
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 268,
+   "n_papers": 74,
+   "papers": []
+  },
+  {
+   "acronym": "RFI",
+   "expansion": "radio frequency interference",
+   "variants": {
+    "radio frequency interference": 20,
+    "Radio frequency interference": 3,
+    "Radio Frequency Interference": 5,
+    "radio frequency interferences": 1,
+    "radio frequence interferences": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 260,
+   "n_papers": 44,
+   "papers": []
+  },
+  {
+   "acronym": "IM",
+   "expansion": "intensity mapping",
+   "variants": {
+    "intensity mapping": 12,
+    "Intensity Mapping": 3,
+    "Intensity Maps": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 257,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "BH",
+   "expansion": "black holes",
+   "variants": {
+    "black holes": 5,
+    "Black Holes": 1,
+    "Black Hole": 1,
+    "black hole": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 244,
+   "n_papers": 28,
+   "papers": []
+  },
+  {
+   "acronym": "JWST",
+   "expansion": "James Webb Space Telescope",
+   "variants": {
+    "James Webb Space Telescope": 14,
+    "James Webb space telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 243,
+   "n_papers": 56,
+   "papers": []
+  },
+  {
+   "acronym": "NS",
+   "expansion": "neutron stars",
+   "variants": {
+    "Neutron Stars": 1,
+    "neutron stars": 9,
+    "neutron star": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 240,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "UV",
+   "expansion": "ultra violet",
+   "variants": {
+    "ultra violet": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 214,
+   "n_papers": 75,
+   "papers": []
+  },
+  {
+   "acronym": "MHD",
+   "expansion": "magneto hydro dynamical",
+   "variants": {
+    "magneto hydro dynamical": 1,
+    "magneto hydro dynamic": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 214,
+   "n_papers": 52,
+   "papers": []
+  },
+  {
+   "acronym": "SMBH",
+   "expansion": "super massive black holes",
+   "variants": {
+    "Super massive black holes": 1,
+    "super massive black holes": 4,
+    "Super Massive Black Holes": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 180,
+   "n_papers": 31,
+   "papers": []
+  },
+  {
+   "acronym": "SED",
+   "expansion": "spectral energy distribution",
+   "variants": {
+    "spectral energy distribution": 17,
+    "spectral energy distributions": 6,
+    "Spectral Energy Distributions": 1,
+    "Spectral Energy Distribution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 167,
+   "n_papers": 38,
+   "papers": []
+  },
+  {
+   "acronym": "GMRT",
+   "expansion": "Giant Metrewave Radio Telescope",
+   "variants": {
+    "Giant Metrewave Radio Telescope": 5
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 166,
+   "n_papers": 46,
+   "papers": []
+  },
+  {
+   "acronym": "GRB",
+   "expansion": "Gamma ray bursts",
+   "variants": {
+    "Gamma Ray Bursts": 1,
+    "gamma ray burst": 2,
+    "Gamma ray bursts": 4,
+    "gamma ray bursts": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 163,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "GWB",
+   "expansion": "gravitational wave background",
+   "variants": {
+    "gravitational wave background": 2,
+    "Gravitational Wave Background": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 157,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "GR",
+   "expansion": "general relativity",
+   "variants": {
+    "general relativity": 6,
+    "General relativity": 1,
+    "General Relativity": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 149,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "FWHM",
+   "expansion": "full width half maximum",
+   "variants": {
+    "full width half maximum": 1,
+    "Full Width Half Maximum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 144,
+   "n_papers": 46,
+   "papers": []
+  },
+  {
+   "acronym": "CHIME",
+   "expansion": "Canadian Hydrogen Intensity Mapping Experiment",
+   "variants": {
+    "Canadian Hydrogen Intensity Mapping Experiment": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 138,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "DESI",
+   "expansion": "Dark Energy Spectroscopic Instrument",
+   "variants": {
+    "Dark Energy Spectroscopic Instrument": 5
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 136,
+   "n_papers": 23,
+   "papers": []
+  },
+  {
+   "acronym": "CDM",
+   "expansion": "cold dark matter",
+   "variants": {
+    "cold dark matter": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 136,
+   "n_papers": 32,
+   "papers": []
+  },
+  {
+   "acronym": "AU",
+   "expansion": "astronomical unit",
+   "variants": {
+    "astronomical unit": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 132,
+   "n_papers": 26,
+   "papers": []
+  },
+  {
+   "acronym": "LSST",
+   "expansion": "large synoptic survey telescope",
+   "variants": {
+    "large synoptic survey telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 126,
+   "n_papers": 41,
+   "papers": []
+  },
+  {
+   "acronym": "LSS",
+   "expansion": "large scale structure",
+   "variants": {
+    "large scale structure": 11,
+    "Large Scale Structure": 2,
+    "Large scale structure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 126,
+   "n_papers": 22,
+   "papers": []
+  },
+  {
+   "acronym": "EVN",
+   "expansion": "European VLBI Network",
+   "variants": {
+    "European VLBI Network": 12
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 121,
+   "n_papers": 34,
+   "papers": []
+  },
+  {
+   "acronym": "RRL",
+   "expansion": "radio recombination lines",
+   "variants": {
+    "Radio recombination lines": 6,
+    "radio recombination lines": 10,
+    "radio recombination line": 1,
+    "Radio Recombination Lines": 2,
+    "radiative recombination lines": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 120,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "PWN",
+   "expansion": "pulsar wind nebula",
+   "variants": {
+    "pulsar wind nebula": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 119,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "QPP",
+   "expansion": "quasi periodic pulsations",
+   "variants": {
+    "quasi periodic pulsations": 3,
+    "Quasi periodic pulsations": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 118,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "AI",
+   "expansion": "artificial intelligence",
+   "variants": {
+    "artificial intelligence": 3,
+    "Artificial Intelligence": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 116,
+   "n_papers": 21,
+   "papers": []
+  },
+  {
+   "acronym": "CGM",
+   "expansion": "circum galactic medium",
+   "variants": {
+    "circum galactic medium": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 115,
+   "n_papers": 19,
+   "papers": []
+  },
+  {
+   "acronym": "ML",
+   "expansion": "machine learning",
+   "variants": {
+    "machine learning": 5
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 111,
+   "n_papers": 11,
+   "papers": []
+  },
+  {
+   "acronym": "VLBA",
+   "expansion": "Very Long Baseline Array",
+   "variants": {
+    "Very Long Baseline Array": 12,
+    "very long baseline array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 110,
+   "n_papers": 32,
+   "papers": []
+  },
+  {
+   "acronym": "LISA",
+   "expansion": "Laser Interferometer Space Antenna",
+   "variants": {
+    "Laser Interferometer Space Antenna": 5,
+    "Laser Interferometry Space Antenna": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 105,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "EM",
+   "expansion": "emission measure",
+   "variants": {
+    "emission measure": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 104,
+   "n_papers": 14,
+   "papers": []
+  },
+  {
+   "acronym": "LIM",
+   "expansion": "Line Intensity Mapping",
+   "variants": {
+    "Line Intensity Mapping": 2,
+    "Line intensity mapping": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 104,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "RC",
+   "expansion": "radio continuum",
+   "variants": {
+    "Radio continuum": 3,
+    "radio continuum": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 97,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "RQ",
+   "expansion": "radio quiet",
+   "variants": {
+    "radio quiet": 7
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 97,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "IC",
+   "expansion": "inverse Compton",
+   "variants": {
+    "inverse Compton": 4,
+    "Inverse Compton": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 96,
+   "n_papers": 21,
+   "papers": []
+  },
+  {
+   "acronym": "CSR",
+   "expansion": "citizen science research",
+   "variants": {
+    "citizen science research": 1,
+    "Citizen Science Research": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 96,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ATCA",
+   "expansion": "Australia Telescope Compact Array",
+   "variants": {
+    "Australia Telescope Compact Array": 10,
+    "Australian Telescope Compact Array": 3,
+    "Australian Telescope Compact Aarray": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 95,
+   "n_papers": 35,
+   "papers": []
+  },
+  {
+   "acronym": "TEC",
+   "expansion": "total electron content",
+   "variants": {
+    "Total Electron Content": 2,
+    "total electron content": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 92,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "IAU",
+   "expansion": "International Astronomical Union",
+   "variants": {
+    "International Astronomical Union": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 92,
+   "n_papers": 52,
+   "papers": []
+  },
+  {
+   "acronym": "PSF",
+   "expansion": "point spread function",
+   "variants": {
+    "point spread function": 5,
+    "point spread functions": 2,
+    "Point Spread Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 88,
+   "n_papers": 21,
+   "papers": []
+  },
+  {
+   "acronym": "CD",
+   "expansion": "Cosmic Dawn",
+   "variants": {
+    "Cosmic Dawn": 8
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 86,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "DAGN",
+   "expansion": "dual active galactic nuclei",
+   "variants": {
+    "dual active galactic nuclei": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 85,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "JRT",
+   "expansion": "Jingdong Radio Telescope",
+   "variants": {
+    "Jingdong Radio Telescope": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 83,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SZ",
+   "expansion": "Sunyaev Zeldovich",
+   "variants": {
+    "Sunyaev Zeldovich": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 82,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "RACS",
+   "expansion": "Rapid ASKAP Continuum Survey",
+   "variants": {
+    "Rapid ASKAP Continuum Survey": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 80,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "LOS",
+   "expansion": "line of sight",
+   "variants": {
+    "line of sight": 12,
+    "lines of sight": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 79,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "CR",
+   "expansion": "cosmic ray",
+   "variants": {
+    "cosmic rays": 2,
+    "Cosmic rays": 1,
+    "cosmic ray": 4,
+    "Cosmic ray": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 78,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "BAO",
+   "expansion": "baryon acoustic oscillations",
+   "variants": {
+    "Baryonic Acoustic Oscillations": 1,
+    "baryon acoustic oscillations": 4,
+    "Baryon Acoustic Oscillations": 2,
+    "baryon acoustic oscillation": 2,
+    "baryonic acoustic oscillations": 1,
+    "Baryon Acoustic Oscillation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 78,
+   "n_papers": 11,
+   "papers": []
+  },
+  {
+   "acronym": "HIMF",
+   "expansion": "H i mass function",
+   "variants": {
+    "H i mass function": 2,
+    "H I mass function": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 77,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "JVLA",
+   "expansion": "Jansky Very Large Array",
+   "variants": {
+    "Jansky Very Large Array": 11
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 76,
+   "n_papers": 30,
+   "papers": []
+  },
+  {
+   "acronym": "TDE",
+   "expansion": "tidal disruption events",
+   "variants": {
+    "tidal disruption events": 3,
+    "tidal disruption event": 2,
+    "Tidal disruption events": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 73,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "SGWB",
+   "expansion": "stochastic gravitational wave background",
+   "variants": {
+    "stochastic gravitational wave background": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 72,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ERC",
+   "expansion": "European Research Council",
+   "variants": {
+    "European Research Council": 25
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 71,
+   "n_papers": 48,
+   "papers": []
+  },
+  {
+   "acronym": "ALP",
+   "expansion": "axion like particles",
+   "variants": {
+    "axion like particles": 3,
+    "Axion like particles": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 67,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "OTF",
+   "expansion": "on the fly",
+   "variants": {
+    "on the fly": 1,
+    "On The Fly": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 67,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PS",
+   "expansion": "power spectrum",
+   "variants": {
+    "power spectrum": 2,
+    "Power spectra": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 66,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "RA",
+   "expansion": "Right Ascension",
+   "variants": {
+    "Right Ascension": 2,
+    "right ascension": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 65,
+   "n_papers": 33,
+   "papers": []
+  },
+  {
+   "acronym": "SWG",
+   "expansion": "Science Working Group",
+   "variants": {
+    "Science Working Group": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 62,
+   "n_papers": 20,
+   "papers": []
+  },
+  {
+   "acronym": "WNM",
+   "expansion": "warm neutral medium",
+   "variants": {
+    "warm neutral medium": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 61,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "LMC",
+   "expansion": "Large Magellanic Cloud",
+   "variants": {
+    "Large Magellanic Cloud": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 60,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "LAT",
+   "expansion": "Large Area Telescope",
+   "variants": {
+    "Large Area Telescope": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 59,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "CTAO",
+   "expansion": "Cherenkov Telescope Array Observatory",
+   "variants": {
+    "Cherenkov Telescope Array Observatory": 5,
+    "Cerenkov Telescope Array Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 59,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "FP",
+   "expansion": "fundamental plane",
+   "variants": {
+    "fundamental plane": 1,
+    "fundamental planes": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 58,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "LF",
+   "expansion": "luminosity function",
+   "variants": {
+    "luminosity function": 5,
+    "luminosity functions": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 57,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "WIM",
+   "expansion": "warm ionized medium",
+   "variants": {
+    "Warm Ionized Medium": 1,
+    "warm ionized medium": 4,
+    "warm ionised medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 57,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "GBT",
+   "expansion": "Green Bank Telescope",
+   "variants": {
+    "Green Bank Telescope": 8,
+    "Green Bank Telescopes": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 56,
+   "n_papers": 27,
+   "papers": []
+  },
+  {
+   "acronym": "LWA",
+   "expansion": "Long Wavelength Array",
+   "variants": {
+    "Long Wavelength Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 54,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "SEFD",
+   "expansion": "system equivalent flux density",
+   "variants": {
+    "system equivalent flux density": 5,
+    "System equivalent flux density": 1,
+    "System Equivalent Flux Density": 2,
+    "System Equivalence Flux Density": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 53,
+   "n_papers": 20,
+   "papers": []
+  },
+  {
+   "acronym": "PNG",
+   "expansion": "primordial non Gaussianity",
+   "variants": {
+    "primordial non Gaussianity": 1,
+    "Primordial non Gaussianities": 1,
+    "primordial non Gaussianities": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 53,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "CC",
+   "expansion": "cool core",
+   "variants": {
+    "cool core": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 52,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "PCA",
+   "expansion": "Principal Component Analysis",
+   "variants": {
+    "Principal Component Analysis": 7,
+    "principal component analysis": 4
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 50,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "SSA",
+   "expansion": "synchrotron self absorption",
+   "variants": {
+    "synchrotron self absorption": 10
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 50,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "SDSS",
+   "expansion": "Sloan Digital Sky Survey",
+   "variants": {
+    "Sloan Digital Sky Survey": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 49,
+   "n_papers": 22,
+   "papers": []
+  },
+  {
+   "acronym": "ELT",
+   "expansion": "Extremely Large Telescope",
+   "variants": {
+    "Extremely Large Telescope": 4,
+    "extremely large telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 49,
+   "n_papers": 29,
+   "papers": []
+  },
+  {
+   "acronym": "GNSS",
+   "expansion": "Global Navigation Satellite System",
+   "variants": {
+    "Global Navigation Satellite System": 4,
+    "Global Navigation Satellite Systems": 1,
+    "Global Navigation Satellite Signals": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 49,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "RPS",
+   "expansion": "ram pressure stripping",
+   "variants": {
+    "ram pressure stripping": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 48,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RLF",
+   "expansion": "radio luminosity function",
+   "variants": {
+    "radio luminosity function": 4,
+    "radio luminosity functions": 2,
+    "Radio Luminosity Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 48,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "SMC",
+   "expansion": "Small Magellanic Cloud",
+   "variants": {
+    "Small Magellanic Cloud": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 48,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "SBI",
+   "expansion": "simulation based inference",
+   "variants": {
+    "simulation based inference": 4,
+    "Simulation based inference": 1,
+    "Simulation Based Inference": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 48,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "EPTA",
+   "expansion": "European Pulsar Timing Array",
+   "variants": {
+    "European Pulsar Timing Array": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 47,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "GPR",
+   "expansion": "Gaussian Process Regression",
+   "variants": {
+    "Gaussian Process Regression": 5,
+    "Gaussian process regression": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 46,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "HD",
+   "expansion": "Hellings Downs",
+   "variants": {
+    "Hellings Downs": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 45,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "SFG",
+   "expansion": "star forming galaxies",
+   "variants": {
+    "star forming galaxy": 2,
+    "star forming galaxies": 12,
+    "Star forming galaxies": 1,
+    "Star Forming Galaxies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 44,
+   "n_papers": 14,
+   "papers": []
+  },
+  {
+   "acronym": "BNS",
+   "expansion": "binary neutron star",
+   "variants": {
+    "binary neutron star": 3,
+    "binary neutron stars": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 44,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "EOVSA",
+   "expansion": "Expanded Owens Valley Solar Array",
+   "variants": {
+    "Expanded Owens Valley Solar Array": 2,
+    "Extended Owens Valley Solar Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 44,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "ET",
+   "expansion": "Einstein Telescope",
+   "variants": {
+    "Einstein Telescope": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 44,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "SFRD",
+   "expansion": "star formation rate density",
+   "variants": {
+    "star formation rate density": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 43,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "WD",
+   "expansion": "white dwarfs",
+   "variants": {
+    "white dwarfs": 5,
+    "white dwarf": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 42,
+   "n_papers": 10,
+   "papers": []
+  },
+  {
+   "acronym": "IMBH",
+   "expansion": "intermediate mass black holes",
+   "variants": {
+    "intermediate mass black holes": 6,
+    "intermediate mass black hole": 4,
+    "Intermediate mass black holes": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 41,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "WST",
+   "expansion": "wavelet scattering transforms",
+   "variants": {
+    "wavelet scattering transforms": 1,
+    "Wavelet Scattering Transform": 1,
+    "wavelet scattering transform": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 41,
+   "n_papers": 11,
+   "papers": []
+  },
+  {
+   "acronym": "ECME",
+   "expansion": "electron cyclotron maser emission",
+   "variants": {
+    "electron cyclotron maser emission": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 40,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "XRB",
+   "expansion": "X ray binaries",
+   "variants": {
+    "X ray binaries": 6,
+    "X ray Binary": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 40,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "PPN",
+   "expansion": "parameterized post Newtonian",
+   "variants": {
+    "parameterized post Newtonian": 1,
+    "parametrized post Newtonian": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 40,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "WIMP",
+   "expansion": "weakly interacting massive particles",
+   "variants": {
+    "Weakly Interacting Massive Particles": 2,
+    "weakly interacting massive particles": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 40,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "RSD",
+   "expansion": "redshift space distortions",
+   "variants": {
+    "redshift space distortions": 7,
+    "redshift space distortion": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 40,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "SVLBI",
+   "expansion": "Space Very Long Baseline Interferometry",
+   "variants": {
+    "Space Very Long Baseline Interferometry": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 40,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VLASS",
+   "expansion": "Very Large Array Sky Survey",
+   "variants": {
+    "Very Large Array Sky Survey": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 39,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "PSP",
+   "expansion": "Parker Solar Probe",
+   "variants": {
+    "Parker Solar Probe": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 39,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "TGSS",
+   "expansion": "TIFR GMRT Sky Survey",
+   "variants": {
+    "TIFR GMRT Sky Survey": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 38,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "PA",
+   "expansion": "position angle",
+   "variants": {
+    "position angle": 6,
+    "polarization angle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 38,
+   "n_papers": 11,
+   "papers": []
+  },
+  {
+   "acronym": "GS",
+   "expansion": "gyro synchrotron",
+   "variants": {
+    "gyro synchrotron": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 38,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "PBH",
+   "expansion": "primordial black holes",
+   "variants": {
+    "Primordial black holes": 2,
+    "primordial black holes": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 38,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "BCG",
+   "expansion": "brightest cluster galaxy",
+   "variants": {
+    "brightest central galaxy": 1,
+    "brightest cluster galaxy": 3,
+    "Brightest cluster galaxies": 1,
+    "Brightest Cluster Galaxies": 1,
+    "bright cluster galaxy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 37,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "NSD",
+   "expansion": "Nuclear Stellar Disk",
+   "variants": {
+    "Nuclear Stellar Disk": 2,
+    "nuclear stellar disc": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 36,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LB",
+   "expansion": "local bubble",
+   "variants": {
+    "Local Bubble": 1,
+    "local bubble": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 36,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HINSA",
+   "expansion": "H i Narrow Self Absorption",
+   "variants": {
+    "H i Narrow Self Absorption": 1,
+    "H i narrow self absorption": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 36,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "DNS",
+   "expansion": "double neutron star",
+   "variants": {
+    "Double neutron star": 1,
+    "double neutron star": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 36,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HST",
+   "expansion": "Hubble Space Telescope",
+   "variants": {
+    "Hubble Space Telescope": 6,
+    "Hubble space telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 35,
+   "n_papers": 25,
+   "papers": []
+  },
+  {
+   "acronym": "CPRT",
+   "expansion": "Cosmological Polarized Radiative Transfer",
+   "variants": {
+    "cosmological polarized radiative transfer": 1,
+    "Cosmological Polarized Radiative Transfer": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 35,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LVK",
+   "expansion": "LIGO Virgo KAGRA",
+   "variants": {
+    "LIGO Virgo KAGRA": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 35,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "LHAASO",
+   "expansion": "Large High Altitude Air Shower Observatory",
+   "variants": {
+    "Large High Altitude Air Shower Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 35,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "SFH",
+   "expansion": "star formation history",
+   "variants": {
+    "star formation history": 4,
+    "Star Formation History": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 34,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RGZ",
+   "expansion": "Radio Galaxy Zoo",
+   "variants": {
+    "Radio Galaxy Zoo": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 34,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MRC",
+   "expansion": "mid radio continuum",
+   "variants": {
+    "mid radio continuum": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 34,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "CMB (cosmic microwave background)",
+   "expansion": "cosmic microwave background",
+   "variants": {
+    "Cosmic Microwave Background": 14,
+    "cosmic microwave background": 19
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 33,
+   "n_papers": 30,
+   "papers": []
+  },
+  {
+   "acronym": "WSU",
+   "expansion": "Wideband Sensitivity Upgrade",
+   "variants": {
+    "Wideband Sensitivity Upgrade": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 33,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "CNN",
+   "expansion": "convolutional neural networks",
+   "variants": {
+    "Convolutional Neural Network": 2,
+    "Convolutional Neural Networks": 3,
+    "convolutional neural networks": 6,
+    "Convolutional neural networks": 2,
+    "convolutional neural network": 3
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 33,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "ST",
+   "expansion": "scattering transform",
+   "variants": {
+    "scattering transform": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 33,
+   "n_papers": 24,
+   "papers": []
+  },
+  {
+   "acronym": "TF",
+   "expansion": "Tully Fisher",
+   "variants": {
+    "Tully Fisher": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 33,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MAPS",
+   "expansion": "multifrequency angular power spectrum",
+   "variants": {
+    "multifrequency angular power spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 33,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "LTE",
+   "expansion": "local thermodynamic equilibrium",
+   "variants": {
+    "Local Thermodynamic Equilibrium": 1,
+    "local thermodynamic equilibrium": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 32,
+   "n_papers": 10,
+   "papers": []
+  },
+  {
+   "acronym": "VLT",
+   "expansion": "Very Large Telescope",
+   "variants": {
+    "Very Large Telescope": 5
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 32,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "FIR",
+   "expansion": "First Investigation Report",
+   "variants": {
+    "First Investigation Report": 1,
+    "First Investigation Reports": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 31,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "FOV",
+   "expansion": "field of view",
+   "variants": {
+    "field of view": 17,
+    "Field of View": 4,
+    "fields of view": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 23,
+   "papers": []
+  },
+  {
+   "acronym": "ERDF",
+   "expansion": "European Regional Development Fund",
+   "variants": {
+    "European Regional Development Fund": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 23,
+   "papers": []
+  },
+  {
+   "acronym": "RMSF",
+   "expansion": "Rotation Measure Spread Function",
+   "variants": {
+    "Rotation Measure Spread Function": 3,
+    "rotation measure spread function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "PAH",
+   "expansion": "Polycyclic aromatic hydrocarbons",
+   "variants": {
+    "Polycyclic aromatic hydrocarbons": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "ILT",
+   "expansion": "International LOFAR Telescope",
+   "variants": {
+    "International LOFAR Telescope": 4
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 30,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "WL",
+   "expansion": "Weak Lensing",
+   "variants": {
+    "Weak Lensing": 1,
+    "weak lensing": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "PDF",
+   "expansion": "Probability Density Function",
+   "variants": {
+    "Probability Density Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "DES",
+   "expansion": "Dark Energy Survey",
+   "variants": {
+    "Dark Energy Survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 30,
+   "n_papers": 12,
+   "papers": []
+  },
+  {
+   "acronym": "WR",
+   "expansion": "Wolf Rayet",
+   "variants": {
+    "Wolf Rayet": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 29,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "ESO",
+   "expansion": "European Southern Observatory",
+   "variants": {
+    "European Southern Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 29,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "SARAO",
+   "expansion": "South African Radio Astronomy Observatory",
+   "variants": {
+    "South African Radio Astronomy Observatory": 15
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 29,
+   "n_papers": 18,
+   "papers": []
+  },
+  {
+   "acronym": "FOPT",
+   "expansion": "first order phase transitions",
+   "variants": {
+    "first order phase transitions": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 29,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PFS",
+   "expansion": "Prime Focus Spectrograph",
+   "variants": {
+    "Prime Focus Spectrograph": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 28,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PK",
+   "expansion": "Post Keplerian",
+   "variants": {
+    "Post Keplerian": 1,
+    "post Keplerian": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 28,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "EP",
+   "expansion": "equivalence principle",
+   "variants": {
+    "equivalence principle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 28,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "LAS",
+   "expansion": "largest angular scale",
+   "variants": {
+    "largest angular scale": 1,
+    "Largest Angular Scale": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 27,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MERLIN",
+   "expansion": "Multi Element Radio Linked Interferometer Network",
+   "variants": {
+    "Multi Element Radio Linked Interferometer Network": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 27,
+   "n_papers": 11,
+   "papers": []
+  },
+  {
+   "acronym": "NSC",
+   "expansion": "nuclear star cluster",
+   "variants": {
+    "nuclear star cluster": 1,
+    "Nuclear Star Cluster": 1,
+    "Nuclear Stellar Cluster": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 27,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BBH",
+   "expansion": "binary black holes",
+   "variants": {
+    "binary black holes": 2,
+    "Binary Black Holes": 1,
+    "Binary Black Hole": 1,
+    "binary black hole": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 27,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "ATNF",
+   "expansion": "Australia Telescope National Facility",
+   "variants": {
+    "Australia Telescope National Facility": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 26,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "YSO",
+   "expansion": "young stellar objects",
+   "variants": {
+    "Young Stellar Objects": 1,
+    "Young Stellar Object": 2,
+    "young stellar object": 1,
+    "young stellar objects": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "CMZ",
+   "expansion": "Central Molecular Zone",
+   "variants": {
+    "Central Molecular Zone": 2,
+    "central molecular zone": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "ES",
+   "expansion": "evolved stars",
+   "variants": {
+    "evolved stars": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PDR",
+   "expansion": "photo dissociation regions",
+   "variants": {
+    "photo dissociation regions": 1,
+    "photo dissociation region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "TNO",
+   "expansion": "trans Neptunian objects",
+   "variants": {
+    "Trans Neptunian Objects": 2,
+    "trans Neptunian objects": 4,
+    "trans Neptunian object": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MBHB",
+   "expansion": "massive black hole binaries",
+   "variants": {
+    "massive black hole binaries": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "IFT",
+   "expansion": "Information Field Theory",
+   "variants": {
+    "Information Field Theory": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "CS",
+   "expansion": "Chern Simons",
+   "variants": {
+    "Chern Simons": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 26,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "UDG",
+   "expansion": "ultra diffuse galaxies",
+   "variants": {
+    "ultra diffuse galaxies": 2,
+    "Ultra diffuse galaxies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 25,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "LCS",
+   "expansion": "largest cluster statistic",
+   "variants": {
+    "largest cluster statistic": 3,
+    "Largest Cluster Statistic": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 25,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BMS",
+   "expansion": "Burg Metzner Sachs",
+   "variants": {
+    "Burg Metzner Sachs": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 25,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UCD",
+   "expansion": "ultra cool dwarfs",
+   "variants": {
+    "Ultra Cool Dwarfs": 1,
+    "ultra cool dwarfs": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 24,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "GPU",
+   "expansion": "graphics processing units",
+   "variants": {
+    "graphics processing units": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 24,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "NRH",
+   "expansion": "Nan\u00e7ay Radio Heliograph",
+   "variants": {
+    "Nan\u00e7ay Radio Heliograph": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 24,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "RT",
+   "expansion": "radiative transfer",
+   "variants": {
+    "radiative transfer": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 24,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BE",
+   "expansion": "binding energies",
+   "variants": {
+    "binding energy": 1,
+    "binding energies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 23,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "MC",
+   "expansion": "molecular clouds",
+   "variants": {
+    "molecular clouds": 1,
+    "Magellanic Clouds": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 23,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "MAGPIS",
+   "expansion": "Multi Array Galactic Plane Imaging Survey",
+   "variants": {
+    "Multi Array Galactic Plane Imaging Survey": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 23,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GCN",
+   "expansion": "General Coordinates Network",
+   "variants": {
+    "General Coordinates Network": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 23,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "ECMI",
+   "expansion": "electron cyclotron maser instability",
+   "variants": {
+    "electron cyclotron maser instabilities": 1,
+    "electron cyclotron maser instability": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 23,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "NSF",
+   "expansion": "National Science Foundation",
+   "variants": {
+    "National Science Foundation": 4
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 22,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "SDO",
+   "expansion": "Solar Dynamics Observatory",
+   "variants": {
+    "Solar Dynamics Observatory": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 22,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "LP",
+   "expansion": "linear polarization",
+   "variants": {
+    "linear polarization": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 22,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "LPT",
+   "expansion": "Long Periodic Transients",
+   "variants": {
+    "Long Periodic Transients": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "TMC",
+   "expansion": "Taurus Molecular Cloud",
+   "variants": {
+    "Taurus Molecular Cloud": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "DR",
+   "expansion": "Dynamic Range",
+   "variants": {
+    "Dynamic Range": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "SDP",
+   "expansion": "Science Data Processor",
+   "variants": {
+    "Science Data Processor": 3,
+    "science data processor": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 21,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "SXR",
+   "expansion": "Soft X rays",
+   "variants": {
+    "Soft X rays": 1,
+    "soft X ray": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RH",
+   "expansion": "radio halos",
+   "variants": {
+    "radio halos": 1,
+    "Radio Halos": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "SB",
+   "expansion": "surface brightness",
+   "variants": {
+    "surface brightness": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "RS",
+   "expansion": "reverse shock",
+   "variants": {
+    "reverse shock": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 21,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "SS",
+   "expansion": "Solar System",
+   "variants": {
+    "Solar System": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 20,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "GMCA",
+   "expansion": "Generalized Morphological Component Analysis",
+   "variants": {
+    "Generalized Morphological Component Analysis": 2,
+    "Generalised Morphological Component Analysis": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 20,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LCP",
+   "expansion": "left circular polarization",
+   "variants": {
+    "left circular polarization": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 20,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "FFT",
+   "expansion": "fast Fourier transform",
+   "variants": {
+    "fast Fourier transform": 2,
+    "Fast Fourier Transform": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 20,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "CBC",
+   "expansion": "compact binary coalescences",
+   "variants": {
+    "compact binary coalescences": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 20,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VSOP",
+   "expansion": "VLBI Space Observatory Programme",
+   "variants": {
+    "VLBI Space Observatory Programme": 2
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 20,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IFU",
+   "expansion": "integral field units",
+   "variants": {
+    "integral field units": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "LRD",
+   "expansion": "Little Red Dots",
+   "variants": {
+    "Little Red Dots": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HISA",
+   "expansion": "H i self absorption",
+   "variants": {
+    "H i self absorption": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "AGB",
+   "expansion": "Asymptotic Giant Branch",
+   "variants": {
+    "Asymptotic Giant Branch": 1,
+    "asymptotic giant branch": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ORC",
+   "expansion": "odd radio circles",
+   "variants": {
+    "odd radio circles": 4,
+    "Odd Radio Circles": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "CW",
+   "expansion": "continuous wave",
+   "variants": {
+    "continuous wave": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RCP",
+   "expansion": "right circular polarization",
+   "variants": {
+    "right circular polarization": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "WHIM",
+   "expansion": "warm hot intergalactic medium",
+   "variants": {
+    "warm hot intergalactic medium": 5,
+    "Warm Hot Intergalactic Medium": 1,
+    "warm hot intergalatic medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 19,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "LBV",
+   "expansion": "Luminous Blue Variables",
+   "variants": {
+    "Luminous Blue Variables": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "OG",
+   "expansion": "Outer Galaxy",
+   "variants": {
+    "Outer Galaxy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MV",
+   "expansion": "Multi View",
+   "variants": {
+    "Multi View": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "DF",
+   "expansion": "direction finding",
+   "variants": {
+    "direction finding": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SSRT",
+   "expansion": "Siberian Solar Radio Telescope",
+   "variants": {
+    "Siberian Solar Radio Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 18,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "AP",
+   "expansion": "Alcock Paczynski",
+   "variants": {
+    "Alcock Paczynski": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "SIGW",
+   "expansion": "Scalar Induced Gravitational Waves",
+   "variants": {
+    "Scalar Induced Gravitational Waves": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MA",
+   "expansion": "Mini Arrays",
+   "variants": {
+    "Mini Arrays": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 18,
+   "n_papers": 15,
+   "papers": []
+  },
+  {
+   "acronym": "ARC",
+   "expansion": "Australian Research Council",
+   "variants": {
+    "Australian Research Council": 4
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 18,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "BS",
+   "expansion": "bow shock",
+   "variants": {
+    "bow shock": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 18,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EELG",
+   "expansion": "Extreme Emission Line Galaxies",
+   "variants": {
+    "Extreme Emission Line Galaxies": 1,
+    "extreme emission line galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 17,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NRAO",
+   "expansion": "National Radio Astronomy Observatory",
+   "variants": {
+    "National Radio Astronomy Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 17,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "GRM",
+   "expansion": "Galactic rotation measure",
+   "variants": {
+    "Galactic rotation measure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 17,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "BC",
+   "expansion": "bubble collisions",
+   "variants": {
+    "bubble collisions": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 17,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "VHE",
+   "expansion": "very high energy",
+   "variants": {
+    "very high energy": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 17,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "TPA",
+   "expansion": "Thousand Pulsar Array",
+   "variants": {
+    "Thousand Pulsar Array": 4
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 17,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HR",
+   "expansion": "high resolution",
+   "variants": {
+    "high resolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 16,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "NCC",
+   "expansion": "Normalized cross correlation",
+   "variants": {
+    "Normalized cross correlation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 16,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ISW",
+   "expansion": "integrated Sachs Wolfe",
+   "variants": {
+    "integrated Sachs Wolfe": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 16,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "ASI",
+   "expansion": "Advanced Study Institute",
+   "variants": {
+    "Advanced Study Institute": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 16,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "GRG",
+   "expansion": "giant radio galaxies",
+   "variants": {
+    "giant radio galaxies": 4,
+    "Giant Radio Galaxies": 3,
+    "Giant radio galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "DM (dispersion measure)",
+   "expansion": "dispersion measure",
+   "variants": {
+    "dispersion measure": 10,
+    "dispersion measures": 4,
+    "Dispersion Measure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "HIVF",
+   "expansion": "H i Velocity Function",
+   "variants": {
+    "H i Velocity Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "WSRT",
+   "expansion": "Westerbork Synthesis Radio Telescope",
+   "variants": {
+    "Westerbork Synthesis Radio Telescope": 6
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 15,
+   "n_papers": 13,
+   "papers": []
+  },
+  {
+   "acronym": "CCA",
+   "expansion": "chaotic cold accretion",
+   "variants": {
+    "chaotic cold accretion": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "AVN",
+   "expansion": "African VLBI Network",
+   "variants": {
+    "African VLBI Network": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 15,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "RGB",
+   "expansion": "Red Green Blue",
+   "variants": {
+    "Red Green Blue": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "RMSE",
+   "expansion": "root mean square error",
+   "variants": {
+    "root mean square error": 2,
+    "Root Mean Square Error": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RV",
+   "expansion": "radial velocity",
+   "variants": {
+    "radial velocity": 6
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HXR",
+   "expansion": "Hard X ray",
+   "variants": {
+    "Hard X ray": 1,
+    "hard X rays": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "SP",
+   "expansion": "Sweet Parker",
+   "variants": {
+    "Sweet Parker": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "PPTA",
+   "expansion": "Parkes Pulsar Timing Array",
+   "variants": {
+    "Parkes Pulsar Timing Array": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 15,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "GPPS",
+   "expansion": "Galactic Plane Pulsar Snapshot",
+   "variants": {
+    "Galactic Plane Pulsar Snapshot": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 15,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "CSO",
+   "expansion": "Compact Symmetric Objects",
+   "variants": {
+    "compact symmetric objects": 1,
+    "Compact Symmetric Objects": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "HMSF",
+   "expansion": "high mass star formation",
+   "variants": {
+    "high mass star formation": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LERG",
+   "expansion": "low excitation radio galaxies",
+   "variants": {
+    "low excitation radio galaxies": 2,
+    "Low Excitation Radio Galaxies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "QSO",
+   "expansion": "quasi stellar objects",
+   "variants": {
+    "quasi stellar objects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "WDM",
+   "expansion": "warm dark matter",
+   "variants": {
+    "warm dark matter": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "IA",
+   "expansion": "intrinsic alignments",
+   "variants": {
+    "intrinsic alignments": 2,
+    "Intrinsic Alignment": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TOA",
+   "expansion": "times of arrival",
+   "variants": {
+    "times of arrival": 3,
+    "time of arrival": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 14,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "CTA",
+   "expansion": "Cerenkov Telescope Array",
+   "variants": {
+    "Cherenkov Telescope Array": 1,
+    "Cerenkov Telescope Array": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 14,
+   "n_papers": 10,
+   "papers": []
+  },
+  {
+   "acronym": "RIT",
+   "expansion": "Radio Interferometric Technique",
+   "variants": {
+    "Radio Interferometric Technique": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 14,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "EHT",
+   "expansion": "Event Horizon Telescope",
+   "variants": {
+    "Event Horizon Telescope": 4,
+    "event horizon telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 13,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "CRE",
+   "expansion": "cosmic ray electrons",
+   "variants": {
+    "Cosmic ray electrons": 1,
+    "cosmic rays electrons": 1,
+    "cosmic ray electrons": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "RLAGN",
+   "expansion": "radio luminous active galactic nuclei",
+   "variants": {
+    "radio luminous active galactic nuclei": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "NAT",
+   "expansion": "narrow angle tail",
+   "variants": {
+    "narrow angle tail": 4
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "WAT",
+   "expansion": "wide angle tail",
+   "variants": {
+    "wide angle tail": 4,
+    "Wide Angle Tail": 1,
+    "Wide Angle Tailed": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "MDE",
+   "expansion": "magnetic dipole emission",
+   "variants": {
+    "magnetic dipole emission": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "IPTA",
+   "expansion": "International Pulsar Timing Array",
+   "variants": {
+    "International Pulsar Timing Array": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 13,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "EDD",
+   "expansion": "Effelsberg direct digitization",
+   "variants": {
+    "Effelsberg direct digitization": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MT",
+   "expansion": "Minkowski Tensors",
+   "variants": {
+    "Minkowski Tensors": 1,
+    "Minkowski tensors": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "DW",
+   "expansion": "dirty waveforms",
+   "variants": {
+    "dirty waveforms": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TT",
+   "expansion": "terrestrial time",
+   "variants": {
+    "terrestrial time": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 13,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "ECM",
+   "expansion": "electron cyclotron maser",
+   "variants": {
+    "electron cyclotron maser": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 12,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "BLR",
+   "expansion": "broad line region",
+   "variants": {
+    "broad line region": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 12,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DGSE",
+   "expansion": "diffuse Galactic synchrotron emission",
+   "variants": {
+    "diffuse Galactic synchrotron emission": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 12,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CCO",
+   "expansion": "central compact objects",
+   "variants": {
+    "central compact objects": 1,
+    "Central Compact Objects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 12,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "VSF",
+   "expansion": "velocity structure function",
+   "variants": {
+    "velocity structure function": 6
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 12,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "DM (dark matter)",
+   "expansion": "dark matter",
+   "variants": {
+    "dark matter": 11
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 10,
+   "papers": []
+  },
+  {
+   "acronym": "USS",
+   "expansion": "Ultra Steep Spectrum",
+   "variants": {
+    "Ultra Steep Spectrum": 2,
+    "ultra steep spectrum": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "NLR",
+   "expansion": "narrow line region",
+   "variants": {
+    "narrow line region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RPC",
+   "expansion": "radiation pressure confinement",
+   "variants": {
+    "radiation pressure confinement": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ANN",
+   "expansion": "artificial neural network",
+   "variants": {
+    "artificial neural network": 2,
+    "Artificial Neural Networks": 1,
+    "artificial neural networks": 2
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 11,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "IVC",
+   "expansion": "Intermediate Velocity Clouds",
+   "variants": {
+    "Intermediate Velocity Clouds": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VDIF",
+   "expansion": "VLBI Data Interchange Format",
+   "variants": {
+    "VLBI Data Interchange Format": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "BD",
+   "expansion": "Brown Dwarfs",
+   "variants": {
+    "Brown Dwarfs": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "WV",
+   "expansion": "Wigner Ville",
+   "variants": {
+    "Wigner Ville": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "ABH",
+   "expansion": "Astrophysical Black Holes",
+   "variants": {
+    "Astrophysical Black Holes": 1,
+    "astrophysical black hole": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LAE",
+   "expansion": "Lyman Alpha Emitter",
+   "variants": {
+    "Lyman Alpha Emitter": 1,
+    "Lyman alpha emitters": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MASS",
+   "expansion": "MeerKAT All Sky Simulator",
+   "variants": {
+    "MeerKAT All Sky Simulator": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VID",
+   "expansion": "voxel intensity distribution",
+   "variants": {
+    "voxel intensity distribution": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "TGE",
+   "expansion": "Tapered Gridded Estimator",
+   "variants": {
+    "Tapered Gridded Estimator": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 11,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "CB",
+   "expansion": "Compact binaries",
+   "variants": {
+    "Compact binaries": 1,
+    "compact binaries": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "IRF",
+   "expansion": "impulse response function",
+   "variants": {
+    "impulse response function": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 11,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DCF",
+   "expansion": "Davis Chandrasekhar Fermi",
+   "variants": {
+    "Davis Chandrasekhar Fermi": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MOS",
+   "expansion": "multi object spectrograph",
+   "variants": {
+    "multi object spectrograph": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GC (Galactic Center)",
+   "expansion": "Galactic Center",
+   "variants": {
+    "Galactic Center": 5,
+    "Galactic Centre": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "SAM",
+   "expansion": "semi analytic models",
+   "variants": {
+    "semi analytic models": 1,
+    "semi analytic model": 1,
+    "semi analytical models": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "GRS",
+   "expansion": "Galactic Ring Survey",
+   "variants": {
+    "Galactic Ring Survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "EFT",
+   "expansion": "effective field theory",
+   "variants": {
+    "Effective Field Theory": 1,
+    "effective field theory": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "PSS",
+   "expansion": "pulsar search subsystem",
+   "variants": {
+    "pulsar search subsystem": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RSTN",
+   "expansion": "Radio Solar Telescope Network",
+   "variants": {
+    "Radio Solar Telescope Network": 4
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 10,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "PP",
+   "expansion": "physical pairs",
+   "variants": {
+    "physical pairs": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FYST",
+   "expansion": "Fred Young Submillimeter Telescope",
+   "variants": {
+    "Fred Young Submillimeter Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 10,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "DEF",
+   "expansion": "Damour Esposito Far\u00e8se",
+   "variants": {
+    "Damour Esposito Far\u00e8se": 1,
+    "Damour Esposito Far\u00e9s\u00e9": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 10,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MCMC (Markov Chain Monte Carlo)",
+   "expansion": "Markov Chain Monte Carlo",
+   "variants": {
+    "Markov chain Monte Carlo": 1,
+    "Markov Chain Monte Carlo": 8
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "EBL",
+   "expansion": "extragalactic background light",
+   "variants": {
+    "External Background Light": 1,
+    "extragalactic background light": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "LBA (Long Baseline Array)",
+   "expansion": "Long Baseline Array",
+   "variants": {
+    "Long Baseline Array": 8,
+    "long baseline array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 9,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "CSS",
+   "expansion": "compact steep spectrum",
+   "variants": {
+    "compact steep spectrum": 2,
+    "Compact Steep Spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "GMIMS",
+   "expansion": "Global Magneto Ionic Medium Survey",
+   "variants": {
+    "Global Magneto Ionic Medium Survey": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "HVC",
+   "expansion": "High Velocity Clouds",
+   "variants": {
+    "High Velocity Clouds": 1,
+    "high velocity clouds": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "SRC",
+   "expansion": "SKA Regional Centres",
+   "variants": {
+    "SKA Regional Centres": 2,
+    "SKAO Regional Centres": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 9,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "IRI",
+   "expansion": "International Reference Ionosphere",
+   "variants": {
+    "International Reference Ionosphere": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "TESS",
+   "expansion": "Transiting Exoplanet Survey Satellite",
+   "variants": {
+    "Transiting Exoplanet Survey Satellite": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "SEP (Solar Energetic Particles)",
+   "expansion": "Solar Energetic Particles",
+   "variants": {
+    "solar energetic particle": 2,
+    "solar energetic particles": 2,
+    "Solar energetic particles": 1,
+    "Solar Energetic Particles": 3,
+    "Solar energetic particle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "FOM",
+   "expansion": "Figure of Merit",
+   "variants": {
+    "Figure of Merit": 2,
+    "figure of merit": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "TOD",
+   "expansion": "time ordered data",
+   "variants": {
+    "time ordered data": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PN",
+   "expansion": "post Newtonian",
+   "variants": {
+    "post Newtonian": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "ESE",
+   "expansion": "Extreme Scattering Events",
+   "variants": {
+    "Extreme Scattering Events": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 9,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SF (star formation)",
+   "expansion": "star formation",
+   "variants": {
+    "star formation": 7,
+    "Star formation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "HOD",
+   "expansion": "halo occupation distribution",
+   "variants": {
+    "halo occupation distribution": 1,
+    "Halo Occupation Distribution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "SC",
+   "expansion": "star clusters",
+   "variants": {
+    "star clusters": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "IFS",
+   "expansion": "Integral Field Spectrographs",
+   "variants": {
+    "Integral Field Spectrographs": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "VAE",
+   "expansion": "variational auto encoders",
+   "variants": {
+    "variational auto encoders": 1,
+    "Variational Auto encoders": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "BBN",
+   "expansion": "Big Bang nucleosynthesis",
+   "variants": {
+    "Big Bang nucleosynthesis": 1,
+    "Big Bang Nucleosynthesis": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GOES",
+   "expansion": "Geostationary Operational Environmental Satellite",
+   "variants": {
+    "Geostationary Operational Environmental Satellite": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "EMD",
+   "expansion": "empirical mode decomposition",
+   "variants": {
+    "empirical mode decomposition": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PIC",
+   "expansion": "Particle In Cell",
+   "variants": {
+    "Particle In Cell": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "LIV",
+   "expansion": "Lorentz invariance violation",
+   "variants": {
+    "Lorentz invariance violation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PMF",
+   "expansion": "Primordial magnetic fields",
+   "variants": {
+    "Primordial magnetic fields": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MBH",
+   "expansion": "massive black holes",
+   "variants": {
+    "massive black holes": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PPM",
+   "expansion": "Pulse Profile Modelling",
+   "variants": {
+    "Pulse Profile Modelling": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BP",
+   "expansion": "Blandford Payne",
+   "variants": {
+    "Blandford Payne": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 8,
+   "papers": []
+  },
+  {
+   "acronym": "GCRT",
+   "expansion": "Galactic Centre Radio Transient",
+   "variants": {
+    "Galactic Centre Radio Transient": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SSE",
+   "expansion": "solar system ephemeris",
+   "variants": {
+    "solar system ephemeris": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DE",
+   "expansion": "dark energy",
+   "variants": {
+    "dark energy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 8,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "FFA (free free absorption)",
+   "expansion": "free free absorption",
+   "variants": {
+    "free free absorption": 7
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "HERG",
+   "expansion": "high excitation radio galaxies",
+   "variants": {
+    "high excitation radio galaxies": 4,
+    "High Excitation Radio Galaxies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 7,
+   "papers": []
+  },
+  {
+   "acronym": "GRRT",
+   "expansion": "general relativistic radiative transfer",
+   "variants": {
+    "general relativistic radiative transfer": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MWG",
+   "expansion": "Milky Way Galaxy",
+   "variants": {
+    "Milky Way Galaxy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TSAS",
+   "expansion": "Tiny Scale Atomic Structure",
+   "variants": {
+    "Tiny Scale Atomic Structure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "HMYSO",
+   "expansion": "high mass young stellar objects",
+   "variants": {
+    "high mass young stellar objects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BT",
+   "expansion": "bent tail",
+   "variants": {
+    "bent tail": 1,
+    "bent tailed": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DRAO",
+   "expansion": "Dominion Radio Astrophysical Observatory",
+   "variants": {
+    "Dominion Radio Astrophysical Observatory": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "LNM",
+   "expansion": "lukewarm neutral medium",
+   "variants": {
+    "lukewarm neutral medium": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MB",
+   "expansion": "Magellanic Bridge",
+   "variants": {
+    "Magellanic Bridge": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "RIME",
+   "expansion": "Radio Interferometer Measurement Equation",
+   "variants": {
+    "Radio Interferometer Measurement Equation": 1,
+    "radio interferometer measurement equation": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MLP",
+   "expansion": "multi layer perceptron",
+   "variants": {
+    "multi layer perceptron": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GRAO",
+   "expansion": "Ghana Radio Astronomy Observatory",
+   "variants": {
+    "Ghana Radio Astronomy Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HSA",
+   "expansion": "High Sensitivity Array",
+   "variants": {
+    "High Sensitivity Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "HPC",
+   "expansion": "high performance computing",
+   "variants": {
+    "high performance computing": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "EOS",
+   "expansion": "equation of state",
+   "variants": {
+    "equations of state": 1,
+    "Equation of State": 1,
+    "equation of state": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "TFR",
+   "expansion": "transverse field region",
+   "variants": {
+    "transverse field region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "FCN",
+   "expansion": "Fully Convolution Network",
+   "variants": {
+    "Fully Convolution Network": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GSF",
+   "expansion": "General Structure Function",
+   "variants": {
+    "General Structure Function": 1,
+    "General structure function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MF",
+   "expansion": "Minkowski Functionals",
+   "variants": {
+    "Minkowski Functionals": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "NB",
+   "expansion": "narrow band",
+   "variants": {
+    "narrow band": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "TIME",
+   "expansion": "Tomographic Intensity Mapping Experiment",
+   "variants": {
+    "Tomographic Intensity Mapping Experiment": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SD",
+   "expansion": "single dish",
+   "variants": {
+    "single dish": 1,
+    "single degenerate": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "CURN",
+   "expansion": "common uncorrelated red noise",
+   "variants": {
+    "common uncorrelated red noise": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BHAC",
+   "expansion": "Black Hole Accretion Code",
+   "variants": {
+    "Black Hole Accretion Code": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ORT",
+   "expansion": "Ootucmund Radio Telescope",
+   "variants": {
+    "Ootucmund Radio Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "CGW",
+   "expansion": "continuous gravitational wave",
+   "variants": {
+    "continuous gravitational wave": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PBF",
+   "expansion": "pulse broadening function",
+   "variants": {
+    "pulse broadening function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 7,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IMF (initial mass function)",
+   "expansion": "initial mass function",
+   "variants": {
+    "initial mass function": 4,
+    "initial mass functions": 1,
+    "Initial Mass Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "KH",
+   "expansion": "Kelvin Helmholtz",
+   "variants": {
+    "Kelvin Helmholtz": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SFE",
+   "expansion": "star formation efficiency",
+   "variants": {
+    "star formation efficiency": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RMS (root mean square)",
+   "expansion": "root mean square",
+   "variants": {
+    "root mean square": 5,
+    "root mean squared": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "PAF",
+   "expansion": "phased array feed",
+   "variants": {
+    "phased array feed": 1,
+    "Phased Array Feed": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 6,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "AMT",
+   "expansion": "African Millimetre Telescope",
+   "variants": {
+    "African Millimetre Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 6,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VUB",
+   "expansion": "Vrije Universiteit Brussel",
+   "variants": {
+    "Vrije Universiteit Brussel": 6
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 6,
+   "papers": []
+  },
+  {
+   "acronym": "DS",
+   "expansion": "dynamic spectrum",
+   "variants": {
+    "dynamic spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "LNA",
+   "expansion": "low noise amplifiers",
+   "variants": {
+    "low noise amplifiers": 1,
+    "low noise amplifier": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 6,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RO",
+   "expansion": "Radio occultation",
+   "variants": {
+    "Radio occultation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "LRG",
+   "expansion": "luminous red galaxies",
+   "variants": {
+    "luminous red galaxies": 1,
+    "Luminous Red Galaxy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PPS",
+   "expansion": "primordial power spectrum",
+   "variants": {
+    "primordial power spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FDF",
+   "expansion": "Faraday Depth Function",
+   "variants": {
+    "Faraday Depth Function": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PB",
+   "expansion": "primary beam",
+   "variants": {
+    "primary beam": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ILC",
+   "expansion": "Internal Linear Combination",
+   "variants": {
+    "Internal Linear Combination": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GWTC",
+   "expansion": "gravitational wave transient catalog",
+   "variants": {
+    "gravitational wave transient catalog": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MPG",
+   "expansion": "Max Planck Gesellschaft",
+   "variants": {
+    "Max Planck Gesellschaft": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 6,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "RL (radio loud)",
+   "expansion": "radio loud",
+   "variants": {
+    "radio loud": 4,
+    "Radio loud": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "QM",
+   "expansion": "quantum mechanics",
+   "variants": {
+    "quantum mechanics": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GLS",
+   "expansion": "gravitationally lensed systems",
+   "variants": {
+    "gravitationally lensed systems": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HMF",
+   "expansion": "halo mass function",
+   "variants": {
+    "halo mass function": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "EVPA",
+   "expansion": "electric vector position angles",
+   "variants": {
+    "electric vector position angles": 1,
+    "electric vector position angle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ULDM",
+   "expansion": "ultra light dark matter",
+   "variants": {
+    "ultra light dark matter": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "FR (Fanaroff Riley)",
+   "expansion": "Fanaroff Riley",
+   "variants": {
+    "Fanaroff Riley": 5
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 5,
+   "papers": []
+  },
+  {
+   "acronym": "NP",
+   "expansion": "normal pulsar",
+   "variants": {
+    "normal pulsar": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GAN",
+   "expansion": "Generative adversarial networks",
+   "variants": {
+    "Generative adversarial networks": 1,
+    "Generative Adversarial Networks": 1,
+    "generative adversarial networks": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BNN",
+   "expansion": "Bayesian neural networks",
+   "variants": {
+    "Bayesian neural networks": 3,
+    "Bayesian Neural Networks": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TRF",
+   "expansion": "terrestrial reference frame",
+   "variants": {
+    "terrestrial reference frame": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ATLAS",
+   "expansion": "Australia Telescope Large Area Survey",
+   "variants": {
+    "Australia Telescope Large Area Survey": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 5,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "ACE",
+   "expansion": "Advanced Composition Explorer",
+   "variants": {
+    "Advanced Composition Explorer": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PFSS",
+   "expansion": "potential field source surface",
+   "variants": {
+    "potential field source surface": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MRO",
+   "expansion": "Mets\u00e4hovi Radio Observatory",
+   "variants": {
+    "Mets\u00e4hovi Radio Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HSRS",
+   "expansion": "Humain Solar Radio Spectrograph",
+   "variants": {
+    "Humain Solar Radio Spectrograph": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RF",
+   "expansion": "radio frequency",
+   "variants": {
+    "radio frequency": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "OF",
+   "expansion": "optical fibre",
+   "variants": {
+    "optical fibre": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DEM",
+   "expansion": "differential emission measure",
+   "variants": {
+    "differential emission measure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "VIRAC",
+   "expansion": "Ventspils International Radio Astronomy Centre",
+   "variants": {
+    "Ventspils International Radio Astronomy Centre": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PSD",
+   "expansion": "Power spectral density",
+   "variants": {
+    "Power spectral density": 1,
+    "power spectral density": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GAMA",
+   "expansion": "Galaxy And Mass Assembly",
+   "variants": {
+    "Galaxy And Mass Assembly": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LLR",
+   "expansion": "Lunar Laser Ranging",
+   "variants": {
+    "Lunar Laser Ranging": 1,
+    "lunar Laser Ranging": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "NPP",
+   "expansion": "non physical pairs",
+   "variants": {
+    "non physical pairs": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NCP",
+   "expansion": "North Celestial Pole",
+   "variants": {
+    "North Celestial Pole": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FLRW",
+   "expansion": "Friedmann Lema\u00eetre Robertson Walker",
+   "variants": {
+    "Friedmann Lema\u00eetre Robertson Walker": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "CV",
+   "expansion": "cataclysmic variable",
+   "variants": {
+    "cataclysmic variable": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 5,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "GPS (GHz peaked spectrum)",
+   "expansion": "GHz peaked spectrum",
+   "variants": {
+    "gigahertz peaked spectrum": 1,
+    "Gigahertz Peaked Spectrum": 1,
+    "GHz peaked spectrum": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MDC",
+   "expansion": "massive dense cores",
+   "variants": {
+    "massive dense cores": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PES",
+   "expansion": "potential energy surface",
+   "variants": {
+    "potential energy surface": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DFT",
+   "expansion": "density functional theory",
+   "variants": {
+    "density functional theory": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SLED",
+   "expansion": "spectral line energy distribution",
+   "variants": {
+    "spectral line energy distribution": 2,
+    "spectral line energy distributions": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "BTFR",
+   "expansion": "baryonic Tully Fisher relation",
+   "variants": {
+    "baryonic Tully Fisher relation": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "WHT",
+   "expansion": "William Herschel Telescope",
+   "variants": {
+    "William Herschel Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GC (Globular clusters)",
+   "expansion": "Globular clusters",
+   "variants": {
+    "Globular clusters": 3,
+    "globular clusters": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "KDA",
+   "expansion": "kinematic distance ambiguity",
+   "variants": {
+    "kinematic distance ambiguity": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ADAF",
+   "expansion": "advection dominated accretion flow",
+   "variants": {
+    "advection dominated accretion flow": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PPV",
+   "expansion": "position position velocity",
+   "variants": {
+    "position position velocity": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FR (Faraday rotation)",
+   "expansion": "Faraday rotation",
+   "variants": {
+    "Faraday rotation": 3,
+    "Faraday Rotation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 4,
+   "papers": []
+  },
+  {
+   "acronym": "PEGASUS",
+   "expansion": "POSSUM EMU GMIMS All Stokes UWL Survey",
+   "variants": {
+    "POSSUM EMU GMIMS All Stokes UWL Survey": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "UDT",
+   "expansion": "Ultra deep tier",
+   "variants": {
+    "Ultra deep tier": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EME",
+   "expansion": "excess microwave emission",
+   "variants": {
+    "excess microwave emission": 1,
+    "Excess microwave emission": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IVOA",
+   "expansion": "International Virtual Observatory Alliance",
+   "variants": {
+    "International Virtual Observatory Alliance": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "NN",
+   "expansion": "neural networks",
+   "variants": {
+    "neural networks": 2
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "GSM",
+   "expansion": "Global Sky Model",
+   "variants": {
+    "Global Sky Model": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BSS",
+   "expansion": "Blind Source Separation",
+   "variants": {
+    "Blind Source Separation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ICA",
+   "expansion": "Independent Component Analysis",
+   "variants": {
+    "Independent Component Analysis": 2
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GAB",
+   "expansion": "GMRT analog baseband",
+   "variants": {
+    "GMRT analog baseband": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "QL",
+   "expansion": "quasi longitudinal",
+   "variants": {
+    "quasi longitudinal": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "QT",
+   "expansion": "quasi transverse",
+   "variants": {
+    "quasi transverse": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "STM",
+   "expansion": "Standard Thermal Model",
+   "variants": {
+    "Standard Thermal Model": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DDC",
+   "expansion": "Direction dependent calibration",
+   "variants": {
+    "Direction dependent calibration": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PPDF",
+   "expansion": "pixel probability distribution function",
+   "variants": {
+    "pixel probability distribution function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CMT",
+   "expansion": "Contour Minkowski Tensor",
+   "variants": {
+    "Contour Minkowski Tensor": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ORF",
+   "expansion": "overlap reduction functions",
+   "variants": {
+    "overlap reduction function": 1,
+    "overlap reduction functions": 2,
+    "Overlap Reduction Function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MAP",
+   "expansion": "maximum a posteriori",
+   "variants": {
+    "maximum a posteriori": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "ELG",
+   "expansion": "emission line galaxies",
+   "variants": {
+    "emission line galaxies": 1,
+    "Emission Line Galaxy": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CDR",
+   "expansion": "central density relation",
+   "variants": {
+    "central density relation": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HOS",
+   "expansion": "Higher order statistics",
+   "variants": {
+    "Higher order statistics": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NRF",
+   "expansion": "National Research Foundation",
+   "variants": {
+    "National Research Foundation": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 4,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "BGG",
+   "expansion": "Brightest Group Galaxies",
+   "variants": {
+    "Brightest Group Galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BSM",
+   "expansion": "beyondthe standard model",
+   "variants": {
+    "beyondthe standard model": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GCM",
+   "expansion": "Galactic Center magnetar",
+   "variants": {
+    "Galactic Center magnetar": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "AIC",
+   "expansion": "Akaike Information Criterion",
+   "variants": {
+    "Akaike Information Criterion": 1,
+    "Akaike information criterion": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 4,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "HRD",
+   "expansion": "Horizontal Raster Drift",
+   "variants": {
+    "Horizontal Raster Drift": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TTGE",
+   "expansion": "Tracking Tapered Gridded Estimator",
+   "variants": {
+    "Tracking Tapered Gridded Estimator": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "JBO",
+   "expansion": "Jodrell Bank observatory",
+   "variants": {
+    "Jodrell Bank observatory": 1,
+    "Jodrell Bank Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CM",
+   "expansion": "Cosmic Microscope",
+   "variants": {
+    "Cosmic Microscope": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FPT",
+   "expansion": "Frequency Phase Transfer",
+   "variants": {
+    "Frequency Phase Transfer": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SLM",
+   "expansion": "single layer model",
+   "variants": {
+    "single layer model": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GEP",
+   "expansion": "Gender Equality Plan",
+   "variants": {
+    "Gender Equality Plan": 1,
+    "Gender Equality Plans": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 4,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FFA (Fast Folding Algorithm)",
+   "expansion": "Fast Folding Algorithm",
+   "variants": {
+    "Fast Folding Algorithm": 3
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RG (Radio galaxies)",
+   "expansion": "Radio galaxies",
+   "variants": {
+    "Radio galaxies": 2,
+    "radio galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SSC (synchrotron self Compton)",
+   "expansion": "synchrotron self Compton",
+   "variants": {
+    "synchrotron self Compton": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GFL",
+   "expansion": "Galactic Foreground Light",
+   "variants": {
+    "Galactic Foreground Light": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "OAN",
+   "expansion": "Observatorio Astron\u00f3mico Nacional",
+   "variants": {
+    "Observatorio Astron\u00f3mico Nacional": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HRS",
+   "expansion": "high resolution spectrograph",
+   "variants": {
+    "high resolution spectrograph": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CST",
+   "expansion": "collimated synchrotron threads",
+   "variants": {
+    "collimated synchrotron threads": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MAD (magnetically arrested disk)",
+   "expansion": "magnetically arrested disk",
+   "variants": {
+    "magnetically arrested disk": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SFRF",
+   "expansion": "star formation rate function",
+   "variants": {
+    "star formation rate function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DDF",
+   "expansion": "deep drilling fields",
+   "variants": {
+    "deep drilling fields": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "DECRA",
+   "expansion": "Discovery Early Career Researcher Award",
+   "variants": {
+    "Discovery Early Career Researcher Award": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "DDRG",
+   "expansion": "double double radio galaxies",
+   "variants": {
+    "double double radio galaxies": 1,
+    "double double radio galaxy": 1,
+    "Double double radio galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "HSR",
+   "expansion": "horseshoe shaped ring",
+   "variants": {
+    "horseshoe shaped ring": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UCL",
+   "expansion": "Upper Centaurus Lupus",
+   "variants": {
+    "Upper Centaurus Lupus": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "SWIFAR",
+   "expansion": "South Western Institute for Astronomy Research",
+   "variants": {
+    "South Western Institute for Astronomy Research": 3
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "NDE",
+   "expansion": "neural density estimators",
+   "variants": {
+    "neural density estimators": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NPE",
+   "expansion": "neural posterior estimation",
+   "variants": {
+    "neural posterior estimation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DI",
+   "expansion": "direction independent",
+   "variants": {
+    "direction independent": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RIM",
+   "expansion": "Recurrent Inference Machines",
+   "variants": {
+    "Recurrent Inference Machines": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DDPM",
+   "expansion": "Denoising Diffusion Probabilistic Models",
+   "variants": {
+    "Denoising Diffusion Probabilistic Models": 1,
+    "denoising diffusion probabilistic model": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "TID",
+   "expansion": "travelling ionospheric disturbances",
+   "variants": {
+    "travelling ionospheric disturbances": 1,
+    "Travelling Ionospheric Disturbances": 1,
+    "Traveling Ionospheric Disturbances": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MRAO",
+   "expansion": "Mozambique Radio Astronomy Observatory",
+   "variants": {
+    "Mozambique Radio Astronomy Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PSC",
+   "expansion": "Pulsar Search Collaboratory",
+   "variants": {
+    "Pulsar Search Collaboratory": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GIM",
+   "expansion": "Global Ionospheric Model",
+   "variants": {
+    "Global Ionospheric Model": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RRMSE",
+   "expansion": "relative root mean square error",
+   "variants": {
+    "relative root mean square error": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "XRT",
+   "expansion": "X ray Telescope",
+   "variants": {
+    "X ray Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TOM",
+   "expansion": "Telescope Observation Manager",
+   "variants": {
+    "Telescope Observation Manager": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IQR",
+   "expansion": "inter quartile range",
+   "variants": {
+    "inter quartile range": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SSL",
+   "expansion": "semi supervised learning",
+   "variants": {
+    "semi supervised learning": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "EIRP",
+   "expansion": "effective isotropic radiated power",
+   "variants": {
+    "effective isotropic radiated power": 2,
+    "equivalent isotropic radiated power": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IF",
+   "expansion": "intermediate frequency",
+   "variants": {
+    "intermediate frequency": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "TUM",
+   "expansion": "Technische Universit\u00e4t M\u00fcnchen",
+   "variants": {
+    "Technische Universit\u00e4t M\u00fcnchen": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "AERA",
+   "expansion": "Auger Engineering Radio Array",
+   "variants": {
+    "Auger Engineering Radio Array": 2
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "TAB",
+   "expansion": "Tied Array Beams",
+   "variants": {
+    "Tied Array Beams": 3
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TR",
+   "expansion": "transition region",
+   "variants": {
+    "transition region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "QTN",
+   "expansion": "Quasi thermal noise",
+   "variants": {
+    "Quasi thermal noise": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MGCLS",
+   "expansion": "MeerKAT galaxy cluster legacy survey",
+   "variants": {
+    "MeerKAT galaxy cluster legacy survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "WPH",
+   "expansion": "wavelet phase harmonics",
+   "variants": {
+    "wavelet phase harmonics": 1,
+    "Wavelet Phase Harmonics": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "EFD",
+   "expansion": "External Faraday dispersion",
+   "variants": {
+    "External Faraday dispersion": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IFD",
+   "expansion": "Internal Faraday dispersion",
+   "variants": {
+    "Internal Faraday dispersion": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CE (Cosmic Explorer)",
+   "expansion": "Cosmic Explorer",
+   "variants": {
+    "Cosmic Explorer": 3
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "BSD",
+   "expansion": "Bubble size distributions",
+   "variants": {
+    "Bubble size distributions": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "WF",
+   "expansion": "Wouthuysen Field",
+   "variants": {
+    "Wouthuysen Field": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NI",
+   "expansion": "non integrated",
+   "variants": {
+    "non integrated": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SNSF",
+   "expansion": "Swiss National Science Foundation",
+   "variants": {
+    "Swiss National Science Foundation": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MCG",
+   "expansion": "molecular cooling galaxies",
+   "variants": {
+    "molecular cooling galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "RAR",
+   "expansion": "radial acceleration relation",
+   "variants": {
+    "radial acceleration relation": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PF",
+   "expansion": "polynomial fitting",
+   "variants": {
+    "polynomial fitting": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PV",
+   "expansion": "perturbed Vogel",
+   "variants": {
+    "perturbed Vogel": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "IDV",
+   "expansion": "intra day variability",
+   "variants": {
+    "intra day variability": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TS",
+   "expansion": "termination shock",
+   "variants": {
+    "termination shock": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "MMB",
+   "expansion": "Methanol Multi Beam",
+   "variants": {
+    "Methanol Multi Beam": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GBNCC",
+   "expansion": "Green Bank North Celestial Cap",
+   "variants": {
+    "Green Bank North Celestial Cap": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "PPA",
+   "expansion": "polarization position angle",
+   "variants": {
+    "polarization position angle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LLI",
+   "expansion": "local Lorentz invariance",
+   "variants": {
+    "local Lorentz invariance": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SV",
+   "expansion": "science verification",
+   "variants": {
+    "science verification": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 3,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "CP (circular polarisation)",
+   "expansion": "circular polarisation",
+   "variants": {
+    "circular polarisation": 1,
+    "circular polarization": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FFE (free free emission)",
+   "expansion": "free free emission",
+   "variants": {
+    "free free emission": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FFE (force free electrodynamics)",
+   "expansion": "force free electrodynamics",
+   "variants": {
+    "force free electrodynamics": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RIAF",
+   "expansion": "radiatively inefficient accretion flows",
+   "variants": {
+    "radiatively inefficient accretion flows": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "GMVA",
+   "expansion": "Global mm VLBI Array",
+   "variants": {
+    "Global mm VLBI Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "EIC",
+   "expansion": "external inverse Compton",
+   "variants": {
+    "external inverse Compton": 1,
+    "External Inverse Compton": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HMC",
+   "expansion": "hot molecular cores",
+   "variants": {
+    "hot molecular cores": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TRGB",
+   "expansion": "the red giant branch",
+   "variants": {
+    "the red giant branch": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LRS",
+   "expansion": "low resolution spectrographs",
+   "variants": {
+    "low resolution spectrographs": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MS (main sequence)",
+   "expansion": "main sequence",
+   "variants": {
+    "main sequence": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GC (Galaxy Clustering)",
+   "expansion": "Galaxy Clustering",
+   "variants": {
+    "Galaxy Clustering": 1,
+    "galaxy clustering": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DSA (diffusive shock acceleration)",
+   "expansion": "diffusive shock acceleration",
+   "variants": {
+    "diffusive shock acceleration": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SRT",
+   "expansion": "Sardinia Radio Telescope",
+   "variants": {
+    "Sardinia Radio Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LIC",
+   "expansion": "Line Integral Convolution",
+   "variants": {
+    "Line Integral Convolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ISO",
+   "expansion": "Infared Space Observatory",
+   "variants": {
+    "Infared Space Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "WT",
+   "expansion": "wide tier",
+   "variants": {
+    "wide tier": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "POS (Proceedings of Science)",
+   "expansion": "Proceedings of Science",
+   "variants": {
+    "Proceedings of Science": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GP (Gaussian Process)",
+   "expansion": "Gaussian Process",
+   "variants": {
+    "Gaussian Process": 1,
+    "Gaussian process": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SNS",
+   "expansion": "Scuola Normale Superiore",
+   "variants": {
+    "Scuola Normale Superiore": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DL (deep learning)",
+   "expansion": "deep learning",
+   "variants": {
+    "deep learning": 2
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LSTM",
+   "expansion": "long short term memory",
+   "variants": {
+    "long short term memory": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DNN",
+   "expansion": "dense neural networks",
+   "variants": {
+    "dense neural networks": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DD (Direction dependent)",
+   "expansion": "Direction dependent",
+   "variants": {
+    "Direction dependent": 1,
+    "direction dependent": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SCF",
+   "expansion": "Smooth Component filtering",
+   "variants": {
+    "Smooth Component filtering": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PIML",
+   "expansion": "Physics informed machine learning",
+   "variants": {
+    "Physics informed machine learning": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RMS (rotation measure synthesis)",
+   "expansion": "rotation measure synthesis",
+   "variants": {
+    "rotation measure synthesis": 1,
+    "Rotation Measure Synthesis": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SBC",
+   "expansion": "Simulation based calibration",
+   "variants": {
+    "Simulation based calibration": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FBC",
+   "expansion": "field based calibration",
+   "variants": {
+    "field based calibration": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EIA",
+   "expansion": "equatorial ionization anomaly",
+   "variants": {
+    "equatorial ionization anomaly": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TART",
+   "expansion": "Transient Array Radio Telescope",
+   "variants": {
+    "Transient Array Radio Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SRM",
+   "expansion": "Shri Ramasamy Memorial",
+   "variants": {
+    "Shri Ramasamy Memorial": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CLFST",
+   "expansion": "Cambridge Low Frequency Synthesis Telescope",
+   "variants": {
+    "Cambridge Low Frequency Synthesis Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "QPO",
+   "expansion": "quasi periodic oscillations",
+   "variants": {
+    "quasi periodic oscillations": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "COTS",
+   "expansion": "commercial off the shelf",
+   "variants": {
+    "commercial off the shelf": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FPGA",
+   "expansion": "field programmable gate arrays",
+   "variants": {
+    "field programmable gate arrays": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "HTC",
+   "expansion": "High Throughput Computing",
+   "variants": {
+    "High Throughput Computing": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "EPE",
+   "expansion": "energetic particle events",
+   "variants": {
+    "energetic particle events": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EFI",
+   "expansion": "electron firehose instability",
+   "variants": {
+    "electron firehose instability": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RFCU",
+   "expansion": "Radio Frequency Conditioning Unit",
+   "variants": {
+    "Radio Frequency Conditioning Unit": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CEB",
+   "expansion": "central electronics building",
+   "variants": {
+    "central electronics building": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SK",
+   "expansion": "spectral kurtosis",
+   "variants": {
+    "spectral kurtosis": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "QTR",
+   "expansion": "quasi transverse region",
+   "variants": {
+    "quasi transverse region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SM (Standard Model)",
+   "expansion": "Standard Model",
+   "variants": {
+    "Standard Model": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "AIPS",
+   "expansion": "Astronomical Image Processing System",
+   "variants": {
+    "Astronomical Image Processing System": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "SLIC",
+   "expansion": "Simple Linear Iterative Clustering",
+   "variants": {
+    "Simple Linear Iterative Clustering": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FOF",
+   "expansion": "friends of friends",
+   "variants": {
+    "friends of friends": 1,
+    "Friends of Friends": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MFP",
+   "expansion": "mean free path",
+   "variants": {
+    "mean free path": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GNF",
+   "expansion": "generative normalizing flows",
+   "variants": {
+    "generative normalizing flows": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "INF",
+   "expansion": "inference normalizing flows",
+   "variants": {
+    "inference normalizing flows": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "WFI",
+   "expansion": "Wide Field Imager",
+   "variants": {
+    "Wide Field Imager": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "ERA",
+   "expansion": "European Research Area",
+   "variants": {
+    "European Research Area": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "BLF",
+   "expansion": "Baseline Level Flagging",
+   "variants": {
+    "Baseline Level Flagging": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FF (filling factor)",
+   "expansion": "filling factor",
+   "variants": {
+    "filling factor": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "NGP",
+   "expansion": "Nearest Grid Point",
+   "variants": {
+    "Nearest Grid Point": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "STEP",
+   "expansion": "Sandwich Training Educational Programme",
+   "variants": {
+    "Sandwich Training Educational Programme": 2
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "USSRH",
+   "expansion": "ultra steep spectrum radio halos",
+   "variants": {
+    "ultra steep spectrum radio halos": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "MTH",
+   "expansion": "mirror twin Higgs",
+   "variants": {
+    "mirror twin Higgs": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SW (solar wind)",
+   "expansion": "solar wind",
+   "variants": {
+    "solar wind": 1,
+    "Solar Wind": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "GNFW",
+   "expansion": "generalized Navarro Frenk White",
+   "variants": {
+    "generalized Navarro Frenk White": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LFI",
+   "expansion": "Low Frequency Instrument",
+   "variants": {
+    "Low Frequency Instrument": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "ZAMS",
+   "expansion": "zero age main sequence",
+   "variants": {
+    "zero age main sequence": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "FSRQ",
+   "expansion": "flat spectrum radio quasars",
+   "variants": {
+    "flat spectrum radio quasars": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BZ",
+   "expansion": "Blandford Znajek",
+   "variants": {
+    "Blandford Znajek": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ICRF",
+   "expansion": "International Celestial Reference Frame",
+   "variants": {
+    "International Celestial Reference Frame": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PSA",
+   "expansion": "point spread areas",
+   "variants": {
+    "point spread areas": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "KDE",
+   "expansion": "kernel density estimation",
+   "variants": {
+    "kernel density estimation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "LADE",
+   "expansion": "luminosity and density evolution",
+   "variants": {
+    "luminosity and density evolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DIG",
+   "expansion": "diffuse ionized gas",
+   "variants": {
+    "diffuse ionized gas": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 2,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "CSP",
+   "expansion": "Central Signal Processor",
+   "variants": {
+    "Central Signal Processor": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CP (charge parity)",
+   "expansion": "charge parity",
+   "variants": {
+    "charge parity": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "COS",
+   "expansion": "Cosmic Origins Spectrograph",
+   "variants": {
+    "Cosmic Origins Spectrograph": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MCMC (Monte Carlo Markov Chain)",
+   "expansion": "Monte Carlo Markov Chain",
+   "variants": {
+    "Monte Carlo Markov Chain": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IMF (intrinsic mode functions)",
+   "expansion": "intrinsic mode functions",
+   "variants": {
+    "intrinsic mode functions": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "AD (accretion disk)",
+   "expansion": "accretion disk",
+   "variants": {
+    "accretion disk": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "AD (automatic differentiation)",
+   "expansion": "automatic differentiation",
+   "variants": {
+    "automatic differentiation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HEG",
+   "expansion": "High Excitation Galaxies",
+   "variants": {
+    "High Excitation Galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LEG",
+   "expansion": "Low Excitation Galaxies",
+   "variants": {
+    "Low Excitation Galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RG (red giant)",
+   "expansion": "red giant",
+   "variants": {
+    "red giant": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RL (Reinforcement learning)",
+   "expansion": "Reinforcement learning",
+   "variants": {
+    "Reinforcement learning": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SF (structure function)",
+   "expansion": "structure function",
+   "variants": {
+    "structure function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SSC (super star clusters)",
+   "expansion": "super star clusters",
+   "variants": {
+    "super star clusters": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GPS (Global Positioning System)",
+   "expansion": "Global Positioning System",
+   "variants": {
+    "Global Positioning System": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CMB (crossed molecular beam)",
+   "expansion": "crossed molecular beam",
+   "variants": {
+    "crossed molecular beam": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CWR",
+   "expansion": "colliding wind regions",
+   "variants": {
+    "colliding wind regions": 1,
+    "colliding wind region": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CWB",
+   "expansion": "colliding wind binaries",
+   "variants": {
+    "colliding wind binaries": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "ECT",
+   "expansion": "Exposure Calculator Tool",
+   "variants": {
+    "Exposure Calculator Tool": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DIPC",
+   "expansion": "Donostia International Physics Center",
+   "variants": {
+    "Donostia International Physics Center": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DM (Diffusion Models)",
+   "expansion": "Diffusion Models",
+   "variants": {
+    "Diffusion Models": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LOSVD",
+   "expansion": "line of sight velocity dispersion",
+   "variants": {
+    "line of sight velocity dispersion": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LR (low resolution)",
+   "expansion": "low resolution",
+   "variants": {
+    "low resolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LR (likelihood ratio)",
+   "expansion": "likelihood ratio",
+   "variants": {
+    "likelihood ratio": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MAD (Median Absolute Deviation)",
+   "expansion": "Median Absolute Deviation",
+   "variants": {
+    "Median Absolute Deviation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EDF (electron distribution function)",
+   "expansion": "electron distribution function",
+   "variants": {
+    "electron distribution function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EDF (Euclid Deep Fields)",
+   "expansion": "Euclid Deep Fields",
+   "variants": {
+    "Euclid Deep Fields": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SMF (stellar mass function)",
+   "expansion": "stellar mass function",
+   "variants": {
+    "stellar mass function": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SMF (Scalar Minkowski Functionals)",
+   "expansion": "Scalar Minkowski Functionals",
+   "variants": {
+    "Scalar Minkowski Functionals": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MS (Magellanic Stream)",
+   "expansion": "Magellanic Stream",
+   "variants": {
+    "Magellanic Stream": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MS (merger shocks)",
+   "expansion": "merger shocks",
+   "variants": {
+    "merger shocks": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MS (measurement set)",
+   "expansion": "measurement set",
+   "variants": {
+    "measurement set": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MYSO",
+   "expansion": "massive young stellar objects",
+   "variants": {
+    "massive young stellar objects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CI (continuous injection)",
+   "expansion": "continuous injection",
+   "variants": {
+    "continuous injection": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CI (credible intervals)",
+   "expansion": "credible intervals",
+   "variants": {
+    "credible intervals": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DSA (Deep Synoptic Array)",
+   "expansion": "Deep Synoptic Array",
+   "variants": {
+    "Deep Synoptic Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LLS (Lyman Limit Systems)",
+   "expansion": "Lyman Limit Systems",
+   "variants": {
+    "Lyman Limit Systems": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LLS (largest linear size)",
+   "expansion": "largest linear size",
+   "variants": {
+    "largest linear size": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "WHAM",
+   "expansion": "Wisconsin H Alpha Mapper",
+   "variants": {
+    "Wisconsin H Alpha Mapper": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LBA (low band antennas)",
+   "expansion": "low band antennas",
+   "variants": {
+    "low band antennas": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TDRL",
+   "expansion": "time domain radio loudness",
+   "variants": {
+    "time domain radio loudness": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "HFP",
+   "expansion": "high frequency peaker",
+   "variants": {
+    "high frequency peaker": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "COOL",
+   "expansion": "Cosmic Origins Of Life",
+   "variants": {
+    "Cosmic Origins Of Life": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UHECR",
+   "expansion": "Ultra high energy Cosmic rays",
+   "variants": {
+    "Ultra high energy Cosmic rays": 1,
+    "ultra high energy cosmic ray": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "POS (plane of sky)",
+   "expansion": "plane of sky",
+   "variants": {
+    "plane of sky": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GP (Galactic Plane)",
+   "expansion": "Galactic Plane",
+   "variants": {
+    "Galactic Plane": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "KSP",
+   "expansion": "Key Science Project",
+   "variants": {
+    "Key Science Project": 1,
+    "key science projects": 1,
+    "Key Science Projects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "TDAMM",
+   "expansion": "time domain and multi messenger",
+   "variants": {
+    "time domain and multi messenger": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DL (death line)",
+   "expansion": "death line",
+   "variants": {
+    "death line": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RNN",
+   "expansion": "recurrent neural networks",
+   "variants": {
+    "recurrent neural networks": 1,
+    "recursive neural networks": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "DDE",
+   "expansion": "direction dependent effects",
+   "variants": {
+    "direction dependent effects": 3,
+    "direction dependent errors": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "LLM",
+   "expansion": "large language models",
+   "variants": {
+    "large language models": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NLE",
+   "expansion": "neural likelihood estimation",
+   "variants": {
+    "neural likelihood estimation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NRE",
+   "expansion": "neural ratio estimation",
+   "variants": {
+    "neural ratio estimation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ITU",
+   "expansion": "International Telecommunication Union",
+   "variants": {
+    "International Telecommunication Union": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DD (double degenerate)",
+   "expansion": "double degenerate",
+   "variants": {
+    "double degenerate": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SVD",
+   "expansion": "Singular Value Decomposition",
+   "variants": {
+    "Singular Value Decomposition": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SVP",
+   "expansion": "Singular Vector Projection",
+   "variants": {
+    "Singular Vector Projection": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FRW",
+   "expansion": "Friedmann Robertson Walker",
+   "variants": {
+    "Friedmann Robertson Walker": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ABC",
+   "expansion": "Approximate Bayesian Computation",
+   "variants": {
+    "Approximate Bayesian Computation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NF",
+   "expansion": "Normalizing Flows",
+   "variants": {
+    "Normalizing Flows": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "ODE",
+   "expansion": "ordinary differential equation",
+   "variants": {
+    "ordinary differential equation": 1,
+    "ordinary differential equations": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "RTS",
+   "expansion": "Real Time System",
+   "variants": {
+    "Real Time System": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IPP",
+   "expansion": "ionospheric pierce point",
+   "variants": {
+    "ionospheric pierce point": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "STEVE",
+   "expansion": "Strong Thermal Emission Velocity Enhancement",
+   "variants": {
+    "Strong Thermal Emission Velocity Enhancement": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CMBR",
+   "expansion": "cosmic microwave background radiation",
+   "variants": {
+    "cosmic microwave background radiation": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UVOT",
+   "expansion": "Ultra violet Optical Telescope",
+   "variants": {
+    "Ultra violet Optical Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EAS",
+   "expansion": "extensive air showers",
+   "variants": {
+    "extensive air showers": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LCO",
+   "expansion": "Las Cumbres Observatory",
+   "variants": {
+    "Las Cumbres Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "KAIRA",
+   "expansion": "Kilpisj\u00e4rvi Atmospheric Imaging Receiver Array",
+   "variants": {
+    "Kilpisj\u00e4rvi Atmospheric Imaging Receiver Array": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CVN",
+   "expansion": "Chinese VLBI Network",
+   "variants": {
+    "Chinese VLBI Network": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SQL",
+   "expansion": "Structured Query Language",
+   "variants": {
+    "Structured Query Language": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DBBC",
+   "expansion": "Digital Base Band Converter",
+   "variants": {
+    "Digital Base Band Converter": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SEP (Strong Equivalence Principle)",
+   "expansion": "Strong Equivalence Principle",
+   "variants": {
+    "Strong Equivalence Principle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RRM (relative rotation measure)",
+   "expansion": "relative rotation measure",
+   "variants": {
+    "relative rotation measure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RRM (Rapid Response Mode)",
+   "expansion": "Rapid Response Mode",
+   "variants": {
+    "Rapid Response Mode": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DPR",
+   "expansion": "double plasma resonance",
+   "variants": {
+    "double plasma resonance": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PMM",
+   "expansion": "Power Map Movies",
+   "variants": {
+    "Power Map Movies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ISOON",
+   "expansion": "Improved Solar Observing Optical Network",
+   "variants": {
+    "Improved Solar Observing Optical Network": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SM (scattering measure)",
+   "expansion": "scattering measure",
+   "variants": {
+    "scattering measure": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IPHC",
+   "expansion": "Institut Pluridisciplinaire Hubert Curien",
+   "variants": {
+    "Institut Pluridisciplinaire Hubert Curien": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "OU",
+   "expansion": "Ornstein Uhlenbeck",
+   "variants": {
+    "Ornstein Uhlenbeck": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GSSI",
+   "expansion": "Gran Sasso Science Institute",
+   "variants": {
+    "Gran Sasso Science Institute": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CE (charge excess)",
+   "expansion": "charge excess",
+   "variants": {
+    "charge excess": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DCBH",
+   "expansion": "direct collapse black holes",
+   "variants": {
+    "direct collapse black holes": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VAO",
+   "expansion": "velocity acoustic oscillations",
+   "variants": {
+    "velocity acoustic oscillations": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SO (spherical overdensity)",
+   "expansion": "spherical overdensity",
+   "variants": {
+    "spherical overdensity": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SO (Simons Observatory)",
+   "expansion": "Simons Observatory",
+   "variants": {
+    "Simons Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VGS",
+   "expansion": "void galaxy survey",
+   "variants": {
+    "void galaxy survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UAV",
+   "expansion": "unmanned aerial vehicle",
+   "variants": {
+    "unmanned aerial vehicle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ZEA",
+   "expansion": "Zenith Equal Area",
+   "variants": {
+    "Zenith Equal Area": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FOG",
+   "expansion": "finger of god",
+   "variants": {
+    "finger of god": 1,
+    "Finger of God": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 3,
+   "papers": []
+  },
+  {
+   "acronym": "LDT",
+   "expansion": "Large Deviation Theory",
+   "variants": {
+    "Large Deviation Theory": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FF (Frontier Fields)",
+   "expansion": "Frontier Fields",
+   "variants": {
+    "Frontier Fields": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "FF (free free)",
+   "expansion": "free free",
+   "variants": {
+    "free free": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CLASS",
+   "expansion": "Cosmic Lens All Sky Survey",
+   "variants": {
+    "Cosmic Lens All Sky Survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SW (sound waves)",
+   "expansion": "sound waves",
+   "variants": {
+    "sound waves": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MMDCS",
+   "expansion": "MeerKAT Massive Distant Clusters Survey",
+   "variants": {
+    "MeerKAT Massive Distant Clusters Survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ARO",
+   "expansion": "Arizona Radio Observatory",
+   "variants": {
+    "Arizona Radio Observatory": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MICS",
+   "expansion": "Marked Informed Cross spectrum",
+   "variants": {
+    "Marked Informed Cross spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SCP",
+   "expansion": "South Celestial Pole",
+   "variants": {
+    "South Celestial Pole": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EEP (embedded element patterns)",
+   "expansion": "embedded element patterns",
+   "variants": {
+    "embedded element patterns": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EEP (Einstein Equivalance Principle)",
+   "expansion": "Einstein Equivalance Principle",
+   "variants": {
+    "Einstein Equivalance Principle": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BHXRB",
+   "expansion": "black hole X ray binaries",
+   "variants": {
+    "black hole X ray binaries": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "VST",
+   "expansion": "VLT Survey Telescope",
+   "variants": {
+    "VLT Survey Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SIDM",
+   "expansion": "self interacting dark matter",
+   "variants": {
+    "self interacting dark matter": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RNS",
+   "expansion": "Rotating Neutron Star",
+   "variants": {
+    "Rotating Neutron Star": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SFI",
+   "expansion": "Science Foundation Ireland",
+   "variants": {
+    "Science Foundation Ireland": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "RISC",
+   "expansion": "RadioAstron International Science Council",
+   "variants": {
+    "RadioAstron International Science Council": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IMPRS",
+   "expansion": "International Max Planck Research School",
+   "variants": {
+    "International Max Planck Research School": 1
+   },
+   "category": "Organizations & Programs",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "JIT",
+   "expansion": "just in time",
+   "variants": {
+    "just in time": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NVAS",
+   "expansion": "NRAO VLA Archive Survey",
+   "variants": {
+    "NRAO VLA Archive Survey": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PLE",
+   "expansion": "pure luminosity evolution",
+   "variants": {
+    "pure luminosity evolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BIC",
+   "expansion": "Bayesian information criterion",
+   "variants": {
+    "Bayesian information criterion": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "WFST",
+   "expansion": "Wide Field Survey Telescope",
+   "variants": {
+    "Wide Field Survey Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EST",
+   "expansion": "European Solar Telescope",
+   "variants": {
+    "European Solar Telescope": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 1,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "UGMRT",
+   "expansion": "upgraded Giant Metrewave Radio Telescope",
+   "variants": {
+    "upgraded Giant Metrewave Radio Telescope": 9
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 0,
+   "n_papers": 9,
+   "papers": []
+  },
+  {
+   "acronym": "EOR",
+   "expansion": "Epoch of Reionization",
+   "variants": {
+    "Epoch of Reionization": 16,
+    "Epoch of Reionisation": 4,
+    "epoch of reionization": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 16,
+   "papers": []
+  },
+  {
+   "acronym": "HMPO",
+   "expansion": "high mass protostellar objects",
+   "variants": {
+    "high mass protostellar objects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "BAADE",
+   "expansion": "Bulge Asymmetries and Dynamic Evolution",
+   "variants": {
+    "Bulge Asymmetries and Dynamic Evolution": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DOG",
+   "expansion": "dust obscured galaxies",
+   "variants": {
+    "dust obscured galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IACT",
+   "expansion": "Imaging Atmospheric Cherenkov Telescopes",
+   "variants": {
+    "Imaging Atmospheric Cherenkov Telescopes": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GMC",
+   "expansion": "Giant Molecular Clouds",
+   "variants": {
+    "Giant Molecular Clouds": 1,
+    "giant molecular clouds": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "ETG",
+   "expansion": "early type galaxies",
+   "variants": {
+    "early type galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LBG",
+   "expansion": "Lyman break galaxies",
+   "variants": {
+    "Lyman break galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GRQ",
+   "expansion": "giant radio quasars",
+   "variants": {
+    "giant radio quasars": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NTF",
+   "expansion": "non thermal filaments",
+   "variants": {
+    "non thermal filaments": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "WRG",
+   "expansion": "Winged radio galaxies",
+   "variants": {
+    "Winged radio galaxies": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "PINN",
+   "expansion": "Physics Informed Neural Networks",
+   "variants": {
+    "Physics Informed Neural Networks": 1,
+    "Physics informed neural networks": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 0,
+   "n_papers": 2,
+   "papers": []
+  },
+  {
+   "acronym": "NCSN",
+   "expansion": "Noise Conditioned Score Networks",
+   "variants": {
+    "Noise Conditioned Score Networks": 1
+   },
+   "category": "Telescopes & Instruments",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SDE",
+   "expansion": "Stochastic Differential Equations",
+   "variants": {
+    "Stochastic Differential Equations": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "CNF",
+   "expansion": "Continuous Normalizing Flows",
+   "variants": {
+    "Continuous Normalizing Flows": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "DIE",
+   "expansion": "direction independent effects",
+   "variants": {
+    "direction independent effects": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "VTEC",
+   "expansion": "vertical total electron content",
+   "variants": {
+    "vertical total electron content": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SDG",
+   "expansion": "Sustainable Development Goals",
+   "variants": {
+    "Sustainable Development Goals": 2
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MOOC",
+   "expansion": "Massive Open Online Courses",
+   "variants": {
+    "Massive Open Online Courses": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TBB",
+   "expansion": "Transient Buffer Boards",
+   "variants": {
+    "Transient Buffer Boards": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "TPM",
+   "expansion": "Tile Processing Modules",
+   "variants": {
+    "Tile Processing Modules": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "KAW",
+   "expansion": "Kinetic Alfv\u00e9n Waves",
+   "variants": {
+    "Kinetic Alfv\u00e9n Waves": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SRB",
+   "expansion": "Solar radio bursts",
+   "variants": {
+    "Solar radio bursts": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "PDPS",
+   "expansion": "Position Dependent Power Spectrum",
+   "variants": {
+    "Position Dependent Power Spectrum": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "IMNN",
+   "expansion": "Information Maximizing Neural Networks",
+   "variants": {
+    "Information Maximizing Neural Networks": 1
+   },
+   "category": "Methods & Software",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "SSFR",
+   "expansion": "specific star formation rates",
+   "variants": {
+    "specific star formation rates": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ACG",
+   "expansion": "atomic cooling galaxies",
+   "variants": {
+    "atomic cooling galaxies": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "KSZ",
+   "expansion": "kinetic Sunyaev Zeldovich",
+   "variants": {
+    "kinetic Sunyaev Zeldovich": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "EMRI",
+   "expansion": "extreme mass ratio inspirals",
+   "variants": {
+    "extreme mass ratio inspirals": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "NSXRB",
+   "expansion": "Neutron star X ray binaries",
+   "variants": {
+    "Neutron star X ray binaries": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "GRP",
+   "expansion": "giant radio pulses",
+   "variants": {
+    "giant radio pulses": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "MOI",
+   "expansion": "moment of inertia",
+   "variants": {
+    "moment of inertia": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "ESGB",
+   "expansion": "Einstein scalar Gauss Bonnet",
+   "variants": {
+    "Einstein scalar Gauss Bonnet": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  },
+  {
+   "acronym": "LFBOT",
+   "expansion": "luminous fast blue optical transients",
+   "variants": {
+    "luminous fast blue optical transients": 1
+   },
+   "category": "Science & Astrophysics",
+   "occurrence_count": 0,
+   "n_papers": 1,
+   "papers": []
+  }
+ ]
+};

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside Askarry · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Inside Askarry</h1>
+    <p class="lede">Askarry is the retrieval system on which the atlas runs: it indexes the AASKAII book, the 2015 book and the SKA key-capability documents, and exposes them to Claude through a Model Context Protocol server. This page describes the retrieval pipeline as the code configures it and lists every tool the server offers, read directly from the source.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section class="prose"><h2>Retrieval pipeline</h2>
+      <p>Ingestion parses each PDF with Docling and splits it with a hybrid chunker into passages of at most 480 tokens, a limit chosen to stay below the 512-token window of the embedding model with room for its special tokens. Each passage is embedded with <code>BAAI/bge-large-en-v1.5</code> and stored in ChromaDB, and the same passages feed a BM25 keyword index; acronyms that the chapters define inline are harvested at the same time, so a query for "RFI" also searches for "radio frequency interference".</p>
+      <p>A query therefore runs down two legs at once. The semantic leg retrieves passages whose embeddings lie near the query, the keyword leg retrieves those that share its terms, and Reciprocal Rank Fusion with <i>k</i> = 60 merges the two rankings, the keyword leg weighted at half the semantic one. A cross-encoder, <code>cross-encoder/ms-marco-MiniLM-L-6-v2</code>, then rescores the fused pool against the query, and passages from the 2015 book have their scores multiplied by 0.85, so that an older source outranks a newer one only when it is genuinely the better match. Finally each surviving passage is widened with its neighbouring chunks, two on each side when the request comes through the MCP server, so the model reads whole arguments rather than fragments.</p>
+      <p>Two consumers sit on top of this pipeline. The Gradio application answers questions with a local model through Ollama, passing it the top five passages; the MCP server hands Claude the top twenty, because a frontier model can synthesise many more passages than a small local one. The atlas uses only the second route.</p>
+    </section>
+    <section id="index"><h2>What is indexed</h2></section>
+    <section id="tools"><h2>MCP tools</h2>
+      <p class="muted">Read from <code>mcp_server.py</code> by the build script, so the list matches the code at the commit named in the footer. Version 1 described a server with six tools.</p>
+    </section>
+  </main>
+</div>
+<script src="data/tools.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["tools", "chapters"]);
+document.getElementById("eyebrow").textContent = masthead("inside-askarry.html");
+const T = ATLAS.tools.tools;
+const GROUPS = [
+  ["Corpus search and reading", /^(search_|list_documents|list_textbooks|list_ska|get_document)/],
+  ["Verification and corpus analysis", /^(keyword_coverage|verify_|get_paper_info|list_missing|lookup_acronym|list_acronyms|facility_network|top_cited|citing_papers|build_citation)/],
+  ["Sensitivity, setup validation and data volume", /^(query_sensitivity|compare_to_calculator|validate_|estimate_|list_capability|describe_|get_context|get_subarray|list_odps|resolve_subarray|resolve_context)/],
+  ["Sky lookup and sources", /^(resolve_object|ned_lookup|cone_search|build_source|query_sources|get_source|list_unresolved)/],
+  ["Scheduling, requests and survey fields", /^(visibility|lst_pressure|add_|list_survey|list_observing|review_observing)/],
+  ["Literature search", /^(search_google|get_author)/],
+];
+const group = t => t.kind === "resource" ? "Resources" : (GROUPS.find(([, re]) => re.test(t.name)) || ["Other"])[0];
+const stats = document.getElementById("stats");
+[[T.filter(t => t.kind === "tool").length, "MCP tools"], [T.filter(t => t.kind === "resource").length, "resource"],
+ [ATLAS.chapters.sections.reduce((a, s) => a + s.papers.length, 0), "AASKAII chapters"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+document.getElementById("index").append(el("div", {class: "prose"}, el("p", {},
+  "The main index holds 11,250 passages from the AASKAII book, 4,208 from the 2015 book and 2,914 from the SKA key-capability documents; a separate index of 6,986 passages from radio-astronomy textbooks supplies technical background on request. Two SQLite databases sit beside the indexes: sources.db, which holds the named objects, survey fields and observing requests extracted from the chapters, and citations.db, which holds every chapter's parsed reference list.")));
+table(document.getElementById("tools"), [
+  {key: "group", label: "Group"},
+  {key: "name", label: "Tool", render: r => el("code", {}, r.name)},
+  {key: "summary", label: "What it does"},
+], T.map(t => ({...t, group: group(t)})), {search: true, placeholder: "Filter tools…", sortKey: "group", desc: false});
+</script>
+</body>
+</html>

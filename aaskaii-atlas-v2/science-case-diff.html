@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2015 → 2026 Science Case · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>.two{ display:grid; grid-template-columns:1fr 1fr; gap:16px; } @media (max-width:860px){ .two{ grid-template-columns:1fr; } }</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>2015 → 2026 Science Case</h1>
+    <p class="lede">The 2015 book, <i>Advancing Astrophysics with the Square Kilometre Array</i>, was organised by science working group; its successor is organised by astrophysical theme, with the working groups reduced to a section of overviews. Comparing the two therefore means asking where each 2015 working-group topic now lives, and the matrix below answers that question by counting the 2026 chapters that treat each topic substantively.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <section><h2>The two tables of contents</h2><div class="two"><div id="b15"></div><div id="b26"></div></div></section>
+    <section id="spread"><h2>Where the 2015 topics sit in 2026</h2>
+      <p class="muted" id="spreadnote"></p>
+    </section>
+    <section id="who"><h2>Which 2026 chapters</h2>
+      <p class="muted">The chapters behind each row of the matrix, by 2026 section.</p>
+    </section>
+    <section class="prose"><h2>What moved</h2>
+      <p>Most 2015 topics map onto one dominant 2026 section, which confirms that the reorganisation regrouped the science case rather than discarding parts of it. Cosmology and the Epoch of Reionisation now concentrate in <i>The Cosmos</i>, the continuum universe in <i>From the Milky Way to Distant Galaxies</i>, and pulsar physics and transients in <i>The Extreme Universe</i>. The Hydrogen Universe, by contrast, divides almost evenly between galaxy evolution and cosmology, reflecting the separation between resolved HI studies of galaxies and HI intensity mapping of large-scale structure.</p>
+      <p>Magnetism is the clearest case of a topic that has spread rather than moved: chapters in every 2026 section treat magnetic fields substantively, from solar coronal fields through star formation to galaxy clusters, so the 2015 working group's subject has become a cross-cutting concern of the whole book. The Cradle of Life, in contrast, remains small, and its chapters now divide between stellar formation and the solar system. The version 1 comparison set invented themes against real sections; here both sides are the books' own sections, and the topic terms behind each row are listed at the foot of the page.</p>
+    </section>
+    <section id="terms"><h2>Topic terms</h2></section>
+  </main>
+</div>
+<script src="data/books_diff.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["books_diff"]);
+document.getElementById("eyebrow").textContent = masthead("science-case-diff.html");
+const B = ATLAS.books_diff, T = B.topic_spread;
+const n15 = B.aaska2015.reduce((a, s) => a + s.n_papers, 0), n26 = B.aaskaii.reduce((a, s) => a + s.n_papers, 0);
+const stats = document.getElementById("stats");
+[[n15, "chapters in 2015"], [B.aaska2015.length, "2015 sections"], [n26, "chapters in 2026"], [B.aaskaii.length, "2026 sections"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+function toc(host, rows, head) {
+  host.append(el("h3", {}, head));
+  bars(host, rows.map(s => ({label: s.section, value: s.n_papers})), {unit: " chapters"});
+}
+toc(document.getElementById("b15"), B.aaska2015, "2015 book, by working group");
+toc(document.getElementById("b26"), B.aaskaii, "2026 book, by theme");
+document.getElementById("spreadnote").textContent = `Cells count 2026 chapters with at least ${T.min_hits_per_paper} mentions of the 2015 topic's terms, a higher bar than elsewhere in the atlas so that only substantive treatment counts.`;
+heatSections(document.getElementById("spread"), T.items, "2015 topic", (it, s) => (it.sections[s] || {}).n_papers || 0, {denominator: T.papers_per_section});
+sectionPapers(document.getElementById("who"), T.items, (it, s) => (it.sections[s] || {}).papers);
+table(document.getElementById("terms"), [
+  {key: "label", label: "2015 section"},
+  {key: "term", label: "Terms matched", render: r => el("code", {}, r.term.split("|").join(" · "))},
+  {key: "n_papers", label: "2026 chapters", num: true},
+], T.items, {sortKey: "n_papers"});
+</script>
+</body>
+</html>

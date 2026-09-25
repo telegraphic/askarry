@@ -1,0 +1,1133 @@
+[
+ {
+  "letter": "A",
+  "section": "Science Working Group Overviews",
+  "papers": [
+   {
+    "paper": "vanLoon01",
+    "title": "Advancing Extragalactic Spectral Line Studies with the Square Kilometre Array Observatory"
+   },
+   {
+    "paper": "Vernstrom01",
+    "title": "Cosmic Magnetism Science with the SKA"
+   },
+   {
+    "paper": "Bianchi02",
+    "title": "Cradle of Life: From the Formation of Stars to Habitable Worlds with the SKAO"
+   },
+   {
+    "paper": "Bellomo01",
+    "title": "Exploring Gravitational Wave Science Frontiers with the SKAO"
+   },
+   {
+    "paper": "JingWang01",
+    "title": "HI Galaxy Science with the SKA"
+   },
+   {
+    "paper": "Huege01",
+    "title": "Measuring High-Energy Cosmic Particles with the SKA"
+   },
+   {
+    "paper": "Trott01",
+    "title": "Overview of 21cm Experiments at High Redshift with SKAO"
+   },
+   {
+    "paper": "Spinelli02",
+    "title": "Overview: Cosmology with the SKAO"
+   },
+   {
+    "paper": "Hale01",
+    "title": "Overview: Extragalactic Continuum Science with the SKAO"
+   },
+   {
+    "paper": "Joshi01",
+    "title": "Pulsar Science with the SKAO"
+   },
+   {
+    "paper": "Zucca01",
+    "title": "Solar, Heliospheric and Ionospheric Physics: Pathfinders, Precursors and SKAO Perspectives."
+   },
+   {
+    "paper": "Audard01",
+    "title": "The Science of the Cycle of Matter in Our Galaxy with SKA"
+   },
+   {
+    "paper": "Miller-Jones01",
+    "title": "Unveiling Radio Transients with SKAO Telescopes"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 3,
+   "Deep/wide HI galaxy survey": 1,
+   "Wide-field continuum survey": 0,
+   "Ultra-deep continuum imaging": 1,
+   "EoR / Cosmic Dawn 21-cm": 2,
+   "Spectral line / maser survey": 3,
+   "Polarimetry / RM grid": 1,
+   "VLBI / astrometry": 5,
+   "Pulsar timing array": 2,
+   "Pulsar search survey": 0,
+   "Transient / commensal / ToO": 3,
+   "Solar/heliospheric imaging": 1,
+   "Weak lensing": 1,
+   "Zoom-mode spectroscopy": 0,
+   "SETI / technosignature": 1
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 2,
+   "VLBI": 3,
+   "HI intensity mapping": 3,
+   "Machine learning / AI": 2,
+   "Polarimetry": 2,
+   "Pulsar timing": 2,
+   "Foreground removal": 1,
+   "Ionospheric calibration": 1,
+   "Deconvolution / imaging algorithms": 0,
+   "Spectral line / maser": 4,
+   "Commensal / multi-messenger": 4,
+   "Source finding / classification": 0,
+   "VLBI astrometry": 2,
+   "RFI mitigation": 1,
+   "Zeeman effect": 2,
+   "Citizen science": 0
+  }
+ },
+ {
+  "letter": "B",
+  "section": "Sun, Earth and Planets",
+  "papers": [
+   {
+    "paper": "Patra01",
+    "title": "Coronal Magnetography Using Spectropolarimetry with SKA Telescopes"
+   },
+   {
+    "paper": "Mohan01",
+    "title": "Exploring Activity Across the Stellar Main Sequence with the Sun as a Benchmark"
+   },
+   {
+    "paper": "Cheung01",
+    "title": "Probing the Physics of the Solar Corona with High-Resolution Observations Using SKA-Mid"
+   },
+   {
+    "paper": "PeijinZhang01",
+    "title": "Probing the Solar Corona and the Solar Wind Using Angular Broadening Observations with the SKA"
+   },
+   {
+    "paper": "Sharma01",
+    "title": "Radio Diagnostics of Particle Acceleration in Solar Flares with SKAO Observations"
+   },
+   {
+    "paper": "Vedantham01",
+    "title": "Radio Emission from Star-planet Interactions"
+   },
+   {
+    "paper": "Raja01",
+    "title": "Radio Wave Propagation as a Probe of the Solar Corona and Solar Wind"
+   },
+   {
+    "paper": "Kansabanik01",
+    "title": "Role of SKA in Advancing Remote Measurements of Magnetic Fields of Solar Coronal Mass Ejections"
+   },
+   {
+    "paper": "Morosan01",
+    "title": "Solar Energetic Particles and their Association with Radio Emissions"
+   },
+   {
+    "paper": "Kontar01",
+    "title": "Solar Radio Burst Fine Structures"
+   },
+   {
+    "paper": "Kumari01",
+    "title": "Solar Radio Bursts in the Metric to Kilometric Range"
+   },
+   {
+    "paper": "Oberoi01",
+    "title": "State-of-the-art Observation, Calibration, and Imaging Framework for Solar and Heliospheric Sciences with SKAO"
+   },
+   {
+    "paper": "Chrysaphi01",
+    "title": "The SKA as a Probe of Heliospheric Turbulence and Radio-wave Propagation Effects"
+   },
+   {
+    "paper": "Nakariakov01",
+    "title": "The Study of Quasi-Periodic Pulsations in Solar and Stellar Flares with SKA"
+   },
+   {
+    "paper": "Curiel01",
+    "title": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI"
+   },
+   {
+    "paper": "Mondal01",
+    "title": "Unravelling the Nonthermal Emissions from the Quiet Solar Corona with the SKA"
+   },
+   {
+    "paper": "Hare01",
+    "title": "Unveiling the Mysteries of Lightning: Exploring its Fundamental Physical Processes with SKA-Low"
+   },
+   {
+    "paper": "Santos-Sanz01",
+    "title": "Unveiling the Trans-Neptunian Region with the SKA"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 0,
+   "Deep/wide HI galaxy survey": 0,
+   "Wide-field continuum survey": 0,
+   "Ultra-deep continuum imaging": 0,
+   "EoR / Cosmic Dawn 21-cm": 0,
+   "Spectral line / maser survey": 2,
+   "Polarimetry / RM grid": 0,
+   "VLBI / astrometry": 3,
+   "Pulsar timing array": 0,
+   "Pulsar search survey": 1,
+   "Transient / commensal / ToO": 1,
+   "Solar/heliospheric imaging": 15,
+   "Weak lensing": 0,
+   "Zoom-mode spectroscopy": 0,
+   "SETI / technosignature": 0
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 2,
+   "VLBI": 3,
+   "HI intensity mapping": 0,
+   "Machine learning / AI": 1,
+   "Polarimetry": 8,
+   "Pulsar timing": 0,
+   "Foreground removal": 0,
+   "Ionospheric calibration": 4,
+   "Deconvolution / imaging algorithms": 4,
+   "Spectral line / maser": 4,
+   "Commensal / multi-messenger": 1,
+   "Source finding / classification": 0,
+   "VLBI astrometry": 1,
+   "RFI mitigation": 1,
+   "Zeeman effect": 2,
+   "Citizen science": 0
+  }
+ },
+ {
+  "letter": "C",
+  "section": "Formation and Evolution of Stars",
+  "papers": [
+   {
+    "paper": "Bianchi01",
+    "title": "Chemical Complexity in the Early Stages of Star Formation in the SKAO Era"
+   },
+   {
+    "paper": "Cavallaro01",
+    "title": "Coherent and Incoherent Emission from the Ordered Magnetospheres of Low-Mass Stars, UCDs, and Massive Stars"
+   },
+   {
+    "paper": "Rygl01",
+    "title": "Cosmic Rulers: Masers as Tools for Probing Structure in the Galaxy and Beyond, from AU to kpc"
+   },
+   {
+    "paper": "Garufi01",
+    "title": "Demographics of Planet-forming Disks with the SKAO"
+   },
+   {
+    "paper": "Bracco01",
+    "title": "Early Phases of Star Formation with SKAO: Synchrotron Emission from Dense Starless Cores in Molecular Clouds"
+   },
+   {
+    "paper": "Buemi01",
+    "title": "Evolved Massive Stars and their Impact on their Environment"
+   },
+   {
+    "paper": "Guidi01",
+    "title": "Ionized Gas Emission in Protoplanetary Disks with the SKAO"
+   },
+   {
+    "paper": "Sabatini01",
+    "title": "Jets and Outflows in Young Stellar Objects with the SKAO"
+   },
+   {
+    "paper": "Bourke01",
+    "title": "Measuring Magnetic Field Strengths in Galactic Star-forming Regions via the Zeeman Effect with the SKA"
+   },
+   {
+    "paper": "Forbrich01",
+    "title": "SKA\u2013ALMA Synergies in Star Formation Science"
+   },
+   {
+    "paper": "Wu01",
+    "title": "Substructures in Planet-Forming Disks with the SKAO"
+   },
+   {
+    "paper": "Ingallinera01",
+    "title": "Supernova Remnants in the New Radio Astronomy Era"
+   },
+   {
+    "paper": "Traficante01",
+    "title": "The 10-15 GHz Radio Continuum Survey of the Galactic Plane with SKAO"
+   },
+   {
+    "paper": "LorenAnderson01",
+    "title": "The Impact and Environment of Massive Stars and Stellar Clusters"
+   },
+   {
+    "paper": "Podio01",
+    "title": "Unveiling Complex Chemistry in Planet-forming Disks with the SKAO"
+   },
+   {
+    "paper": "Akahori02",
+    "title": "VLBI Astrometry of Magnetars"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 0,
+   "Deep/wide HI galaxy survey": 0,
+   "Wide-field continuum survey": 2,
+   "Ultra-deep continuum imaging": 0,
+   "EoR / Cosmic Dawn 21-cm": 0,
+   "Spectral line / maser survey": 10,
+   "Polarimetry / RM grid": 0,
+   "VLBI / astrometry": 8,
+   "Pulsar timing array": 0,
+   "Pulsar search survey": 0,
+   "Transient / commensal / ToO": 2,
+   "Solar/heliospheric imaging": 0,
+   "Weak lensing": 0,
+   "Zoom-mode spectroscopy": 1,
+   "SETI / technosignature": 1
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 3,
+   "VLBI": 6,
+   "HI intensity mapping": 0,
+   "Machine learning / AI": 1,
+   "Polarimetry": 3,
+   "Pulsar timing": 0,
+   "Foreground removal": 0,
+   "Ionospheric calibration": 0,
+   "Deconvolution / imaging algorithms": 1,
+   "Spectral line / maser": 8,
+   "Commensal / multi-messenger": 2,
+   "Source finding / classification": 0,
+   "VLBI astrometry": 3,
+   "RFI mitigation": 0,
+   "Zeeman effect": 4,
+   "Citizen science": 0
+  }
+ },
+ {
+  "letter": "D",
+  "section": "From the Milky Way to Distant Galaxies",
+  "papers": [
+   {
+    "paper": "Tahani01",
+    "title": "3D Magnetic Field Vectors in Space: Bubbles, Clouds, and Filaments"
+   },
+   {
+    "paper": "Sun02",
+    "title": "A 3D Tomography of the Local Bubble with SKA-Low"
+   },
+   {
+    "paper": "Maccagni01",
+    "title": "AGN Feeding & Feedback Over the Galactic Scales"
+   },
+   {
+    "paper": "Baczko01",
+    "title": "AGN Jets from Formation to Dissipation"
+   },
+   {
+    "paper": "Tarchi01",
+    "title": "Boosting Water Maser Studies in AGN with the SKA"
+   },
+   {
+    "paper": "RanWang01",
+    "title": "Cm-wavelength Studies of Molecular Gas and Star Formation at High Redshift with the SKA"
+   },
+   {
+    "paper": "Baldi01",
+    "title": "Compact Radio Galaxies: the Case of FR0s"
+   },
+   {
+    "paper": "Lagos01",
+    "title": "Cosmological Galaxy Formation Modelling in the Era of the Square Kilometre Array"
+   },
+   {
+    "paper": "deBlok01",
+    "title": "Deep HI Observations of Cold Gas Inflow and Outflow"
+   },
+   {
+    "paper": "DAmato01",
+    "title": "Dual AGN and Multiple SMBH Systems in the Era of SKAO"
+   },
+   {
+    "paper": "Kondapally01",
+    "title": "Evolution of AGN Across Cosmic Epochs with the SKAO"
+   },
+   {
+    "paper": "SabyasachiPal03",
+    "title": "Exploring the Influence of the Jet-environment Interactions on the Observed Asymmetry of Extragalactic Radio Sources with SKAO"
+   },
+   {
+    "paper": "Fromm01",
+    "title": "Exploring the Physics Behind the Observed Magnetic Filaments in Large Scale Radio Galaxies"
+   },
+   {
+    "paper": "Ignesti01",
+    "title": "Exploring the Physics of Ram Pressure Stripping with Radio Continuum Observations in the SKA Era"
+   },
+   {
+    "paper": "Rosolowsky01",
+    "title": "From Atomic Gas to Star Formation"
+   },
+   {
+    "paper": "Sasmal01",
+    "title": "Identification and Study of Irregular Radio Sources with SKA Continuum Surveys"
+   },
+   {
+    "paper": "Yoon01",
+    "title": "Impact of Anomalous Microwave Emission (AME) on Radio Spectral Energy Distributions: SKA Observations of Galaxies Near and Far"
+   },
+   {
+    "paper": "Emig01",
+    "title": "Low-Frequency Recombination Lines from Galaxies and AGN Over Cosmic Time"
+   },
+   {
+    "paper": "XuYe01",
+    "title": "Mapping the Milky Way with Masers"
+   },
+   {
+    "paper": "Sawada-Satoh01",
+    "title": "Measurements of Magnetic Fields in Circumnuclear Matter with the SKA Telescopes"
+   },
+   {
+    "paper": "Prandoni01",
+    "title": "Opening New Parameter Space Windows on galaxy/AGN Co-evolution with SKA Radio Continuum Surveys"
+   },
+   {
+    "paper": "Sakemi01",
+    "title": "Polarimetry of Ultraluminous X-ray Sources"
+   },
+   {
+    "paper": "Vidal01",
+    "title": "Probing Anomalous Microwave Emission with the Square Kilometre Array"
+   },
+   {
+    "paper": "Mao01",
+    "title": "Probing Magnetic Fields in and Around Galaxies Near and Far"
+   },
+   {
+    "paper": "Bait01",
+    "title": "Probing the Nature of Lyman Continuum Emitting and Low-metallicity Galaxies Using the SKA"
+   },
+   {
+    "paper": "Kudoh01",
+    "title": "Probing the Parsec-Scale Dynamical Structure of Ionized Gas in Radio-Quiet AGN with SKA"
+   },
+   {
+    "paper": "Lal01",
+    "title": "Radio Emission from Ultra-diffuse Galaxies Residing in Galaxy Clusters"
+   },
+   {
+    "paper": "Hardcastle01",
+    "title": "Radio Galaxies and Jet Duty Cycles"
+   },
+   {
+    "paper": "Ramatsoku01",
+    "title": "Resolved HI and Environmental Dynamics"
+   },
+   {
+    "paper": "Yamamoto01",
+    "title": "Search for Seeds of The Cradle of Stars: Study of The Evolution From Atomic to Molecular Hydrogen Clouds with 1000 AU Scale Resolution"
+   },
+   {
+    "paper": "Giulietti01",
+    "title": "Semi-empirical Predictions for Ultra-deep Radio Counts of Star-forming Galaxies with the SKAO"
+   },
+   {
+    "paper": "Ma01",
+    "title": "Small-scale Magnetic Fields in the Milky Way and Nearby Galaxies"
+   },
+   {
+    "paper": "Imai01",
+    "title": "Spatio-kinematical Structure of the Galactic Nuclear Stellar Disk Revealed in VLBI Astrometry of Circumstellar Masers"
+   },
+   {
+    "paper": "Karska01",
+    "title": "Spectroscopic Surveys with the SKA Probing the Ionized and Molecular Milky Way"
+   },
+   {
+    "paper": "Moldon01",
+    "title": "Star Formation and Accretion in Nearby Galaxies"
+   },
+   {
+    "paper": "HengxingPan01",
+    "title": "Studying HI and the Cosmic Web in the Era of SKA"
+   },
+   {
+    "paper": "Deg01",
+    "title": "The Bright Future of the Dark and Dim Universe"
+   },
+   {
+    "paper": "Bruni01",
+    "title": "The Emerging Population of High-energy Emitting Radio Galaxies"
+   },
+   {
+    "paper": "Sun01",
+    "title": "The Magnetic Field in the Milky Way Galaxy: from Large to Small Scales"
+   },
+   {
+    "paper": "Miville-Deschenes01",
+    "title": "The Multi-phase HI of the Milky Way and Nearby Galaxies"
+   },
+   {
+    "paper": "Schoedel01",
+    "title": "The Nearest Galactic Nucleus: Studying the Galactic Centre with SKA-Mid"
+   },
+   {
+    "paper": "Salas01",
+    "title": "The Physics of the Cold and Warm Interstellar Medium Through Radio Recombination Lines"
+   },
+   {
+    "paper": "Panessa01",
+    "title": "The SKA-VLBI Perspective on Radio-Quiet AGN"
+   },
+   {
+    "paper": "Mahony01",
+    "title": "Tracing Cold Gas in Absorption Across Cosmic Time with the SKA"
+   },
+   {
+    "paper": "FangxiaAn01",
+    "title": "Tracing Cosmic Star Formation History through Radio Continuum Spectral Energy Distribution and Nonthermal Emission"
+   },
+   {
+    "paper": "Pandey-Pommier01",
+    "title": "Tracing Gas Outflows in Molecular Hydrogen Emission-rich Galaxies with the SKA"
+   },
+   {
+    "paper": "Dabhade01",
+    "title": "Tracing the Cosmic Web Across Cosmic Time through SKA Observations of Radio Galaxies"
+   },
+   {
+    "paper": "SabyasachiPal02",
+    "title": "Tracing the Origin of Circular-Symmetry Diffuse Radio Sources in the Next-Generation SKAO Era"
+   },
+   {
+    "paper": "Algera01",
+    "title": "Tracing the Star Formation History of the Universe through Thermal Free-Free Emission with the SKA"
+   },
+   {
+    "paper": "Pandey-Pommier03",
+    "title": "Uncovering Neutral Hydrogen Clouds in Radio Galaxies"
+   },
+   {
+    "paper": "Duncan01",
+    "title": "Unlocking the Full Potential of SKAO Extra-galactic Science with High-multiplex Optical Spectroscopy"
+   },
+   {
+    "paper": "Mazzolari01",
+    "title": "Unveil the Nature of JWST-AGN and Little Red Dots with SKAO Continuum Surveys"
+   },
+   {
+    "paper": "Tabatabaei01",
+    "title": "Unveiling the Roles of Thermal and Nonthermal Processes in the ISM & IGM Structure Formation and Evolution of Galaxies with SKAO"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 1,
+   "Deep/wide HI galaxy survey": 5,
+   "Wide-field continuum survey": 11,
+   "Ultra-deep continuum imaging": 10,
+   "EoR / Cosmic Dawn 21-cm": 5,
+   "Spectral line / maser survey": 9,
+   "Polarimetry / RM grid": 6,
+   "VLBI / astrometry": 22,
+   "Pulsar timing array": 0,
+   "Pulsar search survey": 0,
+   "Transient / commensal / ToO": 4,
+   "Solar/heliospheric imaging": 0,
+   "Weak lensing": 1,
+   "Zoom-mode spectroscopy": 1,
+   "SETI / technosignature": 0
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 17,
+   "VLBI": 21,
+   "HI intensity mapping": 1,
+   "Machine learning / AI": 3,
+   "Polarimetry": 12,
+   "Pulsar timing": 1,
+   "Foreground removal": 0,
+   "Ionospheric calibration": 2,
+   "Deconvolution / imaging algorithms": 1,
+   "Spectral line / maser": 11,
+   "Commensal / multi-messenger": 5,
+   "Source finding / classification": 1,
+   "VLBI astrometry": 4,
+   "RFI mitigation": 0,
+   "Zeeman effect": 5,
+   "Citizen science": 1
+  }
+ },
+ {
+  "letter": "E",
+  "section": "The Cosmos",
+  "papers": [
+   {
+    "paper": "Pandey-Pommier02",
+    "title": "A Comprehensive SKA Survey of Lensing Clusters and Lensed Galaxies"
+   },
+   {
+    "paper": "OSullivan01",
+    "title": "An SKA-Low RM Grid for Constraining the Origin of Cosmic Magnetism"
+   },
+   {
+    "paper": "Camera01",
+    "title": "Beyond \u039bCDM with the SKA Observatory \u2013 I: Probing Gravity on Cosmological Scales"
+   },
+   {
+    "paper": "Fonseca01",
+    "title": "Beyond \u039bCDM with the SKA Observatory \u2013 II: Unveiling the Secrets of the Early Universe"
+   },
+   {
+    "paper": "Asorey01",
+    "title": "Cosmology from Clustering of Continuum Galaxies"
+   },
+   {
+    "paper": "Nasirudin01",
+    "title": "Cosmology from HI Galaxy Surveys with the SKA"
+   },
+   {
+    "paper": "Harrison01",
+    "title": "Cosmology from Nx2pt Analyses of SKAO Cosmology Surveys"
+   },
+   {
+    "paper": "Baker01",
+    "title": "Cosmology from Synergies Between SKAO Surveys and Gravitational Wave Observations"
+   },
+   {
+    "paper": "Wolz01",
+    "title": "Cosmology with HI Intensity Mapping"
+   },
+   {
+    "paper": "Majumdar01",
+    "title": "Cosmology with Intensity Mapping via Statistics Beyond the Power Spectrum in the SKAO Era"
+   },
+   {
+    "paper": "Sarkar01",
+    "title": "Cosmology with Multi-Wavelength Line Intensity Mapping Synergies in the SKAO Era"
+   },
+   {
+    "paper": "Mayor01",
+    "title": "Cosmology with Tully-Fisher HI Galaxy Surveys"
+   },
+   {
+    "paper": "Ragavendra01",
+    "title": "Exploring Gravitational Wave Signatures Due to Primordial Non-gaussianity and Large Scale Structure Using SKAO"
+   },
+   {
+    "paper": "Cang01",
+    "title": "Exploring the Cosmic Dawn through the 21cm Forest and High-redshift Radio Sources with the SKA"
+   },
+   {
+    "paper": "Caleb02",
+    "title": "Fast Radio Bursts as Cosmological Probes"
+   },
+   {
+    "paper": "Chatterjee01",
+    "title": "Fast Simultaneous Surveys with On-the-Fly Mapping"
+   },
+   {
+    "paper": "Pasini01",
+    "title": "Galactic Hubs: New Insights and SKA View of AGN Feedback in Galaxy Groups"
+   },
+   {
+    "paper": "Ronconi01",
+    "title": "HI Simulations for Cosmology with the SKA Observatory"
+   },
+   {
+    "paper": "Barkana01",
+    "title": "High-Redshift Signatures from the Cosmic Dawn and the Epoch of Reionization"
+   },
+   {
+    "paper": "Bag01",
+    "title": "Imaging the 21-cm Signal from the Cosmic Dawn & Epoch of Reionization and the Connection with the Global Signal"
+   },
+   {
+    "paper": "Acharya01",
+    "title": "Inferring Cosmology and Astrophysics from the High-redshift 21cm Signal with SKA-Low"
+   },
+   {
+    "paper": "Mazumder01",
+    "title": "Interferometric HI Intensity Mapping of the Late Time Universe with SKA-Mid"
+   },
+   {
+    "paper": "Akahori01",
+    "title": "Magnetic Reconnection in Galaxy Clusters"
+   },
+   {
+    "paper": "Spinelli01",
+    "title": "Methodological Frontiers in 21-cm Intensity Mapping: the Treatment of Systematics and Foreground Contamination"
+   },
+   {
+    "paper": "Elahi01",
+    "title": "Observational Frontiers in the post-EoR 21-cm Intensity Mapping: Lessons from the SKA Pathfinders"
+   },
+   {
+    "paper": "deLeraAcedo01",
+    "title": "Observations of the Cosmic Dawn and Epoch of Reionization with the SKAO: Observational Lessons Learned from Precursors and Pathfinder Instruments"
+   },
+   {
+    "paper": "Pasechnik01",
+    "title": "Probing Cosmological Phase Transitions with SKA through nano-Hz Gravitational-wave Portal"
+   },
+   {
+    "paper": "Santra01",
+    "title": "Probing High-redshift Intracluster Medium Using SKA"
+   },
+   {
+    "paper": "Cruz01",
+    "title": "Probing Kinematic Anisotropies in the Stochastic Gravitational Wave Background with the SKA"
+   },
+   {
+    "paper": "ArpanPal01",
+    "title": "Probing Merger Shocks in Galaxy Clusters in the SKA Era"
+   },
+   {
+    "paper": "Caleb01",
+    "title": "Probing the Baryon Distribution with Fast Radio Bursts"
+   },
+   {
+    "paper": "Regis01",
+    "title": "Probing the Fundamental Nature of Particle Dark Matter"
+   },
+   {
+    "paper": "Cassano01",
+    "title": "Radio Halos in Galaxy Clusters as Unveiled by the SKA Telescope"
+   },
+   {
+    "paper": "Cunnington01",
+    "title": "Single-dish HI Intensity Mapping with the SKAO: Precursor Progress with MeerKAT's Large Area Synoptic Survey (MeerKLASS)"
+   },
+   {
+    "paper": "Vacca01",
+    "title": "Study of Polarized Emission in Radio Halos and Filaments in the SKA Telescopes Era"
+   },
+   {
+    "paper": "Perna01",
+    "title": "Synergies Between Pulsar Timing Array and Astrometry"
+   },
+   {
+    "paper": "Chakraborty01",
+    "title": "Synergies for the Epoch of Reionization and Cosmic Dawn"
+   },
+   {
+    "paper": "Lelli01",
+    "title": "Testing Dark Matter Models and Modified Gravity Theories with Spatially Resolved HI Observations"
+   },
+   {
+    "paper": "deGasperin01",
+    "title": "The Cosmic Ray Life Cycle in Galaxy Clusters"
+   },
+   {
+    "paper": "Loi01",
+    "title": "The Impact of Dense RM Grids on the Study of Intra-cluster and Intra-group Magnetic Fields"
+   },
+   {
+    "paper": "Cuciti01",
+    "title": "The Large-Scale Structure of the Universe through the SKA Lenses"
+   },
+   {
+    "paper": "Afonso01",
+    "title": "The Road to Identifying the Earliest Radio-Powerful AGN with the SKA"
+   },
+   {
+    "paper": "Gitti01",
+    "title": "The SKA View of Cool-core Clusters: Evolution of Radio Mini-halos and AGN Feedback"
+   },
+   {
+    "paper": "Perrott01",
+    "title": "The SKA View of the Sunyaev-Zeldovich Effect from Massive Cosmic Halos"
+   },
+   {
+    "paper": "AritraBasu01",
+    "title": "Unraveling the Imprints of Fluctuation-dynamo on the Intracluster Medium with the SKA"
+   },
+   {
+    "paper": "Kurahara01",
+    "title": "Unravelling Turbulence and Magnetic Fields in Galaxy Clusters with SKA and XRISM"
+   },
+   {
+    "paper": "Jenkins01",
+    "title": "Unveiling the Microhertz Gravitational-Wave Sky with the Square Kilometre Array Observatory"
+   },
+   {
+    "paper": "Bosi01",
+    "title": "Using SKAO to Understand the Clustering of Gravitational Wave Sources"
+   },
+   {
+    "paper": "Harrison02",
+    "title": "Weak Lensing with SKAO: Cosmic Shear Cosmology"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 16,
+   "Deep/wide HI galaxy survey": 6,
+   "Wide-field continuum survey": 5,
+   "Ultra-deep continuum imaging": 5,
+   "EoR / Cosmic Dawn 21-cm": 13,
+   "Spectral line / maser survey": 0,
+   "Polarimetry / RM grid": 5,
+   "VLBI / astrometry": 4,
+   "Pulsar timing array": 6,
+   "Pulsar search survey": 0,
+   "Transient / commensal / ToO": 6,
+   "Solar/heliospheric imaging": 0,
+   "Weak lensing": 6,
+   "Zoom-mode spectroscopy": 0,
+   "SETI / technosignature": 0
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 14,
+   "VLBI": 2,
+   "HI intensity mapping": 16,
+   "Machine learning / AI": 10,
+   "Polarimetry": 3,
+   "Pulsar timing": 6,
+   "Foreground removal": 13,
+   "Ionospheric calibration": 2,
+   "Deconvolution / imaging algorithms": 3,
+   "Spectral line / maser": 2,
+   "Commensal / multi-messenger": 3,
+   "Source finding / classification": 1,
+   "VLBI astrometry": 3,
+   "RFI mitigation": 3,
+   "Zeeman effect": 0,
+   "Citizen science": 0
+  }
+ },
+ {
+  "letter": "F",
+  "section": "The Extreme Universe",
+  "papers": [
+   {
+    "paper": "Rosch01",
+    "title": "A Census of Variable and Transient Radio Sources Within High-Energy Neutrino Fields"
+   },
+   {
+    "paper": "Keane01",
+    "title": "A Square Kilometre Array Pulsar Census"
+   },
+   {
+    "paper": "Beri01",
+    "title": "Accreting Compact Object Binaries with the SKA"
+   },
+   {
+    "paper": "Buitink01",
+    "title": "Anomalous Air Showers and What They Reveal About Hadronic Interactions and Cosmic-ray Masses"
+   },
+   {
+    "paper": "Lin01",
+    "title": "Compact Objects Revealed by SKA and SKA-VLBI"
+   },
+   {
+    "paper": "Marcote01",
+    "title": "Enabling Population Studies on Wind-driven Galactic Binary Systems"
+   },
+   {
+    "paper": "Tiburzi01",
+    "title": "Exploring the Galactic Plasma with Pulsars in the SKA Era"
+   },
+   {
+    "paper": "JunXu01",
+    "title": "Exploring the Magnetic Field Structure of the Milky Way with Pulsars in the SKA Era"
+   },
+   {
+    "paper": "Shu01",
+    "title": "Exploring Tidal Disruption Events with SKA and VLBI: Unveiling the Mystery of Black Hole Feeding and Outflows"
+   },
+   {
+    "paper": "Abbate01",
+    "title": "Galactic Centre Pulsars with the SKAO"
+   },
+   {
+    "paper": "Colombo01",
+    "title": "Gamma-ray Bursts and Kilonovae from Gravitational Wave Events"
+   },
+   {
+    "paper": "Giarratana01",
+    "title": "Gamma-ray Bursts in the Radio Sky: the Role of the SKA-VLBI"
+   },
+   {
+    "paper": "Watanabe01",
+    "title": "Interferometric Analysis of Air-shower Radio Emission in the Near Field with an Information Field Theory Approach"
+   },
+   {
+    "paper": "Qiu01",
+    "title": "Long-Period Transients as a New Frontier in Time-domain Astronomy"
+   },
+   {
+    "paper": "Capelo01",
+    "title": "Multi-messenger and Multi-band Studies of Massive Black Holes: the Synergies Between LISA and SKAO"
+   },
+   {
+    "paper": "Corstanje01",
+    "title": "Origins of Cosmic Rays in the Galactic-extragalactic Transition Energy Range"
+   },
+   {
+    "paper": "Pathak01",
+    "title": "Probing Magnetized Accretion Disk-jet Systems: Stellar Mass to Supermassive Black Holes"
+   },
+   {
+    "paper": "AvishekBasu01",
+    "title": "Probing Neutron Star Interiors and the Properties of Cold Ultra-dense Matter with the SKAO"
+   },
+   {
+    "paper": "Lico01",
+    "title": "Probing Physical Conditions in Classical and Symbiotic Novae with the Square Kilometre Array Observatory"
+   },
+   {
+    "paper": "Bagchi01",
+    "title": "Pulsars in Globular Clusters With the SKAO"
+   },
+   {
+    "paper": "Kadler01",
+    "title": "SKA-VLBI Probes of High-energy Emission Processes in Relativistic Jets"
+   },
+   {
+    "paper": "Castignani01",
+    "title": "SKAO and Gamma-Ray Synergies"
+   },
+   {
+    "paper": "Spingola01",
+    "title": "SKA\u2013VLBI View of AGN Jets in the Early Universe"
+   },
+   {
+    "paper": "Chandra01",
+    "title": "Supernovae with the Square Kilometre Array"
+   },
+   {
+    "paper": "VenkatramanKrishnan01",
+    "title": "Testing Gravity with Binary Pulsars in the SKA Era"
+   },
+   {
+    "paper": "Besancon01",
+    "title": "Tests of General Relativity: Memory Effects"
+   },
+   {
+    "paper": "Curtin01",
+    "title": "The Astrophysics of Fast Radio Bursts"
+   },
+   {
+    "paper": "Shannon01",
+    "title": "The SKAO Pulsar Timing Array"
+   },
+   {
+    "paper": "Driessen01",
+    "title": "The Variability of Radio Stars"
+   },
+   {
+    "paper": "TaoAn03",
+    "title": "Tidal Disruption Events with the SKA"
+   },
+   {
+    "paper": "Bignall01",
+    "title": "Time Domain Studies of Active Galactic Nuclei with the Square Kilometer Array"
+   },
+   {
+    "paper": "TaoAn01",
+    "title": "Transforming X-ray Binary Astrophysics with SKA+VLBI"
+   },
+   {
+    "paper": "Oswald01",
+    "title": "Understanding Pulsar Magnetospheres with the SKAO"
+   },
+   {
+    "paper": "Gelfand01",
+    "title": "Understanding Pulsar Wind Nebulae with the SKA"
+   },
+   {
+    "paper": "Levin01",
+    "title": "Understanding the Neutron Star Population with the SKAO Telescopes"
+   },
+   {
+    "paper": "Kovalev01",
+    "title": "Unique Science Opportunities for Space VLBI Systems with the SKA Telescopes"
+   },
+   {
+    "paper": "TaoAn02",
+    "title": "Unraveling the Mysteries of Supernovae with SKA+VLBI"
+   },
+   {
+    "paper": "Nelles01",
+    "title": "Using SKA-Low to Detect PeV Gamma-rays from Galactic Sources"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 0,
+   "Deep/wide HI galaxy survey": 0,
+   "Wide-field continuum survey": 1,
+   "Ultra-deep continuum imaging": 0,
+   "EoR / Cosmic Dawn 21-cm": 1,
+   "Spectral line / maser survey": 2,
+   "Polarimetry / RM grid": 0,
+   "VLBI / astrometry": 28,
+   "Pulsar timing array": 6,
+   "Pulsar search survey": 7,
+   "Transient / commensal / ToO": 13,
+   "Solar/heliospheric imaging": 1,
+   "Weak lensing": 0,
+   "Zoom-mode spectroscopy": 0,
+   "SETI / technosignature": 1
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 10,
+   "VLBI": 25,
+   "HI intensity mapping": 0,
+   "Machine learning / AI": 1,
+   "Polarimetry": 7,
+   "Pulsar timing": 11,
+   "Foreground removal": 0,
+   "Ionospheric calibration": 3,
+   "Deconvolution / imaging algorithms": 1,
+   "Spectral line / maser": 2,
+   "Commensal / multi-messenger": 16,
+   "Source finding / classification": 0,
+   "VLBI astrometry": 10,
+   "RFI mitigation": 1,
+   "Zeeman effect": 2,
+   "Citizen science": 0
+  }
+ },
+ {
+  "letter": "G",
+  "section": "Methods and Techniques",
+  "papers": [
+   {
+    "paper": "LeZhang01",
+    "title": "A Non-Negativity Iterative Approach to Image Deconvolution for SKA"
+   },
+   {
+    "paper": "Vacca02",
+    "title": "Application of Bayesian Statistical Tools to SKA Telescopes Polarization Surveys to Study Magnetization of the Large-scale Structure of the Universe"
+   },
+   {
+    "paper": "Chan01",
+    "title": "Bridging Theory and Observation in the SKA Era: A Cosmological Polarized Radiative Transfer Framework for Point-to-Point Polarized Sky Comparisons"
+   },
+   {
+    "paper": "Hota01",
+    "title": "Citizen Science Research with the Square Kilometre Array Observatory (SKAO)"
+   },
+   {
+    "paper": "AlexAndersson01",
+    "title": "Commensal Image Plane Transient Search Methods with the SKAO"
+   },
+   {
+    "paper": "Chen01",
+    "title": "Enhancing VLBI Capability with the SKA-Mid and the Jingdong 120-m Radio Telescope"
+   },
+   {
+    "paper": "Bempong-Manful01",
+    "title": "Extending the SKA Across Africa: The Case for a Continental African VLBI Network"
+   },
+   {
+    "paper": "Carcamo01",
+    "title": "Faraday Tomography with the SKA: A New Era of Cosmic Magnetism Studies"
+   },
+   {
+    "paper": "Burba01",
+    "title": "Foreground Characterization and Mitigation in Theobservations of the CD/EoR with the SKA"
+   },
+   {
+    "paper": "Li01",
+    "title": "Gravitational Light Deflection with SKA\u2011VLBI and Its Application to Precision Tests of General Relativity"
+   },
+   {
+    "paper": "Kobayashi01",
+    "title": "Low-Frequency VLBI Network Using SKA-Low"
+   },
+   {
+    "paper": "Timmerman01",
+    "title": "Low-frequency VLBI with the SKA-Low"
+   },
+   {
+    "paper": "Acharya02",
+    "title": "Machine Learning and the SKA for Cosmic Dawn and the Epoch of Reionization"
+   },
+   {
+    "paper": "Robishaw01",
+    "title": "Measuring Magnetic Fields Near and Far with the SKA via the Zeeman Effect"
+   },
+   {
+    "paper": "Morgan01",
+    "title": "Methods of Observing and Characterising the Ionosphere with SKA-Low"
+   },
+   {
+    "paper": "GemmaAnderson01",
+    "title": "Rapid Response Triggering for Radio Transients with the SKA Observatory"
+   },
+   {
+    "paper": "Tremblay01",
+    "title": "Searching for Extraterrestrial Intelligence with the SKA"
+   },
+   {
+    "paper": "MingHuiXu01",
+    "title": "SKA VLBI Survey of the Southern Sky for Astrometry, Geodesy, and Astrophysics"
+   },
+   {
+    "paper": "SabyasachiPal01",
+    "title": "Source Finding and Characterisation for SKAO Science"
+   },
+   {
+    "paper": "Datta01",
+    "title": "Studying Ionosphere Using SKA-Low and SKA-Mid"
+   },
+   {
+    "paper": "Denzel01",
+    "title": "The Role of Artificial Intelligence in the SKA Era"
+   },
+   {
+    "paper": "Wongphecauxson01",
+    "title": "VLBI with SKAMPI, the SKA-MID MPIfR Dish Demonstrator"
+   },
+   {
+    "paper": "Takahashi01",
+    "title": "VLBI-Enabled Precision Localization of Continuous Gravitational Wave Sources with Pulsar Timing Arrays in the SKA Era"
+   },
+   {
+    "paper": "Tripathi01",
+    "title": "Weak Lensing with the SKAO: Radio Shear Measurement"
+   }
+  ],
+  "mode_papers": {
+   "Deep HI intensity mapping": 0,
+   "Deep/wide HI galaxy survey": 1,
+   "Wide-field continuum survey": 0,
+   "Ultra-deep continuum imaging": 0,
+   "EoR / Cosmic Dawn 21-cm": 7,
+   "Spectral line / maser survey": 4,
+   "Polarimetry / RM grid": 3,
+   "VLBI / astrometry": 14,
+   "Pulsar timing array": 3,
+   "Pulsar search survey": 3,
+   "Transient / commensal / ToO": 5,
+   "Solar/heliospheric imaging": 2,
+   "Weak lensing": 1,
+   "Zoom-mode spectroscopy": 1,
+   "SETI / technosignature": 3
+  },
+  "method_papers": {
+   "Faraday rotation / RM": 8,
+   "VLBI": 14,
+   "HI intensity mapping": 0,
+   "Machine learning / AI": 8,
+   "Polarimetry": 4,
+   "Pulsar timing": 7,
+   "Foreground removal": 5,
+   "Ionospheric calibration": 10,
+   "Deconvolution / imaging algorithms": 6,
+   "Spectral line / maser": 6,
+   "Commensal / multi-messenger": 4,
+   "Source finding / classification": 3,
+   "VLBI astrometry": 6,
+   "RFI mitigation": 2,
+   "Zeeman effect": 2,
+   "Citizen science": 4
+  }
+ }
+]

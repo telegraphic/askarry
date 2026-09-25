@@ -295,12 +295,14 @@ def facility_network(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
             "n_papers": len(sources), "n_sections": len(by_section),
             "total_mentions": sum(counts[name].values()),
             "sections": dict(sorted(by_section.items(), key=lambda kv: -kv[1])),
+            "papers": sorted(_stem(s) for s in sources),
         })
     facilities.sort(key=lambda f: (-f["n_sections"], -f["n_papers"]))
 
     names = [f["facility"] for f in facilities if f["n_papers"]]
     edges = [
-        {"a": a, "b": b, "shared_papers": len(papers[a] & papers[b])}
+        {"a": a, "b": b, "shared_papers": len(papers[a] & papers[b]),
+         "papers": sorted(_stem(s) for s in papers[a] & papers[b])}
         for i, a in enumerate(names) for b in names[i + 1:]
         if len(papers[a] & papers[b]) >= min_shared_papers
     ]

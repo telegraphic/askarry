@@ -1,0 +1,2643 @@
+(window.ATLAS = window.ATLAS || {})['time_demand'] = {
+ "generated": {
+  "git_sha": "a037c7f",
+  "date": "2026-09-25",
+  "args": {
+   "extracted_by": "full-sonnet5-medium",
+   "reviewed_only": true,
+   "scheduling": {
+    "night_sun_alt_deg": -18.0,
+    "twilight_sun_alt_band_deg": [
+     -12.0,
+     12.0
+    ],
+    "min_sun_separation_deg": 0.0,
+    "default_min_elevation_deg": 45.0,
+    "maintenance_fraction": 0.15,
+    "time_step_min": 10,
+    "lst_bin_h": 1,
+    "planning_years": 5
+   }
+  }
+ },
+ "run": "full-sonnet5-medium",
+ "status": {
+  "accepted": {
+   "n": 106,
+   "hours": 148064.5
+  },
+  "duplicate": {
+   "n": 32,
+   "hours": 143847.4
+  },
+  "rejected": {
+   "n": 14,
+   "hours": 10039.0
+  }
+ },
+ "tiers": [
+  {
+   "group": "SKA-Mid HI Medium-wide tier (HI SWG, 400 deg2)",
+   "telescope": "mid",
+   "defining_paper": "JingWang01",
+   "hours": 1000.0,
+   "placed": false,
+   "field": "JingWang01 area: Medium wide HI/continuum survey, 400 deg2, 950-1420 MHz",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid HI Medium-deep tier (HI SWG, 20 deg2)",
+   "telescope": "mid",
+   "defining_paper": "JingWang01",
+   "hours": 1000.0,
+   "placed": false,
+   "field": "JingWang01 area: Medium deep HI/continuum survey, 20 deg2, 950-1420 MHz",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid HI Deep tier (HI SWG, 1 deg2)",
+   "telescope": "mid",
+   "defining_paper": "JingWang01",
+   "hours": 1000.0,
+   "placed": false,
+   "field": "JingWang01 area: Deep HI survey, 1 deg2, 600-1050 MHz",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid Band 2 all-sky HI tier (HI SWG)",
+   "telescope": "mid",
+   "defining_paper": "JingWang01",
+   "hours": 10000.0,
+   "placed": false,
+   "field": "JingWang01 area: All-sky HI survey, 20000 deg2, 950-1420 MHz",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid Band 1 ultra-deep HI field",
+   "telescope": "mid",
+   "defining_paper": "JingWang01",
+   "hours": 10000.0,
+   "placed": false,
+   "field": "JingWang01 area: Ultra deep HI survey, 1 deg2, 450-1050 MHz",
+   "restated_by": [
+    {
+     "paper": "Lelli01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Tabatabaei01",
+     "hours": 230.0
+    },
+    {
+     "paper": "Tabatabaei01",
+     "hours": 10000.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 2 Medium-Deep survey",
+   "telescope": "mid",
+   "defining_paper": "Spinelli02",
+   "hours": 10000.0,
+   "placed": true,
+   "field": "Spinelli02 area: SKA-Mid Band 2 Medium-Deep reference survey, ~5000 deg2 overlapping DES/Euclid in the Southern sky (Dec < 0)",
+   "restated_by": [
+    {
+     "paper": "JingWang01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Nasirudin01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Mayor01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Elahi01",
+     "hours": 5000.0
+    },
+    {
+     "paper": "Harrison02",
+     "hours": 10000.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 1 Wide survey",
+   "telescope": "mid",
+   "defining_paper": "Spinelli02",
+   "hours": 10000.0,
+   "placed": true,
+   "field": "Spinelli02 area: Mid Band 1 Wide Survey, ~20000 deg2, most of the Southern sky",
+   "restated_by": [
+    {
+     "paper": "Fonseca01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Asorey01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Wolz01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Bosi01",
+     "hours": 10000.0
+    },
+    {
+     "paper": "Bosi01",
+     "hours": 5000.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 5b Galactic Plane survey",
+   "telescope": "mid",
+   "defining_paper": "Traficante01",
+   "hours": 600.0,
+   "placed": true,
+   "field": "Traficante01 area: 10-15 GHz Band 5b radio continuum survey of the Galactic Plane, including the Galactic Center",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Low wide-area RM Grid survey",
+   "telescope": "low",
+   "defining_paper": "OSullivan01",
+   "hours": 3200.0,
+   "placed": false,
+   "field": null,
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Low Deep HI IM survey (100 deg2)",
+   "telescope": "low",
+   "defining_paper": "Wolz01",
+   "hours": 5000.0,
+   "placed": false,
+   "field": null,
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid Band 2 Ultra-Deep continuum tier (Prandoni & Seymour)",
+   "telescope": "mid",
+   "defining_paper": "Prandoni01",
+   "hours": 4849.0,
+   "placed": false,
+   "field": "Prandoni01 area: SKA-Mid Band 2 Ultra-Deep reference survey tier, rms 0.05 \u03bcJy/bm",
+   "restated_by": [
+    {
+     "paper": "DAmato01",
+     "hours": 1000.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 2 Deep continuum tier (Prandoni & Seymour)",
+   "telescope": "mid",
+   "defining_paper": "Prandoni01",
+   "hours": 6080.0,
+   "placed": false,
+   "field": "Prandoni01 area: SKA-Mid Band 2 Deep reference survey tier, rms 0.2 \u03bcJy/bm",
+   "restated_by": [
+    {
+     "paper": "Gitti01",
+     "hours": 300.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 2 Wide continuum tier (Prandoni & Seymour)",
+   "telescope": "mid",
+   "defining_paper": "Prandoni01",
+   "hours": 12200.0,
+   "placed": false,
+   "field": "Prandoni01 area: SKA-Mid Band 2 Wide reference survey tier, rms 1 \u03bcJy/bm",
+   "restated_by": [
+    {
+     "paper": "Gitti01",
+     "hours": 2920.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 5b Ultra-Deep continuum tier (Prandoni & Seymour)",
+   "telescope": "mid",
+   "defining_paper": "Prandoni01",
+   "hours": 3146.0,
+   "placed": false,
+   "field": "Prandoni01 area: SKA-Mid Band 5b Ultra-Deep reference survey tier, rms 0.04 \u03bcJy/bm",
+   "restated_by": []
+  },
+  {
+   "group": "SKA-Mid Band 5b Deep continuum tier (Prandoni & Seymour)",
+   "telescope": "mid",
+   "defining_paper": "Prandoni01",
+   "hours": 3146.0,
+   "placed": false,
+   "field": "Prandoni01 area: SKA-Mid Band 5b Deep reference survey tier, rms 0.2 \u03bcJy/bm",
+   "restated_by": []
+  },
+  {
+   "group": "SKAO Pulsar Timing Array programme",
+   "telescope": "mid",
+   "defining_paper": "Shannon01",
+   "hours": 1157.0,
+   "placed": false,
+   "field": null,
+   "restated_by": [
+    {
+     "paper": "Shannon01",
+     "hours": 322.4
+    }
+   ]
+  },
+  {
+   "group": "SKA-Low EoR deep field",
+   "telescope": "low",
+   "defining_paper": "deLeraAcedo01",
+   "hours": 1000.0,
+   "placed": false,
+   "field": null,
+   "restated_by": [
+    {
+     "paper": "Barkana01",
+     "hours": 1080.0
+    },
+    {
+     "paper": "Bag01",
+     "hours": 1000.0
+    },
+    {
+     "paper": "Acharya01",
+     "hours": 1080.0
+    }
+   ]
+  },
+  {
+   "group": "SKA-Mid Band 2 all-sky polarization/continuum survey",
+   "telescope": "mid",
+   "defining_paper": "Sun01",
+   "hours": 7500.0,
+   "placed": false,
+   "field": "Sun01 area: all-sky RM grid and diffuse-polarization survey (SKA-Mid Band 2)",
+   "restated_by": [
+    {
+     "paper": "Gitti01",
+     "hours": 5110.0
+    }
+   ]
+  }
+ ],
+ "telescopes": {
+  "low": {
+   "accepted_hours": 16916.0,
+   "placed_hours": 5796.0,
+   "unplaced_hours": 11120.0,
+   "requests": [
+    {
+     "id": 45,
+     "name": "Orion",
+     "paper": "Bracco01",
+     "hours": 50.0,
+     "commensal_group": null,
+     "review_note": "Bracco01: \u227250 h with AA4 toward Orion (\u2272100 h with AA*); the AA4 figure is kept. Placed.",
+     "placed": true
+    },
+    {
+     "id": 60,
+     "name": "wide-area RM Grid survey",
+     "paper": "OSullivan01",
+     "hours": 3200.0,
+     "commensal_group": "SKA-Low wide-area RM Grid survey",
+     "review_note": "OSullivan01: a representative wide-area SKA-Low AA4 RM-grid survey, 10,000 deg2 in ~3,200 h. Unplaced: only 'extragalactic sky' and 'SKA-Low can observe ~75% of the sky' are stated, with no footprint.",
+     "placed": false
+    },
+    {
+     "id": 76,
+     "name": "Deep SKA1-LOW Survey",
+     "paper": "Wolz01",
+     "hours": 5000.0,
+     "commensal_group": "SKA-Low Deep HI IM survey (100 deg2)",
+     "review_note": "Wolz01 p6: Deep SKA1-LOW HI IM survey, 100 deg2, ~5,000 h, 200-350 MHz, as the Cosmology Red Book defines it. Only one row, so the group label is kept as the canonical tier name. Unplaced: area only.",
+     "placed": false
+    },
+    {
+     "id": 83,
+     "name": "21cm forest mock observation, PSO J0309+27-like quasars",
+     "paper": "Cang01",
+     "hours": 500.0,
+     "commensal_group": null,
+     "review_note": "Cang01: 21-cm forest from 10 PSO J0309+27-like quasars at 50 h each, 500 h. The arithmetic checks. Unplaced: the quasars are unnamed stand-ins.",
+     "placed": false
+    },
+    {
+     "id": 104,
+     "name": "HII bubble matched-filter detection around bright quasar",
+     "paper": "Bag01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Bag01: a 100 h SKA-Low observation for matched-filter detection of the HII bubble around a bright z\u22487 quasar. The target class is real (bright z>7 quasars), though the field was simulated. Unplaced: quasar not named.",
+     "placed": false
+    },
+    {
+     "id": 115,
+     "name": "SKA-Low EoR power spectrum sensitivity forecast",
+     "paper": "deLeraAcedo01",
+     "hours": 1000.0,
+     "commensal_group": "SKA-Low EoR deep field",
+     "review_note": "deLeraAcedo01 (EoR/Cosmic Dawn chapter): thermal sensitivity of 'one year (1000 hours)' of SKA-Low deep-field observations. This is the standard deep-field assumption, 180 nights \u00d7 ~6 h, which other EoR chapters repeat. Canonical row for the SKA-Low EoR deep field. Unplaced: no field stated.",
+     "placed": false
+    },
+    {
+     "id": 119,
+     "name": "El Gordo",
+     "paper": "Santra01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Santra01: deep SKA-Low (10-20 h) integrations on El Gordo; the lower bound of 10 h is kept. Placed.",
+     "placed": true
+    },
+    {
+     "id": 124,
+     "name": "Galactic anti-center ALP decay search",
+     "paper": "Regis01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Regis01: 100 h of SKA-Low AA4 autocorrelation toward the Galactic anti-centre (ALP decay). Placed on a recorded field for the anti-centre direction (l=180\u00b0, b=0\u00b0, which is where the paper points). At Dec \u2248 +29\u00b0 it may fall below the 45\u00b0 default elevation limit for SKA-Low.",
+     "placed": true
+    },
+    {
+     "id": 125,
+     "name": "Reticulum II",
+     "paper": "Regis01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Regis01: 10 h of SKA-Low on the Reticulum II dwarf (WIMP limits). Placed.",
+     "placed": true
+    },
+    {
+     "id": 127,
+     "name": "Sun",
+     "paper": "Regis01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Regis01: 100 h of SKA-Low AA4 on the solar disk (dark photon/ALP). The Sun is not a fixed-sky target, so it stays unplaced.",
+     "placed": false
+    },
+    {
+     "id": 141,
+     "name": "SKA-Low all-sky deep survey (cluster outskirts/filaments)",
+     "paper": "deGasperin01",
+     "hours": 5625.0,
+     "commensal_group": null,
+     "review_note": "deGasperin01: a simulated SKA-Low deep survey 'up to declination +30\u00b0', 1 h per pointing, 5,625 h. Placed on the paper's own stated footprint.",
+     "placed": true
+    },
+    {
+     "id": 150,
+     "name": "SKA-Low deep+subband SED survey (EoR radio-AGN)",
+     "paper": "Afonso01",
+     "hours": 200.0,
+     "commensal_group": null,
+     "review_note": "Afonso01: the same 20 deg2 field with SKA-Low, ~8 pointings, ~200 h. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 158,
+     "name": "SKA-Low HI absorption survey at z>3 (10000 deg2)",
+     "paper": "Mahony01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Mahony01: SKA-Low z>3 HI absorption survey over 10,000 deg2 = ~500 pointings \u00d7 2 h = ~1,000 h. The arithmetic checks. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 159,
+     "name": "GLEAM J0856+0224",
+     "paper": "Mahony01",
+     "hours": 12.0,
+     "commensal_group": null,
+     "review_note": "Mahony01: a simulated 12 h SKA-Low HI-absorption observation of the real z=5.55 radio galaxy GLEAM J0856+0224. Recorded as a field, but SIMBAD returned no position, so it stays unplaced (Dec \u2248 +2\u00b0 from its name; not used).",
+     "placed": false
+    },
+    {
+     "id": 178,
+     "name": "proposed VLBI mapping observations (AGN jets/lobes)",
+     "paper": "Kobayashi01",
+     "hours": 8.0,
+     "commensal_group": null,
+     "review_note": "Kobayashi01: 8 h to reach ~10 uJy, 'enabling the proposed mapping observations' of AGN jets and lobes (SKA-Low VLBI). A proposed observation; unplaced (target not named).",
+     "placed": false
+    },
+    {
+     "id": 179,
+     "name": "Galactic Center",
+     "paper": "Tremblay01",
+     "hours": 1.0,
+     "commensal_group": null,
+     "review_note": "Tremblay01: a 1 h AA* SKA-Low imaging observation toward the Galactic Centre (22 mJy/beam at 14 Hz resolution). Placed.",
+     "placed": true
+    }
+   ],
+   "lst_pressure": {
+    "telescope": "low",
+    "planning_years": 5,
+    "n_requests_used": 5,
+    "total_demand_h": 5696.0,
+    "total_supply_h": 37230.0,
+    "lst_bins": [
+     {
+      "lst_bin": "00:00-01:00",
+      "demand_h": 236.8,
+      "supply_h": 1550.5,
+      "pressure": 0.153
+     },
+     {
+      "lst_bin": "01:00-02:00",
+      "demand_h": 237.4,
+      "supply_h": 1551.3,
+      "pressure": 0.153
+     },
+     {
+      "lst_bin": "02:00-03:00",
+      "demand_h": 239.5,
+      "supply_h": 1551.3,
+      "pressure": 0.154
+     },
+     {
+      "lst_bin": "03:00-04:00",
+      "demand_h": 246.3,
+      "supply_h": 1552.0,
+      "pressure": 0.159
+     },
+     {
+      "lst_bin": "04:00-05:00",
+      "demand_h": 245.3,
+      "supply_h": 1550.5,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "05:00-06:00",
+      "demand_h": 244.8,
+      "supply_h": 1552.0,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "06:00-07:00",
+      "demand_h": 244.5,
+      "supply_h": 1551.3,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "07:00-08:00",
+      "demand_h": 243.2,
+      "supply_h": 1551.3,
+      "pressure": 0.157
+     },
+     {
+      "lst_bin": "08:00-09:00",
+      "demand_h": 238.2,
+      "supply_h": 1551.3,
+      "pressure": 0.154
+     },
+     {
+      "lst_bin": "09:00-10:00",
+      "demand_h": 234.4,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "10:00-11:00",
+      "demand_h": 234.4,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "11:00-12:00",
+      "demand_h": 234.4,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "12:00-13:00",
+      "demand_h": 234.4,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "13:00-14:00",
+      "demand_h": 234.4,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "14:00-15:00",
+      "demand_h": 234.4,
+      "supply_h": 1550.5,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "15:00-16:00",
+      "demand_h": 234.5,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "16:00-17:00",
+      "demand_h": 234.6,
+      "supply_h": 1552.0,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "17:00-18:00",
+      "demand_h": 234.5,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "18:00-19:00",
+      "demand_h": 234.5,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "19:00-20:00",
+      "demand_h": 234.5,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "20:00-21:00",
+      "demand_h": 234.5,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "21:00-22:00",
+      "demand_h": 234.9,
+      "supply_h": 1551.3,
+      "pressure": 0.151
+     },
+     {
+      "lst_bin": "22:00-23:00",
+      "demand_h": 235.8,
+      "supply_h": 1551.3,
+      "pressure": 0.152
+     },
+     {
+      "lst_bin": "23:00-00:00",
+      "demand_h": 235.9,
+      "supply_h": 1551.3,
+      "pressure": 0.152
+     }
+    ],
+    "most_pressured_bins": [
+     {
+      "lst_bin": "03:00-04:00",
+      "demand_h": 246.3,
+      "supply_h": 1552.0,
+      "pressure": 0.159
+     },
+     {
+      "lst_bin": "04:00-05:00",
+      "demand_h": 245.3,
+      "supply_h": 1550.5,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "05:00-06:00",
+      "demand_h": 244.8,
+      "supply_h": 1552.0,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "06:00-07:00",
+      "demand_h": 244.5,
+      "supply_h": 1551.3,
+      "pressure": 0.158
+     },
+     {
+      "lst_bin": "07:00-08:00",
+      "demand_h": 243.2,
+      "supply_h": 1551.3,
+      "pressure": 0.157
+     }
+    ],
+    "month_by_lst_pressure": [
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.153,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.153,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152
+     ],
+     [
+      0.153,
+      0.153,
+      0.154,
+      0.159,
+      0.158,
+      0.158,
+      0.158,
+      0.157,
+      0.154,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.151,
+      0.152,
+      0.152,
+      0.152
+     ]
+    ],
+    "never_visible": [
+     "Galactic anti-center ALP decay search"
+    ],
+    "unplaced_hours": 11120.0,
+    "unplaced": [
+     {
+      "name": "wide-area RM Grid survey",
+      "hours": 3200.0,
+      "position_note": "unnamed 10,000 deg2 extragalactic wide-area survey, no coordinates stated"
+     },
+     {
+      "name": "Deep SKA1-LOW Survey",
+      "hours": 5000.0,
+      "position_note": "100 deg2 area, no coordinates stated"
+     },
+     {
+      "name": "21cm forest mock observation, PSO J0309+27-like quasars",
+      "hours": 500.0,
+      "position_note": "10 unnamed PSO J0309+27-like high-z quasar sightlines, no individual coordinates stated"
+     },
+     {
+      "name": "HII bubble matched-filter detection around bright quasar",
+      "hours": 100.0,
+      "position_note": "simulated field around bright quasar at z=7.1, similar to Mortlock et al. 2011, no coordinates stated"
+     },
+     {
+      "name": "SKA-Low EoR power spectrum sensitivity forecast",
+      "hours": 1000.0,
+      "position_note": "general thermal sensitivity forecast, no field/coordinates stated"
+     },
+     {
+      "name": "Sun",
+      "hours": 100.0,
+      "position_note": "the Sun (solar disk); not a fixed-sky target, no static ra/dec"
+     },
+     {
+      "name": "SKA-Low deep+subband SED survey (EoR radio-AGN)",
+      "hours": 200.0,
+      "position_note": "20 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Low HI absorption survey at z>3 (10000 deg2)",
+      "hours": 1000.0,
+      "position_note": "unnamed 10000 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "GLEAM J0856+0224",
+      "hours": 12.0,
+      "position_note": "GLEAM-named radio galaxy at z=5.55, coordinate lookup timed out; RA/Dec derivable from name J0856+0224"
+     },
+     {
+      "name": "proposed VLBI mapping observations (AGN jets/lobes)",
+      "hours": 8.0,
+      "position_note": "Unnamed target(s) for proposed high-dynamic-range mapping observations (e.g. AGN jets and lobes); no specific field or source given."
+     }
+    ],
+    "assumptions": {
+     "night_sun_alt_deg": -18.0,
+     "twilight_sun_alt_band_deg": [
+      -12.0,
+      12.0
+     ],
+     "min_sun_separation_deg": 0.0,
+     "default_min_elevation_deg": 45.0,
+     "maintenance_fraction": 0.15,
+     "time_step_min": 10,
+     "lst_bin_h": 1,
+     "planning_years": 5,
+     "min_elevation_deg": 45.0,
+     "sun": "per request",
+     "year_start": "2027-01-01",
+     "note": "Unverified defaults (config.SCHEDULING); need an SKAO owner."
+    }
+   }
+  },
+  "mid": {
+   "accepted_hours": 131148.5,
+   "placed_hours": 23556.5,
+   "unplaced_hours": 107592.0,
+   "requests": [
+    {
+     "id": 35,
+     "name": "Medium wide HI/continuum survey",
+     "paper": "JingWang01",
+     "hours": 1000.0,
+     "commensal_group": "SKA-Mid HI Medium-wide tier (HI SWG, 400 deg2)",
+     "review_note": "JingWang01 Table 1 (1,000 h set of the HI SWG three-tier survey): Medium-wide tier, 400 deg2, 950-1420 MHz, 1,000 h. Distinct tier. Unplaced: area only.",
+     "placed": false
+    },
+    {
+     "id": 36,
+     "name": "Medium deep HI survey",
+     "paper": "JingWang01",
+     "hours": 1000.0,
+     "commensal_group": "SKA-Mid HI Medium-deep tier (HI SWG, 20 deg2)",
+     "review_note": "JingWang01 Table 1 (1,000 h set): Medium-deep HI tier, 20 deg2, 950-1420 MHz, 1,000 h. Distinct tier. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 37,
+     "name": "Deep HI survey",
+     "paper": "JingWang01",
+     "hours": 1000.0,
+     "commensal_group": "SKA-Mid HI Deep tier (HI SWG, 1 deg2)",
+     "review_note": "JingWang01 Table 1 (1,000 h set): Deep HI tier, 1 deg2, 600-1050 MHz, 1,000 h. Distinct from the 10,000 h ultra-deep tier (different depth and band range). Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 38,
+     "name": "All-sky HI survey",
+     "paper": "JingWang01",
+     "hours": 10000.0,
+     "commensal_group": "SKA-Mid Band 2 all-sky HI tier (HI SWG)",
+     "review_note": "JingWang01 Table 1 (HI SWG three-tier survey, 10,000 h set): All-sky HI tier, 20,000 deg2, 950-1420 MHz, 10,000 h. Distinct from the Band 1 Wide survey (different band and redshift range). It might run commensally with other Band 2 all-sky surveys, but no paper states this. Unplaced: area only.",
+     "placed": false
+    },
+    {
+     "id": 40,
+     "name": "Ultra deep HI survey",
+     "paper": "JingWang01",
+     "hours": 10000.0,
+     "commensal_group": "SKA-Mid Band 1 ultra-deep HI field",
+     "review_note": "JingWang01 Table 1 (HI SWG three-tier survey, 10,000 h set): Ultra-deep HI tier, 1 deg2, 450-1050 MHz (Band 1), 10,000 h. Canonical row for the Band 1 ultra-deep HI field; Lelli01's pencil-beam survey and Tabatabaei01's z~1 HI estimate restate it. JingWang01 p8 says this tier should target established deep fields, but none is named, so it stays unplaced.",
+     "placed": false
+    },
+    {
+     "id": 41,
+     "name": "SKA-Mid Band 5b astrochemistry deep integration KSP",
+     "paper": "Bianchi02",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Bianchi02: deep Band 5b astrochemistry integrations, 'a Key Science Project of approximately 1 000 hours'. Unplaced: star-forming regions not named.",
+     "placed": false
+    },
+    {
+     "id": 42,
+     "name": "Mid Band 2 Medium-deep Survey",
+     "paper": "Spinelli02",
+     "hours": 10000.0,
+     "commensal_group": "SKA-Mid Band 2 Medium-Deep survey",
+     "review_note": "Defining statement of the Band 2 Medium-Deep reference survey (Spinelli02 p8): ~5,000 deg2, continuum + HI galaxies, HI IM variant with the same area and 10,000 h. Canonical row for this tier. Placed on a new field quoting Spinelli02 p8, 'Most surveys expect this area to overlap the DES and Euclid regions in the Southern sky' (Dec<0; the exact 5,000 deg2 footprint is not stated).",
+     "placed": true
+    },
+    {
+     "id": 43,
+     "name": "Mid Band 1 Wide Survey",
+     "paper": "Spinelli02",
+     "hours": 10000.0,
+     "commensal_group": "SKA-Mid Band 1 Wide survey",
+     "review_note": "Defining statement of the Wide Band 1 reference survey (Spinelli02 p8, cosmology SWG overview): ~20,000 deg2, most of the Southern sky, 10,000 h. Canonical row for this tier; continuum and HI IM restatements in other chapters are duplicates. Placed via Spinelli02's 'most of the Southern sky' field (Dec<0).",
+     "placed": true
+    },
+    {
+     "id": 44,
+     "name": "TNOs and Centaurs thermal survey (23 brightest known objects)",
+     "paper": "Santos-Sanz01",
+     "hours": 115.0,
+     "commensal_group": null,
+     "review_note": "Santos-Sanz01: 23 brightest TNOs and Centaurs \u00d7 5 h in Band 5b = 115 h. The arithmetic checks. Unplaced: moving solar-system targets near the ecliptic.",
+     "placed": false
+    },
+    {
+     "id": 46,
+     "name": "high-mass protostellar outflow cyanopolyyne survey",
+     "paper": "Sabatini01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Sabatini01: HC9N detection toward high-mass protostellar outflows 'in \u227210 h' with AA4. A small per-source request; unplaced (no target named).",
+     "placed": false
+    },
+    {
+     "id": 47,
+     "name": "SKA-Mid 10-15 GHz Galactic Plane survey",
+     "paper": "Traficante01",
+     "hours": 600.0,
+     "commensal_group": "SKA-Mid Band 5b Galactic Plane survey",
+     "review_note": "Traficante01: a Band 5b Galactic Plane survey, 14.5 s \u00d7 124,000 pointings \u00d7 1.2 \u2243 600 h (the arithmetic checks: 600 h), over -180<l<30, |b|\u22641.5. Only one row, so the group name is kept as its canonical tier. Placed.",
+     "placed": true
+    },
+    {
+     "id": 48,
+     "name": "structured protoplanetary disk sample Key Science Project (Band 5b)",
+     "paper": "Wu01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Wu01: AA4 imaging of a larger sample of structured protoplanetary disks, 'integration times up to a 1000-hour Key Science Project'. 1,000 h is an upper bound. Unplaced: sample not named.",
+     "placed": false
+    },
+    {
+     "id": 50,
+     "name": "protostellar/outbursting protoplanetary disk survey (Band 5, 1000h iCOMs)",
+     "paper": "Podio01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Podio01: 1,000 h needed to detect larger iCOMs and complex C-chains in protostellar and outbursting disks (Band 5). The deeper goal, which contains the 100 h goal (#49). Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 51,
+     "name": "Ophiuchus free-free survey (Band 5b)",
+     "paper": "Guidi01",
+     "hours": 60.0,
+     "commensal_group": null,
+     "review_note": "Guidi01: a free-free survey of a star-forming region at 140 pc (Ophiuchus), ~60 h in Band 5b. A separate band from #52. Placed.",
+     "placed": true
+    },
+    {
+     "id": 52,
+     "name": "Ophiuchus free-free survey (Band 5a)",
+     "paper": "Guidi01",
+     "hours": 20.0,
+     "commensal_group": null,
+     "review_note": "Guidi01: the same Ophiuchus free-free survey in Band 5a, ~20 h. Placed.",
+     "placed": true
+    },
+    {
+     "id": 53,
+     "name": "L1551 IRS5",
+     "paper": "Sabatini01",
+     "hours": 13.0,
+     "commensal_group": null,
+     "review_note": "Sabatini01: L1551 IRS5 in <13 h with SKA-Mid AA4, which the paper calls suitable for Cycle 0. Placed on the named target.",
+     "placed": true
+    },
+    {
+     "id": 54,
+     "name": "G32.80+0.19",
+     "paper": "LorenAnderson01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "LorenAnderson01: 10 h in Band 5b to detect CRRL Zeeman splitting toward G32.80+0.19. Placed.",
+     "placed": true
+    },
+    {
+     "id": 55,
+     "name": "G70.29+1.60b",
+     "paper": "LorenAnderson01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "LorenAnderson01: 10 h in Band 5b toward G70.29+1.60b. A separate target from #54. Placed.",
+     "placed": true
+    },
+    {
+     "id": 56,
+     "name": "Galactic Centre",
+     "paper": "Rygl01",
+     "hours": 2.5,
+     "commensal_group": null,
+     "review_note": "Rygl01: a ~2.5 h Band 2 pointing toward the Galactic Centre. Placed.",
+     "placed": true
+    },
+    {
+     "id": 57,
+     "name": "W3A",
+     "paper": "LorenAnderson01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "LorenAnderson01: 10 h AA4 Band 2 CRRL Zeeman imaging toward W3A. Placed (W3A is far north for SKA-Mid, so it may be flagged as never visible above 45\u00b0).",
+     "placed": true
+    },
+    {
+     "id": 58,
+     "name": "SKA-Mid water maser blind survey (1 sq deg)",
+     "paper": "Tarchi01",
+     "hours": 3000.0,
+     "commensal_group": null,
+     "review_note": "Tarchi01: blind water-maser search over ~1 deg2 (~65 pointings \u00d7 10 h), ~1,000 h for each of three Band 5a/5b configurations, so 3,000 h. The paper also gives a quarter-sky alternative (#59). Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 61,
+     "name": "SKA-Mid AA2 compact-binary spectral-flatness survey",
+     "paper": "Lin01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Lin01: an AA2 compact-binary survey, 10 s snapshots of ~10,000 candidates in three bands, 100 h. Unplaced: candidates spread across the Galaxy.",
+     "placed": false
+    },
+    {
+     "id": 62,
+     "name": "redshift-drift experiment, SKA-Mid AA*",
+     "paper": "Camera01",
+     "hours": 4380.0,
+     "commensal_group": null,
+     "review_note": "Camera01: redshift-drift experiment with SKA-Mid AA* over 5,000 deg2, 'survey duration of approximately six months' = 6 \u00d7 730 = 4,380 h (1 h per pointing). The arithmetic checks. The drift measurement needs a second epoch ~12 yr later, beyond the horizon. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 63,
+     "name": "SKA-Mid HI survey of 150 nearby galaxies (MHONGOOSE depth)",
+     "paper": "deBlok01",
+     "hours": 1650.0,
+     "commensal_group": null,
+     "review_note": "deBlok01: in the time MHONGOOSE took on MeerKAT (30 galaxies \u00d7 55 h = 1,650 h), SKA-Mid can map 150 galaxies to the same depth. 1,650 h is consistent. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 65,
+     "name": "SKA1-Mid AA4/AA* RM survey of known pulsars lacking RM measurements",
+     "paper": "JunXu01",
+     "hours": 600.0,
+     "commensal_group": null,
+     "review_note": "JunXu01: >600 known pulsars without RMs at 60 min each, so 600 h. The arithmetic checks. Unplaced: pulsars spread across the sky.",
+     "placed": false
+    },
+    {
+     "id": 68,
+     "name": "SKA-Mid AA* survey of known DAGN at z>3.5",
+     "paper": "DAmato01",
+     "hours": 50.0,
+     "commensal_group": null,
+     "review_note": "DAmato01: ~50 h of AA* to observe every currently known dual AGN at z>3.5 to 0.75 uJy/beam (3\u03c3). Unplaced: population not listed.",
+     "placed": false
+    },
+    {
+     "id": 69,
+     "name": "NGC 6240",
+     "paper": "DAmato01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "DAmato01: a 10 h SKA-Mid Band 2 observation of NGC 6240. Placed.",
+     "placed": true
+    },
+    {
+     "id": 71,
+     "name": "SKA-Mid+VLBI follow-up tracks of triggered jetted TDEs",
+     "paper": "Shu01",
+     "hours": 120.0,
+     "commensal_group": null,
+     "review_note": "Shu01: '1-2 jetted TDEs per year', each followed with '3-4 long (\u22738 h) SKA+VLBI tracks'. The extraction's 24 h is one TDE (3 \u00d7 8 h). Over the 5-yr horizon at the lower bound (1 per year \u00d7 3 \u00d7 8 h): 120 h. Unplaced: triggered targets.",
+     "placed": false
+    },
+    {
+     "id": 72,
+     "name": "Sgr A*",
+     "paper": "Abbate01",
+     "hours": 11.0,
+     "commensal_group": null,
+     "review_note": "Abbate01: 'observing the GC for the entire transit', ~11 h above the horizon. A proposed deep GC pulsar observation. Placed on Sgr A*.",
+     "placed": true
+    },
+    {
+     "id": 73,
+     "name": "Sgr A*",
+     "paper": "Abbate01",
+     "hours": 20.0,
+     "commensal_group": null,
+     "review_note": "Abbate01: a PSS multi-beam coverage of the GC region, '20-30 h in band 5a'. The lower bound of 20 h is kept. Placed.",
+     "placed": true
+    },
+    {
+     "id": 77,
+     "name": "SKA-Mid 21-cm imaging survey for higher-order statistics",
+     "paper": "Majumdar01",
+     "hours": 5000.0,
+     "commensal_group": null,
+     "review_note": "Majumdar01: noise estimates assume 5,000 h per pointing of SKA-Mid 21-cm imaging, for a single 4 deg2 sub-cube, so 5,000 h in total. This is a forecast assumption rather than a detailed proposal, but it is the stated requirement for the science case. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 78,
+     "name": "SKA-Mid AA4 core HI survey of massive galaxies within 10 Mpc",
+     "paper": "Rosolowsky01",
+     "hours": 600.0,
+     "commensal_group": null,
+     "review_note": "Rosolowsky01: core HI survey of \u2265100 massive galaxies within 10 Mpc at ~6 h each, so 600 h. The arithmetic checks. Unplaced (Virgo and Fornax are mentioned only as possible extensions).",
+     "placed": false
+    },
+    {
+     "id": 82,
+     "name": "SKA-VLBI methanol maser parallax survey (doubling BeSSeL sample)",
+     "paper": "XuYe01",
+     "hours": 300.0,
+     "commensal_group": null,
+     "review_note": "XuYe01: SKA-VLBI methanol-maser parallaxes to double the ~200-maser sample, ~300 h (6 epochs of 6 h, ~25 sources per epoch). Unplaced: masers spread across the Galaxy.",
+     "placed": false
+    },
+    {
+     "id": 84,
+     "name": "PSR J0737-3039A",
+     "paper": "AvishekBasu01",
+     "hours": 180.0,
+     "commensal_group": null,
+     "review_note": "AvishekBasu01: the J0737-3039A moment-of-inertia forecast assumes '3 hr monthly observations' over a multi-year baseline (Fig. 9 x-axis is years). The extraction's 36 h is one year. Scaled to the 5-yr horizon: 3 h \u00d7 12 \u00d7 5 = 180 h. Placed on PSR J0737-3039A (recorded field, SIMBAD position).",
+     "placed": true
+    },
+    {
+     "id": 85,
+     "name": "Cen A",
+     "paper": "Sawada-Satoh01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Sawada-Satoh01: 10 h SKA-Mid VLBI (with Parkes and HartRAO) maser/absorption observation of Cen A. Placed.",
+     "placed": true
+    },
+    {
+     "id": 86,
+     "name": "NGC 4261",
+     "paper": "Sawada-Satoh01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Sawada-Satoh01: 10 h SKA-Mid VLBI toward NGC 4261. Placed.",
+     "placed": true
+    },
+    {
+     "id": 87,
+     "name": "NGC 1275",
+     "paper": "Sawada-Satoh01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Sawada-Satoh01: 10 h SKA-Mid VLBI toward NGC 1275. Placed (Dec +41.5\u00b0, so expect a never-visible flag at the 45\u00b0 default minimum elevation).",
+     "placed": true
+    },
+    {
+     "id": 90,
+     "name": "SKA-Mid AA4 pulsar search of all Galactic globular clusters",
+     "paper": "Bagchi01",
+     "hours": 300.0,
+     "commensal_group": null,
+     "review_note": "Bagchi01: a 2 h AA4 pulsar search of every Galactic globular cluster (>150 known), about 300 h. Unplaced: many targets.",
+     "placed": false
+    },
+    {
+     "id": 91,
+     "name": "SKA-Mid deep 8-hour pulsar search of closest 10 globular clusters",
+     "paper": "Bagchi01",
+     "hours": 80.0,
+     "commensal_group": null,
+     "review_note": "Bagchi01: deeper 8 h tracks of the 10 closest GCs, so 80 h, on top of the 2 h survey. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 93,
+     "name": "SKA-Mid Band 2 Ultra-Deep reference survey",
+     "paper": "Prandoni01",
+     "hours": 4849.0,
+     "commensal_group": "SKA-Mid Band 2 Ultra-Deep continuum tier (Prandoni & Seymour)",
+     "review_note": "Prandoni01 Table 1 and Table 3 A.1: Band 2 Ultra-Deep tier, 1 deg2 to 0.05 uJy/bm, 4,849 h. The extraction's quote is from the B.1 (AA*) column, but the 4,849 h figure matches A.1 (AA4); B.1 gives 1,212 h at relaxed sensitivity. AA4 figure kept, since Prandoni01 says this tier is unfeasible with AA*. Separate tier; unplaced (no field stated).",
+     "placed": false
+    },
+    {
+     "id": 94,
+     "name": "SKA-Mid Band 2 Deep reference survey",
+     "paper": "Prandoni01",
+     "hours": 6080.0,
+     "commensal_group": "SKA-Mid Band 2 Deep continuum tier (Prandoni & Seymour)",
+     "review_note": "Prandoni01 Table 3, A.1: Band 2 Deep tier, 20 deg2 to 0.2 uJy/bm, 6,080 h (= 304 h/deg2 \u00d7 20). Separate tier with its own group. Prandoni01 p23 names EDF-Fornax and EDF-South as ideal deep-tier targets (recorded as field 'EDF-Fornax'), but neither resolves to a position, so the tier stays unplaced. Both fields lie near RA 3.5-4 h.",
+     "placed": false
+    },
+    {
+     "id": 95,
+     "name": "SKA-Mid Band 2 Wide reference survey",
+     "paper": "Prandoni01",
+     "hours": 12200.0,
+     "commensal_group": "SKA-Mid Band 2 Wide continuum tier (Prandoni & Seymour)",
+     "review_note": "Prandoni01 Table 3, strategy A.1 (AA4, full area): Band 2 Wide tier, 1,000 deg2 to 1 uJy/bm, 12,200 h (= 12.2 h/deg2 \u00d7 1000, Table 1). This is a separate tier, not commensal with the Deep and Ultra-Deep tiers, so it moves out of the lumped 'Prandoni & Seymour' group. Unplaced: no footprint stated. The Dec=-45 in Prandoni01 is only a sensitivity-calculator assumption.",
+     "placed": false
+    },
+    {
+     "id": 96,
+     "name": "SKA-Mid Band 5b Ultra-Deep reference survey",
+     "paper": "Prandoni01",
+     "hours": 3146.0,
+     "commensal_group": "SKA-Mid Band 5b Ultra-Deep continuum tier (Prandoni & Seymour)",
+     "review_note": "Prandoni01 Table 1: Band 5b Ultra-Deep tier, 0.04 deg2 to 0.04 uJy/bm, 3,146 h. The table footnote says this time refers to the 0.04 deg2 survey area, not per deg2, so the hours are correct. Separate tier. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 98,
+     "name": "AGN-oriented Band 5a wide tier (10 deg2)",
+     "paper": "Prandoni01",
+     "hours": 300.0,
+     "commensal_group": null,
+     "review_note": "Prandoni01 p17: an AGN-oriented shallower tier, 10 deg2 in Band 5a in ~300 h. Separate band, so no shared time with Band 5b. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 99,
+     "name": "AGN-oriented Band 5b wide tier (10 deg2)",
+     "paper": "Prandoni01",
+     "hours": 900.0,
+     "commensal_group": null,
+     "review_note": "Prandoni01 p17: the Band 5b counterpart of the 10 deg2 AGN-oriented tier, ~900 h. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 100,
+     "name": "SKA-Mid Band 5b Deep reference survey",
+     "paper": "Prandoni01",
+     "hours": 3146.0,
+     "commensal_group": "SKA-Mid Band 5b Deep continuum tier (Prandoni & Seymour)",
+     "review_note": "Prandoni01 Table 1: Band 5b Deep tier, 2 deg2 to 0.2 uJy/bm, t/deg2 = 1573 h, so 2 \u00d7 1573 = 3,146 h. Separate tier (Band 5b cannot share time with the Band 2 tiers). Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 105,
+     "name": "Holmberg II X-1",
+     "paper": "Sakemi01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Sakemi01: '100 hours of observation with SKA-Mid should allow detection of bubbles associated with ULXs in galaxies up to ~10 Mpc'. Placed on Holmberg II X-1, the paper's template source; the actual targets are ULX hosts within ~10 Mpc, so the position is indicative.",
+     "placed": true
+    },
+    {
+     "id": 107,
+     "name": "rho Oph W filament",
+     "paper": "Vidal01",
+     "hours": 3.0,
+     "commensal_group": null,
+     "review_note": "Vidal01: a 3 h Band 5b integration on the rho Oph W filament (AME imaging). Placed.",
+     "placed": true
+    },
+    {
+     "id": 108,
+     "name": "SKAO medium-deep Hi-galaxy cross-correlation survey",
+     "paper": "Mazumder01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Mazumder01: an SKAO 'medium-deep type' Band 1 AA4 survey, 100 deg2 in 1,000 h, for HI-galaxy cross-correlation with Euclid. Its area differs from the 5,000 deg2 Medium-Deep reference, so it is kept separate. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 110,
+     "name": "SKA-Mid Band 5a diffuse polarized synchrotron survey of nearby galaxies",
+     "paper": "Mao01",
+     "hours": 2500.0,
+     "commensal_group": null,
+     "review_note": "Mao01: 50 h per galaxy in Band 5a for a desired sample of ~50-100 nearby galaxies, taking the lower bound: 50 \u00d7 50 = 2,500 h. The arithmetic checks. Unplaced: galaxies not named.",
+     "placed": false
+    },
+    {
+     "id": 111,
+     "name": "MRC B0600-399 / MRC B1407-425 cold front observation",
+     "paper": "Akahori01",
+     "hours": 8.0,
+     "commensal_group": null,
+     "review_note": "Akahori01: \u22658 h above 45\u00b0 elevation on a Dec -40\u00b0 cold-front source (candidates MRC B0600-399 or MRC B1407-425), Band 2. The candidates differ in RA by ~8 h, so the request stays unplaced.",
+     "placed": false
+    },
+    {
+     "id": 112,
+     "name": "SKAO-PTA sub-array timing programme (AA4)",
+     "paper": "Shannon01",
+     "hours": 1157.0,
+     "commensal_group": "SKAO Pulsar Timing Array programme",
+     "review_note": "Shannon01: 174 MSPs in 8.9 h per epoch with AA4 at a two-week cadence, i.e. 26 epochs \u00d7 8.9 h = 231.4 h per year. The extraction's 231.4 h is per year, but the PTA is an ongoing multi-year programme, so hours are scaled to the 5-yr planning horizon: 231.4 \u00d7 5 = 1,157 h. Unplaced: 174 MSPs across the sky.",
+     "placed": false
+    },
+    {
+     "id": 116,
+     "name": "AA4 SKA-Mid HI mosaic survey of voids, groups and filaments",
+     "paper": "Ramatsoku01",
+     "hours": 2600.0,
+     "commensal_group": null,
+     "review_note": "Ramatsoku01: AA4 HI mosaic of voids, groups and filaments at ~40 Mpc, 200-250 deg2 at ~13 h/deg2, ~2,600 h. Consistent with 200 deg2 \u00d7 13 h. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 117,
+     "name": "Dedicated SKA-Mid (AA*) TDE follow-up programme (Bands 2/5, +Low for late-time)",
+     "paper": "TaoAn03",
+     "hours": 500.0,
+     "commensal_group": null,
+     "review_note": "TaoAn03: a dedicated AA* TDE follow-up programme 'of order 100-200 hr yr^-1'. The extraction's 100 h is one year at the lower bound; as a recurring annual programme it is scaled to the 5-yr horizon: 100 \u00d7 5 = 500 h. The shared TaoAn03/Shu01 group label is removed: Shu01's SKA+VLBI tracks are a different mode and are counted separately. Unplaced: triggered targets.",
+     "placed": false
+    },
+    {
+     "id": 118,
+     "name": "SKA1-Mid AA4 CNM structure/Zeeman study of a nearby star-forming region",
+     "paper": "Yamamoto01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Yamamoto01: a 100 h AA4 HI Zeeman/CNM integration on one nearby star-forming region (Table: integration time 100 hours). Candidates are Taurus, Lupus, Ophiuchus, MBM 53-55 and others, so it stays unplaced.",
+     "placed": false
+    },
+    {
+     "id": 121,
+     "name": "SKA-VLBI OH maser astrometry of the Nuclear Stellar Disk",
+     "paper": "Imai01",
+     "hours": 220.0,
+     "commensal_group": null,
+     "review_note": "Imai01: 11 fields \u00d7 4 h \u00d7 5 visits over a 5-yr project = 220 h in total (the arithmetic checks, and the span matches the horizon). Placed at the Galactic Centre.",
+     "placed": true
+    },
+    {
+     "id": 122,
+     "name": "SKA-Mid multi-band Tier 1 resolved-benchmark survey of nearby galaxies",
+     "paper": "Moldon01",
+     "hours": 50.0,
+     "commensal_group": null,
+     "review_note": "Moldon01: Tier 1 resolved benchmarks, 5-10 nearby galaxies at 10 h each; the lower bound gives 50 h. Unplaced: galaxies not named.",
+     "placed": false
+    },
+    {
+     "id": 123,
+     "name": "SKA-Mid Band 2 Tier 3 targeted benchmark galaxies",
+     "paper": "Moldon01",
+     "hours": 50.0,
+     "commensal_group": null,
+     "review_note": "Moldon01: Tier 3 targeted benchmarks, 100-200 galaxies at 0.5 h in Band 2; the lower bound gives 50 h. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 126,
+     "name": "Reticulum II",
+     "paper": "Regis01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Regis01: SKA-Mid Band 1 sensitivity (2.5 uJy/beam) for the same 10 h Reticulum II forecast. The 10 h is stated in the same paragraph for the SKA-Low band and in the Fig. caption ('10 hours of observing Reticulum II'). A separate telescope from #125. Placed.",
+     "placed": true
+    },
+    {
+     "id": 128,
+     "name": "Galactic Center magnetar",
+     "paper": "Regis01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Regis01: 10 h of SKA-Mid AA4 on an isolated magnetar (ALP conversion), placed at the Galactic Centre magnetar. Placed.",
+     "placed": true
+    },
+    {
+     "id": 130,
+     "name": "SKA AA4 intermediate HI cosmic-web survey (1000 deg2)",
+     "paper": "HengxingPan01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "HengxingPan01 fixes the total at ~1,000 h and simulates three alternative designs (5, 20 or 80 min per pointing over 4,000, 1,000 or 250 deg2). One design is counted: the intermediate 1,000 deg2 survey, which the paper also evaluates for AA*. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 132,
+     "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (100 deg2, 4.45'' beam)",
+     "paper": "Deg01",
+     "hours": 1200.0,
+     "commensal_group": null,
+     "review_note": "Deg01 fiducial untargeted AA4 Band 2 HI survey: 100 deg2 at a 4.45'' beam, 12 h per pointing, 1,200 h total (table value). A high-resolution tier, distinct from the 13'' tier (#133). Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 133,
+     "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (1000 deg2, 13.15'' beam)",
+     "paper": "Deg01",
+     "hours": 500.0,
+     "commensal_group": null,
+     "review_note": "Deg01 fiducial untargeted AA4 Band 2 HI survey: 1,000 deg2 at a 13.15'' beam, 30 min per pointing, 500 h total (table value). A second tier with a different resolution goal. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 134,
+     "name": "deep SKA-Mid AA4 Band 2 polarimetric imaging of merging cluster pair and connecting filament (equipartition scenario)",
+     "paper": "Vacca01",
+     "hours": 50.0,
+     "commensal_group": null,
+     "review_note": "Vacca01 concludes 'we will need to resort to deep (\u226550 h) low spatial resolution pointed observations' of merging clusters and filaments in Band 2. This is the paper's proposed approach, a lower bound per system. Unplaced: the systems are simulated.",
+     "placed": false
+    },
+    {
+     "id": 136,
+     "name": "untargeted wide-field medium-shallow Hi survey",
+     "paper": "Lelli01",
+     "hours": 900.0,
+     "commensal_group": null,
+     "review_note": "Lelli01: untargeted wide-field medium-shallow HI survey with SKA-Mid AA4 Band 2, 150 deg2 in ~900 h, to resolve ~20,000 galaxies. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 137,
+     "name": "SKA-Mid AA* all-sky RM grid and polarization survey",
+     "paper": "Sun01",
+     "hours": 7500.0,
+     "commensal_group": "SKA-Mid Band 2 all-sky polarization/continuum survey",
+     "review_note": "Sun01 restates the Magnetism SWG all-sky Band 2 polarization survey (Heald et al. 2020): 30,000 deg2, 4 uJy/beam, 15 min \u00d7 ~30,000 pointings = 7,500 h on-source. Kept as the canonical row for the Band 2 all-sky continuum/polarization tier. The paper's '~2.5 yr' includes night-only scheduling and overheads, and the night constraint is not in the extraction. Unplaced: 'all-sky' with no declination limit stated.",
+     "placed": false
+    },
+    {
+     "id": 138,
+     "name": "legacy survey of 50 nearby galaxies",
+     "paper": "Lelli01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Lelli01: a proposed high-resolution legacy survey of 50 nearby galaxies in ~1,000 h (~20 h each). Unplaced: galaxies not named.",
+     "placed": false
+    },
+    {
+     "id": 142,
+     "name": "SKA-Mid AA4 wide HI emission survey matching GALFA-HI depth",
+     "paper": "Miville-Deschenes01",
+     "hours": 600.0,
+     "commensal_group": null,
+     "review_note": "Miville-Deschenes01: a GALFA-HI-depth survey of Dec<-15\u00b0 (~75% of the southern hemisphere) in <600 h with AA4. The paper says it might run commensally with other all-sky surveys, but none is specified, so it stays ungrouped. Placed on the stated Dec<-15\u00b0 footprint.",
+     "placed": true
+    },
+    {
+     "id": 143,
+     "name": "Local Bubble walls (SKA-mid AA4 deep pointing)",
+     "paper": "Miville-Deschenes01",
+     "hours": 20.0,
+     "commensal_group": null,
+     "review_note": "Miville-Deschenes01: a proposed 20 h deep AA4 pointing to image HI in the Local Bubble walls over a 1\u00b0 field. Unplaced: field not specified.",
+     "placed": false
+    },
+    {
+     "id": 145,
+     "name": "Multi-band continuum/line survey of the NSC (centred on Sgr A*)",
+     "paper": "Schoedel01",
+     "hours": 325.0,
+     "commensal_group": null,
+     "review_note": "Schoedel01: multi-band survey of a 2.0\u00b0\u00d70.4\u00b0 field on Sgr A*: 234 h at 12.5 GHz + ~70 h at 6.7 GHz + 5 h at 1.4 GHz, stated total 325 h (the parts sum to ~309 h; the paper's total is kept). Placed on Sgr A*.",
+     "placed": true
+    },
+    {
+     "id": 146,
+     "name": "Repeated deep monitoring of the NSC (Bands 5a/5b, Sgr A*)",
+     "paper": "Schoedel01",
+     "hours": 1000.0,
+     "commensal_group": null,
+     "review_note": "Schoedel01 'propose[s]' repeated 1 h Band 5a/5b snapshots of the NSC over 5-10 yr, stacking to ~1,000 h. At least half of that falls inside the 5-yr horizon, but the paper's total is kept. Placed on Sgr A*.",
+     "placed": true
+    },
+    {
+     "id": 147,
+     "name": "Arches/Quintuplet comparison field (NSD contamination study)",
+     "paper": "Schoedel01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Schoedel01: 100 h for an NSD comparison field that 'can be pointed toward the young Arches or Quintuplet clusters'. Placed on the Arches Cluster (recorded field, SIMBAD position; Quintuplet is ~0.1\u00b0 away, so the LST is the same).",
+     "placed": true
+    },
+    {
+     "id": 148,
+     "name": "SKA-Mid Band 2 deep SED survey (EoR radio-AGN)",
+     "paper": "Afonso01",
+     "hours": 150.0,
+     "commensal_group": null,
+     "review_note": "Afonso01: a 20 deg2 Band 2 deep SED survey for EoR radio-AGN, ~150 h (0.55 deg2 effective area per pointing). A separate receiver band from #149. Unplaced: field not named.",
+     "placed": false
+    },
+    {
+     "id": 149,
+     "name": "SKA-Mid Band 1 deep SED survey (EoR radio-AGN)",
+     "paper": "Afonso01",
+     "hours": 100.0,
+     "commensal_group": null,
+     "review_note": "Afonso01: the same 20 deg2 field in Band 1, 14 pointings, ~100 h. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 151,
+     "name": "GDIGS-like RRL survey extension (SKA-Mid Band 5a, AA*)",
+     "paper": "Salas01",
+     "hours": 370.0,
+     "commensal_group": null,
+     "review_note": "Salas01: reproducing a GDIGS-like RRL survey (37 deg2, 451 pointings \u00d7 0.82 h) with AA* Band 5a in ~370 h, extended to lower declinations. The GDIGS area is not given in coordinates, so it stays unplaced.",
+     "placed": false
+    },
+    {
+     "id": 155,
+     "name": "SKA-Mid jet-misalignment follow-up sample (~60 BCGs)",
+     "paper": "Gitti01",
+     "hours": 90.0,
+     "commensal_group": null,
+     "review_note": "Gitti01: pointed follow-up of \u227360 BCGs with misaligned jets at 1.5 h each (0.5 h at three frequencies): 60 \u00d7 1.5 = 90 h. The arithmetic checks. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 157,
+     "name": "SKA-Mid Band 1 wide-area HI absorption survey (10000 deg2)",
+     "paper": "Mahony01",
+     "hours": 10000.0,
+     "commensal_group": null,
+     "review_note": "Mahony01: representative shallow SKA-Mid Band 1 HI absorption survey, ~10,000 deg2 = ~5,000 pointings \u00d7 2 h = 10,000 h. The arithmetic checks. Unplaced: no footprint stated.",
+     "placed": false
+    },
+    {
+     "id": 165,
+     "name": "SKA-Mid Band 1 component of multi-band deep survey",
+     "paper": "Algera01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Algera01 p4: Band 1 share of the multi-band deep field, ~10 h. Separate receiver band, so the group is cleared. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 166,
+     "name": "SKA-Mid Band 2 component of multi-band deep survey",
+     "paper": "Algera01",
+     "hours": 10.0,
+     "commensal_group": null,
+     "review_note": "Algera01 p4: Band 2 share of the multi-band deep field, ~10 h. Separate receiver band, so the group is cleared. Unplaced.",
+     "placed": false
+    },
+    {
+     "id": 167,
+     "name": "SKA-Mid Band 5a component of multi-band deep survey",
+     "paper": "Algera01",
+     "hours": 500.0,
+     "commensal_group": null,
+     "review_note": "Algera01 p4: Band 5a share of the multi-band deep field, ~500 h over 12 pointings. Separate receiver band, so the group is cleared. Unplaced: only candidate fields are named.",
+     "placed": false
+    },
+    {
+     "id": 168,
+     "name": "SKA-Mid Band 5b component of multi-band deep survey",
+     "paper": "Algera01",
+     "hours": 3300.0,
+     "commensal_group": null,
+     "review_note": "Algera01 p4: Band 5b share of the matched-resolution multi-band deep field (0.25 deg2, Prandoni & Seymour-style design), ~3,300 h over 39 pointings. The four Algera01 bands are separate SKA-Mid receiver bands, which cannot observe simultaneously, so the commensal group is cleared. Kept in place of Prandoni01's 5,000 h total (#97), which includes SKA-Low bands. Unplaced: COSMOS, UDS, GOODS-S and EDF-S are named only as candidate fields.",
+     "placed": false
+    },
+    {
+     "id": 175,
+     "name": "Large Magellanic Cloud",
+     "paper": "Chen01",
+     "hours": 2.0,
+     "commensal_group": null,
+     "review_note": "Chen01: 2 h phase-referenced maser astrometry toward the LMC (Band 5a). Placed.",
+     "placed": true
+    },
+    {
+     "id": 176,
+     "name": "Jupiter quadrupolar light-deflection campaign",
+     "paper": "Li01",
+     "hours": 1.0,
+     "commensal_group": null,
+     "review_note": "Li01: a Jupiter light-deflection campaign of 6 epochs \u00d7 60 samples \u00d7 ~10 s = 3,600 s = 1 h on-source. The arithmetic checks, and overheads are excluded. Unplaced: the targets move with Jupiter.",
+     "placed": false
+    },
+    {
+     "id": 180,
+     "name": "PSR J0437-4715",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 3,600 s per epoch \u00d7 30 epochs = 30 h of phased SKA-Mid VLBI on this MSP. The 'SKA1-Mid PTA MSP parallax VLBI program' label is removed: the seven pulsars are separate targets that do not share time.",
+     "placed": true
+    },
+    {
+     "id": 181,
+     "name": "PSR J0030+0451",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    },
+    {
+     "id": 182,
+     "name": "PSR J1045-4509",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    },
+    {
+     "id": 183,
+     "name": "PSR J1744-1134",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    },
+    {
+     "id": 184,
+     "name": "PSR J2124-3358",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    },
+    {
+     "id": 185,
+     "name": "PSR J2145-0750",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    },
+    {
+     "id": 186,
+     "name": "PSR J1730-2304",
+     "paper": "Takahashi01",
+     "hours": 30.0,
+     "commensal_group": null,
+     "review_note": "Takahashi01: 30 epochs \u00d7 1 h = 30 h on this MSP. Group removed: separate target, no shared time.",
+     "placed": true
+    }
+   ],
+   "lst_pressure": {
+    "telescope": "mid",
+    "planning_years": 5,
+    "n_requests_used": 30,
+    "total_demand_h": 23423.5,
+    "total_supply_h": 37230.0,
+    "lst_bins": [
+     {
+      "lst_bin": "00:00-01:00",
+      "demand_h": 875.2,
+      "supply_h": 1552.0,
+      "pressure": 0.564
+     },
+     {
+      "lst_bin": "01:00-02:00",
+      "demand_h": 871.1,
+      "supply_h": 1550.5,
+      "pressure": 0.562
+     },
+     {
+      "lst_bin": "02:00-03:00",
+      "demand_h": 867.6,
+      "supply_h": 1552.0,
+      "pressure": 0.559
+     },
+     {
+      "lst_bin": "03:00-04:00",
+      "demand_h": 863.3,
+      "supply_h": 1549.8,
+      "pressure": 0.557
+     },
+     {
+      "lst_bin": "04:00-05:00",
+      "demand_h": 901.2,
+      "supply_h": 1552.0,
+      "pressure": 0.581
+     },
+     {
+      "lst_bin": "05:00-06:00",
+      "demand_h": 924.4,
+      "supply_h": 1551.3,
+      "pressure": 0.596
+     },
+     {
+      "lst_bin": "06:00-07:00",
+      "demand_h": 931.7,
+      "supply_h": 1552.0,
+      "pressure": 0.6
+     },
+     {
+      "lst_bin": "07:00-08:00",
+      "demand_h": 936.3,
+      "supply_h": 1550.5,
+      "pressure": 0.604
+     },
+     {
+      "lst_bin": "08:00-09:00",
+      "demand_h": 934.1,
+      "supply_h": 1552.0,
+      "pressure": 0.602
+     },
+     {
+      "lst_bin": "09:00-10:00",
+      "demand_h": 931.1,
+      "supply_h": 1551.3,
+      "pressure": 0.6
+     },
+     {
+      "lst_bin": "10:00-11:00",
+      "demand_h": 930.3,
+      "supply_h": 1551.3,
+      "pressure": 0.6
+     },
+     {
+      "lst_bin": "11:00-12:00",
+      "demand_h": 906.6,
+      "supply_h": 1552.0,
+      "pressure": 0.584
+     },
+     {
+      "lst_bin": "12:00-13:00",
+      "demand_h": 899.6,
+      "supply_h": 1550.5,
+      "pressure": 0.58
+     },
+     {
+      "lst_bin": "13:00-14:00",
+      "demand_h": 911.7,
+      "supply_h": 1551.3,
+      "pressure": 0.588
+     },
+     {
+      "lst_bin": "14:00-15:00",
+      "demand_h": 1092.1,
+      "supply_h": 1550.5,
+      "pressure": 0.704
+     },
+     {
+      "lst_bin": "15:00-16:00",
+      "demand_h": 1166.7,
+      "supply_h": 1552.0,
+      "pressure": 0.752
+     },
+     {
+      "lst_bin": "16:00-17:00",
+      "demand_h": 1167.5,
+      "supply_h": 1550.5,
+      "pressure": 0.753
+     },
+     {
+      "lst_bin": "17:00-18:00",
+      "demand_h": 1164.5,
+      "supply_h": 1551.3,
+      "pressure": 0.751
+     },
+     {
+      "lst_bin": "18:00-19:00",
+      "demand_h": 1164.5,
+      "supply_h": 1551.3,
+      "pressure": 0.751
+     },
+     {
+      "lst_bin": "19:00-20:00",
+      "demand_h": 1161.5,
+      "supply_h": 1552.0,
+      "pressure": 0.748
+     },
+     {
+      "lst_bin": "20:00-21:00",
+      "demand_h": 1141.7,
+      "supply_h": 1551.3,
+      "pressure": 0.736
+     },
+     {
+      "lst_bin": "21:00-22:00",
+      "demand_h": 934.3,
+      "supply_h": 1551.3,
+      "pressure": 0.602
+     },
+     {
+      "lst_bin": "22:00-23:00",
+      "demand_h": 871.2,
+      "supply_h": 1551.3,
+      "pressure": 0.562
+     },
+     {
+      "lst_bin": "23:00-00:00",
+      "demand_h": 875.4,
+      "supply_h": 1550.5,
+      "pressure": 0.565
+     }
+    ],
+    "most_pressured_bins": [
+     {
+      "lst_bin": "16:00-17:00",
+      "demand_h": 1167.5,
+      "supply_h": 1550.5,
+      "pressure": 0.753
+     },
+     {
+      "lst_bin": "15:00-16:00",
+      "demand_h": 1166.7,
+      "supply_h": 1552.0,
+      "pressure": 0.752
+     },
+     {
+      "lst_bin": "17:00-18:00",
+      "demand_h": 1164.5,
+      "supply_h": 1551.3,
+      "pressure": 0.751
+     },
+     {
+      "lst_bin": "18:00-19:00",
+      "demand_h": 1164.5,
+      "supply_h": 1551.3,
+      "pressure": 0.751
+     },
+     {
+      "lst_bin": "19:00-20:00",
+      "demand_h": 1161.5,
+      "supply_h": 1552.0,
+      "pressure": 0.748
+     }
+    ],
+    "month_by_lst_pressure": [
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.599,
+      0.584,
+      0.58,
+      0.588,
+      0.705,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.562,
+      0.564
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.705,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.749,
+      0.736,
+      0.603,
+      0.561,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.587,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.561,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.603,
+      0.562,
+      0.564
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.562,
+      0.564
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.751,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.603,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.58,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.75,
+      0.749,
+      0.736,
+      0.602,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.603,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.6,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.704,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.748,
+      0.736,
+      0.602,
+      0.562,
+      0.565
+     ],
+     [
+      0.564,
+      0.562,
+      0.559,
+      0.557,
+      0.581,
+      0.596,
+      0.601,
+      0.604,
+      0.602,
+      0.6,
+      0.6,
+      0.584,
+      0.58,
+      0.588,
+      0.705,
+      0.752,
+      0.753,
+      0.751,
+      0.751,
+      0.749,
+      0.736,
+      0.602,
+      0.562,
+      0.565
+     ]
+    ],
+    "never_visible": [
+     "L1551 IRS5",
+     "W3A",
+     "NGC 1275",
+     "Holmberg II X-1"
+    ],
+    "unplaced_hours": 107592.0,
+    "unplaced": [
+     {
+      "name": "Medium wide HI/continuum survey",
+      "hours": 1000.0,
+      "position_note": "unnamed area, sky position not stated, only area (400 deg2)"
+     },
+     {
+      "name": "Medium deep HI survey",
+      "hours": 1000.0,
+      "position_note": "unnamed area, sky position not stated, only area (20 deg2)"
+     },
+     {
+      "name": "Deep HI survey",
+      "hours": 1000.0,
+      "position_note": "unnamed area, sky position not stated, only area (1 deg2)"
+     },
+     {
+      "name": "All-sky HI survey",
+      "hours": 10000.0,
+      "position_note": "unnamed area, sky position not stated, only area (20000 deg2)"
+     },
+     {
+      "name": "Ultra deep HI survey",
+      "hours": 10000.0,
+      "position_note": "unnamed area, sky position not stated, only area (1 deg2)"
+     },
+     {
+      "name": "SKA-Mid Band 5b astrochemistry deep integration KSP",
+      "hours": 1000.0,
+      "position_note": "unnamed protostellar/star-forming regions, no specific target or field named"
+     },
+     {
+      "name": "TNOs and Centaurs thermal survey (23 brightest known objects)",
+      "hours": 115.0,
+      "position_note": "23 named solar-system bodies (TNOs/Centaurs, e.g. Pluto, Eris, Haumea, Makemake, Quaoar), moving targets with no fixed sky position."
+     },
+     {
+      "name": "high-mass protostellar outflow cyanopolyyne survey",
+      "hours": 10.0,
+      "position_note": "generic high-mass protostellar-outflow reference case; no single named target"
+     },
+     {
+      "name": "structured protoplanetary disk sample Key Science Project (Band 5b)",
+      "hours": 1000.0,
+      "position_note": "a larger sample of structured protoplanetary disks; no single named target"
+     },
+     {
+      "name": "protostellar/outbursting protoplanetary disk survey (Band 5, 1000h iCOMs)",
+      "hours": 1000.0,
+      "position_note": "generic sample of protostellar and outbursting protoplanetary disks; no single named target"
+     },
+     {
+      "name": "SKA-Mid water maser blind survey (1 sq deg)",
+      "hours": 3000.0,
+      "position_note": "unnamed ~1 sq deg blind-search area, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid AA2 compact-binary spectral-flatness survey",
+      "hours": 100.0,
+      "position_note": "no position stated - untargeted survey of ~10,000 candidate compact-binary sources"
+     },
+     {
+      "name": "redshift-drift experiment, SKA-Mid AA*",
+      "hours": 4380.0,
+      "position_note": "unnamed 5,000 deg2 area, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid HI survey of 150 nearby galaxies (MHONGOOSE depth)",
+      "hours": 1650.0,
+      "position_note": "150 nearby galaxies at MHONGOOSE depth, not individually named"
+     },
+     {
+      "name": "SKA1-Mid AA4/AA* RM survey of known pulsars lacking RM measurements",
+      "hours": 600.0,
+      "position_note": "no single position - per-pulsar 60-min integration across >600 known Galactic-disk pulsars lacking RM at dec<30 deg; lower bound using 600 pulsars (paper also cites up to 1600 known pulsars without RMs, yielding conservatively 1000 new RMs)"
+     },
+     {
+      "name": "SKA-Mid AA* survey of known DAGN at z>3.5",
+      "hours": 50.0,
+      "position_note": "entire population of currently known DAGN at z>3.5, not individually named"
+     },
+     {
+      "name": "SKA-Mid+VLBI follow-up tracks of triggered jetted TDEs",
+      "hours": 120.0,
+      "position_note": "no fixed position - triggered follow-up of newly detected jetted TDEs from external optical/X-ray alerts; hours = lower bound 3 tracks x 8h x 1 TDE/year (paper states 1-2 TDEs/year and 3-4 tracks of >~8h each)"
+     },
+     {
+      "name": "SKA-Mid 21-cm imaging survey for higher-order statistics",
+      "hours": 5000.0,
+      "position_note": "4 deg2 subcube, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid AA4 core HI survey of massive galaxies within 10 Mpc",
+      "hours": 600.0,
+      "position_note": "at least 100 massive (M*>1e8 Msun) galaxies within 10 Mpc, not individually named"
+     },
+     {
+      "name": "SKA-VLBI methanol maser parallax survey (doubling BeSSeL sample)",
+      "hours": 300.0,
+      "position_note": "~200 new HMSFR methanol masers across the Galaxy, not individually named, to double the existing parallax sample"
+     },
+     {
+      "name": "SKA-Mid AA4 pulsar search of all Galactic globular clusters",
+      "hours": 300.0,
+      "position_note": "2 h integration per cluster x >150 known Galactic GCs (paper states \"more than 150 GCs associated with our Galaxy\"); lower bound using 150 clusters"
+     },
+     {
+      "name": "SKA-Mid deep 8-hour pulsar search of closest 10 globular clusters",
+      "hours": 80.0,
+      "position_note": "8 h per cluster x 10 closest GCs"
+     },
+     {
+      "name": "SKA-Mid Band 2 Ultra-Deep reference survey",
+      "hours": 4849.0,
+      "position_note": "unnamed 1 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 2 Deep reference survey",
+      "hours": 6080.0,
+      "position_note": "unnamed 20 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 2 Wide reference survey",
+      "hours": 12200.0,
+      "position_note": "unnamed 1000 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 5b Ultra-Deep reference survey",
+      "hours": 3146.0,
+      "position_note": "unnamed 0.04 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "AGN-oriented Band 5a wide tier (10 deg2)",
+      "hours": 300.0,
+      "position_note": "unnamed 10 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "AGN-oriented Band 5b wide tier (10 deg2)",
+      "hours": 900.0,
+      "position_note": "unnamed 10 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 5b Deep reference survey",
+      "hours": 3146.0,
+      "position_note": "unnamed 2 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKAO medium-deep Hi-galaxy cross-correlation survey",
+      "hours": 1000.0,
+      "position_note": "100 deg2, overlapping Euclid survey, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 5a diffuse polarized synchrotron survey of nearby galaxies",
+      "hours": 2500.0,
+      "position_note": "50-100 nearby galaxies, not individually named; using lower bound of 50 galaxies"
+     },
+     {
+      "name": "MRC B0600-399 / MRC B1407-425 cold front observation",
+      "hours": 8.0,
+      "position_note": "source at declination -40 deg, RA not stated (candidates MRC B0600-399, MRC B1407-425)"
+     },
+     {
+      "name": "SKAO-PTA sub-array timing programme (AA4)",
+      "hours": 1157.0,
+      "position_note": "174 MSPs distributed across the sky, no single position; converted 8.9 hr per epoch x 26 epochs/year (2-week cadence) = 231.4 h/year"
+     },
+     {
+      "name": "AA4 SKA-Mid HI mosaic survey of voids, groups and filaments",
+      "hours": 2600.0,
+      "position_note": "large contiguous ~200-250 deg2 mosaic, no specific coordinates stated"
+     },
+     {
+      "name": "Dedicated SKA-Mid (AA*) TDE follow-up programme (Bands 2/5, +Low for late-time)",
+      "hours": 500.0,
+      "position_note": "dedicated follow-up of 8-12 best TDE candidates/year (from a pool of 30-50/year given short Band 5 characterization epochs), no single position; per year, lower bound of stated 100-200 hr/yr range"
+     },
+     {
+      "name": "SKA1-Mid AA4 CNM structure/Zeeman study of a nearby star-forming region",
+      "hours": 100.0,
+      "position_note": "candidate targets: Taurus, Lupus, Ophiuchus, MBM 53/54/55, Pegasus Loop (~150 pc, high Galactic latitude); specific target(s) to be observed not finalized"
+     },
+     {
+      "name": "SKA-Mid multi-band Tier 1 resolved-benchmark survey of nearby galaxies",
+      "hours": 50.0,
+      "position_note": "5-10 nearby galaxies (D<20 Mpc), not individually named; lower bound of 5 used"
+     },
+     {
+      "name": "SKA-Mid Band 2 Tier 3 targeted benchmark galaxies",
+      "hours": 50.0,
+      "position_note": "100-200 benchmark galaxies (D<200 Mpc), not individually named; lower bound of 100 used"
+     },
+     {
+      "name": "SKA AA4 intermediate HI cosmic-web survey (1000 deg2)",
+      "hours": 1000.0,
+      "position_note": "unnamed 1000 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (100 deg2, 4.45'' beam)",
+      "hours": 1200.0,
+      "position_note": "unnamed 100 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (1000 deg2, 13.15'' beam)",
+      "hours": 500.0,
+      "position_note": "unnamed 1000 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "deep SKA-Mid AA4 Band 2 polarimetric imaging of merging cluster pair and connecting filament (equipartition scenario)",
+      "hours": 50.0,
+      "position_note": "simulated merging galaxy-cluster pair and connecting filament (Vacca et al. 2024 simulation), no coordinates stated"
+     },
+     {
+      "name": "untargeted wide-field medium-shallow Hi survey",
+      "hours": 900.0,
+      "position_note": "150 deg2, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid AA* all-sky RM grid and polarization survey",
+      "hours": 7500.0,
+      "position_note": "30,000 deg2 all-sky, unnamed pointings"
+     },
+     {
+      "name": "legacy survey of 50 nearby galaxies",
+      "hours": 1000.0,
+      "position_note": "50 unnamed nearby galaxies, no coordinates stated"
+     },
+     {
+      "name": "Local Bubble walls (SKA-mid AA4 deep pointing)",
+      "hours": 20.0,
+      "position_note": "1 deg2 field-of-view imaging the Local Bubble walls; no specific coordinates given"
+     },
+     {
+      "name": "SKA-Mid Band 2 deep SED survey (EoR radio-AGN)",
+      "hours": 150.0,
+      "position_note": "20 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 1 deep SED survey (EoR radio-AGN)",
+      "hours": 100.0,
+      "position_note": "20 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "GDIGS-like RRL survey extension (SKA-Mid Band 5a, AA*)",
+      "hours": 370.0,
+      "position_note": "extension of GDIGS Galactic-plane RRL survey towards lower declinations; no specific coordinates given"
+     },
+     {
+      "name": "SKA-Mid jet-misalignment follow-up sample (~60 BCGs)",
+      "hours": 90.0,
+      "position_note": "~60 unnamed BCGs with jet misalignment, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 1 wide-area HI absorption survey (10000 deg2)",
+      "hours": 10000.0,
+      "position_note": "unnamed 10000 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 1 component of multi-band deep survey",
+      "hours": 10.0,
+      "position_note": "unnamed 0.25 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 2 component of multi-band deep survey",
+      "hours": 10.0,
+      "position_note": "unnamed 0.25 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 5a component of multi-band deep survey",
+      "hours": 500.0,
+      "position_note": "unnamed 0.25 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "SKA-Mid Band 5b component of multi-band deep survey",
+      "hours": 3300.0,
+      "position_note": "unnamed 0.25 deg2 field, no coordinates stated"
+     },
+     {
+      "name": "Jupiter quadrupolar light-deflection campaign",
+      "hours": 1.0,
+      "position_note": "Target sources are extragalactic radio sources near Jupiter's ephemeris trajectory; position tracks Jupiter over the campaign, no fixed sky coordinates stated."
+     }
+    ],
+    "assumptions": {
+     "night_sun_alt_deg": -18.0,
+     "twilight_sun_alt_band_deg": [
+      -12.0,
+      12.0
+     ],
+     "min_sun_separation_deg": 0.0,
+     "default_min_elevation_deg": 45.0,
+     "maintenance_fraction": 0.15,
+     "time_step_min": 10,
+     "lst_bin_h": 1,
+     "planning_years": 5,
+     "min_elevation_deg": 45.0,
+     "sun": "per request",
+     "year_start": "2027-01-01",
+     "note": "Unverified defaults (config.SCHEDULING); need an SKAO owner."
+    }
+   }
+  }
+ },
+ "duplicates_resolved": 32
+};
