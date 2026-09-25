@@ -41,6 +41,10 @@ TEXTBOOKS_CHROMA_DIR = HERE / "chroma_textbooks"
 # SIMBAD (see rag/source_db.py). Rebuildable: `python -m rag.source_db`.
 SOURCES_DB_PATH = HERE / "sources.db"
 
+# SQLite database of references cited by the papers (see rag/citation_db.py).
+# Rebuildable offline: `python -m rag.citation_db`.
+CITATIONS_DB_PATH = HERE / "citations.db"
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
 # recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
 # are already covered — not listed separately here to avoid double-discovery.

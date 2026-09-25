@@ -60,6 +60,8 @@ resolve_object_tool, ned_lookup_tool, cone_search_tool
 build_source_db_tool, query_sources_tool, get_source_mentions_tool,
 list_unresolved_sources_tool
                         Database of sources named in the papers (SIMBAD-resolved).
+build_citation_db_tool, top_cited_papers_tool, citing_papers_tool
+                        Database of references cited by the papers (most-cited works).
 
 Resources
 ---------
@@ -101,7 +103,7 @@ import requests
 from fastmcp import FastMCP
 
 from rag import store
-from rag import corpus_tools, source_db
+from rag import citation_db, corpus_tools, source_db
 from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
     DOC_SOURCE_AASKAII,
@@ -1303,6 +1305,63 @@ def list_unresolved_sources_tool(limit: int = 200) -> str:
         limit: Max rows (default 200).
     """
     return json.dumps(source_db.unresolved_names(source_db.connect(), limit))
+
+
+# ---------------------------------------------------------------------------
+# Citation database: references cited by the papers, parsed from their
+# reference lists (offline; no external lookups).
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def build_citation_db_tool() -> str:
+    """Rebuild the database of references cited by the indexed papers, parsed
+    from each paper's reference list. Offline, takes ~10 s. Returns counts
+    and the papers where no references were parsed.
+    """
+    return json.dumps(citation_db.build_citation_db())
+
+
+@mcp.tool()
+def top_cited_papers_tool(
+    book: str | None = None,
+    section: str | None = None,
+    since_year: int | None = None,
+    min_papers: int = 1,
+    limit: int = 50,
+) -> str:
+    """Works most cited by the corpus, ranked by how many corpus papers cite
+    each, with an example reference string, DOI/arXiv id and the citing papers.
+
+    The same work is matched across citation styles by first author, year,
+    volume and page (or DOI/arXiv id), so counts are a lower bound where
+    papers cite a work inconsistently (e.g. arXiv-only vs journal version).
+    Chapters of the two books themselves appear with keys like
+    "aaskaii:taoan02" or "aaska14:67" (PoS id).
+
+    Args:
+        book: "aaskaii" or "aaska2015" — only count citations from that book.
+        section: Book section, as list_documents names it.
+        since_year: Only works published in or after this year.
+        min_papers: Only works cited by at least this many papers.
+        limit: Max rows (default 50).
+    """
+    book_tag = corpus_tools.BOOKS.get(book, book) if book else None
+    return json.dumps(citation_db.top_cited(
+        citation_db.connect(), book_tag, section, since_year, min_papers, limit,
+    ))
+
+
+@mcp.tool()
+def citing_papers_tool(text: str, limit: int = 100) -> str:
+    """Which corpus papers cite a given work: searches every reference string
+    (case-insensitive substring) and groups matches by cited work.
+
+    Args:
+        text: E.g. "Condon", "1998, AJ, 115" or a DOI/arXiv id.
+        limit: Max cited works returned (default 100).
+    """
+    return json.dumps(citation_db.citing_papers(citation_db.connect(), text, limit))
 
 
 # Fixed taxonomies from the AASKAII Atlas run, so parallel agents tag the same

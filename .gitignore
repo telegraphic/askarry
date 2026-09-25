@@ -12,6 +12,7 @@ venv/
 chroma_db/
 chroma_textbooks/
 sources.db
+citations.db
 pdfs/**
 !pdfs/download.py
 !pdfs/download_errors.txt
