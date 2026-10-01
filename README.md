@@ -89,21 +89,16 @@ Note this is a personal learning prototype / experiment that comes with no suppo
 ## Setup
 
 ```bash
-# 1. Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate
+# 1. Create .venv and install dependencies (uses pyproject.toml / uv.lock)
+uv sync
 
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Add PDFs to the pdfs/ folder
+# 2. Add PDFs to the pdfs/ folder
 mkdir -p pdfs
 cp ~/Downloads/my_paper.pdf pdfs/
 ```
 
-> All commands below (`python ingest.py`, `python app.py`, etc.) assume the
-> `.venv` is activated — remember to `source .venv/bin/activate` first in
-> every new shell.
+> Commands below (`python ingest.py`, `python app.py`, etc.) are shown bare;
+> run them as `uv run python ingest.py` (or `source .venv/bin/activate` first).
 
 ---
 
@@ -362,5 +357,6 @@ astronomy-rag/
 ├── ingest.py                 ← Run this first
 ├── app.py                    ← Gradio web UI (Ask a Question / Table of Contents tabs)
 ├── mcp_server.py             ← MCP server for Claude Desktop (retrieval-only; Claude generates)
-└── requirements.txt
+├── pyproject.toml            ← Dependencies (uv)
+└── uv.lock
 ```

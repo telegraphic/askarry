@@ -1,0 +1,39 @@
+[project]
+name = "astronomy-rag"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "docling>=2.0.0",
+    "sentence-transformers>=3.0.0",
+    "chromadb>=0.5.0",
+    "ollama>=0.2.0",
+    "rank-bm25>=0.2.2",
+    "gradio>=4.0.0",
+    "loguru>=0.7.0",
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "fastmcp>=2.0.0",
+    "scholarly>=1.7.0",
+    "bibtexparser<2",  # scholarly imports bibtexparser.bibdatabase
+    "param>=2.2.0,<3",
+    "numexpr>=2.10.2,<3",
+    "simplejson>=3.20.1,<4",
+    "astropy>=6.1,<7.0",
+    "PyYAML>=6.0.2,<7",
+    "astroquery>=0.4.11",
+    "ska-ost-array-config>=4.5.0",
+    "numpy<2.3",  # astropy 6.1 uses np.in1d
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+# Not on public PyPI
+[[tool.uv.index]]
+name = "skao"
+url = "https://artefact.skao.int/repository/pypi-internal/simple"
+
+[tool.uv]
+package = false
