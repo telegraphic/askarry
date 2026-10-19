@@ -1,6 +1,6 @@
 # ASKARRY — SKA documentation search for Claude (MCP server)
 
-ASKARRY is an [MCP](https://modelcontextprotocol.io) server that gives Claude searchable access to the [Advancing Astrophysics with the SKA II](https://www.skao.int/en/science-users/aaskaii) (AASKAII) book, its 2015 predecessor and the public [SKA Key Capabilities documents](https://www.skao.int/en/science-users/122/relevant-documents). It also bundles MCP access to SKA observing-setup tools: the (SKAO sensitivity calculator)[https://sensitivity-calculator.skao.int/], (setup validator)[https://setup-validator.skao.int/], a data-volume estimator, a SIMBAD/NED astronomical source lookup and a Google scholar search.
+ASKARRY is an [MCP](https://modelcontextprotocol.io) server that gives Claude searchable access to the [Advancing Astrophysics with the SKA II](https://www.skao.int/en/science-users/aaskaii) (AASKAII) book, its 2015 predecessor and the public [SKA Key Capabilities documents](https://www.skao.int/en/science-users/122/relevant-documents). It also bundles MCP access to SKA observing-setup tools: the [SKAO sensitivity calculator](https://sensitivity-calculator.skao.int/), [setup validator](https://setup-validator.skao.int/), a data-volume estimator, a SIMBAD/NED astronomical source lookup and a Google scholar search.
 
 ASKARRY runs a search/retrieval of relevant data a through hybrid semantic + BM25 search, then passes the search results to Claude (or your favorite AI), which uses the response to generate answers. 
 
