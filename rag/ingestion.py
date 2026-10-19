@@ -17,11 +17,9 @@ import shutil
 import unicodedata
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import chromadb
-from docling.chunking import HybridChunker
-from docling.document_converter import DocumentConverter
-from docling_core.transforms.chunker.tokenizer.huggingface import HuggingFaceTokenizer
 from loguru import logger
 
 from . import store
@@ -51,6 +49,11 @@ logging.getLogger("transformers.tokenization_utils_base").setLevel(logging.ERROR
 # ---------------------------------------------------------------------------
 # Worker-process state (populated once per worker by _worker_init)
 # ---------------------------------------------------------------------------
+# docling is the optional `ingest` extra, so it is imported inside _worker_init.
+if TYPE_CHECKING:
+    from docling.chunking import HybridChunker
+    from docling.document_converter import DocumentConverter
+
 _worker_converter: DocumentConverter | None = None
 _worker_chunker: HybridChunker | None = None
 
@@ -59,6 +62,11 @@ def _worker_init(chunk_size: int, embedding_model_name: str) -> None:
     """Load heavy resources once per worker process to avoid per-file overhead."""
     global _worker_converter, _worker_chunker
     # Use AutoTokenizer (lighter than full SentenceTransformer) for chunking only
+    from docling.chunking import HybridChunker  # noqa: PLC0415
+    from docling.document_converter import DocumentConverter  # noqa: PLC0415
+    from docling_core.transforms.chunker.tokenizer.huggingface import (  # noqa: PLC0415
+        HuggingFaceTokenizer,
+    )
     from transformers import AutoTokenizer  # noqa: PLC0415
     tokenizer = AutoTokenizer.from_pretrained(embedding_model_name)
     _worker_converter = DocumentConverter()

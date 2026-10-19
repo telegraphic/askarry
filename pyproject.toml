@@ -1,14 +1,13 @@
 [project]
 name = "astronomy-rag"
 version = "0.1.0"
+description = "MCP server for searching the AASKAII / SKA documents and SKA observing-setup tools"
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "docling>=2.0.0",
     "sentence-transformers>=3.0.0",
     "chromadb>=0.5.0",
-    "ollama>=0.2.0",
     "rank-bm25>=0.2.2",
-    "gradio>=4.0.0",
     "loguru>=0.7.0",
     "requests>=2.31.0",
     "beautifulsoup4>=4.12.0",
@@ -24,6 +23,12 @@ dependencies = [
     "ska-ost-array-config>=4.5.0",
     "numpy<2.3",  # astropy 6.1 uses np.in1d
 ]
+
+[project.optional-dependencies]
+# Building the index from PDFs (`python ingest.py`); not needed to run the MCP server.
+ingest = ["docling>=2.0.0"]
+# Deprecated Gradio GUI (deprecated/gradio_app.py) with a local Ollama model.
+gui = ["gradio>=4.0.0", "ollama>=0.2.0"]
 
 [dependency-groups]
 dev = [

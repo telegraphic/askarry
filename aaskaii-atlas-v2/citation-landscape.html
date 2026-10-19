@@ -21,13 +21,18 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Citation Landscape</h1>
-    <p class="lede">The reference lists of the AASKAII chapters show which earlier works the book builds on. Counting, for every cited work, how many chapters cite it separates the shared foundations of the science case from the literature of individual communities.</p>
+    <p class="lede">The reference lists of the AASKAII chapters show which earlier works the book builds on. For every cited work, the page counts how many chapters cite it. This count separates the shared foundations of the science case from the literature of individual communities.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
+    <p class="note key" id="key"></p>
+    <section id="age"><h2>How recent the literature is</h2>
+      <p class="muted" id="agenote"></p>
+      <figure class="figure chart"><div id="years"></div></figure>
+    </section>
     <section class="prose"><h2>What the book stands on</h2>
-      <p>The most widely cited work is the anticipated-performance paper for SKA Phase 1 by Braun and collaborators, which about forty chapters cite; it is the common source for sensitivities across the book, and its prominence explains why so many chapters quote figures that agree with one another. The next tier consists of the reference papers of the precursor and pathfinder surveys, above all LOFAR and its two-metre sky survey, together with the Magnetism Science Working Group's survey definitions and the review literature on cluster radio emission. Several AASKAII chapters also cite one another, which is visible in the list as works dated 2026.</p>
-      <p>Per section the pattern changes: solar and planetary chapters cite the LOFAR instrument paper and Kontar's studies of radio-wave scattering in the corona, stellar-formation chapters cite the review of high-mass star formation by Motte and collaborators, and the extreme-universe chapters cite the ATNF pulsar catalogue of Manchester and collaborators. Reference strings are parsed automatically, so a small number of entries have their author field taken from a journal abbreviation; the table shows the raw reference so that each entry can be judged on its own.</p>
+      <p>The most widely cited work is the paper by Braun and collaborators on the anticipated performance of SKA Phase 1, which about forty chapters cite. It is the common source of sensitivities across the book, which explains why so many chapters quote figures that agree with one another. The next tier holds the reference papers of the precursor and pathfinder surveys, above all LOFAR and its Two-metre Sky Survey. It also holds the survey definitions of the Magnetism Science Working Group and the reviews of radio emission from galaxy clusters. Several AASKAII chapters cite one another as well, and these appear in the list as works dated 2026.</p>
+      <p>The pattern changes from section to section. The solar and planetary chapters cite the LOFAR instrument paper and Kontar's studies of how the corona scatters radio waves. The stellar-formation chapters cite the review of high-mass star formation by Motte and collaborators. The extreme-universe chapters cite the ATNF pulsar catalogue of Manchester and collaborators. A script parses the reference strings automatically, so a few entries take their author from a journal abbreviation. The table therefore shows each reference as written, so that you can judge each entry on its own.</p>
     </section>
     <section id="top"><h2>Most-cited works</h2></section>
     <section><h2>By book section</h2><div class="secgrid" id="bysec"></div></section>
@@ -44,6 +49,25 @@ const stats = document.getElementById("stats");
 [[C.overall[0].n_papers, "chapters cite the top work"], [C.overall.filter(r => r.n_papers >= 10).length, "works cited by 10+ chapters"],
  [Object.keys(C.by_section).length, "sections"]].forEach(([n, l]) =>
   stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+// Year histogram of every distinct cited work; years after the book are parsing errors and are left out.
+{
+  const Y = C.year_histogram, ys = Object.entries(Y.by_year).filter(([y]) => y !== "unknown").map(([y, n]) => [+y, n]);
+  const ok = ys.filter(([y]) => y >= 1950 && y <= 2026), y0 = 1950, y1 = 2026, early = ys.filter(([y]) => y < 1950).reduce((a, [, n]) => a + n, 0);
+  const bad = ys.filter(([y]) => y > 2026).reduce((a, [, n]) => a + n, 0) + (Y.by_year.unknown || 0);
+  const all = ok.flatMap(([y, n]) => Array(n).fill(y)).sort((a, b) => a - b), med = all[Math.floor(all.length / 2)], q = all[Math.floor(all.length / 4)];
+  const recent = all.filter(y => y >= 2020).length;
+  document.getElementById("key").textContent = `The book draws on ${fmt(Y.n_works)} distinct works, and it leans on recent ones. Half were published in ${med} or later, and ${fmt(100 * recent / all.length)}% since 2020; only a quarter predate ${q}. ` +
+    `The most widely shared foundation is ${C.overall[0].first_author[0].toUpperCase() + C.overall[0].first_author.slice(1)} et al. (${C.overall[0].year}), which ${C.overall[0].n_papers} chapters cite.`;
+  document.getElementById("agenote").textContent = `Each bar counts the distinct works that at least one chapter cites, by year of publication from ${y0} to ${y1}. The chart leaves out ${fmt(early)} older works and ${fmt(bad)} works whose year could not be read or was read as later than the book.`;
+  const W = 1000, H = 240, L = 44, R = 10, B = 26, Tp = 10, bw = (W - L - R) / (y1 - y0 + 1), maxN = Math.max(...ok.map(([, n]) => n));
+  const y = n => H - B - (H - B - Tp) * n / maxN;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cited works per publication year">`;
+  [0, 500, 1000].filter(v => v <= maxN).forEach(v => s += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`);
+  ok.forEach(([yr, n]) => s += `<rect x="${L + (yr - y0) * bw + 0.5}" y="${y(n)}" width="${Math.max(1, bw - 1.5)}" height="${H - B - y(n)}" rx="1.5" fill="var(--s1)" data-tip="${yr}: ${fmt(n)} works"/>`);
+  for (let yr = 1950; yr <= 2020; yr += 10) s += `<text x="${L + (yr - y0) * bw + bw / 2}" y="${H - 8}" text-anchor="middle">${yr}</text>`;
+  s += `<line x1="${L + (med - y0) * bw + bw / 2}" x2="${L + (med - y0) * bw + bw / 2}" y1="${Tp}" y2="${H - B}" stroke="var(--ink-soft)" stroke-width="1.5"/><text x="${L + (med - y0) * bw - 4}" y="${Tp + 10}" text-anchor="end">median ${med}</text>`;
+  document.getElementById("years").innerHTML = s + "</svg>";
+}
 const link = r => r.doi ? el("a", {href: `https://doi.org/${r.doi}`}, r.raw) : r.arxiv ? el("a", {href: `https://arxiv.org/abs/${r.arxiv}`}, r.raw) : r.raw;
 table(document.getElementById("top"), [
   {key: "raw", label: "Reference (as parsed)", render: r => link(r)},
@@ -55,7 +79,7 @@ const host = document.getElementById("bysec");
 SECTIONS.forEach(s => {
   const rs = (C.by_section[s] || []).slice(0, 6);
   host.append(el("div", {class: "figure"}, el("h3", {}, s),
-    el("ol", {}, rs.map(r => el("li", {}, el("span", {class: "num"}, `${r.n_papers}× `), link(r), el("div", {class: "muted"}, "cited by ", papers(r.papers, 3)))))));
+    el("ol", {}, rs.map(r => el("li", {}, el("span", {class: "num"}, `${r.n_papers}× `), link(r), el("div", {class: "muted"}, "Cited by ", papers(r.papers, 3)))))));
 });
 </script>
 </body>

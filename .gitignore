@@ -19,10 +19,16 @@ pdfs/**
 !pdfs/build_bibliography.py
 !pdfs/build_bibliography_aaska2015.py
 !pdfs/bibliography.json
-aaskaii-atlas-v0.zip
-.gitignore
-aaskaii-atlas.zip
 
 # Reference clone of the upstream Google Scholar MCP server (ported into
 # rag/google_scholar.py) - has its own nested .git and .venv, not ours to track
 google-scholar/
+
+# Packaging / local clutter
+*.zip
+_to_delete/
+.pytest_cache/
+.ruff_cache/
+.claude/settings.json
+.claude/settings.local.json
+.claude/worktrees/

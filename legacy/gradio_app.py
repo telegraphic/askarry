@@ -1,8 +1,13 @@
 """
-Gradio web UI for the SKA RAG system.
+DEPRECATED: Gradio web UI for the SKA RAG system.
 
-Usage:
-    python app.py
+The supported way to use this project is the MCP server (`mcp_server.py`),
+which hands retrieval to Claude. This UI is kept only as a local-LLM demo
+(retrieval plus an Ollama model writing the answer) and is no longer
+maintained. Its dependencies are the optional `gui` extra.
+
+Usage (from the repository root):
+    uv run --extra gui python -m legacy.gradio_app
 """
 
 from __future__ import annotations
@@ -37,6 +42,14 @@ from rag.config import (
 from rag.generation import stream_answer
 from rag.ingestion import ACRONYM_CATEGORIES, find_acronym_candidates
 from rag.retrieval import retrieve, warmup
+
+warnings.warn(
+    "legacy/gradio_app.py is deprecated and unmaintained; use mcp_server.py.",
+    DeprecationWarning,
+    stacklevel=1,
+)
+
+_REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # ---------------------------------------------------------------------------
 # Core query function
@@ -316,7 +329,7 @@ def _allowed_source_paths() -> list[str]:
     """Return the source directories Gradio is allowed to serve."""
     paths = [str(path.resolve()) for path in PDF_DIRS if path.exists()]
     # Also allow the app directory so local assets like logo.png are served
-    app_dir = str(Path(__file__).parent.resolve())
+    app_dir = str(_REPO_ROOT)
     if app_dir not in paths:
         paths.append(app_dir)
     return paths
@@ -477,13 +490,13 @@ _TAILWIND_HEAD = '<script src="https://cdn.tailwindcss.com"></script>'
 
 # Custom styling (font sizing, citation links, progress bar, etc.) lives in
 # static/style.css and is loaded via `css_paths=` in demo.launch() below.
-_CUSTOM_CSS_PATH = Path(__file__).parent / "static" / "style.css"
+_CUSTOM_CSS_PATH = _REPO_ROOT / "static" / "style.css"
 
 with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
     gr.Markdown(
                 f"""
                 <div class="mb-3 flex items-center gap-4">
-                    <img src="{_gradio_file_url(Path('logo.png').resolve())}" alt="SKARRY logo" class="h-28 w-28 rounded-2xl object-contain shadow-sm" />
+                    <img src="{_gradio_file_url((_REPO_ROOT / 'logo.png'))}" alt="SKARRY logo" class="h-28 w-28 rounded-2xl object-contain shadow-sm" />
                     <div>
                         <h1 class="m-0 text-3xl font-bold tracking-tight">ASKARRY - Advancing Astrophysics with the SKA II RAG search</h1>
                         <p class="mb-0 mt-1 text-base opacity-80">Ask questions about SKA science. Run <code>python ingest.py</code> first to index your PDFs.</p>
@@ -519,17 +532,21 @@ with gr.Blocks(title="ASKArry: SKA RAG documentation search") as demo:
             # own pending overlay/progress bar entirely — progress is shown
             # via the custom HTML bar yielded into `status_box` instead (see
             # `_progress_bar_html` / `_run_retrieve_with_progress`).
+            # `api_visibility="private"` keeps the Ollama-backed handler out of
+            # the Gradio MCP server (and API); the UI still uses it.
             submit_btn.click(
                 answer_question,
                 inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
                 show_progress="hidden",
+                api_visibility="private",
             )
             query_box.submit(
                 answer_question,
                 inputs=[query_box, audience_radio],
                 outputs=[status_box, answer_box, sources_box],
                 show_progress="hidden",
+                api_visibility="private",
             )
 
         with gr.Tab("Browse Chapters"):

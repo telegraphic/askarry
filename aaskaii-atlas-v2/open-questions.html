@@ -21,17 +21,18 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Open Questions</h1>
-    <p class="lede">A science case is defined as much by what it admits it does not know as by what it plans to measure. This page gathers the statements in which AASKAII chapters say that something remains unclear, debated or untested, each quoted from the chapter and checked against it, so that the book's unknowns can be read side by side.</p>
+    <p class="lede">A science case is defined as much by what it admits it does not know as by what it plans to measure. This page gathers every statement in which an AASKAII chapter says that something remains unclear, debated or untested. Each statement is quoted from its chapter and has been checked against it, so you can read the book's unknowns side by side.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="prose"><h2>How to read the list</h2>
-      <p>The section agents searched every chapter for the language of open problems ("remains unclear", "open question", "poorly understood", "will test") and quoted the sentence that states each one. The short theme label beside each quote was assigned by the agent to aid browsing; it is an editorial summary, whereas the quotation is the evidence. Version 1 grouped such statements into ten clusters by judgement; this version keeps every statement and lets the filter do the grouping, so that no question disappears into a cluster boundary.</p>
+    <section id="bysec"><h2>Where the book admits it does not know</h2>
+      <p class="muted">Each bar shows how many open questions the chapters of a section raise. Click a bar to show only that section's statements below.</p>
     </section>
     <section id="list"><h2>Statements by section</h2>
       <div class="controls" id="filters"></div>
       <div class="qlist" id="qs"></div>
     </section>
+    <section><details class="method"><summary>How to read the list</summary><div class="prose"><p>The section agents searched every chapter for the language of open problems, such as "remains unclear", "open question", "poorly understood" and "will test". They quoted the sentence that states each problem. The agent also gave each quote a short theme label to help you browse. That label is an editorial summary, whereas the quotation is the evidence. The page keeps every statement instead of grouping them into clusters, and you can use the filter to group them yourself. As a result, no question is lost at the boundary between two clusters.</p></div></details></section>
   </main>
 </div>
 <script src="data/chapters.js"></script>
@@ -61,6 +62,11 @@ function draw() {
       el("span", {class: `pill ${r.verification === "verbatim" ? "good" : "warn"}`}, r.verification)))));
 }
 q.oninput = draw; fSec.onchange = draw;
+const per = SECTIONS.map(s => ({label: s, value: rows.filter(r => r.section === s).length, chapters: new Set(rows.filter(r => r.section === s).map(r => r.paper)).size}));
+bars(document.getElementById("bysec"), per.map(p => ({...p, note: `${p.chapters} chapters`})), {unit: " questions"});
+document.querySelectorAll("#bysec .bar-row").forEach((row, i) => Object.assign(row, {tabIndex: 0, role: "button", style: "cursor:pointer",
+  onclick: () => { fSec.value = SECTIONS[i]; draw(); document.getElementById("list").scrollIntoView({behavior: "smooth"}); },
+  onkeydown: e => { if (e.key === "Enter") row.click(); }}));
 draw();
 </script>
 </body>

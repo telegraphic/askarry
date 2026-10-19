@@ -115,6 +115,8 @@ from rag import store
 from rag import citation_db, corpus_tools, scheduling, source_db
 from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
+    CHROMA_DIR,
+    CITATIONS_DB_PATH,
     DOC_SOURCE_AASKAII,
     DOC_SOURCE_LABELS,
     DOC_SOURCE_SKA_CAPABILITIES,
@@ -123,6 +125,7 @@ from rag.config import (
     MCP_TEXTBOOK_TOP_K,
     MCP_TOP_K,
     SKA_CAPABILITIES_DIR,
+    SOURCES_DB_PATH,
     SUPPORTED_SUFFIXES,
     TEXTBOOKS_CHROMA_DIR,
     TEXTBOOKS_DIR,
@@ -1685,5 +1688,42 @@ def atlas_taxonomies() -> str:
     return json.dumps(ATLAS_TAXONOMIES)
 
 
+def _missing_data() -> list[Path]:
+    """Databases the server needs that are not on disk (see README, "Get the data")."""
+    needed = [CHROMA_DIR, SOURCES_DB_PATH, CITATIONS_DB_PATH]
+    return [path for path in needed if not path.exists()]
+
+
+def main() -> None:
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description="ASKARRY MCP server.")
+    parser.add_argument(
+        "--transport", choices=["stdio", "http"], default="stdio",
+        help="stdio (default) for clients that launch the server, e.g. Claude Desktop; "
+             "http to serve on the network at /mcp",
+    )
+    parser.add_argument("--host", default="127.0.0.1", help="http only (use 0.0.0.0 to share)")
+    parser.add_argument("--port", type=int, default=8000, help="http only")
+    args = parser.parse_args()
+
+    # Report on stderr: stdout carries the protocol in stdio mode.
+    missing = _missing_data()
+    if missing:
+        print(
+            "ASKARRY: missing data: " + ", ".join(str(p) for p in missing)
+            + "\nUnpack the shared databases next to mcp_server.py or set ASKARRY_DATA_DIR "
+              "(see README).",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    if args.transport == "http":
+        mcp.run(transport="http", host=args.host, port=args.port)
+    else:
+        mcp.run()
+
+
 if __name__ == "__main__":
-    mcp.run()
+    main()

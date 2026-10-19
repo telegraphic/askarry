@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['books_diff'] = {
  "generated": {
-  "git_sha": "a037c7f",
-  "date": "2026-09-25",
+  "git_sha": "8486317",
+  "date": "2026-10-04",
   "args": {
    "topic_terms_2015": {
     "Cosmology": "cosmology|cosmological",

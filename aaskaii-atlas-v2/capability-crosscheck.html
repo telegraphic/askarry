@@ -14,20 +14,30 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Capability Cross-Check</h1>
-    <p class="lede">A requirement matters only if some stage of the telescope can meet it. This page asks, for every requirement in the register, whether the band, resolution, bandwidth or mode it needs is available in the observing contexts the SKAO has defined for science verification and the first cycles, needs the full AA4 design, or lies outside what is planned at all.</p>
+    <p class="lede">A requirement matters only if some stage of the telescope can meet it. For every requirement in the register, this page asks where the band, resolution, bandwidth or mode it needs becomes available. There are three possible answers. The SKAO may already offer it in the contexts defined for science verification and the first cycles, it may need the full AA4 design, or it may lie outside anything planned.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="prose" id="reading"><h2>How the verdicts were reached</h2>
-      <p>Static capability documents describe the full design, whereas the setup validator enforces the limits of each defined context, so the checking agent consulted the validator's schemas and rules for the SV-AA2, SV-AA*, Cycle 0 and Cycle 1 contexts first and used the capability documents only for what the schemas do not cover. A requirement is marked available at AA* when the schemas allow its configuration in an AA* or early-cycle context, AA4-only when it needs the longest baselines, the full dish count or another AA4 feature, outside the current contexts when neither the contexts nor the design baseline provide it, and not addressed when both sources are silent. Silence is never read as support, which corrects the version 1 page, whose verdicts drew on documents alone.</p>
+    <p class="note key" id="key"></p>
+    <section id="bysec"><h2>Verdicts by section</h2>
+      <p class="muted">Each bar divides a section's requirements by verdict. Hover over a segment to see the number of requirements it holds.</p>
+      <figure class="figure chart"><div id="stack"></div><div id="stacklegend"></div></figure>
     </section>
-    <section id="split"><h2>Verdicts</h2></section>
     <section class="prose"><h2>What the verdicts show</h2>
-      <p>Just over half of the register, 239 of 456 requirements, can be met in an AA* or early-cycle context, and a further 186 need the full AA4 design, so the book's stated demands divide almost evenly between what the first observing cycles can deliver and what must wait for the complete array. The balance shifts from section to section. The stellar-formation chapters and the methods chapters lean toward AA4, because resolving disk rings, jet-launching regions and long VLBI baselines requires the longest baselines, whereas the solar and cosmology chapters lean toward AA*, whose surface-brightness sensitivity and field of view already serve most of their cases.</p>
-      <p>Seventeen requirements fall outside every defined context and the design baseline, and they cluster around the gaps in frequency coverage rather than around sensitivity. Water masers at 22 GHz and the proposed Band 6 above 15.4 GHz account for several; the 1.76–4.6 GHz gap left by the unbuilt Bands 3 and 4 accounts for several more; the rest ask for SKA-Low above 350 MHz, 14-Hz zoom channels on SKA-Low, or a 400 MHz transient buffer. Consequently, the register identifies receiver coverage, not collecting area, as the main place where the science case outruns the planned telescope.</p>
+      <p>Just over half of the register, 239 of 456 requirements, can be met in an AA* or early-cycle context. A further 186 need the full AA4 design. The book's stated demands therefore divide almost evenly between what the first observing cycles can deliver and what must wait for the complete array. The balance shifts from section to section. The stellar-formation and methods chapters lean toward AA4, because they need the longest baselines to resolve disk rings, jet-launching regions and VLBI targets. In contrast, the solar and cosmology chapters lean toward AA*, whose surface-brightness sensitivity and field of view already serve most of their cases.</p>
+      <p>Seventeen requirements fall outside every defined context and outside the design baseline. They cluster around gaps in frequency coverage, not around sensitivity. Several concern water masers at 22 GHz or the proposed Band 6 above 15.4 GHz. Several more fall in the 1.76–4.6 GHz gap left by the unbuilt Bands 3 and 4. The rest ask for SKA-Low above 350 MHz, for 14-Hz zoom channels on SKA-Low, or for a 400 MHz transient buffer. Consequently, the register shows that receiver coverage, not collecting area, is where the science case most outruns the planned telescope.</p>
     </section>
-    <section id="bysec"><h2>Verdicts by section</h2></section>
     <section id="checks"><h2>Every requirement</h2></section>
+    <section><details class="method"><summary>How the verdicts were reached</summary><div class="prose">
+      <p>The static capability documents describe the full design, whereas the setup validator enforces the limits of each defined context. The checking agent therefore consulted the validator's schemas and rules first, for the SV-AA2, SV-AA*, Cycle 0 and Cycle 1 contexts. It used the capability documents only for questions that the schemas do not cover. Each requirement then received one of four verdicts:</p>
+      <ul>
+        <li><b>Available at AA*</b> means that the schemas allow its configuration in an AA* or early-cycle context.</li>
+        <li><b>AA4 only</b> means that it needs the longest baselines, the full number of dishes or another AA4 feature.</li>
+        <li><b>Outside current contexts</b> means that neither the contexts nor the design baseline provide it.</li>
+        <li><b>Not addressed</b> means that both sources are silent.</li>
+      </ul>
+      <p>Silence is never read as support.</p>
+    </div></details></section>
   </main>
 </div>
 <script src="data/chapters.js"></script>
@@ -44,10 +54,23 @@ const CLS = {available_aastar: "good", aa4_only: "warn", not_in_current_contexts
 const stats = document.getElementById("stats");
 [[rows.length, "requirements checked"], ...Object.keys(LABEL).map(k => [rows.filter(r => r.verdict === k).length, LABEL[k]])]
   .forEach(([v, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(v)), el("span", {class: "l"}, l))));
-bars(document.getElementById("split"), Object.keys(LABEL).map(k => ({label: LABEL[k], value: rows.filter(r => r.verdict === k).length,
-  color: `var(--${{good: "good", warn: "warn", bad: "bad", neutral: "ink-faint"}[CLS[k]]})`})), {unit: " requirements"});
-table(document.getElementById("bysec"), [{key: "s", label: "Section"}, ...Object.keys(LABEL).map(k => ({key: k, label: LABEL[k], num: true}))],
-  SECTIONS.map(s => ({s, ...Object.fromEntries(Object.keys(LABEL).map(k => [k, rows.filter(r => r.section === s && r.verdict === k).length]))})));
+const COLOR = {available_aastar: "var(--good)", aa4_only: "var(--warn)", not_in_current_contexts: "var(--bad)", not_addressed: "var(--ink-faint)"};
+const K = Object.keys(LABEL), cnt = (s, k) => rows.filter(r => (!s || r.section === s) && r.verdict === k).length;
+document.getElementById("key").textContent = `An AA* or early-cycle context can meet ${cnt(null, "available_aastar")} of the ${rows.length} requirements, and another ${cnt(null, "aa4_only")} need the full AA4 design. ` +
+  `No planned context provides ${cnt(null, "not_in_current_contexts")} of them, and these cluster around gaps in receiver coverage, not around collecting area.`;
+{
+  const groups = [null, ...SECTIONS], W = 1000, L = 190, R = 50, rh = 30, H = groups.length * rh + 8;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Capability verdicts by section">`;
+  groups.forEach((g, i) => { const tot = K.reduce((a, k) => a + cnt(g, k), 0), y = 4 + i * rh; let x = L;
+    s += `<text x="${L - 10}" y="${y + rh / 2 + 3}" text-anchor="end" ${g ? "" : 'font-weight="600"'}>${esc(g ? SECTION_SHORT[g] : "All sections")}</text>`;
+    K.forEach(k => { const n = cnt(g, k), w = (W - L - R) * n / tot; if (!n) return;
+      s += `<rect x="${x.toFixed(1)}" y="${y + 4}" width="${Math.max(0, w - 2).toFixed(1)}" height="${rh - 10}" rx="3" fill="${COLOR[k]}" data-tip="${esc(`${g || "All sections"} · ${LABEL[k]}: ${n} of ${tot} (${fmt(100 * n / tot)}%)`)}"/>`;
+      if (w > 34) s += `<text x="${(x + w / 2 - 1).toFixed(1)}" y="${y + rh / 2 + 3}" text-anchor="middle" style="fill:#fff;font-weight:600;pointer-events:none">${fmt(100 * n / tot)}%</text>`;
+      x += w; });
+    s += `<text x="${W - R + 8}" y="${y + rh / 2 + 3}">${tot}</text>`; });
+  document.getElementById("stack").innerHTML = s + "</svg>";
+  document.getElementById("stacklegend").append(legend(K.map(k => [LABEL[k], COLOR[k]])));
+}
 table(document.getElementById("checks"), [
   {key: "id", label: "ID", render: r => el("a", {href: `instrument-requirements.html#${r.id}`}, r.id)},
   {key: "paper", label: "Chapter", render: r => paper(r.paper)},

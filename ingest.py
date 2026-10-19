@@ -80,7 +80,7 @@ def main() -> None:
 
     total_chunks = sum(results.values())
     print(f"\nIngestion complete — {len(results)} new file(s), {total_chunks} total chunks.")
-    print("Run `python app.py` to start the web UI.")
+    print("Restart the MCP server (`uv run python mcp_server.py`) to pick up the new index.")
 
 
 def list_acronyms(output_path: str) -> None:

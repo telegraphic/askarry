@@ -14,20 +14,19 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Systematic Risk Register</h1>
-    <p class="lede">Engineering and calibration risks threaten data quality regardless of which science question a chapter pursues. The register counts, for sixteen named risks, how many chapters in each book section discuss them at least twice, and ranks them by breadth across sections.</p>
+    <p class="lede">Engineering and calibration risks threaten data quality whatever science question a chapter pursues. For each of sixteen named risks, the register counts how many chapters in each section discuss it at least twice. It then ranks the risks by how many sections they reach.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
+    <p class="note key" id="key"></p>
     <section id="matrix"><h2>Chapters per section</h2>
-      <p class="muted">Each cell gives the number of chapters in that section that name the risk at least twice; hover a cell for the section's size.</p>
-    </section>
-    <section class="prose"><h2>How to read the counts</h2><p>A mention count is not a judgement that a chapter treats the risk as a binding constraint; it is the evidence from which such a judgement would start. The register therefore reports breadth and leaves severity to the chapters themselves, which a reader can open from the <a href="chapter-directory.html">directory</a>. Two terms were added to the fourteen that version 1 named in its method note (primary-beam modelling and bandpass or gain stability), bringing the list to the sixteen it claimed. Commensal scheduling conflict registers no chapter at the two-mention threshold, which confirms version 1's finding that the book does not treat it as a named risk.</p>
-      <p class="note">What changed from v1: v1 excluded engineering documents by hand and could not confirm four risks; this scan covers only the AASKAII book, so the exclusion is automatic.</p>
+      <p class="muted">Each cell gives the number of chapters in a section that name the risk at least twice. Hover over a cell to see how many chapters the section has, or switch to percentages to compare sections of different sizes.</p>
     </section>
     <section id="who"><h2>Which chapters</h2>
-      <p class="muted">Open an entry for the chapters behind each count, grouped by section; each ID opens its row in the chapter directory and its PDF tag the online copy.</p>
+      <p class="muted">Open an entry to see the chapters behind each count, grouped by section. Each chapter ID opens its row in the chapter directory, and the PDF tag beside it opens the chapter itself.</p>
     </section>
     <section id="terms"><h2>Search terms</h2></section>
+    <section><details class="method"><summary>How to read the counts</summary><div class="prose"><p>A mention count does not show that a chapter treats a risk as a binding constraint. It is only the evidence from which such a judgement would start. The register therefore reports how widely each risk is discussed and leaves its severity to the chapters themselves, which you can open from the <a href="chapter-directory.html">directory</a>.</p></div></details></section>
   </main>
 </div>
 <script src="data/risks.js"></script>
@@ -44,6 +43,14 @@ const stats = document.getElementById("stats");
 [[items.length, "risks tracked"], [items.filter(i => real(i) >= 5).length, "in 5+ of 7 sections"],
  [items.filter(i => real(i) === 0).length, "in no section"]]
   .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+{
+  const share = (it, s) => inSec(it, s) / D.papers_per_section[s];
+  const q = i => `“${i.label}”`, wide = items.filter(i => real(i) === 7).map(q), none = items.filter(i => real(i) === 0).map(q);
+  const peak = items.flatMap(i => SECTIONS.map(s => ({i, s, v: share(i, s)}))).sort((a, b) => b.v - a.v)[0];
+  document.getElementById("key").textContent = (wide.length ? `Chapters in all seven sections name ${list(wide)}. ` : "No risk is named in all seven sections. ") +
+    `The strongest concentration is ${q(peak.i)} in ${peak.s}, where ${fmt(100 * peak.v)}% of the chapters name it.` +
+    (none.length ? ` No chapter names ${list(none)} more than once.` : "");
+}
 heatSections(document.getElementById("matrix"), items, "Risk", inSec, {denominator: D.papers_per_section});
 sectionPapers(document.getElementById("who"), items, (it, s) => (it.sections[s] || {}).papers);
 table(document.getElementById("terms"), [

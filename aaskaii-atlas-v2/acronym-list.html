@@ -14,12 +14,12 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Acronyms</h1>
-    <p class="lede">Every acronym that an AASKAII chapter defines in the form "Full Name (ABC)" appears below, with its most common expansion, the number of times it occurs and the number of chapters that use it. The list is produced by the same extractor that powers acronym expansion in search, so it reflects what the retrieval system itself knows.</p>
+    <p class="lede">This list holds every acronym that an AASKAII chapter defines in the form "Full Name (ABC)". For each one it gives the most common expansion, the number of times the acronym occurs and the number of chapters that use it. The same extractor that expands acronyms in search produces the list, so it reflects what the retrieval system itself knows.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
     <section id="list"><h2>All acronyms</h2>
-      <p class="note">Categories come from a keyword heuristic on the expansion (<code>rag/ingestion.py::classify_acronym</code>) and are a browsing aid rather than a taxonomy. The v1 fault that filed FPGA under Organizations is fixed: the classifier now matches whole words, so "Field-Programmable Gate Array" no longer triggers on "program".</p>
+      <p class="note">The categories come from a keyword rule applied to each expansion (<code>rag/ingestion.py::classify_acronym</code>). They are meant to help you browse, not to form a taxonomy. The rule matches whole words only, so it does not mistake "Field-Programmable Gate Array" for an organisation because it contains "program".</p>
     </section>
   </main>
 </div>
@@ -35,14 +35,17 @@ const stats = document.getElementById("stats");
 [["acronyms", A.length], ...Object.entries(cats).sort((a, b) => b[1] - a[1])]
   .forEach(([l, n]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
 const rows = A.map(a => ({...a, other: Object.keys(a.variants).filter(v => v !== a.expansion).join("; ")}));
-table(document.getElementById("list"), [
+const cat = Object.assign(el("select", {"aria-label": "Filter by category"},
+  el("option", {value: ""}, "All categories"), Object.keys(cats).sort().map(c => el("option", {value: c}, `${c} (${cats[c]})`))), {onchange: () => redraw()});
+const redraw = table(document.getElementById("list"), [
   {key: "acronym", label: "Acronym", render: r => el("b", {}, r.acronym)},
   {key: "expansion", label: "Expansion"},
   {key: "category", label: "Category"},
   {key: "occurrence_count", label: "Uses", num: true},
   {key: "n_papers", label: "Chapters", num: true},
   {key: "other", label: "Other spellings", cls: "muted"},
-], rows, {search: true, placeholder: "Filter acronyms or expansions…", sortKey: "occurrence_count"});
+], rows, {search: true, placeholder: "Filter acronyms or expansions…", sortKey: "occurrence_count", filter: r => !cat.value || r.category === cat.value});
+document.querySelector("#list .controls").append(cat);
 </script>
 </body>
 </html>

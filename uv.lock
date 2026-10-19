@@ -320,14 +320,11 @@ dependencies = [
     { name = "beautifulsoup4" },
     { name = "bibtexparser" },
     { name = "chromadb" },
-    { name = "docling" },
     { name = "fastmcp" },
-    { name = "gradio" },
     { name = "loguru" },
     { name = "numexpr", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numexpr", version = "2.14.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "numpy" },
-    { name = "ollama" },
     { name = "param" },
     { name = "pyyaml" },
     { name = "rank-bm25" },
@@ -336,6 +333,15 @@ dependencies = [
     { name = "sentence-transformers" },
     { name = "simplejson" },
     { name = "ska-ost-array-config" },
+]
+
+[package.optional-dependencies]
+gui = [
+    { name = "gradio" },
+    { name = "ollama" },
+]
+ingest = [
+    { name = "docling" },
 ]
 
 [package.dev-dependencies]
@@ -350,13 +356,13 @@ requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.12.0" },
     { name = "bibtexparser", specifier = "<2" },
     { name = "chromadb", specifier = ">=0.5.0" },
-    { name = "docling", specifier = ">=2.0.0" },
+    { name = "docling", marker = "extra == 'ingest'", specifier = ">=2.0.0" },
     { name = "fastmcp", specifier = ">=2.0.0" },
-    { name = "gradio", specifier = ">=4.0.0" },
+    { name = "gradio", marker = "extra == 'gui'", specifier = ">=4.0.0" },
     { name = "loguru", specifier = ">=0.7.0" },
     { name = "numexpr", specifier = ">=2.10.2,<3" },
     { name = "numpy", specifier = "<2.3" },
-    { name = "ollama", specifier = ">=0.2.0" },
+    { name = "ollama", marker = "extra == 'gui'", specifier = ">=0.2.0" },
     { name = "param", specifier = ">=2.2.0,<3" },
     { name = "pyyaml", specifier = ">=6.0.2,<7" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
@@ -366,6 +372,7 @@ requires-dist = [
     { name = "simplejson", specifier = ">=3.20.1,<4" },
     { name = "ska-ost-array-config", specifier = ">=4.5.0" },
 ]
+provides-extras = ["ingest", "gui"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=8.0.0" }]

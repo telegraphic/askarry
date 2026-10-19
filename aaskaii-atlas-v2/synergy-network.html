@@ -9,8 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="atlas.css">
 <style>
-  .legend{ display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--ink-soft); margin-top:10px; }
-  .legend span::before{ content:""; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; background:var(--c); vertical-align:-1px; }
   #net svg{ width:100%; height:auto; max-height:760px; display:block; }
   #net line{ stroke:var(--ink-faint); }
   #net circle{ stroke:var(--surface); stroke-width:1.5; }
@@ -22,22 +20,26 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Synergy Network</h1>
-    <p class="lede">The network records which external facilities the AASKAII chapters name, in how many of the seven book sections, and which facilities appear together in the same chapters. Every node and edge is counted directly from the text, which replaces the version 1 graph that had been reconstructed from a written summary of another conversation.</p>
+    <p class="lede">This page shows which external facilities the AASKAII chapters name and how many of the seven book sections name each one. It also shows which facilities appear together in the same chapters. Every count comes directly from the text of the chapters.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="prose" id="reading"><h2>What the counts show</h2>
-      <p>The SKA precursors and pathfinders dominate the network, as one would expect of a book written by the communities that operate them: MeerKAT and LOFAR are each named by a large share of chapters in every section, and they share more chapters with each other than any other pair. Beyond radio astronomy, the structure is more informative. JWST, Planck and Euclid each appear in about forty chapters, but Planck and Euclid are concentrated in the cosmology chapters, whereas Rubin/LSST is the only facility outside radio astronomy named in all seven sections. Gaia shows the same pattern at smaller scale: with fifteen chapters, little more than a third as many as JWST, it matches JWST's reach of six sections, which marks it as a facility whose science touches most parts of the book rather than one community in depth.</p>
-      <p>The two gaps that version 1 flagged are now closed by measurement rather than by argument. The ngVLA is named in ten chapters across three sections, chiefly in galaxy-evolution and extreme-universe work, and the gamma-ray facilities are present as well: CTAO appears in twelve chapters over five sections and Fermi in six over three, with the extreme-universe section accounting for most of both. Consequently, these facilities belong in the synergy picture even though version 1 could not show them. Conversely, a handful of facilities on the curated list of seventy-eight are named by no chapter at the two-mention threshold, and they are listed at the foot of the page so that their absence is recorded rather than implied.</p>
-    </section>
-    <section id="net"><h2>Co-mention network</h2>
+    <p class="note key" id="key"></p>
+    <section id="matrix"><h2>Which facilities appear together</h2>
       <p class="muted" id="netnote"></p>
-      <figure class="figure"><div id="svg"></div><div class="legend" id="legend"></div>
-        <figcaption>Node area scales with the number of chapters naming the facility; an edge joins two facilities named together in at least the stated number of chapters, and its width scales with that number. Hover a node for its counts.</figcaption></figure>
+      <figure class="figure chart"><div id="adj"></div><div id="legend"></div>
+        <figcaption>Each cell counts the chapters that name both facilities, and a darker cell means more shared chapters. The rows and columns are grouped by wavelength regime. Blocks along the diagonal therefore show pairings within a regime, and blocks away from it show pairings across regimes.</figcaption></figure>
+    </section>
+    <section id="reach"><h2>Facilities outside radio, by section</h2>
+      <p class="muted">Each cell gives the number of chapters in a section that name the facility at least twice. Only facilities outside radio astronomy that at least five chapters name are shown.</p>
+    </section>
+    <section class="prose" id="reading"><h2>What the counts show</h2>
+      <p>The SKA precursors and pathfinders dominate the network, as one would expect of a book written by the communities that operate them. A large share of the chapters in every section name MeerKAT and LOFAR, and these two share more chapters than any other pair. Beyond radio astronomy, the pattern is more informative. JWST, Planck and Euclid each appear in about forty chapters. However, Planck and Euclid are concentrated in the cosmology chapters, whereas Rubin/LSST is the only facility outside radio astronomy that all seven sections name. Gaia shows the same pattern on a smaller scale. Only fifteen chapters name it, little more than a third as many as name JWST, yet it reaches six sections, as JWST does. Its science therefore touches most parts of the book rather than serving one community in depth.</p>
+      <p>Two groups of facilities that a reader might expect to be missing are in fact present. Ten chapters across three sections name the ngVLA, mostly in work on galaxy evolution and the extreme universe. The gamma-ray facilities appear as well. CTAO appears in twelve chapters across five sections, and Fermi in six chapters across three, with the extreme-universe section accounting for most of both. Both groups therefore belong in the synergy picture. In contrast, no chapter names a handful of the seventy-eight curated facilities more than once. The foot of the page lists them, so that their absence is recorded rather than implied.</p>
     </section>
     <section id="all"><h2>All facilities</h2></section>
     <section id="pairs"><h2>Strongest pairings outside radio</h2>
-      <p class="muted">Pairs in which at least one facility is not a radio telescope, since radio–radio pairs mostly restate the precursor lineage.</p>
+      <p class="muted">This table lists the pairs in which at least one facility is not a radio telescope. Pairs of radio telescopes are left out, because they mostly repeat the lineage of the SKA precursors.</p>
     </section>
     <section class="prose" id="absent"><h2>Named by no chapter</h2></section>
   </main>
@@ -58,25 +60,37 @@ const stats = document.getElementById("stats");
  [F.not_named.length, "never named"]].forEach(([n, l]) =>
   stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
 
-// Network: top 32 facilities on a circle grouped by category, edges with >= MIN shared chapters.
-const TOP = [...F.facilities].sort((a, b) => b.n_papers - a.n_papers).slice(0, 32)
+const shared = {};
+F.edges.forEach(e => { shared[`${e.a}|${e.b}`] = shared[`${e.b}|${e.a}`] = e.shared_papers; });
+const TOP = [...F.facilities].sort((a, b) => b.n_papers - a.n_papers).slice(0, 24)
   .sort((a, b) => a.category.localeCompare(b.category) || b.n_papers - a.n_papers);
-const MIN = 8, W = 900, R = 300, cx = W / 2, cy = 380;
-const pos = {};
-TOP.forEach((f, i) => { const t = 2 * Math.PI * i / TOP.length - Math.PI / 2; pos[f.facility] = [cx + R * Math.cos(t), cy + R * Math.sin(t), t]; });
-const edges = F.edges.filter(e => pos[e.a] && pos[e.b] && e.shared_papers >= MIN);
-const maxE = Math.max(...edges.map(e => e.shared_papers)), maxN = Math.max(...TOP.map(f => f.n_papers));
-let svg = `<svg viewBox="0 0 ${W} 760" role="img" aria-label="Facility co-mention network">`;
-edges.forEach(e => { const [x1, y1] = pos[e.a], [x2, y2] = pos[e.b];
-  svg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke-width="${(0.4 + 4 * e.shared_papers / maxE).toFixed(2)}" stroke-opacity="${(0.15 + 0.5 * e.shared_papers / maxE).toFixed(2)}"><title>${e.a} + ${e.b}: ${e.shared_papers} chapters</title></line>`; });
-TOP.forEach(f => { const [x, y, t] = pos[f.facility], r = 4 + 14 * Math.sqrt(f.n_papers / maxN);
-  const lx = cx + (R + r + 8) * Math.cos(t), ly = cy + (R + r + 8) * Math.sin(t), anchor = Math.cos(t) >= 0 ? "start" : "end";
-  svg += `<g class="node"><title>${f.facility} (${f.category}): ${f.n_papers} chapters, ${f.n_sections} sections</title>` +
-    `<circle cx="${x}" cy="${y}" r="${r.toFixed(1)}" fill="${COLORS[f.category]}"/>` +
-    `<text x="${lx}" y="${ly + 4}" text-anchor="${anchor}" font-size="13">${f.facility}</text></g>`; });
-document.getElementById("svg").innerHTML = svg + "</svg>";
-document.getElementById("netnote").textContent = `The ${TOP.length} most-named facilities; ${edges.length} edges with at least ${MIN} shared chapters are drawn.`;
-document.getElementById("legend").append(...[...new Set(TOP.map(f => f.category))].map(c => el("span", {style: `--c:${COLORS[c]}`}, c)));
+const pairs = F.edges.filter(e => cat[e.a]?.category !== "radio" || cat[e.b]?.category !== "radio").sort((x, y) => y.shared_papers - x.shared_papers);
+const reach = f => SECTIONS.filter(s => (f.sections[s] || 0) > 0).length;
+const top1 = [...F.edges].sort((x, y) => y.shared_papers - x.shared_papers)[0];
+const rubin = nonRadio.map(f => ({...f, n_sections: reach(f)})).sort((a, b) => b.n_sections - a.n_sections || b.n_papers - a.n_papers)[0];
+document.getElementById("key").textContent = `The SKA precursors dominate the network: ${top1.a} and ${top1.b} share ${top1.shared_papers} chapters, more than any other pair. ` +
+  `Outside radio astronomy, the strongest pairing is ${pairs[0].a} with ${pairs[0].b}, which share ${pairs[0].shared_papers} chapters. ` +
+  `${rubin.facility} has the widest reach of any facility outside radio astronomy, because ${rubin.n_sections === 7 ? "all seven sections name it" : `${rubin.n_sections} of the seven sections name it`}.`;
+{
+  const n = TOP.length, cw = 26, L = 150, Tp = 120, W = L + n * cw + 8, H = Tp + n * cw + 8;
+  const maxS = Math.max(...TOP.flatMap(a => TOP.map(b => a === b ? 0 : shared[`${a.facility}|${b.facility}`] || 0)));
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Facility co-mention matrix" style="max-width:${W}px;margin:0 auto">`;
+  TOP.forEach((f, i) => {
+    s += `<rect x="${L - 8}" y="${Tp + i * cw + 6}" width="4" height="${cw - 12}" rx="2" fill="${COLORS[f.category]}"/>` +
+      `<text x="${L - 12}" y="${Tp + i * cw + cw / 2 + 4}" text-anchor="end">${esc(f.facility)}</text>` +
+      `<rect x="${L + i * cw + 6}" y="${Tp - 8}" width="${cw - 12}" height="4" rx="2" fill="${COLORS[f.category]}"/>` +
+      `<text transform="translate(${L + i * cw + cw / 2 + 4},${Tp - 12}) rotate(-60)">${esc(f.facility)}</text>`;
+    TOP.forEach((g, j) => { const v = i === j ? null : shared[`${f.facility}|${g.facility}`] || 0;
+      s += i === j ? `<rect x="${L + j * cw + 1}" y="${Tp + i * cw + 1}" width="${cw - 2}" height="${cw - 2}" rx="3" fill="none" stroke="var(--line)" data-tip="${esc(`${f.facility}: ${f.n_papers} chapters`)}"/>`
+        : `<rect x="${L + j * cw + 1}" y="${Tp + i * cw + 1}" width="${cw - 2}" height="${cw - 2}" rx="3" fill="color-mix(in oklab, var(--heat-4) ${(100 * Math.sqrt(v / maxS)).toFixed(0)}%, var(--heat-0))" data-tip="${esc(`${f.facility} + ${g.facility}: ${v} shared chapters`)}"/>`; }); });
+  document.getElementById("adj").innerHTML = s + "</svg>";
+  document.getElementById("netnote").textContent = `The matrix shows the ${n} facilities that the most chapters name. The shading follows the square root of the number of shared chapters, which runs up to ${maxS}, so that the weaker pairings across regimes remain visible.`;
+  document.getElementById("legend").append(legend([...new Set(TOP.map(f => f.category))].map(c => [c, COLORS[c]])));
+}
+const perSec = {};
+ATLAS.chapters.sections.forEach(s => perSec[s.section] = s.papers.filter(p => p.indexed).length);
+heatSections(document.getElementById("reach"), nonRadio.filter(f => f.n_papers >= 5).sort((a, b) => reach(b) - reach(a) || b.n_papers - a.n_papers)
+  .map(f => ({...f, label: `${f.facility} (${f.category})`})), "Facility", (f, s) => f.sections[s] || 0, {denominator: perSec});
 
 const inSec = (f, s) => f.sections[s] || 0;
 table(document.getElementById("all"), [
@@ -94,8 +108,8 @@ table(document.getElementById("pairs"), [
 ], F.edges.filter(e => cat[e.a]?.category !== "radio" || cat[e.b]?.category !== "radio")
   .sort((x, y) => y.shared_papers - x.shared_papers).slice(0, 25), {sortKey: "shared_papers"});
 document.getElementById("absent").append(el("p", {},
-  `No chapter names these curated facilities at least twice: ${F.not_named.join(", ")}. The curated list and its guards against false matches (for example "Rubin et al." or the Planck constant) live in `,
-  el("code", {}, "rag/corpus_tools.py::FACILITIES"), "."));
+  `No chapter names these curated facilities more than once: ${list(F.not_named)}. The curated list is kept in `,
+  el("code", {}, "rag/corpus_tools.py::FACILITIES"), `, together with the rules that prevent false matches such as "Rubin et al." or the Planck constant.`));
 </script>
 </body>
 </html>

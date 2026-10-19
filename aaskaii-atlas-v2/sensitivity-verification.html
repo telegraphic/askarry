@@ -14,15 +14,20 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Sensitivity Verification</h1>
-    <p class="lede">Where a chapter states a sensitivity together with the observing parameters behind it, the figure can be recomputed. This page sends every such requirement in the register to the live SKAO sensitivity calculator, sweeping the weighting schemes because chapters rarely state which one they assumed, and reports whether the chapter's number survives.</p>
+    <p class="lede">When a chapter states a sensitivity together with the observing parameters behind it, the figure can be recomputed. This page sends every such requirement to the live SKAO sensitivity calculator and reports whether the chapter's number survives. Because chapters rarely say which weighting scheme they assumed, each check tries all of them.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="prose" id="reading"><h2>What the check shows</h2></section>
-    <section class="prose"><h2>Why figures diverge</h2>
-      <p>The divergences share a small number of causes, which the checking agent recorded row by row. One is weighting: four chapters reproduce closely under a weighting other than the one they state, which suggests that the stated weighting was not the one used. A second group of chapters computed their noise from their own assumptions about system temperature or effective area, and the two largest divergences, by factors of eight and forty, arise where those assumptions depart from the calculator's model of the array. Finally, the calculator imposes limits that a chapter may not have faced: the mixed AA* array refuses more than 720 MHz of Band 2 bandwidth, zoom channels stop at 13.44 kHz, and tapers come in fixed steps, so several checks had to approximate the chapter's setup and say so.</p>
+    <p class="note key" id="key"></p>
+    <section id="plot"><h2>Claimed against calculated</h2>
+      <p class="muted">Each row shows one testable figure. The dot marks the chapter's stated sensitivity divided by the calculator's, on a logarithmic scale. The shaded band covers agreement within 10%. A dot to the left of 1 means that the chapter claims a lower noise than the calculator gives.</p>
+      <figure class="figure chart"><div id="dots"></div><div id="dotlegend"></div></figure>
     </section>
     <section id="checks"><h2>Every check</h2></section>
+    <section><details class="method" open><summary>What the check shows</summary><div class="prose" id="reading"></div></details></section>
+    <section><details class="method"><summary>Why figures diverge</summary><div class="prose">
+      <p>The divergences share a few causes, which the checking agent recorded row by row. The first is weighting. Four chapters reproduce closely under a weighting other than the one they state, which suggests that they did not in fact use the stated weighting. The second is the chapters' own models. Some chapters computed their noise from their own assumptions about system temperature or effective area. The two largest divergences, by factors of eight and forty, arise where those assumptions depart from the calculator's model of the array. The third is the calculator's limits, which a chapter may not have faced. The mixed AA* array accepts at most 720 MHz of Band 2 bandwidth, zoom channels stop at 13.44 kHz, and tapers come in fixed steps. Several checks therefore had to approximate the chapter's setup, and their notes say so.</p>
+    </div></details></section>
   </main>
 </div>
 <script src="data/chapters.js"></script>
@@ -39,8 +44,32 @@ const stats = document.getElementById("stats");
 [[rows.length, "requirements checked"], [n("match"), "match within 10%"], [n("diverge"), "diverge"], [n("unverifiable"), "unverifiable"]]
   .forEach(([v, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(v)), el("span", {class: "l"}, l))));
 document.getElementById("reading").append(el("p", {},
-  `Of the ${rows.length} requirements whose chapters state enough to rerun the calculator, ${n("match")} reproduce within ten per cent for at least one weighting scheme, ${n("diverge")} do not, and ${n("unverifiable")} could not be tested because a parameter the calculator needs is missing or the setup lies outside what it models. ` +
-  `A divergence is not by itself an error in the chapter: it most often reflects an assumption the chapter does not state, such as a different elevation, bandwidth after flagging or array configuration, which the note beside each row records where the checking agent could identify it. Version 1 checked twelve figures by hand; this page checks every figure that can be checked.`));
+  `The chapters state enough to rerun the calculator for ${rows.length} requirements. Of these, ${n("match")} reproduce within ten per cent for at least one weighting scheme and ${n("diverge")} do not. ` +
+  `The other ${n("unverifiable")} could not be tested, because the calculator needs a parameter that the chapter does not give or because the setup lies outside what the calculator models. ` +
+  `A divergence does not by itself mean that the chapter is wrong. Most often it reflects an assumption that the chapter does not state, such as a different elevation, the bandwidth left after flagging or a different array configuration. Where the checking agent could identify that assumption, the note beside the row records it.`));
+const tested = rows.filter(r => r.ratio != null).sort((a, b) => a.ratio - b.ratio);
+const far = tested.filter(r => r.ratio < 0.5 || r.ratio > 2);
+document.getElementById("key").textContent = `The SKAO calculator reproduces ${n("match")} of the ${tested.length} testable sensitivities within 10%. ` +
+  `Of the ${n("diverge")} that it does not reproduce, ${tested.filter(r => r.verdict === "diverge" && r.ratio > 1 / 1.5 && r.ratio < 1.5).length} still agree within a factor of 1.5, which points to unstated assumptions rather than errors. ` +
+  `The ${far.length === 2 ? "two exceptions are" : "exceptions are"} ${list(far.map(r => r.paper))}, which differ from the calculator by factors of ${list(far.map(r => fmt(r.ratio < 1 ? 1 / r.ratio : r.ratio)))}. ${far.length === 2 ? "Both" : "These"} chapters rely on their own models of the array.`;
+
+// Dot plot: one row per tested figure, sorted by ratio, on a log axis.
+{
+  const W = 1000, L = 210, R = 20, rh = 17, Tp = 10, H = Tp + tested.length * rh + 34, lo = 0.02, hi = 2;
+  const x = v => L + (W - L - R) * (Math.log10(v) - Math.log10(lo)) / (Math.log10(hi) - Math.log10(lo));
+  const C = {match: "var(--good)", diverge: "var(--bad)"};
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Claimed over calculated sensitivity">`;
+  s += `<rect x="${x(0.9)}" y="${Tp - 4}" width="${x(1.1) - x(0.9)}" height="${tested.length * rh + 4}" fill="var(--good)" fill-opacity="0.12"/>`;
+  [0.02, 0.05, 0.1, 0.2, 0.5, 1, 2].forEach(v => s += `<line class="grid" x1="${x(v)}" x2="${x(v)}" y1="${Tp - 4}" y2="${H - 26}"/><text x="${x(v)}" y="${H - 10}" text-anchor="middle">${v}</text>`);
+  s += `<line x1="${x(1)}" x2="${x(1)}" y1="${Tp - 4}" y2="${H - 26}" stroke="var(--ink-faint)" stroke-width="1.5"/>`;
+  tested.forEach((r, i) => { const y = Tp + i * rh + rh / 2;
+    s += `<text x="${L - 10}" y="${y + 4}" text-anchor="end">${esc(r.id)} · ${esc(r.paper)}</text>` +
+      `<line class="grid" x1="${L}" x2="${x(r.ratio)}" y1="${y}" y2="${y}"/>` +
+      `<circle cx="${x(r.ratio)}" cy="${y}" r="5.5" fill="${C[r.verdict]}" stroke="var(--surface)" stroke-width="2" data-tip="${esc(`${r.id} · ${r.paper} · ${r.verdict}\nClaimed: ${r.claimed}\nCalculator: ${r.calculator}\nRatio ${fmt(r.ratio, 2)}`)}"/>`; });
+  document.getElementById("dots").innerHTML = s + "</svg>";
+  document.getElementById("dotlegend").append(legend([["match (within 10%)", C.match], ["diverge", C.diverge]]),
+    el("p", {class: "muted", style: "font-size:13px;margin:8px 0 0"}, `The chart leaves out the checks that could not be tested: ${list(rows.filter(r => r.ratio == null).map(r => `${r.id} (${r.paper})`))}.`));
+}
 const pill = v => el("span", {class: `pill ${v === "match" ? "good" : v === "diverge" ? "bad" : "neutral"}`}, v);
 table(document.getElementById("checks"), [
   {key: "id", label: "ID", render: r => el("a", {href: `instrument-requirements.html#${r.id}`}, r.id)},

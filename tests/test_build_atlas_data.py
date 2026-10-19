@@ -47,3 +47,37 @@ def test_quote_check_accepts_split_sentences_and_rejects_invented(monkeypatch):
     row = {"paper": "P1", "page": 9, "quote": " ".join(chunks)}
     assert vq.check(row) == {**row, "page": 3, "verification": "verbatim"}
     assert vq.check({**row, "quote": "A sentence that no chapter contains, invented for the test."}) is None
+
+
+@pytest.mark.parametrize("text, spans", [
+    ("Band 2, 0.95-1.76 GHz", [[0.95, 1.76], [0.95, 1.76]]),
+    (">15 GHz up to ~24 GHz (Band 6)", [[15.0, 15.0], [15.4, 24.0], [24.0, 24.0]]),
+    ("144 MHz, ~50 MHz bandwidth", [[0.144, 0.144]]),
+    ("1.31, 6.55 and 11.85 GHz", [[1.31, 1.31], [6.55, 6.55], [11.85, 11.85]]),
+    ("50 MHz to 15.4 GHz", [[0.05, 15.4]]),
+    ("Bands 1 and 5a", [[0.35, 1.05], [4.6, 8.5]]),
+    ("HI 21 cm, >=8 MHz bandwidth", [[1.4286, 1.4286]]),
+    ("SKA-Low and SKA-Mid Band 1", [[0.05, 0.35], [0.35, 1.05]]),
+    ("wideband", None),
+    ("10 MHz bandwidth", None),
+    ("two or more bands separated by factor >1.7", None),
+])
+def test_freq_range(text, spans):
+    assert bad.freq_range(text) == spans
+
+
+@pytest.mark.parametrize("name, cats", [
+    ("PSR J0437-4715", ["PST"]),
+    ("SKA-Mid AA4 pulsar search of all Galactic globular clusters", ["PSS"]),
+    ("All-sky HI survey", ["Zoom"]),
+    ("Medium wide HI/continuum survey", ["Continuum", "Zoom"]),
+    ("Mid Band 1 Wide Survey", ["Continuum"]),
+    ("SKA-VLBI methanol maser parallax survey", [bad.OUTSIDE]),
+])
+def test_classify_request(name, cats):
+    assert bad.classify_request({"id": -1, "name": name}) == cats
+
+
+def test_pss_volume_is_rate_times_duration():
+    odps = bad.request_odps({"telescope": "mid", "hours": 1.0}, ["PSS"], {}, None)
+    assert odps[0]["volume_TB"] == pytest.approx(0.0839 / 1024 * 3600)

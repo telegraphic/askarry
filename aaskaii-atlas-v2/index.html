@@ -8,21 +8,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="atlas.css">
-<style>.card.pending{ opacity:0.5; pointer-events:none; }</style>
+<style>
+  .card.pending{ opacity:0.5; pointer-events:none; }
+  .hero{ display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:32px; align-items:start; }
+  .hero .intro{ display:flex; flex-direction:column; gap:14px; }
+  .bigbtns{ display:flex; flex-direction:column; gap:12px; }
+  .bigbtn{ display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-radius:14px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); text-decoration:none; font-family:"Archivo",sans-serif; font-weight:700; font-size:21px; color:var(--ink); }
+  .bigbtn::after{ content:"→"; color:var(--accent-mid); font-size:22px; }
+  .bigbtn:hover{ border-color:var(--accent-mid); }
+  .bigbtn:focus-visible{ outline:2px solid var(--accent-mid); outline-offset:2px; }
+  @media (max-width:860px){ .hero{ grid-template-columns:1fr; gap:20px; } .bigbtns{ flex-direction:row; order:-1; } .bigbtn{ flex:1; font-size:18px; padding:18px; } }
+</style>
 </head>
 <body>
 <div class="page">
   <header class="masthead">
-    <div class="eyebrow">SKAO · Advancing Astrophysics with the SKA II</div>
-    <h1>The AASKAII Atlas</h1>
-    <p class="lede">The atlas reads the whole of <i>Advancing Astrophysics with the SKA II</i> and reports what the book asks of the telescopes: which observing modes and techniques it relies on, which facilities it pairs with, how much time it requests and where on the sky, and which of its stated requirements survive a check against the sensitivity calculator and the defined observing contexts. Every figure is computed from the book by a script that can be rerun, and every quotation has been checked against the chapter it is attributed to.</p>
-    <div class="stats" id="stats"></div>
+    <div class="hero">
+      <div class="intro">
+        <div class="eyebrow">SKAO · Advancing Astrophysics with the SKA II</div>
+        <h1>The AASKAII Atlas</h1>
+    <p class="lede">The atlas reads the whole of <i>Advancing Astrophysics with the SKA II</i> and reports what the book asks of the SKA telescopes. It shows which observing modes and techniques the chapters rely on, which other facilities they pair with, and how much observing time they request and where on the sky. It also tests the stated requirements against the SKAO sensitivity calculator and the observing contexts the SKAO has defined. A script that anyone can rerun computes every figure from the book, and every quotation has been checked against the chapter it comes from.</p>
+        <div class="stats" id="stats"></div>
+      </div>
+      <nav class="bigbtns" aria-label="Reference">
+        <a class="bigbtn" href="chapter-directory.html">Chapters</a>
+        <a class="bigbtn" href="acronym-list.html">Acronyms</a>
+      </nav>
+    </div>
   </header>
   <main>
-    <section id="analyses"><h2>Analyses</h2><div id="c-analyses"></div></section>
-    <section><h2>Verification</h2><div id="c-verification"></div></section>
-    <section><h2>Reference</h2><div id="c-reference"></div></section>
-    <section><h2>Method and use case</h2><div id="c-method"></div></section>
+    <section id="start"><h2>Highlights</h2>
+      <div id="c-start"></div></section>
+    <section id="analyses"><h2>Analyses</h2>
+      <p class="muted">These pages count what the chapters name and what they ask for, across every chapter of the book. The last page works through a sample observing proposal.</p><div id="c-analyses"></div></section>
+    <section><h2>Background &amp; Methods</h2>
+      <h3>Verification</h3>
+      <p class="muted">These pages recheck the figures the chapters state. They compare them with the sensitivity calculator and the observing contexts, and they compare the book with its 2015 predecessor.</p><div id="c-verification"></div>
+      <h3>Methods</h3>
+      <p class="muted">These pages explain how the atlas was built and which tools it uses.</p><div id="c-method"></div></section>
   </main>
 </div>
 <script src="data/chapters.js"></script>
@@ -39,10 +62,11 @@ const stats = document.getElementById("stats");
 [[n, "chapters"], [ATLAS.chapters.sections.filter(s => SECTIONS.includes(s.section)).length, "book sections"], [ATLAS.acronyms.acronyms.length, "acronyms"],
  [ATLAS.facilities.facilities.length, "external facilities named"], [T.mid.accepted_hours + T.low.accepted_hours, "hours requested (reviewed)"]]
   .forEach(([v, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(v)), el("span", {class: "l"}, l))));
-[["c-analyses", ["Analyses"]], ["c-verification", ["Verification"]], ["c-reference", ["Reference"]], ["c-method", ["Method", "Use case"]]]
+const START = ["time-demand.html", "capability-crosscheck.html", "target-atlas.html"];
+[["c-start", null], ["c-analyses", ["Analyses"]], ["c-verification", ["Verification"]], ["c-method", ["Method"]]]
   .forEach(([id, groups]) => {
     const host = document.getElementById(id);
-    host.append(el("div", {class: "cards"}, PAGES.filter(p => groups.includes(p[3])).map(([f, part, title, g, dek]) =>
+    host.append(el("div", {class: "cards"}, (groups ? PAGES.filter(p => groups.includes(p[3])) : START.map(f => PAGES.find(p => p[0] === f))).map(([f, part, title, g, dek]) =>
       el("a", {class: "card" + (PENDING.has(f) ? " pending" : ""), href: f},
         el("span", {class: "part"}, `PART ${part}`), el("h3", {}, title), el("p", {}, dek),
         el("span", {class: "tag"}, PENDING.has(f) ? "in progress" : g)))));

@@ -14,24 +14,22 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Observing-Mode Map</h1>
-    <p class="lede">The map counts how many chapters in each of the book's seven sections name each of the fifteen observing modes that the atlas uses as its fixed taxonomy. It measures how widely a mode is invoked across the science case; it does not measure competition for telescope time, which the <a href="time-demand.html">time-demand page</a> now computes from stated hour requests.</p>
+    <p class="lede">The map counts how many chapters in each of the book's seven sections name each of fifteen observing modes. It shows how widely the science case relies on a mode. It does not show competition for telescope time, because a mode can be named often yet need few hours; the <a href="time-demand.html">time-demand page</a> measures that competition from the hours that chapters request.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
+    <p class="note key" id="key"></p>
     <section id="matrix"><h2>Chapters per section</h2>
-      <p class="muted">Each cell gives the number of chapters in that section that name the observing mode at least twice; hover a cell for the section's size.</p>
-    </section>
-    <section class="prose"><h2>How to read the counts</h2><p>A chapter counts toward a mode when the mode's search terms occur in it at least twice, a threshold that removes passing mentions and institutional affiliations while keeping chapters that discuss the mode in earnest. The terms behind each mode are listed below the matrix, so a reader who doubts a count can see exactly what was matched and rerun it with <code>keyword_coverage_tool</code>.</p>
-<p>Version 1 presented this matrix as a contention map. That label overstated what frequency can show: a mode named by many chapters may still be cheap in hours, and a mode named by a single survey chapter may dominate the schedule. Frequency therefore appears here under its proper name, and the scheduling question moves to the page built for it.</p>
-      <p class="note">What changed from v1: v1 compressed three sections into invented sub-themes and hand-counted from 20-result search windows; these counts are exact over every indexed chunk.</p>
+      <p class="muted">Each cell gives the number of chapters in a section that name the mode at least twice. Hover over a cell to see how many chapters the section has, or switch to percentages to compare sections of different sizes.</p>
     </section>
     <section id="summaries"><h2>Section by section</h2>
-      <p class="muted">What each book section asks of the telescopes, written by the agent that read the section and grounded in the chapters it searched.</p>
+      <p class="muted">Each summary describes what one book section asks of the telescopes. The agent that read the section wrote it from the chapters it searched.</p>
     </section>
     <section id="who"><h2>Which chapters</h2>
-      <p class="muted">Open an entry for the chapters behind each count, grouped by section; each ID opens its row in the chapter directory and its PDF tag the online copy.</p>
+      <p class="muted">Open an entry to see the chapters behind each count, grouped by section. Each chapter ID opens its row in the chapter directory, and the PDF tag beside it opens the chapter itself.</p>
     </section>
     <section id="terms"><h2>Search terms</h2></section>
+    <section><details class="method"><summary>How to read the counts</summary><div class="prose"><p>A chapter counts toward a mode when the mode's search terms appear in it at least twice. This threshold removes passing mentions and institutional affiliations, but it keeps chapters that discuss the mode in earnest. The search terms for each mode are listed above. If you doubt a count, you can therefore see exactly what was matched and rerun the search with <code>keyword_coverage_tool</code>.</p></div></details></section>
   </main>
 </div>
 <script src="data/modes.js"></script>
@@ -49,6 +47,14 @@ const stats = document.getElementById("stats");
 [[items.length, "observing modes tracked"], [items.filter(i => real(i) >= 5).length, "in 5+ of 7 sections"],
  [items.filter(i => real(i) === 0).length, "in no section"]]
   .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+{
+  const share = (it, s) => inSec(it, s) / D.papers_per_section[s];
+  const q = i => `“${i.label}”`, wide = items.filter(i => real(i) === 7).map(q), none = items.filter(i => real(i) === 0).map(q);
+  const peak = items.flatMap(i => SECTIONS.map(s => ({i, s, v: share(i, s)}))).sort((a, b) => b.v - a.v)[0];
+  document.getElementById("key").textContent = (wide.length ? `Chapters in all seven sections name ${list(wide)}. ` : "No mode is named in all seven sections. ") +
+    `The strongest concentration is ${q(peak.i)} in ${peak.s}, where ${fmt(100 * peak.v)}% of the chapters name it.` +
+    (none.length ? ` No chapter names ${list(none)} more than once.` : "");
+}
 heatSections(document.getElementById("matrix"), items, "Observing mode", inSec, {denominator: D.papers_per_section});
 const S = document.getElementById("summaries");
 (ATLAS.prose?.sections || []).slice().sort((a, b) => SECTIONS.indexOf(a.section) - SECTIONS.indexOf(b.section)).forEach(s =>

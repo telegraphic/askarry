@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modes &amp; Data Products · AASKAII Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="atlas.css">
+<style>
+  .catgrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+  .catgrid .figure h3{ font-size:17px; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .catgrid .figure h3::before{ content:""; width:12px; height:12px; border-radius:3px; background:var(--c); }
+  .catgrid .figure p{ font-size:13.5px; color:var(--ink-soft); margin:0 0 10px; }
+  .catgrid table{ font-size:12.5px; }
+  .catgrid td.src{ color:var(--ink-faint); font-size:11.5px; }
+  .catgrid .table-wrap{ max-height:none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Modes &amp; Data Products</h1>
+    <p class="lede">The SKAO configures every observation in one of four broad modes: continuum imaging, zoom spectroscopy, pulsar search (PSS) and pulsar timing (PST). This page sorts the book's reviewed time requests into those four modes. It then lists the output data products that each mode produces and estimates how much data each request would generate.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main>
+    <p class="note key" id="key"></p>
+    <section id="book"><h2>The four modes in the book</h2>
+      <p class="muted">Each cell gives the number of chapters in a section that name at least one of a mode's search terms twice. The table below the matrix shows which of the fifteen fine-grained modes on the <a href="observing-modes.html">Observing-Mode Map</a> belong to each broad mode.</p>
+      <div id="matrix"></div>
+      <h3>How the fifteen modes map onto the four</h3>
+      <div id="mapping"></div>
+    </section>
+    <section id="hours"><h2>Requested hours by mode</h2>
+      <p class="muted">Each bar divides a telescope's accepted hours between the four modes. A request that needs two modes, such as a joint continuum and HI survey, gives half its hours to each. The grey segment holds VLBI requests, which fall outside the four modes.</p>
+      <figure class="figure chart"><div id="hourbars"></div><div id="hourlegend"></div></figure>
+    </section>
+    <section id="products"><h2>The data products each mode needs</h2>
+      <p class="muted">Each card lists the products that the Science Data Processor delivers for the mode and the parameters this page uses to size them. The source column shows where each value comes from: the setup-validator schema, the SKAO summary of science data products, the array configuration, the SKA1 Design Baseline, or an assumption.</p>
+      <div class="catgrid" id="cards"></div>
+    </section>
+    <section id="volume"><h2>Estimated data volume</h2>
+      <p class="muted">Each bar shows the total volume of one product for one telescope, on a logarithmic scale, because calibrated visibilities outweigh images and pulsar products by several orders of magnitude. Hover over a bar to see the exact figure.</p>
+      <figure class="figure chart"><div id="volbars"></div><div id="vollegend"></div></figure>
+    </section>
+    <section id="reqs"><h2>Every request</h2></section>
+    <section><details class="method"><summary>How the estimates were made</summary><div class="prose">
+      <p>Each request was assigned to a mode by keyword rules applied to its name, its quote and its review note. Pulsar timing comes first, then pulsar search, then VLBI, then spectral-line work, and every remaining request counts as continuum. A spectral-line request also counts as continuum when its text says so. After the rules had run, every assignment was read once, and six were corrected by hand; the corrections and their reasons are kept in <code>REQUEST_CATEGORY_OVERRIDES</code> in <code>scripts/build_atlas_data.py</code>.</p>
+      <p>The volumes come from the data-product models in <code>rag/vendor/setup_validator/data_products.py</code>, the newest copy of the SKAO model code. Each request uses the full AA* array of its telescope. Its frequency is the one the request states, or the centre of its band, or else a default. The image resolution is the wavelength divided by the longest baseline, and the field is the primary beam, 1.1 λ/D. Where a chapter states a survey area, the image instead covers that whole area as one mosaic, so its pixel count matches the sky it maps.</p>
+      <p>The visibilities are averaged as far as smearing allows. Time and frequency averaging stop when either would smear a source at the half-power radius by a quarter of the synthesised beam, and both factors stay within the schema's limit of 1 to 1000. Continuum visibilities span the band's default bandwidth. A zoom window spans 4000 channels at the widest zoom channel width, which is 13.44 kHz for SKA-Mid and 1.808 kHz for SKA-Low. Pulsar search output follows the model's fixed rate for folded candidates. Pulsar timing produces one archive per hour on source, with 10-second sub-integrations.</p>
+      <p>Several requests often describe one commensal observation, as with the tiers of a reference survey. In that case each product is counted once for the group, at the size of its largest member. This matches how the <a href="time-demand.html">time-demand page</a> treats commensal groups.</p>
+      <div class="note warn" id="assume"></div>
+    </div></details></section>
+  </main>
+</div>
+<script src="data/mode_odps.js"></script>
+<script src="data/chapters.js"></script>
+<script src="atlas.js"></script>
+<script>
+frame(["mode_odps"]);
+document.getElementById("eyebrow").textContent = masthead("observing-mode-data.html");
+const M = ATLAS.mode_odps, CATS = ["Continuum", "Zoom", "PSS", "PST"], OUT = "Outside the four";
+const COLOR = {Continuum: "var(--s1)", Zoom: "var(--s2)", PSS: "var(--s3)", PST: "var(--s4)", [OUT]: "var(--ink-faint)"};
+const TEL = {mid: "SKA-Mid", low: "SKA-Low"};
+const ODP_LABEL = {calibrated_visibilities: "Calibrated visibilities", mfs_image: "MFS image", image_cube: "Continuum image cube",
+  zoom_image_cube: "Zoom line cube", pss_candidates_folded: "PSS folded candidates", pst_timing: "PST folded archives"};
+// Volumes in TB, written with the largest sensible unit.
+const vol = tb => tb >= 1e6 ? `${fmt(tb / 1e6, 2)} EB` : tb >= 1e3 ? `${fmt(tb / 1e3, 1)} PB` : tb >= 1 ? `${fmt(tb, 1)} TB` : `${fmt(tb * 1e3, 1)} GB`;
+const H = M.hours, V = M.volume_TB;
+const hoursOf = (t, c) => H[`${t}|${c}`] || 0;
+const volOf = (t, c) => Object.values(V[`${t}|${c}`] || {}).reduce((a, b) => a + b, 0);
+const total = t => CATS.reduce((a, c) => a + volOf(t, c), 0);
+const visShare = ["mid", "low"].flatMap(t => CATS.map(c => (V[`${t}|${c}`] || {}).calibrated_visibilities || 0)).reduce((a, b) => a + b, 0) / (total("mid") + total("low"));
+
+const stats = document.getElementById("stats");
+[[M.requests.length, "requests classified"], [CATS.filter(c => M.requests.some(r => r.categories.includes(c))).length, "modes in use"],
+ [total("mid") / 1e3, "PB from SKA-Mid"], [total("low") / 1e3, "PB from SKA-Low"]]
+  .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+
+const topHours = ["mid", "low"].flatMap(t => CATS.map(c => ({t, c, h: hoursOf(t, c)}))).sort((a, b) => b.h - a.h)[0];
+const pb = (total("mid") + total("low")) / 1e3;
+document.getElementById("key").textContent =
+  `${{Continuum: "Continuum imaging", Zoom: "Zoom spectroscopy", PSS: "Pulsar search", PST: "Pulsar timing"}[topHours.c]} on ${TEL[topHours.t]} takes the most time, ${fmt(topHours.h)} of the requested hours. ` +
+  `Together the requests would produce about ${fmt(pb)} PB of data products, and calibrated visibilities make up ${fmt(100 * visShare)}% of that volume. ` +
+  `The 100 Gbit/s link from the Science Data Processor to SRCNet carries about one petabyte a day, so it would need about ${fmt(pb)} days to deliver it all.`;
+
+// 1. Chapters per section for each broad mode, and the mapping from the fifteen modes.
+heatSections(document.getElementById("matrix"), M.coverage.items, "Mode", (it, s) => (it.sections[s] || {}).n_papers || 0,
+  {denominator: M.coverage.papers_per_section});
+table(document.getElementById("mapping"), [
+  {key: "mode", label: "Fine-grained mode"},
+  {key: "cat", label: "Broad mode", render: r => el("span", {class: "legend", style: "margin:0"}, el("span", {style: `--c:${COLOR[r.cat]}`}, r.cat))},
+], Object.entries(M.mode_category).map(([mode, cat]) => ({mode, cat: cat || OUT})), {sortKey: "cat", desc: false});
+
+// 2. Hours: one 100% bar per telescope.
+{
+  const W = 1000, L = 90, R = 70, rh = 40, keys = [...CATS, OUT];
+  let s = `<svg viewBox="0 0 ${W} ${2 * rh + 8}" role="img" aria-label="Requested hours by mode">`;
+  ["mid", "low"].forEach((t, i) => {
+    const tot = keys.reduce((a, c) => a + hoursOf(t, c), 0), y = 4 + i * rh; let x = L;
+    s += `<text x="${L - 10}" y="${y + rh / 2 + 3}" text-anchor="end">${TEL[t]}</text>`;
+    keys.forEach(c => { const h = hoursOf(t, c), w = (W - L - R) * h / tot; if (!h) return;
+      s += `<rect x="${x.toFixed(1)}" y="${y + 5}" width="${Math.max(0.5, w - 2).toFixed(1)}" height="${rh - 12}" rx="3" fill="${COLOR[c]}" data-tip="${esc(`${TEL[t]} · ${c}: ${fmt(h)} h (${fmt(100 * h / tot)}%)`)}"/>`;
+      if (w > 44) s += `<text x="${(x + w / 2).toFixed(1)}" y="${y + rh / 2 + 3}" text-anchor="middle" style="fill:#fff;font-weight:600;pointer-events:none">${fmt(100 * h / tot)}%</text>`;
+      x += w; });
+    s += `<text x="${W - R + 8}" y="${y + rh / 2 + 3}">${fmt(tot)} h</text>`; });
+  document.getElementById("hourbars").innerHTML = s + "</svg>";
+  document.getElementById("hourlegend").append(legend(keys.map(c => [c, COLOR[c]])));
+}
+
+// 3. One card per mode: its products and the parameters used to size them.
+const REF = M.reference;
+const LABEL = {template: "Array", n_station: "Dishes or stations", max_baseline_m: "Longest baseline (m)", diameter_m: "Dish or station diameter (m)",
+  dump_time_s: "Correlator dump time (s)", smearing_beams: "Smearing allowed (beams)", continuum_channel_kHz: "Native channel width (kHz)",
+  continuum_bandwidth_MHz: "Bandwidth (MHz)", cube_n_chan: "Image-cube channels", continuum_stokes: "Stokes parameters",
+  zoom_channel_kHz: "Zoom channel width (kHz)", zoom_n_chan: "Zoom channels", zoom_stokes: "Stokes parameters",
+  image_bits: "Bits per pixel", psf_oversampling: "Pixels per beam", pst_subint_s: "Sub-integration (s)"};
+const PARAMS = {Continuum: ["template", "n_station", "max_baseline_m", "dump_time_s", "continuum_bandwidth_MHz", "continuum_channel_kHz", "smearing_beams", "cube_n_chan", "continuum_stokes", "image_bits", "psf_oversampling"],
+  Zoom: ["template", "n_station", "dump_time_s", "zoom_channel_kHz", "zoom_n_chan", "smearing_beams", "zoom_stokes", "image_bits", "psf_oversampling"],
+  PSS: [], PST: ["pst_subint_s"]};
+const EXTRA = {
+  PSS: [["Output rate, folded candidates", "81.9 MB/s", "data_products.PulsarSearchProduct"], ["Output rate, single-pulse candidates", "20.4 MB/s (listed, not counted)", "data_products.PulsarSearchProduct"]],
+  PST: [["Channels", "4096", "data_products.FoldedPulsarArchive default"], ["Phase bins", "128", "data_products.FoldedPulsarArchive default"],
+        ["Stokes parameters", "4", "data_products.FoldedPulsarArchive default"], ["Bits per sample", "16", "data_products.FoldedPulsarArchive default"]]};
+const PRODUCTS = {
+  Continuum: "Continuum imaging delivers calibrated visibilities, a multi-frequency synthesis (MFS) image and an image cube of about ten channels, all in Stokes I, Q, U and V unless the proposer asks otherwise. Residual images, clean components and PSF cut-outs are also made, but they are small beside the visibilities and are not counted here.",
+  Zoom: "Zoom spectroscopy delivers calibrated visibilities over each zoom window and a line cube made after optional continuum subtraction. A residual line cube is also made but is not counted here.",
+  PSS: "The pulsar search pipeline delivers lists of candidates and a folded data cube for each periodic candidate. Single-pulse searches add their own candidate lists and filterbank snippets.",
+  PST: "Pulsar timing delivers folded profiles in PSRFITS, together with times of arrival and updated ephemerides. A detected filterbank and flowthrough voltages are optional extras and are not counted here."};
+const cardsHost = document.getElementById("cards");
+CATS.forEach(c => {
+  const rows = PARAMS[c].map(k => { const m = REF.mid[k], l = REF.low[k];
+    const v = x => typeof x.value === "object" ? Object.entries(x.value).map(([b, n]) => `B${b} ${n}`).join(", ") : x.value;
+    return [LABEL[k], v(m) === v(l) ? String(v(m)) : `Mid ${v(m)}; Low ${v(l)}`, m.source]; }).concat(EXTRA[c] || []);
+  const host = el("div", {class: "figure", style: `--c:${COLOR[c]}`}, el("h3", {}, c), el("p", {}, PRODUCTS[c]));
+  cardsHost.append(host);
+  table(host, [{key: 0, label: "Parameter"}, {key: 1, label: "Value"}, {key: 2, label: "Source", cls: "src"}], rows);
+});
+
+// 4. Volume per product and telescope, on a log axis.
+{
+  const rows = ["mid", "low"].flatMap(t => CATS.flatMap(c => Object.entries(V[`${t}|${c}`] || {}).map(([o, tb]) => ({t, c, o, tb}))))
+    .sort((a, b) => b.tb - a.tb);
+  const W = 1000, L = 360, R = 90, rh = 26, Tp = 8, H = Tp + rows.length * rh + 30, lo = -1, hi = 6;
+  const x = tb => L + (W - L - R) * (Math.log10(Math.max(tb, 10 ** lo)) - lo) / (hi - lo);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Estimated data volume by product">`;
+  for (let e = lo; e <= hi; e++) s += `<line class="grid" x1="${x(10 ** e)}" x2="${x(10 ** e)}" y1="${Tp - 4}" y2="${H - 24}"/><text x="${x(10 ** e)}" y="${H - 8}" text-anchor="middle">${vol(10 ** e)}</text>`;
+  rows.forEach((r, i) => { const y = Tp + i * rh;
+    s += `<text x="${L - 10}" y="${y + rh / 2 + 4}" text-anchor="end">${TEL[r.t]} · ${r.c} · ${esc(ODP_LABEL[r.o] || r.o)}</text>` +
+      `<rect x="${L}" y="${y + 5}" width="${Math.max(2, x(r.tb) - L).toFixed(1)}" height="${rh - 10}" rx="3" fill="${COLOR[r.c]}" data-tip="${esc(`${TEL[r.t]} · ${r.c} · ${ODP_LABEL[r.o] || r.o}: ${vol(r.tb)}`)}"/>` +
+      `<text x="${(x(r.tb) + 6).toFixed(1)}" y="${y + rh / 2 + 4}">${vol(r.tb)}</text>`; });
+  document.getElementById("volbars").innerHTML = s + "</svg>";
+  document.getElementById("vollegend").append(legend(CATS.map(c => [c, COLOR[c]])));
+}
+
+// 5. Every request, with a mode filter.
+const fCat = Object.assign(el("select", {"aria-label": "Filter by mode"}, el("option", {value: ""}, "All modes"),
+  [...CATS, OUT].map(c => el("option", {value: c}, c))), {onchange: () => redraw()});
+const redraw = table(document.getElementById("reqs"), [
+  {key: "name", label: "Request"},
+  {key: "telescope", label: "Tel.", render: r => el("span", {class: r.telescope}, r.telescope)},
+  {key: "paper", label: "Paper", render: r => paper(r.paper)},
+  {key: "hours", label: "Hours", num: true},
+  {key: "cats", label: "Modes", render: r => el("span", {class: "legend", style: "margin:0"}, r.categories.map(c => el("span", {style: `--c:${COLOR[c]}`}, c)))},
+  {key: "odpList", label: "Products", cls: "muted"},
+  {key: "total_TB", label: "Volume (TB)", num: true, dp: 1, render: r => r.odps.length ? vol(r.total_TB) : "—"},
+], M.requests.map(r => ({...r, cats: r.categories.join(", "), odpList: r.odps.map(o => ODP_LABEL[o.odp] || o.odp).join(", ") || "None estimated"})),
+  {search: true, placeholder: "Filter by request, paper or product…", sortKey: "total_TB", filter: r => !fCat.value || r.categories.includes(fCat.value)});
+document.querySelector("#reqs .controls").append(fCat);
+
+const A = REF.mid;
+document.getElementById("assume").innerHTML = `<b>Several inputs are assumptions, not stated values.</b> ` +
+  `The SKAO summary of science data products lists the products but gives no sizes, and the schemas give no dump time. ` +
+  `The dump times, ${A.dump_time_s.value} s for SKA-Mid and ${REF.low.dump_time_s.value} s for SKA-Low, come from the SKA1 Design Baseline. ` +
+  `The full AA* arrays, the quarter-beam smearing limit, the zoom window, the Stokes I line cube and the 10-second pulsar sub-integrations are this page's own choices. ` +
+  `Each estimate should therefore be read as a reference size for its mode, not as a prediction for a specific proposal.`;
+</script>
+</body>
+</html>

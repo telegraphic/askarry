@@ -8,67 +8,123 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="atlas.css">
-<style>td b{ white-space:nowrap; } td details summary{ cursor:pointer; color:var(--ink-soft); } td details p{ margin:6px 0 0; font-style:italic; color:var(--ink-soft); max-width:60ch; }</style>
+<style>td b{ white-space:nowrap; } td details summary{ cursor:pointer; color:var(--ink-soft); } td details p{ margin:6px 0 0; font-style:italic; color:var(--ink-soft); max-width:60ch; }
+  .chart .band-label{ font-size:11px; fill:var(--ink-soft); }
+  .chart rect.bin{ cursor:pointer; }
+  #freqsel:empty{ display:none; }</style>
 </head>
 <body>
 <div class="page">
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>Instrument Requirements</h1>
-    <p class="lede">The register collects the concrete demands that AASKAII chapters place on the telescopes: sensitivity, angular resolution, field of view or survey area, frequency, observing time and the array stage at which each becomes possible. Every row carries the sentence it was taken from, and every sentence has been matched against the chapter it is attributed to before it was admitted.</p>
+    <p class="lede">The register collects the concrete demands that AASKAII chapters place on the telescopes. These include sensitivity, angular resolution, field of view or survey area, frequency, observing time and the array stage at which each becomes possible. Every row carries the sentence it was taken from, and that sentence was matched against its chapter before the row was admitted.</p>
     <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="prose"><h2>How the register was built</h2>
-      <p>One agent read each of the seven book sections, searching every chapter for stated requirements and copying the sentence that states each one. A script then looked for every quoted sentence in the chapter it names; a row survives only if the sentence is there verbatim, or, when a quotation runs across two of the passages into which the chapter was indexed, if each of its sentences is. Every one of the 682 quotations the agents returned passed this test, so no row had to be dropped. Fields are left empty when the chapter does not state a value, so an empty cell records the chapter's silence rather than a gap in the extraction.</p>
-      <p>The register is therefore a sample of what the book asks for, weighted toward chapters that state their requirements in numbers; it is not a complete specification. The <a href="sensitivity-verification.html">sensitivity page</a> reruns the rows that give enough parameters through the SKAO calculator, and the <a href="capability-crosscheck.html">capability page</a> asks which array stage can deliver each one.</p>
+    <p class="note key" id="key"></p>
+    <section id="freq"><h2>Where in frequency the book asks</h2>
+      <p class="muted" id="freqnote"></p>
+      <figure class="figure chart"><div id="freqsvg"></div>
+        <figcaption>The height of each bar shows how many requirements cover that part of the spectrum. The shaded bands mark the SKA-Low and SKA-Mid receivers, and red bars fall outside every receiver that will be built. Click a bar to show only those requirements in the register below.</figcaption></figure>
     </section>
     <section id="bysec"><h2>Requirements per section</h2></section>
     <section id="reg"><h2>The register</h2>
       <div class="controls" id="filters"></div>
     </section>
+    <section><details class="method"><summary>How the register was built</summary><div class="prose">
+      <p>One agent read each of the seven book sections. It searched every chapter for stated requirements and copied the sentence that states each one. A script then looked for every quoted sentence in the chapter it names. A row survives only if the sentence appears there word for word. When a quotation runs across two of the indexed passages of a chapter, each of its sentences must appear. All 682 quotations that the agents returned passed this test, so no row had to be dropped. A field is left empty when the chapter does not state a value. An empty cell therefore records the chapter's silence, not a gap in the extraction.</p>
+      <p>The register is a sample of what the book asks for, not a complete specification. It favours chapters that state their requirements in numbers. The <a href="sensitivity-verification.html">sensitivity page</a> reruns the rows that give enough parameters through the SKAO calculator, and the <a href="capability-crosscheck.html">capability page</a> asks which array stage can deliver each one. For the frequency chart, a parser in <code>scripts/build_atlas_data.py</code> reads each row's frequency field. It recognises stated frequencies, wavelengths and band names, and it ignores bandwidths. Rows whose field names no frequency are left off the chart, but they stay in the register.</p>
+    </div></details></section>
   </main>
 </div>
 <script src="data/chapters.js"></script>
 <script src="data/prose.js"></script>
+<script src="data/requirement_freqs.js"></script>
 <script src="atlas.js"></script>
 <script>
-frame(["chapters"]);
+frame(["chapters", "requirement_freqs"]);
 document.getElementById("eyebrow").textContent = masthead("instrument-requirements.html");
-const P = ATLAS.prose;
-const rows = P.sections.flatMap(s => s.requirements.map(r => ({...r, section: s.section})));
+const P = ATLAS.prose, F = ATLAS.requirement_freqs, FG = F.freq_ghz, BAND = F.bands;
+const rows = P.sections.flatMap(s => s.requirements.map(r => ({...r, section: s.section, freq: FG[r.id] || null})));
 const stats = document.getElementById("stats");
 [[rows.length, "requirements"], [new Set(rows.map(r => r.paper)).size, "chapters"],
  [rows.filter(r => r.calculator_params).length, "with calculator parameters"], [P.counts.rejected, "quotes rejected in checking"]]
   .forEach(([n, l]) => stats.append(el("div", {class: "stat"}, el("span", {class: "n"}, fmt(n)), el("span", {class: "l"}, l))));
+
+// Frequency coverage: log-spaced bins from 40 MHz to 50 GHz, split at every band edge
+// so that each bin lies wholly inside or wholly outside the built receivers.
+const BUILT = ["Low", "1", "2", "5a", "5b"], LO = Math.log10(0.04), HI = Math.log10(50), STEP = (HI - LO) / 64;
+const inBuilt = f => BUILT.some(b => f >= BAND[b][0] && f <= BAND[b][1]);
+const cuts = [...new Set([LO, HI, ...Object.values(BAND).flat().map(Math.log10)])].filter(x => x >= LO && x <= HI).sort((p, q) => p - q);
+const edges = cuts.slice(1).flatMap((x, i) => { const n = Math.max(1, Math.round((x - cuts[i]) / STEP));
+  return Array.from({length: n}, (_, k) => cuts[i] + (x - cuts[i]) * k / n); }).concat(HI).map(x => 10 ** x);
+const placed = rows.filter(r => r.freq);
+// Edges come back from log10 with rounding noise, so compare with a small tolerance.
+const hit = (lo, hi, a, b) => { const A = a * (1 + 1e-9), Bq = b * (1 - 1e-9); return lo === hi ? lo >= a * (1 - 1e-9) && lo < Bq : lo < Bq && hi > A; };
+const bins = edges.slice(0, -1).map((a, i) => { const b = edges[i + 1], mid = Math.sqrt(a * b);
+  return {a, b, mid, built: inBuilt(mid), ids: placed.filter(r => r.freq.some(([lo, hi]) => hit(lo, hi, a, b))).map(r => r.id)}; });
+// An interval is covered when the built bands, taken in order, reach from its low end to its high end.
+const covered = ([lo, hi]) => BUILT.map(k => BAND[k]).sort((p, q) => p[0] - q[0]).reduce((x, [a, b]) => a <= x + 1e-9 && x <= b ? Math.max(x, b) : x, lo) >= hi - 1e-9;
+const out = placed.filter(r => !r.freq.every(covered));
+const inGap = out.filter(r => r.freq.some(i => !covered(i) && i[1] > BAND["2"][1] && i[0] < BAND["5a"][0])).length;
+const above = out.filter(r => r.freq.some(i => i[1] > BAND["5b"][1] + 1e-9)).length;
+document.getElementById("freqnote").textContent = `The chart places ${placed.length} of the ${rows.length} requirements, because their frequency field names a frequency or a band. Another ${F.n_with_text - placed.length} describe the frequency only loosely, as in "wide bandwidth" or "metre wavelengths", and ${rows.length - F.n_with_text} do not state one.`;
+const peakBin = bins.reduce((p, q) => q.ids.length > p.ids.length ? q : p);
+document.getElementById("key").textContent = `Demand peaks in SKA-Mid Band 2, where ${peakBin.ids.length} requirements cover ${fmt(peakBin.a * 1000)}–${fmt(peakBin.b * 1000)} MHz. ` +
+  `However, ${out.length} of the ${placed.length} requirements on the chart ask for frequencies that no planned receiver covers. ` +
+  `Of these, ${inGap} reach into the 1.76–4.6 GHz gap left by the unbuilt Bands 3 and 4, and ${above} lie above 15.4 GHz.`;
+const fx = f => 40 + 920 * (Math.log10(f) - LO) / (HI - LO), W = 1000, H = 300, base = 220, maxN = Math.max(...bins.map(b => b.ids.length));
+const fy = n => base - 190 * n / maxN;
+let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Requirements per frequency">`;
+[["Low", "SKA-Low", "var(--accent-low)"], ["1", "B1", "var(--accent-mid)"], ["2", "B2", "var(--accent-mid)"], ["5a", "B5a", "var(--accent-mid)"], ["5b", "B5b", "var(--accent-mid)"]].forEach(([k, l, c]) => {
+  const [a, b] = BAND[k];
+  s += `<rect x="${fx(a)}" y="${base - 196}" width="${fx(b) - fx(a)}" height="196" fill="${c}" fill-opacity="0.09"/>` +
+    `<rect x="${fx(a)}" y="${base + 8}" width="${fx(b) - fx(a) - 1}" height="16" rx="3" fill="${c}" fill-opacity="0.75" data-tip="${l === "SKA-Low" ? "SKA-Low" : `SKA-Mid Band ${k}`}: ${a}–${b} GHz"/>` +
+    `<text class="band-label" x="${(fx(a) + fx(b)) / 2}" y="${base + 40}" text-anchor="middle">${l}</text>`; });
+[["3", "B3–4 (not built)"], ["6", "B6 (proposed)"]].forEach(([k, l]) => { const [a, b] = k === "3" ? [BAND["2"][1], BAND["5a"][0]] : BAND["6"];
+  s += `<rect x="${fx(a)}" y="${base + 8}" width="${fx(b) - fx(a) - 1}" height="16" rx="3" fill="none" stroke="var(--ink-faint)" stroke-dasharray="3 3"/>` +
+    `<text class="band-label" x="${(fx(a) + fx(b)) / 2}" y="${base + 40}" text-anchor="middle">${l}</text>`; });
+[0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50].forEach(f => s += `<line class="grid" x1="${fx(f)}" x2="${fx(f)}" y1="${base - 196}" y2="${base}"/>` +
+  `<text x="${fx(f)}" y="${H - 14}" text-anchor="middle">${f < 1 ? `${f * 1000} MHz` : `${f} GHz`}</text>`);
+[0, Math.round(maxN / 2), maxN].forEach(n => s += `<text x="34" y="${fy(n) + 4}" text-anchor="end">${n}</text>`);
+bins.forEach((b, i) => { if (!b.ids.length) return;
+  s += `<rect class="bin" data-i="${i}" x="${fx(b.a) + 1}" y="${fy(b.ids.length)}" width="${fx(b.b) - fx(b.a) - 2}" height="${base - fy(b.ids.length)}" rx="2" fill="${b.built ? "var(--ink-soft)" : "var(--bad)"}"` +
+    ` data-tip="${fmt(b.a * 1000)}–${fmt(b.b * 1000)} MHz: ${b.ids.length} requirements${b.built ? "" : " · outside every built band"}\nClick to filter the register"/>`; });
+s += `<line x1="40" x2="960" y1="${base}" y2="${base}" stroke="var(--ink-faint)"/></svg>`;
+const fsvg = document.getElementById("freqsvg"); fsvg.innerHTML = s;
+
 bars(document.getElementById("bysec"), SECTIONS.map(s => ({label: s, value: rows.filter(r => r.section === s).length})), {unit: " requirements"});
 
-const host = document.getElementById("reg"), box = el("div");
-const sel = (label, values) => { const s = el("select", {}, el("option", {value: ""}, label), values.map(v => el("option", {value: v}, v))); return s; };
+// Register: dropdowns and the frequency bin filter feed table()'s filter, so the search text survives.
+const sel = (label, values) => el("select", {"aria-label": label}, el("option", {value: ""}, label), values.map(v => el("option", {value: v}, v)));
 const fSec = sel("All sections", SECTIONS), fTel = sel("Both telescopes", ["mid", "low", "both", "vlbi"]),
   fMode = sel("All modes", [...new Set(rows.map(r => r.mode).filter(Boolean))].sort());
-document.getElementById("filters").append(fSec, fTel, fMode);
+let fBin = null;
+const chip = el("span", {id: "freqsel"});
+document.getElementById("filters").append(fSec, fTel, fMode, chip);
 const cell = v => v ?? "—";
-function draw() {
-  const rs = rows.filter(r => (!fSec.value || r.section === fSec.value) && (!fTel.value || r.telescope === fTel.value) && (!fMode.value || r.mode === fMode.value));
-  box.replaceChildren();
-  table(box, [
-    {key: "id", label: "ID", render: r => el("b", {}, r.id)},
-    {key: "paper", label: "Chapter", render: r => el("span", {}, paper(r.paper), r.page ? el("span", {class: "muted"}, ` p.${r.page}`) : null)},
-    {key: "science_driver", label: "Science driver", render: r => el("details", {}, el("summary", {}, r.science_driver),
-      el("p", {}, `"${r.quote}"`), el("span", {class: `pill ${r.verification === "verbatim" ? "good" : "warn"}`}, r.verification))},
-    {key: "telescope", label: "Tel.", render: r => el("span", {class: r.telescope}, r.telescope)},
-    {key: "array_stage", label: "Stage", render: r => cell(r.array_stage)},
-    {key: "sensitivity", label: "Sensitivity", render: r => cell(r.sensitivity)},
-    {key: "resolution", label: "Resolution", render: r => cell(r.resolution)},
-    {key: "fov_or_area", label: "Area / FoV", render: r => cell(r.fov_or_area)},
-    {key: "frequency", label: "Frequency", render: r => cell(r.frequency)},
-    {key: "survey_speed_or_time", label: "Time", render: r => cell(r.survey_speed_or_time)},
-  ], rs, {search: true, placeholder: "Filter by chapter, driver, value or quote…", rowId: r => r.id});
-}
-[fSec, fTel, fMode].forEach(s => s.onchange = draw);
-host.append(box);
-draw();
+const redraw = table(document.getElementById("reg"), [
+  {key: "id", label: "ID", keep: true, render: r => el("b", {}, r.id)},
+  {key: "paper", label: "Chapter", keep: true, render: r => el("span", {}, paper(r.paper), r.page ? el("span", {class: "muted"}, ` p.${r.page}`) : null)},
+  {key: "science_driver", label: "Science driver", keep: true, render: r => el("details", {}, el("summary", {}, r.science_driver),
+    el("p", {}, `"${r.quote}"`), el("span", {class: `pill ${r.verification === "verbatim" ? "good" : "warn"}`}, r.verification))},
+  {key: "telescope", label: "Tel.", render: r => el("span", {class: r.telescope}, r.telescope)},
+  {key: "array_stage", label: "Stage", render: r => cell(r.array_stage)},
+  {key: "sensitivity", label: "Sensitivity", render: r => cell(r.sensitivity)},
+  {key: "resolution", label: "Resolution", render: r => cell(r.resolution)},
+  {key: "fov_or_area", label: "Area / FoV", render: r => cell(r.fov_or_area)},
+  {key: "frequency", label: "Frequency", render: r => cell(r.frequency)},
+  {key: "survey_speed_or_time", label: "Time", render: r => cell(r.survey_speed_or_time)},
+], rows, {search: true, placeholder: "Filter by chapter, driver, value or quote…", rowId: r => r.id, hideEmpty: true,
+  filter: r => (!fSec.value || r.section === fSec.value) && (!fTel.value || r.telescope === fTel.value) &&
+    (!fMode.value || r.mode === fMode.value) && (!fBin || fBin.ids.includes(r.id))});
+[fSec, fTel, fMode].forEach(s => s.onchange = redraw);
+fsvg.addEventListener("click", e => { const i = e.target.dataset?.i; if (i == null) return;
+  fBin = bins[i];
+  chip.replaceChildren(el("span", {class: "pill neutral"}, `${fmt(fBin.a * 1000)}–${fmt(fBin.b * 1000)} MHz `,
+    Object.assign(el("button", {class: "more", type: "button", "aria-label": "Clear frequency filter"}, "×"), {onclick: () => { fBin = null; chip.replaceChildren(); redraw(); }})));
+  redraw(); document.getElementById("reg").scrollIntoView({behavior: "smooth"}); });
 </script>
 </body>
 </html>

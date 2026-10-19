@@ -53,7 +53,7 @@ Rules:
 
 # Audience-specific instructions appended to `_SYSTEM_PROMPT`, selected via the
 # `audience` argument on `generate_answer`/`stream_answer`. AUDIENCE_PHD is the
-# default for both the UI (app.py) and these functions, so any caller that
+# default for both the UI (legacy/gradio_app.py) and these functions, so any caller that
 # omits the argument still gets PhD-level output.
 _AUDIENCE_INSTRUCTIONS: dict[str, str] = {
     AUDIENCE_PHD: (

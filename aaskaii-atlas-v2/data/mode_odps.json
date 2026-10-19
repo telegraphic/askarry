@@ -1,0 +1,5587 @@
+{
+ "generated": {
+  "git_sha": "8486317",
+  "date": "2026-10-04",
+  "args": {
+   "extracted_by": "full-sonnet5-medium",
+   "reviewed_only": true
+  }
+ },
+ "run": "full-sonnet5-medium",
+ "mode_category": {
+  "Wide-field continuum survey": "Continuum",
+  "Ultra-deep continuum imaging": "Continuum",
+  "Polarimetry / RM grid": "Continuum",
+  "EoR / Cosmic Dawn 21-cm": "Continuum",
+  "Weak lensing": "Continuum",
+  "Solar/heliospheric imaging": "Continuum",
+  "Deep/wide HI galaxy survey": "Zoom",
+  "Deep HI intensity mapping": "Zoom",
+  "Spectral line / maser survey": "Zoom",
+  "Zoom-mode spectroscopy": "Zoom",
+  "Pulsar search survey": "PSS",
+  "Pulsar timing array": "PST",
+  "VLBI / astrometry": null,
+  "Transient / commensal / ToO": null,
+  "SETI / technosignature": null
+ },
+ "coverage": {
+  "papers_per_section": {
+   "From the Milky Way to Distant Galaxies": 53,
+   "The Cosmos": 49,
+   "The Extreme Universe": 38,
+   "Methods and Techniques": 24,
+   "Sun, Earth and Planets": 18,
+   "Formation and Evolution of Stars": 16,
+   "Science Working Group Overviews": 13
+  },
+  "items": [
+   {
+    "label": "Continuum",
+    "term": "continuum survey|wide-area survey|all-sky survey|ultra-deep|ultra deep|deep field|RM grid|rotation measure grid|polarization survey|polarisation survey|polarimetric survey|EoR|Epoch of Reionization|Epoch of Reionisation|Cosmic Dawn|weak lensing|cosmic shear|heliosphere|heliospheric|solar radio|solar corona|solar imaging|coronal mass ejection",
+    "total_mentions": 1772,
+    "n_papers": 92,
+    "n_sections": 7,
+    "sections": {
+     "The Cosmos": {
+      "n_papers": 29,
+      "papers": [
+       "Acharya01",
+       "Afonso01",
+       "Asorey01",
+       "Bag01",
+       "Barkana01",
+       "Caleb01",
+       "Camera01",
+       "Cang01",
+       "Cassano01",
+       "Chakraborty01",
+       "Chatterjee01",
+       "Cunnington01",
+       "Elahi01",
+       "Gitti01",
+       "Harrison01",
+       "Harrison02",
+       "Kurahara01",
+       "Loi01",
+       "Mayor01",
+       "Mazumder01",
+       "OSullivan01",
+       "Pandey-Pommier02",
+       "Pasini01",
+       "Regis01",
+       "Ronconi01",
+       "Sarkar01",
+       "Vacca01",
+       "Wolz01",
+       "deLeraAcedo01"
+      ]
+     },
+     "From the Milky Way to Distant Galaxies": {
+      "n_papers": 24,
+      "papers": [
+       "Algera01",
+       "Bait01",
+       "Baldi01",
+       "DAmato01",
+       "Dabhade01",
+       "Duncan01",
+       "FangxiaAn01",
+       "Giulietti01",
+       "Hardcastle01",
+       "Karska01",
+       "Kondapally01",
+       "Ma01",
+       "Maccagni01",
+       "Mahony01",
+       "Mao01",
+       "Mazzolari01",
+       "Miville-Deschenes01",
+       "Prandoni01",
+       "SabyasachiPal03",
+       "Sasmal01",
+       "Schoedel01",
+       "Sun01",
+       "Sun02",
+       "Tahani01"
+      ]
+     },
+     "Sun, Earth and Planets": {
+      "n_papers": 15,
+      "papers": [
+       "Cheung01",
+       "Chrysaphi01",
+       "Kansabanik01",
+       "Kontar01",
+       "Kumari01",
+       "Mohan01",
+       "Mondal01",
+       "Morosan01",
+       "Nakariakov01",
+       "Oberoi01",
+       "Patra01",
+       "PeijinZhang01",
+       "Raja01",
+       "Sharma01",
+       "Vedantham01"
+      ]
+     },
+     "Methods and Techniques": {
+      "n_papers": 13,
+      "papers": [
+       "Acharya02",
+       "Burba01",
+       "Carcamo01",
+       "Chan01",
+       "Datta01",
+       "Denzel01",
+       "GemmaAnderson01",
+       "Hota01",
+       "Kobayashi01",
+       "LeZhang01",
+       "Morgan01",
+       "Tripathi01",
+       "Vacca02"
+      ]
+     },
+     "Science Working Group Overviews": {
+      "n_papers": 6,
+      "papers": [
+       "JingWang01",
+       "Spinelli02",
+       "Trott01",
+       "Vernstrom01",
+       "Zucca01",
+       "vanLoon01"
+      ]
+     },
+     "The Extreme Universe": {
+      "n_papers": 3,
+      "papers": [
+       "Bignall01",
+       "Spingola01",
+       "Tiburzi01"
+      ]
+     },
+     "Formation and Evolution of Stars": {
+      "n_papers": 2,
+      "papers": [
+       "LorenAnderson01",
+       "Traficante01"
+      ]
+     }
+    }
+   },
+   {
+    "label": "Zoom",
+    "term": "HI galaxy survey|Hi galaxy survey|H i galaxy survey|HI survey|Hi survey|H i survey|untargeted HI|untargeted Hi|blind HI|blind Hi|intensity mapping|maser|radio recombination line|RRL|spectral line survey|zoom mode|zoom-mode|zoom window",
+    "total_mentions": 936,
+    "n_papers": 60,
+    "n_sections": 7,
+    "sections": {
+     "The Cosmos": {
+      "n_papers": 18,
+      "papers": [
+       "Baker01",
+       "Bosi01",
+       "Camera01",
+       "Chakraborty01",
+       "Chatterjee01",
+       "Cunnington01",
+       "Elahi01",
+       "Fonseca01",
+       "Harrison01",
+       "Lelli01",
+       "Majumdar01",
+       "Mayor01",
+       "Mazumder01",
+       "Nasirudin01",
+       "Ronconi01",
+       "Sarkar01",
+       "Spinelli01",
+       "Wolz01"
+      ]
+     },
+     "From the Milky Way to Distant Galaxies": {
+      "n_papers": 13,
+      "papers": [
+       "Emig01",
+       "HengxingPan01",
+       "Imai01",
+       "Karska01",
+       "Mahony01",
+       "Miville-Deschenes01",
+       "Pandey-Pommier01",
+       "Rosolowsky01",
+       "Salas01",
+       "Sawada-Satoh01",
+       "Tarchi01",
+       "XuYe01",
+       "deBlok01"
+      ]
+     },
+     "Formation and Evolution of Stars": {
+      "n_papers": 10,
+      "papers": [
+       "Bianchi01",
+       "Bourke01",
+       "Cavallaro01",
+       "Forbrich01",
+       "Guidi01",
+       "Ingallinera01",
+       "LorenAnderson01",
+       "Rygl01",
+       "Sabatini01",
+       "Traficante01"
+      ]
+     },
+     "Science Working Group Overviews": {
+      "n_papers": 7,
+      "papers": [
+       "Audard01",
+       "Bellomo01",
+       "Bianchi02",
+       "JingWang01",
+       "Spinelli02",
+       "Trott01",
+       "vanLoon01"
+      ]
+     },
+     "Methods and Techniques": {
+      "n_papers": 7,
+      "papers": [
+       "Bempong-Manful01",
+       "Chen01",
+       "GemmaAnderson01",
+       "Robishaw01",
+       "SabyasachiPal01",
+       "Timmerman01",
+       "Tremblay01"
+      ]
+     },
+     "Sun, Earth and Planets": {
+      "n_papers": 3,
+      "papers": [
+       "Kontar01",
+       "Sharma01",
+       "Vedantham01"
+      ]
+     },
+     "The Extreme Universe": {
+      "n_papers": 2,
+      "papers": [
+       "Castignani01",
+       "Kovalev01"
+      ]
+     }
+    }
+   },
+   {
+    "label": "PSS",
+    "term": "pulsar search|pulsar survey|PSS",
+    "total_mentions": 86,
+    "n_papers": 11,
+    "n_sections": 3,
+    "sections": {
+     "The Extreme Universe": {
+      "n_papers": 7,
+      "papers": [
+       "Abbate01",
+       "AvishekBasu01",
+       "Bagchi01",
+       "Keane01",
+       "Levin01",
+       "Qiu01",
+       "VenkatramanKrishnan01"
+      ]
+     },
+     "Methods and Techniques": {
+      "n_papers": 3,
+      "papers": [
+       "Chen01",
+       "Hota01",
+       "Tremblay01"
+      ]
+     },
+     "Sun, Earth and Planets": {
+      "n_papers": 1,
+      "papers": [
+       "Chrysaphi01"
+      ]
+     }
+    }
+   },
+   {
+    "label": "PST",
+    "term": "PTA|pulsar timing array",
+    "total_mentions": 532,
+    "n_papers": 17,
+    "n_sections": 4,
+    "sections": {
+     "The Extreme Universe": {
+      "n_papers": 6,
+      "papers": [
+       "Besancon01",
+       "Capelo01",
+       "Keane01",
+       "Oswald01",
+       "Shannon01",
+       "Tiburzi01"
+      ]
+     },
+     "The Cosmos": {
+      "n_papers": 6,
+      "papers": [
+       "Camera01",
+       "Cruz01",
+       "Jenkins01",
+       "Pasechnik01",
+       "Perna01",
+       "Ragavendra01"
+      ]
+     },
+     "Methods and Techniques": {
+      "n_papers": 3,
+      "papers": [
+       "GemmaAnderson01",
+       "Kobayashi01",
+       "Takahashi01"
+      ]
+     },
+     "Science Working Group Overviews": {
+      "n_papers": 2,
+      "papers": [
+       "Bellomo01",
+       "Joshi01"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "reference": {
+  "mid": {
+   "template": {
+    "value": "Mid_full_AAstar",
+    "source": "assumed: the full AA* array"
+   },
+   "n_station": {
+    "value": 143,
+    "source": "ska_ost_array_config"
+   },
+   "max_baseline_m": {
+    "value": 35970.3,
+    "source": "ska_ost_array_config"
+   },
+   "diameter_m": {
+    "value": 15.0,
+    "source": "ska_ost_array_config"
+   },
+   "dump_time_s": {
+    "value": 0.14,
+    "source": "Dewdney et al. 2022, Table 1-2"
+   },
+   "continuum_channel_kHz": {
+    "value": 13.4,
+    "source": "setup-validator frontend defaults"
+   },
+   "continuum_bandwidth_MHz": {
+    "value": {
+     "1": 700,
+     "2": 810,
+     "5a": 3900,
+     "5b": 5000
+    },
+    "source": "setup-validator frontend defaults"
+   },
+   "default_freq_MHz": {
+    "value": 1355,
+    "source": "assumed: Band 2 centre"
+   },
+   "zoom_channel_kHz": {
+    "value": 13.44,
+    "source": "zoom_settings schema (widest Mid, widest Low)"
+   },
+   "zoom_n_chan": {
+    "value": 4000,
+    "source": "image_cube schema: base maximum of n_channel_zoom"
+   },
+   "cube_n_chan": {
+    "value": 10,
+    "source": "Arumugam et al. 2025: 'typically 10 channels'"
+   },
+   "continuum_stokes": {
+    "value": 4,
+    "source": "Arumugam et al. 2025: IQUV unless specified"
+   },
+   "zoom_stokes": {
+    "value": 1,
+    "source": "assumed: Stokes I line cube"
+   },
+   "image_bits": {
+    "value": 32,
+    "source": "data_products.Image default"
+   },
+   "psf_oversampling": {
+    "value": 3,
+    "source": "data_products.Image default"
+   },
+   "smearing_beams": {
+    "value": 0.25,
+    "source": "assumed: smearing at most a quarter beam at the half-power radius"
+   },
+   "pst_subint_s": {
+    "value": 10.0,
+    "source": "assumed: 10 s sub-integrations"
+   }
+  },
+  "low": {
+   "template": {
+    "value": "Low_full_AAstar",
+    "source": "assumed: the full AA* array"
+   },
+   "n_station": {
+    "value": 307,
+    "source": "ska_ost_array_config"
+   },
+   "max_baseline_m": {
+    "value": 73393.2,
+    "source": "ska_ost_array_config"
+   },
+   "diameter_m": {
+    "value": 39.0,
+    "source": "ska_ost_array_config"
+   },
+   "dump_time_s": {
+    "value": 0.9,
+    "source": "Dewdney et al. 2022, Table 1-3"
+   },
+   "continuum_channel_kHz": {
+    "value": 5.4,
+    "source": "setup-validator frontend defaults"
+   },
+   "continuum_bandwidth_MHz": {
+    "value": 300,
+    "source": "setup-validator frontend defaults"
+   },
+   "default_freq_MHz": {
+    "value": 200,
+    "source": "setup-validator frontend defaults"
+   },
+   "zoom_channel_kHz": {
+    "value": 1.808,
+    "source": "zoom_settings schema (widest Mid, widest Low)"
+   },
+   "zoom_n_chan": {
+    "value": 4000,
+    "source": "image_cube schema: base maximum of n_channel_zoom"
+   },
+   "cube_n_chan": {
+    "value": 10,
+    "source": "Arumugam et al. 2025: 'typically 10 channels'"
+   },
+   "continuum_stokes": {
+    "value": 4,
+    "source": "Arumugam et al. 2025: IQUV unless specified"
+   },
+   "zoom_stokes": {
+    "value": 1,
+    "source": "assumed: Stokes I line cube"
+   },
+   "image_bits": {
+    "value": 32,
+    "source": "data_products.Image default"
+   },
+   "psf_oversampling": {
+    "value": 3,
+    "source": "data_products.Image default"
+   },
+   "smearing_beams": {
+    "value": 0.25,
+    "source": "assumed: smearing at most a quarter beam at the half-power radius"
+   },
+   "pst_subint_s": {
+    "value": 10.0,
+    "source": "assumed: 10 s sub-integrations"
+   }
+  }
+ },
+ "requests": [
+  {
+   "id": 35,
+   "name": "Medium wide HI/continuum survey",
+   "paper": "JingWang01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": "SKA-Mid HI Medium-wide tier (HI SWG, 400 deg2)",
+   "categories": [
+    "Continuum",
+    "Zoom"
+   ],
+   "area_deg2": 400.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 20.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 214.4,
+      "n_chan": 3778,
+      "n_station": 143
+     },
+     "volume_TB": 2891.660149644552
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 20.0,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.3546917136
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 20.0,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 148890
+     },
+     "volume_TB": 3.546917136
+    },
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 20.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 20.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 148890
+     },
+     "volume_TB": 354.6917136
+    }
+   ],
+   "total_TB": 6311.709319371408
+  },
+  {
+   "id": 36,
+   "name": "Medium deep HI survey",
+   "paper": "JingWang01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": "SKA-Mid HI Medium-deep tier (HI SWG, 20 deg2)",
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 20.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 33291
+     },
+     "volume_TB": 17.732650896
+    }
+   ],
+   "total_TB": 3079.188498173256
+  },
+  {
+   "id": 37,
+   "name": "Deep HI survey",
+   "paper": "JingWang01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": "SKA-Mid HI Deep tier (HI SWG, 1 deg2)",
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 825.0,
+      "resolution_arcsec": 2.084,
+      "fov_deg": 1.527,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 825.0,
+      "resolution_arcsec": 2.084,
+      "fov_deg": 1.527,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 3062.457190013256
+  },
+  {
+   "id": 38,
+   "name": "All-sky HI survey",
+   "paper": "JingWang01",
+   "telescope": "mid",
+   "hours": 10000.0,
+   "group": "SKA-Mid Band 2 all-sky HI tier (HI SWG)",
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 20000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30614.567044851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1185.0,
+      "resolution_arcsec": 1.451,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 1052820
+     },
+     "volume_TB": 17734.8792384
+    }
+   ],
+   "total_TB": 48349.446283251506
+  },
+  {
+   "id": 40,
+   "name": "Ultra deep HI survey",
+   "paper": "JingWang01",
+   "telescope": "mid",
+   "hours": 10000.0,
+   "group": "SKA-Mid Band 1 ultra-deep HI field",
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 750.0,
+      "resolution_arcsec": 2.292,
+      "fov_deg": 1.68,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30614.567044851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 750.0,
+      "resolution_arcsec": 2.292,
+      "fov_deg": 1.68,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 30615.568387587504
+  },
+  {
+   "id": 41,
+   "name": "SKA-Mid Band 5b astrochemistry deep integration KSP",
+   "paper": "Bianchi02",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 3062.457190013256
+  },
+  {
+   "id": 42,
+   "name": "Mid Band 2 Medium-deep Survey",
+   "paper": "Spinelli02",
+   "telescope": "mid",
+   "hours": 10000.0,
+   "group": "SKA-Mid Band 2 Medium-Deep survey",
+   "categories": [
+    "Continuum",
+    "Zoom"
+   ],
+   "area_deg2": 5000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 24358.129227123118
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 5.797096336656
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 601929
+     },
+     "volume_TB": 57.97096336656
+    },
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30614.567044851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 601929
+     },
+     "volume_TB": 5797.096336656
+    }
+   ],
+   "total_TB": 60833.56066833384
+  },
+  {
+   "id": 43,
+   "name": "Mid Band 1 Wide Survey",
+   "paper": "Spinelli02",
+   "telescope": "mid",
+   "hours": 10000.0,
+   "group": "SKA-Mid Band 1 Wide survey",
+   "categories": [
+    "Continuum",
+    "Zoom"
+   ],
+   "area_deg2": 20000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 700.0,
+      "channel_kHz": 120.6,
+      "n_chan": 5805,
+      "n_station": 143
+     },
+     "volume_TB": 44420.03191159934
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 6.188511979584
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 621918
+     },
+     "volume_TB": 61.88511979584
+    },
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30614.567044851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 141.421,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 621918
+     },
+     "volume_TB": 6188.511979584
+    }
+   ],
+   "total_TB": 81291.18456781027
+  },
+  {
+   "id": 44,
+   "name": "TNOs and Centaurs thermal survey (23 brightest known objects)",
+   "paper": "Santos-Sanz01",
+   "telescope": "mid",
+   "hours": 115.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 280.1172738078
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 280.128288577896
+  },
+  {
+   "id": 45,
+   "name": "Orion",
+   "paper": "Bracco01",
+   "telescope": "low",
+   "hours": 50.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 1138.698154104588
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 1138.7049413861878
+  },
+  {
+   "id": 46,
+   "name": "high-mass protostellar outflow cyanopolyyne survey",
+   "paper": "Sabatini01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30.61303692876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 31.61437966476
+  },
+  {
+   "id": 47,
+   "name": "SKA-Mid 10-15 GHz Galactic Plane survey",
+   "paper": "Traficante01",
+   "telescope": "mid",
+   "hours": 600.0,
+   "group": "SKA-Mid Band 5b Galactic Plane survey",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 630.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 25.1,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 1026.901421097552
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 25.1,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 55.865100695616
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 25.1,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 1868574
+     },
+     "volume_TB": 558.65100695616
+    }
+   ],
+   "total_TB": 1641.417528749328
+  },
+  {
+   "id": 48,
+   "name": "structured protoplanetary disk sample Key Science Project (Band 5b)",
+   "paper": "Wu01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 1711.503566548776
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 1711.514581318872
+  },
+  {
+   "id": 50,
+   "name": "protostellar/outbursting protoplanetary disk survey (Band 5, 1000h iCOMs)",
+   "paper": "Podio01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 3062.457190013256
+  },
+  {
+   "id": 51,
+   "name": "Ophiuchus free-free survey (Band 5b)",
+   "paper": "Guidi01",
+   "telescope": "mid",
+   "hours": 60.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 102.689902499184
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 102.70091726928
+  },
+  {
+   "id": 52,
+   "name": "Ophiuchus free-free survey (Band 5a)",
+   "paper": "Guidi01",
+   "telescope": "mid",
+   "hours": 20.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 3900.0,
+      "channel_kHz": 1232.8,
+      "n_chan": 3164,
+      "n_station": 143
+     },
+     "volume_TB": 48.440188357704
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 48.4512031278
+  },
+  {
+   "id": 53,
+   "name": "L1551 IRS5",
+   "paper": "Sabatini01",
+   "telescope": "mid",
+   "hours": 13.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 12000.0,
+      "resolution_arcsec": 0.143,
+      "fov_deg": 0.105,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2264.6,
+      "n_chan": 2208,
+      "n_station": 143
+     },
+     "volume_TB": 21.980584938312
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 12000.0,
+      "resolution_arcsec": 0.143,
+      "fov_deg": 0.105,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 12000.0,
+      "resolution_arcsec": 0.143,
+      "fov_deg": 0.105,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 21.991599708408
+  },
+  {
+   "id": 54,
+   "name": "G32.80+0.19",
+   "paper": "LorenAnderson01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30.61303692876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 31.61437966476
+  },
+  {
+   "id": 55,
+   "name": "G70.29+1.60b",
+   "paper": "LorenAnderson01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30.61303692876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 31.61437966476
+  },
+  {
+   "id": 56,
+   "name": "Galactic Centre",
+   "paper": "Rygl01",
+   "telescope": "mid",
+   "hours": 2.5,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1612.0,
+      "resolution_arcsec": 1.066,
+      "fov_deg": 0.781,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 7.652723477256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1612.0,
+      "resolution_arcsec": 1.066,
+      "fov_deg": 0.781,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 8.654066213256
+  },
+  {
+   "id": 57,
+   "name": "W3A",
+   "paper": "LorenAnderson01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30.61303692876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 31.61437966476
+  },
+  {
+   "id": 58,
+   "name": "SKA-Mid water maser blind survey (1 sq deg)",
+   "paper": "Tarchi01",
+   "telescope": "mid",
+   "hours": 3000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 9184.369684851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 8511
+     },
+     "volume_TB": 1.158993936
+    }
+   ],
+   "total_TB": 9185.528678787505
+  },
+  {
+   "id": 60,
+   "name": "wide-area RM Grid survey",
+   "paper": "OSullivan01",
+   "telescope": "low",
+   "hours": 3200.0,
+   "group": "SKA-Low wide-area RM Grid survey",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 10000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 72877.39924970458
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 1.0515682116
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 256365
+     },
+     "volume_TB": 10.515682115999999
+    }
+   ],
+   "total_TB": 72888.96650003218
+  },
+  {
+   "id": 61,
+   "name": "SKA-Mid AA2 compact-binary spectral-flatness survey",
+   "paper": "Lin01",
+   "telescope": "mid",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 243.58105356156
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 243.592068331656
+  },
+  {
+   "id": 62,
+   "name": "redshift-drift experiment, SKA-Mid AA*",
+   "paper": "Camera01",
+   "telescope": "mid",
+   "hours": 4380.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 5000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 13409.178796954511
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 70.711,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 601929
+     },
+     "volume_TB": 5797.096336656
+    }
+   ],
+   "total_TB": 19206.27513361051
+  },
+  {
+   "id": 63,
+   "name": "SKA-Mid HI survey of 150 nearby galaxies (MHONGOOSE depth)",
+   "paper": "deBlok01",
+   "telescope": "mid",
+   "hours": 1650.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 5051.401826554512
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 5052.403169290512
+  },
+  {
+   "id": 65,
+   "name": "SKA1-Mid AA4/AA* RM survey of known pulsars lacking RM measurements",
+   "paper": "JunXu01",
+   "telescope": "mid",
+   "hours": 600.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.905969664
+    }
+   ],
+   "total_TB": 0.905969664
+  },
+  {
+   "id": 68,
+   "name": "SKA-Mid AA* survey of known DAGN at z>3.5",
+   "paper": "DAmato01",
+   "telescope": "mid",
+   "hours": 50.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 121.78967424624
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 121.800689016336
+  },
+  {
+   "id": 69,
+   "name": "NGC 6240",
+   "paper": "DAmato01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1700.0,
+      "resolution_arcsec": 1.011,
+      "fov_deg": 0.741,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 321.6,
+      "n_chan": 2519,
+      "n_station": 143
+     },
+     "volume_TB": 19.286238268439998
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1700.0,
+      "resolution_arcsec": 1.011,
+      "fov_deg": 0.741,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1700.0,
+      "resolution_arcsec": 1.011,
+      "fov_deg": 0.741,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 19.297253038536
+  },
+  {
+   "id": 71,
+   "name": "SKA-Mid+VLBI follow-up tracks of triggered jetted TDEs",
+   "paper": "Shu01",
+   "telescope": "mid",
+   "hours": 120.0,
+   "group": null,
+   "categories": [
+    "Outside the four"
+   ],
+   "area_deg2": null,
+   "odps": [],
+   "total_TB": 0
+  },
+  {
+   "id": 72,
+   "name": "Sgr A*",
+   "paper": "Abbate01",
+   "telescope": "mid",
+   "hours": 11.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 26.79345552312
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 26.804470293216
+  },
+  {
+   "id": 73,
+   "name": "Sgr A*",
+   "paper": "Abbate01",
+   "telescope": "mid",
+   "hours": 20.0,
+   "group": null,
+   "categories": [
+    "PSS"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pss_candidates_folded",
+     "category": "PSS",
+     "params": {
+      "mode": "folded",
+      "rate_MB_s": 81.9
+     },
+     "volume_TB": 5.89921875
+    }
+   ],
+   "total_TB": 5.89921875
+  },
+  {
+   "id": 76,
+   "name": "Deep SKA1-LOW Survey",
+   "paper": "Wolz01",
+   "telescope": "low",
+   "hours": 5000.0,
+   "group": "SKA-Low Deep HI IM survey (100 deg2)",
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 100.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 275.0,
+      "resolution_arcsec": 3.064,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 7.23,
+      "channel_kHz": 1.808,
+      "n_chan": 4000,
+      "n_station": 307
+     },
+     "volume_TB": 65603.26142633987
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 275.0,
+      "resolution_arcsec": 3.064,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.7,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 35250
+     },
+     "volume_TB": 19.881
+    }
+   ],
+   "total_TB": 65623.14242633987
+  },
+  {
+   "id": 77,
+   "name": "SKA-Mid 21-cm imaging survey for higher-order statistics",
+   "paper": "Majumdar01",
+   "telescope": "mid",
+   "hours": 5000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 4.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 2.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 15307.283522425752
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 2.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 17025
+     },
+     "volume_TB": 4.63761
+    }
+   ],
+   "total_TB": 15311.921132425752
+  },
+  {
+   "id": 78,
+   "name": "SKA-Mid AA4 core HI survey of massive galaxies within 10 Mpc",
+   "paper": "Rosolowsky01",
+   "telescope": "mid",
+   "hours": 600.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 1836.872222554512
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 1837.873565290512
+  },
+  {
+   "id": 82,
+   "name": "SKA-VLBI methanol maser parallax survey (doubling BeSSeL sample)",
+   "paper": "XuYe01",
+   "telescope": "mid",
+   "hours": 300.0,
+   "group": null,
+   "categories": [
+    "Outside the four"
+   ],
+   "area_deg2": null,
+   "odps": [],
+   "total_TB": 0
+  },
+  {
+   "id": 83,
+   "name": "21cm forest mock observation, PSO J0309+27-like quasars",
+   "paper": "Cang01",
+   "telescope": "low",
+   "hours": 500.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 7.23,
+      "channel_kHz": 1.808,
+      "n_chan": 4000,
+      "n_station": 307
+     },
+     "volume_TB": 6560.3202383398675
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.6170256
+    }
+   ],
+   "total_TB": 6560.937263939867
+  },
+  {
+   "id": 84,
+   "name": "PSR J0737-3039A",
+   "paper": "AvishekBasu01",
+   "telescope": "mid",
+   "hours": 180.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.2717908992
+    }
+   ],
+   "total_TB": 0.2717908992
+  },
+  {
+   "id": 85,
+   "name": "Cen A",
+   "paper": "Sawada-Satoh01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Outside the four"
+   ],
+   "area_deg2": null,
+   "odps": [],
+   "total_TB": 0
+  },
+  {
+   "id": 86,
+   "name": "NGC 4261",
+   "paper": "Sawada-Satoh01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 268.0,
+      "n_chan": 3023,
+      "n_station": 143
+     },
+     "volume_TB": 23.14086792732
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 23.151882697416
+  },
+  {
+   "id": 87,
+   "name": "NGC 1275",
+   "paper": "Sawada-Satoh01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 268.0,
+      "n_chan": 3023,
+      "n_station": 143
+     },
+     "volume_TB": 23.14086792732
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 23.151882697416
+  },
+  {
+   "id": 90,
+   "name": "SKA-Mid AA4 pulsar search of all Galactic globular clusters",
+   "paper": "Bagchi01",
+   "telescope": "mid",
+   "hours": 300.0,
+   "group": null,
+   "categories": [
+    "PSS"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pss_candidates_folded",
+     "category": "PSS",
+     "params": {
+      "mode": "folded",
+      "rate_MB_s": 81.9
+     },
+     "volume_TB": 88.48828125
+    }
+   ],
+   "total_TB": 88.48828125
+  },
+  {
+   "id": 91,
+   "name": "SKA-Mid deep 8-hour pulsar search of closest 10 globular clusters",
+   "paper": "Bagchi01",
+   "telescope": "mid",
+   "hours": 80.0,
+   "group": null,
+   "categories": [
+    "PSS"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pss_candidates_folded",
+     "category": "PSS",
+     "params": {
+      "mode": "folded",
+      "rate_MB_s": 81.9
+     },
+     "volume_TB": 23.596875
+    }
+   ],
+   "total_TB": 23.596875
+  },
+  {
+   "id": 93,
+   "name": "SKA-Mid Band 2 Ultra-Deep reference survey",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 4849.0,
+   "group": "SKA-Mid Band 2 Ultra-Deep continuum tier (Prandoni & Seymour)",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 1.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 11811.25563696936
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001150837776
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 8481
+     },
+     "volume_TB": 0.01150837776
+    }
+   ],
+   "total_TB": 11811.268296184895
+  },
+  {
+   "id": 94,
+   "name": "SKA-Mid Band 2 Deep reference survey",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 6080.0,
+   "group": "SKA-Mid Band 2 Deep continuum tier (Prandoni & Seymour)",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 20.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 14809.74237912312
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.023014103616000002
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 37926
+     },
+     "volume_TB": 0.23014103616
+    }
+   ],
+   "total_TB": 14809.995534262895
+  },
+  {
+   "id": 95,
+   "name": "SKA-Mid Band 2 Wide reference survey",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 12200.0,
+   "group": "SKA-Mid Band 2 Wide continuum tier (Prandoni & Seymour)",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 1000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 29716.917520684678
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 1.150874092944
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1350.0,
+      "resolution_arcsec": 1.273,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 268197
+     },
+     "volume_TB": 11.50874092944
+    }
+   ],
+   "total_TB": 29729.577135707063
+  },
+  {
+   "id": 96,
+   "name": "SKA-Mid Band 5b Ultra-Deep reference survey",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 3146.0,
+   "group": "SKA-Mid Band 5b Ultra-Deep continuum tier (Prandoni & Seymour)",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 0.04,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.2,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 5384.39097992796
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.2,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.003546917136
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.2,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 14889
+     },
+     "volume_TB": 0.035469171359999996
+    }
+   ],
+   "total_TB": 5384.429996016456
+  },
+  {
+   "id": 98,
+   "name": "AGN-oriented Band 5a wide tier (10 deg2)",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 300.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 10.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 3900.0,
+      "channel_kHz": 1232.8,
+      "n_chan": 3164,
+      "n_station": 143
+     },
+     "volume_TB": 726.612997957704
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.27092025
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 130125
+     },
+     "volume_TB": 2.7092025
+    }
+   ],
+   "total_TB": 729.593120707704
+  },
+  {
+   "id": 99,
+   "name": "AGN-oriented Band 5b wide tier (10 deg2)",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 900.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 10.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 1540.3533296991839
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.8867310888959999
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 3.162,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 235416
+     },
+     "volume_TB": 8.86731088896
+    }
+   ],
+   "total_TB": 1550.10737167704
+  },
+  {
+   "id": 100,
+   "name": "SKA-Mid Band 5b Deep reference survey",
+   "paper": "Prandoni01",
+   "telescope": "mid",
+   "hours": 3146.0,
+   "group": "SKA-Mid Band 5b Deep continuum tier (Prandoni & Seymour)",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 2.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 1.414,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 5384.39097992796
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 1.414,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.177348792384
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 1.414,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 105282
+     },
+     "volume_TB": 1.7734879238399999
+    }
+   ],
+   "total_TB": 5386.341816644183
+  },
+  {
+   "id": 104,
+   "name": "HII bubble matched-filter detection around bright quasar",
+   "paper": "Bag01",
+   "telescope": "low",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 2277.413388852294
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 2277.420176133894
+  },
+  {
+   "id": 105,
+   "name": "Holmberg II X-1",
+   "paper": "Sakemi01",
+   "telescope": "mid",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 241.2,
+      "n_chan": 3359,
+      "n_station": 143
+     },
+     "volume_TB": 257.118809166648
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 257.129823936744
+  },
+  {
+   "id": 107,
+   "name": "rho Oph W filament",
+   "paper": "Vidal01",
+   "telescope": "mid",
+   "hours": 3.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 5.13365648796
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.106,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 5.1446712580559995
+  },
+  {
+   "id": 108,
+   "name": "SKAO medium-deep Hi-galaxy cross-correlation survey",
+   "paper": "Mazumder01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 100.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 43974
+     },
+     "volume_TB": 30.939402815999998
+    }
+   ],
+   "total_TB": 3092.395250093256
+  },
+  {
+   "id": 110,
+   "name": "SKA-Mid Band 5a diffuse polarized synchrotron survey of nearby galaxies",
+   "paper": "Mao01",
+   "telescope": "mid",
+   "hours": 2500.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 3900.0,
+      "channel_kHz": 1232.8,
+      "n_chan": 3164,
+      "n_station": 143
+     },
+     "volume_TB": 6055.113402610272
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 6055.124417380368
+  },
+  {
+   "id": 111,
+   "name": "MRC B0600-399 / MRC B1407-425 cold front observation",
+   "paper": "Akahori01",
+   "telescope": "mid",
+   "hours": 8.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 241.2,
+      "n_chan": 3359,
+      "n_station": 143
+     },
+     "volume_TB": 20.568496826592
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 20.579511596688
+  },
+  {
+   "id": 112,
+   "name": "SKAO-PTA sub-array timing programme (AA4)",
+   "paper": "Shannon01",
+   "telescope": "mid",
+   "hours": 1157.0,
+   "group": "SKAO Pulsar Timing Array programme",
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 1.74701150208
+    }
+   ],
+   "total_TB": 1.74701150208
+  },
+  {
+   "id": 115,
+   "name": "SKA-Low EoR power spectrum sensitivity forecast",
+   "paper": "deLeraAcedo01",
+   "telescope": "low",
+   "hours": 1000.0,
+   "group": "SKA-Low EoR deep field",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 22774.185130452297
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 22774.191917733897
+  },
+  {
+   "id": 116,
+   "name": "AA4 SKA-Mid HI mosaic survey of voids, groups and filaments",
+   "paper": "Ramatsoku01",
+   "telescope": "mid",
+   "hours": 2600.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 200.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 14.142,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 7959.78606012876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 14.142,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 120384
+     },
+     "volume_TB": 231.87691929599998
+    }
+   ],
+   "total_TB": 8191.66297942476
+  },
+  {
+   "id": 117,
+   "name": "Dedicated SKA-Mid (AA*) TDE follow-up programme (Bands 2/5, +Low for late-time)",
+   "paper": "TaoAn03",
+   "telescope": "mid",
+   "hours": 500.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 1217.9052678077999
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 1217.9162825778958
+  },
+  {
+   "id": 118,
+   "name": "SKA1-Mid AA4 CNM structure/Zeeman study of a nearby star-forming region",
+   "paper": "Yamamoto01",
+   "telescope": "mid",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 306.145370425752
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1420.0,
+      "resolution_arcsec": 1.211,
+      "fov_deg": 0.887,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 307.146713161752
+  },
+  {
+   "id": 119,
+   "name": "El Gordo",
+   "paper": "Santra01",
+   "telescope": "low",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 227.736214692294
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 227.743001973894
+  },
+  {
+   "id": 121,
+   "name": "SKA-VLBI OH maser astrometry of the Nuclear Stellar Disk",
+   "paper": "Imai01",
+   "telescope": "mid",
+   "hours": 220.0,
+   "group": null,
+   "categories": [
+    "Outside the four"
+   ],
+   "area_deg2": null,
+   "odps": [],
+   "total_TB": 0
+  },
+  {
+   "id": 122,
+   "name": "SKA-Mid multi-band Tier 1 resolved-benchmark survey of nearby galaxies",
+   "paper": "Moldon01",
+   "telescope": "mid",
+   "hours": 50.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 121.78967424624
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 121.800689016336
+  },
+  {
+   "id": 123,
+   "name": "SKA-Mid Band 2 Tier 3 targeted benchmark galaxies",
+   "paper": "Moldon01",
+   "telescope": "mid",
+   "hours": 50.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 121.78967424624
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 121.800689016336
+  },
+  {
+   "id": 124,
+   "name": "Galactic anti-center ALP decay search",
+   "paper": "Regis01",
+   "telescope": "low",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 7.23,
+      "channel_kHz": 1.808,
+      "n_chan": 4000,
+      "n_station": 307
+     },
+     "volume_TB": 1312.062079569934
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.6170256
+    }
+   ],
+   "total_TB": 1312.679105169934
+  },
+  {
+   "id": 125,
+   "name": "Reticulum II",
+   "paper": "Regis01",
+   "telescope": "low",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 227.736214692294
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 227.743001973894
+  },
+  {
+   "id": 126,
+   "name": "Reticulum II",
+   "paper": "Regis01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 700.0,
+      "channel_kHz": 120.6,
+      "n_chan": 5805,
+      "n_station": 143
+     },
+     "volume_TB": 44.41781179836
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 44.428826568455996
+  },
+  {
+   "id": 127,
+   "name": "Sun",
+   "paper": "Regis01",
+   "telescope": "low",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 2277.413388852294
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 2277.420176133894
+  },
+  {
+   "id": 128,
+   "name": "Galactic Center magnetar",
+   "paper": "Regis01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30.61303692876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 31.61437966476
+  },
+  {
+   "id": 130,
+   "name": "SKA AA4 intermediate HI cosmic-web survey (1000 deg2)",
+   "paper": "HengxingPan01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 269190
+     },
+     "volume_TB": 1159.4120976
+    }
+   ],
+   "total_TB": 4220.867944877256
+  },
+  {
+   "id": 132,
+   "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (100 deg2, 4.45'' beam)",
+   "paper": "Deg01",
+   "telescope": "mid",
+   "hours": 1200.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 100.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3673.74658812876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 10.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 85125
+     },
+     "volume_TB": 115.94024999999999
+    }
+   ],
+   "total_TB": 3789.68683812876
+  },
+  {
+   "id": 133,
+   "name": "SKA-Mid AA4 Band 2 fiducial untargeted HI survey (1000 deg2, 13.15'' beam)",
+   "paper": "Deg01",
+   "telescope": "mid",
+   "hours": 500.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 1530.72685212876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 31.623,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 269190
+     },
+     "volume_TB": 1159.4120976
+    }
+   ],
+   "total_TB": 2690.13894972876
+  },
+  {
+   "id": 134,
+   "name": "deep SKA-Mid AA4 Band 2 polarimetric imaging of merging cluster pair and connecting filament (equipartition scenario)",
+   "paper": "Vacca01",
+   "telescope": "mid",
+   "hours": 50.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 241.2,
+      "n_chan": 3359,
+      "n_station": 143
+     },
+     "volume_TB": 128.558504666592
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 0.962,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 128.569519436688
+  },
+  {
+   "id": 136,
+   "name": "untargeted wide-field medium-shallow Hi survey",
+   "paper": "Lelli01",
+   "telescope": "mid",
+   "hours": 900.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 150.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 12.247,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 2755.310476851504
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 12.247,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 104256
+     },
+     "volume_TB": 173.909016576
+    }
+   ],
+   "total_TB": 2929.219493427504
+  },
+  {
+   "id": 137,
+   "name": "SKA-Mid AA* all-sky RM grid and polarization survey",
+   "paper": "Sun01",
+   "telescope": "mid",
+   "hours": 7500.0,
+   "group": "SKA-Mid Band 2 all-sky polarization/continuum survey",
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 30000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 173.205,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 241.2,
+      "n_chan": 3359,
+      "n_station": 143
+     },
+     "volume_TB": 19283.928685833238
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 173.205,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 32.510796926976
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1310.0,
+      "resolution_arcsec": 1.312,
+      "fov_deg": 173.205,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 1425456
+     },
+     "volume_TB": 325.10796926976
+    }
+   ],
+   "total_TB": 19641.547452029976
+  },
+  {
+   "id": 138,
+   "name": "legacy survey of 50 nearby galaxies",
+   "paper": "Lelli01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 3061.455847277256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 3062.457190013256
+  },
+  {
+   "id": 141,
+   "name": "SKA-Low all-sky deep survey (cluster outskirts/filaments)",
+   "paper": "deGasperin01",
+   "telescope": "low",
+   "hours": 5625.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 128104.80630435688
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 128104.81309163848
+  },
+  {
+   "id": 142,
+   "name": "SKA-Mid AA4 wide HI emission survey matching GALFA-HI depth",
+   "paper": "Miville-Deschenes01",
+   "telescope": "mid",
+   "hours": 600.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 15470.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 124.378,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 1836.872222554512
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 124.378,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 1058781
+     },
+     "volume_TB": 17936.275295376
+    }
+   ],
+   "total_TB": 19773.147517930513
+  },
+  {
+   "id": 143,
+   "name": "Local Bubble walls (SKA-mid AA4 deep pointing)",
+   "paper": "Miville-Deschenes01",
+   "telescope": "mid",
+   "hours": 20.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 1.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 61.228216877255996
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 1.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 8511
+     },
+     "volume_TB": 1.158993936
+    }
+   ],
+   "total_TB": 62.387210813256
+  },
+  {
+   "id": 145,
+   "name": "Multi-band continuum/line survey of the NSC (centred on Sgr A*)",
+   "paper": "Schoedel01",
+   "telescope": "mid",
+   "hours": 325.0,
+   "group": null,
+   "categories": [
+    "Continuum",
+    "Zoom"
+   ],
+   "area_deg2": 0.8,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 791.6379978077999
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    },
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 994.97191812876
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 1787.622273442656
+  },
+  {
+   "id": 146,
+   "name": "Repeated deep monitoring of the NSC (Bands 5a/5b, Sgr A*)",
+   "paper": "Schoedel01",
+   "telescope": "mid",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 3900.0,
+      "channel_kHz": 1232.8,
+      "n_chan": 3164,
+      "n_station": 143
+     },
+     "volume_TB": 2422.0450219577037
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.192,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 2422.0560367277994
+  },
+  {
+   "id": 147,
+   "name": "Arches/Quintuplet comparison field (NSD contamination study)",
+   "paper": "Schoedel01",
+   "telescope": "mid",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 243.58105356156
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 243.592068331656
+  },
+  {
+   "id": 148,
+   "name": "SKA-Mid Band 2 deep SED survey (EoR radio-AGN)",
+   "paper": "Afonso01",
+   "telescope": "mid",
+   "hours": 150.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 20.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 365.3707278078
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.023185543824
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 38067
+     },
+     "volume_TB": 0.23185543824
+    }
+   ],
+   "total_TB": 365.625768789864
+  },
+  {
+   "id": 149,
+   "name": "SKA-Mid Band 1 deep SED survey (EoR radio-AGN)",
+   "paper": "Afonso01",
+   "telescope": "mid",
+   "hours": 100.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 20.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 700.0,
+      "channel_kHz": 120.6,
+      "n_chan": 5805,
+      "n_station": 143
+     },
+     "volume_TB": 444.19988379967197
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0061873956
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 19665
+     },
+     "volume_TB": 0.061873956
+    }
+   ],
+   "total_TB": 444.267945151272
+  },
+  {
+   "id": 150,
+   "name": "SKA-Low deep+subband SED survey (EoR radio-AGN)",
+   "paper": "Afonso01",
+   "telescope": "low",
+   "hours": 200.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 20.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 4554.826777704588
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0021024059039999998
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 4.472,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 11463
+     },
+     "volume_TB": 0.02102405904
+    }
+   ],
+   "total_TB": 4554.849904169532
+  },
+  {
+   "id": 151,
+   "name": "GDIGS-like RRL survey extension (SKA-Mid Band 5a, AA*)",
+   "paper": "Salas01",
+   "telescope": "mid",
+   "hours": 370.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 37.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 6.083,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 1132.738084877256
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 6.083,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 250299
+     },
+     "volume_TB": 1002.393430416
+    }
+   ],
+   "total_TB": 2135.1315152932557
+  },
+  {
+   "id": 155,
+   "name": "SKA-Mid jet-misalignment follow-up sample (~60 BCGs)",
+   "paper": "Gitti01",
+   "telescope": "mid",
+   "hours": 90.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 219.22243668468
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 219.233451454776
+  },
+  {
+   "id": 157,
+   "name": "SKA-Mid Band 1 wide-area HI absorption survey (10000 deg2)",
+   "paper": "Mahony01",
+   "telescope": "mid",
+   "hours": 10000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 10000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 30614.567044851505
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 439764
+     },
+     "volume_TB": 3094.278011136
+    }
+   ],
+   "total_TB": 33708.845055987505
+  },
+  {
+   "id": 158,
+   "name": "SKA-Low HI absorption survey at z>3 (10000 deg2)",
+   "paper": "Mahony01",
+   "telescope": "low",
+   "hours": 1000.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": 10000.0,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 7.23,
+      "channel_kHz": 1.808,
+      "n_chan": 4000,
+      "n_station": 307
+     },
+     "volume_TB": 13120.650317169933
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 100.0,
+      "t_avg_s": 2.7,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 256365
+     },
+     "volume_TB": 1051.5682116
+    }
+   ],
+   "total_TB": 14172.218528769934
+  },
+  {
+   "id": 159,
+   "name": "GLEAM J0856+0224",
+   "paper": "Mahony01",
+   "telescope": "low",
+   "hours": 12.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 7.23,
+      "channel_kHz": 1.808,
+      "n_chan": 4000,
+      "n_station": 307
+     },
+     "volume_TB": 157.438002677802
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.6170256
+    }
+   ],
+   "total_TB": 158.055028277802
+  },
+  {
+   "id": 165,
+   "name": "SKA-Mid Band 1 component of multi-band deep survey",
+   "paper": "Algera01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 0.25,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 700.0,
+      "channel_kHz": 120.6,
+      "n_chan": 5805,
+      "n_station": 143
+     },
+     "volume_TB": 44.41781179836
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 700.0,
+      "resolution_arcsec": 2.456,
+      "fov_deg": 1.799,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 44.428826568455996
+  },
+  {
+   "id": 166,
+   "name": "SKA-Mid Band 2 component of multi-band deep survey",
+   "paper": "Algera01",
+   "telescope": "mid",
+   "hours": 10.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 0.25,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 810.0,
+      "channel_kHz": 254.6,
+      "n_chan": 3182,
+      "n_station": 143
+     },
+     "volume_TB": 24.3569118078
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 1355.0,
+      "resolution_arcsec": 1.269,
+      "fov_deg": 0.93,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 24.367926577896
+  },
+  {
+   "id": 167,
+   "name": "SKA-Mid Band 5a component of multi-band deep survey",
+   "paper": "Algera01",
+   "telescope": "mid",
+   "hours": 500.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 0.25,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 3900.0,
+      "channel_kHz": 1232.8,
+      "n_chan": 3164,
+      "n_station": 143
+     },
+     "volume_TB": 1211.0216632628399
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0067726316160000005
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 6550.0,
+      "resolution_arcsec": 0.262,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 20574
+     },
+     "volume_TB": 0.06772631616
+    }
+   ],
+   "total_TB": 1211.0961622106158
+  },
+  {
+   "id": 168,
+   "name": "SKA-Mid Band 5b component of multi-band deep survey",
+   "paper": "Algera01",
+   "telescope": "mid",
+   "hours": 3300.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": 0.25,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2237.8,
+      "n_chan": 2235,
+      "n_station": 143
+     },
+     "volume_TB": 5647.96260824796
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.022166445455999998
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 11850.0,
+      "resolution_arcsec": 0.145,
+      "fov_deg": 0.5,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 37221
+     },
+     "volume_TB": 0.22166445456
+    }
+   ],
+   "total_TB": 5648.206439147975
+  },
+  {
+   "id": 175,
+   "name": "Large Magellanic Cloud",
+   "paper": "Chen01",
+   "telescope": "mid",
+   "hours": 2.0,
+   "group": null,
+   "categories": [
+    "Zoom"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 6700.0,
+      "resolution_arcsec": 0.257,
+      "fov_deg": 0.188,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 53.76,
+      "channel_kHz": 13.44,
+      "n_chan": 4000,
+      "n_station": 143
+     },
+     "volume_TB": 6.122607385752
+    },
+    {
+     "odp": "zoom_image_cube",
+     "category": "Zoom",
+     "params": {
+      "freq_MHz": 6700.0,
+      "resolution_arcsec": 0.257,
+      "fov_deg": 0.188,
+      "t_avg_s": 2.52,
+      "n_chan": 4000,
+      "n_stokes": 1,
+      "n_pix": 7911
+     },
+     "volume_TB": 1.001342736
+    }
+   ],
+   "total_TB": 7.123950121751999
+  },
+  {
+   "id": 176,
+   "name": "Jupiter quadrupolar light-deflection campaign",
+   "paper": "Li01",
+   "telescope": "mid",
+   "hours": 1.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 15000.0,
+      "resolution_arcsec": 0.115,
+      "fov_deg": 0.084,
+      "t_avg_s": 2.52,
+      "bandwidth_MHz": 5000.0,
+      "channel_kHz": 2840.8,
+      "n_chan": 1761,
+      "n_station": 143
+     },
+     "volume_TB": 1.348427624544
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 15000.0,
+      "resolution_arcsec": 0.115,
+      "fov_deg": 0.084,
+      "t_avg_s": 2.52,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.001001342736
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 15000.0,
+      "resolution_arcsec": 0.115,
+      "fov_deg": 0.084,
+      "t_avg_s": 2.52,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 7911
+     },
+     "volume_TB": 0.01001342736
+    }
+   ],
+   "total_TB": 1.35944239464
+  },
+  {
+   "id": 178,
+   "name": "proposed VLBI mapping observations (AGN jets/lobes)",
+   "paper": "Kobayashi01",
+   "telescope": "low",
+   "hours": 8.0,
+   "group": null,
+   "categories": [
+    "Outside the four"
+   ],
+   "area_deg2": null,
+   "odps": [],
+   "total_TB": 0
+  },
+  {
+   "id": 179,
+   "name": "Galactic Center",
+   "paper": "Tremblay01",
+   "telescope": "low",
+   "hours": 1.0,
+   "group": null,
+   "categories": [
+    "Continuum"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "calibrated_visibilities",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "bandwidth_MHz": 300.0,
+      "channel_kHz": 43.2,
+      "n_chan": 6945,
+      "n_station": 307
+     },
+     "volume_TB": 22.768497276294
+    },
+    {
+     "odp": "mfs_image",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_stokes": 4
+     },
+     "volume_TB": 0.0006170256
+    },
+    {
+     "odp": "image_cube",
+     "category": "Continuum",
+     "params": {
+      "freq_MHz": 200.0,
+      "resolution_arcsec": 4.213,
+      "fov_deg": 2.422,
+      "t_avg_s": 2.7,
+      "n_chan": 10,
+      "n_stokes": 4,
+      "n_pix": 6210
+     },
+     "volume_TB": 0.006170256000000001
+    }
+   ],
+   "total_TB": 22.775284557894
+  },
+  {
+   "id": 180,
+   "name": "PSR J0437-4715",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 181,
+   "name": "PSR J0030+0451",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 182,
+   "name": "PSR J1045-4509",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 183,
+   "name": "PSR J1744-1134",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 184,
+   "name": "PSR J2124-3358",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 185,
+   "name": "PSR J2145-0750",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  },
+  {
+   "id": 186,
+   "name": "PSR J1730-2304",
+   "paper": "Takahashi01",
+   "telescope": "mid",
+   "hours": 30.0,
+   "group": null,
+   "categories": [
+    "PST"
+   ],
+   "area_deg2": null,
+   "odps": [
+    {
+     "odp": "pst_timing",
+     "category": "PST",
+     "params": {
+      "n_subint_per_hour": 360,
+      "n_chan": 4096,
+      "n_phase_bin": 128,
+      "n_stokes": 4,
+      "n_bit": 16
+     },
+     "volume_TB": 0.0452984832
+    }
+   ],
+   "total_TB": 0.0452984832
+  }
+ ],
+ "hours": {
+  "mid|Continuum": 59314.5,
+  "mid|Zoom": 68637.0,
+  "low|Continuum": 10296.0,
+  "mid|PST": 2147.0,
+  "mid|Outside the four": 650.0,
+  "mid|PSS": 400.0,
+  "low|Zoom": 6612.0,
+  "low|Outside the four": 8.0
+ },
+ "volume_TB": {
+  "mid|Continuum": {
+   "calibrated_visibilities": 183364.33873541103,
+   "mfs_image": 103.31513200555209,
+   "image_cube": 1033.1513200555207
+  },
+  "mid|Zoom": {
+   "calibrated_visibilities": 242771.95436142443,
+   "zoom_image_cube": 60817.421858256
+  },
+  "low|Continuum": {
+   "calibrated_visibilities": 234482.98332068842,
+   "mfs_image": 1.058606822304,
+   "image_cube": 10.586068223040005
+  },
+  "mid|PST": {
+   "pst_timing": 3.241861447679999
+  },
+  "mid|PSS": {
+   "pss_candidates_folded": 117.984375
+  },
+  "low|Zoom": {
+   "calibrated_visibilities": 86753.73206409742,
+   "zoom_image_cube": 1073.3002884
+  }
+ }
+}

@@ -1,7 +1,7 @@
 """
 Citation-marker post-processing for generated answers.
 
-Pulled out of app.py so this pure text-transformation logic (no Gradio, no
+Pulled out of the (deprecated) Gradio GUI so this pure text-transformation logic (no Gradio, no
 I/O) can be unit tested independently of the UI layer.
 """
 

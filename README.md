@@ -1,176 +1,132 @@
-# ASKARRY — SKA RAG Documentation Search
+# ASKARRY — SKA documentation search for Claude (MCP server)
 
-ASKARRY is a learning prototype of a Retrieval-Augmented Generation (RAG) system designed to answer questions from the openly-accessible [Advancing Astrophysics with the SKA II](https://www.skao.int/en/science-users/aaskaii) book. Rather than training a model on the documents, it builds a searchable knowledge base from them and retrieves the most relevant passages at question time.
+ASKARRY is an [MCP](https://modelcontextprotocol.io) server that gives Claude searchable access to the [Advancing Astrophysics with the SKA II](https://www.skao.int/en/science-users/aaskaii) (AASKAII) book, its 2015 predecessor, the SKA Key Capabilities documents and a set of radio-astronomy textbooks. It also bundles SKA observing-setup tools: sensitivity calculator, setup validator, data-volume estimator, SIMBAD/NED lookup, visibility and LST-pressure analysis.
 
-The workflow has two major phases:
+Retrieval runs locally (hybrid semantic + BM25 search, cross-encoder re-ranking) and Claude writes the answers from the passages it gets back. No local LLM is needed.
 
-1) Ingestion (run once when documents are added)
-2) Querying (run every time a user asks a question)
+> This is a research prototype, shared as is, with no support or maintenance guarantee.
 
-There are two ways to query the knowledge base:
+## Quick start
 
-- **Gradio web UI** — runs fully on-device using a local LLM via [Ollama](https://ollama.com)
-- **Claude Desktop (MCP)** — the retrieval pipeline runs locally and serves passages to Claude via the [Model Context Protocol](https://modelcontextprotocol.io); Claude does the generation
+You need [uv](https://docs.astral.sh/uv/getting-started/installation/), Python 3.10+ and access to the SKAO package index (`ska-ost-array-config` is only on `artefact.skao.int`, see `pyproject.toml`).
 
-Note this is a personal learning prototype / experiment that comes with no support or maintenance.
-
-## Demo
-
-<video src="https://github.com/user-attachments/assets/8d68da0e-47ca-4c52-a8a9-8dca620dd92a" controls width="100%"></video>
-
-| Component | Technology |
-|-----------|------------|
-| PDF parsing & chunking | [docling](https://github.com/DS4SD/docling) + `HybridChunker` |
-| Embeddings | `BAAI/bge-large-en-v1.5` (sentence-transformers) |
-| Keyword search | BM25 (`rank-bm25`) |
-| Vector store | ChromaDB (local, persistent) |
-| Re-ranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
-| LLM (local) | [Ollama](https://ollama.com) (`gemma4` by default) |
-| LLM (frontier) | Claude via [MCP](https://modelcontextprotocol.io) (`mcp_server.py`) |
-| Web UI | Gradio |
-
-
-## High-level overview
-
-### Ingestion
-
-- **Document discovery and ingestion** The system scans the configured document directories and identifies all PDF and HTML files that should be added to the searchable corpus.
-
-- **Document structure extraction with Docling** Each document is parsed by Docling's `DocumentConverter`, which preserves structural elements such as headings, tables, figures, captions, and multi-column layouts.
-
-- **Structure-aware chunking** The parsed document is passed through Docling's `HybridChunker`, which divides the content into manageable passages while respecting document structure.
-
-- **Metadata enrichment** Each chunk is annotated with metadata including its source document, page number, chunk index, section heading, and any associated figure or table caption.
-
-- **Dense embedding generation** Every chunk is converted into a semantic vector using the `BAAI/bge-large-en-v1.5` embedding model so similar concepts can be matched during retrieval.
-
-- **Persistent vector indexing** The chunk text, metadata, and embeddings are stored in a local ChromaDB collection to create a searchable vector index.
-
-### Querying (Retrieval)
-
-- **Optional HyDE query expansion** When enabled, the local LLM generates a hypothetical answer to the user's question and the system embeds that answer instead of the original query.
-
-- **Semantic vector retrieval** The query embedding is compared against stored chunk embeddings in ChromaDB to retrieve semantically similar passages.
-
-- **Keyword retrieval using BM25** The same query is searched using BM25 to find passages containing important exact matches such as acronyms, identifiers, and technical terminology.
-
-- **Hybrid ranking via Reciprocal Rank Fusion** The semantic and BM25 result lists are combined using Reciprocal Rank Fusion to produce a single ranked set of candidates.
-
-- **Cross-encoder re-ranking** A cross-encoder model jointly evaluates each query and candidate passage pair to produce a more accurate relevance score.
-
-- **Confidence assessment** The top re-ranking score is compared against a confidence threshold to determine whether retrieval quality is strong or weak.
-
-- **Context window expansion** The system retrieves neighbouring chunks around each highly ranked passage to provide additional surrounding context.
-
-- **Context assembly** The highest-ranked expanded passages are combined into a single context block that will be supplied to the language model.
-
-### Answer Generation
-
-- **Grounded answer generation** The context and user query are sent to the local Ollama-hosted LLM, which is instructed to answer only using the retrieved passages and cite its sources.
-
-### Presentation and Citation
-
-- **Citation and bibliography enhancement** Source documents are matched against a local bibliography database to display formatted citations rather than raw file paths.
-
-- **Presentation through the Gradio interface** The generated answer, supporting source passages, citations, and confidence information are displayed in the Gradio web application.
-
----
-
-## Prerequisites
-
-1. **Python 3.10+**
-2. **Ollama** — install from <https://ollama.com/download> then pull a model:
-   ```bash
-   ollama pull gemma4
-   ```
-
----
-
-## Setup
+**1. Install**
 
 ```bash
-# 1. Create .venv and install dependencies (uses pyproject.toml / uv.lock)
+git clone <repo-url> astronomy-rag && cd astronomy-rag
 uv sync
-
-# 2. Add PDFs to the pdfs/ folder
-mkdir -p pdfs
-cp ~/Downloads/my_paper.pdf pdfs/
 ```
 
-> Commands below (`python ingest.py`, `python app.py`, etc.) are shown bare;
-> run them as `uv run python ingest.py` (or `source .venv/bin/activate` first).
+**2. Get the data.** The search indexes are too large for git and are shared separately. Unpack them into the repository root so you end up with:
 
----
+```
+astronomy-rag/
+├── chroma_db/            main index (AASKAII, AASKA 2015, SKA Key Capabilities)
+├── chroma_textbooks/     textbook index
+├── sources.db            astronomical sources named in the papers
+└── citations.db          references cited by the papers
+```
 
-## Usage
+To keep them elsewhere, set `ASKARRY_DATA_DIR` to the folder that holds those four items. The server checks for them on start-up and tells you what is missing.
 
-### Step 1 — Ingest PDFs
+**3. Connect Claude.** Pick one.
+
+*Claude Code*
 
 ```bash
-python ingest.py
-
-# To wipe the existing ChromaDB store and reindex everything from scratch:
-python ingest.py --reindex
-
-# Textbooks in pdfs/textbooks/ go into their own store (chroma_textbooks/),
-# searched by the search_textbooks MCP tool; --reindex wipes only that store:
-python ingest.py --textbooks
+claude mcp add astronomy-rag -- uv run --directory /path/to/astronomy-rag python mcp_server.py
 ```
 
-### Step 2 — Launch the web UI
-
-```bash
-python app.py
-```
-
-Open your browser at <http://localhost:7860>.
-
----
-
-### Step 3 (optional) — Use with Claude Desktop
-
-The MCP server exposes the retrieval pipeline as tools that Claude Desktop can call. Claude receives the retrieved passages and generates the answer — no Ollama installation is needed for this path.
-
-**Register the server** in Claude Desktop's config file at
-`~/Library/Application Support/Claude/claude_desktop_config.json`:
+*Claude Desktop*: add this to `~/Library/Application Support/Claude/claude_desktop_config.json` and restart the app. Use the absolute path from `which uv`, because Claude Desktop does not see your shell `PATH`.
 
 ```json
 {
   "mcpServers": {
     "astronomy-rag": {
-      "command": "/Users/<you>/Data/astronomy-rag/.venv/bin/python",
-      "args":    ["/Users/<you>/Data/astronomy-rag/mcp_server.py"]
+      "command": "/absolute/path/to/uv",
+      "args": ["run", "--directory", "/path/to/astronomy-rag", "python", "mcp_server.py"],
+      "env": { "ASKARRY_DATA_DIR": "/path/to/data (optional)" }
     }
   }
 }
 ```
 
-Replace `/Users/<you>/Data/astronomy-rag` with the absolute path to your checkout. The `.venv/bin/python` interpreter must be used so the server finds all installed dependencies.
+The first search downloads two small models from Hugging Face (`BAAI/bge-large-en-v1.5`, about 1.3 GB, and a cross-encoder re-ranker), so allow a few minutes and an internet connection the first time.
 
-Restart Claude Desktop after editing the config. The following tools will appear in Claude's tool panel:
+**4. Try it.** Ask Claude: "Use astronomy-rag to find what AASKAII says about HI intensity mapping with SKA-Mid."
 
-| Tool | What it does |
-|------|--------------|
-| `search_astronomy_docs` | Hybrid semantic + BM25 search, re-ranked; returns passages with title, section, page, and relevance |
-| `search_ska_capabilities` | Same search, scoped to the SKA key-capabilities technical document set |
-| `list_ska_capability_docs` | List the SKA key-capabilities documents available to search |
-| `list_documents` | Table of contents grouped by AASKAII section |
-| `get_document_chunks` | All indexed chunks from a named paper in reading order |
-| `query_sensitivity_calc` | Live query to the SKAO sensitivity calculator REST API |
-| `validate_observing_setup_tool` | Validate an SKA observing configuration against the vendored ska-sci-ops-setup-validator rule engine |
-| `estimate_data_product_size_tool` | Estimate the data volume/rate of an SKA data product using the vendored odp-data-size-tool formulas |
-| `list_capability_schemas_tool` | List setup-validator schema names available to query for a telescope |
-| `describe_schema_tool` | Look up allowed values / min-max ranges / fixed values from the setup-validator schema — more authoritative than static capability docs |
-| `describe_rules_tool` | Cross-field validation rules (why a combination of otherwise-valid values can still fail) for a schema |
-| `get_context_defaults_tool` | Default/max bandwidth, beam-count, and channel-count values per telescope/band for an observing context |
-| `get_subarray_layout_tool` | Max baseline and station count for a subarray template (via ska_ost_array_config) |
-| `list_odps_tool` / `estimate_setup_data_volume_tool` | Bridge a validated observing setup to real data-volume numbers for every output data product it defines |
-| `resolve_subarray_name_tool` / `resolve_context_subarrays_tool` | Translate a subarray-template name across the sensitivity-calculator / ska_ost_array_config / setup-validator-schema naming vocabularies |
-| `search_google_scholar_key_words` | Search Google Scholar for articles matching a keyword query |
-| `search_google_scholar_advanced` | Search Google Scholar filtered by author and/or publication year range |
-| `get_author_info_tool` | Look up an author's affiliation, interests, citation count, and top publications on Google Scholar |
+## Sharing one server with a team
 
-> **Note:** Run `python ingest.py` first so there is a populated ChromaDB index for the server to search. The MCP server is read-only and never calls Ollama. The Google Scholar tools do live web scraping, same as `query_sensitivity_calc`'s outbound API calls.
+The server speaks stdio by default. To serve it on the network instead:
+
+```bash
+uv run python mcp_server.py --transport http --host 0.0.0.0 --port 8000
+```
+
+Clients then connect to `http://<host>:8000/mcp`. For Claude Desktop use [`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
+
+```json
+{ "mcpServers": { "askarry": { "command": "npx", "args": ["mcp-remote", "http://<host>:8000/mcp", "--allow-http"] } } }
+```
+
+There is no authentication. The server makes outbound requests (Google Scholar, SIMBAD, the SKAO sensitivity calculator) and can write to `sources.db`, so keep it on a trusted network or behind a proxy that adds a token.
+
+## What the server offers
+
+Ask Claude to list the tools, or see `mcp_server.py`. By group:
+
+| Group | Tools |
+|-------|-------|
+| Document search | `search_astronomy_docs`, `search_ska_capabilities`, `search_textbooks`, `list_documents`, `list_ska_capability_docs`, `list_textbooks`, `get_document_chunks`, `verify_quote_tool`, `verify_citation_tool` |
+| Literature | `search_google_scholar_*`, `get_author_info_tool`, `get_paper_info_tool`, `citing_papers_tool`, `top_cited_papers_tool`, `list_missing_papers_tool` |
+| Sources and sky | `resolve_object_tool`, `ned_lookup_tool`, `cone_search_tool`, `query_sources_tool`, `get_source_mentions_tool`, `visibility_windows_tool`, `lst_pressure_tool`, `facility_network_tool` |
+| Observing setup | `query_sensitivity_calc`, `compare_to_calculator_tool`, `validate_observing_setup_tool`, `validate_across_contexts_tool`, `describe_schema_tool`, `describe_rules_tool`, `get_context_defaults_tool`, `get_subarray_layout_tool`, `estimate_*_tool`, `list_odps_tool` |
+| Observing requests | `add_observing_request_tool`, `list_observing_requests_tool`, `review_observing_request_tool`, `add_survey_field_tool`, `list_survey_fields_tool` |
+| Acronyms | `list_acronyms_tool`, `lookup_acronym_tool` |
+
+Static documents describe the full-design telescope, not what a given stage supports today. For "what can I configure now" questions the server's own instructions tell Claude to cross-check the live schema and validator tools, so ask for the context you care about (for example `sv_aa2`).
+
+## Building your own index (optional)
+
+Only needed if you are adding documents. Colleagues who received the databases can skip this.
+
+```bash
+uv sync --extra ingest              # adds docling
+mkdir -p pdfs && cp ~/Downloads/paper.pdf pdfs/
+uv run python ingest.py             # index pdfs/ into chroma_db/
+uv run python ingest.py --reindex   # wipe and rebuild
+uv run python ingest.py --textbooks # textbooks go into chroma_textbooks/
+```
+
+The `pdfs/` folder is not in git (it is about 1 GB); `pdfs/download.py` fetches the AASKAII chapters.
+
+## Deprecated: Gradio web UI
+
+`legacy/gradio_app.py` is an older local-only chat UI that answers with an [Ollama](https://ollama.com) model instead of Claude. It is unmaintained and kept for reference. Its dependencies are the optional `gui` extra, so a normal install does not pull them in:
+
+```bash
+ollama pull gemma4
+uv run --extra gui python -m legacy.gradio_app   # http://localhost:7860
+```
+
+<video src="https://github.com/user-attachments/assets/8d68da0e-47ca-4c52-a8a9-8dca620dd92a" controls width="100%"></video>
+
+## Tests
+
+```bash
+uv run pytest
+```
+
+## Technology
+
+| Component | Technology |
+|-----------|------------|
+| PDF parsing & chunking | [docling](https://github.com/DS4SD/docling) + `HybridChunker` (ingest extra) |
+| Embeddings | `BAAI/bge-large-en-v1.5` (sentence-transformers) |
+| Keyword search | BM25 (`rank-bm25`) |
+| Vector store | ChromaDB (local, persistent) |
+| Re-ranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
+| Server | FastMCP |
 
 ---
 
@@ -293,7 +249,8 @@ Local PDFs with no matching bibliography entry are silently excluded from the Ta
 |---------|---------|---------|
 | `PDF_DIR` | `pdfs/` | Local folder scanned recursively for PDFs and HTML files |
 | `PDF_DIRS` | `[PDF_DIR]` | List of all directories to ingest; edit to add/remove sources |
-| `CHROMA_DIR` | `chroma_db/` | Where ChromaDB persists the vector index on disk |
+| `DATA_DIR` | repo root | Where the databases live; override with the `ASKARRY_DATA_DIR` environment variable |
+| `CHROMA_DIR` | `chroma_db/` (under `DATA_DIR`) | Where ChromaDB persists the vector index on disk |
 | `TEXTBOOKS_DIR` / `TEXTBOOKS_CHROMA_DIR` | `pdfs/textbooks/` / `chroma_textbooks/` | Textbooks (one PDF, or a folder of chapter PDFs, per book) indexed separately via `python ingest.py --textbooks`; never added to the main index |
 | `COLLECTION_NAME` | `"astronomy"` | ChromaDB collection name; change this if you want separate indexes for different document sets |
 | `BIBLIOGRAPHY_PATH` | `pdfs/bibliography.json` | Title/author/section lookup for AASKAII chapters, used for citations and the Table of Contents tab (see `rag/bibliography.py`) |
@@ -312,7 +269,7 @@ Local PDFs with no matching bibliography entry are silently excluded from the Ta
 |---------|---------|---------|
 | `RERANKER_MODEL` | `cross-encoder/ms-marco-MiniLM-L-6-v2` | Cross-encoder model that re-scores (query, passage) pairs in Stage 3. A cross-encoder is slower than a bi-encoder but significantly more accurate because it attends jointly to query and passage tokens. MS-MARCO was trained on web search relevance; `BAAI/bge-reranker-base` (trained on the same data as the embedding model) is an alternative worth trying. |
 
-### Ollama (LLM)
+### Ollama (LLM, deprecated GUI only)
 
 | Setting | Default | Purpose |
 |---------|---------|---------|
@@ -354,9 +311,9 @@ astronomy-rag/
 │   ├── retrieval.py          ← Hybrid BM25 + semantic → RRF → rerank → expand
 │   ├── generation.py         ← Ollama prompt & response (Gradio UI path)
 │   └── bibliography.py       ← Citation lookup + Table of Contents data
-├── ingest.py                 ← Run this first
-├── app.py                    ← Gradio web UI (Ask a Question / Table of Contents tabs)
-├── mcp_server.py             ← MCP server for Claude Desktop (retrieval-only; Claude generates)
+├── ingest.py                 ← Build the index from PDFs (needs the `ingest` extra)
+├── mcp_server.py             ← The MCP server: run this
+├── legacy/gradio_app.py      ← Deprecated Gradio UI (needs the `gui` extra)
 ├── pyproject.toml            ← Dependencies (uv)
 └── uv.lock
 ```

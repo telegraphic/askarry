@@ -15,7 +15,7 @@
   <header class="masthead">
     <div class="eyebrow" id="eyebrow"></div>
     <h1>A 100-Hour HI Observing Proposal</h1>
-    <p class="lede">A single prompt, "Write an observing proposal for a small 100-hour program looking at HI in galaxies using AA*", produced the draft below from the AASKAII corpus and the live sensitivity calculator. Version 1 published it without rerunning its figures; this version reruns them through the calculator and the setup validator, and the sensitivity budget survives the check.</p>
+    <p class="lede">A single prompt produced the draft below: "Write an observing proposal for a small 100-hour program looking at HI in galaxies using AA*". The draft drew on the AASKAII corpus and the live sensitivity calculator. This page reruns its figures through the calculator and the setup validator, and the sensitivity budget survives the check.</p>
     <div class="stats" id="stats"></div>
     <div class="dl">
       <a href="HI_Galaxies_SKA_Observing_Proposal_AAstar.pdf">Draft PDF (AASKAII corpus only)</a>
@@ -25,16 +25,16 @@
   </header>
   <main>
     <section class="prose"><h2>The science case</h2>
-      <p>Neutral hydrogen extends farther from a galaxy than any other gas component and is disturbed more easily, which makes it the earliest tracer of tidal and ram-pressure stripping as a galaxy falls into a cluster. The draft therefore requests resolved 21-cm imaging of twelve galaxies in the outskirts and infall region of the Fornax cluster at about 20 Mpc, aiming to map tidal tails, warps and gas tails at a resolution and depth beyond what MeerKAT, ASKAP and WSRT have reached. The sample is illustrative rather than pre-selected, and the investigator fields are placeholders; the page presents the draft as a demonstration of what the corpus supports, not as a vetted request.</p>
+      <p>Neutral hydrogen extends farther from a galaxy than any other gas and is more easily disturbed. It is therefore the earliest tracer of tidal and ram-pressure stripping as a galaxy falls into a cluster. The draft requests resolved 21-cm imaging of twelve galaxies in the outskirts and infall region of the Fornax cluster, at a distance of about 20 Mpc. Its aim is to map tidal tails, warps and gas tails with better resolution and depth than MeerKAT, ASKAP and WSRT have reached. The sample is illustrative rather than pre-selected, and the investigator fields are placeholders. The page therefore presents the draft as a demonstration of what the corpus supports, not as a vetted request.</p>
     </section>
     <section id="setup"><h2>Observation setup</h2></section>
     <section id="check"><h2>Figures rechecked</h2>
-      <p class="muted">Each figure in the draft set against the live SKAO sensitivity calculator (<code>compare_to_calculator_tool</code>, zoom endpoint, weighting swept) and the setup validator (<code>validate_across_contexts_tool</code>). Pointing: Fornax cluster centre, 03:38:29 −35:27:03.</p>
+      <p class="muted">The table sets each figure in the draft against the live SKAO sensitivity calculator and the setup validator. The calculator check used <code>compare_to_calculator_tool</code> on the zoom endpoint and tried every weighting scheme. The validator check used <code>validate_across_contexts_tool</code>. Both pointed at the centre of the Fornax cluster, 03:38:29 −35:27:03.</p>
     </section>
     <section class="prose"><h2>What the check shows</h2>
-      <p>The draft's central number holds. With the AA* inner 2-km subarray, a 4 MHz zoom window of 13.44 kHz channels and six hours on source, the calculator returns 250 µJy/beam per channel at robust 0 with a 15.4″ × 12.5″ beam, within two per cent of the draft's 254 µJy/beam and its quoted beam; no other weighting comes within ten per cent, which confirms that the draft assumed robust 0 even though it names the weighting only in passing. The smoothed noise and the column-density limit follow from that figure by standard scaling, and both reproduce.</p>
-      <p>The setup is valid in the SV-AA*, Cycle 0 and Cycle 1 contexts but not in SV-AA2, where zoom mode is unavailable and the inner 2-km template does not yet exist; consequently the programme could run only once AA* science verification begins. Two items remain unchecked. The HI-mass limit depends on an assumed line width that the draft does not state, and the draft defines no output data products, so no data-volume estimate can be made without inventing them.</p>
-      <p class="note">One practical lesson for users of the calculator tools: the calculator's zoom endpoint accepts the subarray <i>label</i> ("AA* (MID_inner_r2km)"), not the <i>name</i> ("MID_inner_r2km_aastar") that its subarray list also returns; the name is refused with a validation error.</p>
+      <p>The draft's central number holds. The setup uses the AA* inner 2-km subarray, a 4 MHz zoom window of 13.44 kHz channels and six hours on source. For this setup the calculator returns 250 µJy/beam per channel at robust 0, with a 15.4″ × 12.5″ beam. Both figures lie within two per cent of the draft's 254 µJy/beam and its quoted beam. No other weighting comes within ten per cent, which confirms that the draft assumed robust 0, even though it names the weighting only in passing. The smoothed noise and the column-density limit follow from that figure by standard scaling, and both reproduce.</p>
+      <p>The setup is valid in the SV-AA*, Cycle 0 and Cycle 1 contexts. It is not valid in SV-AA2, because zoom mode is unavailable there and the inner 2-km template does not yet exist. Consequently, the programme could run only once AA* science verification begins. Two items remain unchecked. First, the HI-mass limit depends on a line width that the draft does not state. Second, the draft defines no output data products, so any estimate of data volume would have to invent them.</p>
+      <p class="note">The check also taught one practical lesson for users of the calculator tools. The calculator's zoom endpoint accepts the subarray <i>label</i>, "AA* (MID_inner_r2km)". It refuses the subarray <i>name</i>, "MID_inner_r2km_aastar", with a validation error, even though its subarray list returns both.</p>
     </section>
     <section class="prose" id="refs"><h2>AASKAII chapters the draft draws on</h2></section>
   </main>
@@ -68,9 +68,9 @@ table(document.getElementById("check"), [
   {q: "Setup validity", d: "AA*", c: "valid in SV-AA*, Cycle 0, Cycle 1; invalid in SV-AA2", v: pill("good", "valid from AA*")},
   {q: "Data volume", d: "not given", c: "no data products defined", v: pill("neutral", "not estimated")},
 ]);
-document.getElementById("refs").append(el("p", {}, "The draft cites these chapters; each links to its entry in the directory and to its PDF: ",
+document.getElementById("refs").append(el("p", {}, "The draft cites the following chapters, each linked to its entry in the directory and to its PDF: ",
   papers(["JingWang01", "deBlok01", "Ramatsoku01", "Ignesti01", "Lelli01", "Nasirudin01", "HengxingPan01"], 20),
-  ". The revised PDF adds outside literature, among it THINGS, ALFALFA, WALLABY and MHONGOOSE."));
+  ". The revised PDF also cites literature from outside the book, including THINGS, ALFALFA, WALLABY and MHONGOOSE."));
 </script>
 </body>
 </html>

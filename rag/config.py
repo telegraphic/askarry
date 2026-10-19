@@ -6,11 +6,16 @@ from pathlib import Path
 # the working directory from which scripts or the MCP server are launched.
 HERE = Path(__file__).resolve().parent.parent
 
+# Where the generated databases live (chroma_db/, chroma_textbooks/,
+# sources.db, citations.db). Defaults to the repository root; set
+# ASKARRY_DATA_DIR to keep them elsewhere, e.g. a shared or larger disk.
+DATA_DIR = Path(os.environ.get("ASKARRY_DATA_DIR", HERE)).expanduser().resolve()
+
 # ---------------------------------------------------------------------------
 # Directories
 # ---------------------------------------------------------------------------
 PDF_DIR = HERE / "pdfs"                              # Local PDFs folder
-CHROMA_DIR = HERE / "chroma_db"                      # Persistent ChromaDB storage
+CHROMA_DIR = DATA_DIR / "chroma_db"                      # Persistent ChromaDB storage
 BIBLIOGRAPHY_PATH = PDF_DIR / "bibliography.json"    # AASKAII title/author lookup (see pdfs/build_bibliography.py)
 AASKAII_YEAR = 2026                                  # Publication year for all AASKAII chapters
 
@@ -35,15 +40,15 @@ AASKA2015_YEAR = 2015
 # recursively (see rag/ingestion.py::ingest_files). Each book is either a
 # single PDF or a folder of per-chapter PDFs named after the book.
 TEXTBOOKS_DIR = PDF_DIR / "textbooks"
-TEXTBOOKS_CHROMA_DIR = HERE / "chroma_textbooks"
+TEXTBOOKS_CHROMA_DIR = DATA_DIR / "chroma_textbooks"
 
 # SQLite database of astronomical sources named in the papers, resolved via
 # SIMBAD (see rag/source_db.py). Rebuildable: `python -m rag.source_db`.
-SOURCES_DB_PATH = HERE / "sources.db"
+SOURCES_DB_PATH = DATA_DIR / "sources.db"
 
 # SQLite database of references cited by the papers (see rag/citation_db.py).
 # Rebuildable offline: `python -m rag.citation_db`.
-CITATIONS_DB_PATH = HERE / "citations.db"
+CITATIONS_DB_PATH = DATA_DIR / "citations.db"
 
 # ---------------------------------------------------------------------------
 # Scheduling / LST-pressure analysis (rag/scheduling.py)
@@ -305,7 +310,7 @@ COLLECTION_NAME = "astronomy"
 # Answer audience
 # ---------------------------------------------------------------------------
 # Internal audience keys, shared between rag/generation.py (system-prompt
-# instructions) and app.py (UI radio button mapping) so both sides reference
+# instructions) and legacy/gradio_app.py (UI radio button mapping) so both sides reference
 # the same constants instead of matching raw string literals by convention.
 AUDIENCE_PHD = "phd"
 AUDIENCE_GENERAL = "general"

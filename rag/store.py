@@ -16,10 +16,9 @@ import hashlib
 import threading
 from collections.abc import Callable
 from pathlib import Path
-from typing import TypeVar
+from typing import TYPE_CHECKING, TypeVar
 
 import chromadb
-import ollama
 from sentence_transformers import SentenceTransformer
 
 from .config import (
@@ -29,6 +28,9 @@ from .config import (
     MAX_CHUNK_TOKENS,
     OLLAMA_BASE_URL,
 )
+
+if TYPE_CHECKING:
+    import ollama
 
 _collections: dict[str, chromadb.Collection] = {}  # keyed by str(db_dir)
 _embedding_model: SentenceTransformer | None = None
@@ -78,7 +80,10 @@ def get_embedding_model() -> SentenceTransformer:
 
 
 def get_ollama_client() -> ollama.Client:
-    """Return the process-cached Ollama client, created lazily on first use."""
+    """Return the process-cached Ollama client, created lazily on first use.
+    `ollama` is an optional dependency (the `gui` extra), so it is imported here."""
+    import ollama
+
     global _ollama_client
     with _ollama_client_lock:
         if _ollama_client is None:

@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['modes'] = {
  "generated": {
-  "git_sha": "a037c7f",
-  "date": "2026-09-25",
+  "git_sha": "8486317",
+  "date": "2026-10-04",
   "args": {
    "terms": {
     "Deep HI intensity mapping": "intensity mapping",
