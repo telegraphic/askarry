@@ -1,0 +1,20 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "continuum/calculate",
+  "params": {
+   "rx_band": "Band 2",
+   "freq_centre_hz": 1355000000.0,
+   "bandwidth_hz": 810000000.0,
+   "integration_time_s": 3600,
+   "pointing_centre": "00:00:00 -30:00:00",
+   "weighting_mode": "uniform",
+   "subarray_configuration": "AA*"
+  }
+ },
+ "status": 400,
+ "body": {
+  "title": "Validation Error",
+  "detail": "Spectral window defined by central frequency and bandwidth does not lie within the band range."
+ }
+}

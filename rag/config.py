@@ -64,12 +64,39 @@ SCHEDULING = {
     "twilight_sun_alt_band_deg": (-12.0, 12.0),
     "min_sun_separation_deg": 0.0,       # 0 = no Sun-avoidance cut
     "default_min_elevation_deg": 45.0,
+    # Lowest elevation each telescope can observe at. A target below a
+    # request's min_elevation but above this is still placed (and flagged);
+    # only targets below it are "never visible". Mid: dish mechanical limit
+    # of about 15 deg. Low: fixed dipoles see to the horizon, so no
+    # mechanical limit (0); in practice station beams degrade low down.
+    "mechanical_min_elevation_deg": {"mid": 15.0, "low": 0.0},
+    # Night / twilight Sun constraints are optical-style and rarely apply to
+    # radio requests, so lst_pressure ignores each request's "sun" unless
+    # apply_sun_constraints is set.
+    "apply_sun_constraints": False,
     "maintenance_fraction": 0.15,        # share of clock time not schedulable
     "time_step_min": 10,                 # sampling of the year-long time grid
     "lst_bin_h": 1,
     # Years of telescope time the requests compete for. Reference surveys
     # are multi-year totals, so pressure against one year is meaningless.
     "planning_years": 5,
+}
+
+# UNVERIFIED ASSUMPTION: which data products the SKAO archives (the SRCNet
+# long-term archive) as opposed to keeping only while an observation is
+# processed. Used by rag/data_product_estimator.py for "archived_TB" and
+# echoed as "policy_source". Needs an SKAO owner; replace with the published
+# data-product policy when there is one.
+DATA_PRODUCT_POLICY = {
+    "source": "assumption (unverified, config.DATA_PRODUCT_POLICY): science data products "
+              "(images, cubes, spectra, pulsar products) are archived; raw and calibrated "
+              "visibilities are kept only for processing unless a project asks for them",
+    "archived": {
+        "Image": True, "Image Cutout": True, "Spectral Cube (wide-band)": True,
+        "Single-dish Autocorrelation": True, "PSS": True, "PST Folded": True,
+        "Dynamic Spectrum": True, "Flowthrough": False, "VLBI": False, "Transient Dump": True,
+        "Gridded Visibilities": False, "Calibrated Vis": False,
+    },
 }
 
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned

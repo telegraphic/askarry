@@ -1,0 +1,99 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "zoom/calculate",
+  "params": {
+   "rx_band": "Band 2",
+   "freq_centres_hz": 1400000000.0,
+   "total_bandwidths_hz": 3200000.0,
+   "spectral_resolutions_hz": 13440,
+   "integration_time_s": 3600,
+   "pointing_centre": "00:00:00 -30:00:00",
+   "weighting_mode": "robust",
+   "robustness": 0,
+   "subarray_configuration": "AA* (MID_inner_r2km)"
+  }
+ },
+ "status": 200,
+ "body": {
+  "calculate": [
+   {
+    "freq_centre": {
+     "value": 1400000000.0,
+     "unit": "Hz"
+    },
+    "spectropolarimetry_results": {
+     "fwhm_of_the_rmsf": {
+      "value": 16595.10877140201,
+      "unit": "rad / m2"
+     },
+     "max_faraday_depth_extent": {
+      "value": 68.66769666521358,
+      "unit": "rad / m2"
+     },
+     "max_faraday_depth": {
+      "value": 1960606.6166218556,
+      "unit": "rad / m2"
+     }
+    },
+    "warnings": [],
+    "spectral_sensitivity": {
+     "value": 0.0004024887543575935,
+     "unit": "Jy"
+    }
+   }
+  ],
+  "weighting": {
+   "spectral_weighting": [
+    {
+     "weighting_factor": 1.5319677271827086,
+     "sbs_conv_factor": 3184.556921443054,
+     "confusion_noise": {
+      "value": 8.309611714479307e-06,
+      "limit_type": "value"
+     },
+     "beam_size": {
+      "beam_maj_scaled": 0.004265607944160714,
+      "beam_min_scaled": 0.0035417911477119337,
+      "beam_pa": -13.24919877109849
+     },
+     "freq_centre": {
+      "value": 1400000000.0,
+      "unit": "Hz"
+     }
+    }
+   ]
+  },
+  "transformed_result": [
+   {
+    "spectral_confusion_noise": {
+     "value": 8.309611714479307e-06,
+     "unit": "Jy / beam"
+    },
+    "spectral_synthesized_beam_size": {
+     "beam_maj": {
+      "value": 15.356188598978571,
+      "unit": "arcsec"
+     },
+     "beam_min": {
+      "value": 12.750448131762962,
+      "unit": "arcsec"
+     }
+    },
+    "warnings": [],
+    "weighted_spectral_sensitivity": {
+     "value": 0.000616599782229802,
+     "unit": "Jy / beam"
+    },
+    "total_spectral_sensitivity": {
+     "value": 0.0006166557719608928,
+     "unit": "Jy / beam"
+    },
+    "spectral_surface_brightness_sensitivity": {
+     "value": 1.9637754067458706,
+     "unit": "K"
+    }
+   }
+  ]
+ }
+}

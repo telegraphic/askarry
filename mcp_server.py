@@ -52,9 +52,13 @@ get_paper_info_tool, list_missing_papers_tool
 lookup_acronym_tool, list_acronyms_tool
                         Acronym senses, variants, categories and papers.
 compare_to_calculator_tool
-                        Quoted sensitivity vs. live calculator, all weightings.
+                        Quoted sensitivity vs. live calculator: strict, or best fit
+                        over free parameters (both reported).
 validate_across_contexts_tool
-                        One obs_config validated under every observing context.
+                        One obs_config or requirement judged in every context (with AA4),
+                        per dimension.
+extract_requirements_tool
+                        Draft a structured requirement record from a quote.
 resolve_object_tool, ned_lookup_tool, cone_search_tool
                         SIMBAD/NED object lookup via astroquery (read-only).
 build_source_db_tool, query_sources_tool, get_source_mentions_tool,
@@ -63,6 +67,7 @@ list_unresolved_sources_tool
 build_citation_db_tool, top_cited_papers_tool, citing_papers_tool
                         Database of references cited by the papers (most-cited works).
 facility_network_tool   External facilities named per section, with co-mentions.
+index_health_tool       Duplicates, unlisted documents, zone counts, manifest check.
 verify_citation_tool    Check a paper's reference list contains a cited work.
 visibility_windows_tool, lst_pressure_tool
                         Target visibility and LST pressure (unverified settings).
@@ -106,12 +111,14 @@ Notes
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import requests
 from fastmcp import FastMCP
+from fastmcp.server.middleware import Middleware
 
-from rag import store
+from rag import store, zones
 from rag import citation_db, corpus_tools, scheduling, source_db
 from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
@@ -143,6 +150,8 @@ from rag.observing_setup_capabilities import (
 )
 from rag.observing_setup_data_volume import estimate_setup_data_volume, list_odps
 from rag.observing_setup_validator import validate_across_contexts, validate_observing_setup
+from rag.requirements import MODES as REQUIREMENT_MODES
+from rag.requirements import REQUIREMENT_FIELDS, check_fields, extract_draft
 from rag.retrieval import retrieve
 from rag.sensitivity_calculator import compare_to_calculator, query_sensitivity_calculator
 from rag.sky_lookup import cone_search, ned_lookup, resolve_object
@@ -280,6 +289,59 @@ mcp = FastMCP(
         "ones."
     ),
 )
+
+
+# ---------------------------------------------------------------------------
+# Index fingerprint on every response
+# ---------------------------------------------------------------------------
+# Counts change whenever the index does (a new chapter, a removed copy, a
+# retag), so every response says which index it came from: the fingerprint
+# and build time from the store's manifest.json (written by ingest.py). It
+# goes in the protocol's result _meta and, so agents and transcripts keep it,
+# in the visible result: an "_index" key for JSON-object results, a closing
+# line for text. JSON-list results (search_astronomy_docs(as_json=True)) are
+# left as they are, so existing parsers keep working.
+_TEXTBOOK_TOOLS = {"search_textbooks", "list_textbooks"}
+_manifest_cache: dict[Path, tuple[float, dict | None]] = {}
+
+
+def _index_meta(db_dir: Path) -> dict:
+    mtime = zones.manifest_mtime(db_dir)
+    if _manifest_cache.get(db_dir, (None,))[0] != mtime:
+        _manifest_cache[db_dir] = (mtime, zones.read_manifest(db_dir))
+    m = _manifest_cache[db_dir][1]
+    if not m:
+        return {"fingerprint": None, "note": "no manifest; run `python ingest.py --retag`"}
+    return {"fingerprint": m["index_fingerprint"][:16], "written_at": m["written_at"], "n_chunks": m["n_chunks"]}
+
+
+def _stamp(text: str, meta: dict) -> str:
+    """Add the index metadata to one text result (see the comment above)."""
+    try:
+        data = json.loads(text)
+    except ValueError:
+        data = None
+    if isinstance(data, dict):
+        return json.dumps({**data, "_index": meta})
+    if isinstance(data, list):
+        return text
+    return f"{text}\n\n[index {meta.get('fingerprint')}, built {meta.get('written_at')}]"
+
+
+class IndexFingerprint(Middleware):
+    async def on_call_tool(self, context, call_next):
+        result = await call_next(context)
+        meta = _index_meta(TEXTBOOKS_CHROMA_DIR if context.message.name in _TEXTBOOK_TOOLS else CHROMA_DIR)
+        result.meta = {**(result.meta or {}), "index": meta}
+        for block in result.content:
+            if getattr(block, "type", None) == "text":
+                block.text = _stamp(block.text, meta)
+        if isinstance(result.structured_content, dict) and isinstance(result.structured_content.get("result"), str):
+            result.structured_content["result"] = _stamp(result.structured_content["result"], meta)
+        return result
+
+
+mcp.add_middleware(IndexFingerprint())
 
 
 def _format_passage(i: int, chunk: dict) -> str:
@@ -602,9 +664,9 @@ def get_document_chunks(filename: str, max_chunks: int = 60) -> str:
             author_str = ""
         citation = format_citation(entry)
     else:
-        doc_title = stem
+        doc_title = Path(matching_source).stem
         author_str = ""
-        citation = stem
+        citation = doc_title
 
     lines = [
         f"# {doc_title}{author_str}",
@@ -683,8 +745,13 @@ def query_sensitivity_calc(telescope: str, endpoint: str, params: dict) -> str:
 
                    Full parameter reference (advanced overrides like taper, pwv, el,
                    eta_*, t_sys_*): rag/sensitivity_calculator.py docstrings, or the
-                   live OpenAPI spec at sensitivity-calculator.skao.int/api/v11/
+                   live OpenAPI spec at sensitivity-calculator.skao.int/api/v12/
                    {telescope}/openapi.json.
+
+                   subarray_configuration may be the subarray's name
+                   ("MID_inner_r2km_aastar") or its label ("AA* (MID_inner_r2km)"):
+                   it is translated to the form the API takes (labels for Mid,
+                   names for Low), and the result's "subarray_used" says which.
     """
     try:
         result = query_sensitivity_calculator(telescope, endpoint, params)
@@ -723,12 +790,29 @@ def estimate_data_product_size_tool(product_type: str, params: dict) -> str:
     """Estimate the data volume (and rate, where applicable) of an SKA data product.
 
     Uses the vendored odp-data-size-tool formulas for a single data product
-    instance (not a full observing setup).
+    instance (not a full observing setup), plus two whole-observation modes:
+
+    - "Spectral Cube (wide-band)": a line cube across a whole band (an HI
+      survey), not a single zoom window. Params: telescope, freq_min_mhz +
+      freq_max_mhz (or bandwidth_mhz), channel_width_khz (default the native
+      continuum channel), resolution_arcsec, fov_deg, n_station, duration_h,
+      t_int_s; optional n_stokes, n_beam, n_bit, n_pointings.
+    - "Single-dish Autocorrelation": intensity mapping from autocorrelation
+      spectra (no cross-correlations). Params: telescope, frequencies as
+      above, n_dish, duration_h, t_int_s; optional n_pol, n_bit, and
+      map_area_deg2 + pixel_arcmin for the delivered maps.
+
+    Those two return tiers_TB: visibilities_TB (raw/calibrated visibilities;
+    None for autocorrelations), archived_TB (what the archive keeps) and
+    delivered_TB (what the science team gets). Every result says whether
+    the archive keeps the product and the policy source; the archive policy
+    is an unverified assumption (config.DATA_PRODUCT_POLICY).
 
     Args:
         product_type: One of "Image", "Image Cutout", "Gridded Visibilities",
             "PSS", "PST Folded", "Dynamic Spectrum", "Flowthrough", "VLBI",
-            "Transient Dump", "Calibrated Vis".
+            "Transient Dump", "Calibrated Vis", "Spectral Cube (wide-band)",
+            "Single-dish Autocorrelation".
         params: Parameter values for that product type. Angular values
             (resolution, fov) and durations are unit strings (e.g.
             "1.000 arcsec", "3600.000 s"); bandwidths (bw, cbw) accept a
@@ -1017,15 +1101,27 @@ def get_author_info_tool(author_name: str) -> str:
 
 @mcp.tool()
 def keyword_coverage_tool(
-    terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1
+    terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1,
+    include_noncanonical: bool = False, zones: list[str] | None = ["abstract", "body"],
+    strict: bool = False, exclude: list[str] | None = None, use_curated_exclusions: bool = True,
+    return_contexts: int = 0, usage_stats: bool = False,
 ) -> str:
     """Exact, repeatable counts of which book sections and papers mention each term.
 
     Use this instead of running one search per keyword and tallying the
     results by hand, e.g. for "how many sections use technique X" rankings.
-    It scans every indexed chunk literally (whole-word match), so it measures
-    mentions, not relevance: follow up with search_astronomy_docs(paper=...)
-    to see how a paper actually uses a term.
+    It scans every indexed chunk, so it measures mentions, not relevance:
+    follow up with return_contexts or search_astronomy_docs(paper=...) to see
+    how a paper actually uses a term.
+
+    Defaults changed 2026-11 (pass zones=null, strict=true and
+    include_noncanonical=true for the old counts): only the abstract and body
+    count, so reference lists ("ApJ"), affiliations ("Max-Planck") and author
+    lists no longer do; words match in singular and plural and with spaces or
+    hyphens ("pulsar survey" finds "pulsar surveys", "zoom mode" finds
+    "zoom-mode"); curated exclusions drop other meanings of facility names
+    (Planck constant, "Chandra et al.", Fermi level); copies of a paper count
+    once.
 
     Args:
         terms: Terms to count. Use "|" for synonyms counted as one term, e.g.
@@ -1035,16 +1131,35 @@ def keyword_coverage_tool(
             for everything.
         min_hits_per_paper: Mentions a paper needs before it counts as
             covering a term (raise to 3-5 to drop passing mentions).
+        include_noncanonical: Also count re-downloaded copies of an indexed
+            paper and book documents with no bibliography entry (see
+            index_health_tool).
+        zones: Parts of each paper to count: any of "front_matter",
+            "abstract", "body", "acknowledgements", "references", "appendix";
+            null for all. Default abstract and body.
+        strict: Literal whole-word matching, no plurals or hyphen variants,
+            no curated exclusions.
+        exclude: Patterns whose mentions don't count, e.g. ["Planck
+            function", "Max-Planck"] (regular expressions, case-insensitive).
+        use_curated_exclusions: Apply the curated exclusions for Planck,
+            Chandra, Swift, Fermi, Gaia and Euclid (default true).
+        return_contexts: Return this many matched snippets per paper (with
+            zone, heading and page).
+        usage_stats: Per paper, mentions per 1,000 body words and whether
+            the term appears in a heading or the abstract.
     """
     try:
-        return json.dumps(corpus_tools.keyword_coverage(terms, book, min_hits_per_paper))
-    except ValueError as exc:
+        return json.dumps(corpus_tools.keyword_coverage(
+            terms, book, min_hits_per_paper, include_noncanonical, zones, strict, exclude,
+            use_curated_exclusions, return_contexts, usage_stats))
+    except (ValueError, re.error) as exc:
         return f"Invalid request: {exc}"
 
 
 @mcp.tool()
 def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5,
-                      chunk_index: int | None = None, book: str | None = None) -> str:
+                      chunk_index: int | None = None, book: str | None = None,
+                      fields: dict | None = None) -> str:
     """Check that a quoted sentence or figure really comes from the paper it is attributed to.
 
     Run this on every sourced figure before publishing a table. It combines
@@ -1061,14 +1176,45 @@ def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5,
         chunk_index: With paper, also check exactly this passage (the
             "chunk N" shown next to each search result's Paper ID).
         book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+        fields: Optional requirement record extracted from this quote (see
+            extract_requirements_tool). Each field's value is checked against
+            the quote: "field_checks" says which are stated in it and which
+            were inferred, and flags fields marked stated that the quote
+            doesn't contain.
 
     Number-free claims are judged by reranker score (cut-off 0.97, tuned on
     labelled claims; see corpus_tools.VERIFY_MIN_SCORE).
     """
     try:
-        return json.dumps(corpus_tools.verify_quote(text, paper, top_k, chunk_index, book))
+        out = corpus_tools.verify_quote(text, paper, top_k, chunk_index, book)
+        if fields:
+            out["field_checks"] = check_fields(text, fields)
+        return json.dumps(out)
     except ValueError as exc:
         return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def extract_requirements_tool(quote: str) -> str:
+    """Draft a structured observing requirement from a quoted passage, and
+    return the requirement schema.
+
+    Each field is {"value", "unit", "source_text", "inferred"}: the parser
+    fills the fields it finds in the quote (frequency, bandwidth, channel
+    width, sensitivity, sigma level, weighting, array stage, band, hours,
+    area, field of view, angular resolution, time resolution) with
+    source_text set and inferred=false. Review the draft, then fill any other
+    field you need with inferred=true and source_text null. Pass the record
+    to verify_quote_tool(fields=...) to confirm which values the quote states,
+    and to validate_across_contexts_tool(requirement=...) for capability
+    verdicts.
+
+    Args:
+        quote: The passage, verbatim.
+    """
+    return json.dumps({"draft": extract_draft(quote),
+                       "schema": {f: {"kind": k, "units": list(u)} for f, (k, u) in REQUIREMENT_FIELDS.items()},
+                       "modes": list(REQUIREMENT_MODES)})
 
 
 @mcp.tool()
@@ -1143,74 +1289,104 @@ def compare_to_calculator_tool(
     claimed_sensitivity: float,
     unit: str = "uJy/beam",
     quantity: str = "continuum",
-    claimed_beam_arcsec: float | None = None,
+    claimed_beam_arcsec: float | list[float] | None = None,
     endpoint: str = "continuum",
     window_index: int = 0,
+    mode: str = "best_fit",
+    sweep: dict[str, list] | None = None,
+    sigma_level: float = 1.0,
+    stokes: str = "I",
+    claimed_channel_width_hz: float | None = None,
 ) -> str:
-    """Check a paper's quoted sensitivity against the live sensitivity calculator,
-    sweeping every weighting scheme (natural, robust -2..2, uniform) for
-    continuum and zoom; pulsar search ("pss") is a single call (no weighting).
+    """Check a paper's quoted sensitivity against the live sensitivity
+    calculator, in "strict" mode (only what the paper states, plus declared
+    defaults) or "best_fit" mode (default: also try free parameters).
 
-    Papers often leave the weighting unstated, which is the usual reason a
-    quoted figure fails to reproduce. This reports each variant's
-    sensitivity and % difference, the closest one, and all variants within
-    10%. Pass claimed_beam_arcsec when the paper states a resolution, so the
-    match must fit both noise and beam.
+    Use mode="strict" to decide whether a figure is reproduced: it uses only
+    the stated params plus declared defaults (robust 0 if no weighting is
+    given, the AA* array, band centre and default bandwidth for the stated
+    band) and lists every default under "defaults_applied". "best_fit" sweeps
+    every weighting (natural, robust -2..2, uniform) when params state none,
+    plus any parameters in `sweep`, and reports all variants, the closest,
+    `n_free_parameters` and the strict result side by side: a best-fit match
+    with free parameters is weaker evidence than a strict one.
+
+    When the calculator refuses an array for a band or window (the mixed AA*
+    in Band 5, or wider than 720 MHz in Band 2), the 15-m-only subarray at the
+    same stage is used and "array_substituted" says so, with the reason.
 
     Args:
         telescope: "low" or "mid".
-        params: That endpoint's params as for query_sensitivity_calc, minus
-            weighting_mode/robustness (the sweep sets those).
+        params: That endpoint's params as for query_sensitivity_calc. A stated
+            weighting_mode/robustness is used as given (non-integer robust
+            values are interpolated between the neighbouring integers and
+            labelled "interpolated"); omit them to sweep weightings.
+            subarray_configuration may be a name or a label.
         claimed_sensitivity: The paper's figure.
-        unit: "Jy", "mJy", "uJy" or "nJy" (with or without "/beam"; pulsar
-            figures are plain flux densities).
+        unit: "Jy", "mJy", "uJy" or "nJy" (with or without "/beam"), or "K"
+            ("mK", "uK") for a brightness temperature, converted to Jy/beam
+            with the frequency and the beam (claimed_beam_arcsec, else the
+            calculator's).
         quantity: continuum endpoint only: "continuum" (default) or
             "spectral" (per-channel figure).
-        claimed_beam_arcsec: Optional stated resolution, arcsec.
+        claimed_beam_arcsec: Stated resolution, arcsec (one value, or
+            [major, minor]); the match must then fit both noise and beam.
         endpoint: "continuum" (default), "zoom" (spectral line) or "pss".
         window_index: zoom only: which zoom window to compare.
+        mode: "best_fit" (default) or "strict".
+        sweep: best_fit only: extra params to vary, e.g.
+            {"freq_centre_hz": [1.31e9, 1.355e9]}; every combination is tried.
+        sigma_level: The claim is this many sigma (5 for a 5-sigma limit);
+            it is divided by this before comparing with the 1-sigma rms.
+        stokes: "I" (default; total noise including confusion) or "V"
+            (thermal noise only).
+        claimed_channel_width_hz: For a spectral figure, the paper's channel
+            width; the calculator's per-channel noise is rescaled to it.
     """
     try:
         return json.dumps(compare_to_calculator(
             telescope, params, claimed_sensitivity, unit, quantity, claimed_beam_arcsec,
-            endpoint, window_index,
+            endpoint, window_index, mode, sweep, sigma_level, stokes, claimed_channel_width_hz,
         ))
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"
 
 
 @mcp.tool()
-def validate_across_contexts_tool(obs_config: dict, contexts: list[str] | None = None) -> str:
-    """Validate one observing configuration under every observing context
-    ("SV-AA2", "SV-AA*", "Cycle 0", "Cycle 1"), to see at which array-assembly
-    stage or cycle a paper's requirement becomes feasible.
+def validate_across_contexts_tool(obs_config: dict | None = None, contexts: list[str] | None = None,
+                                  requirement: dict | None = None, check_sensitivity: bool = True) -> str:
+    """Judge an observing configuration or a requirement in every observing
+    context, to see at which array-assembly stage or cycle it becomes
+    feasible. Default contexts: SV-AA2, SV-AA*, Cycle 0, Cycle 1 and the AA4
+    design baseline (AA4 added 2026-11).
 
     Use this rather than static capability documents when judging whether a
     requirement is deliverable: those describe the full AA4 design.
 
+    With requirement (a record from extract_requirements_tool), returns a
+    verdict per context for each stated dimension: observing mode, band,
+    frequency, bandwidth, channel width, angular resolution and sensitivity
+    (the strict sensitivity calculator for that context's array; its beam
+    judges resolution). A band that exists is not enough. Overall verdicts:
+    "available_from <context>", "aa4_only", "mode_not_offered" (VLBI,
+    transient buffer, solar: no schema in any context, AA4 included), or
+    "not_met", with the failing dimensions.
+
     Args:
         obs_config: Same shape as validate_observing_setup_tool; its own
-            "context" value is ignored.
-        contexts: Optional subset of contexts to check.
+            "context" value is ignored. AA4 is reported as not validated
+            (the validator has no AA4 context).
+        contexts: Optional subset of contexts (any of the five above).
+        requirement: Optional requirement record (see above). Needs at least
+            "telescope"; dimensions it doesn't state aren't judged.
+        check_sensitivity: Call the live calculator for sensitivity (default
+            true; one or two calls per context).
     """
     try:
-        return str(validate_across_contexts(obs_config, contexts))
+        out = validate_across_contexts(obs_config, contexts, requirement, check_sensitivity)
     except (KeyError, ValueError) as exc:
         return f"Invalid request: {exc}"
-
-
-# ---------------------------------------------------------------------------
-# Astronomical object lookup (SIMBAD / NED via astroquery) — read-only.
-# ---------------------------------------------------------------------------
-
-
-def _sky_call(fn, *args) -> str:
-    try:
-        return json.dumps(fn(*args))
-    except ValueError as exc:
-        return f"Invalid request: {exc}"
-    except Exception as exc:  # network/service failures from astroquery
-        return f"Lookup service error: {exc}"
+    return json.dumps(out, default=str) if requirement is not None else str(out)
 
 
 @mcp.tool()
@@ -1405,7 +1581,9 @@ def citing_papers_tool(text: str, limit: int = 100) -> str:
 
 @mcp.tool()
 def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
-                          min_shared_papers: int = 2) -> str:
+                          min_shared_papers: int = 2, include_noncanonical: bool = False,
+                          zones: list[str] | None = ["abstract", "body"], exclude: list[str] | None = None,
+                          use_curated_exclusions: bool = True) -> str:
     """Which external facilities (Rubin/LSST, JWST, ngVLA, CTAO, LIGO, IceCube,
     ALMA, …; about 80, curated in corpus_tools.FACILITIES) the papers name,
     across how many sections and papers, and which are named together.
@@ -1416,15 +1594,52 @@ def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int 
     example, is often cited for cosmological parameters rather than as an
     observing partner, so check a paper before calling it a synergy.
 
+    Defaults changed 2026-11: only the abstract and body count (not
+    reference lists or affiliations), curated exclusions drop other meanings
+    (Max-Planck, "Chandra et al.", Planck Collaboration citations, the Fermi
+    level), and copies of a paper count once.
+
     Args:
         book: "aaskaii" (default), "aaska2015", "ska_capabilities" or null.
         min_hits_per_paper: Mentions a paper needs to count (default 2).
         min_shared_papers: Minimum shared papers for an edge (default 2).
+        include_noncanonical: Also count copies and unlisted documents.
+        zones: Parts of each paper to count (see keyword_coverage_tool);
+            null for all. Default abstract and body.
+        exclude: Extra patterns whose mentions don't count (regular
+            expressions, case-insensitive), applied to every facility.
+        use_curated_exclusions: Apply the curated exclusions (default true).
     """
     try:
-        return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers))
+        return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers,
+                                                        include_noncanonical, zones, exclude,
+                                                        use_curated_exclusions))
+    except (ValueError, re.error) as exc:
+        return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def index_health_tool(book: str | None = None, include_documents: bool = False) -> str:
+    """State of the document index: duplicate paper IDs and copies, book
+    documents with no bibliography entry, unclassified documents, chapters
+    with no PDF, documents whose reference list wasn't found, and whether the
+    manifest (index fingerprint, parser and embedding versions) still matches.
+
+    Run this before a corpus-wide analysis, and record its fingerprint next to
+    any counts you report, so later runs can tell an index change from a
+    change in the papers.
+
+    Args:
+        book: "aaskaii", "aaska2015", "ska_capabilities" or null for all.
+        include_documents: Also list chunk and zone counts for every document.
+    """
+    try:
+        out = corpus_tools.index_health(book)
     except ValueError as exc:
         return f"Invalid request: {exc}"
+    if not include_documents:
+        out.pop("documents")
+    return json.dumps(out, default=str)
 
 
 @mcp.tool()
@@ -1451,10 +1666,12 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
                             sun: str = "any", year_start: str | None = None) -> str:
     """When a target can be observed from SKA-Low or SKA-Mid over a year.
 
-    Returns the maximum elevation, whether it ever reaches min_elevation, the
-    LST window above it, and usable hours per month and per LST bin under a
-    Sun constraint. Operational settings are unverified defaults
-    (config.SCHEDULING), echoed under "assumptions".
+    Returns the maximum elevation, whether it ever reaches min_elevation and
+    whether it clears the dish's mechanical limit (Mid ~15°; a target below
+    45° can still be observed), the LST window above min_elevation, and
+    usable hours per month and per LST bin under a Sun constraint.
+    Operational settings are unverified defaults (config.SCHEDULING), echoed
+    under "assumptions".
 
     Args:
         target: Object name (SIMBAD/NED), "ra dec" in degrees, or sexagesimal.
@@ -1477,40 +1694,63 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
 @mcp.tool()
 def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
                       from_db: bool = False, year_start: str | None = None,
-                      extracted_by: str | None = None, reviewed_only: bool = False,
-                      years: float | None = None) -> str:
+                      extracted_by: str | list[str] | None = None, reviewed_only: bool = False,
+                      years: float | None = None, min_elevation_deg: float | list[float] | None = None,
+                      apply_sun_constraints: bool = False) -> str:
     """Requested vs available hours per LST bin (and month × LST) for a set of
-    observing requests: which LST ranges are oversubscribed.
+    observing requests, and the telescope's overall demand-to-supply ratio.
 
     Relative pressure between science cases, not a real allocation: supply
     is clock time minus a maintenance share (unverified defaults, echoed
-    under "assumptions").
+    under "assumptions"). "total_demand_supply_ratio" counts every request,
+    placed on the sky or not; "demand_supply_ratio" only the placed ones.
+
+    Changed 2026-11: Sun constraints are off unless apply_sun_constraints
+    (radio requests rarely need night time); a target below its elevation
+    limit but above the dish's mechanical limit (Mid ~15°) is placed and
+    listed under "elevation_relaxed", so "never_visible" means never above
+    the mechanical limit; declination bands (dec_range alone) and areas with
+    no position (placed on an assumed band, under "footprint_assumed") are
+    placed.
 
     Args:
         telescope: "low" or "mid".
-        requests: List of {"name", "hours", "ra"/"dec" or "ra_range"/
-            "dec_range" in degrees, optional "sun", "min_elevation",
-            "commensal_group"}. Requests in one commensal group share time.
+        requests: List of {"name", "hours", "ra"/"dec", "ra_range"/
+            "dec_range", "dec_range" alone, or "area_deg2" in degrees,
+            optional "sun", "min_elevation", "commensal_group"}. Requests in
+            one commensal group share time.
         from_db: Use the requests recorded with add_observing_request_tool
-            (added to any given requests). Requests without a position are
-            listed under "unplaced", not spread over the sky.
+            (added to any given requests). Also returns "conflicts": requests
+            marked duplicate whose hours differ from the one they repeat.
         year_start: "YYYY-MM-DD" (default: next 1 January).
-        extracted_by: With from_db, only requests with this tag (e.g. one
-            extraction run), so pilot runs don't mix in.
+        extracted_by: With from_db, only requests with this tag (one
+            extraction run). A list of tags uses the first for the pressure
+            and reports per-request "agreement" across all of them.
         reviewed_only: With from_db, only requests a reviewer accepted
             (rejected and duplicate requests are always left out).
         years: Years of telescope time the requests compete for (default:
             config planning_years, an unverified default).
+        min_elevation_deg: Elevation limit for requests without their own
+            (default 45); a list, e.g. [15, 20, 30, 45], returns one result
+            per value under "by_min_elevation", with a "summary".
+        apply_sun_constraints: Honour each request's "sun" setting.
     """
+    runs = extracted_by if isinstance(extracted_by, list) else [extracted_by] if extracted_by else []
     reqs = list(requests or [])
+    conn = source_db.connect() if from_db else None
     if from_db:
-        reqs += source_db.list_requests(source_db.connect(), telescope, extracted_by, reviewed_only)
+        reqs += source_db.list_requests(conn, telescope, runs[0] if runs else None, reviewed_only)
     if not reqs:
         return "Invalid request: no requests given (pass requests or from_db=true)"
     try:
-        return json.dumps(scheduling.lst_pressure(reqs, telescope, year_start, years))
+        out = scheduling.lst_pressure(reqs, telescope, year_start, years, min_elevation_deg, apply_sun_constraints)
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"
+    if from_db:
+        out["conflicts"] = source_db.hour_conflicts(conn, telescope, runs[0] if runs else None)
+        if len(runs) > 1:
+            out["agreement"] = source_db.extraction_agreement(conn, runs, telescope)
+    return json.dumps(out)
 
 
 @mcp.tool()
@@ -1590,7 +1830,8 @@ def add_survey_field_tool(
         book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
         ra, dec: Centre in degrees, if stated.
         ra_range, dec_range: RA/Dec box in degrees, if stated ("southern
-            sky" = ra_range [0, 360], dec_range [-90, 0]).
+            sky" = ra_range [0, 360], dec_range [-90, 0]). dec_range alone
+            is a declination band (all RA).
         gal_l_range, gal_b_range: Galactic box in degrees, if stated
             (e.g. |b| < 5 deg: gal_b_range [-5, 5]; l defaults to all).
         area_deg2: Area in square degrees, if stated.

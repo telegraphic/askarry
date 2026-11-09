@@ -1,7 +1,7 @@
 {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "book": "aaskaii"
   }
@@ -67,14 +67,16 @@
    "page": "a2",
    "doi": null,
    "arxiv": null,
-   "n_papers": 21,
+   "n_papers": 23,
    "papers": [
     "Asorey01",
     "Baczko01",
     "Castignani01",
     "Chan01",
+    "Chhetri01",
     "Chrysaphi01",
     "Corstanje01",
+    "Dey01",
     "Hare01",
     "Huege01",
     "Ignesti01",
@@ -153,6 +155,34 @@
    ]
   },
   {
+   "ref_key": "bonaldi|2018|482|2",
+   "raw": "A. Bonaldi et al. MNRAS , 482(1):2-19, Sept. 2018. doi: 10.1093/mnras/sty2603.",
+   "first_author": "bonaldi",
+   "year": 2018,
+   "volume": "482",
+   "page": "2",
+   "doi": "10.1093/mnras/sty2603",
+   "arxiv": null,
+   "n_papers": 15,
+   "papers": [
+    "Algera01",
+    "Asorey01",
+    "Bait01",
+    "Bosi01",
+    "Burba01",
+    "Dabhade01",
+    "Datta01",
+    "FangxiaAn01",
+    "Giulietti01",
+    "Harrison02",
+    "Kondapally01",
+    "Lagos01",
+    "OSullivan01",
+    "Ronconi01",
+    "Tripathi01"
+   ]
+  },
+  {
    "ref_key": "weeren|2019|215|16",
    "raw": "R. J. van Weeren et al. Space Sci. Rev. , 215(1):16, Feb. 2019. doi: 10.1007/s11214-019-0584-z.",
    "first_author": "weeren",
@@ -206,34 +236,6 @@
     "Vacca01",
     "Vacca02",
     "Vernstrom01"
-   ]
-  },
-  {
-   "ref_key": "bonaldi|2018|482|2",
-   "raw": "A. Bonaldi et al. MNRAS , 482(1):2-19, Sept. 2018. doi: 10.1093/mnras/sty2603.",
-   "first_author": "bonaldi",
-   "year": 2018,
-   "volume": "482",
-   "page": "2",
-   "doi": "10.1093/mnras/sty2603",
-   "arxiv": null,
-   "n_papers": 15,
-   "papers": [
-    "Algera01",
-    "Asorey01",
-    "Bait01",
-    "Bosi01",
-    "Burba01",
-    "Dabhade01",
-    "Datta01",
-    "FangxiaAn01",
-    "Giulietti01",
-    "Harrison02",
-    "Kondapally01",
-    "Lagos01",
-    "OSullivan01",
-    "Ronconi01",
-    "Tripathi01"
    ]
   },
   {
@@ -446,6 +448,31 @@
    ]
   },
   {
+   "ref_key": "tingay|2013|30|e007",
+   "raw": "S. J. Tingay et al. Publ. Astron. Soc. Aust. , 30:e007, Jan. 2013. doi: 10.1017/pasa.2012.007.",
+   "first_author": "tingay",
+   "year": 2013,
+   "volume": "30",
+   "page": "e007",
+   "doi": "10.1017/pasa.2012.007",
+   "arxiv": null,
+   "n_papers": 12,
+   "papers": [
+    "Chan01",
+    "Cheung01",
+    "Chhetri01",
+    "Dey01",
+    "GemmaAnderson01",
+    "Morosan01",
+    "Nakariakov01",
+    "Oberoi01",
+    "Patra01",
+    "Timmerman01",
+    "Tremblay01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
    "ref_key": "aaskaii:osullivan01",
    "raw": "S. P. O'Sullivan et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/OSullivan01.",
    "first_author": "osullivan",
@@ -471,27 +498,27 @@
    ]
   },
   {
-   "ref_key": "brunetti|2014|23|1430007",
-   "raw": "G. Brunetti and T. W. Jones. International Journal of Modern Physics D , 23(4):1430007-98, Mar. 2014. doi: 10.1142/S0218271814300079.",
-   "first_author": "brunetti",
-   "year": 2014,
-   "volume": "23",
-   "page": "1430007",
-   "doi": "10.1142/s0218271814300079",
+   "ref_key": "gupta|2017|113|707",
+   "raw": "Y. Gupta et al. Current Science , 113(4):707-714, 2017. doi: 10.18520/cs/v113/i04/707-714.",
+   "first_author": "gupta",
+   "year": 2017,
+   "volume": "113",
+   "page": "707",
+   "doi": "10.18520/cs/v113/i04/707-714",
    "arxiv": null,
    "n_papers": 11,
    "papers": [
-    "AritraBasu01",
-    "ArpanPal01",
-    "Cassano01",
-    "Cuciti01",
-    "Gitti01",
-    "Kurahara01",
-    "Pandey-Pommier02",
-    "Pasini01",
-    "Perrott01",
-    "Santra01",
-    "Vacca01"
+    "Bagchi01",
+    "Dey01",
+    "Elahi01",
+    "Kobayashi01",
+    "Kumari01",
+    "Mohan01",
+    "Morosan01",
+    "Nakariakov01",
+    "Oswald01",
+    "Timmerman01",
+    "deLeraAcedo01"
    ]
   },
   {
@@ -519,6 +546,30 @@
    ]
   },
   {
+   "ref_key": "brunetti|2014|23|1430007",
+   "raw": "G. Brunetti and T. W. Jones. International Journal of Modern Physics D , 23(4):1430007-98, Mar. 2014. doi: 10.1142/S0218271814300079.",
+   "first_author": "brunetti",
+   "year": 2014,
+   "volume": "23",
+   "page": "1430007",
+   "doi": "10.1142/s0218271814300079",
+   "arxiv": null,
+   "n_papers": 11,
+   "papers": [
+    "AritraBasu01",
+    "ArpanPal01",
+    "Cassano01",
+    "Cuciti01",
+    "Gitti01",
+    "Kurahara01",
+    "Pandey-Pommier02",
+    "Pasini01",
+    "Perrott01",
+    "Santra01",
+    "Vacca01"
+   ]
+  },
+  {
    "ref_key": "hale|2025|536|2187",
    "raw": "C. L. Hale et al. MNRAS , 536(3):2187-2211, Jan. 2025. doi: 10.1093/mnras/stae2528.",
    "first_author": "hale",
@@ -540,6 +591,30 @@
     "SabyasachiPal01",
     "SabyasachiPal03",
     "Yamamoto01"
+   ]
+  },
+  {
+   "ref_key": "aaskaii:bempong-manful01",
+   "raw": "E. Bempong-Manful et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Bempong-Manful01.",
+   "first_author": "bempongmanful",
+   "year": 2026,
+   "volume": null,
+   "page": null,
+   "doi": null,
+   "arxiv": null,
+   "n_papers": 11,
+   "papers": [
+    "Colombo01",
+    "Curtin01",
+    "Giarratana01",
+    "Kadler01",
+    "Kovalev01",
+    "Lico01",
+    "Panessa01",
+    "Radcliffe01",
+    "TaoAn02",
+    "TaoAn03",
+    "Wongphecauxson01"
    ]
   },
   {
@@ -591,29 +666,6 @@
    ]
   },
   {
-   "ref_key": "bonafede|2010|513|a30",
-   "raw": "Bonafede, A., Feretti, L., Murgia, M., et al. 2010, A & A, 513, A30",
-   "first_author": "bonafede",
-   "year": 2010,
-   "volume": "513",
-   "page": "a30",
-   "doi": null,
-   "arxiv": null,
-   "n_papers": 10,
-   "papers": [
-    "AritraBasu01",
-    "Cassano01",
-    "Cuciti01",
-    "Dabhade01",
-    "Kurahara01",
-    "Loi01",
-    "Pasini01",
-    "Regis01",
-    "Vacca01",
-    "deGasperin01"
-   ]
-  },
-  {
    "ref_key": "manchester|2005|129|1993",
    "raw": "Manchester, R. N., Hobbs, G. B., Teoh, A. & Hobbs, M. 2005, AJ, 129, 1993",
    "first_author": "manchester",
@@ -637,26 +689,26 @@
    ]
   },
   {
-   "ref_key": "gupta|2017|113|707",
-   "raw": "Y. Gupta et al. Current Science , 113(4):707-714, 2017. doi: 10.18520/cs/v113/i04/707-714.",
-   "first_author": "gupta",
-   "year": 2017,
-   "volume": "113",
-   "page": "707",
-   "doi": "10.18520/cs/v113/i04/707-714",
+   "ref_key": "bonafede|2010|513|a30",
+   "raw": "Bonafede, A., Feretti, L., Murgia, M., et al. 2010, A & A, 513, A30",
+   "first_author": "bonafede",
+   "year": 2010,
+   "volume": "513",
+   "page": "a30",
+   "doi": null,
    "arxiv": null,
    "n_papers": 10,
    "papers": [
-    "Bagchi01",
-    "Elahi01",
-    "Kobayashi01",
-    "Kumari01",
-    "Mohan01",
-    "Morosan01",
-    "Nakariakov01",
-    "Oswald01",
-    "Timmerman01",
-    "deLeraAcedo01"
+    "AritraBasu01",
+    "Cassano01",
+    "Cuciti01",
+    "Dabhade01",
+    "Kurahara01",
+    "Loi01",
+    "Pasini01",
+    "Regis01",
+    "Vacca01",
+    "deGasperin01"
    ]
   },
   {
@@ -680,29 +732,6 @@
     "Prandoni01",
     "Tabatabaei01",
     "Yoon01"
-   ]
-  },
-  {
-   "ref_key": "tingay|2013|30|e007",
-   "raw": "S. J. Tingay et al. Publ. Astron. Soc. Aust. , 30:e007, Jan. 2013. doi: 10.1017/pasa.2012.007.",
-   "first_author": "tingay",
-   "year": 2013,
-   "volume": "30",
-   "page": "e007",
-   "doi": "10.1017/pasa.2012.007",
-   "arxiv": null,
-   "n_papers": 10,
-   "papers": [
-    "Chan01",
-    "Cheung01",
-    "GemmaAnderson01",
-    "Morosan01",
-    "Nakariakov01",
-    "Oberoi01",
-    "Patra01",
-    "Timmerman01",
-    "Tremblay01",
-    "deLeraAcedo01"
    ]
   },
   {
@@ -798,6 +827,29 @@
    ]
   },
   {
+   "ref_key": "hotan|2021|38|e009",
+   "raw": "A. W. Hotan et al. Publ. Astron. Soc. Aust. , 38:e009, Mar. 2021. doi: 10.1017/pasa.2021.1. 11. C.-P. Hu et al. Nature , 626(7999):500-504, Feb. 2024. doi: 10.1038/s41586-023-07012-5.",
+   "first_author": "hotan",
+   "year": 2021,
+   "volume": "38",
+   "page": "e009",
+   "doi": "10.1017/pasa.2021.1.11",
+   "arxiv": null,
+   "n_papers": 10,
+   "papers": [
+    "Caleb01",
+    "Caleb02",
+    "Castignani01",
+    "Chandra01",
+    "Chhetri01",
+    "Driessen01",
+    "GemmaAnderson01",
+    "Kansabanik01",
+    "Oberoi01",
+    "Timmerman01"
+   ]
+  },
+  {
    "ref_key": "hutschenreuter|2022|657|a43",
    "raw": "S. Hutschenreuter et al. A&A , 657:A43, Jan. 2022. doi: 10.1051/0004-6361/202140486.",
    "first_author": "hutschenreuter",
@@ -844,29 +896,6 @@
    ]
   },
   {
-   "ref_key": "aaskaii:bempong-manful01",
-   "raw": "E. Bempong-Manful et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Bempong-Manful01.",
-   "first_author": "bempongmanful",
-   "year": 2026,
-   "volume": null,
-   "page": null,
-   "doi": null,
-   "arxiv": null,
-   "n_papers": 10,
-   "papers": [
-    "Colombo01",
-    "Curtin01",
-    "Giarratana01",
-    "Kadler01",
-    "Kovalev01",
-    "Lico01",
-    "Panessa01",
-    "TaoAn02",
-    "TaoAn03",
-    "Wongphecauxson01"
-   ]
-  },
-  {
    "ref_key": "aaskaii:bourke01",
    "raw": "T. L. Bourke et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Bourke01.",
    "first_author": "bourke",
@@ -910,6 +939,52 @@
     "Perrott01",
     "Santra01",
     "deGasperin01"
+   ]
+  },
+  {
+   "ref_key": "aaskaii:curtin01",
+   "raw": "A. P. Curtin et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Curtin01.",
+   "first_author": "curtin",
+   "year": 2026,
+   "volume": null,
+   "page": null,
+   "doi": null,
+   "arxiv": null,
+   "n_papers": 10,
+   "papers": [
+    "AlexAndersson01",
+    "AlexAndersson02",
+    "Caleb01",
+    "Caleb02",
+    "Cang01",
+    "Castignani01",
+    "Chan01",
+    "GemmaAnderson01",
+    "Miller-Jones01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "ref_key": "aaskaii:gemmaanderson01",
+   "raw": "G. E. Anderson et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/GemmaAnderson01.",
+   "first_author": "anderson",
+   "year": 2026,
+   "volume": null,
+   "page": null,
+   "doi": null,
+   "arxiv": null,
+   "n_papers": 10,
+   "papers": [
+    "AlexAndersson01",
+    "AlexAndersson02",
+    "Curtin01",
+    "DAmato01",
+    "Denzel01",
+    "Lico01",
+    "Miller-Jones01",
+    "Oberoi01",
+    "TaoAn01",
+    "TaoAn02"
    ]
   },
   {
@@ -1046,28 +1121,6 @@
    ]
   },
   {
-   "ref_key": "hotan|2021|38|e009",
-   "raw": "A. W. Hotan et al. Publ. Astron. Soc. Aust. , 38:e009, Mar. 2021. doi: 10.1017/pasa.2021.1. 11. C.-P. Hu et al. Nature , 626(7999):500-504, Feb. 2024. doi: 10.1038/s41586-023-07012-5.",
-   "first_author": "hotan",
-   "year": 2021,
-   "volume": "38",
-   "page": "e009",
-   "doi": "10.1017/pasa.2021.1.11",
-   "arxiv": null,
-   "n_papers": 9,
-   "papers": [
-    "Caleb01",
-    "Caleb02",
-    "Castignani01",
-    "Chandra01",
-    "Driessen01",
-    "GemmaAnderson01",
-    "Kansabanik01",
-    "Oberoi01",
-    "Timmerman01"
-   ]
-  },
-  {
    "ref_key": "best|2023|523|1729",
    "raw": "P. N. Best et al. MNRAS , 523(2):1729-1755, Aug. 2023. doi: 10.1093/mnras/stad1308.",
    "first_author": "best",
@@ -1087,6 +1140,28 @@
     "Panessa01",
     "Pasini01",
     "Prandoni01"
+   ]
+  },
+  {
+   "ref_key": "bonaldi|2023|524|993",
+   "raw": "A. Bonaldi et al. MNRAS , 524(1):993-1007, Sept. 2023. doi: 10.1093/mnras/stad1913.",
+   "first_author": "bonaldi",
+   "year": 2023,
+   "volume": "524",
+   "page": "993",
+   "doi": "10.1093/mnras/stad1913",
+   "arxiv": null,
+   "n_papers": 9,
+   "papers": [
+    "Asorey01",
+    "Bertacca01",
+    "Bosi01",
+    "Giulietti01",
+    "Lagos01",
+    "Maccagni01",
+    "OSullivan01",
+    "Prandoni01",
+    "Ronconi01"
    ]
   },
   {
@@ -1134,9 +1209,9 @@
    ]
   },
   {
-   "ref_key": "aaskaii:curtin01",
-   "raw": "A. P. Curtin et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Curtin01.",
-   "first_author": "curtin",
+   "ref_key": "aaskaii:caleb02",
+   "raw": "M. Caleb et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Caleb02.",
+   "first_author": "caleb",
    "year": 2026,
    "volume": null,
    "page": null,
@@ -1145,36 +1220,14 @@
    "n_papers": 9,
    "papers": [
     "AlexAndersson01",
+    "AlexAndersson02",
     "Caleb01",
-    "Caleb02",
     "Cang01",
     "Castignani01",
-    "Chan01",
-    "GemmaAnderson01",
-    "Miller-Jones01",
-    "Timmerman01"
-   ]
-  },
-  {
-   "ref_key": "aaskaii:gemmaanderson01",
-   "raw": "G. E. Anderson et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/GemmaAnderson01.",
-   "first_author": "anderson",
-   "year": 2026,
-   "volume": null,
-   "page": null,
-   "doi": null,
-   "arxiv": null,
-   "n_papers": 9,
-   "papers": [
-    "AlexAndersson01",
     "Curtin01",
-    "DAmato01",
-    "Denzel01",
-    "Lico01",
-    "Miller-Jones01",
-    "Oberoi01",
-    "TaoAn01",
-    "TaoAn02"
+    "GemmaAnderson01",
+    "Levin01",
+    "Miller-Jones01"
    ]
   },
   {
@@ -1197,48 +1250,6 @@
     "Rygl01",
     "Schoedel01",
     "Traficante01"
-   ]
-  },
-  {
-   "ref_key": "physics|2016|79|76901",
-   "raw": "K. Subramanian. Reports on Progress in Physics , 79(7):076901, July 2016. doi: 10.1088/ 0034-4885/79/7/076901.",
-   "first_author": "physics",
-   "year": 2016,
-   "volume": "79",
-   "page": "76901",
-   "doi": "10.1088/0034-4885/79/7/076901",
-   "arxiv": null,
-   "n_papers": 8,
-   "papers": [
-    "Barkana01",
-    "Caleb02",
-    "Carcamo01",
-    "Chan01",
-    "Cuciti01",
-    "Kurahara01",
-    "Ma01",
-    "Sun01"
-   ]
-  },
-  {
-   "ref_key": "govoni|2019|364|981",
-   "raw": "F. Govoni et al. Science , 364(6444):981-984, June 2019. doi: 10.1126/science.aat7500.",
-   "first_author": "govoni",
-   "year": 2019,
-   "volume": "364",
-   "page": "981",
-   "doi": "10.1126/science.aat7500",
-   "arxiv": null,
-   "n_papers": 8,
-   "papers": [
-    "Cassano01",
-    "Castignani01",
-    "Cuciti01",
-    "Kurahara01",
-    "OSullivan01",
-    "Vacca01",
-    "Vacca02",
-    "deGasperin01"
    ]
   }
  ],
@@ -1277,6 +1288,22 @@
     ]
    },
    {
+    "ref_key": "aaskaii:kovalev01",
+    "raw": "Y. Kovalev et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Kovalev01.",
+    "first_author": "kovalev",
+    "year": 2026,
+    "volume": null,
+    "page": null,
+    "doi": null,
+    "arxiv": null,
+    "n_papers": 3,
+    "papers": [
+     "Joshi01",
+     "Miller-Jones01",
+     "Radcliffe01"
+    ]
+   },
+   {
     "ref_key": "aaskaii:robishaw01",
     "raw": "T. Robishaw et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Robishaw01.",
     "first_author": "robishaw",
@@ -1309,6 +1336,22 @@
     ]
    },
    {
+    "ref_key": "aaskaii:taoan02",
+    "raw": "T. An et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026a. arXiv search: Report number AASKAII/TaoAn02.",
+    "first_author": "an",
+    "year": 2026,
+    "volume": null,
+    "page": null,
+    "doi": null,
+    "arxiv": null,
+    "n_papers": 3,
+    "papers": [
+     "Joshi01",
+     "Miller-Jones01",
+     "Radcliffe01"
+    ]
+   },
+   {
     "ref_key": "bourke|2015|bourkeetaladvancingastrophysicswiththesq",
     "raw": "T. Bourke et al. Advancing astrophysics with the square kilometre array (aaska14), 2015.",
     "first_author": "bourke",
@@ -1321,6 +1364,21 @@
     "papers": [
      "Hale01",
      "vanLoon01"
+    ]
+   },
+   {
+    "ref_key": "aaskaii:damato01",
+    "raw": "Q. D'Amato et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/DAmato01. 13. EPTA Collaboration et al. A&A , 678:A48, Oct. 2023. doi: 10.1051/0004-6361/202346841.",
+    "first_author": "damato",
+    "year": 2023,
+    "volume": "678",
+    "page": "a48",
+    "doi": "10.1051/0004-6361/202346841",
+    "arxiv": null,
+    "n_papers": 2,
+    "papers": [
+     "Joshi01",
+     "Radcliffe01"
     ]
    },
    {
@@ -1352,51 +1410,6 @@
      "Miller-Jones01",
      "Spinelli02"
     ]
-   },
-   {
-    "ref_key": "aaskaii:camera01",
-    "raw": "S. Camera et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Camera01.",
-    "first_author": "camera",
-    "year": 2026,
-    "volume": null,
-    "page": null,
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 2,
-    "papers": [
-     "Joshi01",
-     "Spinelli02"
-    ]
-   },
-   {
-    "ref_key": "aaskaii:capelo01",
-    "raw": "P. R. Capelo et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Capelo01.",
-    "first_author": "capelo",
-    "year": 2026,
-    "volume": null,
-    "page": null,
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 2,
-    "papers": [
-     "Bellomo01",
-     "Joshi01"
-    ]
-   },
-   {
-    "ref_key": "aaskaii:cavallaro01",
-    "raw": "F. Cavallaro et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Cavallaro01.",
-    "first_author": "cavallaro",
-    "year": 2026,
-    "volume": null,
-    "page": null,
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 2,
-    "papers": [
-     "Audard01",
-     "Bianchi02"
-    ]
    }
   ],
   "Sun, Earth and Planets": [
@@ -1409,9 +1422,10 @@
     "page": "a2",
     "doi": null,
     "arxiv": null,
-    "n_papers": 8,
+    "n_papers": 9,
     "papers": [
      "Chrysaphi01",
+     "Dey01",
      "Hare01",
      "Kansabanik01",
      "Kontar01",
@@ -1430,9 +1444,10 @@
     "page": "1515",
     "doi": "10.1038/s41467-017-01307-8",
     "arxiv": null,
-    "n_papers": 6,
+    "n_papers": 7,
     "papers": [
      "Chrysaphi01",
+     "Dey01",
      "Kontar01",
      "Kumari01",
      "Mohan01",
@@ -1449,14 +1464,72 @@
     "page": "122",
     "doi": "10.3847/1538-4357/ab40bb",
     "arxiv": null,
-    "n_papers": 6,
+    "n_papers": 7,
     "papers": [
      "Chrysaphi01",
+     "Dey01",
      "Kontar01",
      "Mondal01",
      "Morosan01",
      "Nakariakov01",
      "PeijinZhang01"
+    ]
+   },
+   {
+    "ref_key": "tingay|2013|30|e007",
+    "raw": "S. J. Tingay et al. Publ. Astron. Soc. Aust. , 30:e007, Jan. 2013. doi: 10.1017/pasa.2012.007.",
+    "first_author": "tingay",
+    "year": 2013,
+    "volume": "30",
+    "page": "e007",
+    "doi": "10.1017/pasa.2012.007",
+    "arxiv": null,
+    "n_papers": 6,
+    "papers": [
+     "Cheung01",
+     "Dey01",
+     "Morosan01",
+     "Nakariakov01",
+     "Oberoi01",
+     "Patra01"
+    ]
+   },
+   {
+    "ref_key": "reid|2014|14|773",
+    "raw": "H. A. S. Reid and H. Ratcliffe. Research in Astronomy and Astrophysics , 14:773-804, July 2014. doi: 10.1088/1674-4527/14/7/003.",
+    "first_author": "reid",
+    "year": 2014,
+    "volume": "14",
+    "page": "773",
+    "doi": "10.1088/1674-4527/14/7/003",
+    "arxiv": null,
+    "n_papers": 6,
+    "papers": [
+     "Chrysaphi01",
+     "Dey01",
+     "Mohan01",
+     "Morosan01",
+     "Nakariakov01",
+     "Sharma01"
+    ]
+   },
+   {
+    "ref_key": "kontar|2023|956|112",
+    "raw": "E. P. Kontar et al. ApJ , 956(2):112, Oct. 2023. doi: 10.3847/1538-4357/acf6c1.",
+    "first_author": "kontar",
+    "year": 2023,
+    "volume": "956",
+    "page": "112",
+    "doi": "10.3847/1538-4357/acf6c1",
+    "arxiv": null,
+    "n_papers": 6,
+    "papers": [
+     "Chrysaphi01",
+     "Dey01",
+     "Kontar01",
+     "Morosan01",
+     "PeijinZhang01",
+     "Sharma01"
     ]
    },
    {
@@ -1479,39 +1552,21 @@
     ]
    },
    {
-    "ref_key": "tingay|2013|30|e007",
-    "raw": "S. J. Tingay et al. Publ. Astron. Soc. Aust. , 30:e007, Jan. 2013. doi: 10.1017/pasa.2012.007.",
-    "first_author": "tingay",
-    "year": 2013,
-    "volume": "30",
-    "page": "e007",
-    "doi": "10.1017/pasa.2012.007",
+    "ref_key": "gupta|2017|113|707",
+    "raw": "Y. Gupta et al. Current Science , 113(4):707-714, 2017. doi: 10.18520/cs/v113/i04/707-714.",
+    "first_author": "gupta",
+    "year": 2017,
+    "volume": "113",
+    "page": "707",
+    "doi": "10.18520/cs/v113/i04/707-714",
     "arxiv": null,
     "n_papers": 5,
     "papers": [
-     "Cheung01",
-     "Morosan01",
-     "Nakariakov01",
-     "Oberoi01",
-     "Patra01"
-    ]
-   },
-   {
-    "ref_key": "reid|2014|14|773",
-    "raw": "H. A. S. Reid and H. Ratcliffe. Research in Astronomy and Astrophysics , 14:773-804, July 2014. doi: 10.1088/1674-4527/14/7/003.",
-    "first_author": "reid",
-    "year": 2014,
-    "volume": "14",
-    "page": "773",
-    "doi": "10.1088/1674-4527/14/7/003",
-    "arxiv": null,
-    "n_papers": 5,
-    "papers": [
-     "Chrysaphi01",
+     "Dey01",
+     "Kumari01",
      "Mohan01",
      "Morosan01",
-     "Nakariakov01",
-     "Sharma01"
+     "Nakariakov01"
     ]
    },
    {
@@ -1548,42 +1603,6 @@
      "Morosan01",
      "Oberoi01",
      "Patra01"
-    ]
-   },
-   {
-    "ref_key": "kansabanik|2022|932|110",
-    "raw": "D. Kansabanik, D. Oberoi, and S. Mondal. ApJ, 932(2):110, June 2022. doi: 10.3847/1538-4357/ ac6758.",
-    "first_author": "kansabanik",
-    "year": 2022,
-    "volume": "932",
-    "page": "110",
-    "doi": "10.3847/1538-4357/ac6758",
-    "arxiv": null,
-    "n_papers": 5,
-    "papers": [
-     "Kansabanik01",
-     "Nakariakov01",
-     "Oberoi01",
-     "Patra01",
-     "Sharma01"
-    ]
-   },
-   {
-    "ref_key": "kontar|2023|956|112",
-    "raw": "E. P. Kontar et al. ApJ , 956(2):112, Oct. 2023. doi: 10.3847/1538-4357/acf6c1.",
-    "first_author": "kontar",
-    "year": 2023,
-    "volume": "956",
-    "page": "112",
-    "doi": "10.3847/1538-4357/acf6c1",
-    "arxiv": null,
-    "n_papers": 5,
-    "papers": [
-     "Chrysaphi01",
-     "Kontar01",
-     "Morosan01",
-     "PeijinZhang01",
-     "Sharma01"
     ]
    }
   ],
@@ -1624,6 +1643,24 @@
      "LorenAnderson01",
      "Rygl01",
      "Traficante01"
+    ]
+   },
+   {
+    "ref_key": "aaskaii:garufi01",
+    "raw": "A. Garufi et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Garufi01.",
+    "first_author": "garufi",
+    "year": 2026,
+    "volume": null,
+    "page": null,
+    "doi": null,
+    "arxiv": null,
+    "n_papers": 5,
+    "papers": [
+     "Bianchi01",
+     "Greaves01",
+     "Guidi01",
+     "Podio01",
+     "Sabatini01"
     ]
    },
    {
@@ -1695,23 +1732,6 @@
      "Bourke01",
      "Sabatini01",
      "Traficante01"
-    ]
-   },
-   {
-    "ref_key": "aaskaii:garufi01",
-    "raw": "A. Garufi et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Garufi01.",
-    "first_author": "garufi",
-    "year": 2026,
-    "volume": null,
-    "page": null,
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 4,
-    "papers": [
-     "Bianchi01",
-     "Guidi01",
-     "Podio01",
-     "Sabatini01"
     ]
    },
    {
@@ -2112,6 +2132,27 @@
     ]
    },
    {
+    "ref_key": "bacon|2020|37|e007",
+    "raw": "D. J. Bacon et al. Cosmology with Phase 1 of the Square Kilometre Array: Red Book 2018: Technical specifications and performance forecasts. Publ. Astron. Soc. Austral. , 37:e007, 2020. doi: 10.1017/pasa.2019.51.",
+    "first_author": "bacon",
+    "year": 2020,
+    "volume": "37",
+    "page": "e007",
+    "doi": "10.1017/pasa.2019.51",
+    "arxiv": null,
+    "n_papers": 8,
+    "papers": [
+     "Baker01",
+     "Bertacca01",
+     "Bosi01",
+     "Cunnington01",
+     "Fonseca01",
+     "Harrison01",
+     "Harrison02",
+     "Spinelli01"
+    ]
+   },
+   {
     "ref_key": "feretti|2012|20|54",
     "raw": "Feretti, L., Giovannini, G., Govoni, F., & Murgia, M. 2012, The Astronomy and Astrophysics Review, 20, 54",
     "first_author": "feretti",
@@ -2129,26 +2170,6 @@
      "Gitti01",
      "Regis01",
      "Santra01"
-    ]
-   },
-   {
-    "ref_key": "bacon|2020|37|e007",
-    "raw": "D. J. Bacon et al. Cosmology with Phase 1 of the Square Kilometre Array: Red Book 2018: Technical specifications and performance forecasts. Publ. Astron. Soc. Austral. , 37:e007, 2020. doi: 10.1017/pasa.2019.51.",
-    "first_author": "bacon",
-    "year": 2020,
-    "volume": "37",
-    "page": "e007",
-    "doi": "10.1017/pasa.2019.51",
-    "arxiv": null,
-    "n_papers": 7,
-    "papers": [
-     "Baker01",
-     "Bosi01",
-     "Cunnington01",
-     "Fonseca01",
-     "Harrison01",
-     "Harrison02",
-     "Spinelli01"
     ]
    },
    {
@@ -2332,6 +2353,24 @@
     ]
    },
    {
+    "ref_key": "morello|2020|497|4654",
+    "raw": "V. Morello et al. MNRAS , 497(4):4654-4671, Oct. 2020. doi: 10.1093/mnras/staa2291.",
+    "first_author": "morello",
+    "year": 2020,
+    "volume": "497",
+    "page": "4654",
+    "doi": "10.1093/mnras/staa2291",
+    "arxiv": null,
+    "n_papers": 5,
+    "papers": [
+     "Abbate01",
+     "AlexAndersson02",
+     "Bagchi01",
+     "Keane01",
+     "Levin01"
+    ]
+   },
+   {
     "ref_key": "posselt|2023|520|4582",
     "raw": "B. Posselt et al. MNRAS , 520(3):4582-4600, Apr. 2023. doi: 10.1093/mnras/stac3383.",
     "first_author": "posselt",
@@ -2368,37 +2407,21 @@
     ]
    },
    {
-    "ref_key": "blandford|1977|179|433",
-    "raw": "Blandford, R. D. & Znajek, R. L., 1977, MNRAS, 179, 433",
-    "first_author": "blandford",
-    "year": 1977,
-    "volume": "179",
-    "page": "433",
+    "ref_key": "aaskaii:gemmaanderson01",
+    "raw": "G. E. Anderson et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/GemmaAnderson01.",
+    "first_author": "anderson",
+    "year": 2026,
+    "volume": null,
+    "page": null,
     "doi": null,
     "arxiv": null,
-    "n_papers": 4,
+    "n_papers": 5,
     "papers": [
-     "Capelo01",
-     "Pathak01",
+     "AlexAndersson02",
+     "Curtin01",
+     "Lico01",
      "TaoAn01",
-     "TaoAn03"
-    ]
-   },
-   {
-    "ref_key": "fender|2004|355|1105",
-    "raw": "Fender, R. P., Belloni, T. M., & Gallo, E. 2004b, MNRAS, 355, 1105",
-    "first_author": "fender",
-    "year": 2004,
-    "volume": "355",
-    "page": "1105",
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 4,
-    "papers": [
-     "Beri01",
-     "Pathak01",
-     "TaoAn01",
-     "TaoAn03"
+     "TaoAn02"
     ]
    }
   ],
@@ -2430,9 +2453,10 @@
     "page": "a2",
     "doi": null,
     "arxiv": null,
-    "n_papers": 4,
+    "n_papers": 5,
     "papers": [
      "Chan01",
+     "Chhetri01",
      "SabyasachiPal01",
      "Timmerman01",
      "Tremblay01"
@@ -2447,12 +2471,30 @@
     "page": "e007",
     "doi": "10.1017/pasa.2012.007",
     "arxiv": null,
-    "n_papers": 4,
+    "n_papers": 5,
     "papers": [
      "Chan01",
+     "Chhetri01",
      "GemmaAnderson01",
      "Timmerman01",
      "Tremblay01"
+    ]
+   },
+   {
+    "ref_key": "offringa|2014|444|606",
+    "raw": "A. R. Offringa et al. MNRAS , 444(1):606-619, Oct. 2014. doi: 10.1093/mnras/stu1368.",
+    "first_author": "offringa",
+    "year": 2014,
+    "volume": "444",
+    "page": "606",
+    "doi": "10.1093/mnras/stu1368",
+    "arxiv": null,
+    "n_papers": 4,
+    "papers": [
+     "Acharya02",
+     "AlexAndersson01",
+     "Chhetri01",
+     "LeZhang01"
     ]
    },
    {
@@ -2556,27 +2598,11 @@
      "Denzel01",
      "Robishaw01"
     ]
-   },
-   {
-    "ref_key": "lorimer|2007|318|777",
-    "raw": "Lorimer, D. R., Bailes, M., McLaughlin, M. A., et al. 2007, Science, 318, 777",
-    "first_author": "lorimer",
-    "year": 2007,
-    "volume": "318",
-    "page": "777",
-    "doi": null,
-    "arxiv": null,
-    "n_papers": 3,
-    "papers": [
-     "AlexAndersson01",
-     "GemmaAnderson01",
-     "Timmerman01"
-    ]
    }
   ]
  },
  "year_histogram": {
-  "n_works": 14575,
+  "n_works": 14791,
   "by_year": {
    "1903": 1,
    "1904": 1,
@@ -2610,73 +2636,73 @@
    "1957": 6,
    "1958": 8,
    "1959": 3,
-   "1960": 4,
+   "1960": 5,
    "1961": 6,
    "1962": 7,
    "1963": 5,
    "1964": 9,
    "1965": 11,
-   "1966": 7,
+   "1966": 10,
    "1967": 8,
    "1968": 18,
    "1969": 19,
-   "1970": 20,
-   "1971": 10,
-   "1972": 15,
-   "1973": 22,
-   "1974": 30,
+   "1970": 22,
+   "1971": 12,
+   "1972": 17,
+   "1973": 25,
+   "1974": 31,
    "1975": 25,
    "1976": 25,
-   "1977": 34,
+   "1977": 35,
    "1978": 31,
    "1979": 19,
-   "1980": 43,
-   "1981": 19,
+   "1980": 45,
+   "1981": 20,
    "1982": 40,
-   "1983": 29,
-   "1984": 32,
+   "1983": 31,
+   "1984": 36,
    "1985": 39,
    "1986": 31,
-   "1987": 42,
-   "1988": 28,
-   "1989": 42,
+   "1987": 43,
+   "1988": 29,
+   "1989": 43,
    "1990": 42,
    "1991": 38,
-   "1992": 56,
-   "1993": 57,
+   "1992": 58,
+   "1993": 59,
    "1994": 64,
-   "1995": 64,
+   "1995": 66,
    "1996": 75,
-   "1997": 71,
-   "1998": 96,
+   "1997": 72,
+   "1998": 98,
    "1999": 95,
    "2000": 123,
    "2001": 125,
-   "2002": 109,
-   "2003": 148,
-   "2004": 210,
+   "2002": 111,
+   "2003": 150,
+   "2004": 212,
    "2005": 205,
-   "2006": 206,
+   "2006": 209,
    "2007": 219,
-   "2008": 250,
-   "2009": 275,
-   "2010": 295,
-   "2011": 342,
-   "2012": 380,
-   "2013": 396,
-   "2014": 415,
-   "2015": 530,
-   "2016": 546,
-   "2017": 561,
-   "2018": 664,
-   "2019": 777,
-   "2020": 756,
-   "2021": 838,
-   "2022": 863,
-   "2023": 1014,
-   "2024": 1187,
-   "2025": 1281,
-   "2026": 436,
+   "2008": 252,
+   "2009": 278,
+   "2010": 298,
+   "2011": 345,
+   "2012": 384,
+   "2013": 399,
+   "2014": 421,
+   "2015": 540,
+   "2016": 558,
+   "2017": 566,
+   "2018": 676,
+   "2019": 792,
+   "2020": 764,
+   "2021": 854,
+   "2022": 873,
+   "2023": 1027,
+   "2024": 1205,
+   "2025": 1302,
+   "2026": 443,
    "2041": 8,
    "2045": 1,
    "2050": 1,

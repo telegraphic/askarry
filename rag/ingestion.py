@@ -7,6 +7,8 @@ Steps:
   3. Parse + chunk new files in parallel worker processes (docling is the bottleneck).
   4. Embed all chunks in the main process with sentence-transformers.
   5. Upsert into ChromaDB (idempotent — safe to re-run).
+  6. Retag every chunk with its document zone and duplicate status, and write
+     the index manifest (see rag/zones.py and retag()).
 """
 
 from __future__ import annotations
@@ -22,14 +24,18 @@ from typing import TYPE_CHECKING
 import chromadb
 from loguru import logger
 
-from . import store
+from . import store, zones
 from .bibliography import format_citation, lookup_citation
 from .config import (
     ACRONYM_HEADINGS,
     CHROMA_DIR,
+    DOC_SOURCE_AASKA2015,
+    DOC_SOURCE_AASKAII,
     DOC_SOURCE_TEXTBOOK,
     EMBEDDING_MODEL,
+    HERE,
     INGEST_WORKERS,
+    MAX_CHUNK_TOKENS,
     PDF_DIRS,
     SUPPORTED_SUFFIXES,
     TEXTBOOKS_DIR,
@@ -260,7 +266,67 @@ def ingest_files(
         logger.info(f"Indexed {len(texts)} chunks from {name}")
         results[source] = len(texts)
 
+    if results:
+        # Zones and duplicates depend on every document, not just the new ones.
+        retag(db_dir)
     return results
+
+
+# ---------------------------------------------------------------------------
+# Zones, duplicates and the index manifest
+# ---------------------------------------------------------------------------
+
+_RETAG_BATCH = 2000
+
+
+def _doc_info(source: str) -> dict:
+    """What zones.find_duplicates needs to know about one indexed file."""
+    entry = lookup_citation(source)
+    folder = Path(source).parent.name
+    return {
+        "doc_source": doc_source_for(source),
+        "stem": Path(source).stem,
+        "book": doc_source_for(source) in (DOC_SOURCE_AASKAII, DOC_SOURCE_AASKA2015),
+        "listed": entry is not None,
+        "section_match": bool(entry) and entry.get("section") == folder,
+    }
+
+
+def _git_sha() -> str | None:
+    import subprocess
+
+    out = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=HERE, capture_output=True, text=True)
+    return out.stdout.strip() or None
+
+
+def retag(db_dir: Path = CHROMA_DIR) -> dict:
+    """Recompute every chunk's zone, doc_status and duplicate_of, update them
+    in place in ChromaDB (no re-parse, no re-embedding) and write the index
+    manifest. Deterministic: the same chunks always give the same tags and
+    fingerprint. Returns the manifest."""
+    collection = store.get_chroma_collection(db_dir)
+    got = collection.get(include=["documents", "metadatas"])
+    chunks = [{"id": i, "text": t, "meta": m} for i, t, m in zip(got["ids"], got["documents"], got["metadatas"])]
+    by_source: dict[str, list[dict]] = {}
+    for c in chunks:
+        by_source.setdefault(c["meta"]["source"], []).append(c)
+
+    status = zones.find_duplicates(chunks, {s: _doc_info(s) for s in by_source})
+    for source, doc_chunks in by_source.items():
+        for c, zone in zip(doc_chunks, zones.assign_zones(doc_chunks)):
+            c["meta"] = {**c["meta"], "zone": zone, "doc_status": status[source]["status"],
+                         "duplicate_of": Path(status[source]["duplicate_of"]).stem if status[source]["duplicate_of"] else ""}
+
+    for i in range(0, len(chunks), _RETAG_BATCH):
+        batch = chunks[i:i + _RETAG_BATCH]
+        collection.update(ids=[c["id"] for c in batch], metadatas=[c["meta"] for c in batch])
+
+    manifest = zones.build_manifest(chunks, HERE, EMBEDDING_MODEL, MAX_CHUNK_TOKENS, _git_sha())
+    zones.write_manifest(db_dir, manifest)
+    n_dup = sum(1 for s in status.values() if s["status"] != "canonical")
+    logger.info(f"Retagged {len(chunks)} chunks in {len(by_source)} documents "
+                f"({n_dup} duplicate/unlisted); fingerprint {manifest['index_fingerprint'][:12]}")
+    return manifest
 
 
 # ---------------------------------------------------------------------------

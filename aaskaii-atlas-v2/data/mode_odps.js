@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['mode_odps'] = {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "extracted_by": "full-sonnet5-medium",
    "reviewed_only": true
@@ -28,19 +28,19 @@
  "coverage": {
   "papers_per_section": {
    "From the Milky Way to Distant Galaxies": 53,
-   "The Cosmos": 49,
-   "The Extreme Universe": 38,
-   "Methods and Techniques": 24,
-   "Sun, Earth and Planets": 18,
-   "Formation and Evolution of Stars": 16,
-   "Science Working Group Overviews": 13
+   "The Cosmos": 50,
+   "The Extreme Universe": 39,
+   "Methods and Techniques": 25,
+   "Sun, Earth and Planets": 19,
+   "Formation and Evolution of Stars": 17,
+   "Science Working Group Overviews": 14
   },
   "items": [
    {
     "label": "Continuum",
     "term": "continuum survey|wide-area survey|all-sky survey|ultra-deep|ultra deep|deep field|RM grid|rotation measure grid|polarization survey|polarisation survey|polarimetric survey|EoR|Epoch of Reionization|Epoch of Reionisation|Cosmic Dawn|weak lensing|cosmic shear|heliosphere|heliospheric|solar radio|solar corona|solar imaging|coronal mass ejection",
-    "total_mentions": 1772,
-    "n_papers": 92,
+    "total_mentions": 1826,
+    "n_papers": 94,
     "n_sections": 7,
     "sections": {
      "The Cosmos": {
@@ -107,10 +107,11 @@
       ]
      },
      "Sun, Earth and Planets": {
-      "n_papers": 15,
+      "n_papers": 16,
       "papers": [
        "Cheung01",
        "Chrysaphi01",
+       "Dey01",
        "Kansabanik01",
        "Kontar01",
        "Kumari01",
@@ -127,12 +128,13 @@
       ]
      },
      "Methods and Techniques": {
-      "n_papers": 13,
+      "n_papers": 14,
       "papers": [
        "Acharya02",
        "Burba01",
        "Carcamo01",
        "Chan01",
+       "Chhetri01",
        "Datta01",
        "Denzel01",
        "GemmaAnderson01",
@@ -175,14 +177,15 @@
    {
     "label": "Zoom",
     "term": "HI galaxy survey|Hi galaxy survey|H i galaxy survey|HI survey|Hi survey|H i survey|untargeted HI|untargeted Hi|blind HI|blind Hi|intensity mapping|maser|radio recombination line|RRL|spectral line survey|zoom mode|zoom-mode|zoom window",
-    "total_mentions": 936,
-    "n_papers": 60,
+    "total_mentions": 948,
+    "n_papers": 62,
     "n_sections": 7,
     "sections": {
      "The Cosmos": {
-      "n_papers": 18,
+      "n_papers": 19,
       "papers": [
        "Baker01",
+       "Bertacca01",
        "Bosi01",
        "Camera01",
        "Chakraborty01",
@@ -236,12 +239,13 @@
       ]
      },
      "Science Working Group Overviews": {
-      "n_papers": 7,
+      "n_papers": 8,
       "papers": [
        "Audard01",
        "Bellomo01",
        "Bianchi02",
        "JingWang01",
+       "Radcliffe01",
        "Spinelli02",
        "Trott01",
        "vanLoon01"

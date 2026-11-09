@@ -1,7 +1,7 @@
 {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "book": "aaskaii",
    "min_hits_per_paper": 2,
@@ -14,22 +14,23 @@
   {
    "facility": "MeerKAT",
    "category": "radio",
-   "n_papers": 116,
+   "n_papers": 118,
    "n_sections": 7,
-   "total_mentions": 958,
+   "total_mentions": 963,
    "sections": {
     "From the Milky Way to Distant Galaxies": 29,
     "The Cosmos": 25,
-    "The Extreme Universe": 22,
+    "The Extreme Universe": 23,
     "Methods and Techniques": 13,
     "Formation and Evolution of Stars": 12,
     "Sun, Earth and Planets": 10,
-    "Science Working Group Overviews": 5
+    "Science Working Group Overviews": 6
    },
    "papers": [
     "Afonso01",
     "Akahori01",
     "Akahori02",
+    "AlexAndersson02",
     "AritraBasu01",
     "ArpanPal01",
     "Asorey01",
@@ -108,6 +109,7 @@
     "Podio01",
     "Prandoni01",
     "Qiu01",
+    "Radcliffe01",
     "Ramatsoku01",
     "Regis01",
     "Ronconi01",
@@ -148,16 +150,16 @@
   {
    "facility": "LOFAR",
    "category": "radio",
-   "n_papers": 82,
+   "n_papers": 86,
    "n_sections": 7,
-   "total_mentions": 737,
+   "total_mentions": 780,
    "sections": {
     "From the Milky Way to Distant Galaxies": 23,
     "The Cosmos": 18,
-    "Methods and Techniques": 13,
-    "The Extreme Universe": 12,
-    "Sun, Earth and Planets": 11,
-    "Science Working Group Overviews": 4,
+    "Methods and Techniques": 14,
+    "The Extreme Universe": 13,
+    "Sun, Earth and Planets": 12,
+    "Science Working Group Overviews": 5,
     "Formation and Evolution of Stars": 1
    },
    "papers": [
@@ -165,6 +167,7 @@
     "Acharya02",
     "Afonso01",
     "AlexAndersson01",
+    "AlexAndersson02",
     "AritraBasu01",
     "ArpanPal01",
     "Asorey01",
@@ -177,6 +180,7 @@
     "Carcamo01",
     "Cassano01",
     "Chakraborty01",
+    "Chhetri01",
     "Chrysaphi01",
     "Corstanje01",
     "Cuciti01",
@@ -186,6 +190,7 @@
     "Dabhade01",
     "Datta01",
     "Denzel01",
+    "Dey01",
     "Driessen01",
     "Duncan01",
     "FangxiaAn01",
@@ -225,6 +230,7 @@
     "Patra01",
     "Prandoni01",
     "Qiu01",
+    "Radcliffe01",
     "SabyasachiPal01",
     "SabyasachiPal03",
     "Santra01",
@@ -248,16 +254,16 @@
   {
    "facility": "VLA",
    "category": "radio",
-   "n_papers": 63,
+   "n_papers": 65,
    "n_sections": 7,
-   "total_mentions": 382,
+   "total_mentions": 394,
    "sections": {
     "From the Milky Way to Distant Galaxies": 25,
-    "Formation and Evolution of Stars": 9,
+    "Formation and Evolution of Stars": 10,
     "The Extreme Universe": 8,
+    "Sun, Earth and Planets": 7,
     "The Cosmos": 6,
     "Methods and Techniques": 6,
-    "Sun, Earth and Planets": 6,
     "Science Working Group Overviews": 3
    },
    "papers": [
@@ -278,6 +284,7 @@
     "DAmato01",
     "Dabhade01",
     "Datta01",
+    "Dey01",
     "Driessen01",
     "FangxiaAn01",
     "Forbrich01",
@@ -285,6 +292,7 @@
     "GemmaAnderson01",
     "Giarratana01",
     "Giulietti01",
+    "Greaves01",
     "Hale01",
     "Hardcastle01",
     "Harrison02",
@@ -327,16 +335,189 @@
    ]
   },
   {
+   "facility": "GMRT",
+   "category": "radio",
+   "n_papers": 42,
+   "n_sections": 7,
+   "total_mentions": 331,
+   "sections": {
+    "The Cosmos": 10,
+    "From the Milky Way to Distant Galaxies": 10,
+    "Methods and Techniques": 8,
+    "Sun, Earth and Planets": 6,
+    "The Extreme Universe": 4,
+    "Science Working Group Overviews": 3,
+    "Formation and Evolution of Stars": 1
+   },
+   "papers": [
+    "Akahori01",
+    "ArpanPal01",
+    "Baczko01",
+    "Bait01",
+    "Burba01",
+    "Cang01",
+    "Cassano01",
+    "Cuciti01",
+    "Curtin01",
+    "Datta01",
+    "Dey01",
+    "Elahi01",
+    "FangxiaAn01",
+    "GemmaAnderson01",
+    "Hardcastle01",
+    "Hota01",
+    "JingWang01",
+    "Joshi01",
+    "Kobayashi01",
+    "Kondapally01",
+    "Kumari01",
+    "Lal01",
+    "LorenAnderson01",
+    "Mahony01",
+    "Morosan01",
+    "Nakariakov01",
+    "Oberoi01",
+    "Oswald01",
+    "Pandey-Pommier02",
+    "Pandey-Pommier03",
+    "Pasini01",
+    "Radcliffe01",
+    "Raja01",
+    "Rosolowsky01",
+    "SabyasachiPal01",
+    "Santra01",
+    "Sasmal01",
+    "Shannon01",
+    "Takahashi01",
+    "Tiburzi01",
+    "Timmerman01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
+   "facility": "ATCA",
+   "category": "radio",
+   "n_papers": 25,
+   "n_sections": 7,
+   "total_mentions": 113,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": 7,
+    "Formation and Evolution of Stars": 6,
+    "The Cosmos": 4,
+    "The Extreme Universe": 3,
+    "Methods and Techniques": 3,
+    "Sun, Earth and Planets": 1,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "Afonso01",
+    "Akahori01",
+    "Bracco01",
+    "Buemi01",
+    "Castignani01",
+    "Curiel01",
+    "Garufi01",
+    "GemmaAnderson01",
+    "Imai01",
+    "Kondapally01",
+    "Lelli01",
+    "Lico01",
+    "Maccagni01",
+    "Miville-Deschenes01",
+    "Radcliffe01",
+    "Regis01",
+    "Robishaw01",
+    "Rosch01",
+    "Rygl01",
+    "Sabatini01",
+    "Sun01",
+    "Tarchi01",
+    "Traficante01",
+    "Vidal01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "facility": "ALMA",
+   "category": "radio",
+   "n_papers": 52,
+   "n_sections": 7,
+   "total_mentions": 573,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": 20,
+    "Formation and Evolution of Stars": 13,
+    "The Cosmos": 5,
+    "Sun, Earth and Planets": 5,
+    "Science Working Group Overviews": 3,
+    "The Extreme Universe": 3,
+    "Methods and Techniques": 3
+   },
+   "papers": [
+    "Afonso01",
+    "Algera01",
+    "Bianchi01",
+    "Bianchi02",
+    "Bourke01",
+    "Bracco01",
+    "Buemi01",
+    "Chandra01",
+    "Cheung01",
+    "DAmato01",
+    "FangxiaAn01",
+    "Forbrich01",
+    "Garufi01",
+    "Greaves01",
+    "Guidi01",
+    "Imai01",
+    "Kudoh01",
+    "Kumari01",
+    "Lelli01",
+    "Lico01",
+    "Maccagni01",
+    "Mahony01",
+    "Miville-Deschenes01",
+    "Mohan01",
+    "Pandey-Pommier01",
+    "Pandey-Pommier02",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Patra01",
+    "Perrott01",
+    "Podio01",
+    "Prandoni01",
+    "Radcliffe01",
+    "RanWang01",
+    "Robishaw01",
+    "Rosolowsky01",
+    "Rygl01",
+    "Sabatini01",
+    "SabyasachiPal01",
+    "SabyasachiPal03",
+    "Santos-Sanz01",
+    "Sarkar01",
+    "Schoedel01",
+    "Spingola01",
+    "Tabatabaei01",
+    "Timmerman01",
+    "Traficante01",
+    "Vidal01",
+    "Wu01",
+    "Yoon01",
+    "deBlok01",
+    "vanLoon01"
+   ]
+  },
+  {
    "facility": "ASKAP",
    "category": "radio",
-   "n_papers": 45,
+   "n_papers": 47,
    "n_sections": 7,
-   "total_mentions": 268,
+   "total_mentions": 277,
    "sections": {
     "From the Milky Way to Distant Galaxies": 14,
     "The Cosmos": 11,
-    "The Extreme Universe": 7,
-    "Methods and Techniques": 6,
+    "The Extreme Universe": 8,
+    "Methods and Techniques": 7,
     "Formation and Evolution of Stars": 4,
     "Sun, Earth and Planets": 2,
     "Science Working Group Overviews": 1
@@ -344,6 +525,7 @@
    "papers": [
     "Afonso01",
     "AlexAndersson01",
+    "AlexAndersson02",
     "Asorey01",
     "Bignall01",
     "Bourke01",
@@ -352,6 +534,7 @@
     "Cang01",
     "Carcamo01",
     "Castignani01",
+    "Chhetri01",
     "Colombo01",
     "Curtin01",
     "Dabhade01",
@@ -390,141 +573,69 @@
    ]
   },
   {
-   "facility": "GMRT",
+   "facility": "MWA",
    "category": "radio",
-   "n_papers": 40,
+   "n_papers": 36,
    "n_sections": 7,
-   "total_mentions": 319,
+   "total_mentions": 353,
    "sections": {
-    "The Cosmos": 10,
-    "From the Milky Way to Distant Galaxies": 10,
-    "Methods and Techniques": 8,
-    "Sun, Earth and Planets": 5,
+    "Sun, Earth and Planets": 11,
+    "Methods and Techniques": 10,
+    "The Cosmos": 5,
     "The Extreme Universe": 4,
+    "From the Milky Way to Distant Galaxies": 3,
     "Science Working Group Overviews": 2,
     "Formation and Evolution of Stars": 1
    },
    "papers": [
-    "Akahori01",
-    "ArpanPal01",
-    "Baczko01",
-    "Bait01",
+    "Acharya01",
+    "Afonso01",
+    "AlexAndersson01",
     "Burba01",
-    "Cang01",
-    "Cassano01",
-    "Cuciti01",
+    "Chakraborty01",
+    "Chan01",
+    "Cheung01",
+    "Chhetri01",
     "Curtin01",
     "Datta01",
-    "Elahi01",
-    "FangxiaAn01",
+    "Denzel01",
+    "Dey01",
     "GemmaAnderson01",
-    "Hardcastle01",
-    "Hota01",
-    "JingWang01",
-    "Joshi01",
-    "Kobayashi01",
-    "Kondapally01",
+    "Huege01",
+    "Ingallinera01",
+    "Kansabanik01",
     "Kumari01",
-    "Lal01",
-    "LorenAnderson01",
     "Mahony01",
+    "Mohan01",
+    "Mondal01",
+    "Morgan01",
     "Morosan01",
     "Nakariakov01",
     "Oberoi01",
-    "Oswald01",
-    "Pandey-Pommier02",
-    "Pandey-Pommier03",
     "Pasini01",
-    "Raja01",
-    "Rosolowsky01",
-    "SabyasachiPal01",
-    "Santra01",
-    "Sasmal01",
+    "Patra01",
+    "Qiu01",
     "Shannon01",
-    "Takahashi01",
+    "Sharma01",
+    "Sun01",
+    "Sun02",
     "Tiburzi01",
     "Timmerman01",
+    "Tremblay01",
+    "Zucca01",
     "deLeraAcedo01"
-   ]
-  },
-  {
-   "facility": "ALMA",
-   "category": "radio",
-   "n_papers": 50,
-   "n_sections": 7,
-   "total_mentions": 552,
-   "sections": {
-    "From the Milky Way to Distant Galaxies": 20,
-    "Formation and Evolution of Stars": 12,
-    "The Cosmos": 5,
-    "Sun, Earth and Planets": 5,
-    "The Extreme Universe": 3,
-    "Methods and Techniques": 3,
-    "Science Working Group Overviews": 2
-   },
-   "papers": [
-    "Afonso01",
-    "Algera01",
-    "Bianchi01",
-    "Bianchi02",
-    "Bourke01",
-    "Bracco01",
-    "Buemi01",
-    "Chandra01",
-    "Cheung01",
-    "DAmato01",
-    "FangxiaAn01",
-    "Forbrich01",
-    "Garufi01",
-    "Guidi01",
-    "Imai01",
-    "Kudoh01",
-    "Kumari01",
-    "Lelli01",
-    "Lico01",
-    "Maccagni01",
-    "Mahony01",
-    "Miville-Deschenes01",
-    "Mohan01",
-    "Pandey-Pommier01",
-    "Pandey-Pommier02",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Patra01",
-    "Perrott01",
-    "Podio01",
-    "Prandoni01",
-    "RanWang01",
-    "Robishaw01",
-    "Rosolowsky01",
-    "Rygl01",
-    "Sabatini01",
-    "SabyasachiPal01",
-    "SabyasachiPal03",
-    "Santos-Sanz01",
-    "Sarkar01",
-    "Schoedel01",
-    "Spingola01",
-    "Tabatabaei01",
-    "Timmerman01",
-    "Traficante01",
-    "Vidal01",
-    "Wu01",
-    "Yoon01",
-    "deBlok01",
-    "vanLoon01"
    ]
   },
   {
    "facility": "Rubin/LSST",
    "category": "optical/IR",
-   "n_papers": 34,
+   "n_papers": 35,
    "n_sections": 7,
-   "total_mentions": 192,
+   "total_mentions": 197,
    "sections": {
     "From the Milky Way to Distant Galaxies": 10,
     "The Cosmos": 9,
-    "The Extreme Universe": 7,
+    "The Extreme Universe": 8,
     "Methods and Techniques": 4,
     "Science Working Group Overviews": 2,
     "Sun, Earth and Planets": 1,
@@ -532,6 +643,7 @@
    },
    "papers": [
     "AlexAndersson01",
+    "AlexAndersson02",
     "Caleb01",
     "Caleb02",
     "Camera01",
@@ -568,70 +680,18 @@
    ]
   },
   {
-   "facility": "MWA",
-   "category": "radio",
-   "n_papers": 34,
-   "n_sections": 7,
-   "total_mentions": 312,
-   "sections": {
-    "Sun, Earth and Planets": 10,
-    "Methods and Techniques": 9,
-    "The Cosmos": 5,
-    "The Extreme Universe": 4,
-    "From the Milky Way to Distant Galaxies": 3,
-    "Science Working Group Overviews": 2,
-    "Formation and Evolution of Stars": 1
-   },
-   "papers": [
-    "Acharya01",
-    "Afonso01",
-    "AlexAndersson01",
-    "Burba01",
-    "Chakraborty01",
-    "Chan01",
-    "Cheung01",
-    "Curtin01",
-    "Datta01",
-    "Denzel01",
-    "GemmaAnderson01",
-    "Huege01",
-    "Ingallinera01",
-    "Kansabanik01",
-    "Kumari01",
-    "Mahony01",
-    "Mohan01",
-    "Mondal01",
-    "Morgan01",
-    "Morosan01",
-    "Nakariakov01",
-    "Oberoi01",
-    "Pasini01",
-    "Patra01",
-    "Qiu01",
-    "Shannon01",
-    "Sharma01",
-    "Sun01",
-    "Sun02",
-    "Tiburzi01",
-    "Timmerman01",
-    "Tremblay01",
-    "Zucca01",
-    "deLeraAcedo01"
-   ]
-  },
-  {
    "facility": "Parkes/Murriyang",
    "category": "radio",
-   "n_papers": 26,
+   "n_papers": 27,
    "n_sections": 6,
-   "total_mentions": 165,
+   "total_mentions": 167,
    "sections": {
     "The Extreme Universe": 9,
     "The Cosmos": 5,
     "Methods and Techniques": 4,
     "From the Milky Way to Distant Galaxies": 4,
     "Formation and Evolution of Stars": 3,
-    "Science Working Group Overviews": 1
+    "Science Working Group Overviews": 2
    },
    "papers": [
     "Abbate01",
@@ -650,6 +710,7 @@
     "Mayor01",
     "Oswald01",
     "Pasechnik01",
+    "Radcliffe01",
     "Rygl01",
     "Sawada-Satoh01",
     "Shannon01",
@@ -663,43 +724,35 @@
    ]
   },
   {
-   "facility": "ATCA",
+   "facility": "VLBA",
    "category": "radio",
-   "n_papers": 24,
+   "n_papers": 16,
    "n_sections": 6,
-   "total_mentions": 111,
+   "total_mentions": 116,
    "sections": {
-    "From the Milky Way to Distant Galaxies": 7,
-    "Formation and Evolution of Stars": 6,
-    "The Cosmos": 4,
+    "From the Milky Way to Distant Galaxies": 6,
     "The Extreme Universe": 3,
     "Methods and Techniques": 3,
-    "Sun, Earth and Planets": 1
+    "Formation and Evolution of Stars": 2,
+    "Sun, Earth and Planets": 1,
+    "Science Working Group Overviews": 1
    },
    "papers": [
-    "Afonso01",
-    "Akahori01",
-    "Bracco01",
-    "Buemi01",
-    "Castignani01",
+    "Akahori02",
+    "Baczko01",
+    "Baldi01",
     "Curiel01",
-    "Garufi01",
-    "GemmaAnderson01",
-    "Imai01",
-    "Kondapally01",
-    "Lelli01",
-    "Lico01",
-    "Maccagni01",
-    "Miville-Deschenes01",
-    "Regis01",
-    "Robishaw01",
-    "Rosch01",
-    "Rygl01",
-    "Sabatini01",
-    "Sun01",
-    "Tarchi01",
-    "Traficante01",
-    "Vidal01",
+    "DAmato01",
+    "Giarratana01",
+    "Ingallinera01",
+    "Kobayashi01",
+    "MingHuiXu01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Radcliffe01",
+    "Sawada-Satoh01",
+    "Shu01",
+    "Spingola01",
     "Wongphecauxson01"
    ]
   },
@@ -740,7 +793,7 @@
    "category": "optical/IR",
    "n_papers": 41,
    "n_sections": 6,
-   "total_mentions": 267,
+   "total_mentions": 268,
    "sections": {
     "From the Milky Way to Distant Galaxies": 20,
     "The Cosmos": 7,
@@ -836,7 +889,7 @@
    "category": "radio",
    "n_papers": 20,
    "n_sections": 5,
-   "total_mentions": 81,
+   "total_mentions": 82,
    "sections": {
     "From the Milky Way to Distant Galaxies": 7,
     "The Extreme Universe": 5,
@@ -865,37 +918,6 @@
     "Tremblay01",
     "Vidal01",
     "deBlok01"
-   ]
-  },
-  {
-   "facility": "VLBA",
-   "category": "radio",
-   "n_papers": 15,
-   "n_sections": 5,
-   "total_mentions": 110,
-   "sections": {
-    "From the Milky Way to Distant Galaxies": 6,
-    "The Extreme Universe": 3,
-    "Methods and Techniques": 3,
-    "Formation and Evolution of Stars": 2,
-    "Sun, Earth and Planets": 1
-   },
-   "papers": [
-    "Akahori02",
-    "Baczko01",
-    "Baldi01",
-    "Curiel01",
-    "DAmato01",
-    "Giarratana01",
-    "Ingallinera01",
-    "Kobayashi01",
-    "MingHuiXu01",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Sawada-Satoh01",
-    "Shu01",
-    "Spingola01",
-    "Wongphecauxson01"
    ]
   },
   {
@@ -932,11 +954,11 @@
   {
    "facility": "Planck",
    "category": "CMB",
-   "n_papers": 42,
+   "n_papers": 43,
    "n_sections": 5,
-   "total_mentions": 185,
+   "total_mentions": 187,
    "sections": {
-    "The Cosmos": 24,
+    "The Cosmos": 25,
     "From the Milky Way to Distant Galaxies": 11,
     "Formation and Evolution of Stars": 3,
     "The Extreme Universe": 3,
@@ -946,6 +968,7 @@
     "Acharya01",
     "Baker01",
     "Barkana01",
+    "Bertacca01",
     "Bosi01",
     "Bourke01",
     "Caleb01",
@@ -988,6 +1011,104 @@
    ]
   },
   {
+   "facility": "Euclid",
+   "category": "optical/IR",
+   "n_papers": 41,
+   "n_sections": 5,
+   "total_mentions": 269,
+   "sections": {
+    "The Cosmos": 23,
+    "From the Milky Way to Distant Galaxies": 14,
+    "Science Working Group Overviews": 2,
+    "Methods and Techniques": 1,
+    "The Extreme Universe": 1
+   },
+   "papers": [
+    "Afonso01",
+    "Algera01",
+    "Asorey01",
+    "Baczko01",
+    "Bag01",
+    "Caleb01",
+    "Camera01",
+    "Cang01",
+    "Cassano01",
+    "Chakraborty01",
+    "Chhetri01",
+    "Cruz01",
+    "Cunnington01",
+    "DAmato01",
+    "Dabhade01",
+    "Duncan01",
+    "Elahi01",
+    "FangxiaAn01",
+    "Fonseca01",
+    "Giulietti01",
+    "Harrison01",
+    "Harrison02",
+    "Ignesti01",
+    "JingWang01",
+    "Kondapally01",
+    "Lal01",
+    "Lelli01",
+    "Mayor01",
+    "Mazumder01",
+    "Moldon01",
+    "Nasirudin01",
+    "OSullivan01",
+    "Pandey-Pommier02",
+    "Pasini01",
+    "Prandoni01",
+    "RanWang01",
+    "SabyasachiPal03",
+    "Sarkar01",
+    "Spinelli02",
+    "Spingola01",
+    "Wolz01"
+   ]
+  },
+  {
+   "facility": "EVN",
+   "category": "radio",
+   "n_papers": 25,
+   "n_sections": 5,
+   "total_mentions": 165,
+   "sections": {
+    "The Extreme Universe": 9,
+    "Methods and Techniques": 8,
+    "From the Milky Way to Distant Galaxies": 6,
+    "Science Working Group Overviews": 1,
+    "Formation and Evolution of Stars": 1
+   },
+   "papers": [
+    "Abbate01",
+    "Baczko01",
+    "Baldi01",
+    "Bempong-Manful01",
+    "Beri01",
+    "Chen01",
+    "Curtin01",
+    "GemmaAnderson01",
+    "Giarratana01",
+    "Imai01",
+    "Kobayashi01",
+    "Kovalev01",
+    "Kudoh01",
+    "Lico01",
+    "Marcote01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Radcliffe01",
+    "Rosch01",
+    "Rygl01",
+    "Spingola01",
+    "Takahashi01",
+    "Timmerman01",
+    "Tremblay01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
    "facility": "ELT",
    "category": "optical/IR",
    "n_papers": 13,
@@ -1019,13 +1140,13 @@
   {
    "facility": "CTAO",
    "category": "gamma-ray",
-   "n_papers": 12,
+   "n_papers": 13,
    "n_sections": 5,
-   "total_mentions": 96,
+   "total_mentions": 98,
    "sections": {
     "The Extreme Universe": 8,
+    "Methods and Techniques": 2,
     "From the Milky Way to Distant Galaxies": 1,
-    "Methods and Techniques": 1,
     "Formation and Evolution of Stars": 1,
     "Science Working Group Overviews": 1
    },
@@ -1033,6 +1154,7 @@
     "Bruni01",
     "Castignani01",
     "Chandra01",
+    "Chhetri01",
     "Colombo01",
     "Gelfand01",
     "GemmaAnderson01",
@@ -1042,6 +1164,32 @@
     "Marcote01",
     "Miller-Jones01",
     "TaoAn03"
+   ]
+  },
+  {
+   "facility": "ngVLA",
+   "category": "radio",
+   "n_papers": 11,
+   "n_sections": 4,
+   "total_mentions": 49,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": 6,
+    "The Extreme Universe": 3,
+    "Sun, Earth and Planets": 1,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "Abbate01",
+    "Baczko01",
+    "Chandra01",
+    "Curiel01",
+    "Kudoh01",
+    "Pandey-Pommier01",
+    "Radcliffe01",
+    "SabyasachiPal03",
+    "Shannon01",
+    "Tarchi01",
+    "Yoon01"
    ]
   },
   {
@@ -1095,97 +1243,36 @@
    ]
   },
   {
-   "facility": "Euclid",
+   "facility": "DESI",
    "category": "optical/IR",
-   "n_papers": 40,
+   "n_papers": 18,
    "n_sections": 4,
-   "total_mentions": 265,
+   "total_mentions": 139,
    "sections": {
-    "The Cosmos": 23,
-    "From the Milky Way to Distant Galaxies": 14,
+    "The Cosmos": 10,
+    "From the Milky Way to Distant Galaxies": 5,
     "Science Working Group Overviews": 2,
-    "The Extreme Universe": 1
+    "Methods and Techniques": 1
    },
    "papers": [
-    "Afonso01",
-    "Algera01",
     "Asorey01",
-    "Baczko01",
-    "Bag01",
-    "Caleb01",
+    "Baker01",
+    "Barkana01",
     "Camera01",
-    "Cang01",
-    "Cassano01",
-    "Chakraborty01",
-    "Cruz01",
+    "Chhetri01",
     "Cunnington01",
-    "DAmato01",
     "Dabhade01",
     "Duncan01",
     "Elahi01",
-    "FangxiaAn01",
     "Fonseca01",
-    "Giulietti01",
-    "Harrison01",
-    "Harrison02",
-    "Ignesti01",
+    "Hale01",
     "JingWang01",
-    "Kondapally01",
-    "Lal01",
-    "Lelli01",
+    "Mahony01",
     "Mayor01",
-    "Mazumder01",
-    "Moldon01",
     "Nasirudin01",
-    "OSullivan01",
-    "Pandey-Pommier02",
-    "Pasini01",
-    "Prandoni01",
-    "RanWang01",
     "SabyasachiPal03",
-    "Sarkar01",
-    "Spinelli02",
-    "Spingola01",
+    "Sasmal01",
     "Wolz01"
-   ]
-  },
-  {
-   "facility": "EVN",
-   "category": "radio",
-   "n_papers": 24,
-   "n_sections": 4,
-   "total_mentions": 149,
-   "sections": {
-    "The Extreme Universe": 9,
-    "Methods and Techniques": 8,
-    "From the Milky Way to Distant Galaxies": 6,
-    "Formation and Evolution of Stars": 1
-   },
-   "papers": [
-    "Abbate01",
-    "Baczko01",
-    "Baldi01",
-    "Bempong-Manful01",
-    "Beri01",
-    "Chen01",
-    "Curtin01",
-    "GemmaAnderson01",
-    "Giarratana01",
-    "Imai01",
-    "Kobayashi01",
-    "Kovalev01",
-    "Kudoh01",
-    "Lico01",
-    "Marcote01",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Rosch01",
-    "Rygl01",
-    "Spingola01",
-    "Takahashi01",
-    "Timmerman01",
-    "Tremblay01",
-    "Wongphecauxson01"
    ]
   },
   {
@@ -1249,30 +1336,6 @@
    ]
   },
   {
-   "facility": "ngVLA",
-   "category": "radio",
-   "n_papers": 10,
-   "n_sections": 3,
-   "total_mentions": 47,
-   "sections": {
-    "From the Milky Way to Distant Galaxies": 6,
-    "The Extreme Universe": 3,
-    "Sun, Earth and Planets": 1
-   },
-   "papers": [
-    "Abbate01",
-    "Baczko01",
-    "Chandra01",
-    "Curiel01",
-    "Kudoh01",
-    "Pandey-Pommier01",
-    "SabyasachiPal03",
-    "Shannon01",
-    "Tarchi01",
-    "Yoon01"
-   ]
-  },
-  {
    "facility": "HST",
    "category": "optical/IR",
    "n_papers": 11,
@@ -1321,28 +1384,6 @@
     "Spingola01",
     "Tabatabaei01",
     "Wu01"
-   ]
-  },
-  {
-   "facility": "XRISM",
-   "category": "X-ray",
-   "n_papers": 8,
-   "n_sections": 3,
-   "total_mentions": 135,
-   "sections": {
-    "The Cosmos": 6,
-    "The Extreme Universe": 1,
-    "From the Milky Way to Distant Galaxies": 1
-   },
-   "papers": [
-    "AritraBasu01",
-    "Beri01",
-    "Cassano01",
-    "Gitti01",
-    "Kudoh01",
-    "Kurahara01",
-    "Perrott01",
-    "deGasperin01"
    ]
   },
   {
@@ -1435,6 +1476,70 @@
    ]
   },
   {
+   "facility": "EHT/ngEHT",
+   "category": "radio",
+   "n_papers": 7,
+   "n_sections": 4,
+   "total_mentions": 40,
+   "sections": {
+    "The Extreme Universe": 4,
+    "From the Milky Way to Distant Galaxies": 1,
+    "Methods and Techniques": 1,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "Abbate01",
+    "Baczko01",
+    "Bempong-Manful01",
+    "Beri01",
+    "Pathak01",
+    "Radcliffe01",
+    "VenkatramanKrishnan01"
+   ]
+  },
+  {
+   "facility": "Effelsberg",
+   "category": "radio",
+   "n_papers": 7,
+   "n_sections": 4,
+   "total_mentions": 43,
+   "sections": {
+    "The Extreme Universe": 2,
+    "Formation and Evolution of Stars": 2,
+    "Methods and Techniques": 2,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "Abbate01",
+    "Bourke01",
+    "Chen01",
+    "Kadler01",
+    "Radcliffe01",
+    "Traficante01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "facility": "Roman",
+   "category": "optical/IR",
+   "n_papers": 5,
+   "n_sections": 4,
+   "total_mentions": 22,
+   "sections": {
+    "From the Milky Way to Distant Galaxies": 2,
+    "The Extreme Universe": 1,
+    "The Cosmos": 1,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "AlexAndersson02",
+    "Bait01",
+    "Cang01",
+    "JingWang01",
+    "Prandoni01"
+   ]
+  },
+  {
    "facility": "KM3NeT",
    "category": "neutrino",
    "n_papers": 4,
@@ -1451,37 +1556,6 @@
     "GemmaAnderson01",
     "Ingallinera01",
     "Rosch01"
-   ]
-  },
-  {
-   "facility": "DESI",
-   "category": "optical/IR",
-   "n_papers": 17,
-   "n_sections": 3,
-   "total_mentions": 136,
-   "sections": {
-    "The Cosmos": 10,
-    "From the Milky Way to Distant Galaxies": 5,
-    "Science Working Group Overviews": 2
-   },
-   "papers": [
-    "Asorey01",
-    "Baker01",
-    "Barkana01",
-    "Camera01",
-    "Cunnington01",
-    "Dabhade01",
-    "Duncan01",
-    "Elahi01",
-    "Fonseca01",
-    "Hale01",
-    "JingWang01",
-    "Mahony01",
-    "Mayor01",
-    "Nasirudin01",
-    "SabyasachiPal03",
-    "Sasmal01",
-    "Wolz01"
    ]
   },
   {
@@ -1513,15 +1587,16 @@
   {
    "facility": "Athena/NewAthena",
    "category": "X-ray",
-   "n_papers": 8,
+   "n_papers": 9,
    "n_sections": 3,
-   "total_mentions": 46,
+   "total_mentions": 48,
    "sections": {
     "From the Milky Way to Distant Galaxies": 4,
-    "The Extreme Universe": 2,
+    "The Extreme Universe": 3,
     "The Cosmos": 2
    },
    "papers": [
+    "AlexAndersson02",
     "AvishekBasu01",
     "Beri01",
     "Bruni01",
@@ -1530,6 +1605,28 @@
     "Panessa01",
     "Perrott01",
     "SabyasachiPal03"
+   ]
+  },
+  {
+   "facility": "XRISM",
+   "category": "X-ray",
+   "n_papers": 8,
+   "n_sections": 3,
+   "total_mentions": 73,
+   "sections": {
+    "The Cosmos": 6,
+    "The Extreme Universe": 1,
+    "From the Milky Way to Distant Galaxies": 1
+   },
+   "papers": [
+    "AritraBasu01",
+    "Beri01",
+    "Cassano01",
+    "Gitti01",
+    "Kudoh01",
+    "Kurahara01",
+    "Perrott01",
+    "deGasperin01"
    ]
   },
   {
@@ -1580,7 +1677,7 @@
    "category": "X-ray",
    "n_papers": 7,
    "n_sections": 3,
-   "total_mentions": 21,
+   "total_mentions": 22,
    "sections": {
     "The Extreme Universe": 5,
     "Methods and Techniques": 1,
@@ -1615,6 +1712,27 @@
     "Kadler01",
     "Rosch01",
     "TaoAn03"
+   ]
+  },
+  {
+   "facility": "Solar Orbiter",
+   "category": "solar",
+   "n_papers": 7,
+   "n_sections": 3,
+   "total_mentions": 48,
+   "sections": {
+    "Sun, Earth and Planets": 5,
+    "Methods and Techniques": 1,
+    "Science Working Group Overviews": 1
+   },
+   "papers": [
+    "Chhetri01",
+    "Dey01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Raja01",
+    "Zucca01"
    ]
   },
   {
@@ -1658,43 +1776,23 @@
    ]
   },
   {
-   "facility": "EHT/ngEHT",
-   "category": "radio",
+   "facility": "Parker Solar Probe",
+   "category": "solar",
    "n_papers": 6,
    "n_sections": 3,
-   "total_mentions": 37,
+   "total_mentions": 23,
    "sections": {
-    "The Extreme Universe": 4,
-    "From the Milky Way to Distant Galaxies": 1,
-    "Methods and Techniques": 1
+    "Sun, Earth and Planets": 4,
+    "Methods and Techniques": 1,
+    "Science Working Group Overviews": 1
    },
    "papers": [
-    "Abbate01",
-    "Baczko01",
-    "Bempong-Manful01",
-    "Beri01",
-    "Pathak01",
-    "VenkatramanKrishnan01"
-   ]
-  },
-  {
-   "facility": "Effelsberg",
-   "category": "radio",
-   "n_papers": 6,
-   "n_sections": 3,
-   "total_mentions": 41,
-   "sections": {
-    "The Extreme Universe": 2,
-    "Formation and Evolution of Stars": 2,
-    "Methods and Techniques": 2
-   },
-   "papers": [
-    "Abbate01",
-    "Bourke01",
-    "Chen01",
-    "Kadler01",
-    "Traficante01",
-    "Wongphecauxson01"
+    "Chhetri01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Raja01",
+    "Zucca01"
    ]
   },
   {
@@ -1755,24 +1853,6 @@
    ]
   },
   {
-   "facility": "Roman",
-   "category": "optical/IR",
-   "n_papers": 4,
-   "n_sections": 3,
-   "total_mentions": 19,
-   "sections": {
-    "From the Milky Way to Distant Galaxies": 2,
-    "The Cosmos": 1,
-    "Science Working Group Overviews": 1
-   },
-   "papers": [
-    "Bait01",
-    "Cang01",
-    "JingWang01",
-    "Prandoni01"
-   ]
-  },
-  {
    "facility": "Herschel",
    "category": "optical/IR",
    "n_papers": 4,
@@ -1821,42 +1901,6 @@
     "Marcote01",
     "Nelles01",
     "Oswald01"
-   ]
-  },
-  {
-   "facility": "Solar Orbiter",
-   "category": "solar",
-   "n_papers": 5,
-   "n_sections": 2,
-   "total_mentions": 37,
-   "sections": {
-    "Sun, Earth and Planets": 4,
-    "Science Working Group Overviews": 1
-   },
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Raja01",
-    "Zucca01"
-   ]
-  },
-  {
-   "facility": "Parker Solar Probe",
-   "category": "solar",
-   "n_papers": 5,
-   "n_sections": 2,
-   "total_mentions": 20,
-   "sections": {
-    "Sun, Earth and Planets": 4,
-    "Science Working Group Overviews": 1
-   },
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Raja01",
-    "Zucca01"
    ]
   },
   {
@@ -1973,6 +2017,23 @@
    ]
   },
   {
+   "facility": "STEREO",
+   "category": "solar",
+   "n_papers": 5,
+   "n_sections": 1,
+   "total_mentions": 44,
+   "sections": {
+    "Sun, Earth and Planets": 5
+   },
+   "papers": [
+    "Dey01",
+    "Kansabanik01",
+    "Kumari01",
+    "Mohan01",
+    "Morosan01"
+   ]
+  },
+  {
    "facility": "Simons Observatory",
    "category": "CMB",
    "n_papers": 4,
@@ -1986,22 +2047,6 @@
     "Harrison01",
     "OSullivan01",
     "Perrott01"
-   ]
-  },
-  {
-   "facility": "STEREO",
-   "category": "solar",
-   "n_papers": 4,
-   "n_sections": 1,
-   "total_mentions": 38,
-   "sections": {
-    "Sun, Earth and Planets": 4
-   },
-   "papers": [
-    "Kansabanik01",
-    "Kumari01",
-    "Mohan01",
-    "Morosan01"
    ]
   },
   {
@@ -2151,9 +2196,10 @@
   {
    "a": "MeerKAT",
    "b": "LOFAR",
-   "shared_papers": 48,
+   "shared_papers": 50,
    "papers": [
     "Afonso01",
+    "AlexAndersson02",
     "AritraBasu01",
     "ArpanPal01",
     "Asorey01",
@@ -2190,6 +2236,7 @@
     "Patra01",
     "Prandoni01",
     "Qiu01",
+    "Radcliffe01",
     "SabyasachiPal01",
     "SabyasachiPal03",
     "Santra01",
@@ -2255,9 +2302,10 @@
   {
    "a": "MeerKAT",
    "b": "ASKAP",
-   "shared_papers": 36,
+   "shared_papers": 37,
    "papers": [
     "Afonso01",
+    "AlexAndersson02",
     "Asorey01",
     "Bourke01",
     "Buemi01",
@@ -2298,7 +2346,7 @@
   {
    "a": "MeerKAT",
    "b": "GMRT",
-   "shared_papers": 31,
+   "shared_papers": 32,
    "papers": [
     "Akahori01",
     "ArpanPal01",
@@ -2325,6 +2373,7 @@
     "Oswald01",
     "Pandey-Pommier03",
     "Pasini01",
+    "Radcliffe01",
     "Rosolowsky01",
     "SabyasachiPal01",
     "Santra01",
@@ -2334,9 +2383,48 @@
    ]
   },
   {
+   "a": "LOFAR",
+   "b": "GMRT",
+   "shared_papers": 32,
+   "papers": [
+    "ArpanPal01",
+    "Baczko01",
+    "Bait01",
+    "Burba01",
+    "Cassano01",
+    "Cuciti01",
+    "Curtin01",
+    "Datta01",
+    "Dey01",
+    "FangxiaAn01",
+    "GemmaAnderson01",
+    "Hardcastle01",
+    "Hota01",
+    "Kobayashi01",
+    "Kondapally01",
+    "Kumari01",
+    "Lal01",
+    "Mahony01",
+    "Morosan01",
+    "Nakariakov01",
+    "Oberoi01",
+    "Oswald01",
+    "Pandey-Pommier02",
+    "Pasini01",
+    "Radcliffe01",
+    "SabyasachiPal01",
+    "Santra01",
+    "Sasmal01",
+    "Shannon01",
+    "Tiburzi01",
+    "Timmerman01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
    "a": "MeerKAT",
    "b": "ALMA",
-   "shared_papers": 30,
+   "shared_papers": 31,
    "papers": [
     "Afonso01",
     "Bianchi01",
@@ -2357,6 +2445,7 @@
     "Perrott01",
     "Podio01",
     "Prandoni01",
+    "Radcliffe01",
     "Rosolowsky01",
     "Sabatini01",
     "SabyasachiPal01",
@@ -2372,45 +2461,8 @@
   },
   {
    "a": "LOFAR",
-   "b": "GMRT",
-   "shared_papers": 30,
-   "papers": [
-    "ArpanPal01",
-    "Baczko01",
-    "Bait01",
-    "Burba01",
-    "Cassano01",
-    "Cuciti01",
-    "Curtin01",
-    "Datta01",
-    "FangxiaAn01",
-    "GemmaAnderson01",
-    "Hardcastle01",
-    "Hota01",
-    "Kobayashi01",
-    "Kondapally01",
-    "Kumari01",
-    "Lal01",
-    "Mahony01",
-    "Morosan01",
-    "Nakariakov01",
-    "Oberoi01",
-    "Oswald01",
-    "Pandey-Pommier02",
-    "Pasini01",
-    "SabyasachiPal01",
-    "Santra01",
-    "Sasmal01",
-    "Shannon01",
-    "Tiburzi01",
-    "Timmerman01",
-    "deLeraAcedo01"
-   ]
-  },
-  {
-   "a": "LOFAR",
    "b": "VLA",
-   "shared_papers": 28,
+   "shared_papers": 29,
    "papers": [
     "Afonso01",
     "Asorey01",
@@ -2423,6 +2475,7 @@
     "DAmato01",
     "Dabhade01",
     "Datta01",
+    "Dey01",
     "Driessen01",
     "FangxiaAn01",
     "GemmaAnderson01",
@@ -2445,16 +2498,18 @@
   {
    "a": "LOFAR",
    "b": "MWA",
-   "shared_papers": 27,
+   "shared_papers": 29,
    "papers": [
     "Acharya01",
     "Afonso01",
     "AlexAndersson01",
     "Burba01",
     "Chakraborty01",
+    "Chhetri01",
     "Curtin01",
     "Datta01",
     "Denzel01",
+    "Dey01",
     "GemmaAnderson01",
     "Huege01",
     "Kansabanik01",
@@ -2474,6 +2529,40 @@
     "Tremblay01",
     "Zucca01",
     "deLeraAcedo01"
+   ]
+  },
+  {
+   "a": "VLA",
+   "b": "ALMA",
+   "shared_papers": 27,
+   "papers": [
+    "Afonso01",
+    "Bianchi01",
+    "Bourke01",
+    "Chandra01",
+    "DAmato01",
+    "FangxiaAn01",
+    "Forbrich01",
+    "Garufi01",
+    "Greaves01",
+    "Kumari01",
+    "Lelli01",
+    "Maccagni01",
+    "Miville-Deschenes01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Patra01",
+    "RanWang01",
+    "Robishaw01",
+    "Rosolowsky01",
+    "Rygl01",
+    "Sabatini01",
+    "SabyasachiPal01",
+    "Spingola01",
+    "Traficante01",
+    "Wu01",
+    "deBlok01",
+    "vanLoon01"
    ]
   },
   {
@@ -2544,36 +2633,35 @@
    ]
   },
   {
-   "a": "VLA",
-   "b": "ALMA",
-   "shared_papers": 26,
+   "a": "LOFAR",
+   "b": "ASKAP",
+   "shared_papers": 25,
    "papers": [
     "Afonso01",
-    "Bianchi01",
-    "Bourke01",
-    "Chandra01",
-    "DAmato01",
-    "FangxiaAn01",
-    "Forbrich01",
-    "Garufi01",
-    "Kumari01",
-    "Lelli01",
-    "Maccagni01",
+    "AlexAndersson01",
+    "AlexAndersson02",
+    "Asorey01",
+    "Carcamo01",
+    "Chhetri01",
+    "Curtin01",
+    "Dabhade01",
+    "Denzel01",
+    "Driessen01",
+    "GemmaAnderson01",
+    "Hota01",
+    "Kansabanik01",
+    "Kurahara01",
+    "Ma01",
+    "Mahony01",
     "Miville-Deschenes01",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Patra01",
-    "RanWang01",
-    "Robishaw01",
-    "Rosolowsky01",
-    "Rygl01",
-    "Sabatini01",
+    "OSullivan01",
+    "Oberoi01",
+    "Pasini01",
+    "Qiu01",
     "SabyasachiPal01",
-    "Spingola01",
-    "Traficante01",
-    "Wu01",
-    "deBlok01",
-    "vanLoon01"
+    "SabyasachiPal03",
+    "Sasmal01",
+    "Tahani01"
    ]
   },
   {
@@ -2608,39 +2696,9 @@
    ]
   },
   {
-   "a": "LOFAR",
-   "b": "ASKAP",
-   "shared_papers": 23,
-   "papers": [
-    "Afonso01",
-    "AlexAndersson01",
-    "Asorey01",
-    "Carcamo01",
-    "Curtin01",
-    "Dabhade01",
-    "Denzel01",
-    "Driessen01",
-    "GemmaAnderson01",
-    "Hota01",
-    "Kansabanik01",
-    "Kurahara01",
-    "Ma01",
-    "Mahony01",
-    "Miville-Deschenes01",
-    "OSullivan01",
-    "Oberoi01",
-    "Pasini01",
-    "Qiu01",
-    "SabyasachiPal01",
-    "SabyasachiPal03",
-    "Sasmal01",
-    "Tahani01"
-   ]
-  },
-  {
    "a": "MeerKAT",
    "b": "Parkes/Murriyang",
-   "shared_papers": 22,
+   "shared_papers": 23,
    "papers": [
     "Besancon01",
     "Cunnington01",
@@ -2656,6 +2714,7 @@
     "Mayor01",
     "Oswald01",
     "Pasechnik01",
+    "Radcliffe01",
     "Shannon01",
     "Sun01",
     "Tahani01",
@@ -2664,6 +2723,35 @@
     "Wolz01",
     "Wongphecauxson01",
     "deBlok01"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "Euclid",
+   "shared_papers": 22,
+   "papers": [
+    "Afonso01",
+    "Asorey01",
+    "Baczko01",
+    "Cassano01",
+    "Chakraborty01",
+    "Chhetri01",
+    "DAmato01",
+    "Dabhade01",
+    "Duncan01",
+    "FangxiaAn01",
+    "Giulietti01",
+    "Harrison01",
+    "Harrison02",
+    "Ignesti01",
+    "Kondapally01",
+    "Lal01",
+    "Moldon01",
+    "OSullivan01",
+    "Pandey-Pommier02",
+    "Pasini01",
+    "Prandoni01",
+    "SabyasachiPal03"
    ]
   },
   {
@@ -2693,6 +2781,34 @@
     "Sun01",
     "Traficante01",
     "deBlok01"
+   ]
+  },
+  {
+   "a": "MeerKAT",
+   "b": "Rubin/LSST",
+   "shared_papers": 21,
+   "papers": [
+    "AlexAndersson02",
+    "Colombo01",
+    "Cuciti01",
+    "Cunnington01",
+    "Curtin01",
+    "Deg01",
+    "Duncan01",
+    "FangxiaAn01",
+    "Fonseca01",
+    "GemmaAnderson01",
+    "Hota01",
+    "JingWang01",
+    "Kondapally01",
+    "Mayor01",
+    "Prandoni01",
+    "SabyasachiPal03",
+    "Spinelli02",
+    "Spingola01",
+    "TaoAn03",
+    "Traficante01",
+    "Wolz01"
    ]
   },
   {
@@ -2748,61 +2864,6 @@
     "SabyasachiPal03",
     "Spinelli02",
     "Spingola01",
-    "Wolz01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "Euclid",
-   "shared_papers": 21,
-   "papers": [
-    "Afonso01",
-    "Asorey01",
-    "Baczko01",
-    "Cassano01",
-    "Chakraborty01",
-    "DAmato01",
-    "Dabhade01",
-    "Duncan01",
-    "FangxiaAn01",
-    "Giulietti01",
-    "Harrison01",
-    "Harrison02",
-    "Ignesti01",
-    "Kondapally01",
-    "Lal01",
-    "Moldon01",
-    "OSullivan01",
-    "Pandey-Pommier02",
-    "Pasini01",
-    "Prandoni01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "Rubin/LSST",
-   "shared_papers": 20,
-   "papers": [
-    "Colombo01",
-    "Cuciti01",
-    "Cunnington01",
-    "Curtin01",
-    "Deg01",
-    "Duncan01",
-    "FangxiaAn01",
-    "Fonseca01",
-    "GemmaAnderson01",
-    "Hota01",
-    "JingWang01",
-    "Kondapally01",
-    "Mayor01",
-    "Prandoni01",
-    "SabyasachiPal03",
-    "Spinelli02",
-    "Spingola01",
-    "TaoAn03",
-    "Traficante01",
     "Wolz01"
    ]
   },
@@ -2886,7 +2947,7 @@
   {
    "a": "MeerKAT",
    "b": "ATCA",
-   "shared_papers": 16,
+   "shared_papers": 17,
    "papers": [
     "Afonso01",
     "Akahori01",
@@ -2897,6 +2958,7 @@
     "Lico01",
     "Maccagni01",
     "Miville-Deschenes01",
+    "Radcliffe01",
     "Regis01",
     "Rosch01",
     "Sabatini01",
@@ -2904,6 +2966,53 @@
     "Traficante01",
     "Vidal01",
     "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "VLA",
+   "b": "GMRT",
+   "shared_papers": 17,
+   "papers": [
+    "Baczko01",
+    "Bait01",
+    "Cuciti01",
+    "Datta01",
+    "Dey01",
+    "FangxiaAn01",
+    "GemmaAnderson01",
+    "Hardcastle01",
+    "JingWang01",
+    "Kondapally01",
+    "Kumari01",
+    "LorenAnderson01",
+    "Pandey-Pommier03",
+    "Raja01",
+    "Rosolowsky01",
+    "SabyasachiPal01",
+    "Sasmal01"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "Rubin/LSST",
+   "shared_papers": 16,
+   "papers": [
+    "AlexAndersson01",
+    "AlexAndersson02",
+    "Cuciti01",
+    "Curtin01",
+    "DAmato01",
+    "Dabhade01",
+    "Duncan01",
+    "FangxiaAn01",
+    "GemmaAnderson01",
+    "Harrison02",
+    "Hota01",
+    "Kondapally01",
+    "Moldon01",
+    "Prandoni01",
+    "SabyasachiPal03",
+    "Timmerman01"
    ]
   },
   {
@@ -2930,46 +3039,23 @@
    ]
   },
   {
-   "a": "VLA",
-   "b": "GMRT",
-   "shared_papers": 16,
-   "papers": [
-    "Baczko01",
-    "Bait01",
-    "Cuciti01",
-    "Datta01",
-    "FangxiaAn01",
-    "GemmaAnderson01",
-    "Hardcastle01",
-    "JingWang01",
-    "Kondapally01",
-    "Kumari01",
-    "LorenAnderson01",
-    "Pandey-Pommier03",
-    "Raja01",
-    "Rosolowsky01",
-    "SabyasachiPal01",
-    "Sasmal01"
-   ]
-  },
-  {
    "a": "LOFAR",
-   "b": "Rubin/LSST",
+   "b": "ALMA",
    "shared_papers": 15,
    "papers": [
-    "AlexAndersson01",
-    "Cuciti01",
-    "Curtin01",
+    "Afonso01",
+    "Bracco01",
     "DAmato01",
-    "Dabhade01",
-    "Duncan01",
     "FangxiaAn01",
-    "GemmaAnderson01",
-    "Harrison02",
-    "Hota01",
-    "Kondapally01",
-    "Moldon01",
+    "Kumari01",
+    "Mahony01",
+    "Miville-Deschenes01",
+    "Pandey-Pommier02",
+    "Panessa01",
+    "Patra01",
     "Prandoni01",
+    "Radcliffe01",
+    "SabyasachiPal01",
     "SabyasachiPal03",
     "Timmerman01"
    ]
@@ -2997,24 +3083,68 @@
    ]
   },
   {
-   "a": "LOFAR",
+   "a": "GMRT",
+   "b": "MWA",
+   "shared_papers": 15,
+   "papers": [
+    "Burba01",
+    "Curtin01",
+    "Datta01",
+    "Dey01",
+    "GemmaAnderson01",
+    "Kumari01",
+    "Mahony01",
+    "Morosan01",
+    "Nakariakov01",
+    "Oberoi01",
+    "Pasini01",
+    "Shannon01",
+    "Tiburzi01",
+    "Timmerman01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
+   "a": "ATCA",
    "b": "ALMA",
-   "shared_papers": 14,
+   "shared_papers": 15,
    "papers": [
     "Afonso01",
     "Bracco01",
-    "DAmato01",
-    "FangxiaAn01",
-    "Kumari01",
-    "Mahony01",
+    "Buemi01",
+    "Garufi01",
+    "Imai01",
+    "Lelli01",
+    "Lico01",
+    "Maccagni01",
     "Miville-Deschenes01",
-    "Pandey-Pommier02",
-    "Panessa01",
-    "Patra01",
-    "Prandoni01",
-    "SabyasachiPal01",
-    "SabyasachiPal03",
-    "Timmerman01"
+    "Radcliffe01",
+    "Robishaw01",
+    "Rygl01",
+    "Sabatini01",
+    "Traficante01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "MeerKAT",
+   "b": "EVN",
+   "shared_papers": 14,
+   "papers": [
+    "Baczko01",
+    "Bempong-Manful01",
+    "Beri01",
+    "Curtin01",
+    "GemmaAnderson01",
+    "Lico01",
+    "Marcote01",
+    "Pandey-Pommier03",
+    "Radcliffe01",
+    "Rosch01",
+    "Spingola01",
+    "Takahashi01",
+    "Tremblay01",
+    "Wongphecauxson01"
    ]
   },
   {
@@ -3057,48 +3187,6 @@
     "Spingola01",
     "TaoAn03",
     "Traficante01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "MWA",
-   "shared_papers": 14,
-   "papers": [
-    "Burba01",
-    "Curtin01",
-    "Datta01",
-    "GemmaAnderson01",
-    "Kumari01",
-    "Mahony01",
-    "Morosan01",
-    "Nakariakov01",
-    "Oberoi01",
-    "Pasini01",
-    "Shannon01",
-    "Tiburzi01",
-    "Timmerman01",
-    "deLeraAcedo01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "ATCA",
-   "shared_papers": 14,
-   "papers": [
-    "Afonso01",
-    "Bracco01",
-    "Buemi01",
-    "Garufi01",
-    "Imai01",
-    "Lelli01",
-    "Lico01",
-    "Maccagni01",
-    "Miville-Deschenes01",
-    "Robishaw01",
-    "Rygl01",
-    "Sabatini01",
-    "Traficante01",
-    "Vidal01"
    ]
   },
   {
@@ -3164,26 +3252,6 @@
    ]
   },
   {
-   "a": "MeerKAT",
-   "b": "EVN",
-   "shared_papers": 13,
-   "papers": [
-    "Baczko01",
-    "Bempong-Manful01",
-    "Beri01",
-    "Curtin01",
-    "GemmaAnderson01",
-    "Lico01",
-    "Marcote01",
-    "Pandey-Pommier03",
-    "Rosch01",
-    "Spingola01",
-    "Takahashi01",
-    "Tremblay01",
-    "Wongphecauxson01"
-   ]
-  },
-  {
    "a": "VLA",
    "b": "Euclid",
    "shared_papers": 13,
@@ -3205,6 +3273,46 @@
   },
   {
    "a": "ASKAP",
+   "b": "MWA",
+   "shared_papers": 13,
+   "papers": [
+    "Afonso01",
+    "AlexAndersson01",
+    "Chhetri01",
+    "Curtin01",
+    "Denzel01",
+    "GemmaAnderson01",
+    "Ingallinera01",
+    "Kansabanik01",
+    "Mahony01",
+    "Oberoi01",
+    "Pasini01",
+    "Qiu01",
+    "Sun01"
+   ]
+  },
+  {
+   "a": "ASKAP",
+   "b": "Rubin/LSST",
+   "shared_papers": 13,
+   "papers": [
+    "AlexAndersson01",
+    "AlexAndersson02",
+    "Caleb02",
+    "Colombo01",
+    "Curtin01",
+    "Dabhade01",
+    "GemmaAnderson01",
+    "Hota01",
+    "JingWang01",
+    "Mayor01",
+    "SabyasachiPal03",
+    "Spingola01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ASKAP",
    "b": "Planck",
    "shared_papers": 13,
    "papers": [
@@ -3221,6 +3329,26 @@
     "Spingola01",
     "Sun01",
     "Tahani01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "DESI",
+   "shared_papers": 13,
+   "papers": [
+    "Asorey01",
+    "Camera01",
+    "Chhetri01",
+    "Cunnington01",
+    "Dabhade01",
+    "Duncan01",
+    "Elahi01",
+    "Fonseca01",
+    "JingWang01",
+    "Mayor01",
+    "Nasirudin01",
+    "SabyasachiPal03",
+    "Wolz01"
    ]
   },
   {
@@ -3300,8 +3428,8 @@
    ]
   },
   {
-   "a": "ASKAP",
-   "b": "ALMA",
+   "a": "ALMA",
+   "b": "ASKAP",
    "shared_papers": 12,
    "papers": [
     "Afonso01",
@@ -3320,59 +3448,21 @@
   },
   {
    "a": "ASKAP",
-   "b": "Rubin/LSST",
-   "shared_papers": 12,
-   "papers": [
-    "AlexAndersson01",
-    "Caleb02",
-    "Colombo01",
-    "Curtin01",
-    "Dabhade01",
-    "GemmaAnderson01",
-    "Hota01",
-    "JingWang01",
-    "Mayor01",
-    "SabyasachiPal03",
-    "Spingola01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ASKAP",
-   "b": "MWA",
+   "b": "Euclid",
    "shared_papers": 12,
    "papers": [
     "Afonso01",
-    "AlexAndersson01",
-    "Curtin01",
-    "Denzel01",
-    "GemmaAnderson01",
-    "Ingallinera01",
-    "Kansabanik01",
-    "Mahony01",
-    "Oberoi01",
-    "Pasini01",
-    "Qiu01",
-    "Sun01"
-   ]
-  },
-  {
-   "a": "Euclid",
-   "b": "DESI",
-   "shared_papers": 12,
-   "papers": [
     "Asorey01",
-    "Camera01",
-    "Cunnington01",
+    "Cang01",
+    "Chhetri01",
     "Dabhade01",
-    "Duncan01",
-    "Elahi01",
-    "Fonseca01",
     "JingWang01",
+    "Lelli01",
     "Mayor01",
-    "Nasirudin01",
+    "OSullivan01",
+    "Pasini01",
     "SabyasachiPal03",
-    "Wolz01"
+    "Spingola01"
    ]
   },
   {
@@ -3412,6 +3502,24 @@
    ]
   },
   {
+   "a": "LOFAR",
+   "b": "Parkes/Murriyang",
+   "shared_papers": 11,
+   "papers": [
+    "Curtin01",
+    "GemmaAnderson01",
+    "Hota01",
+    "JunXu01",
+    "Keane01",
+    "Kobayashi01",
+    "Oswald01",
+    "Radcliffe01",
+    "Shannon01",
+    "Tahani01",
+    "Tiburzi01"
+   ]
+  },
+  {
    "a": "VLA",
    "b": "EVN",
    "shared_papers": 11,
@@ -3430,8 +3538,8 @@
    ]
   },
   {
-   "a": "ASKAP",
-   "b": "GMRT",
+   "a": "GMRT",
+   "b": "ASKAP",
    "shared_papers": 11,
    "papers": [
     "Cang01",
@@ -3445,42 +3553,6 @@
     "Pasini01",
     "SabyasachiPal01",
     "Sasmal01"
-   ]
-  },
-  {
-   "a": "ASKAP",
-   "b": "JWST",
-   "shared_papers": 11,
-   "papers": [
-    "Afonso01",
-    "Buemi01",
-    "Cang01",
-    "Curtin01",
-    "Dabhade01",
-    "JingWang01",
-    "Mahony01",
-    "Miville-Deschenes01",
-    "SabyasachiPal03",
-    "Spingola01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ASKAP",
-   "b": "Euclid",
-   "shared_papers": 11,
-   "papers": [
-    "Afonso01",
-    "Asorey01",
-    "Cang01",
-    "Dabhade01",
-    "JingWang01",
-    "Lelli01",
-    "Mayor01",
-    "OSullivan01",
-    "Pasini01",
-    "SabyasachiPal03",
-    "Spingola01"
    ]
   },
   {
@@ -3502,6 +3574,24 @@
    ]
   },
   {
+   "a": "ASKAP",
+   "b": "JWST",
+   "shared_papers": 11,
+   "papers": [
+    "Afonso01",
+    "Buemi01",
+    "Cang01",
+    "Curtin01",
+    "Dabhade01",
+    "JingWang01",
+    "Mahony01",
+    "Miville-Deschenes01",
+    "SabyasachiPal03",
+    "Spingola01",
+    "Traficante01"
+   ]
+  },
+  {
    "a": "Rubin/LSST",
    "b": "Planck",
    "shared_papers": 11,
@@ -3520,23 +3610,6 @@
    ]
   },
   {
-   "a": "LOFAR",
-   "b": "Parkes/Murriyang",
-   "shared_papers": 10,
-   "papers": [
-    "Curtin01",
-    "GemmaAnderson01",
-    "Hota01",
-    "JunXu01",
-    "Keane01",
-    "Kobayashi01",
-    "Oswald01",
-    "Shannon01",
-    "Tahani01",
-    "Tiburzi01"
-   ]
-  },
-  {
    "a": "VLA",
    "b": "Chandra",
    "shared_papers": 10,
@@ -3551,6 +3624,23 @@
     "SabyasachiPal01",
     "Spingola01",
     "Traficante01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "Parkes/Murriyang",
+   "shared_papers": 10,
+   "papers": [
+    "Curtin01",
+    "Elahi01",
+    "GemmaAnderson01",
+    "Hota01",
+    "Joshi01",
+    "Kobayashi01",
+    "Oswald01",
+    "Radcliffe01",
+    "Shannon01",
+    "Tiburzi01"
    ]
   },
   {
@@ -3673,18 +3763,18 @@
   },
   {
    "a": "VLA",
-   "b": "GBT",
+   "b": "MWA",
    "shared_papers": 9,
    "papers": [
-    "Bianchi01",
-    "Bourke01",
-    "Miville-Deschenes01",
-    "RanWang01",
-    "Robishaw01",
-    "Sawada-Satoh01",
-    "Traficante01",
-    "Tremblay01",
-    "deBlok01"
+    "Afonso01",
+    "Datta01",
+    "Dey01",
+    "GemmaAnderson01",
+    "Kumari01",
+    "Patra01",
+    "Sharma01",
+    "Sun01",
+    "Tremblay01"
    ]
   },
   {
@@ -3704,35 +3794,35 @@
    ]
   },
   {
-   "a": "ASKAP",
-   "b": "Parkes/Murriyang",
+   "a": "VLA",
+   "b": "GBT",
    "shared_papers": 9,
    "papers": [
-    "Curtin01",
-    "GemmaAnderson01",
-    "Hota01",
-    "Ingallinera01",
-    "Mayor01",
-    "Sun01",
-    "Tahani01",
+    "Bianchi01",
+    "Bourke01",
+    "Miville-Deschenes01",
+    "RanWang01",
+    "Robishaw01",
+    "Sawada-Satoh01",
     "Traficante01",
+    "Tremblay01",
     "deBlok01"
    ]
   },
   {
    "a": "GMRT",
-   "b": "Parkes/Murriyang",
+   "b": "ALMA",
    "shared_papers": 9,
    "papers": [
-    "Curtin01",
-    "Elahi01",
-    "GemmaAnderson01",
-    "Hota01",
-    "Joshi01",
-    "Kobayashi01",
-    "Oswald01",
-    "Shannon01",
-    "Tiburzi01"
+    "FangxiaAn01",
+    "Kumari01",
+    "Mahony01",
+    "Pandey-Pommier02",
+    "Pandey-Pommier03",
+    "Radcliffe01",
+    "Rosolowsky01",
+    "SabyasachiPal01",
+    "Timmerman01"
    ]
   },
   {
@@ -3753,6 +3843,22 @@
   },
   {
    "a": "ALMA",
+   "b": "EVN",
+   "shared_papers": 9,
+   "papers": [
+    "Imai01",
+    "Kudoh01",
+    "Lico01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Radcliffe01",
+    "Rygl01",
+    "Spingola01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "ALMA",
    "b": "VLT",
    "shared_papers": 9,
    "papers": [
@@ -3765,6 +3871,22 @@
     "Spingola01",
     "Tabatabaei01",
     "Wu01"
+   ]
+  },
+  {
+   "a": "ASKAP",
+   "b": "Parkes/Murriyang",
+   "shared_papers": 9,
+   "papers": [
+    "Curtin01",
+    "GemmaAnderson01",
+    "Hota01",
+    "Ingallinera01",
+    "Mayor01",
+    "Sun01",
+    "Tahani01",
+    "Traficante01",
+    "deBlok01"
    ]
   },
   {
@@ -3781,6 +3903,22 @@
     "Mayor01",
     "SabyasachiPal03",
     "Wolz01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "EVN",
+   "shared_papers": 9,
+   "papers": [
+    "Baczko01",
+    "Baldi01",
+    "Giarratana01",
+    "Kobayashi01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Radcliffe01",
+    "Spingola01",
+    "Wongphecauxson01"
    ]
   },
   {
@@ -3832,6 +3970,36 @@
   },
   {
    "a": "LOFAR",
+   "b": "EVN",
+   "shared_papers": 8,
+   "papers": [
+    "Baczko01",
+    "Curtin01",
+    "GemmaAnderson01",
+    "Kobayashi01",
+    "Panessa01",
+    "Radcliffe01",
+    "Timmerman01",
+    "Tremblay01"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "DESI",
+   "shared_papers": 8,
+   "papers": [
+    "Asorey01",
+    "Chhetri01",
+    "Dabhade01",
+    "Duncan01",
+    "Hale01",
+    "Mahony01",
+    "SabyasachiPal03",
+    "Sasmal01"
+   ]
+  },
+  {
+   "a": "LOFAR",
    "b": "NenuFAR",
    "shared_papers": 8,
    "papers": [
@@ -3843,51 +4011,6 @@
     "Tiburzi01",
     "Tremblay01",
     "deLeraAcedo01"
-   ]
-  },
-  {
-   "a": "VLA",
-   "b": "MWA",
-   "shared_papers": 8,
-   "papers": [
-    "Afonso01",
-    "Datta01",
-    "GemmaAnderson01",
-    "Kumari01",
-    "Patra01",
-    "Sharma01",
-    "Sun01",
-    "Tremblay01"
-   ]
-  },
-  {
-   "a": "ASKAP",
-   "b": "ATCA",
-   "shared_papers": 8,
-   "papers": [
-    "Afonso01",
-    "Buemi01",
-    "Castignani01",
-    "GemmaAnderson01",
-    "Lelli01",
-    "Miville-Deschenes01",
-    "Sun01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "ALMA",
-   "shared_papers": 8,
-   "papers": [
-    "FangxiaAn01",
-    "Kumari01",
-    "Mahony01",
-    "Pandey-Pommier02",
-    "Pandey-Pommier03",
-    "Rosolowsky01",
-    "SabyasachiPal01",
-    "Timmerman01"
    ]
   },
   {
@@ -3906,6 +4029,36 @@
    ]
   },
   {
+   "a": "GMRT",
+   "b": "EVN",
+   "shared_papers": 8,
+   "papers": [
+    "Baczko01",
+    "Curtin01",
+    "GemmaAnderson01",
+    "Kobayashi01",
+    "Pandey-Pommier03",
+    "Radcliffe01",
+    "Takahashi01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "ASKAP",
+   "shared_papers": 8,
+   "papers": [
+    "Afonso01",
+    "Buemi01",
+    "Castignani01",
+    "GemmaAnderson01",
+    "Lelli01",
+    "Miville-Deschenes01",
+    "Sun01",
+    "Traficante01"
+   ]
+  },
+  {
    "a": "ALMA",
    "b": "ELT",
    "shared_papers": 8,
@@ -3921,18 +4074,18 @@
    ]
   },
   {
-   "a": "ALMA",
-   "b": "EVN",
+   "a": "ASKAP",
+   "b": "DESI",
    "shared_papers": 8,
    "papers": [
-    "Imai01",
-    "Kudoh01",
-    "Lico01",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Rygl01",
-    "Spingola01",
-    "Timmerman01"
+    "Asorey01",
+    "Chhetri01",
+    "Dabhade01",
+    "JingWang01",
+    "Mahony01",
+    "Mayor01",
+    "SabyasachiPal03",
+    "Sasmal01"
    ]
   },
   {
@@ -4026,16 +4179,15 @@
    ]
   },
   {
-   "a": "VLBA",
-   "b": "EVN",
-   "shared_papers": 8,
+   "a": "MeerKAT",
+   "b": "VLBA",
+   "shared_papers": 7,
    "papers": [
+    "Akahori02",
     "Baczko01",
-    "Baldi01",
-    "Giarratana01",
-    "Kobayashi01",
+    "Ingallinera01",
     "Pandey-Pommier03",
-    "Panessa01",
+    "Radcliffe01",
     "Spingola01",
     "Wongphecauxson01"
    ]
@@ -4126,6 +4278,20 @@
   },
   {
    "a": "LOFAR",
+   "b": "ATCA",
+   "shared_papers": 7,
+   "papers": [
+    "Afonso01",
+    "Bracco01",
+    "Curiel01",
+    "GemmaAnderson01",
+    "Kondapally01",
+    "Miville-Deschenes01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "LOFAR",
    "b": "Chandra",
    "shared_papers": 7,
    "papers": [
@@ -4150,34 +4316,6 @@
     "Oswald01",
     "Qiu01",
     "Shannon01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "EVN",
-   "shared_papers": 7,
-   "papers": [
-    "Baczko01",
-    "Curtin01",
-    "GemmaAnderson01",
-    "Kobayashi01",
-    "Panessa01",
-    "Timmerman01",
-    "Tremblay01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "DESI",
-   "shared_papers": 7,
-   "papers": [
-    "Asorey01",
-    "Dabhade01",
-    "Duncan01",
-    "Hale01",
-    "Mahony01",
-    "SabyasachiPal03",
-    "Sasmal01"
    ]
   },
   {
@@ -4209,6 +4347,34 @@
    ]
   },
   {
+   "a": "ATCA",
+   "b": "EVN",
+   "shared_papers": 7,
+   "papers": [
+    "GemmaAnderson01",
+    "Imai01",
+    "Lico01",
+    "Radcliffe01",
+    "Rosch01",
+    "Rygl01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "MWA",
+   "shared_papers": 7,
+   "papers": [
+    "Afonso01",
+    "Cheung01",
+    "Kumari01",
+    "Mahony01",
+    "Mohan01",
+    "Patra01",
+    "Timmerman01"
+   ]
+  },
+  {
    "a": "ASKAP",
    "b": "Chandra",
    "shared_papers": 7,
@@ -4224,20 +4390,6 @@
   },
   {
    "a": "ASKAP",
-   "b": "DESI",
-   "shared_papers": 7,
-   "papers": [
-    "Asorey01",
-    "Dabhade01",
-    "JingWang01",
-    "Mahony01",
-    "Mayor01",
-    "SabyasachiPal03",
-    "Sasmal01"
-   ]
-  },
-  {
-   "a": "ASKAP",
    "b": "SDSS",
    "shared_papers": 7,
    "papers": [
@@ -4248,34 +4400,6 @@
     "Mahony01",
     "Mayor01",
     "Sasmal01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "EVN",
-   "shared_papers": 7,
-   "papers": [
-    "Baczko01",
-    "Curtin01",
-    "GemmaAnderson01",
-    "Kobayashi01",
-    "Pandey-Pommier03",
-    "Takahashi01",
-    "Timmerman01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "MWA",
-   "shared_papers": 7,
-   "papers": [
-    "Afonso01",
-    "Cheung01",
-    "Kumari01",
-    "Mahony01",
-    "Mohan01",
-    "Patra01",
-    "Timmerman01"
    ]
   },
   {
@@ -4335,6 +4459,20 @@
    ]
   },
   {
+   "a": "Parkes/Murriyang",
+   "b": "EVN",
+   "shared_papers": 7,
+   "papers": [
+    "Abbate01",
+    "Curtin01",
+    "GemmaAnderson01",
+    "Kobayashi01",
+    "Radcliffe01",
+    "Rygl01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
    "a": "JWST",
    "b": "GBT",
    "shared_papers": 7,
@@ -4346,19 +4484,6 @@
     "Podio01",
     "RanWang01",
     "Traficante01"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "VLBA",
-   "shared_papers": 6,
-   "papers": [
-    "Akahori02",
-    "Baczko01",
-    "Ingallinera01",
-    "Pandey-Pommier03",
-    "Spingola01",
-    "Wongphecauxson01"
    ]
   },
   {
@@ -4389,15 +4514,15 @@
   },
   {
    "a": "LOFAR",
-   "b": "ATCA",
+   "b": "VLBA",
    "shared_papers": 6,
    "papers": [
-    "Afonso01",
-    "Bracco01",
+    "Baczko01",
     "Curiel01",
-    "GemmaAnderson01",
-    "Kondapally01",
-    "Miville-Deschenes01"
+    "DAmato01",
+    "Kobayashi01",
+    "Panessa01",
+    "Radcliffe01"
    ]
   },
   {
@@ -4427,6 +4552,19 @@
    ]
   },
   {
+   "a": "LOFAR",
+   "b": "Solar Orbiter",
+   "shared_papers": 6,
+   "papers": [
+    "Chhetri01",
+    "Dey01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
+   ]
+  },
+  {
    "a": "VLA",
    "b": "Parkes/Murriyang",
    "shared_papers": 6,
@@ -4437,6 +4575,97 @@
     "Sun01",
     "Traficante01",
     "deBlok01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "CHIME",
+   "shared_papers": 6,
+   "papers": [
+    "Curtin01",
+    "Elahi01",
+    "GemmaAnderson01",
+    "Mahony01",
+    "Oswald01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "NenuFAR",
+   "shared_papers": 6,
+   "papers": [
+    "Burba01",
+    "Curtin01",
+    "Oberoi01",
+    "Shannon01",
+    "Tiburzi01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Parkes/Murriyang",
+   "shared_papers": 6,
+   "papers": [
+    "GemmaAnderson01",
+    "Radcliffe01",
+    "Rygl01",
+    "Sun01",
+    "Traficante01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Gaia",
+   "shared_papers": 6,
+   "papers": [
+    "Buemi01",
+    "Castignani01",
+    "Curiel01",
+    "Miville-Deschenes01",
+    "Traficante01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "JWST",
+   "shared_papers": 6,
+   "papers": [
+    "Afonso01",
+    "Buemi01",
+    "Kondapally01",
+    "Miville-Deschenes01",
+    "Sabatini01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "ngVLA",
+   "shared_papers": 6,
+   "papers": [
+    "Chandra01",
+    "Kudoh01",
+    "Pandey-Pommier01",
+    "Radcliffe01",
+    "SabyasachiPal03",
+    "Yoon01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "HST",
+   "shared_papers": 6,
+   "papers": [
+    "DAmato01",
+    "Garufi01",
+    "Mahony01",
+    "Rosolowsky01",
+    "Sabatini01",
+    "Wu01"
    ]
   },
   {
@@ -4492,42 +4721,29 @@
    ]
   },
   {
-   "a": "GMRT",
-   "b": "CHIME",
+   "a": "MWA",
+   "b": "Parkes/Murriyang",
    "shared_papers": 6,
    "papers": [
     "Curtin01",
-    "Elahi01",
     "GemmaAnderson01",
-    "Mahony01",
-    "Oswald01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "NenuFAR",
-   "shared_papers": 6,
-   "papers": [
-    "Burba01",
-    "Curtin01",
-    "Oberoi01",
+    "Ingallinera01",
     "Shannon01",
-    "Tiburzi01",
-    "deLeraAcedo01"
+    "Sun01",
+    "Tiburzi01"
    ]
   },
   {
-   "a": "ALMA",
-   "b": "HST",
+   "a": "MWA",
+   "b": "Solar Orbiter",
    "shared_papers": 6,
    "papers": [
-    "DAmato01",
-    "Garufi01",
-    "Mahony01",
-    "Rosolowsky01",
-    "Sabatini01",
-    "Wu01"
+    "Chhetri01",
+    "Dey01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
    ]
   },
   {
@@ -4557,19 +4773,6 @@
    ]
   },
   {
-   "a": "MWA",
-   "b": "Parkes/Murriyang",
-   "shared_papers": 6,
-   "papers": [
-    "Curtin01",
-    "GemmaAnderson01",
-    "Ingallinera01",
-    "Shannon01",
-    "Sun01",
-    "Tiburzi01"
-   ]
-  },
-  {
    "a": "Parkes/Murriyang",
    "b": "Pulsar timing arrays",
    "shared_papers": 6,
@@ -4584,19 +4787,6 @@
   },
   {
    "a": "Parkes/Murriyang",
-   "b": "EVN",
-   "shared_papers": 6,
-   "papers": [
-    "Abbate01",
-    "Curtin01",
-    "GemmaAnderson01",
-    "Kobayashi01",
-    "Rygl01",
-    "Wongphecauxson01"
-   ]
-  },
-  {
-   "a": "Parkes/Murriyang",
    "b": "LIGO/Virgo/KAGRA",
    "shared_papers": 6,
    "papers": [
@@ -4606,45 +4796,6 @@
     "Levin01",
     "Pasechnik01",
     "Shannon01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "Gaia",
-   "shared_papers": 6,
-   "papers": [
-    "Buemi01",
-    "Castignani01",
-    "Curiel01",
-    "Miville-Deschenes01",
-    "Traficante01",
-    "Vidal01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "JWST",
-   "shared_papers": 6,
-   "papers": [
-    "Afonso01",
-    "Buemi01",
-    "Kondapally01",
-    "Miville-Deschenes01",
-    "Sabatini01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "EVN",
-   "shared_papers": 6,
-   "papers": [
-    "GemmaAnderson01",
-    "Imai01",
-    "Lico01",
-    "Rosch01",
-    "Rygl01",
-    "Wongphecauxson01"
    ]
   },
   {
@@ -4700,15 +4851,16 @@
    ]
   },
   {
-   "a": "MeerKAT",
-   "b": "XRISM",
-   "shared_papers": 5,
+   "a": "Solar Orbiter",
+   "b": "Parker Solar Probe",
+   "shared_papers": 6,
    "papers": [
-    "AritraBasu01",
-    "Beri01",
-    "Cassano01",
-    "Kurahara01",
-    "Perrott01"
+    "Chhetri01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Raja01",
+    "Zucca01"
    ]
   },
   {
@@ -4733,6 +4885,42 @@
     "Schoedel01",
     "TaoAn01",
     "TaoAn03"
+   ]
+  },
+  {
+   "a": "MeerKAT",
+   "b": "EHT/ngEHT",
+   "shared_papers": 5,
+   "papers": [
+    "Baczko01",
+    "Bempong-Manful01",
+    "Beri01",
+    "Radcliffe01",
+    "VenkatramanKrishnan01"
+   ]
+  },
+  {
+   "a": "MeerKAT",
+   "b": "Athena/NewAthena",
+   "shared_papers": 5,
+   "papers": [
+    "AlexAndersson02",
+    "AvishekBasu01",
+    "Beri01",
+    "Perrott01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "MeerKAT",
+   "b": "XRISM",
+   "shared_papers": 5,
+   "papers": [
+    "AritraBasu01",
+    "Beri01",
+    "Cassano01",
+    "Kurahara01",
+    "Perrott01"
    ]
   },
   {
@@ -4773,26 +4961,14 @@
   },
   {
    "a": "LOFAR",
-   "b": "VLBA",
+   "b": "ngVLA",
    "shared_papers": 5,
    "papers": [
     "Baczko01",
     "Curiel01",
-    "DAmato01",
-    "Kobayashi01",
-    "Panessa01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "XRISM",
-   "shared_papers": 5,
-   "papers": [
-    "AritraBasu01",
-    "Cassano01",
-    "Gitti01",
-    "Kurahara01",
-    "deGasperin01"
+    "Radcliffe01",
+    "SabyasachiPal03",
+    "Shannon01"
    ]
   },
   {
@@ -4805,6 +4981,30 @@
     "Santra01",
     "Sasmal01",
     "Timmerman01"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "Athena/NewAthena",
+   "shared_papers": 5,
+   "papers": [
+    "AlexAndersson02",
+    "Bruni01",
+    "Gitti01",
+    "Panessa01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "XRISM",
+   "shared_papers": 5,
+   "papers": [
+    "AritraBasu01",
+    "Cassano01",
+    "Gitti01",
+    "Kurahara01",
+    "deGasperin01"
    ]
   },
   {
@@ -4832,6 +5032,18 @@
    ]
   },
   {
+   "a": "LOFAR",
+   "b": "Parker Solar Probe",
+   "shared_papers": 5,
+   "papers": [
+    "Chhetri01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
+   ]
+  },
+  {
    "a": "VLA",
    "b": "ELT",
    "shared_papers": 5,
@@ -4845,18 +5057,6 @@
   },
   {
    "a": "VLA",
-   "b": "VLT",
-   "shared_papers": 5,
-   "papers": [
-    "Lelli01",
-    "Rosolowsky01",
-    "Sabatini01",
-    "Spingola01",
-    "Wu01"
-   ]
-  },
-  {
-   "a": "VLA",
    "b": "DESI",
    "shared_papers": 5,
    "papers": [
@@ -4865,6 +5065,18 @@
     "Hale01",
     "JingWang01",
     "Sasmal01"
+   ]
+  },
+  {
+   "a": "VLA",
+   "b": "VLT",
+   "shared_papers": 5,
+   "papers": [
+    "Lelli01",
+    "Rosolowsky01",
+    "Sabatini01",
+    "Spingola01",
+    "Wu01"
    ]
   },
   {
@@ -4917,6 +5129,18 @@
   },
   {
    "a": "ALMA",
+   "b": "VLBA",
+   "shared_papers": 5,
+   "papers": [
+    "DAmato01",
+    "Pandey-Pommier03",
+    "Panessa01",
+    "Radcliffe01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "ALMA",
    "b": "Gaia",
    "shared_papers": 5,
    "papers": [
@@ -4940,39 +5164,15 @@
    ]
   },
   {
-   "a": "ALMA",
-   "b": "ngVLA",
+   "a": "ASKAP",
+   "b": "CTAO",
    "shared_papers": 5,
    "papers": [
-    "Chandra01",
-    "Kudoh01",
-    "Pandey-Pommier01",
-    "SabyasachiPal03",
-    "Yoon01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "CHIME",
-   "shared_papers": 5,
-   "papers": [
-    "Caleb01",
-    "Caleb02",
-    "Cunnington01",
-    "Curtin01",
-    "GemmaAnderson01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "4MOST",
-   "shared_papers": 5,
-   "papers": [
-    "Cunnington01",
-    "Dabhade01",
-    "Duncan01",
-    "JingWang01",
-    "SabyasachiPal03"
+    "Castignani01",
+    "Chhetri01",
+    "Colombo01",
+    "GemmaAnderson01",
+    "Ingallinera01"
    ]
   },
   {
@@ -5000,14 +5200,62 @@
    ]
   },
   {
-   "a": "Parkes/Murriyang",
-   "b": "ATCA",
+   "a": "MWA",
+   "b": "Parker Solar Probe",
    "shared_papers": 5,
    "papers": [
-    "GemmaAnderson01",
-    "Rygl01",
-    "Sun01",
-    "Traficante01",
+    "Chhetri01",
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "STEREO",
+   "shared_papers": 5,
+   "papers": [
+    "Dey01",
+    "Kansabanik01",
+    "Kumari01",
+    "Mohan01",
+    "Morosan01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "CHIME",
+   "shared_papers": 5,
+   "papers": [
+    "Caleb01",
+    "Caleb02",
+    "Cunnington01",
+    "Curtin01",
+    "GemmaAnderson01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "4MOST",
+   "shared_papers": 5,
+   "papers": [
+    "Cunnington01",
+    "Dabhade01",
+    "Duncan01",
+    "JingWang01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Parkes/Murriyang",
+   "b": "VLBA",
+   "shared_papers": 5,
+   "papers": [
+    "Ingallinera01",
+    "Kobayashi01",
+    "Radcliffe01",
+    "Sawada-Satoh01",
     "Wongphecauxson01"
    ]
   },
@@ -5096,8 +5344,8 @@
    ]
   },
   {
-   "a": "ELT",
-   "b": "Euclid",
+   "a": "Euclid",
+   "b": "ELT",
    "shared_papers": 5,
    "papers": [
     "Bag01",
@@ -5105,18 +5353,6 @@
     "Prandoni01",
     "RanWang01",
     "Spingola01"
-   ]
-  },
-  {
-   "a": "Pulsar timing arrays",
-   "b": "LISA",
-   "shared_papers": 5,
-   "papers": [
-    "Besancon01",
-    "Capelo01",
-    "DAmato01",
-    "Pasechnik01",
-    "Shannon01"
    ]
   },
   {
@@ -5144,6 +5380,42 @@
    ]
   },
   {
+   "a": "EVN",
+   "b": "EHT/ngEHT",
+   "shared_papers": 5,
+   "papers": [
+    "Abbate01",
+    "Baczko01",
+    "Bempong-Manful01",
+    "Beri01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "Pulsar timing arrays",
+   "b": "LISA",
+   "shared_papers": 5,
+   "papers": [
+    "Besancon01",
+    "Capelo01",
+    "DAmato01",
+    "Pasechnik01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "DESI",
+   "b": "SDSS",
+   "shared_papers": 5,
+   "papers": [
+    "Dabhade01",
+    "Duncan01",
+    "Mahony01",
+    "Mayor01",
+    "Sasmal01"
+   ]
+  },
+  {
    "a": "LIGO/Virgo/KAGRA",
    "b": "Einstein Telescope",
    "shared_papers": 5,
@@ -5168,18 +5440,6 @@
    ]
   },
   {
-   "a": "DESI",
-   "b": "SDSS",
-   "shared_papers": 5,
-   "papers": [
-    "Dabhade01",
-    "Duncan01",
-    "Mahony01",
-    "Mayor01",
-    "Sasmal01"
-   ]
-  },
-  {
    "a": "Einstein Telescope",
    "b": "Cosmic Explorer",
    "shared_papers": 5,
@@ -5192,15 +5452,14 @@
    ]
   },
   {
-   "a": "Solar Orbiter",
-   "b": "Parker Solar Probe",
-   "shared_papers": 5,
+   "a": "MeerKAT",
+   "b": "ngVLA",
+   "shared_papers": 4,
    "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Raja01",
-    "Zucca01"
+    "Baczko01",
+    "Radcliffe01",
+    "SabyasachiPal03",
+    "Shannon01"
    ]
   },
   {
@@ -5227,13 +5486,13 @@
   },
   {
    "a": "MeerKAT",
-   "b": "Athena/NewAthena",
+   "b": "Effelsberg",
    "shared_papers": 4,
    "papers": [
-    "AvishekBasu01",
-    "Beri01",
-    "Perrott01",
-    "SabyasachiPal03"
+    "Bourke01",
+    "Radcliffe01",
+    "Traficante01",
+    "Wongphecauxson01"
    ]
   },
   {
@@ -5249,6 +5508,17 @@
   },
   {
    "a": "MeerKAT",
+   "b": "Solar Orbiter",
+   "shared_papers": 4,
+   "papers": [
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
+   ]
+  },
+  {
+   "a": "MeerKAT",
    "b": "WISE",
    "shared_papers": 4,
    "papers": [
@@ -5260,13 +5530,13 @@
   },
   {
    "a": "MeerKAT",
-   "b": "EHT/ngEHT",
+   "b": "Parker Solar Probe",
    "shared_papers": 4,
    "papers": [
-    "Baczko01",
-    "Bempong-Manful01",
-    "Beri01",
-    "VenkatramanKrishnan01"
+    "Kumari01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
    ]
   },
   {
@@ -5289,28 +5559,6 @@
     "Besancon01",
     "Bosi01",
     "Colombo01"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "Solar Orbiter",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "Parker Solar Probe",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
    ]
   },
   {
@@ -5359,28 +5607,6 @@
   },
   {
    "a": "LOFAR",
-   "b": "ngVLA",
-   "shared_papers": 4,
-   "papers": [
-    "Baczko01",
-    "Curiel01",
-    "SabyasachiPal03",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "Athena/NewAthena",
-   "shared_papers": 4,
-   "papers": [
-    "Bruni01",
-    "Gitti01",
-    "Panessa01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "LOFAR",
    "b": "4MOST",
    "shared_papers": 4,
    "papers": [
@@ -5392,28 +5618,6 @@
   },
   {
    "a": "LOFAR",
-   "b": "Solar Orbiter",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "Parker Solar Probe",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "LOFAR",
    "b": "eROSITA",
    "shared_papers": 4,
    "papers": [
@@ -5421,6 +5625,17 @@
     "Cuciti01",
     "Pasini01",
     "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "STEREO",
+   "shared_papers": 4,
+   "papers": [
+    "Dey01",
+    "Kansabanik01",
+    "Kumari01",
+    "Morosan01"
    ]
   },
   {
@@ -5457,14 +5672,157 @@
    ]
   },
   {
-   "a": "ASKAP",
-   "b": "CTAO",
+   "a": "VLA",
+   "b": "Solar Orbiter",
    "shared_papers": 4,
    "papers": [
-    "Castignani01",
-    "Colombo01",
+    "Dey01",
+    "Kumari01",
+    "Patra01",
+    "Raja01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "ATCA",
+   "shared_papers": 4,
+   "papers": [
+    "Akahori01",
     "GemmaAnderson01",
-    "Ingallinera01"
+    "Kondapally01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "VLBA",
+   "shared_papers": 4,
+   "papers": [
+    "Baczko01",
+    "Kobayashi01",
+    "Pandey-Pommier03",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "GBT",
+   "shared_papers": 4,
+   "papers": [
+    "Curtin01",
+    "Elahi01",
+    "Mahony01",
+    "Oswald01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "Planck",
+   "shared_papers": 4,
+   "papers": [
+    "Cuciti01",
+    "FangxiaAn01",
+    "Sasmal01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "DESI",
+   "shared_papers": 4,
+   "papers": [
+    "Elahi01",
+    "JingWang01",
+    "Mahony01",
+    "Sasmal01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "SPT",
+   "shared_papers": 4,
+   "papers": [
+    "Cassano01",
+    "Santra01",
+    "Sasmal01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "SDSS",
+   "shared_papers": 4,
+   "papers": [
+    "Cuciti01",
+    "Hota01",
+    "Mahony01",
+    "Sasmal01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "XMM-Newton",
+   "shared_papers": 4,
+   "papers": [
+    "Akahori01",
+    "ArpanPal01",
+    "Kondapally01",
+    "Pasini01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "Solar Orbiter",
+   "shared_papers": 4,
+   "papers": [
+    "Dey01",
+    "Kumari01",
+    "Morosan01",
+    "Raja01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "GBT",
+   "shared_papers": 4,
+   "papers": [
+    "Miville-Deschenes01",
+    "Robishaw01",
+    "Traficante01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Planck",
+   "shared_papers": 4,
+   "papers": [
+    "Miville-Deschenes01",
+    "Regis01",
+    "Sun01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Parkes/Murriyang",
+   "shared_papers": 4,
+   "papers": [
+    "Radcliffe01",
+    "Rygl01",
+    "Traficante01",
+    "deBlok01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Athena/NewAthena",
+   "shared_papers": 4,
+   "papers": [
+    "Kudoh01",
+    "Panessa01",
+    "Perrott01",
+    "SabyasachiPal03"
    ]
   },
   {
@@ -5501,101 +5859,79 @@
    ]
   },
   {
-   "a": "GMRT",
-   "b": "GBT",
-   "shared_papers": 4,
-   "papers": [
-    "Curtin01",
-    "Elahi01",
-    "Mahony01",
-    "Oswald01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Planck",
-   "shared_papers": 4,
-   "papers": [
-    "Cuciti01",
-    "FangxiaAn01",
-    "Sasmal01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "SPT",
-   "shared_papers": 4,
-   "papers": [
-    "Cassano01",
-    "Santra01",
-    "Sasmal01",
-    "Timmerman01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "DESI",
-   "shared_papers": 4,
-   "papers": [
-    "Elahi01",
-    "JingWang01",
-    "Mahony01",
-    "Sasmal01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "SDSS",
-   "shared_papers": 4,
-   "papers": [
-    "Cuciti01",
-    "Hota01",
-    "Mahony01",
-    "Sasmal01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "XMM-Newton",
-   "shared_papers": 4,
-   "papers": [
-    "Akahori01",
-    "ArpanPal01",
-    "Kondapally01",
-    "Pasini01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "VLBA",
-   "shared_papers": 4,
-   "papers": [
-    "DAmato01",
-    "Pandey-Pommier03",
-    "Panessa01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Athena/NewAthena",
-   "shared_papers": 4,
-   "papers": [
-    "Kudoh01",
-    "Panessa01",
-    "Perrott01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "MWA",
+   "a": "MWA",
+   "b": "Rubin/LSST",
    "shared_papers": 4,
    "papers": [
     "AlexAndersson01",
     "Curtin01",
     "GemmaAnderson01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "JWST",
+   "shared_papers": 4,
+   "papers": [
+    "Afonso01",
+    "Chakraborty01",
+    "Curtin01",
+    "Mahony01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "Euclid",
+   "shared_papers": 4,
+   "papers": [
+    "Afonso01",
+    "Chakraborty01",
+    "Chhetri01",
+    "Pasini01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "EVN",
+   "shared_papers": 4,
+   "papers": [
+    "Curtin01",
+    "GemmaAnderson01",
+    "Timmerman01",
+    "Tremblay01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "HERA",
+   "shared_papers": 4,
+   "papers": [
+    "Acharya01",
+    "Burba01",
+    "Chakraborty01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "SDO",
+   "shared_papers": 4,
+   "papers": [
+    "Mohan01",
+    "Morosan01",
+    "Patra01",
+    "Zucca01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "EVN",
+   "shared_papers": 4,
+   "papers": [
+    "Curtin01",
+    "GemmaAnderson01",
+    "Spingola01",
     "Timmerman01"
    ]
   },
@@ -5608,17 +5944,6 @@
     "Colombo01",
     "GemmaAnderson01",
     "TaoAn03"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "EVN",
-   "shared_papers": 4,
-   "papers": [
-    "Curtin01",
-    "GemmaAnderson01",
-    "Spingola01",
-    "Timmerman01"
    ]
   },
   {
@@ -5688,94 +6013,6 @@
    ]
   },
   {
-   "a": "MWA",
-   "b": "JWST",
-   "shared_papers": 4,
-   "papers": [
-    "Afonso01",
-    "Chakraborty01",
-    "Curtin01",
-    "Mahony01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "EVN",
-   "shared_papers": 4,
-   "papers": [
-    "Curtin01",
-    "GemmaAnderson01",
-    "Timmerman01",
-    "Tremblay01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "HERA",
-   "shared_papers": 4,
-   "papers": [
-    "Acharya01",
-    "Burba01",
-    "Chakraborty01",
-    "deLeraAcedo01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "Solar Orbiter",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "Parker Solar Probe",
-   "shared_papers": 4,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "SDO",
-   "shared_papers": 4,
-   "papers": [
-    "Mohan01",
-    "Morosan01",
-    "Patra01",
-    "Zucca01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "STEREO",
-   "shared_papers": 4,
-   "papers": [
-    "Kansabanik01",
-    "Kumari01",
-    "Mohan01",
-    "Morosan01"
-   ]
-  },
-  {
-   "a": "Parkes/Murriyang",
-   "b": "VLBA",
-   "shared_papers": 4,
-   "papers": [
-    "Ingallinera01",
-    "Kobayashi01",
-    "Sawada-Satoh01",
-    "Wongphecauxson01"
-   ]
-  },
-  {
    "a": "Parkes/Murriyang",
    "b": "Euclid",
    "shared_papers": 4,
@@ -5798,25 +6035,25 @@
    ]
   },
   {
-   "a": "ATCA",
-   "b": "GBT",
+   "a": "Parkes/Murriyang",
+   "b": "Effelsberg",
    "shared_papers": 4,
    "papers": [
-    "Miville-Deschenes01",
-    "Robishaw01",
+    "Abbate01",
+    "Radcliffe01",
     "Traficante01",
-    "Vidal01"
+    "Wongphecauxson01"
    ]
   },
   {
-   "a": "ATCA",
-   "b": "Planck",
+   "a": "VLBA",
+   "b": "Chandra",
    "shared_papers": 4,
    "papers": [
-    "Miville-Deschenes01",
-    "Regis01",
-    "Sun01",
-    "Vidal01"
+    "Akahori02",
+    "DAmato01",
+    "Giarratana01",
+    "Spingola01"
    ]
   },
   {
@@ -5854,6 +6091,17 @@
   },
   {
    "a": "JWST",
+   "b": "Roman",
+   "shared_papers": 4,
+   "papers": [
+    "Bait01",
+    "Cang01",
+    "JingWang01",
+    "Prandoni01"
+   ]
+  },
+  {
+   "a": "JWST",
    "b": "HERA",
    "shared_papers": 4,
    "papers": [
@@ -5872,28 +6120,6 @@
     "JingWang01",
     "Mahony01",
     "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "JWST",
-   "b": "Roman",
-   "shared_papers": 4,
-   "papers": [
-    "Bait01",
-    "Cang01",
-    "JingWang01",
-    "Prandoni01"
-   ]
-  },
-  {
-   "a": "Chandra",
-   "b": "VLBA",
-   "shared_papers": 4,
-   "papers": [
-    "Akahori02",
-    "DAmato01",
-    "Giarratana01",
-    "Spingola01"
    ]
   },
   {
@@ -5974,17 +6200,6 @@
    ]
   },
   {
-   "a": "Pulsar timing arrays",
-   "b": "LIGO/Virgo/KAGRA",
-   "shared_papers": 4,
-   "papers": [
-    "Besancon01",
-    "GemmaAnderson01",
-    "Pasechnik01",
-    "Shannon01"
-   ]
-  },
-  {
    "a": "Euclid",
    "b": "SDSS",
    "shared_papers": 4,
@@ -5997,13 +6212,35 @@
   },
   {
    "a": "EVN",
-   "b": "EHT/ngEHT",
+   "b": "ngVLA",
    "shared_papers": 4,
    "papers": [
     "Abbate01",
     "Baczko01",
-    "Bempong-Manful01",
-    "Beri01"
+    "Kudoh01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "Effelsberg",
+   "shared_papers": 4,
+   "papers": [
+    "Abbate01",
+    "Chen01",
+    "Radcliffe01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "Pulsar timing arrays",
+   "b": "LIGO/Virgo/KAGRA",
+   "shared_papers": 4,
+   "papers": [
+    "Besancon01",
+    "GemmaAnderson01",
+    "Pasechnik01",
+    "Shannon01"
    ]
   },
   {
@@ -6018,17 +6255,6 @@
    ]
   },
   {
-   "a": "XRISM",
-   "b": "Athena/NewAthena",
-   "shared_papers": 4,
-   "papers": [
-    "Beri01",
-    "Gitti01",
-    "Kudoh01",
-    "Perrott01"
-   ]
-  },
-  {
    "a": "Swift",
    "b": "Einstein Probe",
    "shared_papers": 4,
@@ -6040,13 +6266,24 @@
    ]
   },
   {
+   "a": "Athena/NewAthena",
+   "b": "XRISM",
+   "shared_papers": 4,
+   "papers": [
+    "Beri01",
+    "Gitti01",
+    "Kudoh01",
+    "Perrott01"
+   ]
+  },
+  {
    "a": "MeerKAT",
-   "b": "ngVLA",
+   "b": "Roman",
    "shared_papers": 3,
    "papers": [
-    "Baczko01",
-    "SabyasachiPal03",
-    "Shannon01"
+    "AlexAndersson02",
+    "JingWang01",
+    "Prandoni01"
    ]
   },
   {
@@ -6057,16 +6294,6 @@
     "GemmaAnderson01",
     "Ingallinera01",
     "Rosch01"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "Effelsberg",
-   "shared_papers": 3,
-   "papers": [
-    "Bourke01",
-    "Traficante01",
-    "Wongphecauxson01"
    ]
   },
   {
@@ -6111,6 +6338,16 @@
   },
   {
    "a": "LOFAR",
+   "b": "CTAO",
+   "shared_papers": 3,
+   "papers": [
+    "Bruni01",
+    "Chhetri01",
+    "GemmaAnderson01"
+   ]
+  },
+  {
+   "a": "LOFAR",
    "b": "LIGO/Virgo/KAGRA",
    "shared_papers": 3,
    "papers": [
@@ -6127,6 +6364,16 @@
     "Bruni01",
     "Oswald01",
     "Shannon01"
+   ]
+  },
+  {
+   "a": "LOFAR",
+   "b": "Roman",
+   "shared_papers": 3,
+   "papers": [
+    "AlexAndersson02",
+    "Bait01",
+    "Prandoni01"
    ]
   },
   {
@@ -6160,13 +6407,13 @@
    ]
   },
   {
-   "a": "LOFAR",
-   "b": "STEREO",
+   "a": "VLA",
+   "b": "ngVLA",
    "shared_papers": 3,
    "papers": [
-    "Kansabanik01",
-    "Kumari01",
-    "Morosan01"
+    "Baczko01",
+    "Chandra01",
+    "Curiel01"
    ]
   },
   {
@@ -6191,16 +6438,6 @@
   },
   {
    "a": "VLA",
-   "b": "ngVLA",
-   "shared_papers": 3,
-   "papers": [
-    "Baczko01",
-    "Chandra01",
-    "Curiel01"
-   ]
-  },
-  {
-   "a": "VLA",
    "b": "Swift",
    "shared_papers": 3,
    "papers": [
@@ -6211,7 +6448,7 @@
   },
   {
    "a": "VLA",
-   "b": "Solar Orbiter",
+   "b": "Parker Solar Probe",
    "shared_papers": 3,
    "papers": [
     "Kumari01",
@@ -6220,13 +6457,223 @@
    ]
   },
   {
-   "a": "VLA",
+   "a": "GMRT",
+   "b": "Chandra",
+   "shared_papers": 3,
+   "papers": [
+    "Joshi01",
+    "SabyasachiPal01",
+    "Santra01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "ngVLA",
+   "shared_papers": 3,
+   "papers": [
+    "Baczko01",
+    "Radcliffe01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "LIGO/Virgo/KAGRA",
+   "shared_papers": 3,
+   "papers": [
+    "GemmaAnderson01",
+    "Hota01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "Roman",
+   "shared_papers": 3,
+   "papers": [
+    "Bait01",
+    "Cang01",
+    "JingWang01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "WISE",
+   "shared_papers": 3,
+   "papers": [
+    "Hota01",
+    "SabyasachiPal01",
+    "Sasmal01"
+   ]
+  },
+  {
+   "a": "GMRT",
    "b": "Parker Solar Probe",
    "shared_papers": 3,
    "papers": [
     "Kumari01",
-    "Patra01",
+    "Morosan01",
     "Raja01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "eROSITA",
+   "shared_papers": 3,
+   "papers": [
+    "Cassano01",
+    "Cuciti01",
+    "Pasini01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "STEREO",
+   "shared_papers": 3,
+   "papers": [
+    "Dey01",
+    "Kumari01",
+    "Morosan01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "MWA",
+   "shared_papers": 3,
+   "papers": [
+    "Afonso01",
+    "GemmaAnderson01",
+    "Sun01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Rubin/LSST",
+   "shared_papers": 3,
+   "papers": [
+    "GemmaAnderson01",
+    "Kondapally01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "VLBA",
+   "shared_papers": 3,
+   "papers": [
+    "Curiel01",
+    "Radcliffe01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Chandra",
+   "shared_papers": 3,
+   "papers": [
+    "Buemi01",
+    "Rosch01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Euclid",
+   "shared_papers": 3,
+   "papers": [
+    "Afonso01",
+    "Kondapally01",
+    "Lelli01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "CTAO",
+   "shared_papers": 3,
+   "papers": [
+    "Castignani01",
+    "GemmaAnderson01",
+    "Lico01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "ngVLA",
+   "shared_papers": 3,
+   "papers": [
+    "Curiel01",
+    "Radcliffe01",
+    "Tarchi01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Spitzer",
+   "shared_papers": 3,
+   "papers": [
+    "Lelli01",
+    "Traficante01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Effelsberg",
+   "shared_papers": 3,
+   "papers": [
+    "Radcliffe01",
+    "Traficante01",
+    "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "IceCube",
+   "shared_papers": 3,
+   "papers": [
+    "Castignani01",
+    "GemmaAnderson01",
+    "Rosch01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "SPT",
+   "shared_papers": 3,
+   "papers": [
+    "Perrott01",
+    "RanWang01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Effelsberg",
+   "shared_papers": 3,
+   "papers": [
+    "Bourke01",
+    "Radcliffe01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Herschel",
+   "shared_papers": 3,
+   "papers": [
+    "Bourke01",
+    "Bracco01",
+    "Santos-Sanz01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "SDO",
+   "shared_papers": 3,
+   "papers": [
+    "Mohan01",
+    "Patra01",
+    "Santos-Sanz01"
    ]
   },
   {
@@ -6271,6 +6718,16 @@
   },
   {
    "a": "ASKAP",
+   "b": "Roman",
+   "shared_papers": 3,
+   "papers": [
+    "AlexAndersson02",
+    "Cang01",
+    "JingWang01"
+   ]
+  },
+  {
+   "a": "ASKAP",
    "b": "DSA",
    "shared_papers": 3,
    "papers": [
@@ -6280,153 +6737,33 @@
    ]
   },
   {
-   "a": "GMRT",
-   "b": "ATCA",
-   "shared_papers": 3,
-   "papers": [
-    "Akahori01",
-    "GemmaAnderson01",
-    "Kondapally01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Chandra",
-   "shared_papers": 3,
-   "papers": [
-    "Joshi01",
-    "SabyasachiPal01",
-    "Santra01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "VLBA",
-   "shared_papers": 3,
-   "papers": [
-    "Baczko01",
-    "Kobayashi01",
-    "Pandey-Pommier03"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "LIGO/Virgo/KAGRA",
-   "shared_papers": 3,
-   "papers": [
-    "GemmaAnderson01",
-    "Hota01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "WISE",
-   "shared_papers": 3,
-   "papers": [
-    "Hota01",
-    "SabyasachiPal01",
-    "Sasmal01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Roman",
-   "shared_papers": 3,
-   "papers": [
-    "Bait01",
-    "Cang01",
-    "JingWang01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Solar Orbiter",
-   "shared_papers": 3,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Raja01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Parker Solar Probe",
-   "shared_papers": 3,
-   "papers": [
-    "Kumari01",
-    "Morosan01",
-    "Raja01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "eROSITA",
-   "shared_papers": 3,
-   "papers": [
-    "Cassano01",
-    "Cuciti01",
-    "Pasini01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Parkes/Murriyang",
-   "shared_papers": 3,
-   "papers": [
-    "Rygl01",
-    "Traficante01",
-    "deBlok01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "SPT",
-   "shared_papers": 3,
-   "papers": [
-    "Perrott01",
-    "RanWang01",
-    "Timmerman01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Herschel",
-   "shared_papers": 3,
-   "papers": [
-    "Bourke01",
-    "Bracco01",
-    "Santos-Sanz01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "SDO",
-   "shared_papers": 3,
-   "papers": [
-    "Mohan01",
-    "Patra01",
-    "Santos-Sanz01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "ATCA",
-   "shared_papers": 3,
-   "papers": [
-    "GemmaAnderson01",
-    "Kondapally01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
+   "a": "MWA",
    "b": "GBT",
    "shared_papers": 3,
    "papers": [
     "Curtin01",
-    "RanWang01",
-    "Traficante01"
+    "Mahony01",
+    "Tremblay01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "CTAO",
+   "shared_papers": 3,
+   "papers": [
+    "Chhetri01",
+    "GemmaAnderson01",
+    "Ingallinera01"
+   ]
+  },
+  {
+   "a": "MWA",
+   "b": "Pulsar timing arrays",
+   "shared_papers": 3,
+   "papers": [
+    "GemmaAnderson01",
+    "Shannon01",
+    "Tiburzi01"
    ]
   },
   {
@@ -6441,12 +6778,32 @@
   },
   {
    "a": "Rubin/LSST",
+   "b": "GBT",
+   "shared_papers": 3,
+   "papers": [
+    "Curtin01",
+    "RanWang01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
    "b": "Spitzer",
    "shared_papers": 3,
    "papers": [
     "Hota01",
     "Santos-Sanz01",
     "Traficante01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "Roman",
+   "shared_papers": 3,
+   "papers": [
+    "AlexAndersson02",
+    "JingWang01",
+    "Prandoni01"
    ]
   },
   {
@@ -6480,43 +6837,13 @@
    ]
   },
   {
-   "a": "MWA",
-   "b": "ATCA",
+   "a": "Parkes/Murriyang",
+   "b": "ngVLA",
    "shared_papers": 3,
    "papers": [
-    "Afonso01",
-    "GemmaAnderson01",
-    "Sun01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "GBT",
-   "shared_papers": 3,
-   "papers": [
-    "Curtin01",
-    "Mahony01",
-    "Tremblay01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "Pulsar timing arrays",
-   "shared_papers": 3,
-   "papers": [
-    "GemmaAnderson01",
-    "Shannon01",
-    "Tiburzi01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "Euclid",
-   "shared_papers": 3,
-   "papers": [
-    "Afonso01",
-    "Chakraborty01",
-    "Pasini01"
+    "Abbate01",
+    "Radcliffe01",
+    "Shannon01"
    ]
   },
   {
@@ -6540,83 +6867,63 @@
    ]
   },
   {
-   "a": "Parkes/Murriyang",
-   "b": "Effelsberg",
-   "shared_papers": 3,
-   "papers": [
-    "Abbate01",
-    "Traficante01",
-    "Wongphecauxson01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "Chandra",
-   "shared_papers": 3,
-   "papers": [
-    "Buemi01",
-    "Rosch01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "CTAO",
-   "shared_papers": 3,
-   "papers": [
-    "Castignani01",
-    "GemmaAnderson01",
-    "Lico01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "Spitzer",
-   "shared_papers": 3,
-   "papers": [
-    "Lelli01",
-    "Traficante01",
-    "Vidal01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "Euclid",
-   "shared_papers": 3,
-   "papers": [
-    "Afonso01",
-    "Kondapally01",
-    "Lelli01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "IceCube",
-   "shared_papers": 3,
-   "papers": [
-    "Castignani01",
-    "GemmaAnderson01",
-    "Rosch01"
-   ]
-  },
-  {
-   "a": "Gaia",
-   "b": "Chandra",
-   "shared_papers": 3,
-   "papers": [
-    "Buemi01",
-    "DAmato01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "Gaia",
-   "b": "VLBA",
+   "a": "VLBA",
+   "b": "Gaia",
    "shared_papers": 3,
    "papers": [
     "Curiel01",
     "DAmato01",
     "MingHuiXu01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "JWST",
+   "shared_papers": 3,
+   "papers": [
+    "DAmato01",
+    "Panessa01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "Euclid",
+   "shared_papers": 3,
+   "papers": [
+    "Baczko01",
+    "DAmato01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "ngVLA",
+   "shared_papers": 3,
+   "papers": [
+    "Baczko01",
+    "Curiel01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "Swift",
+   "shared_papers": 3,
+   "papers": [
+    "Akahori02",
+    "DAmato01",
+    "Shu01"
+   ]
+  },
+  {
+   "a": "Gaia",
+   "b": "Chandra",
+   "shared_papers": 3,
+   "papers": [
+    "Buemi01",
+    "DAmato01",
+    "Traficante01"
    ]
   },
   {
@@ -6637,16 +6944,6 @@
     "Beri01",
     "Marcote01",
     "Tremblay01"
-   ]
-  },
-  {
-   "a": "JWST",
-   "b": "VLBA",
-   "shared_papers": 3,
-   "papers": [
-    "DAmato01",
-    "Panessa01",
-    "Spingola01"
    ]
   },
   {
@@ -6701,16 +6998,6 @@
   },
   {
    "a": "Chandra",
-   "b": "XRISM",
-   "shared_papers": 3,
-   "papers": [
-    "Gitti01",
-    "Kudoh01",
-    "Perrott01"
-   ]
-  },
-  {
-   "a": "Chandra",
    "b": "SPT",
    "shared_papers": 3,
    "papers": [
@@ -6727,6 +7014,16 @@
     "Akahori02",
     "DAmato01",
     "Schoedel01"
+   ]
+  },
+  {
+   "a": "Chandra",
+   "b": "XRISM",
+   "shared_papers": 3,
+   "papers": [
+    "Gitti01",
+    "Kudoh01",
+    "Perrott01"
    ]
   },
   {
@@ -6750,23 +7047,13 @@
    ]
   },
   {
-   "a": "VLBA",
-   "b": "Euclid",
+   "a": "CHIME",
+   "b": "DESI",
    "shared_papers": 3,
    "papers": [
-    "Baczko01",
-    "DAmato01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "VLBA",
-   "b": "Swift",
-   "shared_papers": 3,
-   "papers": [
-    "Akahori02",
-    "DAmato01",
-    "Shu01"
+    "Cunnington01",
+    "Elahi01",
+    "Mahony01"
    ]
   },
   {
@@ -6800,16 +7087,6 @@
    ]
   },
   {
-   "a": "CHIME",
-   "b": "DESI",
-   "shared_papers": 3,
-   "papers": [
-    "Cunnington01",
-    "Elahi01",
-    "Mahony01"
-   ]
-  },
-  {
    "a": "Planck",
    "b": "ngVLA",
    "shared_papers": 3,
@@ -6830,56 +7107,6 @@
    ]
   },
   {
-   "a": "ELT",
-   "b": "EVN",
-   "shared_papers": 3,
-   "papers": [
-    "Kudoh01",
-    "Spingola01",
-    "Timmerman01"
-   ]
-  },
-  {
-   "a": "ELT",
-   "b": "VLT",
-   "shared_papers": 3,
-   "papers": [
-    "Kudoh01",
-    "Sabatini01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "CTAO",
-   "b": "EVN",
-   "shared_papers": 3,
-   "papers": [
-    "GemmaAnderson01",
-    "Lico01",
-    "Marcote01"
-   ]
-  },
-  {
-   "a": "CTAO",
-   "b": "KM3NeT",
-   "shared_papers": 3,
-   "papers": [
-    "Bruni01",
-    "GemmaAnderson01",
-    "Ingallinera01"
-   ]
-  },
-  {
-   "a": "CTAO",
-   "b": "Einstein Probe",
-   "shared_papers": 3,
-   "papers": [
-    "Colombo01",
-    "GemmaAnderson01",
-    "TaoAn03"
-   ]
-  },
-  {
    "a": "Euclid",
    "b": "VLT",
    "shared_papers": 3,
@@ -6891,22 +7118,22 @@
   },
   {
    "a": "Euclid",
-   "b": "XMM-Newton",
-   "shared_papers": 3,
-   "papers": [
-    "Kondapally01",
-    "Pasini01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "Euclid",
    "b": "Roman",
    "shared_papers": 3,
    "papers": [
     "Cang01",
     "JingWang01",
     "Prandoni01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "XMM-Newton",
+   "shared_papers": 3,
+   "papers": [
+    "Kondapally01",
+    "Pasini01",
+    "SabyasachiPal03"
    ]
   },
   {
@@ -6941,12 +7168,22 @@
   },
   {
    "a": "EVN",
-   "b": "ngVLA",
+   "b": "ELT",
    "shared_papers": 3,
    "papers": [
-    "Abbate01",
-    "Baczko01",
-    "Kudoh01"
+    "Kudoh01",
+    "Spingola01",
+    "Timmerman01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "CTAO",
+   "shared_papers": 3,
+   "papers": [
+    "GemmaAnderson01",
+    "Lico01",
+    "Marcote01"
    ]
   },
   {
@@ -6960,13 +7197,43 @@
    ]
   },
   {
-   "a": "EVN",
-   "b": "Effelsberg",
+   "a": "ELT",
+   "b": "VLT",
+   "shared_papers": 3,
+   "papers": [
+    "Kudoh01",
+    "Sabatini01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "CTAO",
+   "b": "KM3NeT",
+   "shared_papers": 3,
+   "papers": [
+    "Bruni01",
+    "GemmaAnderson01",
+    "Ingallinera01"
+   ]
+  },
+  {
+   "a": "CTAO",
+   "b": "Einstein Probe",
+   "shared_papers": 3,
+   "papers": [
+    "Colombo01",
+    "GemmaAnderson01",
+    "TaoAn03"
+   ]
+  },
+  {
+   "a": "ngVLA",
+   "b": "EHT/ngEHT",
    "shared_papers": 3,
    "papers": [
     "Abbate01",
-    "Chen01",
-    "Wongphecauxson01"
+    "Baczko01",
+    "Radcliffe01"
    ]
   },
   {
@@ -7030,6 +7297,16 @@
    ]
   },
   {
+   "a": "Solar Orbiter",
+   "b": "STEREO",
+   "shared_papers": 3,
+   "papers": [
+    "Dey01",
+    "Kumari01",
+    "Morosan01"
+   ]
+  },
+  {
    "a": "Parker Solar Probe",
    "b": "SDO",
    "shared_papers": 3,
@@ -7037,15 +7314,6 @@
     "Morosan01",
     "Patra01",
     "Zucca01"
-   ]
-  },
-  {
-   "a": "MeerKAT",
-   "b": "Roman",
-   "shared_papers": 2,
-   "papers": [
-    "JingWang01",
-    "Prandoni01"
    ]
   },
   {
@@ -7122,15 +7390,6 @@
   },
   {
    "a": "LOFAR",
-   "b": "CTAO",
-   "shared_papers": 2,
-   "papers": [
-    "Bruni01",
-    "GemmaAnderson01"
-   ]
-  },
-  {
-   "a": "LOFAR",
    "b": "Spitzer",
    "shared_papers": 2,
    "papers": [
@@ -7167,6 +7426,15 @@
   },
   {
    "a": "LOFAR",
+   "b": "EHT/ngEHT",
+   "shared_papers": 2,
+   "papers": [
+    "Baczko01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "LOFAR",
    "b": "KM3NeT",
    "shared_papers": 2,
    "papers": [
@@ -7199,15 +7467,6 @@
    "papers": [
     "Curtin01",
     "Qiu01"
-   ]
-  },
-  {
-   "a": "LOFAR",
-   "b": "Roman",
-   "shared_papers": 2,
-   "papers": [
-    "Bait01",
-    "Prandoni01"
    ]
   },
   {
@@ -7284,6 +7543,33 @@
   },
   {
    "a": "VLA",
+   "b": "EHT/ngEHT",
+   "shared_papers": 2,
+   "papers": [
+    "Baczko01",
+    "Beri01"
+   ]
+  },
+  {
+   "a": "VLA",
+   "b": "Effelsberg",
+   "shared_papers": 2,
+   "papers": [
+    "Bourke01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "VLA",
+   "b": "Roman",
+   "shared_papers": 2,
+   "papers": [
+    "Bait01",
+    "JingWang01"
+   ]
+  },
+  {
+   "a": "VLA",
    "b": "KM3NeT",
    "shared_papers": 2,
    "papers": [
@@ -7320,29 +7606,11 @@
   },
   {
    "a": "VLA",
-   "b": "EHT/ngEHT",
+   "b": "STEREO",
    "shared_papers": 2,
    "papers": [
-    "Baczko01",
-    "Beri01"
-   ]
-  },
-  {
-   "a": "VLA",
-   "b": "Effelsberg",
-   "shared_papers": 2,
-   "papers": [
-    "Bourke01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "VLA",
-   "b": "Roman",
-   "shared_papers": 2,
-   "papers": [
-    "Bait01",
-    "JingWang01"
+    "Dey01",
+    "Kumari01"
    ]
   },
   {
@@ -7352,6 +7620,213 @@
    "papers": [
     "Colombo01",
     "TaoAn03"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "VLT",
+   "shared_papers": 2,
+   "papers": [
+    "Mahony01",
+    "Rosolowsky01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "Fermi",
+   "shared_papers": 2,
+   "papers": [
+    "Oswald01",
+    "Shannon01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "EHT/ngEHT",
+   "shared_papers": 2,
+   "papers": [
+    "Baczko01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "HERA",
+   "shared_papers": 2,
+   "papers": [
+    "Burba01",
+    "deLeraAcedo01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "4MOST",
+   "shared_papers": 2,
+   "papers": [
+    "JingWang01",
+    "Mahony01"
+   ]
+  },
+  {
+   "a": "GMRT",
+   "b": "SOHO",
+   "shared_papers": 2,
+   "papers": [
+    "Morosan01",
+    "Raja01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "CHIME",
+   "shared_papers": 2,
+   "papers": [
+    "Castignani01",
+    "GemmaAnderson01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "ELT",
+   "shared_papers": 2,
+   "papers": [
+    "Garufi01",
+    "Sabatini01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "HST",
+   "shared_papers": 2,
+   "papers": [
+    "Garufi01",
+    "Sabatini01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "VLT",
+   "shared_papers": 2,
+   "papers": [
+    "Lelli01",
+    "Sabatini01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "Fermi",
+   "shared_papers": 2,
+   "papers": [
+    "Castignani01",
+    "Regis01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "KM3NeT",
+   "shared_papers": 2,
+   "papers": [
+    "GemmaAnderson01",
+    "Rosch01"
+   ]
+  },
+  {
+   "a": "ATCA",
+   "b": "XMM-Newton",
+   "shared_papers": 2,
+   "papers": [
+    "Akahori01",
+    "Kondapally01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "CTAO",
+   "shared_papers": 2,
+   "papers": [
+    "Chandra01",
+    "Lico01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "DESI",
+   "shared_papers": 2,
+   "papers": [
+    "Mahony01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Swift",
+   "shared_papers": 2,
+   "papers": [
+    "DAmato01",
+    "Schoedel01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "XRISM",
+   "shared_papers": 2,
+   "papers": [
+    "Kudoh01",
+    "Perrott01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Solar Orbiter",
+   "shared_papers": 2,
+   "papers": [
+    "Kumari01",
+    "Patra01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "4MOST",
+   "shared_papers": 2,
+   "papers": [
+    "Mahony01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "WISE",
+   "shared_papers": 2,
+   "papers": [
+    "SabyasachiPal01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "Parker Solar Probe",
+   "shared_papers": 2,
+   "papers": [
+    "Kumari01",
+    "Patra01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "SPHEREx",
+   "shared_papers": 2,
+   "papers": [
+    "Sarkar01",
+    "Vidal01"
+   ]
+  },
+  {
+   "a": "ALMA",
+   "b": "STEREO",
+   "shared_papers": 2,
+   "papers": [
+    "Kumari01",
+    "Mohan01"
    ]
   },
   {
@@ -7374,11 +7849,29 @@
   },
   {
    "a": "ASKAP",
+   "b": "Effelsberg",
+   "shared_papers": 2,
+   "papers": [
+    "Bourke01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "ASKAP",
    "b": "KM3NeT",
    "shared_papers": 2,
    "papers": [
     "GemmaAnderson01",
     "Ingallinera01"
+   ]
+  },
+  {
+   "a": "ASKAP",
+   "b": "Athena/NewAthena",
+   "shared_papers": 2,
+   "papers": [
+    "AlexAndersson02",
+    "SabyasachiPal03"
    ]
   },
   {
@@ -7410,24 +7903,6 @@
   },
   {
    "a": "ASKAP",
-   "b": "Effelsberg",
-   "shared_papers": 2,
-   "papers": [
-    "Bourke01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ASKAP",
-   "b": "Roman",
-   "shared_papers": 2,
-   "papers": [
-    "Cang01",
-    "JingWang01"
-   ]
-  },
-  {
-   "a": "ASKAP",
    "b": "Herschel",
    "shared_papers": 2,
    "papers": [
@@ -7445,264 +7920,12 @@
    ]
   },
   {
-   "a": "GMRT",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Baczko01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "VLT",
-   "shared_papers": 2,
-   "papers": [
-    "Mahony01",
-    "Rosolowsky01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "Fermi",
-   "shared_papers": 2,
-   "papers": [
-    "Oswald01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "HERA",
-   "shared_papers": 2,
-   "papers": [
-    "Burba01",
-    "deLeraAcedo01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "4MOST",
-   "shared_papers": 2,
-   "papers": [
-    "JingWang01",
-    "Mahony01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "STEREO",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Morosan01"
-   ]
-  },
-  {
-   "a": "GMRT",
-   "b": "SOHO",
-   "shared_papers": 2,
-   "papers": [
-    "Morosan01",
-    "Raja01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "CTAO",
-   "shared_papers": 2,
-   "papers": [
-    "Chandra01",
-    "Lico01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "XRISM",
-   "shared_papers": 2,
-   "papers": [
-    "Kudoh01",
-    "Perrott01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Swift",
-   "shared_papers": 2,
-   "papers": [
-    "DAmato01",
-    "Schoedel01"
-   ]
-  },
-  {
-   "a": "ALMA",
+   "a": "MWA",
    "b": "DESI",
    "shared_papers": 2,
    "papers": [
-    "Mahony01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "4MOST",
-   "shared_papers": 2,
-   "papers": [
-    "Mahony01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "WISE",
-   "shared_papers": 2,
-   "papers": [
-    "SabyasachiPal01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Effelsberg",
-   "shared_papers": 2,
-   "papers": [
-    "Bourke01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Solar Orbiter",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Patra01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "Parker Solar Probe",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Patra01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "SPHEREx",
-   "shared_papers": 2,
-   "papers": [
-    "Sarkar01",
-    "Vidal01"
-   ]
-  },
-  {
-   "a": "ALMA",
-   "b": "STEREO",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Mohan01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "Gaia",
-   "shared_papers": 2,
-   "papers": [
-    "DAmato01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "Pulsar timing arrays",
-   "shared_papers": 2,
-   "papers": [
-    "DAmato01",
-    "GemmaAnderson01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "LISA",
-   "shared_papers": 2,
-   "papers": [
-    "Camera01",
-    "DAmato01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Chandra01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "VLT",
-   "shared_papers": 2,
-   "papers": [
-    "Duncan01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "WISE",
-   "shared_papers": 2,
-   "papers": [
-    "Hota01",
-    "Traficante01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "Roman",
-   "shared_papers": 2,
-   "papers": [
-    "JingWang01",
-    "Prandoni01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "Herschel",
-   "shared_papers": 2,
-   "papers": [
-    "Hota01",
-    "Santos-Sanz01"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "eROSITA",
-   "shared_papers": 2,
-   "papers": [
-    "Cuciti01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "Rubin/LSST",
-   "b": "WEAVE",
-   "shared_papers": 2,
-   "papers": [
-    "Dabhade01",
-    "Duncan01"
-   ]
-  },
-  {
-   "a": "MWA",
-   "b": "CTAO",
-   "shared_papers": 2,
-   "papers": [
-    "GemmaAnderson01",
-    "Ingallinera01"
+    "Chhetri01",
+    "Mahony01"
    ]
   },
   {
@@ -7769,6 +7992,96 @@
    ]
   },
   {
+   "a": "Rubin/LSST",
+   "b": "Gaia",
+   "shared_papers": 2,
+   "papers": [
+    "DAmato01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "ngVLA",
+   "shared_papers": 2,
+   "papers": [
+    "Chandra01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "Pulsar timing arrays",
+   "shared_papers": 2,
+   "papers": [
+    "DAmato01",
+    "GemmaAnderson01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "LISA",
+   "shared_papers": 2,
+   "papers": [
+    "Camera01",
+    "DAmato01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "VLT",
+   "shared_papers": 2,
+   "papers": [
+    "Duncan01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "Athena/NewAthena",
+   "shared_papers": 2,
+   "papers": [
+    "AlexAndersson02",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "WISE",
+   "shared_papers": 2,
+   "papers": [
+    "Hota01",
+    "Traficante01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "Herschel",
+   "shared_papers": 2,
+   "papers": [
+    "Hota01",
+    "Santos-Sanz01"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "eROSITA",
+   "shared_papers": 2,
+   "papers": [
+    "Cuciti01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Rubin/LSST",
+   "b": "WEAVE",
+   "shared_papers": 2,
+   "papers": [
+    "Dabhade01",
+    "Duncan01"
+   ]
+  },
+  {
    "a": "Parkes/Murriyang",
    "b": "Gaia",
    "shared_papers": 2,
@@ -7806,15 +8119,6 @@
   },
   {
    "a": "Parkes/Murriyang",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Abbate01",
-    "Shannon01"
-   ]
-  },
-  {
-   "a": "Parkes/Murriyang",
    "b": "HST",
    "shared_papers": 2,
    "papers": [
@@ -7829,6 +8133,15 @@
    "papers": [
     "Oswald01",
     "Shannon01"
+   ]
+  },
+  {
+   "a": "Parkes/Murriyang",
+   "b": "EHT/ngEHT",
+   "shared_papers": 2,
+   "papers": [
+    "Abbate01",
+    "Radcliffe01"
    ]
   },
   {
@@ -7877,93 +8190,57 @@
    ]
   },
   {
-   "a": "ATCA",
-   "b": "VLBA",
+   "a": "VLBA",
+   "b": "Planck",
    "shared_papers": 2,
    "papers": [
-    "Curiel01",
-    "Wongphecauxson01"
+    "Ingallinera01",
+    "Spingola01"
    ]
   },
   {
-   "a": "ATCA",
-   "b": "CHIME",
-   "shared_papers": 2,
-   "papers": [
-    "Castignani01",
-    "GemmaAnderson01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "ELT",
-   "shared_papers": 2,
-   "papers": [
-    "Garufi01",
-    "Sabatini01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Curiel01",
-    "Tarchi01"
-   ]
-  },
-  {
-   "a": "ATCA",
+   "a": "VLBA",
    "b": "HST",
    "shared_papers": 2,
    "papers": [
-    "Garufi01",
-    "Sabatini01"
+    "Akahori02",
+    "DAmato01"
    ]
   },
   {
-   "a": "ATCA",
-   "b": "VLT",
+   "a": "VLBA",
+   "b": "EHT/ngEHT",
    "shared_papers": 2,
    "papers": [
-    "Lelli01",
-    "Sabatini01"
+    "Baczko01",
+    "Radcliffe01"
    ]
   },
   {
-   "a": "ATCA",
-   "b": "Fermi",
-   "shared_papers": 2,
-   "papers": [
-    "Castignani01",
-    "Regis01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "KM3NeT",
-   "shared_papers": 2,
-   "papers": [
-    "GemmaAnderson01",
-    "Rosch01"
-   ]
-  },
-  {
-   "a": "ATCA",
-   "b": "XMM-Newton",
-   "shared_papers": 2,
-   "papers": [
-    "Akahori01",
-    "Kondapally01"
-   ]
-  },
-  {
-   "a": "ATCA",
+   "a": "VLBA",
    "b": "Effelsberg",
    "shared_papers": 2,
    "papers": [
-    "Traficante01",
+    "Radcliffe01",
     "Wongphecauxson01"
+   ]
+  },
+  {
+   "a": "VLBA",
+   "b": "Einstein Probe",
+   "shared_papers": 2,
+   "papers": [
+    "Panessa01",
+    "Shu01"
+   ]
+  },
+  {
+   "a": "Gaia",
+   "b": "Euclid",
+   "shared_papers": 2,
+   "papers": [
+    "Cruz01",
+    "DAmato01"
    ]
   },
   {
@@ -7991,15 +8268,6 @@
    "papers": [
     "Traficante01",
     "Vidal01"
-   ]
-  },
-  {
-   "a": "Gaia",
-   "b": "Euclid",
-   "shared_papers": 2,
-   "papers": [
-    "Cruz01",
-    "DAmato01"
    ]
   },
   {
@@ -8112,20 +8380,20 @@
   },
   {
    "a": "Chandra",
-   "b": "VLT",
-   "shared_papers": 2,
-   "papers": [
-    "Kudoh01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "Chandra",
    "b": "DESI",
    "shared_papers": 2,
    "papers": [
     "Dabhade01",
     "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Chandra",
+   "b": "VLT",
+   "shared_papers": 2,
+   "papers": [
+    "Kudoh01",
+    "Spingola01"
    ]
   },
   {
@@ -8166,6 +8434,15 @@
   },
   {
    "a": "GBT",
+   "b": "Euclid",
+   "shared_papers": 2,
+   "papers": [
+    "Elahi01",
+    "RanWang01"
+   ]
+  },
+  {
+   "a": "GBT",
    "b": "ELT",
    "shared_papers": 2,
    "papers": [
@@ -8175,11 +8452,11 @@
   },
   {
    "a": "GBT",
-   "b": "Euclid",
+   "b": "DESI",
    "shared_papers": 2,
    "papers": [
     "Elahi01",
-    "RanWang01"
+    "Mahony01"
    ]
   },
   {
@@ -8210,48 +8487,12 @@
    ]
   },
   {
-   "a": "GBT",
-   "b": "DESI",
+   "a": "CHIME",
+   "b": "EVN",
    "shared_papers": 2,
    "papers": [
-    "Elahi01",
-    "Mahony01"
-   ]
-  },
-  {
-   "a": "VLBA",
-   "b": "Planck",
-   "shared_papers": 2,
-   "papers": [
-    "Ingallinera01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "VLBA",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Baczko01",
-    "Curiel01"
-   ]
-  },
-  {
-   "a": "VLBA",
-   "b": "HST",
-   "shared_papers": 2,
-   "papers": [
-    "Akahori02",
-    "DAmato01"
-   ]
-  },
-  {
-   "a": "VLBA",
-   "b": "Einstein Probe",
-   "shared_papers": 2,
-   "papers": [
-    "Panessa01",
-    "Shu01"
+    "Curtin01",
+    "GemmaAnderson01"
    ]
   },
   {
@@ -8270,15 +8511,6 @@
    "papers": [
     "GemmaAnderson01",
     "Shannon01"
-   ]
-  },
-  {
-   "a": "CHIME",
-   "b": "EVN",
-   "shared_papers": 2,
-   "papers": [
-    "Curtin01",
-    "GemmaAnderson01"
    ]
   },
   {
@@ -8346,7 +8578,7 @@
   },
   {
    "a": "Planck",
-   "b": "ELT",
+   "b": "EVN",
    "shared_papers": 2,
    "papers": [
     "Kudoh01",
@@ -8355,7 +8587,7 @@
   },
   {
    "a": "Planck",
-   "b": "EVN",
+   "b": "ELT",
    "shared_papers": 2,
    "papers": [
     "Kudoh01",
@@ -8382,15 +8614,6 @@
   },
   {
    "a": "Planck",
-   "b": "XRISM",
-   "shared_papers": 2,
-   "papers": [
-    "Kudoh01",
-    "Perrott01"
-   ]
-  },
-  {
-   "a": "Planck",
    "b": "Fermi",
    "shared_papers": 2,
    "papers": [
@@ -8401,6 +8624,15 @@
   {
    "a": "Planck",
    "b": "Athena/NewAthena",
+   "shared_papers": 2,
+   "papers": [
+    "Kudoh01",
+    "Perrott01"
+   ]
+  },
+  {
+   "a": "Planck",
+   "b": "XRISM",
    "shared_papers": 2,
    "papers": [
     "Kudoh01",
@@ -8459,6 +8691,159 @@
    "papers": [
     "Fonseca01",
     "Vidal01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "EVN",
+   "shared_papers": 2,
+   "papers": [
+    "Baczko01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "ngVLA",
+   "shared_papers": 2,
+   "papers": [
+    "Baczko01",
+    "SabyasachiPal03"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "Pulsar timing arrays",
+   "shared_papers": 2,
+   "papers": [
+    "Cruz01",
+    "DAmato01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "Spitzer",
+   "shared_papers": 2,
+   "papers": [
+    "Ignesti01",
+    "Lelli01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "LISA",
+   "shared_papers": 2,
+   "papers": [
+    "Camera01",
+    "DAmato01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "HST",
+   "shared_papers": 2,
+   "papers": [
+    "DAmato01",
+    "Dabhade01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "HERA",
+   "shared_papers": 2,
+   "papers": [
+    "Bag01",
+    "Chakraborty01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "SPHEREx",
+   "shared_papers": 2,
+   "papers": [
+    "Chakraborty01",
+    "Sarkar01"
+   ]
+  },
+  {
+   "a": "Euclid",
+   "b": "WEAVE",
+   "shared_papers": 2,
+   "papers": [
+    "Dabhade01",
+    "Duncan01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "Pulsar timing arrays",
+   "shared_papers": 2,
+   "papers": [
+    "GemmaAnderson01",
+    "Takahashi01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "LIGO/Virgo/KAGRA",
+   "shared_papers": 2,
+   "papers": [
+    "Beri01",
+    "GemmaAnderson01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "VLT",
+   "shared_papers": 2,
+   "papers": [
+    "Kudoh01",
+    "Spingola01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "NenuFAR",
+   "shared_papers": 2,
+   "papers": [
+    "Curtin01",
+    "Tremblay01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "KM3NeT",
+   "shared_papers": 2,
+   "papers": [
+    "GemmaAnderson01",
+    "Rosch01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "XRISM",
+   "shared_papers": 2,
+   "papers": [
+    "Beri01",
+    "Kudoh01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "Einstein Probe",
+   "shared_papers": 2,
+   "papers": [
+    "GemmaAnderson01",
+    "Panessa01"
+   ]
+  },
+  {
+   "a": "EVN",
+   "b": "IceCube",
+   "shared_papers": 2,
+   "papers": [
+    "GemmaAnderson01",
+    "Rosch01"
    ]
   },
   {
@@ -8525,21 +8910,30 @@
    ]
   },
   {
-   "a": "Pulsar timing arrays",
-   "b": "Euclid",
+   "a": "ngVLA",
+   "b": "LISA",
    "shared_papers": 2,
    "papers": [
-    "Cruz01",
-    "DAmato01"
+    "Abbate01",
+    "Shannon01"
    ]
   },
   {
-   "a": "Pulsar timing arrays",
-   "b": "EVN",
+   "a": "ngVLA",
+   "b": "Effelsberg",
    "shared_papers": 2,
    "papers": [
-    "GemmaAnderson01",
-    "Takahashi01"
+    "Abbate01",
+    "Radcliffe01"
+   ]
+  },
+  {
+   "a": "ngVLA",
+   "b": "Athena/NewAthena",
+   "shared_papers": 2,
+   "papers": [
+    "Kudoh01",
+    "SabyasachiPal03"
    ]
   },
   {
@@ -8562,15 +8956,6 @@
   },
   {
    "a": "Spitzer",
-   "b": "Euclid",
-   "shared_papers": 2,
-   "papers": [
-    "Ignesti01",
-    "Lelli01"
-   ]
-  },
-  {
-   "a": "Spitzer",
    "b": "WISE",
    "shared_papers": 2,
    "papers": [
@@ -8588,61 +8973,43 @@
    ]
   },
   {
-   "a": "Euclid",
-   "b": "EVN",
+   "a": "DESI",
+   "b": "LIGO/Virgo/KAGRA",
    "shared_papers": 2,
    "papers": [
-    "Baczko01",
-    "Spingola01"
+    "Baker01",
+    "Camera01"
    ]
   },
   {
-   "a": "Euclid",
-   "b": "LISA",
-   "shared_papers": 2,
-   "papers": [
-    "Camera01",
-    "DAmato01"
-   ]
-  },
-  {
-   "a": "Euclid",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Baczko01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "Euclid",
+   "a": "DESI",
    "b": "HST",
    "shared_papers": 2,
    "papers": [
-    "DAmato01",
-    "Dabhade01"
+    "Dabhade01",
+    "Mahony01"
    ]
   },
   {
-   "a": "Euclid",
-   "b": "HERA",
+   "a": "DESI",
+   "b": "VLT",
    "shared_papers": 2,
    "papers": [
-    "Bag01",
-    "Chakraborty01"
+    "Duncan01",
+    "Mahony01"
    ]
   },
   {
-   "a": "Euclid",
-   "b": "SPHEREx",
+   "a": "DESI",
+   "b": "SPT",
    "shared_papers": 2,
    "papers": [
-    "Chakraborty01",
-    "Sarkar01"
+    "Sasmal01",
+    "Wolz01"
    ]
   },
   {
-   "a": "Euclid",
+   "a": "DESI",
    "b": "WEAVE",
    "shared_papers": 2,
    "papers": [
@@ -8651,75 +9018,12 @@
    ]
   },
   {
-   "a": "EVN",
-   "b": "LIGO/Virgo/KAGRA",
-   "shared_papers": 2,
-   "papers": [
-    "Beri01",
-    "GemmaAnderson01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "VLT",
-   "shared_papers": 2,
-   "papers": [
-    "Kudoh01",
-    "Spingola01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "XRISM",
-   "shared_papers": 2,
-   "papers": [
-    "Beri01",
-    "Kudoh01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "NenuFAR",
-   "shared_papers": 2,
-   "papers": [
-    "Curtin01",
-    "Tremblay01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "KM3NeT",
-   "shared_papers": 2,
-   "papers": [
-    "GemmaAnderson01",
-    "Rosch01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "Einstein Probe",
-   "shared_papers": 2,
-   "papers": [
-    "GemmaAnderson01",
-    "Panessa01"
-   ]
-  },
-  {
-   "a": "EVN",
-   "b": "IceCube",
-   "shared_papers": 2,
-   "papers": [
-    "GemmaAnderson01",
-    "Rosch01"
-   ]
-  },
-  {
    "a": "LIGO/Virgo/KAGRA",
-   "b": "DESI",
+   "b": "EHT/ngEHT",
    "shared_papers": 2,
    "papers": [
-    "Baker01",
-    "Camera01"
+    "Beri01",
+    "VenkatramanKrishnan01"
    ]
   },
   {
@@ -8738,24 +9042,6 @@
    "papers": [
     "AvishekBasu01",
     "Beri01"
-   ]
-  },
-  {
-   "a": "LIGO/Virgo/KAGRA",
-   "b": "EHT/ngEHT",
-   "shared_papers": 2,
-   "papers": [
-    "Beri01",
-    "VenkatramanKrishnan01"
-   ]
-  },
-  {
-   "a": "LISA",
-   "b": "ngVLA",
-   "shared_papers": 2,
-   "papers": [
-    "Abbate01",
-    "Shannon01"
    ]
   },
   {
@@ -8786,24 +9072,6 @@
    ]
   },
   {
-   "a": "ngVLA",
-   "b": "Athena/NewAthena",
-   "shared_papers": 2,
-   "papers": [
-    "Kudoh01",
-    "SabyasachiPal03"
-   ]
-  },
-  {
-   "a": "ngVLA",
-   "b": "EHT/ngEHT",
-   "shared_papers": 2,
-   "papers": [
-    "Abbate01",
-    "Baczko01"
-   ]
-  },
-  {
    "a": "HST",
    "b": "Swift",
    "shared_papers": 2,
@@ -8814,28 +9082,10 @@
   },
   {
    "a": "HST",
-   "b": "DESI",
-   "shared_papers": 2,
-   "papers": [
-    "Dabhade01",
-    "Mahony01"
-   ]
-  },
-  {
-   "a": "HST",
    "b": "4MOST",
    "shared_papers": 2,
    "papers": [
     "Dabhade01",
-    "Mahony01"
-   ]
-  },
-  {
-   "a": "VLT",
-   "b": "DESI",
-   "shared_papers": 2,
-   "papers": [
-    "Duncan01",
     "Mahony01"
    ]
   },
@@ -8858,21 +9108,12 @@
    ]
   },
   {
-   "a": "XRISM",
-   "b": "SPT",
+   "a": "SPT",
+   "b": "XRISM",
    "shared_papers": 2,
    "papers": [
     "Cassano01",
     "Perrott01"
-   ]
-  },
-  {
-   "a": "SPT",
-   "b": "DESI",
-   "shared_papers": 2,
-   "papers": [
-    "Sasmal01",
-    "Wolz01"
    ]
   },
   {
@@ -8921,12 +9162,12 @@
    ]
   },
   {
-   "a": "DESI",
-   "b": "WEAVE",
+   "a": "EHT/ngEHT",
+   "b": "Effelsberg",
    "shared_papers": 2,
    "papers": [
-    "Dabhade01",
-    "Duncan01"
+    "Abbate01",
+    "Radcliffe01"
    ]
   },
   {
@@ -8975,6 +9216,15 @@
    ]
   },
   {
+   "a": "Solar Orbiter",
+   "b": "SOHO",
+   "shared_papers": 2,
+   "papers": [
+    "Morosan01",
+    "Raja01"
+   ]
+  },
+  {
    "a": "4MOST",
    "b": "WEAVE",
    "shared_papers": 2,
@@ -8984,48 +9234,30 @@
    ]
   },
   {
+   "a": "Parker Solar Probe",
+   "b": "STEREO",
+   "shared_papers": 2,
+   "papers": [
+    "Kumari01",
+    "Morosan01"
+   ]
+  },
+  {
+   "a": "Parker Solar Probe",
+   "b": "SOHO",
+   "shared_papers": 2,
+   "papers": [
+    "Morosan01",
+    "Raja01"
+   ]
+  },
+  {
    "a": "H.E.S.S.",
    "b": "LHAASO",
    "shared_papers": 2,
    "papers": [
     "Castignani01",
     "Nelles01"
-   ]
-  },
-  {
-   "a": "Solar Orbiter",
-   "b": "STEREO",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Morosan01"
-   ]
-  },
-  {
-   "a": "Solar Orbiter",
-   "b": "SOHO",
-   "shared_papers": 2,
-   "papers": [
-    "Morosan01",
-    "Raja01"
-   ]
-  },
-  {
-   "a": "Parker Solar Probe",
-   "b": "STEREO",
-   "shared_papers": 2,
-   "papers": [
-    "Kumari01",
-    "Morosan01"
-   ]
-  },
-  {
-   "a": "Parker Solar Probe",
-   "b": "SOHO",
-   "shared_papers": 2,
-   "papers": [
-    "Morosan01",
-    "Raja01"
    ]
   },
   {

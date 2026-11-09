@@ -1,7 +1,7 @@
 {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "topic_terms_2015": {
     "Cosmology": "cosmology|cosmological",
@@ -217,7 +217,7 @@
  "aaskaii": [
   {
    "section": "Science Working Group Overviews",
-   "n_papers": 13,
+   "n_papers": 14,
    "titles": [
     "Advancing Extragalactic Spectral Line Studies with the Square Kilometre Array Observatory",
     "Cosmic Magnetism Science with the SKA",
@@ -231,12 +231,13 @@
     "Pulsar Science with the SKAO",
     "Solar, Heliospheric and Ionospheric Physics: Pathfinders, Precursors and SKAO Perspectives.",
     "The Science of the Cycle of Matter in Our Galaxy with SKA",
-    "Unveiling Radio Transients with SKAO Telescopes"
+    "Unveiling Radio Transients with SKAO Telescopes",
+    "Very Long Baseline Interferometry with the SKA Observatory"
    ]
   },
   {
    "section": "Sun, Earth and Planets",
-   "n_papers": 18,
+   "n_papers": 19,
    "titles": [
     "Coronal Magnetography Using Spectropolarimetry with SKA Telescopes",
     "Exploring Activity Across the Stellar Main Sequence with the Sun as a Benchmark",
@@ -253,6 +254,7 @@
     "The SKA as a Probe of Heliospheric Turbulence and Radio-wave Propagation Effects",
     "The Study of Quasi-Periodic Pulsations in Solar and Stellar Flares with SKA",
     "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "Understanding Coronal `Seeing' Using High Angular Resolution Radio Observations of Active Solar Emissions",
     "Unravelling the Nonthermal Emissions from the Quiet Solar Corona with the SKA",
     "Unveiling the Mysteries of Lightning: Exploring its Fundamental Physical Processes with SKA-Low",
     "Unveiling the Trans-Neptunian Region with the SKA"
@@ -260,7 +262,7 @@
   },
   {
    "section": "Formation and Evolution of Stars",
-   "n_papers": 17,
+   "n_papers": 18,
    "titles": [
     "Chemical Complexity in the Early Stages of Star Formation in the SKAO Era",
     "Chemical Complexity in the Early Stages of Star Formation in the SKAO Era",
@@ -272,6 +274,7 @@
     "Ionized Gas Emission in Protoplanetary Disks with the SKAO",
     "Jets and Outflows in Young Stellar Objects with the SKAO",
     "Measuring Magnetic Field Strengths in Galactic Star-forming Regions via the Zeeman Effect with the SKA",
+    "Pathfinder Results for Populations of Planet-forming Discs with SKAO",
     "SKA\u2013ALMA Synergies in Star Formation Science",
     "Substructures in Planet-Forming Disks with the SKAO",
     "Supernova Remnants in the New Radio Astronomy Era",
@@ -342,7 +345,7 @@
   },
   {
    "section": "The Cosmos",
-   "n_papers": 49,
+   "n_papers": 50,
    "titles": [
     "A Comprehensive SKA Survey of Lensing Clusters and Lensed Galaxies",
     "An SKA-Low RM Grid for Constraining the Origin of Cosmic Magnetism",
@@ -382,6 +385,7 @@
     "Synergies Between Pulsar Timing Array and Astrometry",
     "Synergies for the Epoch of Reionization and Cosmic Dawn",
     "Testing Dark Matter Models and Modified Gravity Theories with Spatially Resolved HI Observations",
+    "The Cosmic Radio Dipole and Observer Effects in SKA All-sky Surveys",
     "The Cosmic Ray Life Cycle in Galaxy Clusters",
     "The Impact of Dense RM Grids on the Study of Intra-cluster and Intra-group Magnetic Fields",
     "The Large-Scale Structure of the Universe through the SKA Lenses",
@@ -397,7 +401,7 @@
   },
   {
    "section": "The Extreme Universe",
-   "n_papers": 38,
+   "n_papers": 39,
    "titles": [
     "A Census of Variable and Transient Radio Sources Within High-Energy Neutrino Fields",
     "A Square Kilometre Array Pulsar Census",
@@ -419,6 +423,7 @@
     "Probing Neutron Star Interiors and the Properties of Cold Ultra-dense Matter with the SKAO",
     "Probing Physical Conditions in Classical and Symbiotic Novae with the Square Kilometre Array Observatory",
     "Pulsars in Globular Clusters With the SKAO",
+    "Revisiting the Unknown Unknowns in Transient Astrophysics with the SKAO Telescopes",
     "SKA-VLBI Probes of High-energy Emission Processes in Relativistic Jets",
     "SKAO and Gamma-Ray Synergies",
     "SKA\u2013VLBI View of AGN Jets in the Early Universe",
@@ -441,7 +446,7 @@
   },
   {
    "section": "Methods and Techniques",
-   "n_papers": 24,
+   "n_papers": 25,
    "titles": [
     "A Non-Negativity Iterative Approach to Image Deconvolution for SKA",
     "Application of Bayesian Statistical Tools to SKA Telescopes Polarization Surveys to Study Magnetization of the Large-scale Structure of the Universe",
@@ -464,6 +469,7 @@
     "Source Finding and Characterisation for SKAO Science",
     "Studying Ionosphere Using SKA-Low and SKA-Mid",
     "The Role of Artificial Intelligence in the SKA Era",
+    "Understanding Sub-arcsecond Scale Radio Sources and Space Weather with the SKA Low Using Interplanetary Scintillation",
     "VLBI with SKAMPI, the SKA-MID MPIfR Dish Demonstrator",
     "VLBI-Enabled Precision Localization of Continuous Gravitational Wave Sources with Pulsar Timing Arrays in the SKA Era",
     "Weak Lensing with the SKAO: Radio Shear Measurement"
@@ -474,23 +480,23 @@
   "min_hits_per_paper": 5,
   "papers_per_section": {
    "From the Milky Way to Distant Galaxies": 53,
-   "The Cosmos": 49,
-   "The Extreme Universe": 38,
-   "Methods and Techniques": 24,
-   "Sun, Earth and Planets": 18,
-   "Formation and Evolution of Stars": 16,
-   "Science Working Group Overviews": 13
+   "The Cosmos": 50,
+   "The Extreme Universe": 39,
+   "Methods and Techniques": 25,
+   "Sun, Earth and Planets": 19,
+   "Formation and Evolution of Stars": 17,
+   "Science Working Group Overviews": 14
   },
   "items": [
    {
     "label": "Cosmology",
     "term": "cosmology|cosmological",
-    "total_mentions": 1661,
-    "n_papers": 62,
+    "total_mentions": 1687,
+    "n_papers": 63,
     "n_sections": 5,
     "sections": {
      "The Cosmos": {
-      "n_papers": 37,
+      "n_papers": 38,
       "papers": [
        "Acharya01",
        "Afonso01",
@@ -499,6 +505,7 @@
        "Asorey01",
        "Baker01",
        "Barkana01",
+       "Bertacca01",
        "Bosi01",
        "Caleb01",
        "Caleb02",
@@ -581,7 +588,7 @@
    {
     "label": "Epoch of Reionisation",
     "term": "EoR|Epoch of Reionization|Epoch of Reionisation|Cosmic Dawn",
-    "total_mentions": 540,
+    "total_mentions": 541,
     "n_papers": 16,
     "n_sections": 5,
     "sections": {
@@ -631,8 +638,8 @@
    {
     "label": "Fundamental Physics with Pulsars",
     "term": "pulsar timing|PTA|binary pulsar|millisecond pulsar",
-    "total_mentions": 788,
-    "n_papers": 22,
+    "total_mentions": 794,
+    "n_papers": 23,
     "n_sections": 4,
     "sections": {
      "The Extreme Universe": {
@@ -662,6 +669,14 @@
        "Ragavendra01"
       ]
      },
+     "Science Working Group Overviews": {
+      "n_papers": 3,
+      "papers": [
+       "Bellomo01",
+       "Joshi01",
+       "Radcliffe01"
+      ]
+     },
      "Methods and Techniques": {
       "n_papers": 3,
       "papers": [
@@ -669,21 +684,14 @@
        "GemmaAnderson01",
        "Takahashi01"
       ]
-     },
-     "Science Working Group Overviews": {
-      "n_papers": 2,
-      "papers": [
-       "Bellomo01",
-       "Joshi01"
-      ]
      }
     }
    },
    {
     "label": "Magnetism",
     "term": "magnetic field|magnetic fields|magnetism|rotation measure",
-    "total_mentions": 3297,
-    "n_papers": 100,
+    "total_mentions": 3146,
+    "n_papers": 101,
     "n_sections": 7,
     "sections": {
      "From the Milky Way to Distant Galaxies": {
@@ -761,9 +769,10 @@
       ]
      },
      "Sun, Earth and Planets": {
-      "n_papers": 13,
+      "n_papers": 14,
       "papers": [
        "Chrysaphi01",
+       "Dey01",
        "Kansabanik01",
        "Kontar01",
        "Kumari01",
@@ -827,7 +836,7 @@
     "label": "Synergies and Other Science",
     "term": "multi-wavelength|multiwavelength|synergy|synergies",
     "total_mentions": 726,
-    "n_papers": 57,
+    "n_papers": 59,
     "n_sections": 7,
     "sections": {
      "From the Milky Way to Distant Galaxies": {
@@ -868,8 +877,9 @@
       ]
      },
      "The Extreme Universe": {
-      "n_papers": 10,
+      "n_papers": 11,
       "papers": [
+       "AlexAndersson02",
        "AvishekBasu01",
        "Bignall01",
        "Castignani01",
@@ -907,9 +917,10 @@
       ]
      },
      "Methods and Techniques": {
-      "n_papers": 4,
+      "n_papers": 5,
       "papers": [
        "Carcamo01",
+       "Chhetri01",
        "GemmaAnderson01",
        "Hota01",
        "SabyasachiPal01"
@@ -927,7 +938,7 @@
    {
     "label": "The Continuum Universe",
     "term": "radio continuum|continuum survey|star formation rate",
-    "total_mentions": 491,
+    "total_mentions": 495,
     "n_papers": 31,
     "n_sections": 4,
     "sections": {
@@ -987,7 +998,7 @@
    {
     "label": "The Cradle of Life",
     "term": "protoplanetary|exoplanet|exoplanets|astrochemistry|prebiotic",
-    "total_mentions": 417,
+    "total_mentions": 422,
     "n_papers": 10,
     "n_sections": 5,
     "sections": {
@@ -1031,17 +1042,18 @@
    {
     "label": "The Hydrogen Universe",
     "term": "neutral hydrogen|HI|21-cm|21 cm",
-    "total_mentions": 2272,
-    "n_papers": 54,
+    "total_mentions": 2329,
+    "n_papers": 56,
     "n_sections": 6,
     "sections": {
      "The Cosmos": {
-      "n_papers": 22,
+      "n_papers": 23,
       "papers": [
        "Acharya01",
        "Bag01",
        "Baker01",
        "Barkana01",
+       "Bertacca01",
        "Bosi01",
        "Cang01",
        "Chakraborty01",
@@ -1086,10 +1098,11 @@
       ]
      },
      "Methods and Techniques": {
-      "n_papers": 7,
+      "n_papers": 8,
       "papers": [
        "Acharya02",
        "Burba01",
+       "Chhetri01",
        "Datta01",
        "Denzel01",
        "Robishaw01",
@@ -1124,13 +1137,14 @@
    {
     "label": "The Transient Universe",
     "term": "transient|transients|FRB|fast radio burst",
-    "total_mentions": 960,
-    "n_papers": 34,
+    "total_mentions": 1058,
+    "n_papers": 37,
     "n_sections": 7,
     "sections": {
      "The Extreme Universe": {
-      "n_papers": 15,
+      "n_papers": 16,
       "papers": [
+       "AlexAndersson02",
        "Besancon01",
        "Bignall01",
        "Castignani01",
@@ -1149,9 +1163,10 @@
       ]
      },
      "Methods and Techniques": {
-      "n_papers": 5,
+      "n_papers": 6,
       "papers": [
        "AlexAndersson01",
+       "Chhetri01",
        "Denzel01",
        "GemmaAnderson01",
        "Hota01",
@@ -1176,6 +1191,14 @@
        "Oberoi01"
       ]
      },
+     "Science Working Group Overviews": {
+      "n_papers": 3,
+      "papers": [
+       "Miller-Jones01",
+       "Radcliffe01",
+       "Spinelli02"
+      ]
+     },
      "Formation and Evolution of Stars": {
       "n_papers": 2,
       "papers": [
@@ -1188,13 +1211,6 @@
       "papers": [
        "DAmato01",
        "Moldon01"
-      ]
-     },
-     "Science Working Group Overviews": {
-      "n_papers": 2,
-      "papers": [
-       "Miller-Jones01",
-       "Spinelli02"
       ]
      }
     }

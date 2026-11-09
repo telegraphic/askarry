@@ -1,0 +1,119 @@
+[
+ {
+  "text": "In this section we consider yet another observable, upon which observer motion is imprinted, that will be measured by the SKA. Just as for the CMB's spectrum, the spectra also of other radiation backgrounds (here dubbed 'Cosmic Backgrounds', CB) appear modified to an observer that is moving with respect to them. This leads to a dipolar imprint on the CB monopole's frequency spectrum, 𝜂(𝜈), assumed isotropic in its rest frame, and also leads to imprints of higher-order multipoles ℓ albeit with amplitudes decreasing as ∝ 𝛽 ℓ . To first order in 𝛽, the CB dipole's spectrum (relative to the monopole's), expressed in terms of anisotropy of the equivalent thermodynamic temperature, is given by (Danese and De Zotti, 1981)\n<!-- formula-not-decoded -->\nwhere ℎ, 𝑘B and 𝜂(𝜈) are the Planck and Boltzmann constants and the photon distribution function, respectively. Various methods have been studied to compute these effects on CBs at different frequencies, and to detect the signal's frequency dependence and variation across the sky in different experimental setups (e.g., Chluba, 2011; Dai and Chluba, 2014; Balashev et al., 2015; De Zotti et al., 2016; Slosar, 2017; Deshpande, 2018; Trombetti and Burigana, 2019; Kashlinsky et al., 2024). Accordingly, the CMB dipole's spectrum has been thoroughly investigated, e.g. as a check of the CMB monopole's spectrum or as a probe alternative or complementary to observations based on instrument absolute calibration (e.g., Burigana et al., 2018; Mukherjee et al., 2018), in the context of both past and future experiments. In this study, we forecast constraints on the amplitudes of the CB dipoles' spectra, as achievable with the SKA, which can provide another consistency test of the kinematic dipole signals discussed in the previous sections at different cosmic epochs.",
+  "meta": {
+   "source": "pdfs/AASKAII/The Cosmos/Bertacca01.pdf",
+   "chunk_index": 34,
+   "heading": "4 Kinematic effects on the spectra of radio backgrounds",
+   "section_path": "4 Kinematic effects on the spectra of radio backgrounds",
+   "page_no": 16,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "If the aforementioned experiments/facilities in the optical and near-infrared bands arguably exhaust the state of the art for the study of the cosmic LSS, the cosmology community is putting a significant effort at lower frequencies as well. A new generation of telescopes targeting the cosmic microwave background (CMB) is taking over from the highly successful campaigns of the last decade, most notably the Planck satellite (Planck Collaboration et al., 2020b), the Atacama Cosmology Telescope (Louis et al., 2025), and the South Pole Telescope (Camphuis et al., 2026a). Among them, the Simons Observatory (Abitbol et al., 2025) will deliver an order-of-magnitude improvement in sensitivity and mapping speed over previous CMB experiments, enabling high-resolution, lownoise measurements of temperature and polarisation anisotropies across a broad range of angular scales. In the further future, Stage-4 CMB (Abazajian et al., 2016) observations will provide a transformative leap, combining unprecedented sensitivity, angular resolution, and sky coverage to enable next-generation constraints on inflation, neutrino physics, dark matter, and the growth of cosmic structure.\nThe compiled science case for cosmology with the SKAO has been presented in SKA Cosmology SWG et al. (2020). In this chapter, we follow the proposed survey and science cases of previous work in SKA Cosmology SWG et al. (2020), and provide updated SKAO predictions for 0 < 𝑧 < 6. SKA-Mid will be limited to 𝑧 < 3 for Hi IM, however, SKA-Low provides further capabilities to conduct Hi IM surveys for 3 < 𝑧 < 6. These experiments would be conducted commensally with EoR observations and cosmology forecasts using the higher frequencies are presented within this chapter.",
+  "meta": {
+   "source": "pdfs/AASKAII/The Cosmos/Wolz01.pdf",
+   "chunk_index": 10,
+   "heading": "1 Introduction",
+   "section_path": "1 Introduction",
+   "page_no": 5,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "A.-K. Baczko , 1 , 2 Eleni Vardoulaki , 3 , 4 Etienne Bonnassieux, 5 , 6 , 7 Manel Perucho, 8 , 9 Marisa Brienza , 7 Marcus Brüggen, 10 Emmanuel K. Bempong-Manful , 11 , 12 Robert Beswick, 11 Florian Eppel , 13 , 2 , 14 Damien Gratadour, 6 Jonas Heßdörfer , 13 Kiara Hervella-Seoane, 8 Matthias Kadler , 13 Jae-Young Kim , 15 Aretaios Lalakos, 16 , 17 , 18 Leah K. Morabito , 19 , 20 Dhanya G. Nair , 21 , 2 Felix Pötzl, 22 , 23 Jack Radcliffe, 11 Luca Ricci , 13 Eduardo Ros, 2 Jan Röder , 24 Florian Rösch , 13 Ainara Saiz-Pérez, 13 Hrishikesh Shetgaonkar, 13 Cyril Tasse, 25 , 26 Francesco Ubertosi , 27 , 28 Jun Yang 1 and J. Anton Zensus 2\n1 Department of Physics and Astronomy, Chalmers University of Technology, SE-439 92 Onsala, Sweden\n2 Max-Planck-Institut für Radioastronomie, Auf dem Hügel 69, D-53121 Bonn, Germany\n3 National Observatory Athens, Hill of the Nymphs, Athens, Greece\n4 Thüringer Landessternwarte, Sternwarte 5, 07778 Tautenburg, Germany\n5 Laboratoire d'Astrophysique de Bordeaux, Univ. Bordeaux, CNRS, B18N, allée Geoffroy Saint-Hilaire, 33615 Pessac, France\n6 LUX, Observatoire de Paris, PSL, CNRS, SU/UPMC, UPD, 5 place Jules Janssen, 92195 Meudon, France\n7 INAF - Istituto di Radioastronomia, via Gobetti 101, 40129 Bologna, Italy\n8 Departament d'Astronomia i Astrofísica, Universitat de València, Av/ Vicent Andrés Estellés, 18, 46100, Burjassot, València, Spain",
+  "meta": {
+   "source": "pdfs/AASKAII/Formation and Evolution of Stars/Baczko01.pdf",
+   "chunk_index": 0,
+   "heading": "AGN Jets from Formation to Dissipation",
+   "section_path": "AGN Jets from Formation to Dissipation",
+   "page_no": 1,
+   "doc_source": "aaskaii",
+   "zone": "front_matter",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "- K. Pattle et al. Journal of Astronomical Telescopes, Instruments, and Systems , 11:031615, July 2025. doi: 10.1117/1.JATIS.11.3.031615.\n- G. Pineau des Forets, E. Roueff, P. Schilke, and D. R. Flower. MNRAS , 262(4):915-928, June 1993. doi: 10.1093/mnras/262.4.915.\n- J. E. Pineda et al. ApJSS , 282(1):18, Jan. 2026. doi: 10.3847/1538-4365/ae11b1.\n14. Planck Collaboration et al. A&A , 586:A138, Feb. 2016. doi: 10.1051/0004-6361/201525896.\n- F. Poidevin et al. ApJ , 777(2):112, Nov. 2013. doi: 10.1088/0004-637X/777/2/112.\n- R. Pokhrel et al. ApJ , 853(1):5, Jan. 2018. doi: 10.3847/1538-4357/aaa240.\n- D. A. Roberts, R. M. Crutcher, T. H. Troland, and W. M. Goss. ApJ , 412:675, Aug. 1993. doi: 10.1086/172953.\n- D. A. Roberts, R. M. Crutcher, and T. H. Troland. ApJ , 442:208, Mar. 1995. doi: 10.1086/175436.\n- T. Robishaw. Magnetic fields near and far: Galactic and extragalactic single-dish radio observations of the Zeeman effect . PhD thesis, University of California, Berkeley, Dec. 2008.",
+  "meta": {
+   "source": "pdfs/AASKAII/Formation and Evolution of Stars/Bourke01.pdf",
+   "chunk_index": 76,
+   "heading": "References",
+   "section_path": "References",
+   "page_no": 30,
+   "doc_source": "aaskaii",
+   "zone": "references",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "The radio properties of FR0 RGs, primarily limited to the local Universe (z < 0.1), have been extensively investigated over the last decade using a wide range of radio observational facilities.\nAt low frequencies ( ∼ hundreds of MHz), LOFAR and GMRT surveys confirm that FR0s typically lack the large-scale, optically thin synchrotron emission characteristic of classical FRI/II RGs. The majority exhibit flat or slightly convex radio spectra, which contrasts with the highly peaked spectra typical of young RGs and reinforces the idea that FR0s do not possess significant extended or infant jet structures (Capetti et al., 2019, 2020b; Ishwara-Chandra et al., 2020; Chilufya et al., 2024).\nAt GHz frequencies, most FR0s have flat spectra and and appear unresolved or barely unresolved on kpc scales (Chhetri et al., 2013; Sadler et al., 2014; Whittam et al., 2020; Mikhailov and Sotnikova, 2021). Dedicated VLA observations achieving sub-mJy sensitivities show that the majority of FR0s still remain unresolved ( < a few kpc, Fig. 1). Crucially, only ∼ 30% of FR0s display low-brightness, symmetric kpc-scale jets, suggesting the possible presence of substantial extended emission in some cases that is detectable at low frequencies (Baldi et al., 2015, 2019a).\nIntermediate-resolution eMERLIN observations at 5 GHz ( ∼ tens of mas) have detected weak pc-scale core emission, though the core contributes to only a small fraction ( < 20%) of the total flux (Baldi et al., 2021). This result highlights the critical importance of including long baselines ( > hundreds of km) in isolating compact, self-absorbed, flat-spectrum cores from surrounding steep-spectrum extended jets at high angular resolution.",
+  "meta": {
+   "source": "pdfs/AASKAII/Formation and Evolution of Stars/Baldi01.pdf",
+   "chunk_index": 5,
+   "heading": "2 Current radio-band view of FR0s",
+   "section_path": "2 Current radio-band view of FR0s",
+   "page_no": 4,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "The best opportunity to detect this component so far has been provided by GW170817. At ∼ 900 days, observations with the Chandra X-ray Observatory revealed X-ray emission in excess of the declining jet afterglow, possibly hinting at the emergence of a kilonova afterglow (Hajela et al., 2022). Deep radio follow-up with the Karl G. Jansky Very Large Array, extending to 3.5-4.5 years post-merger yielded no significant rebrightening and placed 𝜇 Jy-level upper limits on any kilonova radio remnant component (Balasubramanian et al., 2021, 2022). These constraints already disfavour models with substantial energy in a fast ejecta tail, although continued monitoring on decadal timescales remains essential.\nThe search for KN radio remnants has been performed also for other KN detected independently of GW events, but without success (e.g.: Schroeder et al. 2026 for the KN associated with GRB211211A).\nGiven the long timescales and the expected faintness of most KN remnant signals, their identification andcharacterization will require deep, high-sensitivity radio observations. Long-lived supermassive neutron star remnants of neutron star mergers are expected to produce extremely bright KN remnants. However, they have not been detected so far, limiting their fraction to less than 30% of the KN remnant population (Acharya et al., 2025). The 𝜇 Jy-level continuum capabilities of SKAO, together with its long-term monitoring stability, make it uniquely suited to also probe the faint emission regime and to test the predicted diversity of KN radio remnants in the ET era.",
+  "meta": {
+   "source": "pdfs/AASKAII/The Extreme Universe/Colombo01.pdf",
+   "chunk_index": 16,
+   "heading": "2.3 Kilonova radio remnants",
+   "section_path": "2.3 Kilonova radio remnants",
+   "page_no": 9,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "Over the past fifty years, pulsar surveys have expanded the known population to over 4000 sources, revealing extraordinary diversity in spin, magnetic field, and evolutionary stage. Yet, population synthesis models predict that the Milky Way hosts more than 50,000 active pulsars. Even with modern facilities such as Murriyang (the Parkes radio telescope), FAST, and MeerKAT, much of this population-particularly faint, distant, or fast-spinning pulsars-remains undetected. A complete census of pulsars is the foundation for nearly all SKA pulsar science, underpinning studies of Galactic structure, neutron-star physics, and gravitational-wave detection.\nThe SKA-Low AA* and SKA-Mid AA* arrays will form a coordinated two-tier survey strategy. The SKA-Low telescope will sweep the Galactic halo and high-latitude regions at low frequencies, while the SKA-Mid telescope will target the dense Galactic plane where dispersion and scattering are strongest. Together, they are expected to detect approximately 10,000 slow pulsars and around 800 millisecond pulsars (MSPs), more than doubling the known population. This early delivery phase will already establish a statistically robust sample for pulsar timing array and population studies.\nThe full AA4 configuration will increase sensitivity by 20-30%, raising the total yield above 12,000\nFigure 2: The inter-connected pulsar science use cases for the SKAO, described in this overview, and in the pulsar related chapters in this book, are depicted here. The surveys shown at the bottom form the backbone of the study of different areas depicted in the middle row. The enhanced understanding in the latter will feed into the three main contributions to fundamental physics from pulsar astronomy, which are shown in the top row.",
+  "meta": {
+   "source": "pdfs/AASKAII/Science Working Group Overviews/Joshi01.pdf",
+   "chunk_index": 4,
+   "heading": "2.1 The SKA Pulsar Census (Keane et al.)",
+   "section_path": "2.1 The SKA Pulsar Census (Keane et al.)",
+   "page_no": 3,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "SKAOSurvey Selection This case primarily utilizes the Band 2 deep and ultra-deep tiers, as well as the Band 5b ultra-deep tier outlined in Table 1. The former can be used to trace SFGs up to high redshifts (see Fig. 3), the latter provides the ability to map SF distributions on sub-kpc scales to intermediate redshifts (see also Murphy et al., 2015) and to probe regimes where free-free emission contributes significantly to the radio SED, enabling more direct SFR estimates.\nStaged science delivery During the AA ∗ phase, SKA deep surveys will identify large samples of SFGs at cosmic noon ( 𝑧 ∼ 1-2). ALMA WSU (with initial 2-fold BW increase) will follow up these samples efficiently. The increased continuum speed (representative factor ∼ 4-5 in some bands for BW × 2) enables rapid acquisition of dust continuum measurements and simultaneous detection of multiple CO transitions for robust 𝑀 mol estimates for statistical samples (Carpenter et al., 2022; ALMA Observatory, 2024a).\nresources, data rates, and long-term archiving. Observatory computing and pipeline upgrades remain a necessary component of achieving the advertised science performance (ALMA Observatory, 2024a).",
+  "meta": {
+   "source": "pdfs/AASKAII/Formation and Evolution of Stars/Prandoni01.pdf",
+   "chunk_index": 63,
+   "heading": "5.2.1 Star Formation and Molecular Gas Reservoirs",
+   "section_path": "5.2.1 Star Formation and Molecular Gas Reservoirs",
+   "page_no": 26,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ },
+ {
+  "text": "In the ramp up to the SKA over the next years, results from large-area wide-band spectral-line surveys (see Table 2) will gather the first basic information of extragalactic RRLs such as the detection rates and key science that can be done. The SKA will be able to push this into a new frontier, by increasing the number of sources investigated from 1000s to 100 000s. By going a factor of 4-60 deeper in RRL sensitivity, combined with the increased spatial resolution, it will likely enable new types of phenomena that can be investigated. The SKA is poised to build off of the MALS and FLASH surveys thanks to overlapping sky coverage and its complementary frequency coverage where RRL intensities are expected to be brightest. While the brightest (i.e., highest flux density) radio AGN are generally at 𝑧 ∼ 1 -2 (e.g., Spinrad et al., 1985), SKA can push RRL detections to higher redshift ( 𝑧 ∼ 6). SquERRLS (Square kilometer array Extragalactic RRL Surveys; see Section 4) will be exceptional survey tools and pave the way for high-resolution and multi-frequency follow up. SKA observations have highest impact potential for CRRL observations of the cool diffuse gas which shine brightest at rest frequencies < 300 MHz. The channel resolution available at the maximum accessible bandwidth in SKA Low and Mid is primed for extragalactic RRL studies, as no spectral zoom modes are needed to conduct comprehensive surveying.\n\nTable 2: Impacts of (Serendipitous) RRL coverage in current and SKA-proposed wide-band spectral-line surveys",
+  "meta": {
+   "source": "pdfs/AASKAII/Formation and Evolution of Stars/Emig01.pdf",
+   "chunk_index": 14,
+   "heading": "3 SKA's Impact",
+   "section_path": "3 SKA's Impact",
+   "page_no": 7,
+   "doc_source": "aaskaii",
+   "zone": "body",
+   "doc_status": "canonical"
+  }
+ }
+]

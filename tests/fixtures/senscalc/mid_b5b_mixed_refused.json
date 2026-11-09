@@ -1,0 +1,21 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "continuum/calculate",
+  "params": {
+   "rx_band": "Band 5b",
+   "freq_centre_hz": 11850000000.0,
+   "bandwidth_hz": 1000000000.0,
+   "integration_time_s": 1080000,
+   "pointing_centre": "00:00:00 -30:00:00",
+   "weighting_mode": "robust",
+   "robustness": 0,
+   "subarray_configuration": "AA*"
+  }
+ },
+ "status": 400,
+ "body": {
+  "title": "Validation Error",
+  "detail": "Subarray configuration not allowed for given observing band."
+ }
+}

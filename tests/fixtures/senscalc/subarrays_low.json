@@ -1,0 +1,205 @@
+{
+ "request": {
+  "telescope": "low",
+  "endpoint": "subarrays",
+  "params": {}
+ },
+ "status": 200,
+ "body": [
+  {
+   "name": "LOW_AAstar_all",
+   "label": "AA*",
+   "n_stations": 307
+  },
+  {
+   "name": "LOW_inner_r10km_aastar",
+   "label": "AA* (LOW_inner_r10km)",
+   "n_stations": 271
+  },
+  {
+   "name": "LOW_inner_r12km_aastar",
+   "label": "AA* (LOW_inner_r12km)",
+   "n_stations": 271
+  },
+  {
+   "name": "LOW_inner_r1km_aastar",
+   "label": "AA* (LOW_inner_r1km)",
+   "n_stations": 214
+  },
+  {
+   "name": "LOW_inner_r24km_aastar",
+   "label": "AA* (LOW_inner_r24km)",
+   "n_stations": 282
+  },
+  {
+   "name": "LOW_inner_r350m_aastar",
+   "label": "AA* (LOW_inner_r350m)",
+   "n_stations": 137
+  },
+  {
+   "name": "LOW_inner_r3km_aastar",
+   "label": "AA* (LOW_inner_r3km)",
+   "n_stations": 231
+  },
+  {
+   "name": "LOW_inner_r6km_aastar",
+   "label": "AA* (LOW_inner_r6km)",
+   "n_stations": 245
+  },
+  {
+   "name": "LOW_inner_r700m_aastar",
+   "label": "AA* (LOW_inner_r700m)",
+   "n_stations": 204
+  },
+  {
+   "name": "LOW_outer_r10km_aastar",
+   "label": "AA* (LOW_outer_r10km)",
+   "n_stations": 36
+  },
+  {
+   "name": "LOW_outer_r12km_aastar",
+   "label": "AA* (LOW_outer_r12km)",
+   "n_stations": 54
+  },
+  {
+   "name": "LOW_outer_r1km_aastar",
+   "label": "AA* (LOW_outer_r1km)",
+   "n_stations": 93
+  },
+  {
+   "name": "LOW_outer_r24km_aastar",
+   "label": "AA* (LOW_outer_r24km)",
+   "n_stations": 25
+  },
+  {
+   "name": "LOW_outer_r350m_aastar",
+   "label": "AA* (LOW_outer_r350m)",
+   "n_stations": 170
+  },
+  {
+   "name": "LOW_outer_r3km_aastar",
+   "label": "AA* (LOW_outer_r3km)",
+   "n_stations": 76
+  },
+  {
+   "name": "LOW_outer_r6km_aastar",
+   "label": "AA* (LOW_outer_r6km)",
+   "n_stations": 62
+  },
+  {
+   "name": "LOW_outer_r700m_aastar",
+   "label": "AA* (LOW_outer_r700m)",
+   "n_stations": 103
+  },
+  {
+   "name": "LOW_AAstar_core_only",
+   "label": "AA* (core only)",
+   "n_stations": 199
+  },
+  {
+   "name": "LOW_AA05_all",
+   "label": "AA0.5",
+   "n_stations": 4
+  },
+  {
+   "name": "LOW_AA1_all",
+   "label": "AA1",
+   "n_stations": 16
+  },
+  {
+   "name": "LOW_AA2_all",
+   "label": "AA2",
+   "n_stations": 68
+  },
+  {
+   "name": "LOW_AA4_all",
+   "label": "AA4",
+   "n_stations": 512
+  },
+  {
+   "name": "LOW_inner_r10km_aa4",
+   "label": "AA4 (LOW_inner_r10km)",
+   "n_stations": 404
+  },
+  {
+   "name": "LOW_inner_r12km_aa4",
+   "label": "AA4 (LOW_inner_r12km)",
+   "n_stations": 410
+  },
+  {
+   "name": "LOW_inner_r1km_aa4",
+   "label": "AA4 (LOW_inner_r1km)",
+   "n_stations": 260
+  },
+  {
+   "name": "LOW_inner_r24km_aa4",
+   "label": "AA4 (LOW_inner_r24km)",
+   "n_stations": 476
+  },
+  {
+   "name": "LOW_inner_r350m_aa4",
+   "label": "AA4 (LOW_inner_r350m)",
+   "n_stations": 143
+  },
+  {
+   "name": "LOW_inner_r3km_aa4",
+   "label": "AA4 (LOW_inner_r3km)",
+   "n_stations": 332
+  },
+  {
+   "name": "LOW_inner_r6km_aa4",
+   "label": "AA4 (LOW_inner_r6km)",
+   "n_stations": 368
+  },
+  {
+   "name": "LOW_inner_r700m_aa4",
+   "label": "AA4 (LOW_inner_r700m)",
+   "n_stations": 240
+  },
+  {
+   "name": "LOW_outer_r10km_aa4",
+   "label": "AA4 (LOW_outer_r10km)",
+   "n_stations": 108
+  },
+  {
+   "name": "LOW_outer_r12km_aa4",
+   "label": "AA4 (LOW_outer_r12km)",
+   "n_stations": 102
+  },
+  {
+   "name": "LOW_outer_r1km_aa4",
+   "label": "AA4 (LOW_outer_r1km)",
+   "n_stations": 252
+  },
+  {
+   "name": "LOW_outer_r24km_aa4",
+   "label": "AA4 (LOW_outer_r24km)",
+   "n_stations": 36
+  },
+  {
+   "name": "LOW_outer_r350m_aa4",
+   "label": "AA4 (LOW_outer_r350m)",
+   "n_stations": 369
+  },
+  {
+   "name": "LOW_outer_r3km_aa4",
+   "label": "AA4 (LOW_outer_r3km)",
+   "n_stations": 180
+  },
+  {
+   "name": "LOW_outer_r6km_aa4",
+   "label": "AA4 (LOW_outer_r6km)",
+   "n_stations": 144
+  },
+  {
+   "name": "LOW_outer_r700m_aa4",
+   "label": "AA4 (LOW_outer_r700m)",
+   "n_stations": 272
+  },
+  {
+   "name": "LOW_AA4_core_only",
+   "label": "AA4 (core only)",
+   "n_stations": 224
+  }
+ ]
+}
