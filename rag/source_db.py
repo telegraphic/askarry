@@ -679,12 +679,18 @@ def review_request(conn: sqlite3.Connection, request_id: int, status: str, note:
     return {"id": request_id, "status": status}
 
 
+# "20000 deg2", "1,000 sq deg", "30,000 square degrees" in a position note.
+_NOTE_AREA_RE = re.compile(r"([\d,]+(?:\.\d+)?)\s*(?:deg(?:rees?)?\s*(?:2|²|squared)|sq\.?\s*deg\w*|square\s+degrees?)", re.I)
+
+
 def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
                   extracted_by: str | None = None, reviewed_only: bool = False,
                   include_rejected: bool = False) -> list[dict]:
     """Stored requests, shaped for rag.scheduling.lst_pressure, with review
     overrides applied. Rejected and duplicate requests are left out unless
-    *include_rejected*; *reviewed_only* keeps only accepted ones."""
+    *include_rejected*; *reviewed_only* keeps only accepted ones. A request
+    with no position whose position note states an area gets "area_deg2"
+    (and "area_from": "position_note"), so lst_pressure can place it."""
     where, params = [], []
     if telescope:
         where.append("telescope = ?")
@@ -714,6 +720,11 @@ def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
         if r["min_elevation"] is not None:
             req["min_elevation"] = r["min_elevation"]
         geom = field_position(conn, r["reviewed_field"]) if r["reviewed_field"] else _geometry(r)
+        if not geom and _NOTE_AREA_RE.search(r["position_note"] or ""):
+            # An area stated with no position ("unnamed 1000 deg2 field"): placed
+            # by lst_pressure on an assumed band, and marked as coming from the note.
+            geom = {"area_deg2": float(_NOTE_AREA_RE.search(r["position_note"])[1].replace(",", ""))}
+            req["area_from"] = "position_note"
         if geom:
             req.update({k: v for k, v in geom.items() if k in ("ra", "dec", "ra_range", "dec_range",
                                                                  "gal_l_range", "gal_b_range", "area_deg2")})

@@ -63,10 +63,10 @@ def test_record_citations_and_ranking(monkeypatch):
         "refs": 4, "cites": 6, "papers_with_refs": 2}
 
     top = cdb.top_cited(conn, min_papers=2)
-    # Bull: journal ref with arXiv id (A) + arXiv-only (B) merged via shared arXiv id.
+    # Bull: journal ref with arXiv id (A) + arXiv-only (B) merged via the shared arXiv id.
     assert {r["ref_key"]: r["papers"] for r in top} == {
         "bib:1998AJ....115.1693C": ["AASKA2015/Alpha01", "Beta01"],
-        "arxiv:1405.1452": ["AASKA2015/Alpha01", "Beta01"],
+        "bib:2015ApJ...803...21B": ["AASKA2015/Alpha01", "Beta01"],  # bibcode key preferred over arXiv
     }
     assert {r["first_author"] for r in top} == {"condon", "bull"}
     assert cdb.top_cited(conn, book="aaskaii", since_year=2020)[0]["ref_key"] == "aaskaii:taoan02"
@@ -110,3 +110,13 @@ def test_refs_sharing_a_doi_or_bibcode_are_grouped(monkeypatch):
 def test_journal_like_first_author_flagged():
     r = cdb.parse_ref("MNRAS, 2019, 489, 3739")
     assert r["first_author"] == "mnras" and r["first_author_suspect"] == 1
+
+
+def test_connect_upgrades_a_database_built_before_bibcodes(tmp_path):
+    import sqlite3
+    old = sqlite3.connect(tmp_path / "c.db")
+    old.executescript("CREATE TABLE refs (ref_key TEXT PRIMARY KEY, raw TEXT NOT NULL, first_author TEXT,"
+                      " year INTEGER, volume TEXT, page TEXT, doi TEXT, arxiv TEXT);")
+    old.close()
+    conn = cdb.connect(tmp_path / "c.db")
+    assert {"journal", "bibcode", "first_author_suspect"} <= {r[1] for r in conn.execute("PRAGMA table_info(refs)")}

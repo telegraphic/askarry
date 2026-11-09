@@ -99,9 +99,19 @@ CREATE INDEX IF NOT EXISTS refs_bibcode ON refs(bibcode);
 """
 
 
+# Columns added after the first release; older databases get them on connect
+# (empty until the next build_citation_db).
+_ADDED_COLUMNS = {"journal": "TEXT", "bibcode": "TEXT", "first_author_suspect": "INTEGER"}
+
+
 def connect(path: Path | str = CITATIONS_DB_PATH) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
+    have = {r[1] for r in conn.execute("PRAGMA table_info(refs)")}
+    if have:  # an existing database: add new columns before indexing them
+        for col, kind in _ADDED_COLUMNS.items():
+            if col not in have:
+                conn.execute(f"ALTER TABLE refs ADD COLUMN {col} {kind}")
     conn.executescript(SCHEMA)
     return conn
 
@@ -280,19 +290,60 @@ def record_citations(conn: sqlite3.Connection, chunks: list[dict]) -> int:
     return conn.execute("SELECT COUNT(*) FROM cites").fetchone()[0]
 
 
+def _key_rank(key: str) -> tuple:
+    """Which ref_key survives a merge: a book chapter, then a bibcode, then a DOI, then any."""
+    return (0 if key.startswith("aask") else 1 if key.startswith("bib:") else 2 if key.startswith("doi:") else 3, key)
+
+
 def _merge_shared_ids(conn: sqlite3.Connection) -> None:
-    """Fold refs sharing a DOI, arXiv id or bibcode into the smallest ref_key
-    (e.g. an arXiv-only citation and a journal citation that also gives the
-    arXiv id; a 2015-style citation with no DOI and a 2026-style one with)."""
-    for col in ("doi", "bibcode", "arxiv"):
-        canonical = f"""(SELECT MIN(r2.ref_key) FROM refs r1 JOIN refs r2 ON r2.{col} = r1.{col}
-                         WHERE r1.ref_key = cites.ref_key)"""
-        conn.execute(f"UPDATE OR IGNORE cites SET ref_key = {canonical}"
-                     f" WHERE ref_key IN (SELECT ref_key FROM refs WHERE {col} IS NOT NULL)")
-        # Rows left behind: a paper citing both variants; its canonical row exists.
-        conn.execute(f"DELETE FROM cites WHERE ref_key IN (SELECT ref_key FROM refs WHERE {col} IS NOT NULL)"
-                     f" AND ref_key != {canonical}")
-        conn.execute("DELETE FROM refs WHERE ref_key NOT IN (SELECT ref_key FROM cites)")
+    """Fold refs that are the same work into one ref_key: sharing a DOI, a
+    bibcode, an arXiv id, or first author + year + volume + page (the last
+    joins a citation whose journal the PDF text lost to one with a bibcode,
+    and a work cited under two journal names to itself). The surviving key
+    prefers a bibcode, and inherits identifiers the others had."""
+    rows = [dict(r) for r in conn.execute("SELECT * FROM refs")]
+    parent = {r["ref_key"]: r["ref_key"] for r in rows}
+
+    def find(k: str) -> str:
+        while parent[k] != k:
+            parent[k] = parent[parent[k]]
+            k = parent[k]
+        return k
+
+    seen: dict[tuple, str] = {}
+    for r in rows:
+        ids = [("doi", r["doi"]), ("bibcode", r["bibcode"]), ("arxiv", r["arxiv"])]
+        if all(r[c] for c in ("first_author", "year", "volume", "page")):
+            ids.append(("avp", f"{r['first_author']}|{r['year']}|{r['volume']}|{r['page']}"))
+        for ident in ids:
+            if ident[1] is None:
+                continue
+            if ident in seen:
+                a, b = find(seen[ident]), find(r["ref_key"])
+                if a != b:
+                    keep, drop = sorted((a, b), key=_key_rank)
+                    parent[drop] = keep
+            else:
+                seen[ident] = r["ref_key"]
+
+    by_key = {r["ref_key"]: r for r in rows}
+    groups: dict[str, list[str]] = {}
+    for k in parent:
+        groups.setdefault(find(k), []).append(k)
+    for keep, members in groups.items():
+        if len(members) == 1:
+            continue
+        for col in ("doi", "bibcode", "arxiv", "journal"):
+            if by_key[keep][col] is None:
+                value = next((by_key[m][col] for m in sorted(members, key=_key_rank) if by_key[m][col]), None)
+                if value:
+                    conn.execute(f"UPDATE refs SET {col} = ? WHERE ref_key = ?", (value, keep))
+        for m in members:
+            if m != keep:
+                # A paper citing both variants keeps one row (UNIQUE source_path, ref_key).
+                conn.execute("UPDATE OR IGNORE cites SET ref_key = ? WHERE ref_key = ?", (keep, m))
+                conn.execute("DELETE FROM cites WHERE ref_key = ?", (m,))
+                conn.execute("DELETE FROM refs WHERE ref_key = ?", (m,))
 
 
 def build_citation_db(path: Path = CITATIONS_DB_PATH) -> dict:

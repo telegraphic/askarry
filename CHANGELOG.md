@@ -21,8 +21,10 @@ caller has to change and which existing counts move. See
 - **Citations are grouped by DOI or ADS bibcode.** References now record
   `journal` and an ADS `bibcode` built offline from journal, year, volume,
   page and first initial (about 20 journals; none for five-digit pages).
-  Refs sharing a DOI, bibcode or arXiv id are merged, so the two books'
-  citation styles meet. `ref_key` values change (`bib:1998AJ....115.1693C`
+  Refs sharing a DOI, bibcode, arXiv id, or first author + year + volume +
+  page are merged (the last catches citations whose journal the PDF text
+  lost), so the two books' citation styles meet; the surviving key prefers
+  the bibcode. Existing databases gain the new columns on connect. `ref_key` values change (`bib:1998AJ....115.1693C`
   instead of `condon|1998|115|1693`). Rebuild with `build_citation_db_tool`.
 - Fixed: a single-author reference in the 2026 style
   (`S. P. Reynolds. ARA&A , 46:89`) took the journal as the first author.
@@ -59,7 +61,10 @@ caller has to change and which existing counts move. See
   `area_deg2` is placed on an assumed band of that area centred on the
   site's zenith declination, listed under `footprint_assumed`.
   `add_survey_field_tool` accepts `dec_range` without `ra_range`, and
-  `review_observing_request_tool(field=...)` accepts area-only fields.
+  `review_observing_request_tool(field=...)` accepts area-only fields. A
+  request with no position whose position note states an area ("unnamed
+  1000 deg2 field") is placed the same way, marked
+  `area_from: "position_note"`.
 - **`conflicts`.** With `from_db`, requests marked as duplicates whose
   hours differ from the request they repeat are listed with both papers'
   hours and quotes.
