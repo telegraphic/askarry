@@ -310,8 +310,9 @@ def requirement_verdicts(requirement: dict, contexts: list[str] | None = None, c
     (passes only at the AA4 design baseline); or "not_met" (fails everywhere).
     A band that exists is not enough: resolution and depth are judged too.
     """
-    from rag.requirements import validate_record, value
+    from rag.requirements import normalise_record, validate_record, value
 
+    requirement = normalise_record(requirement)
     problems = validate_record(requirement)
     if problems:
         raise ValueError("; ".join(problems))

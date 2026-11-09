@@ -82,6 +82,23 @@ SCHEDULING = {
     "planning_years": 5,
 }
 
+# UNVERIFIED ASSUMPTION: which data products the SKAO archives (the SRCNet
+# long-term archive) as opposed to keeping only while an observation is
+# processed. Used by rag/data_product_estimator.py for "archived_TB" and
+# echoed as "policy_source". Needs an SKAO owner; replace with the published
+# data-product policy when there is one.
+DATA_PRODUCT_POLICY = {
+    "source": "assumption (unverified, config.DATA_PRODUCT_POLICY): science data products "
+              "(images, cubes, spectra, pulsar products) are archived; raw and calibrated "
+              "visibilities are kept only for processing unless a project asks for them",
+    "archived": {
+        "Image": True, "Image Cutout": True, "Spectral Cube (wide-band)": True,
+        "Single-dish Autocorrelation": True, "PSS": True, "PST Folded": True,
+        "Dynamic Spectrum": True, "Flowthrough": False, "VLBI": False, "Transient Dump": True,
+        "Gridded Visibilities": False, "Calibrated Vis": False,
+    },
+}
+
 # All directories to scan during ingestion (edit freely). PDF_DIR is scanned
 # recursively, so SKA_CAPABILITIES_DIR/AASKA2015_DIR (subdirectories of it)
 # are already covered — not listed separately here to avoid double-discovery.

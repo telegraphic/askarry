@@ -3,7 +3,7 @@
   {
    "letter": "A",
    "section": "Science Working Group Overviews",
-   "section_summary": "The thirteen Science Working Group overviews summarise the science case of each SKAO community. Their requirements fall into a few recurring groups. Spectral-line work runs from the Galactic interstellar medium to cosmic dawn. Van Loon et al. treat masers, megamasers and recombination lines, Jing Wang et al. set out tiered HI galaxy surveys, Audard et al. cover the cycle of matter in the Milky Way, and Bianchi et al. cover astrochemistry and protoplanetary disks. These chapters depend on SKA-Mid Bands 2 and 5, on zoom-mode spectral resolution of 0.1-1 km/s, and on arcsecond-to-milliarcsecond beams. Continuum and polarimetric work (Hale et al., Vernstrom et al.) turns on survey speed and depth, which set how fast confusion-limited fields and dense rotation-measure grids can be built in Band 2 and with SKA-Low. Cosmology (Spinelli et al.) and Epoch of Reionisation science (Trott et al.) set out wide-area HI intensity mapping and 21-cm experiments of 1000 to 10,000 hours. The time-domain chapters form the remaining group: pulsars and pulsar timing arrays (Joshi et al., Bellomo et al.), transients (Miller-Jones et al.), solar and heliospheric physics (Zucca et al.) and cosmic-ray air showers (Huege et al.). These call on beamformed timing, fast imaging, millisecond cadence and commensal voltage buffering.\n\nThe observing modes the section relies on most are spectral-line and maser surveys, VLBI and astrometry, deep HI intensity mapping, pulsar timing arrays, and commensal or triggered transient observing. Several overviews give concrete survey setups. Vernstrom et al. tabulate the RM-grid densities reached at 0.5 and 2 uJy/beam in Band 2 and at 10 uJy/beam with SKA-Low, with integration times for AA* and AA4. Jing Wang et al. keep the 1,000-hour and 10,000-hour \"wedding cake\" HI tiers, now corrected for the measured RFI environment. Spinelli et al. assume a 5,000 deg2 Band 2 survey and a 20,000 deg2 Band 1 survey. Trott et al. restrict EoR work to 50-220 MHz and ask for short baselines with high surface-brightness sensitivity. Huege et al. show that SKA-Low can measure air showers at no cost to other programmes, as long as a particle-detector trigger can freeze the raw-voltage buffers in the tile processors. Zucca et al. set the solar requirements: snapshot dynamic range above 10^5, cadence of 50 ms or better, and data rates that can exceed 10 TB per hour.\n\nThe overviews differ sharply on AA* versus AA4. For EoR and Cosmic Dawn science, Trott et al. find that AA* and AA4 perform similarly. AA4 adds some core sensitivity and better surface-brightness sensitivity but does not change the uv-coverage in any qualitative way. Spinelli et al., in contrast, find that radio weak lensing and its cross-correlations cannot be done without AA4 baselines, while HI intensity mapping and continuum cosmology remain possible with AA*. Audard et al. report that twelve of thirteen Our Galaxy chapters ask for AA4. Bianchi et al. stress that protoplanetary-disk science needs the full AA4 SKA-Mid baselines. Van Loon et al. and Joshi et al. describe a gradient: AA* delivers first detections and roughly tenfold timing gains, and AA4 adds the sensitivity for tens-of-nanosecond timing and statistically complete samples. Bellomo et al. split their gravitational-wave targets between AA* and AA4 but urge that analysis begin during AA*. Several groups also ask for more than AA4. Van Loon et al. and Bianchi et al. both argue for a Band 6 receiver above 15 GHz, reaching up to about 24 GHz.",
+   "section_summary": "The fourteen Science Working Group overviews summarise the science case of each SKAO community. Their requirements fall into a few recurring groups. Spectral-line work runs from the Galactic interstellar medium to cosmic dawn. Van Loon et al. treat masers, megamasers and recombination lines, Jing Wang et al. set out tiered HI galaxy surveys, Audard et al. cover the cycle of matter in the Milky Way, and Bianchi et al. cover astrochemistry and protoplanetary disks. These chapters depend on SKA-Mid Bands 2 and 5, on zoom-mode spectral resolution of 0.1-1 km/s, and on arcsecond-to-milliarcsecond beams. Continuum and polarimetric work (Hale et al., Vernstrom et al.) turns on survey speed and depth, which set how fast confusion-limited fields and dense rotation-measure grids can be built in Band 2 and with SKA-Low. Cosmology (Spinelli et al.) and Epoch of Reionisation science (Trott et al.) set out wide-area HI intensity mapping and 21-cm experiments of 1000 to 10,000 hours. A further group needs resolution that neither telescope can reach alone. Radcliffe et al. summarise the VLBI chapters, whose jets, explosive transients, masers and pulsars call for milliarcsecond-to-microarcsecond imaging and microarcsecond astrometry at uJy sensitivity, with SKA-Mid and SKA-Low phased up as single stations in global arrays. The time-domain chapters form the remaining group: pulsars and pulsar timing arrays (Joshi et al., Bellomo et al.), transients (Miller-Jones et al.), solar and heliospheric physics (Zucca et al.) and cosmic-ray air showers (Huege et al.). These call on beamformed timing, fast imaging, millisecond cadence and commensal voltage buffering.\n\nThe observing modes the section relies on most are spectral-line and maser surveys, VLBI and astrometry, deep HI intensity mapping, pulsar timing arrays, and commensal or triggered transient observing. Several overviews give concrete survey setups. Vernstrom et al. tabulate the RM-grid densities reached at 0.5 and 2 uJy/beam in Band 2 and at 10 uJy/beam with SKA-Low, with integration times for AA* and AA4. Jing Wang et al. keep the 1,000-hour and 10,000-hour \"wedding cake\" HI tiers, now corrected for the measured RFI environment. Spinelli et al. assume a 5,000 deg2 Band 2 survey and a 20,000 deg2 Band 1 survey. Trott et al. restrict EoR work to 50-220 MHz and ask for short baselines with high surface-brightness sensitivity. Radcliffe et al. set out how VLBI will run: tied-array beams formed from sub-arrays are written in VDIF on the pulsar-timing beam servers and sent to an external correlator, while separate sub-arrays keep short-baseline coverage (below 160 km for SKA-Mid and 75 km for SKA-Low) so that compact structure can be set in the context of its extended emission. Because VLBI and pulsar timing draw on the same beam pool, the two modes compete at scheduling. Huege et al. show that SKA-Low can measure air showers at no cost to other programmes, as long as a particle-detector trigger can freeze the raw-voltage buffers in the tile processors. Zucca et al. set the solar requirements: snapshot dynamic range above 10^5, cadence of 50 ms or better, and data rates that can exceed 10 TB per hour.\n\nThe overviews differ sharply on AA* versus AA4. For EoR and Cosmic Dawn science, Trott et al. find that AA* and AA4 perform similarly. AA4 adds some core sensitivity and better surface-brightness sensitivity but does not change the uv-coverage in any qualitative way. Spinelli et al., in contrast, find that radio weak lensing and its cross-correlations cannot be done without AA4 baselines, while HI intensity mapping and continuum cosmology remain possible with AA*. Audard et al. report that twelve of thirteen Our Galaxy chapters ask for AA4. Bianchi et al. stress that protoplanetary-disk science needs the full AA4 SKA-Mid baselines. Van Loon et al. and Joshi et al. describe a gradient: AA* delivers first detections and roughly tenfold timing gains, and AA4 adds the sensitivity for tens-of-nanosecond timing and statistically complete samples. Bellomo et al. split their gravitational-wave targets between AA* and AA4 but urge that analysis begin during AA*. For VLBI the staging is set by beam count rather than baselines: Radcliffe et al. expect one SKA-Mid VLBI beam in AA2 science verification, four at AA*, and the full 16-beam pool by Cycle 0, although multi-field astrometry and multi-source monitoring need more than four beams. The phased SKA-Mid SEFD falls from about 3.3 Jy at AA* to about 1.55 Jy at AA4, and at either stage the SKA baselines will dominate the weighting and make deconvolution harder. Several groups also ask for more than AA4. Van Loon et al. and Bianchi et al. both argue for a Band 6 receiver above 15 GHz, reaching up to about 24 GHz, and Radcliffe et al. make the same case for K-band, where many VLBI partner telescopes already have receivers. Radcliffe et al. add that SKA-VLBI is bounded by its partners, which record about 512 MHz at 4 Gbps and offer few long-baseline stations for SKA-Low.",
    "requirements": [
     {
      "id": "A-01",
@@ -538,6 +538,102 @@
      "fov_or_area": null,
      "survey_speed_or_time": null,
      "calculator_params": null
+    },
+    {
+     "id": "A-33",
+     "paper": "Radcliffe01",
+     "page": 9,
+     "quote": "For SKA-Mid, a single VLBI beam is expected to be available during the AA2 Science Verification phase (2029), providing the first opportunity for commissioning the end-to-end VLBI signal chain. By AA \u2217 (2031), this will grow to four simultaneous VLBI beams, and full basic VLBI capability - with the complete 16-beam pool available across up to 16 sub-arrays - is planned for Cycle 0 (2032).",
+     "science_driver": "Staged delivery of SKA-Mid tied-array VLBI beams",
+     "telescope": "mid",
+     "mode": "VLBI and astrometry",
+     "array_stage": "AA2, AA*, Cycle 0",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null
+    },
+    {
+     "id": "A-34",
+     "paper": "Radcliffe01",
+     "page": 9,
+     "quote": "Several key SKA-VLBI science cases (e.g., multi-field astrometry, multi-source monitoring) require more than four simultaneous beams, and three of the seven identified Low-frequency VLBI science cases need up to eight VLBI beams.",
+     "science_driver": "Multi-field astrometry and multi-source VLBI monitoring",
+     "telescope": "both",
+     "mode": "VLBI and astrometry",
+     "array_stage": null,
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": "more than four simultaneous VLBI beams; up to eight for SKA-Low cases",
+     "survey_speed_or_time": null,
+     "calculator_params": null
+    },
+    {
+     "id": "A-35",
+     "paper": "Radcliffe01",
+     "page": 6,
+     "quote": "This requires that the SKAO interferometric data taken alongside the tied-array beams be made available to VLBI users, and that observations be configured with multiple sub-arrays to retain short-baseline (< 160km for SKA-Mid and < 75km for SKA-Low) coverage.",
+     "science_driver": "Simultaneous multi-scale imaging of compact VLBI structure and surrounding extended emission (novae, complex jets such as NGC1068)",
+     "telescope": "both",
+     "mode": "VLBI and astrometry",
+     "array_stage": null,
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": "short-baseline coverage < 160 km (SKA-Mid) and < 75 km (SKA-Low) retained alongside VLBI",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null
+    },
+    {
+     "id": "A-36",
+     "paper": "Radcliffe01",
+     "page": 12,
+     "quote": "The SKA telescopes will provide extremely sensitive single elements to global VLBI arrays (SEFD: \u223c3.3 Jy for SKA-Mid AA \u2217 at 18 cm, reducing to \u223c1.55 Jy for AA4), which will dominate the image weighting when generating images at the best sensitivities.",
+     "science_driver": "Sensitivity and image fidelity of global VLBI arrays including phased SKA-Mid",
+     "telescope": "mid",
+     "mode": "VLBI and astrometry",
+     "array_stage": "AA*, AA4",
+     "frequency": "18 cm",
+     "sensitivity": "SEFD ~3.3 Jy (AA*), ~1.55 Jy (AA4)",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null
+    },
+    {
+     "id": "A-37",
+     "paper": "Radcliffe01",
+     "page": 11,
+     "quote": "In contrast, current VLBI stations (especially those operating at SKA-Mid frequencies) have limited data rates (e.g., 4Gbps for the VLBA, EVN, and LBA; corresponding to a 512MHz bandwidth - assuming 2-bit sampling).",
+     "science_driver": "Exploiting SKAO bandwidths (300 MHz on SKA-Low to 5 GHz in Band 5b) in VLBI",
+     "telescope": "vlbi",
+     "mode": "VLBI and astrometry",
+     "array_stage": null,
+     "frequency": "512 MHz bandwidth at 4 Gbps",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null
+    },
+    {
+     "id": "A-38",
+     "paper": "Radcliffe01",
+     "page": 6,
+     "quote": "Longer baselines covering 50-350 MHz will also provide the resolution needed for steep-spectrum sources, pulsar astrometry, scintillometry, and the low-frequency counterparts of transients (Timmerman et al., 2026).",
+     "science_driver": "Low-frequency VLBI with SKA-Low",
+     "telescope": "low",
+     "mode": "VLBI and astrometry",
+     "array_stage": null,
+     "frequency": "50-350 MHz",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "calculator_params": null
     }
    ],
    "open_questions": [
@@ -654,13 +750,25 @@
      "page": 7,
      "quote": "Large regions of this complex, multi-dimensional parameter space remain to be explored.",
      "theme": "unexplored transient parameter space"
+    },
+    {
+     "paper": "Radcliffe01",
+     "page": 4,
+     "quote": "How jets are launched, collimated, and ultimately dissipated remains poorly understood, and will stay that way until the flow can be imaged directly across the full range of scales involved, from the innermost accretion flow out to the kiloparsec-scale feedback regions (Baczko et al., 2026; Pathak et al., 2026).",
+     "theme": "jet launching and collimation"
+    },
+    {
+     "paper": "Radcliffe01",
+     "page": 13,
+     "quote": "Aside from the ongoing LAMBDA project, very few compatible stations are available or planned before SKA-Low VLBI is operational. This threatens our ability to realise the scientific opportunities offered by SKA-Low.",
+     "theme": "long-baseline partners for SKA-Low VLBI"
     }
    ]
   },
   {
    "letter": "B",
    "section": "Sun, Earth and Planets",
-   "section_summary": "The Sun, Earth and Planets section is dominated by solar and heliospheric physics, with a smaller group of papers on stars, exoplanets, the outer Solar System and terrestrial lightning. The solar chapters share a single observational premise. The radio Sun changes on sub-second and sub-MHz scales, and several bright and faint sources are often present on the disk at once, so the science depends on snapshot spectropolarimetric imaging with high dynamic range rather than on long synthesis integrations. Patra and Kansabanik want wideband, full-Stokes imaging to measure coronal and CME magnetic fields through free-free, gyroresonance and gyrosynchrotron emission and through Faraday rotation of background sources. Sharma, Kontar, Kumari, Morosan and Nakariakov focus on particle acceleration, radio-burst fine structure, solar energetic particles and quasi-periodic pulsations, and they ask for millisecond-to-sub-second cadence, kHz channels (including zoom and beamformed modes) and dense uv coverage. Mondal argues that SKA-Low sensitivity and a clean snapshot PSF are needed to characterise weak quiet-Sun transients carrying fluxes of tens of mSFU. Zhang, Raja and Chrysaphi turn propagation effects into diagnostics of coronal and solar-wind turbulence, using angular broadening of background sources along the solar track and the scattered images of solar bursts. Oberoi and Cheung set out the practical conditions that all of this depends on: attenuator characterisation, self-calibration in the strong-source regime, elastic correlator modes, triggered observing, and imaging tools that handle differential solar rotation and uniform weighting of the dense SKA-Mid core.\n\nThe observing modes are therefore almost entirely solar/heliospheric imaging, supplemented by tied-array and zoom configurations and by trigger-driven transient capture. For lightning, Hare requires raw-voltage buffer dumps rather than channelised data. The non-solar papers draw on other modes. Mohan and Vedantham use deep continuum and wide-field circular-polarisation surveys to reach active M dwarfs and star-planet interaction candidates; Vedantham proposes a southern-sky survey in 1 h pointings at 144 MHz with a Stokes V threshold near 140 microJy. Curiel relies on SKA-VLBI MultiView astrometry at 1-10 microarcsecond precision to find planets around ultracool dwarfs. Santos-Sanz needs deep Band 5b continuum integrations of about 5 h to detect thermal emission from trans-Neptunian objects at the 1.58 microJy (5 sigma) level.\n\nThe papers differ in what they expect from AA* compared with AA4. Several conclude that AA* already meets their core needs. Chrysaphi notes that the AA* frequency range covers every signal relevant to heliospheric turbulence and that a 6 km SKA-Low subarray already beats LOFAR in resolution. Hare expects AA* to give the baselines and sensitivity needed for new lightning science. For snapshot fidelity, however, the extra stations and intermediate baselines of AA4 matter. Cheung finds the AA* PSF less Gaussian for narrowband snapshots. Sharma points out that early SKA-Low assemblies lack the short baselines needed to image the extended disk. Mohan quotes 15.8 versus 10.2 microJy/beam in 1 h at 1.4 GHz for AA* and AA4. The most sensitivity-limited programmes depend on AA4: Santos-Sanz finds that AA* would detect only a few of the largest trans-Neptunian objects, Vedantham ties a substantial star-planet interaction yield to the roughly 10 microJy reach of SKA-Low AA4, and Curiel notes that AA* limits SKA-VLBI to one or perhaps four simultaneous beams.",
+   "section_summary": "The Sun, Earth and Planets section is dominated by solar and heliospheric physics, with a smaller group of papers on stars, exoplanets, the outer Solar System and terrestrial lightning. The solar chapters share a single observational premise. The radio Sun changes on sub-second and sub-MHz scales, and several bright and faint sources are often present on the disk at once, so the science depends on snapshot spectropolarimetric imaging with high dynamic range rather than on long synthesis integrations. Patra and Kansabanik want wideband, full-Stokes imaging to measure coronal and CME magnetic fields through free-free, gyroresonance and gyrosynchrotron emission and through Faraday rotation of background sources. Sharma, Kontar, Kumari, Morosan and Nakariakov focus on particle acceleration, radio-burst fine structure, solar energetic particles and quasi-periodic pulsations, and they ask for millisecond-to-sub-second cadence, kHz channels (including zoom and beamformed modes) and dense uv coverage. Mondal argues that SKA-Low sensitivity and a clean snapshot PSF are needed to characterise weak quiet-Sun transients carrying fluxes of tens of mSFU. Zhang, Raja and Chrysaphi turn propagation effects into diagnostics of coronal and solar-wind turbulence, using angular broadening of background sources along the solar track and the scattered images of solar bursts. Dey applies the same reasoning to the bursts themselves. Because uGMRT has already resolved noise-storm components smaller than about 9 arcseconds, far more compact than classical scattering prescriptions allow, Dey argues that sensitive long baselines on SKA-Low and the weak-scattering regime reached by SKA-Mid above about 1 GHz will let the scattering kernel be measured rather than assumed, and will separate fundamental from harmonic emission. Oberoi and Cheung set out the practical conditions that all of this depends on: attenuator characterisation, self-calibration in the strong-source regime, elastic correlator modes, triggered observing, and imaging tools that handle differential solar rotation and uniform weighting of the dense SKA-Mid core.\n\nThe observing modes are therefore almost entirely solar/heliospheric imaging, supplemented by tied-array and zoom configurations and by trigger-driven transient capture. Within that mode, Dey adds a demand for resolution as well as fidelity: SKA-Low baselines of about 74 km give arcsecond-scale resolution across 50-350 MHz, so the instrumental beam falls below the scattering disk above roughly 120-130 MHz, and full-Stokes imaging spectroscopy at high time and frequency resolution links image-plane broadening to the smearing seen in dynamic spectra. For lightning, Hare requires raw-voltage buffer dumps rather than channelised data. The non-solar papers draw on other modes. Mohan and Vedantham use deep continuum and wide-field circular-polarisation surveys to reach active M dwarfs and star-planet interaction candidates; Vedantham proposes a southern-sky survey in 1 h pointings at 144 MHz with a Stokes V threshold near 140 microJy. Curiel relies on SKA-VLBI MultiView astrometry at 1-10 microarcsecond precision to find planets around ultracool dwarfs. Santos-Sanz needs deep Band 5b continuum integrations of about 5 h to detect thermal emission from trans-Neptunian objects at the 1.58 microJy (5 sigma) level.\n\nThe papers differ in what they expect from AA* compared with AA4. Several conclude that AA* already meets their core needs. Chrysaphi notes that the AA* frequency range covers every signal relevant to heliospheric turbulence and that a 6 km SKA-Low subarray already beats LOFAR in resolution. Hare expects AA* to give the baselines and sensitivity needed for new lightning science. For snapshot fidelity, however, the extra stations and intermediate baselines of AA4 matter. Cheung finds the AA* PSF less Gaussian for narrowband snapshots. Sharma points out that early SKA-Low assemblies lack the short baselines needed to image the extended disk. Mohan quotes 15.8 versus 10.2 microJy/beam in 1 h at 1.4 GHz for AA* and AA4. Dey does not compare array stages, but his case rests on sensitivity at the longest baselines, where earlier arrays may have failed to detect correlated flux simply because they were sensitivity-limited. The most sensitivity-limited programmes depend on AA4: Santos-Sanz finds that AA* would detect only a few of the largest trans-Neptunian objects, Vedantham ties a substantial star-planet interaction yield to the roughly 10 microJy reach of SKA-Low AA4, and Curiel notes that AA* limits SKA-VLBI to one or perhaps four simultaneous beams.",
    "requirements": [
     {
      "id": "B-01",
@@ -1436,6 +1544,54 @@
      "survey_speed_or_time": null,
      "array_stage": "AA4 (AA* limited to a few largest TNOs)",
      "calculator_params": null
+    },
+    {
+     "id": "B-46",
+     "paper": "Dey01",
+     "page": 15,
+     "quote": "In the SKA-Low array, baselines extending to \u223c74 km provide arcsecond-scale resolution across 50-350 MHz, while SKA-Mid baselines extend to \u223c36 km (and up to \u223c108 km with the long-baseline outlier), delivering sub-arcsecond resolution at decimetric and centimetric wavelengths.",
+     "science_driver": "Resolving compact intrinsic structure in solar radio bursts and separating it from scattering-induced broadening (coronal 'seeing')",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "resolution": "arcsecond-scale (SKA-Low, ~74 km baselines); sub-arcsecond (SKA-Mid, ~36 km, up to ~108 km with outlier)",
+     "frequency": "50-350 MHz (SKA-Low); decimetric and centimetric wavelengths (SKA-Mid)",
+     "sensitivity": "high sensitivity on long baselines",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "B-47",
+     "paper": "Dey01",
+     "page": 8,
+     "quote": "SKA1-Low (50-350 MHz, \ud835\udc35max \u2243 65 km core): \ud835\udf03inst < \ud835\udf03scat already above \u223c120-130MHz - an instrument with unprecedented sensitivity and dense uv-coverage, capable of resolving the intrinsic morphology of metric noise storms, Type III beams, and fine structures.",
+     "science_driver": "Instrumental beam smaller than the coronal scattering disk, to resolve intrinsic morphology of noise storms and Type III sources",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "resolution": "synthesized beam smaller than scattering disk above ~120-130 MHz",
+     "frequency": "50-350 MHz",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "B-48",
+     "paper": "Dey01",
+     "page": 16,
+     "quote": "The availability of high time- and frequency-resolution full Stokes imaging spectroscopy across this full bandwidth further enables propagation effects in the image plane to be linked directly with temporal and spectral smearing observed in dynamic spectra.",
+     "science_driver": "Linking image-plane propagation effects to temporal and spectral smearing; constraining coronal density fluctuations and anisotropy",
+     "telescope": "both",
+     "mode": "Solar/heliospheric imaging",
+     "resolution": null,
+     "frequency": "full SKA-Low and SKA-Mid bandwidth (50 MHz to several GHz)",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": "high time and frequency resolution",
+     "array_stage": null,
+     "calculator_params": null
     }
    ],
    "open_questions": [
@@ -1594,13 +1750,25 @@
      "page": 4,
      "quote": "However, a detailed assessment is still required to determine whether the SKA's sensitivity and spatial resolution will be sufficient to detect or resolve such structures, given the trade-off between higher sensitivity and lower angular resolution.",
      "theme": "detectability of TNO ring systems"
+    },
+    {
+     "paper": "Dey01",
+     "page": 10,
+     "quote": "The F-H difference is nevertheless not yet well quantified.",
+     "theme": "fundamental versus harmonic propagation effects"
+    },
+    {
+     "paper": "Dey01",
+     "page": 5,
+     "quote": "These measurements sample greater heights than metric observations, so coordinated SKA and PSP observations of the same events are needed to establish how much of the depolarisation observed from the ground is acquired during propagation.",
+     "theme": "origin of solar burst depolarisation"
     }
    ]
   },
   {
    "letter": "C",
    "section": "Formation and Evolution of Stars",
-   "section_summary": "The Formation and Evolution of Stars section follows matter from cold prestellar cores through protostars, jets and planet-forming disks to evolved massive stars, supernova remnants and magnetars. Most of its science is built around SKA-Mid Band 5, and especially Band 5b (8.3-15.4 GHz). At these frequencies dust is optically thin, so the telescope can see into disk midplanes and dense envelopes that ALMA cannot reach. The astrochemistry chapters (Bianchi, Podio) target cyanopolyynes, carbon-chain radicals, benzonitrile and interstellar complex organic molecules with zoom-mode spectroscopy at 3-13 kHz resolution, with integrations of 10 to 1000 hours. The disk chapters (Garufi, Wu, Guidi) use Band 5b continuum to detect centimetre-sized pebbles and to resolve rings at about 0.05 arcsec, and they stack hydrogen recombination lines to separate photoevaporative from magnetised winds. Magnetic fields form a second strand. Bourke gives Zeeman forecasts for OH, CCS and C4H, and Loren-Anderson for carbon recombination lines. Bracco proposes synchrotron detection of starless cores with SKA-Low at 200 MHz and SKA-Mid Bands 1-2. Rygl uses maser surveys and time-domain maser monitoring.\n\nThe section relies mainly on four observing modes. The first is targeted spectral-line and maser observation, often with several zoom windows per band. The second is wide-field continuum surveying: Traficante's 630 deg2 Galactic-plane survey in Band 5b at 20 microJy/beam takes about 600 h, and Cavallaro's 70 percent sky survey in Band 2 targets ultracool dwarfs. The third is polarimetry, including Zeeman measurements, applied to jets, supernova remnants and dense cores. The fourth is SKA-VLBI astrometry, which Akahori uses for magnetar proper motions and parallaxes (50 microarcsec precision) and Ingallinera for OH masers in supernova remnants. Buemi, Ingallinera and Guidi all need matched beams in Band 2 and Band 5 to build spectral-index maps. Forbrich and Rygl add time-domain work coordinated with ALMA on accretion bursts and stellar flares. Several chapters (Sabatini, Forbrich, Bourke, Podio) press for a Band 6 receiver (15-50 GHz) to close the gap up to ALMA Band 1. Several chapters also count on the MeerKAT dishes receiving Band 5b receivers, which they estimate would raise line sensitivity by about 1.4 times.\n\nThe chapters agree broadly on what AA* and AA4 can each deliver. AA* already supports a substantial early programme. Bianchi finds that the lighter carbon chains in prestellar cores are detectable in 10 h at about 30 arcsec resolution. Rygl expects follow-up of maser flares and OH surveys of AGB stars once zoom mode is available. Bourke proposes AA* surveys of CCS and C4H to prepare for Zeeman work, and Sabatini reports most jet science as feasible from Science Verification onwards. Buemi's simulations show that AA* already partially resolves nebulae around Wolf-Rayet stars. In contrast, the demanding cases depend on the long baselines and full collecting area of AA4. Resolving the jet-launching region at about 4 au (Sabatini), resolving disk rings (Wu) and detecting faint disk lines on 100 au scales (Podio) all require AA4. Bracco finds that AA4 halves the time to detect a starless core with SKA-Low (below 50 h against below 100 h). The Galactic-plane survey grows from about 600 h at AA4 to about 1800 h at AA*, and its beam widens from 0.07 to 0.16 arcsec.",
+   "section_summary": "The Formation and Evolution of Stars section follows matter from cold prestellar cores through protostars, jets and planet-forming disks to evolved massive stars, supernova remnants and magnetars. Most of its science is built around SKA-Mid Band 5, and especially Band 5b (8.3-15.4 GHz). At these frequencies dust is mostly optically thin, so the telescope can see into disk midplanes and dense envelopes that ALMA cannot reach. The astrochemistry chapters (Bianchi, Podio) target cyanopolyynes, carbon-chain radicals, benzonitrile and interstellar complex organic molecules with zoom-mode spectroscopy at 3-13 kHz resolution, with integrations of 10 to 1000 hours. The disk chapters (Garufi, Wu, Guidi) use Band 5b continuum to detect centimetre-sized pebbles and to resolve rings at about 0.05 arcsec, and they stack hydrogen recombination lines to separate photoevaporative from magnetised winds. Greaves, drawing on the e-MERLIN PEBBLeS survey at 6.8 GHz, adds a caveat: massive disks may be opaque above about 10 GHz, so Band 5a and even lower frequencies are needed to see the inner regions where rocky planets may form. Magnetic fields form a second strand. Bourke gives Zeeman forecasts for OH, CCS and C4H, and Loren-Anderson for carbon recombination lines. Bracco proposes synchrotron detection of starless cores with SKA-Low at 200 MHz and SKA-Mid Bands 1-2. Rygl uses maser surveys and time-domain maser monitoring.\n\nThe section relies mainly on four observing modes. The first is targeted spectral-line and maser observation, often with several zoom windows per band. The second is continuum imaging, from wide-field surveys to deep targeted fields: Traficante's 630 deg2 Galactic-plane survey in Band 5b at 20 microJy/beam takes about 600 h, Cavallaro's 70 percent sky survey in Band 2 targets ultracool dwarfs, and Greaves proposes a southern counterpart to the PEBBLeS disk survey, which itself took about a thousand hours. The third is polarimetry, including Zeeman measurements, applied to jets, supernova remnants and dense cores. The fourth is SKA-VLBI astrometry, which Akahori uses for magnetar proper motions and parallaxes (50 microarcsec precision) and Ingallinera for OH masers in supernova remnants. Buemi, Ingallinera and Guidi all need matched beams in Band 2 and Band 5 to build spectral-index maps, and Greaves similarly relies on near-simultaneous lower-frequency data to separate disk emission from non-thermal jets, imaging each disk at two resolutions. Forbrich and Rygl add time-domain work coordinated with ALMA on accretion bursts and stellar flares. Several chapters (Sabatini, Forbrich, Bourke, Podio) press for a Band 6 receiver (15-50 GHz) to close the gap up to ALMA Band 1. Several chapters also count on the MeerKAT dishes receiving Band 5b receivers, which they estimate would raise line sensitivity by about 1.4 times.\n\nThe chapters agree broadly on what AA* and AA4 can each deliver. AA* already supports a substantial early programme. Bianchi finds that the lighter carbon chains in prestellar cores are detectable in 10 h at about 30 arcsec resolution. Rygl expects follow-up of maser flares and OH surveys of AGB stars once zoom mode is available. Bourke proposes AA* surveys of CCS and C4H to prepare for Zeeman work, and Sabatini reports most jet science as feasible from Science Verification onwards. Buemi's simulations show that AA* already partially resolves nebulae around Wolf-Rayet stars, and Greaves estimates that an AA* disk survey could go about four times deeper per target than PEBBLeS in the same time on source. In contrast, the demanding cases depend on the long baselines and full collecting area of AA4. Resolving the jet-launching region at about 4 au (Sabatini), resolving disk rings (Wu) and detecting faint disk lines on 100 au scales (Podio) all require AA4. Greaves's simulations of an HL Tau analogue make the same point: at AA* the highest resolution comes from baselines to a single antenna, so a 30 mas pebble clump is resolved in 24 h in Band 5b but in Band 5a needs up to a couple of days and cannot be imaged below about 150 mas. Bracco finds that AA4 halves the time to detect a starless core with SKA-Low (below 50 h against below 100 h). The Galactic-plane survey grows from about 600 h at AA4 to about 1800 h at AA*, and its beam widens from 0.07 to 0.16 arcsec.",
    "requirements": [
     {
      "id": "C-01",
@@ -2457,6 +2625,54 @@
      "survey_speed_or_time": null,
      "array_stage": "AA4",
      "calculator_params": null
+    },
+    {
+     "id": "C-49",
+     "paper": "Greaves01",
+     "page": 7,
+     "quote": "At 6.4 GHz (band 5a), the clump is detected at 8 times the noise at (222 \u00d7 179) mas resolution, but if the weighting/tapering gives a beam smaller than approximately 150 mas the noise is too great, whilst at lower resolution the clump is merged with the disc. The main disc could be detected in a few hours, but the faint clump would require up to a couple of days at band 5a (including calibration and depending on Declination).",
+     "science_driver": "Detecting pebble clumps around forming planets in protoplanetary discs",
+     "telescope": "mid",
+     "mode": "Continuum imaging",
+     "frequency": "6.4 GHz (Band 5a)",
+     "resolution": "(222 \u00d7 179) mas; beams below ~150 mas too noisy",
+     "sensitivity": "clump detected at 8 times the noise",
+     "fov_or_area": null,
+     "survey_speed_or_time": "main disc in a few hours; faint clump up to a couple of days",
+     "array_stage": "AA*",
+     "calculator_params": null
+    },
+    {
+     "id": "C-50",
+     "paper": "Greaves01",
+     "page": 7,
+     "quote": "In the simulation of a model system (Fig. 4), we find that at 11.5 GHz (band 5b) the clump is well-resolved, and it is recovered at 8 times the noise level at (87 \u00d7 61) mas resolution.",
+     "science_driver": "Resolving compact pebble aggregates in protoplanetary discs",
+     "telescope": "mid",
+     "mode": "Continuum imaging",
+     "frequency": "11.5 GHz (Band 5b)",
+     "resolution": "(87 \u00d7 61) mas",
+     "sensitivity": "8 times the noise level",
+     "fov_or_area": null,
+     "survey_speed_or_time": "24 hours on-source (simulation)",
+     "array_stage": "AA*",
+     "calculator_params": null
+    },
+    {
+     "id": "C-51",
+     "paper": "Greaves01",
+     "page": 8,
+     "quote": "Longer SKA-Mid baselines are likely to be needed to resolve sub-structures related to such planet formation, for the discs of the southern sky.",
+     "science_driver": "Imaging planet-related sub-structure in southern protoplanetary discs",
+     "telescope": "mid",
+     "mode": "Continuum imaging",
+     "frequency": null,
+     "resolution": "longer baselines than AA*",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "beyond AA*",
+     "calculator_params": null
     }
    ],
    "open_questions": [
@@ -2633,6 +2849,18 @@
      "page": 1,
      "quote": "The discovery of such radio activity is relatively recent, having emerged over the past two decades, and the underlying emission mechanism remains poorly understood.",
      "theme": "magnetar radio emission mechanism"
+    },
+    {
+     "paper": "Greaves01",
+     "page": 7,
+     "quote": "Working at higher frequencies will not necessarily solve the resolution problem, in the search for planet-related structures in the inner disc, if massive discs are opaque above \u223c10 GHz.",
+     "theme": "optical depth of massive discs at centimetre wavelengths"
+    },
+    {
+     "paper": "Greaves01",
+     "page": 3,
+     "quote": "We were unable to fit additional components, although a minor fraction of free-free contamination cannot be excluded without more cm-wave observations at comparable resolution.",
+     "theme": "free-free contamination of disc emission"
     }
    ]
   },
@@ -4147,7 +4375,7 @@
   {
    "letter": "E",
    "section": "The Cosmos",
-   "section_summary": "The Cosmos section is organised around three connected science drivers: precision cosmology from large-scale structure, the physics of the high-redshift intergalactic medium during Cosmic Dawn and reionisation, and the non-thermal and magnetised content of galaxy clusters and the cosmic web. The cosmology chapters (Fonseca, Camera, Harrison, Wolz, Nasirudin, Bosi, Asorey) converge on a small set of reference surveys inherited from the Cosmology Red Book: a single-dish Wide Band 1 HI intensity-mapping survey of about 20,000 deg2 in roughly 10,000 h, a Medium-Deep Band 2 survey of about 5,000 deg2 serving both HI galaxy redshifts and radio weak lensing, and a Band 1 continuum survey of the southern sky that reaches a flux limit near 20 uJy. These surveys feed primordial non-Gaussianity, BAO and redshift-drift measurements, Nx2pt analyses and cross-correlations with gravitational-wave catalogues. A pulsar-timing strand (Cruz, Perna, Pasechnik, Jenkins, Ragavendra) requires roughly 200 millisecond pulsars timed at about 100 ns over 10-20 years. A fast-radio-burst strand (Caleb) uses fluence thresholds and survey fields of view to predict counts and baryon constraints.\n\nThe observing modes follow from these drivers. Deep HI intensity mapping is the most frequently invoked mode: single-dish scanning in Band 1 for BAO and cross-correlation work, and interferometric mapping (Mazumder, Elahi) for smaller-scale clustering at z of 1 to 3. The EoR and Cosmic Dawn chapters (Barkana, Acharya, Bag, Chakraborty, Cang, de Lera Acedo) set their integrations around 1000-1080 h on SKA-Low for power spectra, with longer integrations on selected fields for tomographic imaging. The cluster and magnetism chapters take a different approach. Pointed or tiered continuum observations of 1-50 h with SKA-Low and SKA-Mid (Cassano, Santra, Cuciti, Gitti, Arpan Pal, Aritra Basu) target radio halos, relics, mini-halos and fluctuation-dynamo filaments. Polarimetric RM grids use SKA-Low near 150 MHz (O'Sullivan) and SKA-Mid Band 2 (Loi, Vacca, Kurahara). Band 5 carries the tSZ imaging (Perrott) and the depolarisation-free measurements of cluster magnetic fields.\n\nHow AA* compares with AA4 depends on the science case. For surface-brightness and power-spectrum work the difference is modest. O'Sullivan finds only a small sensitivity loss at 5 arcsec, so an RM grid could begin with AA* and continue with AA4. Fonseca and Regis report that AA* gives constraints close to AA4 for primordial non-Gaussianity and for dark-matter searches in the SKA-Mid bands. Cunnington argues that single-dish intensity mapping is well suited to early AA* operations. Other cases depend on the full array. Harrison shows that radio weak lensing is unachievable with AA* at any depth, because its PSF cannot resolve enough galaxy shapes, while AA4 meets the required density of about 1 galaxy per arcmin2. Perrott finds that high-fidelity tSZ imaging needs the dense short baselines of AA4. Bag concludes that 21-cm tomographic imaging is superior with AA4, and Regis finds SKA-Low dark-matter limits about three times weaker with AA*. The section therefore treats AA* as the stage for statistical detections and early surveys, and AA4 as the stage for the high-resolution imaging these measurements need.",
+   "section_summary": "The Cosmos section is organised around three connected science drivers: precision cosmology from large-scale structure, the physics of the high-redshift intergalactic medium during Cosmic Dawn and reionisation, and the non-thermal and magnetised content of galaxy clusters and the cosmic web. The cosmology chapters (Fonseca, Camera, Harrison, Wolz, Nasirudin, Bosi, Asorey, Bertacca) converge on a small set of reference surveys inherited from the Cosmology Red Book: a single-dish Wide Band 1 HI intensity-mapping survey of about 20,000 deg2 in roughly 10,000 h, a Medium-Deep Band 2 survey of about 5,000 deg2 serving both HI galaxy redshifts and radio weak lensing, and a Band 1 continuum survey of the southern sky that reaches a flux limit near 20 uJy. These surveys feed primordial non-Gaussianity, BAO and redshift-drift measurements, Nx2pt analyses and cross-correlations with gravitational-wave catalogues. They also support tests of the Cosmological Principle itself: Bertacca uses the Band 1 continuum survey at 780 MHz to measure the kinematic radio dipole, whose observed excess remains unexplained, and AA4 HI galaxy samples at z of 0.1 to 0.3 to recover the observer's velocity from its imprint on the power spectrum monopole. A pulsar-timing strand (Cruz, Perna, Pasechnik, Jenkins, Ragavendra) requires roughly 200 millisecond pulsars timed at about 100 ns over 10-20 years. A fast-radio-burst strand (Caleb) uses fluence thresholds and survey fields of view to predict counts and baryon constraints.\n\nThe observing modes follow from these drivers. Deep HI intensity mapping is the most frequently invoked mode: single-dish scanning in Band 1 for BAO and cross-correlation work, and interferometric mapping (Mazumder, Elahi) for smaller-scale clustering at z of 1 to 3. Wide-field continuum surveys serve the dipole work, which in turn requires a flux cut near 80 uJy, photometric redshifts to remove low-redshift star-forming galaxies, and careful control of direction-dependent survey depth. The EoR and Cosmic Dawn chapters (Barkana, Acharya, Bag, Chakraborty, Cang, de Lera Acedo) set their integrations around 1000-1080 h on SKA-Low for power spectra, with longer integrations on selected fields for tomographic imaging. Deep fields serve a further purpose in Bertacca, where 100 deg2 patches of low Galactic foreground contamination, observed at 100 MHz and 1.355 GHz, measure the kinematic dipole in the spectrum of the extragalactic radio background. The cluster and magnetism chapters take a different approach. Pointed or tiered continuum observations of 1-50 h with SKA-Low and SKA-Mid (Cassano, Santra, Cuciti, Gitti, Arpan Pal, Aritra Basu) target radio halos, relics, mini-halos and fluctuation-dynamo filaments. Polarimetric RM grids use SKA-Low near 150 MHz (O'Sullivan) and SKA-Mid Band 2 (Loi, Vacca, Kurahara). Band 5 carries the tSZ imaging (Perrott) and the depolarisation-free measurements of cluster magnetic fields.\n\nHow AA* compares with AA4 depends on the science case. For surface-brightness and power-spectrum work the difference is modest. O'Sullivan finds only a small sensitivity loss at 5 arcsec, so an RM grid could begin with AA* and continue with AA4. Fonseca and Regis report that AA* gives constraints close to AA4 for primordial non-Gaussianity and for dark-matter searches in the SKA-Mid bands. Cunnington argues that single-dish intensity mapping is well suited to early AA* operations. Bertacca similarly finds that sensitivity and resolution for radio-background dipole measurements do not degrade significantly with AA*, although the longer baselines remain essential for limiting source confusion. Other cases depend on the full array. Harrison shows that radio weak lensing is unachievable with AA* at any depth, because its PSF cannot resolve enough galaxy shapes, while AA4 meets the required density of about 1 galaxy per arcmin2. Perrott finds that high-fidelity tSZ imaging needs the dense short baselines of AA4. Bag concludes that 21-cm tomographic imaging is superior with AA4, and Regis finds SKA-Low dark-matter limits about three times weaker with AA*. The section therefore treats AA* as the stage for statistical detections and early surveys, and AA4 as the stage for the high-resolution imaging these measurements need.",
    "requirements": [
     {
      "id": "E-01",
@@ -5888,6 +6116,86 @@
      "survey_speed_or_time": null,
      "array_stage": "AA4-like",
      "calculator_params": null
+    },
+    {
+     "id": "E-107",
+     "paper": "Bertacca01",
+     "page": 6,
+     "quote": "We generate mock observations of sources (SFG and AGN) at the nominal SKA-Mid Band 1 observing frequency of \ud835\udf08 = 780MHz, sampled from a best-fit \u039bCDM matter density field (using glass, camb, and CCL; Tessore et al., 2023; Lewis et al., 2000; Chisari et al., 2019), that contain expected source populations, properties and number densities generated from the T-RECS simulation (Bonaldi et al., 2023), and account for survey-specific noise and source detectability following the SKAO sensitivity calculator for AA4 and SKA-Mid, assuming 10000 hours of observation distributed across individual pointings covering Dec < 0 (following the specifications in Bacon et al., 2020).",
+     "science_driver": "Kinematic matter dipole in radio source counts (cosmic radio dipole anomaly)",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "SKA-Mid Band 1, 780 MHz",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": "Dec < 0",
+     "survey_speed_or_time": "10000 hours",
+     "array_stage": "AA4",
+     "calculator_params": null
+    },
+    {
+     "id": "E-108",
+     "paper": "Bertacca01",
+     "page": 20,
+     "quote": "At the conservative flux density and redshift cuts of \ud835\udc46780MHz > 80\ud835\udf07Jy and \ud835\udc67 > 0.5, we expect to recover a dipole at a significance of > 3\ud835\udf0e, consistent with its kinematic expectation.",
+     "science_driver": "Separating the kinematic radio dipole from low-redshift star-forming-galaxy clustering",
+     "telescope": "mid",
+     "mode": "Wide-field continuum survey",
+     "frequency": "780 MHz",
+     "sensitivity": "flux density cut S > 80 uJy at 780 MHz",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "E-109",
+     "paper": "Bertacca01",
+     "page": 12,
+     "quote": "We consider 3 different HI galaxy samples, differing by the flux cuts \ud835\udc46\u2217 = [5, 120, 150] \ud835\udf07Jy. The first cut describes an optimistic sample (see e.g. Maartens et al., 2021; Bacon et al., 2020; Maartens et al., 2015), covering the redshift range \ud835\udc67 \u2208 [0.1, 1.0], while the last two describe possible AA4 samples, covering the range \ud835\udc67 \u2208 [0.1, 0.3].",
+     "science_driver": "Observer velocity from the FOTO/B-FOTO modulation of the HI galaxy power spectrum monopole",
+     "telescope": "mid",
+     "mode": "Deep/wide HI galaxy survey",
+     "frequency": null,
+     "sensitivity": "HI flux cuts of 120 and 150 uJy (AA4 samples); 5 uJy for an extended survey",
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA4",
+     "calculator_params": null
+    },
+    {
+     "id": "E-110",
+     "paper": "Bertacca01",
+     "page": 21,
+     "quote": "We find that deep observations in \u223c 100 deg 2 patches, selected for their low Galactic foreground contamination, offer percent-level constraints on \ud835\udefd at 100 MHz, degrading to constraints at the level of tens of percent at 1.4 GHz.",
+     "science_driver": "Kinematic dipole in the spectrum of the extragalactic radio background",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": "100 MHz and 1.4 GHz",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": "~100 deg2 patches",
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "E-111",
+     "paper": "Bertacca01",
+     "page": 17,
+     "quote": "Sensitivity and resolution do not significantly degrade by adopting the AA* configuration. The longer baselines are, however, crucial to mitigate source confusion noise, complementing the shorter baselines which are necessary for large-scale signal reconstruction.",
+     "science_driver": "Radio background dipole spectrum: confusion noise versus large-scale signal reconstruction",
+     "telescope": "both",
+     "mode": "Ultra-deep continuum imaging",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": "longer baselines needed to mitigate source confusion",
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": "AA* adequate for sensitivity and resolution; AA4 assumed",
+     "calculator_params": null
     }
    ],
    "open_questions": [
@@ -6178,13 +6486,25 @@
      "page": 13,
      "quote": "Such systematics robustness remains a compelling feature, with the presence or absence of an ' \ud835\udc46 8 tension' in existing weak lensing data still unclear.",
      "theme": "S8 tension"
+    },
+    {
+     "paper": "Bertacca01",
+     "page": 4,
+     "quote": "An explanation for this anomaly is still outstanding. A central question is whether the excess dipole is fully kinematic (i.e. an apparent imprint on a largely isotropic background, caused by our observer motion) or whether it is due to unexpected clustering on large scales (i.e. unexpected deviations from isotropy).",
+     "theme": "origin of the cosmic radio dipole anomaly"
+    },
+    {
+     "paper": "Bertacca01",
+     "page": 9,
+     "quote": "Causes for this might include Eddington bias or source confusion, although our current study is not conclusive on this.",
+     "theme": "noise-dependent source counts in dipole surveys"
     }
    ]
   },
   {
    "letter": "F",
    "section": "The Extreme Universe",
-   "section_summary": "The Extreme Universe section gathers the compact-object, transient and astroparticle science cases, and its demands fall into three technical families. The largest is pulsar work. Keane et al. set out the census strategy that underpins most of the other pulsar chapters: real-time searches with 500 (250) tied-array beams on SKA-Low and 1500 (1125) beams on SKA-Mid at AA4 (AA*), using 10-minute pointings and an inner-kilometre sub-array. Several chapters build on that population. JunXu uses it for rotation measures of the Galactic magnetic field, Tiburzi for dispersion and scintillation studies of the ionised medium, Bagchi and Abbate for pulsars in globular clusters and the Galactic Centre, and Shannon, Venkatraman Krishnan, Basu, Oswald and Levin for timing arrays, tests of gravity, glitches, magnetospheres and neutron-star evolution. The second family covers time-domain astronomy: fast radio bursts (Curtin), long-period transients (Qiu), radio stars (Driessen), supernovae (Chandra; An), tidal disruption events (An; Shu), gravitational-wave counterparts (Colombo; Capelo) and neutrino fields (R\u00f6sch). These cases depend on commensal or triggered observations and on the transient buffer, and they ask for SKA-Mid continuum depths of roughly 1 to 10 microJy per beam in 10 minutes to a few hours.\n\nThe third family is VLBI with a phased SKA-Mid. It is the most frequently cited technique in the section. In this mode the SKA becomes the most sensitive element of global arrays, reaching image noise of a few microJy per beam in about an hour with beams of 0.5 to 1 mas at 8 to 15 GHz. This capability drives the proposed programmes on gamma-ray bursts (Giarratana), colliding-wind binaries (Marcote), X-ray binaries (An; Lin), jets at high redshift (Spingola), blazars and novae (Kadler; Lico), and space VLBI (Kovalev). Band 5 recurs throughout the section. It reduces free-free absorption and scattering, which is why the Galactic Centre searches, the core-shift measurements and the studies of young supernova shocks all rely on it. For the same reason, Bignall, Abbate and Tiburzi each argue that Bands 3 and 4 are needed to close the 1.76 to 4.6 GHz gap. A small group of astroparticle chapters (Buitink, Corstanje, Watanabe, Nelles) uses the dense core of SKA-Low as a detector of air showers between 50 and 350 MHz.\n\nThe papers are candid about the difference between AA* and AA4, and the difference matters most where sensitivity compounds over time or where the core is thinned. The air-shower programmes state that AA* already holds about 90 per cent of the core antennas and is sufficient for their goals. Capelo, in a similar vein, finds that the number of radio counterparts to LISA sources barely changes between the two stages. In contrast, Keane shows that the SKA-Mid core is more hollowed out at AA* than the SKA-Low core, so pulsar survey speed suffers more on Mid. Venkatraman Krishnan concludes that binary-pulsar tests need AA4, which halves the uncertainties on post-Keplerian parameters and reaches a given precision one to two years sooner. Tiburzi, Basu and the VLBI chapters likewise treat AA4 as the stage that extends programmes demonstrated at AA* to fainter, more distant or quiescent sources and larger samples. Consequently, the section's programmes are designed to begin in AA* with the brightest targets and to reach their full scientific return only with AA4.",
+   "section_summary": "The Extreme Universe section gathers the compact-object, transient and astroparticle science cases, and its demands fall into three technical families. The largest is pulsar work. Keane et al. set out the census strategy that underpins most of the other pulsar chapters: real-time searches with 500 (250) tied-array beams on SKA-Low and 1500 (1125) beams on SKA-Mid at AA4 (AA*), using 10-minute pointings and an inner-kilometre sub-array. Several chapters build on that population. JunXu uses it for rotation measures of the Galactic magnetic field, Tiburzi for dispersion and scintillation studies of the ionised medium, Bagchi and Abbate for pulsars in globular clusters and the Galactic Centre, and Shannon, Venkatraman Krishnan, Basu, Oswald and Levin for timing arrays, tests of gravity, glitches, magnetospheres and neutron-star evolution. The second family covers time-domain astronomy: fast radio bursts (Curtin), long-period transients (Qiu), radio stars (Driessen), supernovae (Chandra; An), tidal disruption events (An; Shu), gravitational-wave counterparts (Colombo; Capelo) and neutrino fields (R\u00f6sch). These cases depend on commensal or triggered observations and on the transient buffer, and they ask for SKA-Mid continuum depths of roughly 1 to 10 microJy per beam in 10 minutes to a few hours. Andersson et al. treat the same capabilities as the means of finding source classes that nobody has yet predicted. They argue that sub-arrays, rapid reconfiguration on triggers and commensal observing must be kept, that the field of view and time on sky should be as large as possible, that untargeted searches should span SKA-Low and every SKA-Mid band, and that machine-learning anomaly detection will be needed to pick rare events out of the candidate stream.\n\nThe third family is VLBI with a phased SKA-Mid. It is the most frequently cited technique in the section. In this mode the SKA becomes the most sensitive element of global arrays, reaching image noise of a few microJy per beam in about an hour with beams of 0.5 to 1 mas at 8 to 15 GHz. This capability drives the proposed programmes on gamma-ray bursts (Giarratana), colliding-wind binaries (Marcote), X-ray binaries (An; Lin), jets at high redshift (Spingola), blazars and novae (Kadler; Lico), and space VLBI (Kovalev). Band 5 recurs throughout the section. It reduces free-free absorption and scattering, which is why the Galactic Centre searches, the core-shift measurements and the studies of young supernova shocks all rely on it. For the same reason, Bignall, Abbate and Tiburzi each argue that Bands 3 and 4 are needed to close the 1.76 to 4.6 GHz gap. A small group of astroparticle chapters (Buitink, Corstanje, Watanabe, Nelles) uses the dense core of SKA-Low as a detector of air showers between 50 and 350 MHz.\n\nThe papers are candid about the difference between AA* and AA4, and the difference matters most where sensitivity compounds over time or where the core is thinned. The air-shower programmes state that AA* already holds about 90 per cent of the core antennas and is sufficient for their goals. Capelo, in a similar vein, finds that the number of radio counterparts to LISA sources barely changes between the two stages. In contrast, Keane shows that the SKA-Mid core is more hollowed out at AA* than the SKA-Low core, so pulsar survey speed suffers more on Mid. Venkatraman Krishnan concludes that binary-pulsar tests need AA4, which halves the uncertainties on post-Keplerian parameters and reaches a given precision one to two years sooner. Tiburzi, Basu and the VLBI chapters likewise treat AA4 as the stage that extends programmes demonstrated at AA* to fainter, more distant or quiescent sources and larger samples. Consequently, the section's programmes are designed to begin in AA* with the brightest targets and to reach their full scientific return only with AA4.",
    "requirements": [
     {
      "id": "F-01",
@@ -7648,6 +7968,54 @@
      "survey_speed_or_time": null,
      "array_stage": "AA*",
      "calculator_params": null
+    },
+    {
+     "id": "F-89",
+     "paper": "AlexAndersson02",
+     "page": 9,
+     "quote": "LPTs have been seen to be brightest in different specific frequency bands (e.g. Hurley-Walker et al., 2022, 2024; Lee et al., 2025; Wang et al., 2025c); while it is currently unclear whether this is an intrinsic (emission mechanism) or extrinsic (absorption along the line-of-sight) effect, it motivates untargetted searches across both SKA Low and all Mid bands.",
+     "science_driver": "Discovery of long-period transients and other unknown transient classes",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": "SKA-Low band and all SKA-Mid bands",
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "F-90",
+     "paper": "AlexAndersson02",
+     "page": 4,
+     "quote": "Here we also note that for transient discovery and study maximising the field-of-view and on-sky time are crucial.",
+     "science_driver": "Discovery of rare and unexpected radio transients",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": "Field of view maximised",
+     "survey_speed_or_time": "On-sky time maximised",
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "F-91",
+     "paper": "AlexAndersson02",
+     "page": 4,
+     "quote": "In the follow up Chapter in the 2014 Science book Wilkinson (2015) noted three SKA Level 0 Science Requirements that had been captured in the document from Braun et al. (2015): the capability to carry out small-scale experimental observations utilising sub-arrays, the capability to rapidly reconfigure the observing mode based on triggers and to enable commensal observations. These are still very important considerations for the SKA telescopes and should continue to be supported.",
+     "science_driver": "Keeping the telescopes open to unknown unknowns through sub-arrays, triggers and commensal observing",
+     "telescope": "both",
+     "mode": "Transient / commensal / ToO",
+     "frequency": null,
+     "sensitivity": null,
+     "resolution": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
     }
    ],
    "open_questions": [
@@ -7842,13 +8210,25 @@
      "page": 7,
      "quote": "The transition between a SNR and a PWN is gradual, and it is not yet clear from where the highest \ud835\udefe -emission is detected.",
      "theme": "sites of PeV gamma-ray emission"
+    },
+    {
+     "paper": "AlexAndersson02",
+     "page": 9,
+     "quote": "LPTs have been seen to be brightest in different specific frequency bands (e.g. Hurley-Walker et al., 2022, 2024; Lee et al., 2025; Wang et al., 2025c); while it is currently unclear whether this is an intrinsic (emission mechanism) or extrinsic (absorption along the line-of-sight) effect, it motivates untargetted searches across both SKA Low and all Mid bands.",
+     "theme": "band-limited emission of long-period transients"
+    },
+    {
+     "paper": "AlexAndersson02",
+     "page": 11,
+     "quote": "The detection of the optical transient AT2018cow led to the establishment of the class of \"Fast Blue Optical Transients\" (FBOTs) which are relativistic transients of as-yet unknown origin.",
+     "theme": "origin of fast blue optical transients"
     }
    ]
   },
   {
    "letter": "G",
    "section": "Methods and Techniques",
-   "section_summary": "The Methods and Techniques section gathers the calibration, imaging, inference and array-extension work that other SKA science cases depend on, rather than a single astrophysical target. Its papers fall into five groups. Cosmic magnetism is the first, and there polarimetric inference turns rotation-measure grids and Faraday spectra into magnetic-field constraints: Vacca, Carcamo and Chan model the Galactic foreground, run Faraday tomography across the SKA-Low and SKA-Mid bands, and forward-model polarised skies from MHD simulations. The second group treats the 21-cm signal from Cosmic Dawn and the Epoch of Reionisation (EoR), where foreground and systematics control dominates (Burba, Acharya, Zhang). Calibration against the ionosphere is the third (Morgan, Datta). The fourth is time-domain operations, meaning commensal image-plane searches, rapid-response triggering and technosignature searches (Andersson, Anderson, Tremblay). A large VLBI cluster forms the fifth. It proposes extending both telescopes to intercontinental baselines for astrometry, geodesy, tests of general relativity and pulsar parallaxes (Chen, Bempong-Manful, Li, Kobayashi, Timmerman, Xu, Wongphechauxsorn, Takahashi). Around these groups sit data-science chapters on source finding, AI, citizen science and radio weak-lensing shear measurement.\n\nThe observing modes follow from these groups. VLBI and astrometry dominate numerically, and the stated demands are concrete. Li quotes a 15 \u03bcJy sensitivity at 15 GHz in 300 s over 0.256 GHz, which yields single-epoch astrometric precision of about 2 \u03bcas. Kobayashi estimates fringe-detection limits near 0.1\u20130.2 mJy on SKA-Low baselines at 320 MHz. Takahashi calls for about 30 one-hour epochs over 2\u20133 years to reach distances good to 1 pc for millisecond pulsars used in pulsar timing arrays. Polarimetry and RM-grid work rests on the Band 2 survey of 30,000 deg\u00b2 at 2\u2033 and 4 \u03bcJy that Vacca cites, and on the calculator estimates in Carcamo. The EoR chapters require calibration errors below about 10\u207b\u2075 and sky models complete to 1\u201310 mJy. The time-domain chapters depend less on raw sensitivity than on data products: fast snapshot imaging, transient buffers, zoom channels at 14 Hz and 210 Hz, and tied-array beams. The ionosphere chapters mainly need station-level imaging and access to visibilities.\n\nMost chapters say their methods work from AA*, so the difference between AA* and AA4 is usually one of depth rather than feasibility. Andersson states that the commensal transient tools apply to all deployments from AA* onward, and Tremblay sizes the technosignature data products explicitly for AA*. Carcamo gives Band 2 sensitivities of 5.4 \u03bcJy/beam at AA* and 2.9 \u03bcJy/beam at AA4 for a 16-hour RM-grid pointing. Robishaw is where the gap between stages matters most. Zeeman detection in LMC masers takes 3 minutes with AA4 against 10 minutes with AA*, but a search for OH masers in M31 needs 36 hours with AA4 and an impractical 115 hours with AA*. Morgan, in contrast, expects the smaller AA* core to matter little for ionospheric science, while the extra outer stations of AA4 would help refractive-shift and parallax measurements. Several VLBI proposals go beyond both stages, because they need baselines of thousands of kilometres from new stations in Africa, Australia and Asia.",
+   "section_summary": "The Methods and Techniques section gathers the calibration, imaging, inference and array-extension work that other SKA science cases depend on, rather than a single astrophysical target. Its papers fall into five groups. Cosmic magnetism is the first, and there polarimetric inference turns rotation-measure grids and Faraday spectra into magnetic-field constraints: Vacca, Carcamo and Chan model the Galactic foreground, run Faraday tomography across the SKA-Low and SKA-Mid bands, and forward-model polarised skies from MHD simulations. The second group treats the 21-cm signal from Cosmic Dawn and the Epoch of Reionisation (EoR), where foreground and systematics control dominates (Burba, Acharya, Zhang). Propagation through the ionosphere and the solar wind is the third (Morgan, Datta, Chhetri). Chhetri uses interplanetary scintillation in two ways: to pick out sub-arcsecond sources that can serve as direction-dependent calibrators, and to sense the heliosphere for space-weather studies. The fourth is time-domain operations, meaning commensal image-plane searches, rapid-response triggering and technosignature searches (Andersson, Anderson, Tremblay). A large VLBI cluster forms the fifth. It proposes extending both telescopes to intercontinental baselines for astrometry, geodesy, tests of general relativity and pulsar parallaxes (Chen, Bempong-Manful, Li, Kobayashi, Timmerman, Xu, Wongphechauxsorn, Takahashi). Around these groups sit data-science chapters on source finding, AI, citizen science and radio weak-lensing shear measurement.\n\nThe observing modes follow from these groups. VLBI and astrometry dominate numerically, and the stated demands are concrete. Li quotes a 15 \u03bcJy sensitivity at 15 GHz in 300 s over 0.256 GHz, which yields single-epoch astrometric precision of about 2 \u03bcas. Kobayashi estimates fringe-detection limits near 0.1\u20130.2 mJy on SKA-Low baselines at 320 MHz. Takahashi calls for about 30 one-hour epochs over 2\u20133 years to reach distances good to 1 pc for millisecond pulsars used in pulsar timing arrays. Polarimetry and RM-grid work rests on the Band 2 survey of 30,000 deg\u00b2 at 2\u2033 and 4 \u03bcJy that Vacca cites, and on the calculator estimates in Carcamo. The EoR chapters require calibration errors below about 10\u207b\u2075 and sky models complete to 1\u201310 mJy. The time-domain chapters depend less on raw sensitivity than on data products: fast snapshot imaging, transient buffers, zoom channels at 14 Hz and 210 Hz, and tied-array beams. The ionosphere chapters mainly need station-level imaging and access to visibilities. Interplanetary scintillation asks for the same access at a faster cadence. Chhetri needs correlation at about 0.5 s from the inner 6 km of SKA-Low; he judges the 0.85 s subarray product barely viable and prefers the 0.28 s sub-station output. With 5-minute pointings of nine beams, the survey covers 770 deg\u00b2 around the Sun in 70 minutes a week and reaches an expected 409 compact sources per square degree at 2 mJy/beam.\n\nMost chapters say their methods work from AA*, so the difference between AA* and AA4 is usually one of depth rather than feasibility. Andersson states that the commensal transient tools apply to all deployments from AA* onward, and Tremblay sizes the technosignature data products explicitly for AA*. Carcamo gives Band 2 sensitivities of 5.4 \u03bcJy/beam at AA* and 2.9 \u03bcJy/beam at AA4 for a 16-hour RM-grid pointing. Robishaw is where the gap between stages matters most. Zeeman detection in LMC masers takes 3 minutes with AA4 against 10 minutes with AA*, but a search for OH masers in M31 needs 36 hours with AA4 and an impractical 115 hours with AA*. Morgan, in contrast, expects the smaller AA* core to matter little for ionospheric science, while the extra outer stations of AA4 would help refractive-shift and parallax measurements. Chhetri likewise sizes the scintillation survey on the inner stations of AA4, where a 1-\u03c3 continuum sensitivity of 1.67 mJy/beam per snapshot gives 5-\u03c3 scintillation detections near 0.9 mJy/beam in 5 minutes. Several VLBI proposals go beyond both stages, because they need baselines of thousands of kilometres from new stations in Africa, Australia and Asia. Chhetri makes the same point for multi-station solar-wind measurements, which would benefit from baselines of about 100 to 1000 km, longer than the AA4 layout of SKA-Low provides.",
    "requirements": [
     {
      "id": "G-01",
@@ -8602,6 +8982,65 @@
       "weighting": "robust -0.5",
       "claimed_beam_arcsec": null
      }
+    },
+    {
+     "id": "G-46",
+     "paper": "Chhetri01",
+     "page": 10,
+     "quote": "The requirements for making survey the SKA-Low are simple: (i) correlation with \u223c0.5 second time resolution in order to adequately sample the IPS signature (a shorter time constant would be desirable, and may even be necessary at high/frequencies or high solar wind speeds), (ii) our main approach is image based, therefore the sub-array selected should provide a good instantaneous UV coverage such that high quality images can be made at that time resolution.",
+     "science_driver": "Widefield interplanetary scintillation (IPS) imaging to identify sub-arcsecond compact sources and probe the solar wind",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": null,
+     "resolution": "~0.5 s correlator time resolution (0.28 s sub-station output preferred over 0.85 s subarray output)",
+     "sensitivity": null,
+     "fov_or_area": null,
+     "survey_speed_or_time": null,
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "G-47",
+     "paper": "Chhetri01",
+     "page": 11,
+     "quote": "With FoV of 2.8 degrees at 162 MHz, by close packing them in 3\u00d73 layout, the footprint can cover up to 55 sq degrees of the sky with one pointing. With the inner edge of such a footprint pointed at 14.5 degrees, an observation of 5-minutes duration would be executed. We can follow the MWA strategy of observing around the Sun, which would require a total of 14 such pointings around the Sun at this frequency as shown in Figure 4, thus covering a total of 770 sq degree of sky around the Sun in 70 minutes.",
+     "science_driver": "IPS survey of compact sources around the Sun, repeated through the year to cover the ecliptic",
+     "telescope": "low",
+     "mode": "Solar/heliospheric imaging",
+     "frequency": "162 MHz (32 MHz bandwidth per observation)",
+     "resolution": null,
+     "sensitivity": null,
+     "fov_or_area": "2.8 deg beam FoV; 9 beams cover 55 deg\u00b2 per pointing; 770 deg\u00b2 per 14-pointing session",
+     "survey_speed_or_time": "5 min per pointing; 14 pointings in 70 min, repeated every 7 days (70 min per week)",
+     "array_stage": null,
+     "calculator_params": null
+    },
+    {
+     "id": "G-48",
+     "paper": "Chhetri01",
+     "page": 12,
+     "quote": "In Table 2 we estimate the 5-sigma IPS sensitivity based on 1-sigma continuum image sensitivity achieved by SKA-Low using the inner 6-km stations at 162MHz. The 1-sigma continuum image sensitivity was calculated using the SKA sensitivity calculator using Natural weighting scheme. Morgan et al. (2018) found that the sensitivity of the variability images only increases as the fourth root of total integration time. Table 2 shows that 5 minute of total integration time provides sufficient sensitivity to probe compact sources at \u223c 1mJy level, while ensuring sufficient time stamps are obtained to measure IPS properly.",
+     "science_driver": "Detection of scintillating sub-arcsecond sources to mJy levels, giving a dense compact-source and calibrator network",
+     "telescope": "low",
+     "mode": "Wide-field continuum survey",
+     "frequency": "162 MHz, 32 MHz bandwidth",
+     "resolution": "inner 6-km stations; IPS probes sources smaller than ~0.3 arcsec",
+     "sensitivity": "1-sigma continuum 1.67 mJy/beam per 0.28 s snapshot; 5-sigma IPS 0.92 mJy/beam in 5 min",
+     "fov_or_area": null,
+     "survey_speed_or_time": "5 min default integration",
+     "array_stage": "AA4 (inner 6 km stations)",
+     "calculator_params": {
+      "telescope": "low",
+      "freq_ghz": 0.162,
+      "band": null,
+      "bandwidth_mhz": 32,
+      "integration_h": 7.78e-05,
+      "claimed_sensitivity": 1.67,
+      "unit": "mJy/beam",
+      "weighting": "natural",
+      "quantity": "continuum",
+      "claimed_beam_arcsec": null
+     }
     }
    ],
    "open_questions": [
@@ -8724,6 +9163,18 @@
      "page": 12,
      "quote": "Shear estimates from simulated data showed additive biases consistent with SKA-Mid weak lensing targets (Brown et al., 2015), but multiplicative biases an order of magnitude too high.",
      "theme": "radio shear calibration"
+    },
+    {
+     "paper": "Chhetri01",
+     "page": 4,
+     "quote": "It is unclear whether they are part of the evolutionary picture of radio galaxies or an entirely different class of objects (e.g. Readhead et al., 2024).",
+     "theme": "nature of compact symmetric objects"
+    },
+    {
+     "paper": "Chhetri01",
+     "page": 10,
+     "quote": "This should in principle provide an alternative route to velocity measurements, though the details remain untested.",
+     "theme": "solar-wind velocity from cross-frequency delay"
     }
    ]
   }
@@ -8984,6 +9435,14 @@
    "calculator": "Bracket: 0.520 uJy/beam (robust 0) to 0.828 uJy/beam (robust -1), AA4, Band 2 1.4 GHz/420 MHz, 8 h",
    "ratio": null,
    "note": "The calculator accepts only integer robust values (-2..2), so robust -0.5 cannot be run. The claim lies inside the robust 0 to -1 bracket. The array, bandwidth and time come from the extraction, not the quote."
+  },
+  {
+   "id": "G-48",
+   "verdict": "diverge",
+   "claimed": "1.67 mJy/beam (1-sigma continuum, 0.28 s snapshot, 162 MHz, 32 MHz bandwidth, natural weighting, inner 6-km stations)",
+   "calculator": "1.976 mJy/beam natural (robust 0: 3.29 mJy/beam; uniform: 25.7 mJy/beam), subarray LOW_inner_r6km_aastar (245 stations), pointing 00:00:00 -30:00:00, from a direct call to the live API at /api/v12",
+   "ratio": 0.845,
+   "note": "The restart did not fix it. compare_to_calculator_tool and query_sensitivity_calc both still return 404 for every Low and Mid request, including 'subarrays'. The tool code calls https://sensitivity-calculator.skao.int/api/v11/..., and a probe of v10 to v14 shows that only /api/v12/ answers (HTTP 200). The SKAO service has moved to API v12, so the tool's hardcoded v11 base URL needs changing. To get a figure anyway, I called the v12 endpoint directly with curl using the stated parameters (freq 162 MHz, bandwidth 32 MHz, integration 7.78e-5 h, natural weighting) and the subarray matching 'inner 6-km stations' (LOW_inner_r6km_aastar). The calculator gives 1.976 mJy/beam at natural weighting, so claimed/calculator = 0.845, a gap of about 15%. That is outside the 10% match threshold, and no other weighting comes closer. The pointing centre was not stated, so I used dec -30 (near zenith). The paper probably used an older SKA1-Low station layout and calculator version (pre-AA*, 512 stations), which would explain a lower noise figure than the AA* 245-station inner-6km subarray gives. The 5-sigma IPS figure (0.92 mJy/beam in 5 min) comes from the paper's own fourth-root-of-time scaling, so the calculator cannot check it directly."
   }
  ],
  "capability": [
@@ -13553,6 +14012,244 @@
    ],
    "evidence": "no AA4 template",
    "note": "Stated AA4."
+  },
+  {
+   "id": "A-33",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "list_capability_schemas_tool lists no VLBI schema, and the obs_config modes are only continuum, zoom, pss and pst. search_ska_capabilities (Delivery Plan 6.4.4.3.1) puts VLBI beamforming in the design baseline.",
+   "note": "No defined context offers a VLBI mode for SKA-Mid at AA2, AA* or Cycle 0, so the requested stages cannot be met as configured. The design baseline does include it."
+  },
+  {
+   "id": "A-34",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "No VLBI schema exists in any context. search_ska_capabilities says the design gives 'at least four' VLBI beams, 8-10 beams 'could enhance' astrometry, and Mid can reach up to 52 beams at 200 MHz.",
+   "note": "Having more than 4 VLBI beams, or 8 for Low, depends on a VLBI mode that no context schema offers. For Low, 8 beams goes beyond the guaranteed minimum of 4 in the design."
+  },
+  {
+   "id": "A-35",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "search_ska_capabilities (Sridhar 2025, Table 1) gives AA* maximum baselines of 108 km for Mid and 73.4 km for Low, both inside the <160 km and <75 km limits. There is no VLBI mode in the obs_config schemas.",
+   "note": "The short-baseline arrays exist at AA*. The requirement, though, is to keep them alongside simultaneous VLBI beams, and no context offers that."
+  },
+  {
+   "id": "A-36",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults_tool shows Band 2 (950-1760 MHz) in SV-AA* and Cycle 0. There is no VLBI mode in the schemas. resolve_context_subarrays_tool returned 404 from the sensitivity calculator.",
+   "note": "Band 2 (18 cm) is available at AA*, but phased-array VLBI is not offered. The SEFD figures of 3.3 and 1.55 Jy could not be checked live because the calculator returned 404."
+  },
+  {
+   "id": "A-37",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "No VLBI schema exists. search_ska_capabilities gives design VLBI bandwidths of up to 200 MHz per polarisation per beam for Mid (more by co-pointing beams) and 256 MHz per polarisation per beam for Low.",
+   "note": "Recording 512 MHz at 4 Gbps would need a VLBI mode, which no context offers. Even in the design, Mid needs several co-pointed beams to reach 512 MHz."
+  },
+  {
+   "id": "A-38",
+   "verdict": "not_in_current_contexts",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema_tool continuum_settings for Low in cycle_0 gives 50-350 MHz. There is no VLBI mode in the Low obs_config schemas.",
+   "note": "The 50-350 MHz band is available, but SKA-Low VLBI beamforming is not offered in any defined context."
+  },
+  {
+   "id": "B-46",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Sridhar 2025, Table 1: Low AA* is 73.4 km (the same as AA4) and Mid AA* is 108 km (36 km without SKA008). The Low_full_AAstar and Mid_full_AAstar templates are allowed in Cycle 0, and Bands 1/2/5a/5b plus Low 50-350 MHz are available.",
+   "note": "The baselines the paper quotes (about 74 km for Low; 36 km, or about 108 km with the outlier dish, for Mid) match AA* exactly."
+  },
+  {
+   "id": "B-47",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Low_full_AAstar is allowed in cycle_0. Low AA* has a 73.4 km maximum baseline, the same as AA4, and the band is 50-350 MHz.",
+   "note": "The full Low baseline length that sets the synthesised beam is already present at AA*."
+  },
+  {
+   "id": "B-48",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Per get_context_defaults_tool, Low covers 50-350 MHz and Mid offers Bands 1, 2, 5a and 5b (350 MHz to 15.4 GHz) in every context. SV-AA2 caps continuum bandwidth at 800 MHz.",
+   "note": "All bands are offered from AA*. Coverage is not continuous: there are gaps at 350 MHz in the Mid Band 1 overlap region and from 1.76 to 4.6 GHz, because Bands 3 and 4 are not in the baseline."
+  },
+  {
+   "id": "C-49",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Band 5a (4.6-8.5 GHz) and the Mid_15m_AAstar templates are allowed in SV-AA* and Cycle 0. AA* has 80 dishes fitted with Band 5 and a 108 km maximum baseline.",
+   "note": "At 6.4 GHz, a 108 km baseline supports a beam of about 0.2 arcsec. The beam relies on the outlier dish SKA008 and the 8-sigma detection was not checked, because the calculator returned 404."
+  },
+  {
+   "id": "C-50",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "validate_across_contexts_tool, Mid_15m_AAstar, Band 5b continuum at 11.5 GHz with 2500 MHz bandwidth: passes SV-AA*, Cycle 0 and Cycle 1. SV-AA2 fails on the template and on the 800 MHz bandwidth cap.",
+   "note": "Band 5b continuum with the AA* 15 m Band-5 dishes validates. A beam of about 87 by 61 mas needs the 108 km baseline to SKA008."
+  },
+  {
+   "id": "C-51",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Sridhar 2025, Table 1: Mid AA* is 108 km and Mid AA4 is 159.6 km. No context template goes beyond the AA* layout.",
+   "note": "Baselines longer than AA* exist only in the AA4 design baseline."
+  },
+  {
+   "id": "E-107",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults_tool: in Cycle 0, Mid Band 1 covers 350-1050 MHz (700 MHz bandwidth) and Mid_full_AAstar is allowed.",
+   "note": "Band 1 at 780 MHz is available at AA*. The paper assumes AA4, so survey speed and depth with 144 dishes will be lower than with the full 197."
+  },
+  {
+   "id": "E-108",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "cycle_0"
+   ],
+   "evidence": "Mid Band 1 covers 350-1050 MHz in cycle_0 per get_context_defaults_tool.",
+   "note": "The frequency is available. The 80 uJy flux limit is a catalogue cut, and its depth was not checked live because the sensitivity calculator returned 404."
+  },
+  {
+   "id": "E-109",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Sridhar 2025, Table 1: AA* has 144 dishes and AA4 has 197. Bands 1 and 2 are available at AA*. The calculator returned 404.",
+   "note": "The paper defines the 120 and 150 uJy HI flux cuts for AA4 samples. Those depths assume the full AA4 collecting area."
+  },
+  {
+   "id": "E-110",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults_tool: Low covers 50-350 MHz (100 MHz is included) and Mid Band 2 covers 950-1760 MHz (1.4 GHz is included). Cycle 0 allows up to 48 Low station beams.",
+   "note": "Both frequencies are available. Mosaicking 100 deg2 patches is a matter of observing strategy, not a configuration limit."
+  },
+  {
+   "id": "E-111",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "Sridhar 2025, Table 1: Low AA* is 73.4 km (the same as AA4). Mid AA* is 108 km against 159.6 km at AA4.",
+   "note": "The paper itself says AA* is adequate. Any further help with confusion from longer Mid baselines would need AA4."
+  },
+  {
+   "id": "F-89",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "describe_schema_tool subarray_config for Mid allows Band 1, 2, 5a and 5b in sv_aa2 and cycle_0. The Low band is 50-350 MHz.",
+   "note": "The whole Low band and every Mid band in the design baseline are offered from AA2 onwards."
+  },
+  {
+   "id": "F-90",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "get_context_defaults_tool gives PSS beams per context: 200 for Mid and 9 for Low in SV-AA*, and 1125 for Mid and 50 for Low in Cycle 0. Low station beams are 16 in SV-AA* and 48 in Cycle 0.",
+   "note": "This is a qualitative requirement. Multi-beam modes that widen the field of view exist at AA* and Cycle 0, though with fewer beams than the full design (1500 Mid beams)."
+  },
+  {
+   "id": "F-91",
+   "verdict": "not_addressed",
+   "contexts_checked": [],
+   "evidence": null,
+   "note": "The requirement gives no band, resolution, sensitivity or mode parameter that could be checked against the schemas or documents."
+  },
+  {
+   "id": "G-46",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aastar",
+    "cycle_0"
+   ],
+   "evidence": "describe_schema_tool subarray_config for Low in cycle_0 allows Low_substation_18m_inner_r1km_AAstar. The Design Baseline (Table 6-4) gives correlator integrations of 0.225, 0.3, 0.45 and 0.9 s, with 0.3 s in sub-station cases.",
+   "note": "A sub-station template exists at AA* and Cycle 0, but only for the inner 1 km. The schema does not expose or enforce correlator dump time, so the 0.28 s cadence is supported only by the design document."
+  },
+  {
+   "id": "G-47",
+   "verdict": "available_aastar",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "validate_across_contexts_tool, Low continuum at 162 MHz with 32 MHz bandwidth: passes SV-AA*, Cycle 0 and Cycle 1. The station-beam maximum is 16 in SV-AA* and 48 in Cycle 0.",
+   "note": "Nine simultaneous station beams at 162 MHz and 32 MHz bandwidth fit within the AA* and Cycle 0 beam limits. SV-AA2 allows only one station beam."
+  },
+  {
+   "id": "G-48",
+   "verdict": "aa4_only",
+   "contexts_checked": [
+    "sv_aa2",
+    "sv_aastar",
+    "cycle_0",
+    "cycle_1"
+   ],
+   "evidence": "validate_across_contexts_tool, Low_inner_r6km_AAstar at 162 MHz with 32 MHz bandwidth: passes SV-AA*, Cycle 0 and Cycle 1. AA* has 307 stations and AA4 has 512 (Sridhar 2025, Table 1). The calculator returned 404.",
+   "note": "The inner 6 km configuration and the frequency setup validate at AA*. The quoted 1.67 mJy/beam and IPS sensitivities are derived for AA4 station numbers, so they need AA4."
   }
  ]
 }

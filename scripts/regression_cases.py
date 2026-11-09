@@ -86,8 +86,23 @@ def index_cases() -> dict:
                "copies_counted": sorted(c for c in COPIES if c in papers)},
         "I3": {"what": "index fingerprint returned",
                "manifest": (ROOT / "chroma_db" / "manifest.json").exists(),
-               "fingerprint_in_response": "_index" in cov},
+               "fingerprint_in_response": _fingerprint_via_mcp()},
     }
+
+
+def _fingerprint_via_mcp() -> bool:
+    """Call keyword_coverage_tool through an in-process MCP client, as an agent would."""
+    import asyncio
+
+    from fastmcp import Client
+
+    import mcp_server
+
+    async def call():
+        async with Client(mcp_server.mcp) as c:
+            r = await c.call_tool("keyword_coverage_tool", {"terms": ["VLBI"]})
+            return json.loads(r.content[0].text)
+    return bool((asyncio.run(call()).get("_index") or {}).get("fingerprint"))
 
 
 def _compare(cid: str, **kw) -> dict:
@@ -103,16 +118,19 @@ def _compare(cid: str, **kw) -> dict:
         return {"error": str(exc)[:200]}
     best = r.get("closest") or {}
     strict = r.get("strict") or {}
-    return {
-        "closest_pct_diff": best.get("pct_diff"), "closest_variant": {k: best.get(k) for k in
-                                                                      ("weighting_mode", "robustness", "subarray_configuration", "freq_centre_hz", "freq_centre_mhz") if best.get(k) is not None},
-        "strict_pct_diff": (strict.get("result") or {}).get("pct_diff") if strict else None,
-        "strict_error": strict.get("error") if strict else None,
-        "defaults_applied": strict.get("defaults_applied") if strict else None,
-        "array_substituted": r.get("array_substituted") or strict.get("array_substituted"),
+    sub = r.get("array_substituted") or (strict.get("result") or {}).get("array_substituted")
+    out = {
+        "closest_pct_diff": best.get("pct_diff"),
+        "closest_variant": {k: best.get(k) for k in ("weighting_mode", "robustness", "freq_centre_hz", "freq_centre_mhz")
+                            if best.get(k) is not None},
+        "strict_pct_diff": (strict.get("result") or {}).get("pct_diff"),
+        "strict_error": _detail(strict["error"]) if strict.get("error") else None,
+        "defaults_applied": strict.get("defaults_applied"),
+        "array_substituted": f"{sub['from']} -> {sub['to']}" if sub else None,
         "n_free_parameters": r.get("n_free_parameters"),
-        "variant_errors": sorted({_detail(v["error"]) for v in r.get("variants", []) if "error" in v})[:2],
+        "variant_errors": sorted({_detail(v["error"]) for v in r.get("variants", []) if "error" in v})[:1],
     }
+    return {k: v for k, v in out.items() if not (v is None or (isinstance(v, (list, dict)) and not v))}
 
 
 def _detail(err: str) -> str:
@@ -131,7 +149,8 @@ def calculator_cases() -> dict:
                subarray_configuration="LOW_AA4_all", weighting_mode="robust", robustness=-1)
     c02 = dict(rx_band="Band 5b", freq_centre_hz=11.85e9, bandwidth_hz=1e9, integration_time_s=300 * 3600,
                pointing_centre=POINTING, subarray_configuration="AA*")
-    f33 = dict(rx_band="Band 2", freq_centre_hz=1.4e9, bandwidth_hz=808e6, integration_time_s=4 * 3600,
+    # As the atlas ran it: the mixed AA4 can't do 808 MHz around 1.4 GHz.
+    f33 = dict(rx_band="Band 2", freq_centre_hz=1.31e9, bandwidth_hz=720e6, integration_time_s=4 * 3600,
                pointing_centre=POINTING, subarray_configuration="AA4")
     zoom = dict(rx_band="Band 2", freq_centres_hz=[1.4e9], total_bandwidths_hz=[3.2e6], spectral_resolutions_hz=[13440],
                 integration_time_s=3600, pointing_centre=POINTING, weighting_mode="robust", robustness=0)
@@ -158,7 +177,8 @@ def calculator_cases() -> dict:
     for sub in ("AA* (MID_inner_r2km)", "MID_inner_r2km_aastar"):
         try:
             r = sc.query_sensitivity_calculator("mid", "zoom/calculate", {**zoom, "subarray_configuration": sub})
-            zoom_ok[sub] = r.get("subarray_used", "ok")
+            used = r.get("subarray_used")
+            zoom_ok[sub] = f"ok, sent {used['sent']!r}" if used else "ok"
         except Exception as exc:
             zoom_ok[sub] = "error: " + _detail(str(exc))
     out["S5"] = {"case": "zoom accepts subarray name and label", **zoom_ok}
@@ -269,11 +289,10 @@ def data_product_cases() -> dict:
 
 
 def citation_cases() -> dict:
-    from rag import citation_db
     conn = sqlite3.connect(ROOT / "citations.db")
     cols = {r[1] for r in conn.execute("PRAGMA table_info(refs)")}
-    journals = tuple(sorted(citation_db.JOURNAL_ABBREVIATIONS)) if hasattr(citation_db, "JOURNAL_ABBREVIATIONS") else (
-        "apj", "mnras", "araa", "aa", "aj", "pasa", "nature", "science", "d", "physics", "apjl", "apjs", "pasp")
+    # A fixed list, so the before and after counts compare like with like.
+    journals = ("apj", "mnras", "araa", "aa", "aj", "pasa", "nature", "science", "d", "physics", "apjl", "apjs", "pasp")
     n_bad = conn.execute(f"SELECT COUNT(*) FROM refs WHERE first_author IN ({','.join('?' * len(journals))})",
                          journals).fetchone()[0]
     out = {"C1": {"case": "references whose first author parses as a journal", "n": n_bad},
@@ -302,7 +321,7 @@ def run() -> dict:
 
 
 def _cell(v) -> str:
-    return json.dumps(v, ensure_ascii=False, separators=(", ", ": "))[:220].replace("|", "\\|")
+    return json.dumps(v, ensure_ascii=False, separators=(", ", ": "))[:400].replace("|", "\\|")
 
 
 def table(before: dict, after: dict) -> str:

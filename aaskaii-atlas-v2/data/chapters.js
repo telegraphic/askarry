@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['chapters'] = {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {}
  },
  "sections": [
@@ -421,8 +421,8 @@
       "Lin Zehao",
       "Pfesesani Van Zyl"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/Radcliffe01.pdf",
+     "indexed": true
     }
    ]
   },
@@ -713,8 +713,8 @@
       "Surajit Mondal",
       "Pietro Zucca"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/Dey01.pdf",
+     "indexed": true
     },
     {
      "paper": "Mondal01",
@@ -1077,8 +1077,8 @@
       "Katie Hesterly",
       "Emmanuel Bempong-Manful"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/Greaves01.pdf",
+     "indexed": true
     },
     {
      "paper": "Forbrich01",
@@ -3273,8 +3273,8 @@
       "Tiziana Trombetti",
       "Jonah Wagenveld"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/Bertacca01.pdf",
+     "indexed": true
     },
     {
      "paper": "deGasperin01",
@@ -3923,8 +3923,8 @@
       "Harish Vedantham",
       "Amanda Weltman"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/AlexAndersson02.pdf",
+     "indexed": true
     },
     {
      "paper": "Kadler01",
@@ -4836,8 +4836,8 @@
       "Emily Kerrison",
       "Harsha Avinash Tanti"
      ],
-     "pdf_url": null,
-     "indexed": false
+     "pdf_url": "https://www.skao.int/sites/default/files/documents/Chhetri01.pdf",
+     "indexed": true
     },
     {
      "paper": "Wongphecauxson01",

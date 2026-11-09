@@ -142,3 +142,34 @@ def test_unknown_product_type_raises_key_error():
 def test_missing_required_field_raises():
     with pytest.raises(Exception):
         estimate_data_product_size("PSS", {"mode": "single"})  # no 'duration' key
+
+
+# --- Whole-observation modes and volume tiers -------------------------------
+from rag.data_product_estimator import AUTOCORRELATION, WIDEBAND_CUBE
+
+
+def test_wideband_hi_cube_not_sized_as_zoom_window():
+    out = estimate_data_product_size(WIDEBAND_CUBE, {
+        "telescope": "mid", "freq_min_mhz": 950, "freq_max_mhz": 1420, "channel_width_khz": 13.44,
+        "resolution_arcsec": 7.0, "fov_deg": 1.0, "n_station": 144, "duration_h": 10, "t_int_s": 0.14})
+    assert out["bandwidth_MHz"] == pytest.approx(470) and out["n_chan"] == 34971  # not 4,000 x 13.44 kHz = 54 MHz
+    t = out["tiers_TB"]
+    assert t["visibilities_TB"] > 100 * t["archived_TB"] > 0 and t["delivered_TB"] == t["archived_TB"]
+    assert "assumption" in out["policy_source"]
+
+
+def test_intensity_mapping_uses_autocorrelation():
+    out = estimate_data_product_size(AUTOCORRELATION, {
+        "telescope": "mid", "freq_min_mhz": 350, "freq_max_mhz": 1050, "channel_width_khz": 13.44,
+        "n_dish": 144, "n_pol": 2, "duration_h": 1, "t_int_s": 2.0})
+    t = out["tiers_TB"]
+    expected = 144 * 2 * out["n_chan"] * 1800 * 4 / 1e12  # dishes x pols x channels x dumps x 4 bytes
+    assert t["visibilities_TB"] is None and t["archived_TB"] == pytest.approx(expected)
+
+
+def test_existing_product_types_report_archive_policy():
+    out = estimate_data_product_size("Calibrated Vis", {
+        "n_station": 4, "t_int": 10, "bw": "100.000 MHz", "cbw": "1.000 MHz", "n_stokes": 4,
+        "duration": "3600.000 s", "storage_model": "msv2", "include_uvw": True, "include_weights": True,
+        "include_uncalibrated": False, "include_model": False})
+    assert out["archived"] is False and "policy_source" in out

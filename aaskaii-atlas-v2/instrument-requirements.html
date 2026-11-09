@@ -33,7 +33,7 @@
       <div class="controls" id="filters"></div>
     </section>
     <section><details class="method"><summary>How the register was built</summary><div class="prose">
-      <p>One agent read each of the seven book sections. It searched every chapter for stated requirements and copied the sentence that states each one. A script then looked for every quoted sentence in the chapter it names. A row survives only if the sentence appears there word for word. When a quotation runs across two of the indexed passages of a chapter, each of its sentences must appear. All 682 quotations that the agents returned passed this test, so no row had to be dropped. A field is left empty when the chapter does not state a value. An empty cell therefore records the chapter's silence, not a gap in the extraction.</p>
+      <p>One agent read each of the seven book sections. It searched every chapter for stated requirements and copied the sentence that states each one. A script then looked for every quoted sentence in the chapter it names. A row survives only if the sentence appears there word for word. When a quotation runs across two of the indexed passages of a chapter, each of its sentences must appear. <span id="quotecheck"></span> A field is left empty when the chapter does not state a value. An empty cell therefore records the chapter's silence, not a gap in the extraction.</p>
       <p>The register is a sample of what the book asks for, not a complete specification. It favours chapters that state their requirements in numbers. The <a href="sensitivity-verification.html">sensitivity page</a> reruns the rows that give enough parameters through the SKAO calculator, and the <a href="capability-crosscheck.html">capability page</a> asks which array stage can deliver each one. For the frequency chart, a parser in <code>scripts/build_atlas_data.py</code> reads each row's frequency field. It recognises stated frequencies, wavelengths and band names, and it ignores bandwidths. Rows whose field names no frequency are left off the chart, but they stay in the register.</p>
     </div></details></section>
   </main>
@@ -46,6 +46,11 @@
 frame(["chapters", "requirement_freqs"]);
 document.getElementById("eyebrow").textContent = masthead("instrument-requirements.html");
 const P = ATLAS.prose, F = ATLAS.requirement_freqs, FG = F.freq_ghz, BAND = F.bands;
+// Quote-check outcome, from verify_atlas_quotes.py's counts, so the sentence cannot go stale.
+const QC = P.counts;
+document.getElementById("quotecheck").textContent = QC.rejected
+  ? `Of the ${QC.quotes} quotations that the agents returned, ${QC.quotes - QC.rejected} passed this test and ${QC.rejected} were dropped.`
+  : `All ${QC.quotes} quotations that the agents returned passed this test, so no row had to be dropped.`;
 const rows = P.sections.flatMap(s => s.requirements.map(r => ({...r, section: s.section, freq: FG[r.id] || null})));
 const stats = document.getElementById("stats");
 [[rows.length, "requirements"], [new Set(rows.map(r => r.paper)).size, "chapters"],

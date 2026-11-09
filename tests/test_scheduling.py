@@ -150,3 +150,15 @@ def test_survey_field_with_dec_band_or_area_places_requests(tmp_path, monkeypatc
     sd.review_request(conn, r, "accepted", "area stated", field=area["field"])
     (req,) = sd.list_requests(conn, "mid")
     assert req["area_deg2"] == 20000 and "position_note" not in req
+
+
+def test_area_in_position_note_is_placed(tmp_path, monkeypatch):
+    conn = _db(tmp_path, monkeypatch)
+    sd.add_request(conn, "All-sky HI survey", 10000, "mid", "JingWang01", "q",
+                   position_note="unnamed area, sky position not stated, only area (20000 deg2)")
+    sd.add_request(conn, "100 galaxies", 50, "mid", "JingWang01", "q", position_note="not individually named")
+    reqs = sd.list_requests(conn, "mid")
+    assert reqs[0]["area_deg2"] == 20000 and reqs[0]["area_from"] == "position_note"
+    p = lst_pressure(reqs, "mid", year_start=YEAR, years=1)
+    assert [f["name"] for f in p["footprint_assumed"]] == ["All-sky HI survey"]
+    assert [u["name"] for u in p["unplaced"]] == ["100 galaxies"]

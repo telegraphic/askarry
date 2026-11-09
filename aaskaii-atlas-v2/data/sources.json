@@ -1,7 +1,7 @@
 {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "book": "aaskaii"
   }
@@ -18,8 +18,8 @@
    "redshift": null,
    "resolved_by": "SIMBAD",
    "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 72,
-   "n_papers": 31,
+   "n_mentions": 73,
+   "n_papers": 32,
    "papers": [
     "Abbate01",
     "Audard01",
@@ -42,6 +42,7 @@
     "Ma01",
     "PeijinZhang01",
     "Qiu01",
+    "Radcliffe01",
     "Regis01",
     "Rygl01",
     "Sabatini01",
@@ -69,12 +70,13 @@
    "redshift": null,
    "resolved_by": "SIMBAD",
    "resolved_at": "2026-09-25T09:47:33+00:00",
-   "n_mentions": 50,
-   "n_papers": 22,
+   "n_mentions": 51,
+   "n_papers": 23,
    "papers": [
     "Afonso01",
     "Algera01",
     "Baczko01",
+    "Bertacca01",
     "Chakraborty01",
     "DAmato01",
     "Dabhade01",
@@ -111,8 +113,8 @@
    "redshift": 0.0008749878593401483,
    "resolved_by": "SIMBAD",
    "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 39,
-   "n_papers": 15,
+   "n_mentions": 40,
+   "n_papers": 16,
    "papers": [
     "Castignani01",
     "Chen01",
@@ -122,6 +124,7 @@
     "Lico01",
     "Ma01",
     "Miville-Deschenes01",
+    "Radcliffe01",
     "Regis01",
     "Robishaw01",
     "Rosolowsky01",
@@ -234,34 +237,6 @@
    ]
   },
   {
-   "id": 45,
-   "main_id": "M  87",
-   "ra_deg": 187.70593076725,
-   "dec_deg": 12.391123246083334,
-   "gal_l_deg": 283.77775499496283,
-   "gal_b_deg": 74.49115452393592,
-   "object_type": "AGN",
-   "redshift": 0.0042,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 13,
-   "n_papers": 9,
-   "papers": [
-    "Bruni01",
-    "Castignani01",
-    "Chen01",
-    "Kovalev01",
-    "Kudoh01",
-    "Kurahara01",
-    "Regis01",
-    "VenkatramanKrishnan01",
-    "deGasperin01"
-   ],
-   "names_as_written": [
-    "M 87"
-   ]
-  },
-  {
    "id": 42,
    "main_id": "NAME Centaurus A",
    "ra_deg": 201.36506337683332,
@@ -272,8 +247,8 @@
    "redshift": 0.00187695,
    "resolved_by": "SIMBAD",
    "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 17,
-   "n_papers": 10,
+   "n_mentions": 18,
+   "n_papers": 11,
    "papers": [
     "Baldi01",
     "Bruni01",
@@ -283,6 +258,7 @@
     "Lagos01",
     "Maccagni01",
     "Mahony01",
+    "Radcliffe01",
     "Sawada-Satoh01",
     "Timmerman01"
    ],
@@ -348,6 +324,61 @@
    "names_as_written": [
     "Sagittarius A*",
     "Sgr A*"
+   ]
+  },
+  {
+   "id": 45,
+   "main_id": "M  87",
+   "ra_deg": 187.70593076725,
+   "dec_deg": 12.391123246083334,
+   "gal_l_deg": 283.77775499496283,
+   "gal_b_deg": 74.49115452393592,
+   "object_type": "AGN",
+   "redshift": 0.0042,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:40+00:00",
+   "n_mentions": 11,
+   "n_papers": 9,
+   "papers": [
+    "Bruni01",
+    "Castignani01",
+    "Chen01",
+    "Kovalev01",
+    "Kudoh01",
+    "Kurahara01",
+    "Regis01",
+    "VenkatramanKrishnan01",
+    "deGasperin01"
+   ],
+   "names_as_written": [
+    "M 87"
+   ]
+  },
+  {
+   "id": 245,
+   "main_id": "GrW 170817",
+   "ra_deg": 197.45035416666667,
+   "dec_deg": -23.381484166666667,
+   "gal_l_deg": 308.3794115905194,
+   "gal_b_deg": 39.29594893800362,
+   "object_type": "GWE",
+   "redshift": 0.0093,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 24,
+   "n_papers": 7,
+   "papers": [
+    "AlexAndersson02",
+    "AvishekBasu01",
+    "Baker01",
+    "Colombo01",
+    "GemmaAnderson01",
+    "Giarratana01",
+    "Levin01"
+   ],
+   "names_as_written": [
+    "GRB 170817A",
+    "GW170817"
    ]
   },
   {
@@ -429,32 +460,6 @@
    ]
   },
   {
-   "id": 245,
-   "main_id": "GrW 170817",
-   "ra_deg": 197.45035416666667,
-   "dec_deg": -23.381484166666667,
-   "gal_l_deg": 308.3794115905194,
-   "gal_b_deg": 39.29594893800362,
-   "object_type": "GWE",
-   "redshift": 0.0093,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 23,
-   "n_papers": 6,
-   "papers": [
-    "AvishekBasu01",
-    "Baker01",
-    "Colombo01",
-    "GemmaAnderson01",
-    "Giarratana01",
-    "Levin01"
-   ],
-   "names_as_written": [
-    "GRB 170817A",
-    "GW170817"
-   ]
-  },
-  {
    "id": 5,
    "main_id": "M   1",
    "ra_deg": 83.6324,
@@ -481,29 +486,6 @@
    ]
   },
   {
-   "id": 50,
-   "main_id": "ACO  3667",
-   "ra_deg": 303.14033333333333,
-   "dec_deg": -56.8406388888889,
-   "gal_l_deg": 340.8508879670878,
-   "gal_b_deg": -33.39874441452,
-   "object_type": "ClG",
-   "redshift": 0.055,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 9,
-   "n_papers": 4,
-   "papers": [
-    "ArpanPal01",
-    "Cassano01",
-    "Kurahara01",
-    "deGasperin01"
-   ],
-   "names_as_written": [
-    "Abell 3667"
-   ]
-  },
-  {
    "id": 53,
    "main_id": "NGC  6946",
    "ra_deg": 308.71804999999995,
@@ -526,29 +508,6 @@
    ],
    "names_as_written": [
     "NGC6946"
-   ]
-  },
-  {
-   "id": 273,
-   "main_id": "ACO  2255",
-   "ra_deg": 258.2333,
-   "dec_deg": 64.0683,
-   "gal_l_deg": 93.93653860732606,
-   "gal_b_deg": 34.90713741426452,
-   "object_type": "ClG",
-   "redshift": 0.0801,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 7,
-   "n_papers": 4,
-   "papers": [
-    "AritraBasu01",
-    "Cassano01",
-    "Cuciti01",
-    "Kurahara01"
-   ],
-   "names_as_written": [
-    "Abell 2255"
    ]
   },
   {
@@ -812,6 +771,29 @@
    ]
   },
   {
+   "id": 50,
+   "main_id": "ACO  3667",
+   "ra_deg": 303.14033333333333,
+   "dec_deg": -56.8406388888889,
+   "gal_l_deg": 340.8508879670878,
+   "gal_b_deg": -33.39874441452,
+   "object_type": "ClG",
+   "redshift": 0.055,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:40+00:00",
+   "n_mentions": 7,
+   "n_papers": 4,
+   "papers": [
+    "ArpanPal01",
+    "Cassano01",
+    "Kurahara01",
+    "deGasperin01"
+   ],
+   "names_as_written": [
+    "Abell 3667"
+   ]
+  },
+  {
    "id": 378,
    "main_id": "NAME GOODS Southern Field",
    "ra_deg": 53.11666666666666,
@@ -856,6 +838,29 @@
    ],
    "names_as_written": [
     "NGC 6822"
+   ]
+  },
+  {
+   "id": 98,
+   "main_id": "M  77",
+   "ra_deg": 40.66962152891999,
+   "dec_deg": -0.01329435839,
+   "gal_l_deg": 172.10370821417982,
+   "gal_b_deg": -51.93379153101516,
+   "object_type": "Sy2",
+   "redshift": 0.00348372,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:40+00:00",
+   "n_mentions": 6,
+   "n_papers": 4,
+   "papers": [
+    "Castignani01",
+    "Kudoh01",
+    "Radcliffe01",
+    "Rosch01"
+   ],
+   "names_as_written": [
+    "NGC 1068"
    ]
   },
   {
@@ -924,6 +929,29 @@
    ],
    "names_as_written": [
     "NGC253"
+   ]
+  },
+  {
+   "id": 273,
+   "main_id": "ACO  2255",
+   "ra_deg": 258.2333,
+   "dec_deg": 64.0683,
+   "gal_l_deg": 93.93653860732606,
+   "gal_b_deg": 34.90713741426452,
+   "object_type": "ClG",
+   "redshift": 0.0801,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 5,
+   "n_papers": 4,
+   "papers": [
+    "AritraBasu01",
+    "Cassano01",
+    "Cuciti01",
+    "Kurahara01"
+   ],
+   "names_as_written": [
+    "Abell 2255"
    ]
   },
   {
@@ -1124,28 +1152,6 @@
    ],
    "names_as_written": [
     "3C 273"
-   ]
-  },
-  {
-   "id": 98,
-   "main_id": "M  77",
-   "ra_deg": 40.66962152891999,
-   "dec_deg": -0.01329435839,
-   "gal_l_deg": 172.10370821417982,
-   "gal_b_deg": -51.93379153101516,
-   "object_type": "Sy2",
-   "redshift": 0.00348372,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:40+00:00",
-   "n_mentions": 5,
-   "n_papers": 3,
-   "papers": [
-    "Castignani01",
-    "Kudoh01",
-    "Rosch01"
-   ],
-   "names_as_written": [
-    "NGC 1068"
    ]
   },
   {
@@ -1387,86 +1393,6 @@
    ],
    "names_as_written": [
     "M9"
-   ]
-  },
-  {
-   "id": 278,
-   "main_id": "ACO   399",
-   "ra_deg": 44.48500000000001,
-   "dec_deg": 13.016388888888889,
-   "gal_l_deg": 164.36876198030018,
-   "gal_b_deg": -39.46793123358313,
-   "object_type": "ClG",
-   "redshift": 0.072,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 3,
-   "n_papers": 1,
-   "papers": [
-    "Kurahara01"
-   ],
-   "names_as_written": [
-    "Abell 399"
-   ]
-  },
-  {
-   "id": 279,
-   "main_id": "ACO   401",
-   "ra_deg": 44.7094,
-   "dec_deg": 13.5685,
-   "gal_l_deg": 164.16311635587462,
-   "gal_b_deg": -38.89599560559178,
-   "object_type": "ClG",
-   "redshift": 0.0731,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 3,
-   "n_papers": 1,
-   "papers": [
-    "Kurahara01"
-   ],
-   "names_as_written": [
-    "Abell 401"
-   ]
-  },
-  {
-   "id": 280,
-   "main_id": "ACO  3322",
-   "ra_deg": 77.5685,
-   "dec_deg": -45.32,
-   "gal_l_deg": 250.8839910212406,
-   "gal_b_deg": -36.268716092549134,
-   "object_type": "ClG",
-   "redshift": 0.201,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 3,
-   "n_papers": 1,
-   "papers": [
-    "Kurahara01"
-   ],
-   "names_as_written": [
-    "Abell 3322"
-   ]
-  },
-  {
-   "id": 281,
-   "main_id": "NAME Hydra I Cluster",
-   "ra_deg": 159.14999999999998,
-   "dec_deg": -27.517777777777777,
-   "gal_l_deg": 269.5722643659146,
-   "gal_b_deg": 26.481882982140746,
-   "object_type": "ClG",
-   "redshift": 0.0129,
-   "resolved_by": "SIMBAD",
-   "resolved_at": "2026-09-25T09:02:43+00:00",
-   "n_mentions": 3,
-   "n_papers": 1,
-   "papers": [
-    "Kurahara01"
-   ],
-   "names_as_written": [
-    "Abell 1060"
    ]
   },
   {
@@ -5220,6 +5146,86 @@
    ]
   },
   {
+   "id": 278,
+   "main_id": "ACO   399",
+   "ra_deg": 44.48500000000001,
+   "dec_deg": 13.016388888888889,
+   "gal_l_deg": 164.36876198030018,
+   "gal_b_deg": -39.46793123358313,
+   "object_type": "ClG",
+   "redshift": 0.072,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 1,
+   "n_papers": 1,
+   "papers": [
+    "Kurahara01"
+   ],
+   "names_as_written": [
+    "Abell 399"
+   ]
+  },
+  {
+   "id": 279,
+   "main_id": "ACO   401",
+   "ra_deg": 44.7094,
+   "dec_deg": 13.5685,
+   "gal_l_deg": 164.16311635587462,
+   "gal_b_deg": -38.89599560559178,
+   "object_type": "ClG",
+   "redshift": 0.0731,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 1,
+   "n_papers": 1,
+   "papers": [
+    "Kurahara01"
+   ],
+   "names_as_written": [
+    "Abell 401"
+   ]
+  },
+  {
+   "id": 280,
+   "main_id": "ACO  3322",
+   "ra_deg": 77.5685,
+   "dec_deg": -45.32,
+   "gal_l_deg": 250.8839910212406,
+   "gal_b_deg": -36.268716092549134,
+   "object_type": "ClG",
+   "redshift": 0.201,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 1,
+   "n_papers": 1,
+   "papers": [
+    "Kurahara01"
+   ],
+   "names_as_written": [
+    "Abell 3322"
+   ]
+  },
+  {
+   "id": 281,
+   "main_id": "NAME Hydra I Cluster",
+   "ra_deg": 159.14999999999998,
+   "dec_deg": -27.517777777777777,
+   "gal_l_deg": 269.5722643659146,
+   "gal_b_deg": 26.481882982140746,
+   "object_type": "ClG",
+   "redshift": 0.0129,
+   "resolved_by": "SIMBAD",
+   "resolved_at": "2026-09-25T09:02:43+00:00",
+   "n_mentions": 1,
+   "n_papers": 1,
+   "papers": [
+    "Kurahara01"
+   ],
+   "names_as_written": [
+    "Abell 1060"
+   ]
+  },
+  {
    "id": 282,
    "main_id": "M  63",
    "ra_deg": 198.95530912246997,
@@ -6496,6 +6502,26 @@
    "area_deg2": 30.0,
    "description": "SKA continuum survey reaching ~1 \u03bcJy/beam at ~1 GHz",
    "geometry": null
+  },
+  {
+   "name": "Bertacca01 area: SKA-Mid Band 1 continuum survey, all pointings covering Dec < 0 (Bacon et al. 2020 specifications)",
+   "n_papers": 1,
+   "papers": [
+    "Bertacca01"
+   ],
+   "area_deg2": null,
+   "description": "SKA-Mid Band 1 continuum survey, all pointings covering Dec < 0 (Bacon et al. 2020 specifications)",
+   "geometry": {
+    "ra_range": [
+     0.0,
+     360.0
+    ],
+    "dec_range": [
+     -90.0,
+     0.0
+    ],
+    "from": "paper: Bertacca01 p.6"
+   }
   },
   {
    "name": "Bianchi01 area: Outer Galaxy sources selected from Hi-Gal, southern declinations, Galactic longitude 180-280 deg",

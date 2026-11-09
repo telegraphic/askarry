@@ -350,7 +350,8 @@ def query_sources(conn: sqlite3.Connection, object_type: str | None = None,
                   paper: str | None = None, dec_min: float | None = None,
                   dec_max: float | None = None, min_papers: int = 1,
                   limit: int = 100) -> list[dict]:
-    """Resolved sources, most-cited first, with the papers that mention them."""
+    """Resolved sources, most-cited first, with the papers that mention them
+    and a display_name (the name the papers use most)."""
     where, params = ["n.status = 'resolved'"], []
     for column, value in (("s.object_type", object_type), ("m.book", book),
                           ("m.section", section), ("m.paper", paper)):
@@ -374,8 +375,16 @@ def query_sources(conn: sqlite3.Connection, object_type: str | None = None,
             ORDER BY n_papers DESC, n_mentions DESC LIMIT ?""",
         (*params, min_papers, limit),
     ).fetchall()
+    # Familiar name: the one the papers use most (SIMBAD's main_id can be
+    # obscure, e.g. Cygnus A is MCG+07-41-003).
+    counts = {}
+    for sid, raw, n in conn.execute(
+            "SELECT n.source_id, n.raw_name, COUNT(*) FROM names n JOIN mentions m ON m.name_key = n.name_key"
+            " WHERE n.source_id IS NOT NULL GROUP BY n.source_id, n.raw_name"):
+        if n > counts.get(sid, ("", 0))[1]:
+            counts[sid] = (raw, n)
     return [
-        {**dict(r), "papers": sorted(r["papers"].split(",")),
+        {**dict(r), "display_name": counts.get(r["id"], (r["main_id"],))[0], "papers": sorted(r["papers"].split(",")),
          "names_as_written": sorted(r["names_as_written"].split(","))}
         for r in rows
     ]
@@ -670,12 +679,18 @@ def review_request(conn: sqlite3.Connection, request_id: int, status: str, note:
     return {"id": request_id, "status": status}
 
 
+# "20000 deg2", "1,000 sq deg", "30,000 square degrees" in a position note.
+_NOTE_AREA_RE = re.compile(r"([\d,]+(?:\.\d+)?)\s*(?:deg(?:rees?)?\s*(?:2|²|squared)|sq\.?\s*deg\w*|square\s+degrees?)", re.I)
+
+
 def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
                   extracted_by: str | None = None, reviewed_only: bool = False,
                   include_rejected: bool = False) -> list[dict]:
     """Stored requests, shaped for rag.scheduling.lst_pressure, with review
     overrides applied. Rejected and duplicate requests are left out unless
-    *include_rejected*; *reviewed_only* keeps only accepted ones."""
+    *include_rejected*; *reviewed_only* keeps only accepted ones. A request
+    with no position whose position note states an area gets "area_deg2"
+    (and "area_from": "position_note"), so lst_pressure can place it."""
     where, params = [], []
     if telescope:
         where.append("telescope = ?")
@@ -705,6 +720,11 @@ def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
         if r["min_elevation"] is not None:
             req["min_elevation"] = r["min_elevation"]
         geom = field_position(conn, r["reviewed_field"]) if r["reviewed_field"] else _geometry(r)
+        if not geom and _NOTE_AREA_RE.search(r["position_note"] or ""):
+            # An area stated with no position ("unnamed 1000 deg2 field"): placed
+            # by lst_pressure on an assumed band, and marked as coming from the note.
+            geom = {"area_deg2": float(_NOTE_AREA_RE.search(r["position_note"])[1].replace(",", ""))}
+            req["area_from"] = "position_note"
         if geom:
             req.update({k: v for k, v in geom.items() if k in ("ra", "dec", "ra_range", "dec_range",
                                                                  "gal_l_range", "gal_b_range", "area_deg2")})

@@ -181,7 +181,7 @@ def chapters() -> dict:
         info = corpus_tools.paper_info(m["paper"])
         sections.setdefault(m["section"], []).append({
             "paper": m["paper"], "title": m["title"], "authors": info[0]["authors"] if info else [],
-            # Never downloaded because skao.int serves no PDF for them (checked 2026-09-25: 10 are
+            # Never downloaded because skao.int serves no PDF for them (checked 2026-11-09: 4 are
             # absent from the AASKAII page, Kavanagh01 is listed but 404s), so link the page instead.
             "pdf_url": None, "indexed": False})
     return {"sections": [{"section": s, "papers": sorted(p, key=lambda r: r["title"].lower())} for s, p in sections.items()]}

@@ -178,12 +178,17 @@ def extract_draft(quote: str) -> dict:
     return rec
 
 
+def normalise_record(record: dict) -> dict:
+    """Accept a bare value for a field ("telescope": "mid") as {"value": ...}."""
+    return {k: v if v is None or isinstance(v, dict) else {"value": v} for k, v in (record or {}).items()}
+
+
 def validate_record(record: dict) -> list[str]:
     """Problems with a requirement record's structure (empty if none):
     unknown fields, fields that aren't {value, ...} objects, units a field
     doesn't take, unknown modes."""
     problems = []
-    for field, entry in record.items():
+    for field, entry in normalise_record(record).items():
         if field not in REQUIREMENT_FIELDS:
             problems.append(f"unknown field {field!r}")
             continue
@@ -257,7 +262,7 @@ def check_fields(quote: str, record: dict) -> dict:
     t = normalise_text(quote)
     found = quantities(quote)
     out = {}
-    for field, entry in record.items():
+    for field, entry in normalise_record(record).items():
         if not entry or entry.get("value") is None:
             continue
         v = entry["value"]
