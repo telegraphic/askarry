@@ -1,0 +1,315 @@
+{
+ "generated": {
+  "date": "2026-11-09",
+  "git_sha": "75a0a5a"
+ },
+ "keyword": {
+  "K1": {
+   "term": "ApJ|MNRAS|A&A",
+   "atlas": 1,
+   "defaults": 1
+  },
+  "K2": {
+   "term": "Chandra",
+   "atlas": 13,
+   "defaults": 24
+  },
+  "K2b": {
+   "term": "Chandra X-ray",
+   "atlas": 0,
+   "defaults": 3
+  },
+  "K3": {
+   "term": "Planck",
+   "atlas": 19,
+   "defaults": 30
+  },
+  "K4": {
+   "term": "pulsar survey",
+   "atlas": 9,
+   "atlas_has_Joshi01": true,
+   "defaults": 15,
+   "defaults_has_Joshi01": true
+  },
+  "K5": {
+   "term": "data rate|data volume",
+   "atlas": 17,
+   "defaults": 36,
+   "defaults_literal_plural_only": 36
+  },
+  "K6": {
+   "term": "zoom mode|zoom-mode|zoom window",
+   "atlas": 13,
+   "defaults": 13,
+   "defaults_bare_zoom": 33
+  },
+  "K7": {
+   "term": "VLBI",
+   "atlas": 75,
+   "defaults": 92
+  }
+ },
+ "index": {
+  "I1": {
+   "what": "Bianchi01 listed in list_documents / counted in keyword_coverage",
+   "list_documents": 1,
+   "keyword_coverage": 0
+  },
+  "I2": {
+   "what": "copies counted by keyword_coverage by default",
+   "copies_counted": []
+  },
+  "I3": {
+   "what": "index fingerprint returned",
+   "manifest": true,
+   "fingerprint_in_response": true
+  }
+ },
+ "calculator": {
+  "S1": {
+   "case": "B-03 (15.8 uJy/beam, AA*, 1 h, 810 MHz)",
+   "best_fit": {
+    "strict_error": "Spectral window defined by central frequency and bandwidth does not lie within the band range.",
+    "defaults_applied": {
+     "weighting_mode": "robust",
+     "robustness": 0
+    },
+    "n_free_parameters": 1,
+    "variant_errors": [
+     "Spectral window defined by central frequency and bandwidth does not lie within the band range."
+    ]
+   },
+   "best_fit_sweep": {
+    "closest_pct_diff": 4.5,
+    "closest_variant": {
+     "weighting_mode": "uniform",
+     "freq_centre_hz": 1355000000.0
+    },
+    "strict_error": "Spectral window defined by central frequency and bandwidth does not lie within the band range.",
+    "defaults_applied": {
+     "weighting_mode": "robust",
+     "robustness": 0
+    },
+    "array_substituted": "AA* -> AA* (15-m antennas only)",
+    "n_free_parameters": 2,
+    "variant_errors": [
+     "Spectral window defined by central frequency and bandwidth does not lie within the band range."
+    ]
+   }
+  },
+  "S2": {
+   "case": "E-03 (5 uJy/beam, AA4, 8 h, robust -1; 150 vs 200 MHz)",
+   "strict": {
+    "closest_pct_diff": 77.4,
+    "strict_pct_diff": 77.4,
+    "n_free_parameters": 0
+   },
+   "best_fit_sweep": {
+    "closest_pct_diff": 7.3,
+    "closest_variant": {
+     "freq_centre_mhz": 200
+    },
+    "strict_pct_diff": 77.4,
+    "n_free_parameters": 1
+   }
+  },
+  "S3": {
+   "case": "C-02 (0.02 K, 8.17 arcsec beam, Band 5b, AA*)",
+   "result": {
+    "closest_pct_diff": -51.9,
+    "strict_pct_diff": -51.9,
+    "defaults_applied": {
+     "weighting_mode": "robust",
+     "robustness": 0
+    },
+    "array_substituted": "AA* -> AA* (15-m antennas only)",
+    "n_free_parameters": 0
+   }
+  },
+  "S4": {
+   "case": "F-33 (2 uJy as 5 sigma, AA4, 4 h)",
+   "as_1sigma": {
+    "closest_pct_diff": -71.3,
+    "strict_pct_diff": -71.3,
+    "defaults_applied": {
+     "weighting_mode": "robust",
+     "robustness": 0
+    },
+    "n_free_parameters": 0
+   },
+   "as_5sigma": {
+    "closest_pct_diff": 43.4,
+    "strict_pct_diff": 43.4,
+    "defaults_applied": {
+     "weighting_mode": "robust",
+     "robustness": 0
+    },
+    "n_free_parameters": 0
+   }
+  },
+  "S5": {
+   "case": "zoom accepts subarray name and label",
+   "AA* (MID_inner_r2km)": "ok, sent 'AA* (MID_inner_r2km)'",
+   "MID_inner_r2km_aastar": "ok, sent 'AA* (MID_inner_r2km)'"
+  },
+  "S6": {
+   "case": "robust 0.5",
+   "result": {
+    "closest_pct_diff": -25.4,
+    "strict_pct_diff": -25.4,
+    "n_free_parameters": 0
+   }
+  }
+ },
+ "capability": {
+  "V1": {
+   "case": "default contexts",
+   "contexts": [
+    "SV-AA2",
+    "SV-AA*",
+    "Cycle 0",
+    "Cycle 1",
+    "AA4"
+   ]
+  },
+  "V2": {
+   "case": "VLBI requirement",
+   "verdict": "mode_not_offered"
+  },
+  "V3": {
+   "case": "Band 5b, 1 uJy, 0.1 arcsec",
+   "verdict": "aa4_only",
+   "failing": [
+    "angular_resolution"
+   ],
+   "SV-AA*": {
+    "band": "pass",
+    "sensitivity": "pass",
+    "angular_resolution": "fail"
+   }
+  }
+ },
+ "quote": {
+  "Q1": {
+   "case": "C-19 weighting stated or inferred",
+   "weighting": "inferred",
+   "sensitivity": "stated",
+   "hours": "stated"
+  }
+ },
+ "time_demand": {
+  "T1": {
+   "case": "Mid demand/supply ratio returned",
+   "returned": 3.523,
+   "accepted_hours": 131148,
+   "supply_h": 37230.0,
+   "computed_ratio": 3.52
+  },
+  "T2": {
+   "case": "share of Mid hours placed on the sky",
+   "placed_h": 118837.5,
+   "placed_fraction": 0.906,
+   "all_sky_hi_placed": true,
+   "placed_h_by_min_el": {
+    "15": 118837.5,
+    "20": 118837.5,
+    "30": 118837.5,
+    "45": 118837.5
+   }
+  },
+  "T4": {
+   "case": "sun constraint applied by default",
+   "assumption": "any (sun constraints off)",
+   "apply_sun_constraints": false
+  },
+  "T5": {
+   "case": "conflicting duplicate hours reported",
+   "conflicts": 15
+  },
+  "T3": {
+   "case": "Cygnus A and M31 from Mid",
+   "Cygnus A @15": {
+    "max_el": 18.55,
+    "usable_h_per_year": 1199.7
+   },
+   "Cygnus A @20": {
+    "max_el": 18.55,
+    "usable_h_per_year": 0.0
+   },
+   "Cygnus A @45": {
+    "max_el": 18.55,
+    "usable_h_per_year": 0.0
+   },
+   "M31 @15": {
+    "max_el": 18.02,
+    "usable_h_per_year": 1109.5
+   },
+   "M31 @20": {
+    "max_el": 18.02,
+    "usable_h_per_year": 0.0
+   },
+   "M31 @45": {
+    "max_el": 18.02,
+    "usable_h_per_year": 0.0
+   },
+   "never_visible_at_default": [
+    "W3A",
+    "Holmberg II X-1"
+   ]
+  }
+ },
+ "data_products": {
+  "D1": {
+   "case": "single-dish / wide-band product types",
+   "types": [
+    "Calibrated Vis",
+    "Dynamic Spectrum",
+    "Flowthrough",
+    "Gridded Visibilities",
+    "Image",
+    "Image Cutout",
+    "PSS",
+    "PST Folded",
+    "Single-dish Autocorrelation",
+    "Spectral Cube (wide-band)",
+    "Transient Dump",
+    "VLBI"
+   ]
+  },
+  "D2": {
+   "case": "all-sky HI cube",
+   "bandwidth_MHz": 470.0,
+   "n_chan": 34971,
+   "tiers_TB": {
+    "visibilities_TB": 4882250.20713131,
+    "archived_TB": 0.332611139376,
+    "delivered_TB": 0.332611139376
+   }
+  },
+  "D3": {
+   "case": "Band 1 intensity mapping",
+   "bandwidth_MHz": 700.0,
+   "n_chan": 52084,
+   "tiers_TB": {
+    "visibilities_TB": null,
+    "archived_TB": 1080.013824,
+    "delivered_TB": 1080.013824
+   }
+  }
+ },
+ "citations": {
+  "C1": {
+   "case": "references whose first author parses as a journal",
+   "n": 8
+  },
+  "C2": {
+   "case": "refs grouped by bibcode",
+   "bibcode_column": true,
+   "n_with_bibcode": 12584
+  },
+  "C3": {
+   "case": "Cygnus A display name",
+   "error": "Unable to access the capabilities endpoint at:\n- https://simbad.cds.unistra.fr/simbad/sim-tap/capabilities: Connection f"
+  }
+ }
+}

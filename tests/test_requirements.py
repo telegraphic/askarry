@@ -60,3 +60,8 @@ def test_validate_record_rejects_bad_units_and_fields():
     assert any("uJy/parsec" in p for p in problems)
     assert "unknown field 'colour'" in problems and any(p.startswith("mode:") for p in problems)
     assert validate_record(extract_draft(C02)) == []
+
+
+def test_bare_values_are_accepted():
+    assert validate_record({"telescope": "mid", "hours": 10}) == []
+    assert check_fields(C19, {"hours": 10})["hours"]["verdict"] == "stated"
