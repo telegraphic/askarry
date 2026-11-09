@@ -6,6 +6,30 @@ caller has to change and which existing counts move. See
 
 ## Unreleased
 
+### keyword_coverage_tool and facility_network_tool (WS2)
+
+- **Default change: abstract and body only.** New `zones` parameter
+  (default `["abstract", "body"]`; `null` for every zone). Reference lists,
+  affiliations, author lists and acknowledgements no longer count.
+- **Default change: plurals and variants match.** Each word matches in
+  singular or plural (`survey`/`surveys`, `frequency`/`frequencies`,
+  `FRB`/`FRBs`), and words may be joined by a space or a hyphen
+  (`zoom mode`/`zoom-mode`). `strict=true` restores literal whole-word
+  matching.
+- **Default change: curated exclusions.** Other meanings of facility names
+  are not counted: Max-Planck, the Planck constant/function/law, Planck
+  Collaboration citations; "Chandra et al." and "Chandra (2019)"; the Fermi
+  level/energy/acceleration; Gaia-Enceladus; "Euclid's". Turn off with
+  `use_curated_exclusions=false` (or `strict=true`); add your own with
+  `exclude`.
+- New `return_contexts` (k matched snippets per paper, with zone, heading
+  and page) and `usage_stats` (mentions per 1,000 body words; whether the
+  term is in a heading or the abstract).
+- Responses now state the `zones`, the `matching` mode and the
+  `exclusions` applied. Same options on `facility_network_tool`.
+- To reproduce counts from before this change, pass `zones=null`,
+  `strict=true`, `include_noncanonical=true`.
+
 ### Index: zones, duplicates, fingerprint (WS1)
 
 - **New chunk metadata.** Every chunk now records its document `zone`

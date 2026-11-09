@@ -170,3 +170,94 @@ def test_compare_to_calculator_zoom_and_pss(monkeypatch):
     assert z["closest"]["robustness"] == 0 and z["closest"]["pct_diff"] == 0.0
     p = sc.compare_to_calculator("low", {}, 4.0, unit="uJy", endpoint="pss")
     assert len(p["variants"]) == 1 and p["closest"]["pct_diff"] == 5.0 and p["unit"] == "uJy"
+
+
+# --- Keyword coverage: zones, inflection, exclusions (real chunks) ----------
+import json as _json
+from pathlib import Path as _Path
+
+TERMS = _json.loads((_Path(__file__).parent / "fixtures/chunks/terms.json").read_text())
+for _c in TERMS:
+    _c["meta"]["source"] = str(HERE / _c["meta"]["source"])
+
+
+def _term_corpus(monkeypatch, chunks=TERMS):
+    monkeypatch.setattr(ct, "get_all_chunks", lambda: chunks)
+    monkeypatch.setattr(ct, "get_acronyms", lambda: {})
+    monkeypatch.setattr(ct, "section_of", lambda s: "S")
+
+
+def _papers(result, term):
+    row = next(t for t in result["terms"] if t["term"] == term)
+    return sorted(p for s in row["sections"].values() for p in s["papers"])
+
+
+def test_planck_body_zone_excludes_max_planck_references_and_constants(monkeypatch):
+    _term_corpus(monkeypatch)
+    old = ct.keyword_coverage(["Planck"], zones=None, strict=True)
+    assert {"Baczko01", "Bourke01", "Bertacca01"} <= set(_papers(old, "Planck"))
+    new = ct.keyword_coverage(["Planck"])
+    # Wolz01 names the Planck satellite; the others are an affiliation,
+    # a reference list and "Planck and Boltzmann constants".
+    assert _papers(new, "Planck") == ["Wolz01"]
+
+
+def test_chandra_body_excludes_surname_citations(monkeypatch):
+    _term_corpus(monkeypatch)
+    assert "Baldi01" in _papers(ct.keyword_coverage(["Chandra"], strict=True), "Chandra")
+    assert _papers(ct.keyword_coverage(["Chandra"]), "Chandra") == ["Colombo01"]
+
+
+def test_plural_and_hyphen_variants_match(monkeypatch):
+    _term_corpus(monkeypatch)
+    r = ct.keyword_coverage(["pulsar survey", "data rate|data volume", "zoom mode|zoom window"])
+    assert "Joshi01" in _papers(r, "pulsar survey")
+    assert "Prandoni01" in _papers(r, "data rate|data volume")
+    assert "Emig01" in _papers(r, "zoom mode|zoom window")
+
+
+def test_strict_restores_literal_matching(monkeypatch):
+    _term_corpus(monkeypatch)
+    r = ct.keyword_coverage(["pulsar survey"], strict=True)
+    assert "Joshi01" not in _papers(r, "pulsar survey")  # Joshi01 writes "pulsar surveys"
+    assert r["matching"].startswith("strict")
+
+
+def test_user_exclude_and_unknown_zone(monkeypatch):
+    _term_corpus(monkeypatch)
+    r = ct.keyword_coverage(["Chandra"], exclude=["Chandra X-ray Observatory"])
+    assert _papers(r, "Chandra") == []
+    try:
+        ct.keyword_coverage(["Chandra"], zones=["bodies"])
+    except ValueError as exc:
+        assert "Unknown zones" in str(exc)
+    else:
+        raise AssertionError("expected ValueError")
+
+
+def test_return_contexts_and_usage_stats(monkeypatch):
+    _term_corpus(monkeypatch)
+    r = ct.keyword_coverage(["pulsar survey"], return_contexts=1, usage_stats=True)
+    row = r["terms"][0]
+    ctx = row["contexts"]["Joshi01"][0]
+    assert "pulsar survey" in ctx["text"].lower() and ctx["zone"] == "body"
+    usage = row["usage"]["Joshi01"]
+    assert usage["mentions_per_1k_body_words"] > 0 and usage["in_abstract"] is False
+
+
+def test_facility_network_applies_zones_and_exclusions(monkeypatch):
+    _term_corpus(monkeypatch)
+    every = ct.facility_network(min_hits_per_paper=1, zones=None, use_curated_exclusions=False)
+    planck = next(f for f in every["facilities"] if f["facility"] == "Planck")
+    assert "Bourke01" in planck["papers"]  # "Planck Collaboration" in its reference list
+    default = ct.facility_network(min_hits_per_paper=1)
+    planck = next(f for f in default["facilities"] if f["facility"] == "Planck")
+    assert planck["papers"] == ["Wolz01"]
+    chandra = next(f for f in default["facilities"] if f["facility"] == "Chandra")
+    assert chandra["papers"] == ["Colombo01"]
+
+
+def test_inflection_rules():
+    rx = lambda alt, txt: bool(ct._alternative_regex(alt, False).search(txt))
+    assert rx("frequency", "frequencies") and rx("FRB", "FRBs") and rx("surveys", "survey")
+    assert rx("analysis", "analysis") and not rx("HI", "hi there")
