@@ -8,6 +8,11 @@ export const meta = {
 }
 
 const ARGS = args.argsPath
+// Optional addendum mode: {letter: {papers: [ids], next_id: n}}. Extracts only those
+// chapters, continues the ID numbering and revises the existing summary, which the
+// agent reads from data/agents/sections.json. Sections not listed are skipped.
+const ONLY = args.only || null
+const PRIOR = args.priorPath
 const SECTIONS = [
   ['A', 'Science Working Group Overviews'], ['B', 'Sun, Earth and Planets'],
   ['C', 'Formation and Evolution of Stars'], ['D', 'From the Milky Way to Distant Galaxies'],
@@ -43,8 +48,13 @@ const EXTRACT = {type: 'object', required: ['section_summary', 'requirements', '
     properties: {paper: {type: 'string'}, page: {type: ['integer', 'null']}, quote: {type: 'string'}, theme: {type: 'string'}}}},
 }}
 
+function addendum(letter) {
+  const o = ONLY[letter]
+  return `ADDENDUM MODE. This section was extracted earlier; ${o.papers.length === 1 ? 'one chapter has' : 'some chapters have'} since been added to the index: ${o.papers.join(', ')}. Cover ONLY ${o.papers.length === 1 ? 'that paper' : 'those papers'} for tasks 1 and 2 (ignore the rest of the list), and number requirements from "${letter}-${String(o.next_id).padStart(2, '0')}" upward. For task 3, read the existing section_summary (python3 -c "import json;print([s['section_summary'] for s in json.load(open('${PRIOR}'))['sections'] if s['letter']=='${letter}'][0])") and return it REVISED so that it takes the new chapter(s) into account: keep its existing content and wording wherever it still holds, and work the new material in where it belongs rather than appending a paragraph about it.\n\n`
+}
+
 function extractPrompt(letter, section) {
-  return `You are building one section of the AASKAII Atlas v2 from the AASKAII SKA science book, using the astronomy-rag MCP tools (load them with ToolSearch: search_astronomy_docs, get_document_chunks).
+  return `${ONLY ? addendum(letter) : ''}You are building one section of the AASKAII Atlas v2 from the AASKAII SKA science book, using the astronomy-rag MCP tools (load them with ToolSearch: search_astronomy_docs, get_document_chunks).
 
 Your section: "${section}" (letter ${letter}). Read your section's entry (the object with "letter": "${letter}") from the JSON file ${ARGS} (e.g. python3 -c "import json;print([s for s in json.load(open('${ARGS}')) if s['letter']=='${letter}'])"). It gives the indexed papers (paper id + title) and, for context, how many of your papers mention each of the 15 observing modes and 16 techniques (mention counts computed from the corpus; >=2 mentions per paper).
 
@@ -73,11 +83,11 @@ const CAP = {type: 'object', required: ['checks'], properties: {checks: {type: '
     note: {type: 'string'}}}}}}
 
 phase('Extract')
-const sections = (await parallel(SECTIONS.map(([letter, section]) => () =>
+const sections = (await parallel(SECTIONS.filter(([l]) => !ONLY || ONLY[l]).map(([letter, section]) => () =>
   agent(extractPrompt(letter, section), {label: `extract:${letter}`, phase: 'Extract', schema: EXTRACT})
     .then(r => r && {letter, section, ...r})))).filter(Boolean)
 const reqs = sections.flatMap(s => s.requirements)
-log(`${sections.length}/7 sections extracted; ${reqs.length} requirements, ${sections.flatMap(s => s.open_questions).length} open questions`)
+log(`${sections.length} sections extracted; ${reqs.length} requirements, ${sections.flatMap(s => s.open_questions).length} open questions`)
 
 phase('Verify')
 const withParams = reqs.filter(r => r.calculator_params)

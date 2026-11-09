@@ -54,6 +54,10 @@
    {
     "paper": "Miller-Jones01",
     "title": "Unveiling Radio Transients with SKAO Telescopes"
+   },
+   {
+    "paper": "Radcliffe01",
+    "title": "Very Long Baseline Interferometry with the SKA Observatory"
    }
   ],
   "mode_papers": {
@@ -62,9 +66,9 @@
    "Wide-field continuum survey": 0,
    "Ultra-deep continuum imaging": 1,
    "EoR / Cosmic Dawn 21-cm": 2,
-   "Spectral line / maser survey": 3,
+   "Spectral line / maser survey": 4,
    "Polarimetry / RM grid": 1,
-   "VLBI / astrometry": 5,
+   "VLBI / astrometry": 6,
    "Pulsar timing array": 2,
    "Pulsar search survey": 0,
    "Transient / commensal / ToO": 3,
@@ -75,18 +79,18 @@
   },
   "method_papers": {
    "Faraday rotation / RM": 2,
-   "VLBI": 3,
+   "VLBI": 4,
    "HI intensity mapping": 3,
    "Machine learning / AI": 2,
    "Polarimetry": 2,
-   "Pulsar timing": 2,
+   "Pulsar timing": 3,
    "Foreground removal": 1,
    "Ionospheric calibration": 1,
-   "Deconvolution / imaging algorithms": 0,
-   "Spectral line / maser": 4,
-   "Commensal / multi-messenger": 4,
+   "Deconvolution / imaging algorithms": 1,
+   "Spectral line / maser": 5,
+   "Commensal / multi-messenger": 5,
    "Source finding / classification": 0,
-   "VLBI astrometry": 2,
+   "VLBI astrometry": 3,
    "RFI mitigation": 1,
    "Zeeman effect": 2,
    "Citizen science": 0
@@ -157,6 +161,10 @@
     "title": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI"
    },
    {
+    "paper": "Dey01",
+    "title": "Understanding Coronal `Seeing' Using High Angular Resolution Radio Observations of Active Solar Emissions"
+   },
+   {
     "paper": "Mondal01",
     "title": "Unravelling the Nonthermal Emissions from the Quiet Solar Corona with the SKA"
    },
@@ -181,17 +189,17 @@
    "Pulsar timing array": 0,
    "Pulsar search survey": 1,
    "Transient / commensal / ToO": 1,
-   "Solar/heliospheric imaging": 15,
+   "Solar/heliospheric imaging": 16,
    "Weak lensing": 0,
    "Zoom-mode spectroscopy": 0,
    "SETI / technosignature": 0
   },
   "method_papers": {
-   "Faraday rotation / RM": 2,
+   "Faraday rotation / RM": 3,
    "VLBI": 3,
    "HI intensity mapping": 0,
    "Machine learning / AI": 1,
-   "Polarimetry": 8,
+   "Polarimetry": 9,
    "Pulsar timing": 0,
    "Foreground removal": 0,
    "Ionospheric calibration": 4,
@@ -244,6 +252,10 @@
    {
     "paper": "Bourke01",
     "title": "Measuring Magnetic Field Strengths in Galactic Star-forming Regions via the Zeeman Effect with the SKA"
+   },
+   {
+    "paper": "Greaves01",
+    "title": "Pathfinder Results for Populations of Planet-forming Discs with SKAO"
    },
    {
     "paper": "Forbrich01",
@@ -720,6 +732,10 @@
     "title": "Testing Dark Matter Models and Modified Gravity Theories with Spatially Resolved HI Observations"
    },
    {
+    "paper": "Bertacca01",
+    "title": "The Cosmic Radio Dipole and Observer Effects in SKA All-sky Surveys"
+   },
+   {
     "paper": "deGasperin01",
     "title": "The Cosmic Ray Life Cycle in Galaxy Clusters"
    },
@@ -765,8 +781,8 @@
    }
   ],
   "mode_papers": {
-   "Deep HI intensity mapping": 16,
-   "Deep/wide HI galaxy survey": 6,
+   "Deep HI intensity mapping": 17,
+   "Deep/wide HI galaxy survey": 7,
    "Wide-field continuum survey": 5,
    "Ultra-deep continuum imaging": 5,
    "EoR / Cosmic Dawn 21-cm": 13,
@@ -784,11 +800,11 @@
   "method_papers": {
    "Faraday rotation / RM": 14,
    "VLBI": 2,
-   "HI intensity mapping": 16,
+   "HI intensity mapping": 17,
    "Machine learning / AI": 10,
    "Polarimetry": 3,
    "Pulsar timing": 6,
-   "Foreground removal": 13,
+   "Foreground removal": 14,
    "Ionospheric calibration": 2,
    "Deconvolution / imaging algorithms": 3,
    "Spectral line / maser": 2,
@@ -885,6 +901,10 @@
     "title": "Pulsars in Globular Clusters With the SKAO"
    },
    {
+    "paper": "AlexAndersson02",
+    "title": "Revisiting the Unknown Unknowns in Transient Astrophysics with the SKAO Telescopes"
+   },
+   {
     "paper": "Kadler01",
     "title": "SKA-VLBI Probes of High-energy Emission Processes in Relativistic Jets"
    },
@@ -968,7 +988,7 @@
    "VLBI / astrometry": 28,
    "Pulsar timing array": 6,
    "Pulsar search survey": 7,
-   "Transient / commensal / ToO": 13,
+   "Transient / commensal / ToO": 14,
    "Solar/heliospheric imaging": 1,
    "Weak lensing": 0,
    "Zoom-mode spectroscopy": 0,
@@ -978,14 +998,14 @@
    "Faraday rotation / RM": 10,
    "VLBI": 25,
    "HI intensity mapping": 0,
-   "Machine learning / AI": 1,
+   "Machine learning / AI": 2,
    "Polarimetry": 7,
    "Pulsar timing": 11,
    "Foreground removal": 0,
    "Ionospheric calibration": 3,
    "Deconvolution / imaging algorithms": 1,
    "Spectral line / maser": 2,
-   "Commensal / multi-messenger": 16,
+   "Commensal / multi-messenger": 17,
    "Source finding / classification": 0,
    "VLBI astrometry": 10,
    "RFI mitigation": 1,
@@ -1082,6 +1102,10 @@
     "title": "The Role of Artificial Intelligence in the SKA Era"
    },
    {
+    "paper": "Chhetri01",
+    "title": "Understanding Sub-arcsecond Scale Radio Sources and Space Weather with the SKA Low Using Interplanetary Scintillation"
+   },
+   {
     "paper": "Wongphecauxson01",
     "title": "VLBI with SKAMPI, the SKA-MID MPIfR Dish Demonstrator"
    },
@@ -1102,24 +1126,24 @@
    "EoR / Cosmic Dawn 21-cm": 7,
    "Spectral line / maser survey": 4,
    "Polarimetry / RM grid": 3,
-   "VLBI / astrometry": 14,
+   "VLBI / astrometry": 15,
    "Pulsar timing array": 3,
    "Pulsar search survey": 3,
    "Transient / commensal / ToO": 5,
-   "Solar/heliospheric imaging": 2,
+   "Solar/heliospheric imaging": 3,
    "Weak lensing": 1,
    "Zoom-mode spectroscopy": 1,
    "SETI / technosignature": 3
   },
   "method_papers": {
    "Faraday rotation / RM": 8,
-   "VLBI": 14,
+   "VLBI": 15,
    "HI intensity mapping": 0,
    "Machine learning / AI": 8,
    "Polarimetry": 4,
    "Pulsar timing": 7,
    "Foreground removal": 5,
-   "Ionospheric calibration": 10,
+   "Ionospheric calibration": 11,
    "Deconvolution / imaging algorithms": 6,
    "Spectral line / maser": 6,
    "Commensal / multi-messenger": 4,

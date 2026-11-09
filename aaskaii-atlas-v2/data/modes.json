@@ -1,7 +1,7 @@
 {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "terms": {
     "Deep HI intensity mapping": "intensity mapping",
@@ -25,25 +25,26 @@
  },
  "papers_per_section": {
   "From the Milky Way to Distant Galaxies": 53,
-  "The Cosmos": 49,
-  "The Extreme Universe": 38,
-  "Methods and Techniques": 24,
-  "Sun, Earth and Planets": 18,
-  "Formation and Evolution of Stars": 16,
-  "Science Working Group Overviews": 13
+  "The Cosmos": 50,
+  "The Extreme Universe": 39,
+  "Methods and Techniques": 25,
+  "Sun, Earth and Planets": 19,
+  "Formation and Evolution of Stars": 17,
+  "Science Working Group Overviews": 14
  },
  "items": [
   {
    "label": "Deep HI intensity mapping",
    "term": "intensity mapping",
-   "total_mentions": 254,
-   "n_papers": 20,
+   "total_mentions": 256,
+   "n_papers": 21,
    "n_sections": 3,
    "sections": {
     "The Cosmos": {
-     "n_papers": 16,
+     "n_papers": 17,
      "papers": [
       "Baker01",
+      "Bertacca01",
       "Bosi01",
       "Camera01",
       "Chakraborty01",
@@ -80,13 +81,14 @@
   {
    "label": "Deep/wide HI galaxy survey",
    "term": "HI galaxy survey|Hi galaxy survey|H i galaxy survey|HI survey|Hi survey|H i survey|untargeted HI|untargeted Hi|blind HI|blind Hi",
-   "total_mentions": 103,
-   "n_papers": 13,
+   "total_mentions": 109,
+   "n_papers": 14,
    "n_sections": 4,
    "sections": {
     "The Cosmos": {
-     "n_papers": 6,
+     "n_papers": 7,
      "papers": [
+      "Bertacca01",
       "Camera01",
       "Elahi01",
       "Lelli01",
@@ -122,7 +124,7 @@
   {
    "label": "Wide-field continuum survey",
    "term": "continuum survey|wide-area survey|all-sky survey",
-   "total_mentions": 87,
+   "total_mentions": 88,
    "n_papers": 19,
    "n_sections": 4,
    "sections": {
@@ -210,7 +212,7 @@
   {
    "label": "EoR / Cosmic Dawn 21-cm",
    "term": "EoR|Epoch of Reionization|Epoch of Reionisation|Cosmic Dawn",
-   "total_mentions": 540,
+   "total_mentions": 541,
    "n_papers": 28,
    "n_sections": 5,
    "sections": {
@@ -272,8 +274,8 @@
   {
    "label": "Spectral line / maser survey",
    "term": "maser|radio recombination line|RRL|spectral line survey",
-   "total_mentions": 567,
-   "n_papers": 30,
+   "total_mentions": 571,
+   "n_papers": 31,
    "n_sections": 6,
    "sections": {
     "Formation and Evolution of Stars": {
@@ -305,6 +307,15 @@
       "XuYe01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 4,
+     "papers": [
+      "Audard01",
+      "Bianchi02",
+      "Radcliffe01",
+      "vanLoon01"
+     ]
+    },
     "Methods and Techniques": {
      "n_papers": 4,
      "papers": [
@@ -312,14 +323,6 @@
       "Chen01",
       "Robishaw01",
       "Timmerman01"
-     ]
-    },
-    "Science Working Group Overviews": {
-     "n_papers": 3,
-     "papers": [
-      "Audard01",
-      "Bianchi02",
-      "vanLoon01"
      ]
     },
     "The Extreme Universe": {
@@ -341,7 +344,7 @@
   {
    "label": "Polarimetry / RM grid",
    "term": "RM grid|rotation measure grid|polarization survey|polarisation survey|polarimetric survey",
-   "total_mentions": 197,
+   "total_mentions": 193,
    "n_papers": 15,
    "n_sections": 4,
    "sections": {
@@ -385,8 +388,8 @@
   {
    "label": "VLBI / astrometry",
    "term": "VLBI|very long baseline interferometry|astrometry",
-   "total_mentions": 2163,
-   "n_papers": 84,
+   "total_mentions": 2324,
+   "n_papers": 86,
    "n_sections": 7,
    "sections": {
     "The Extreme Universe": {
@@ -450,10 +453,11 @@
      ]
     },
     "Methods and Techniques": {
-     "n_papers": 14,
+     "n_papers": 15,
      "papers": [
       "Bempong-Manful01",
       "Chen01",
+      "Chhetri01",
       "GemmaAnderson01",
       "Hota01",
       "Kobayashi01",
@@ -482,12 +486,13 @@
      ]
     },
     "Science Working Group Overviews": {
-     "n_papers": 5,
+     "n_papers": 6,
      "papers": [
       "Bellomo01",
       "Bianchi02",
       "Joshi01",
       "Miller-Jones01",
+      "Radcliffe01",
       "vanLoon01"
      ]
     },
@@ -594,14 +599,15 @@
   {
    "label": "Transient / commensal / ToO",
    "term": "target of opportunity|target-of-opportunity|commensal|FRB|transient search",
-   "total_mentions": 442,
-   "n_papers": 34,
+   "total_mentions": 468,
+   "n_papers": 35,
    "n_sections": 7,
    "sections": {
     "The Extreme Universe": {
-     "n_papers": 13,
+     "n_papers": 14,
      "papers": [
       "Abbate01",
+      "AlexAndersson02",
       "AvishekBasu01",
       "Castignani01",
       "Chandra01",
@@ -672,15 +678,16 @@
   {
    "label": "Solar/heliospheric imaging",
    "term": "heliosphere|heliospheric|solar radio|solar corona|solar imaging|coronal mass ejection",
-   "total_mentions": 684,
-   "n_papers": 19,
+   "total_mentions": 740,
+   "n_papers": 21,
    "n_sections": 4,
    "sections": {
     "Sun, Earth and Planets": {
-     "n_papers": 15,
+     "n_papers": 16,
      "papers": [
       "Cheung01",
       "Chrysaphi01",
+      "Dey01",
       "Kansabanik01",
       "Kontar01",
       "Kumari01",
@@ -697,8 +704,9 @@
      ]
     },
     "Methods and Techniques": {
-     "n_papers": 2,
+     "n_papers": 3,
      "papers": [
+      "Chhetri01",
       "GemmaAnderson01",
       "Hota01"
      ]

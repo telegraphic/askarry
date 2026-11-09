@@ -34,3 +34,5 @@ _to_delete/
 .claude/worktrees/
 chroma_db.bak-*/
 chroma_textbooks.bak-*/
+chroma_textbooks.broken-*/
+*.db.bak-*

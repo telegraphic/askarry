@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['risks'] = {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "terms": {
     "RFI": "RFI|radio frequency interference",
@@ -26,21 +26,37 @@
  },
  "papers_per_section": {
   "From the Milky Way to Distant Galaxies": 53,
-  "The Cosmos": 49,
-  "The Extreme Universe": 38,
-  "Methods and Techniques": 24,
-  "Sun, Earth and Planets": 18,
-  "Formation and Evolution of Stars": 16,
-  "Science Working Group Overviews": 13
+  "The Cosmos": 50,
+  "The Extreme Universe": 39,
+  "Methods and Techniques": 25,
+  "Sun, Earth and Planets": 19,
+  "Formation and Evolution of Stars": 17,
+  "Science Working Group Overviews": 14
  },
  "items": [
   {
    "label": "RFI",
    "term": "RFI|radio frequency interference",
-   "total_mentions": 340,
-   "n_papers": 40,
+   "total_mentions": 352,
+   "n_papers": 43,
    "n_sections": 7,
    "sections": {
+    "Methods and Techniques": {
+     "n_papers": 11,
+     "papers": [
+      "Acharya02",
+      "Bempong-Manful01",
+      "Burba01",
+      "Carcamo01",
+      "Chen01",
+      "Chhetri01",
+      "Denzel01",
+      "SabyasachiPal01",
+      "Timmerman01",
+      "Tremblay01",
+      "Wongphecauxson01"
+     ]
+    },
     "The Cosmos": {
      "n_papers": 11,
      "papers": [
@@ -57,24 +73,10 @@
       "deLeraAcedo01"
      ]
     },
-    "Methods and Techniques": {
-     "n_papers": 10,
-     "papers": [
-      "Acharya02",
-      "Bempong-Manful01",
-      "Burba01",
-      "Carcamo01",
-      "Chen01",
-      "Denzel01",
-      "SabyasachiPal01",
-      "Timmerman01",
-      "Tremblay01",
-      "Wongphecauxson01"
-     ]
-    },
     "The Extreme Universe": {
-     "n_papers": 8,
+     "n_papers": 9,
      "papers": [
+      "AlexAndersson02",
       "AvishekBasu01",
       "Bagchi01",
       "Besancon01",
@@ -97,6 +99,13 @@
       "XuYe01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 2,
+     "papers": [
+      "JingWang01",
+      "Radcliffe01"
+     ]
+    },
     "Sun, Earth and Planets": {
      "n_papers": 2,
      "papers": [
@@ -109,27 +118,22 @@
      "papers": [
       "Guidi01"
      ]
-    },
-    "Science Working Group Overviews": {
-     "n_papers": 1,
-     "papers": [
-      "JingWang01"
-     ]
     }
    }
   },
   {
    "label": "Ionospheric calibration",
    "term": "ionospheric calibration|ionospheric phase|ionospheric distortion",
-   "total_mentions": 37,
-   "n_papers": 5,
+   "total_mentions": 39,
+   "n_papers": 6,
    "n_sections": 2,
    "sections": {
     "Methods and Techniques": {
-     "n_papers": 4,
+     "n_papers": 5,
      "papers": [
       "Acharya02",
       "Burba01",
+      "Chhetri01",
       "Datta01",
       "Morgan01"
      ]
@@ -145,15 +149,16 @@
   {
    "label": "Direction-dependent calibration",
    "term": "direction-dependent|direction dependent",
-   "total_mentions": 55,
-   "n_papers": 8,
+   "total_mentions": 60,
+   "n_papers": 9,
    "n_sections": 4,
    "sections": {
     "Methods and Techniques": {
-     "n_papers": 3,
+     "n_papers": 4,
      "papers": [
       "Acharya02",
       "Burba01",
+      "Chhetri01",
       "Datta01"
      ]
     },
@@ -182,7 +187,7 @@
   {
    "label": "Dynamic-range limitation",
    "term": "dynamic range",
-   "total_mentions": 167,
+   "total_mentions": 165,
    "n_papers": 33,
    "n_sections": 6,
    "sections": {
@@ -254,16 +259,17 @@
   {
    "label": "Confusion limit",
    "term": "confusion limit|confusion noise|confusion-limited",
-   "total_mentions": 76,
-   "n_papers": 15,
+   "total_mentions": 78,
+   "n_papers": 16,
    "n_sections": 3,
    "sections": {
     "The Cosmos": {
-     "n_papers": 9,
+     "n_papers": 10,
      "papers": [
       "Afonso01",
       "ArpanPal01",
       "Asorey01",
+      "Bertacca01",
       "Cassano01",
       "Cuciti01",
       "OSullivan01",
@@ -327,7 +333,7 @@
   {
    "label": "Computational cost",
    "term": "computational cost|computationally expensive|compute cost|HPC",
-   "total_mentions": 63,
+   "total_mentions": 65,
    "n_papers": 15,
    "n_sections": 5,
    "sections": {
@@ -376,13 +382,14 @@
   {
    "label": "Data rate / volume",
    "term": "data rate|data volume",
-   "total_mentions": 21,
-   "n_papers": 4,
+   "total_mentions": 23,
+   "n_papers": 5,
    "n_sections": 2,
    "sections": {
     "The Extreme Universe": {
-     "n_papers": 2,
+     "n_papers": 3,
      "papers": [
+      "AlexAndersson02",
       "Bagchi01",
       "Kovalev01"
      ]
@@ -399,7 +406,7 @@
   {
    "label": "Survey-speed limitation",
    "term": "survey speed",
-   "total_mentions": 93,
+   "total_mentions": 95,
    "n_papers": 18,
    "n_sections": 5,
    "sections": {
@@ -451,8 +458,8 @@
   {
    "label": "Beam sidelobes",
    "term": "sidelobe|sidelobes|side-lobe",
-   "total_mentions": 79,
-   "n_papers": 12,
+   "total_mentions": 82,
+   "n_papers": 13,
    "n_sections": 4,
    "sections": {
     "Methods and Techniques": {
@@ -476,8 +483,9 @@
      ]
     },
     "Science Working Group Overviews": {
-     "n_papers": 1,
+     "n_papers": 2,
      "papers": [
+      "Radcliffe01",
       "Trott01"
      ]
     },

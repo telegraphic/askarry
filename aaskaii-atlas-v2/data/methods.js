@@ -1,7 +1,7 @@
 (window.ATLAS = window.ATLAS || {})['methods'] = {
  "generated": {
-  "git_sha": "8486317",
-  "date": "2026-10-04",
+  "git_sha": "f184622",
+  "date": "2026-11-09",
   "args": {
    "terms": {
     "Faraday rotation / RM": "Faraday rotation|rotation measure|Faraday depth|RM synthesis",
@@ -26,19 +26,19 @@
  },
  "papers_per_section": {
   "From the Milky Way to Distant Galaxies": 53,
-  "The Cosmos": 49,
-  "The Extreme Universe": 38,
-  "Methods and Techniques": 24,
-  "Sun, Earth and Planets": 18,
-  "Formation and Evolution of Stars": 16,
-  "Science Working Group Overviews": 13
+  "The Cosmos": 50,
+  "The Extreme Universe": 39,
+  "Methods and Techniques": 25,
+  "Sun, Earth and Planets": 19,
+  "Formation and Evolution of Stars": 17,
+  "Science Working Group Overviews": 14
  },
  "items": [
   {
    "label": "Faraday rotation / RM",
    "term": "Faraday rotation|rotation measure|Faraday depth|RM synthesis",
-   "total_mentions": 691,
-   "n_papers": 56,
+   "total_mentions": 654,
+   "n_papers": 57,
    "n_sections": 7,
    "sections": {
     "From the Milky Way to Distant Galaxies": {
@@ -119,8 +119,9 @@
      ]
     },
     "Sun, Earth and Planets": {
-     "n_papers": 2,
+     "n_papers": 3,
      "papers": [
+      "Dey01",
       "Kansabanik01",
       "Oberoi01"
      ]
@@ -137,8 +138,8 @@
   {
    "label": "VLBI",
    "term": "VLBI",
-   "total_mentions": 1747,
-   "n_papers": 74,
+   "total_mentions": 1891,
+   "n_papers": 76,
    "n_sections": 7,
    "sections": {
     "The Extreme Universe": {
@@ -198,10 +199,11 @@
      ]
     },
     "Methods and Techniques": {
-     "n_papers": 14,
+     "n_papers": 15,
      "papers": [
       "Bempong-Manful01",
       "Chen01",
+      "Chhetri01",
       "GemmaAnderson01",
       "Hota01",
       "Kobayashi01",
@@ -227,20 +229,21 @@
       "Sabatini01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 4,
+     "papers": [
+      "Joshi01",
+      "Miller-Jones01",
+      "Radcliffe01",
+      "vanLoon01"
+     ]
+    },
     "Sun, Earth and Planets": {
      "n_papers": 3,
      "papers": [
       "Curiel01",
       "PeijinZhang01",
       "Santos-Sanz01"
-     ]
-    },
-    "Science Working Group Overviews": {
-     "n_papers": 3,
-     "papers": [
-      "Joshi01",
-      "Miller-Jones01",
-      "vanLoon01"
      ]
     },
     "The Cosmos": {
@@ -255,14 +258,15 @@
   {
    "label": "HI intensity mapping",
    "term": "intensity mapping",
-   "total_mentions": 254,
-   "n_papers": 20,
+   "total_mentions": 256,
+   "n_papers": 21,
    "n_sections": 3,
    "sections": {
     "The Cosmos": {
-     "n_papers": 16,
+     "n_papers": 17,
      "papers": [
       "Baker01",
+      "Bertacca01",
       "Bosi01",
       "Camera01",
       "Chakraborty01",
@@ -299,8 +303,8 @@
   {
    "label": "Machine learning / AI",
    "term": "machine learning|deep learning|neural network|artificial intelligence",
-   "total_mentions": 249,
-   "n_papers": 26,
+   "total_mentions": 262,
+   "n_papers": 27,
    "n_sections": 7,
    "sections": {
     "The Cosmos": {
@@ -339,17 +343,18 @@
       "Sasmal01"
      ]
     },
+    "The Extreme Universe": {
+     "n_papers": 2,
+     "papers": [
+      "AlexAndersson02",
+      "Levin01"
+     ]
+    },
     "Science Working Group Overviews": {
      "n_papers": 2,
      "papers": [
       "Miller-Jones01",
       "Trott01"
-     ]
-    },
-    "The Extreme Universe": {
-     "n_papers": 1,
-     "papers": [
-      "Levin01"
      ]
     },
     "Sun, Earth and Planets": {
@@ -369,8 +374,8 @@
   {
    "label": "Polarimetry",
    "term": "polarimetry|polarimetric",
-   "total_mentions": 242,
-   "n_papers": 39,
+   "total_mentions": 246,
+   "n_papers": 40,
    "n_sections": 7,
    "sections": {
     "From the Milky Way to Distant Galaxies": {
@@ -391,9 +396,10 @@
      ]
     },
     "Sun, Earth and Planets": {
-     "n_papers": 8,
+     "n_papers": 9,
      "papers": [
       "Cheung01",
+      "Dey01",
       "Kansabanik01",
       "Kumari01",
       "Mohan01",
@@ -452,8 +458,8 @@
   {
    "label": "Pulsar timing",
    "term": "pulsar timing",
-   "total_mentions": 271,
-   "n_papers": 27,
+   "total_mentions": 277,
+   "n_papers": 28,
    "n_sections": 5,
    "sections": {
     "The Extreme Universe": {
@@ -496,10 +502,11 @@
      ]
     },
     "Science Working Group Overviews": {
-     "n_papers": 2,
+     "n_papers": 3,
      "papers": [
       "Bellomo01",
-      "Joshi01"
+      "Joshi01",
+      "Radcliffe01"
      ]
     },
     "From the Milky Way to Distant Galaxies": {
@@ -513,16 +520,17 @@
   {
    "label": "Foreground removal",
    "term": "foreground removal|foreground subtraction|foreground mitigation|foreground avoidance",
-   "total_mentions": 128,
-   "n_papers": 19,
+   "total_mentions": 132,
+   "n_papers": 20,
    "n_sections": 3,
    "sections": {
     "The Cosmos": {
-     "n_papers": 13,
+     "n_papers": 14,
      "papers": [
       "Acharya01",
       "Bag01",
       "Barkana01",
+      "Bertacca01",
       "Camera01",
       "Chakraborty01",
       "Cunnington01",
@@ -556,15 +564,16 @@
   {
    "label": "Ionospheric calibration",
    "term": "ionospheric calibration|ionospheric",
-   "total_mentions": 362,
-   "n_papers": 22,
+   "total_mentions": 368,
+   "n_papers": 23,
    "n_sections": 6,
    "sections": {
     "Methods and Techniques": {
-     "n_papers": 10,
+     "n_papers": 11,
      "papers": [
       "Acharya02",
       "Burba01",
+      "Chhetri01",
       "Datta01",
       "Li01",
       "MingHuiXu01",
@@ -617,9 +626,9 @@
   {
    "label": "Deconvolution / imaging algorithms",
    "term": "deconvolution|CLEAN|imaging algorithm",
-   "total_mentions": 131,
-   "n_papers": 16,
-   "n_sections": 6,
+   "total_mentions": 136,
+   "n_papers": 17,
+   "n_sections": 7,
    "sections": {
     "Methods and Techniques": {
      "n_papers": 6,
@@ -649,6 +658,12 @@
       "Spinelli01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 1,
+     "papers": [
+      "Radcliffe01"
+     ]
+    },
     "From the Milky Way to Distant Galaxies": {
      "n_papers": 1,
      "papers": [
@@ -672,8 +687,8 @@
   {
    "label": "Spectral line / maser",
    "term": "maser|spectral line",
-   "total_mentions": 532,
-   "n_papers": 37,
+   "total_mentions": 535,
+   "n_papers": 38,
    "n_sections": 7,
    "sections": {
     "From the Milky Way to Distant Galaxies": {
@@ -717,10 +732,11 @@
      ]
     },
     "Science Working Group Overviews": {
-     "n_papers": 4,
+     "n_papers": 5,
      "papers": [
       "Audard01",
       "Bianchi02",
+      "Radcliffe01",
       "Spinelli02",
       "vanLoon01"
      ]
@@ -753,13 +769,14 @@
   {
    "label": "Commensal / multi-messenger",
    "term": "commensal|multi-messenger|multimessenger",
-   "total_mentions": 208,
-   "n_papers": 35,
+   "total_mentions": 234,
+   "n_papers": 37,
    "n_sections": 7,
    "sections": {
     "The Extreme Universe": {
-     "n_papers": 16,
+     "n_papers": 17,
      "papers": [
+      "AlexAndersson02",
       "AvishekBasu01",
       "Bignall01",
       "Capelo01",
@@ -788,6 +805,16 @@
       "Maccagni01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 5,
+     "papers": [
+      "Bellomo01",
+      "Huege01",
+      "Joshi01",
+      "Miller-Jones01",
+      "Radcliffe01"
+     ]
+    },
     "Methods and Techniques": {
      "n_papers": 4,
      "papers": [
@@ -795,15 +822,6 @@
       "GemmaAnderson01",
       "Takahashi01",
       "Tremblay01"
-     ]
-    },
-    "Science Working Group Overviews": {
-     "n_papers": 4,
-     "papers": [
-      "Bellomo01",
-      "Huege01",
-      "Joshi01",
-      "Miller-Jones01"
      ]
     },
     "The Cosmos": {
@@ -861,8 +879,8 @@
   {
    "label": "VLBI astrometry",
    "term": "VLBI astrometry|astrometric",
-   "total_mentions": 460,
-   "n_papers": 29,
+   "total_mentions": 464,
+   "n_papers": 30,
    "n_sections": 7,
    "sections": {
     "The Extreme Universe": {
@@ -908,19 +926,20 @@
       "Rygl01"
      ]
     },
+    "Science Working Group Overviews": {
+     "n_papers": 3,
+     "papers": [
+      "Bellomo01",
+      "Joshi01",
+      "Radcliffe01"
+     ]
+    },
     "The Cosmos": {
      "n_papers": 3,
      "papers": [
       "Chatterjee01",
       "Cruz01",
       "Perna01"
-     ]
-    },
-    "Science Working Group Overviews": {
-     "n_papers": 2,
-     "papers": [
-      "Bellomo01",
-      "Joshi01"
      ]
     },
     "Sun, Earth and Planets": {
