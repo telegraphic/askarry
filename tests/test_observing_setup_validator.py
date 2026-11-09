@@ -175,3 +175,45 @@ def test_validate_observing_setup_overlapping_subarrays_fails():
 
     assert response["status"] == "error"
     assert response["alerts"][0] == "Subarrays overlap. Please check the subarray configuration."
+
+
+# --- Per-context, per-dimension verdicts for a requirement record -----------
+from rag.observing_setup_validator import DEFAULT_CONTEXTS, requirement_verdicts
+
+
+def test_default_contexts_include_aa4():
+    assert DEFAULT_CONTEXTS == ["SV-AA2", "SV-AA*", "Cycle 0", "Cycle 1", "AA4"]
+
+
+def test_vlbi_is_mode_not_offered_not_aa4_only():
+    out = requirement_verdicts({"telescope": {"value": "mid"}, "mode": {"value": "VLBI"}})
+    assert out["verdict"] == "mode_not_offered"
+    assert {c["verdict"] for c in out["by_context"].values()} == {"mode_not_offered"}
+
+
+@pytest.mark.skipif(not HAS_SKA_OST_ARRAY_CONFIG, reason="ska_ost_array_config not installed")
+def test_band5b_0p1arcsec_fails_on_resolution_not_just_passes_on_band():
+    req = {"telescope": {"value": "mid"}, "band": {"value": "Band 5b"},
+           "sensitivity": {"value": 1, "unit": "uJy/beam"}, "angular_resolution": {"value": 0.1, "unit": "arcsec"},
+           "hours": {"value": 10, "unit": "h"}}
+    out = requirement_verdicts(req, check_sensitivity=False)
+    aastar = out["by_context"]["SV-AA*"]["dimensions"]
+    assert aastar["band"]["verdict"] == "pass"
+    assert aastar["angular_resolution"]["verdict"] == "fail"  # lambda/B_max = 0.145" on 36 km baselines
+    assert out["by_context"]["AA4"]["dimensions"]["angular_resolution"]["verdict"] == "pass"
+    assert out["verdict"] == "aa4_only" and out["failing_dimensions"] == ["angular_resolution"]
+
+
+def test_zoom_unavailable_at_aa2_available_from_aastar():
+    req = {"telescope": {"value": "mid"}, "mode": {"value": "zoom"}, "band": {"value": "Band 2"},
+           "channel_width": {"value": 0.1, "unit": "km/s"}}
+    out = requirement_verdicts(req, check_sensitivity=False)
+    assert out["by_context"]["SV-AA2"]["dimensions"]["mode"]["verdict"] == "fail"
+    assert out["verdict"] == "available_from SV-AA*"
+
+
+def test_obs_config_path_reports_aa4_as_not_validated(monkeypatch):
+    import rag.observing_setup_validator as osv
+    monkeypatch.setattr(osv, "validate_observing_setup", lambda cfg: {"status": "success", "context": cfg["context"]})
+    out = osv.validate_across_contexts({"telescopeType": "SKA-Mid", "subarrays": {}})
+    assert list(out) == DEFAULT_CONTEXTS and out["AA4"]["status"] == "not_validated"
