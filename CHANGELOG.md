@@ -6,6 +6,29 @@ caller has to change and which existing counts move. See
 
 ## Unreleased
 
+### Requirement records, field checks and capability verdicts (WS5, WS4)
+
+- **New `extract_requirements_tool(quote)`** returns a draft requirement
+  record and its schema. Each field (frequency, bandwidth, channel width,
+  sensitivity, sigma level, weighting, array stage, band, hours, area, FoV,
+  angular resolution, time resolution, mode, telescope) is
+  `{value, unit, source_text, inferred}`; the parser fills what it finds in
+  the quote. Rules: `rag/requirements.py`.
+- **`verify_quote_tool(fields=...)`** checks each field of a record against
+  the quote: `stated` (the value appears, in any unit spelling) or
+  `inferred`, with a flag when a field marked stated isn't in the quote.
+- **Default change: `validate_across_contexts_tool` adds the AA4 design
+  baseline** to SV-AA2, SV-AA*, Cycle 0 and Cycle 1. With an `obs_config`,
+  AA4 is reported as `not_validated` (the validator has no AA4 context).
+- **`validate_across_contexts_tool(requirement=...)`** gives a verdict per
+  context for each stated dimension: observing mode, band, frequency,
+  bandwidth, channel width, angular resolution and sensitivity (the strict
+  calculator; its beam judges resolution at the same weighting). Overall
+  verdicts: `available_from <context>`, `aa4_only`, `not_met`, and
+  `mode_not_offered` (VLBI, transient buffer, solar: no schema in any
+  context, AA4 included), kept separate from `aa4_only`. `obs_config` is now
+  optional.
+
 ### Sensitivity calculator: strict and best-fit modes (WS3)
 
 - **Fixed: the calculator API moved to v12.** v11 now returns 404, so every

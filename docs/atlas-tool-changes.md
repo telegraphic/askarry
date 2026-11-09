@@ -87,3 +87,25 @@ best-fit matches with free parameters; B-03 and B-04 carry
 `array_substituted`; C-02 (a K claim) moves from "unverifiable" to a checked
 result, which diverges, because the paper's 8.17″ beam implies a taper the
 quote doesn't state.
+
+## WS5 and WS4: requirement records and capability verdicts
+
+**What changed.** Requirements can be held as structured records whose
+fields each say whether the quote states them. Capability verdicts are
+given per context and per dimension, include the AA4 design baseline, and
+separate "not offered in any context" (VLBI) from "only at AA4".
+
+**What the workflow should change.** The extract phase of
+`atlas_prose_workflow.js` should start from `extract_requirements_tool`,
+fill missing fields with `inferred: true`, and run
+`verify_quote_tool(fields=...)`; `verify_atlas_quotes.py` should keep the
+field checks and drop any match that rests on a flagged field. The
+capability phase should call `validate_across_contexts_tool(requirement=…)`
+instead of hand-building obs_configs for one or two contexts.
+
+**Figures that move.** `capability-crosscheck.html` (`prose.json`
+`capability`): the 43 VLBI rows move from `aa4_only` to `mode_not_offered`;
+rows that passed on "band exists" can now fail on resolution or depth
+(Band 5b at 0.1″ fails at AA* on resolution); every row is judged in five
+contexts instead of mostly two. `instrument-requirements.html` gains
+stated/inferred markers per field.

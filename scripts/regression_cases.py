@@ -176,14 +176,14 @@ def capability_cases() -> dict:
     out = {"V1": {"case": "default contexts", "contexts": list(getattr(v, "DEFAULT_CONTEXTS", v.CONTEXTS))}}
     if _has_param(fn, "requirement"):
         vlbi = fn(None, requirement={"telescope": "mid", "mode": {"value": "vlbi"}}, check_sensitivity=False)
-        out["V2"] = {"case": "VLBI requirement", "verdicts": {c: r["verdict"] for c, r in vlbi.items()}}
+        out["V2"] = {"case": "VLBI requirement", "verdict": vlbi["verdict"]}
         hard = fn(None, requirement={"telescope": "mid", "band": {"value": "5b"},
                                      "sensitivity": {"value": 1, "unit": "uJy/beam"},
                                      "angular_resolution": {"value": 0.1, "unit": "arcsec"},
-                                     "hours": {"value": 10, "unit": "h"}}, check_sensitivity=False)
-        out["V3"] = {"case": "Band 5b, 1 uJy, 0.1 arcsec",
-                     "verdicts": {c: {"overall": r["verdict"], **{d: x["verdict"] for d, x in r["dimensions"].items()}}
-                                  for c, r in hard.items()}}
+                                     "hours": {"value": 10, "unit": "h"}}, check_sensitivity=True)
+        out["V3"] = {"case": "Band 5b, 1 uJy, 0.1 arcsec", "verdict": hard["verdict"],
+                     "failing": hard["failing_dimensions"],
+                     "SV-AA*": {d: x["verdict"] for d, x in hard["by_context"]["SV-AA*"]["dimensions"].items()}}
     else:
         out["V2"] = out["V3"] = {"unsupported": ["requirement"]}
     return out

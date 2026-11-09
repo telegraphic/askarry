@@ -55,7 +55,10 @@ compare_to_calculator_tool
                         Quoted sensitivity vs. live calculator: strict, or best fit
                         over free parameters (both reported).
 validate_across_contexts_tool
-                        One obs_config validated under every observing context.
+                        One obs_config or requirement judged in every context (with AA4),
+                        per dimension.
+extract_requirements_tool
+                        Draft a structured requirement record from a quote.
 resolve_object_tool, ned_lookup_tool, cone_search_tool
                         SIMBAD/NED object lookup via astroquery (read-only).
 build_source_db_tool, query_sources_tool, get_source_mentions_tool,
@@ -147,6 +150,8 @@ from rag.observing_setup_capabilities import (
 )
 from rag.observing_setup_data_volume import estimate_setup_data_volume, list_odps
 from rag.observing_setup_validator import validate_across_contexts, validate_observing_setup
+from rag.requirements import MODES as REQUIREMENT_MODES
+from rag.requirements import REQUIREMENT_FIELDS, check_fields, extract_draft
 from rag.retrieval import retrieve
 from rag.sensitivity_calculator import compare_to_calculator, query_sensitivity_calculator
 from rag.sky_lookup import cone_search, ned_lookup, resolve_object
@@ -1136,7 +1141,8 @@ def keyword_coverage_tool(
 
 @mcp.tool()
 def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5,
-                      chunk_index: int | None = None, book: str | None = None) -> str:
+                      chunk_index: int | None = None, book: str | None = None,
+                      fields: dict | None = None) -> str:
     """Check that a quoted sentence or figure really comes from the paper it is attributed to.
 
     Run this on every sourced figure before publishing a table. It combines
@@ -1153,14 +1159,45 @@ def verify_quote_tool(text: str, paper: str | None = None, top_k: int = 5,
         chunk_index: With paper, also check exactly this passage (the
             "chunk N" shown next to each search result's Paper ID).
         book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
+        fields: Optional requirement record extracted from this quote (see
+            extract_requirements_tool). Each field's value is checked against
+            the quote: "field_checks" says which are stated in it and which
+            were inferred, and flags fields marked stated that the quote
+            doesn't contain.
 
     Number-free claims are judged by reranker score (cut-off 0.97, tuned on
     labelled claims; see corpus_tools.VERIFY_MIN_SCORE).
     """
     try:
-        return json.dumps(corpus_tools.verify_quote(text, paper, top_k, chunk_index, book))
+        out = corpus_tools.verify_quote(text, paper, top_k, chunk_index, book)
+        if fields:
+            out["field_checks"] = check_fields(text, fields)
+        return json.dumps(out)
     except ValueError as exc:
         return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def extract_requirements_tool(quote: str) -> str:
+    """Draft a structured observing requirement from a quoted passage, and
+    return the requirement schema.
+
+    Each field is {"value", "unit", "source_text", "inferred"}: the parser
+    fills the fields it finds in the quote (frequency, bandwidth, channel
+    width, sensitivity, sigma level, weighting, array stage, band, hours,
+    area, field of view, angular resolution, time resolution) with
+    source_text set and inferred=false. Review the draft, then fill any other
+    field you need with inferred=true and source_text null. Pass the record
+    to verify_quote_tool(fields=...) to confirm which values the quote states,
+    and to validate_across_contexts_tool(requirement=...) for capability
+    verdicts.
+
+    Args:
+        quote: The passage, verbatim.
+    """
+    return json.dumps({"draft": extract_draft(quote),
+                       "schema": {f: {"kind": k, "units": list(u)} for f, (k, u) in REQUIREMENT_FIELDS.items()},
+                       "modes": list(REQUIREMENT_MODES)})
 
 
 @mcp.tool()
@@ -1299,37 +1336,40 @@ def compare_to_calculator_tool(
 
 
 @mcp.tool()
-def validate_across_contexts_tool(obs_config: dict, contexts: list[str] | None = None) -> str:
-    """Validate one observing configuration under every observing context
-    ("SV-AA2", "SV-AA*", "Cycle 0", "Cycle 1"), to see at which array-assembly
-    stage or cycle a paper's requirement becomes feasible.
+def validate_across_contexts_tool(obs_config: dict | None = None, contexts: list[str] | None = None,
+                                  requirement: dict | None = None, check_sensitivity: bool = True) -> str:
+    """Judge an observing configuration or a requirement in every observing
+    context, to see at which array-assembly stage or cycle it becomes
+    feasible. Default contexts: SV-AA2, SV-AA*, Cycle 0, Cycle 1 and the AA4
+    design baseline (AA4 added 2026-11).
 
     Use this rather than static capability documents when judging whether a
     requirement is deliverable: those describe the full AA4 design.
 
+    With requirement (a record from extract_requirements_tool), returns a
+    verdict per context for each stated dimension: observing mode, band,
+    frequency, bandwidth, channel width, angular resolution and sensitivity
+    (the strict sensitivity calculator for that context's array; its beam
+    judges resolution). A band that exists is not enough. Overall verdicts:
+    "available_from <context>", "aa4_only", "mode_not_offered" (VLBI,
+    transient buffer, solar: no schema in any context, AA4 included), or
+    "not_met", with the failing dimensions.
+
     Args:
         obs_config: Same shape as validate_observing_setup_tool; its own
-            "context" value is ignored.
-        contexts: Optional subset of contexts to check.
+            "context" value is ignored. AA4 is reported as not validated
+            (the validator has no AA4 context).
+        contexts: Optional subset of contexts (any of the five above).
+        requirement: Optional requirement record (see above). Needs at least
+            "telescope"; dimensions it doesn't state aren't judged.
+        check_sensitivity: Call the live calculator for sensitivity (default
+            true; one or two calls per context).
     """
     try:
-        return str(validate_across_contexts(obs_config, contexts))
+        out = validate_across_contexts(obs_config, contexts, requirement, check_sensitivity)
     except (KeyError, ValueError) as exc:
         return f"Invalid request: {exc}"
-
-
-# ---------------------------------------------------------------------------
-# Astronomical object lookup (SIMBAD / NED via astroquery) — read-only.
-# ---------------------------------------------------------------------------
-
-
-def _sky_call(fn, *args) -> str:
-    try:
-        return json.dumps(fn(*args))
-    except ValueError as exc:
-        return f"Invalid request: {exc}"
-    except Exception as exc:  # network/service failures from astroquery
-        return f"Lookup service error: {exc}"
+    return json.dumps(out, default=str) if requirement is not None else str(out)
 
 
 @mcp.tool()
