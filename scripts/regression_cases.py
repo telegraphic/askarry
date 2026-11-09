@@ -224,7 +224,8 @@ def time_cases() -> dict:
         "T4": {"case": "sun constraint applied by default", "assumption": p["assumptions"].get("sun"),
                "apply_sun_constraints": p["assumptions"].get("apply_sun_constraints")},
         "T5": {"case": "conflicting duplicate hours reported",
-               "conflicts": len(p["conflicts"]) if "conflicts" in p else "unsupported"},
+               "conflicts": len(source_db.hour_conflicts(conn, "mid", REQUESTS_RUN))
+               if hasattr(source_db, "hour_conflicts") else "unsupported"},
     }
     if kw:
         multi = scheduling.lst_pressure(mid, "mid", **kw)

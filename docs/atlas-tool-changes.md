@@ -109,3 +109,37 @@ rows that passed on "band exists" can now fail on resolution or depth
 (Band 5b at 0.1″ fails at AA* on resolution); every row is judged in five
 contexts instead of mostly two. `instrument-requirements.html` gains
 stated/inferred markers per field.
+
+## WS6: time demand
+
+**What changed.** The demand-to-supply ratio is returned, counting
+unplaced requests. Low targets that clear the dish limit are placed and
+flagged instead of being called never visible. Sun constraints are off by
+default. Declination bands and area-only surveys can be placed. Duplicate
+requests with conflicting hours are listed, and repeated extraction runs can
+be compared.
+
+**What `build_atlas_data.py` should change.**
+
+- `time_demand()` should take `total_demand_supply_ratio` from
+  `lst_pressure` and show it as the page's headline (Mid is about 3.5 times
+  oversubscribed: 131,148 h requested against 37,230 h available).
+- Replace the hand-built `tiers[].restated_by` with
+  `source_db.hour_conflicts`, which flags the tiers whose restated hours
+  differ (15 on Mid in the reviewed run).
+- Show `elevation_relaxed` and `footprint_assumed` on the page so readers
+  can see which demand rests on a relaxed limit or an assumed footprint.
+- Run `lst_pressure(..., min_elevation_deg=[15, 20, 30, 45])` for the
+  elevation sensitivity panel.
+- Area-only tiers (the HI SWG all-sky tier, the Band 2 reference surveys)
+  are placed once their requests are linked to a survey field recording the
+  stated area (`add_survey_field_tool(area_deg2=...)`, then
+  `review_observing_request_tool(field=...)`): a review step, with quotes,
+  not code.
+
+**Figures that move.** `time-demand.html` (`time_demand.json`): the headline
+ratio appears; the share of Mid hours placed on the sky rises as area-only
+tiers are linked to fields; LST bins change slightly because Sun
+constraints no longer apply and low targets (NGC 1275, L1551 IRS5) are
+placed; `never_visible` shrinks to targets that never clear the horizon
+(W3A, Holmberg II X-1).

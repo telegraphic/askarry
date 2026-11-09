@@ -6,6 +6,36 @@ caller has to change and which existing counts move. See
 
 ## Unreleased
 
+### Time demand: lst_pressure_tool and visibility_windows_tool (WS6)
+
+- **Demand-to-supply ratio.** `lst_pressure_tool` returns
+  `total_demand_supply_ratio` (every request, placed or not, commensal
+  groups counted once) and `demand_supply_ratio` (placed requests only),
+  with `total_demand_h_all` and `placed_h`. `total_demand_h` is unchanged
+  (placed demand).
+- **Default change: elevation.** A request below its `min_elevation`
+  (default 45°) but above the telescope's mechanical limit (Mid 15°; Low 0°,
+  in `config.SCHEDULING`, unverified) is placed using the mechanical limit
+  and listed in `elevation_relaxed` with its maximum elevation.
+  `never_visible` now means never above the mechanical limit.
+  `visibility_windows_tool` reports `above_mechanical_limit`.
+- **`min_elevation_deg`** (number or list) sets the limit for requests
+  without their own; a list returns `by_min_elevation` and a `summary`.
+- **Default change: Sun constraints off.** Each request's `sun` setting
+  (night, avoid twilight) is ignored unless `apply_sun_constraints=true`.
+- **Declination bands and areas are placed.** A request or survey field
+  with `dec_range` alone is a band over all RA; a field with only
+  `area_deg2` is placed on an assumed band of that area centred on the
+  site's zenith declination, listed under `footprint_assumed`.
+  `add_survey_field_tool` accepts `dec_range` without `ra_range`, and
+  `review_observing_request_tool(field=...)` accepts area-only fields.
+- **`conflicts`.** With `from_db`, requests marked as duplicates whose
+  hours differ from the request they repeat are listed with both papers'
+  hours and quotes.
+- **Repeated extraction.** `extracted_by` accepts a list of runs; the
+  result's `agreement` says, per request, which runs found it and whether
+  their hours agree.
+
 ### Requirement records, field checks and capability verdicts (WS5, WS4)
 
 - **New `extract_requirements_tool(quote)`** returns a draft requirement
