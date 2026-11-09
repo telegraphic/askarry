@@ -106,6 +106,28 @@ def build_filter(book: str | None = None, section: str | None = None,
     return where or None
 
 
+def doc_status(meta: dict) -> str:
+    """"canonical", "duplicate" or "unlisted" (see rag/zones.find_duplicates).
+    Chunks from an index not yet retagged count as canonical."""
+    return meta.get("doc_status", "canonical")
+
+
+def corpus_chunks(book: str | None = "aaskaii", include_noncanonical: bool = False,
+                  zones: list[str] | None = None) -> list[dict]:
+    """Chunks the corpus tools count: one book (None = all), canonical
+    documents only unless *include_noncanonical* (re-downloaded copies and
+    unlisted book documents are otherwise left out), and only the given
+    *zones* (None = every zone; an index not yet retagged has no zones, so
+    its chunks all count as "body")."""
+    where = {"doc_source": _book_tag(book)} if book else None
+    return [
+        c for c in get_all_chunks()
+        if matches_where(c["meta"], where)
+        and (include_noncanonical or doc_status(c["meta"]) == "canonical")
+        and (zones is None or c["meta"].get("zone", "body") in zones)
+    ]
+
+
 def _term_regexes(term: str, acronyms: dict[str, str]) -> list[re.Pattern]:
     """One regex per "|"-separated alternative, plus the full form of any
     all-caps acronym alternative. All-caps alternatives match case-sensitively
@@ -130,26 +152,28 @@ def _mention_counts(patterns: dict[str, list[re.Pattern]], chunks: list[dict]) -
 
 
 def keyword_coverage(terms: list[str], book: str | None = "aaskaii",
-                     min_hits_per_paper: int = 1) -> dict:
+                     min_hits_per_paper: int = 1, include_noncanonical: bool = False) -> dict:
     """Exact per-section / per-paper mention counts for each term.
 
     A paper counts as covering a term when the term (or an alternative /
     acronym expansion) appears at least *min_hits_per_paper* times in it.
+    Papers are counted by file path, once each; copies of another indexed
+    file and unlisted book documents are left out unless
+    *include_noncanonical*.
     """
-    where = {"doc_source": _book_tag(book)} if book else None
-    chunks = [c for c in get_all_chunks() if matches_where(c["meta"], where)]
+    chunks = corpus_chunks(book, include_noncanonical)
     acronyms = get_acronyms()
 
     section_sizes: dict[str, set] = defaultdict(set)
     for c in chunks:
-        section_sizes[section_of(c["meta"]["source"]) or "(unknown)"].add(_stem(c["meta"]["source"]))
+        section_sizes[section_of(c["meta"]["source"]) or "(unknown)"].add(c["meta"]["source"])
 
     results = []
     all_hits = _mention_counts({t: _term_regexes(t, acronyms) for t in terms}, chunks)
     for term in terms:
         hits = all_hits[term]
         by_section: dict[str, list[str]] = defaultdict(list)
-        for source, n in hits.items():
+        for source, n in hits.items():  # keyed by path, so each file counts once
             if n >= min_hits_per_paper:
                 by_section[section_of(source) or "(unknown)"].append(_stem(source))
         results.append({
@@ -269,16 +293,16 @@ def _facility_regexes() -> dict[str, list[re.Pattern]]:
 
 
 def facility_network(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
-                     min_shared_papers: int = 2) -> dict:
+                     min_shared_papers: int = 2, include_noncanonical: bool = False) -> dict:
     """Which external facilities the papers name, across which sections, and
     which facilities are named together (co-mention edges) — the data behind
     a synergy network, computed rather than reconstructed.
 
     A paper counts for a facility when it names it at least
     *min_hits_per_paper* times (2 by default, to drop passing mentions).
+    Copies and unlisted documents are left out unless *include_noncanonical*.
     """
-    where = {"doc_source": _book_tag(book)} if book else None
-    chunks = [c for c in get_all_chunks() if matches_where(c["meta"], where)]
+    chunks = corpus_chunks(book, include_noncanonical)
     counts = _mention_counts(_facility_regexes(), chunks)
     category = {name: cat for name, cat, _ in FACILITIES}
 
@@ -494,6 +518,50 @@ def missing_papers(book: str | None = None) -> dict:
         and (tag is None or c["meta"].get("doc_source") == tag)
     })
     return {"not_indexed": not_indexed, "indexed_without_bibliography_entry": no_entry}
+
+
+def index_health(book: str | None = None) -> dict:
+    """State of the index: duplicates, unlisted documents, chapters with no
+    PDF, chunk and zone counts per document, documents whose reference list
+    wasn't found (a sign the zone rules missed it), and whether the manifest
+    still matches the chunks."""
+    from rag import zones as zone_rules
+    from rag.config import CHROMA_DIR, HERE
+
+    tag = _book_tag(book)
+    chunks = [c for c in get_all_chunks() if tag is None or c["meta"].get("doc_source") == tag]
+    docs: dict[str, dict] = {}
+    for c in chunks:
+        m = c["meta"]
+        d = docs.setdefault(m["source"], {"paper": bib_key(m["source"]), "book": _BOOK_NAMES.get(m.get("doc_source"), m.get("doc_source")),
+                                          "section": section_of(m["source"]) or "(unknown)",
+                                          "status": doc_status(m), "duplicate_of": m.get("duplicate_of", ""),
+                                          "n_chunks": 0, "zones": defaultdict(int)})
+        d["n_chunks"] += 1
+        d["zones"][m.get("zone", "(untagged)")] += 1
+    for d in docs.values():
+        d["zones"] = dict(d["zones"])
+
+    stems: dict[tuple, list[str]] = defaultdict(list)
+    for s_, d in docs.items():
+        stems[d["book"], d["paper"]].append(str(Path(s_).relative_to(HERE)) if Path(s_).is_relative_to(HERE) else s_)
+    manifest = zone_rules.read_manifest(CHROMA_DIR)
+    every = get_all_chunks()
+    return {
+        "manifest": manifest,
+        "manifest_matches_index": bool(manifest) and manifest["index_fingerprint"] == zone_rules.index_fingerprint(every, HERE),
+        "untagged_chunks": sum(1 for c in chunks if "zone" not in c["meta"]),
+        "duplicate_paper_ids": {f"{b}:{p}": paths for (b, p), paths in stems.items() if len(paths) > 1},
+        "duplicates": sorted(({"paper": d["paper"], "copy_of": d["duplicate_of"], "section": d["section"]}
+                              for d in docs.values() if d["status"] == "duplicate"), key=lambda x: x["paper"]),
+        "unlisted": sorted(d["paper"] for d in docs.values() if d["status"] == "unlisted"),
+        "unclassified": sorted(d["paper"] for d in docs.values() if d["section"] in ("Unclassified", "(unknown)")),
+        "no_references_zone": sorted(d["paper"] for d in docs.values()
+                                     if d["status"] == "canonical" and d["book"] in ("aaskaii", "aaska2015")
+                                     and "references" not in d["zones"]),
+        "chapters_without_pdf": missing_papers(book)["not_indexed"],
+        "documents": sorted(docs.values(), key=lambda d: d["paper"]),
+    }
 
 
 _acronym_caches: defaultdict[str, store.CountCache] = defaultdict(store.CountCache)

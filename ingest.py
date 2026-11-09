@@ -8,6 +8,8 @@ Usage:
     python ingest.py --textbooks            # index pdfs/textbooks into its own store (chroma_textbooks/)
     python ingest.py --textbooks --reindex  # wipe and rebuild only the textbook store
     python ingest.py --list-acronyms        # scan indexed docs for inline acronym definitions
+    python ingest.py --retag                # recompute zones/duplicates and the manifest in place
+    python ingest.py --textbooks --retag    # same, for the textbook store
 """
 
 from __future__ import annotations
@@ -18,7 +20,7 @@ import sys
 from pathlib import Path
 
 from rag.config import CHROMA_DIR, PDF_DIRS, TEXTBOOKS_CHROMA_DIR, TEXTBOOKS_DIR
-from rag.ingestion import find_acronym_candidates, ingest_files
+from rag.ingestion import find_acronym_candidates, ingest_files, retag
 
 
 def main() -> None:
@@ -52,6 +54,13 @@ def main() -> None:
              "rag/config.py::SEED_ACRONYMS. Optionally pass a file path to "
              "also save the full results as JSON.",
     )
+    parser.add_argument(
+        "--retag",
+        action="store_true",
+        help="Recompute every chunk's document zone (abstract, body, references, ...) "
+             "and duplicate status, update them in place (no re-parse, no re-embedding) "
+             "and write the store's manifest.json with the index fingerprint",
+    )
     args = parser.parse_args()
 
     if args.list_acronyms is not None:
@@ -64,6 +73,12 @@ def main() -> None:
     else:
         dirs = args.dirs or PDF_DIRS
         db_dir = CHROMA_DIR
+
+    if args.retag:
+        manifest = retag(db_dir)
+        print(f"Retagged {manifest['n_chunks']} chunks in {manifest['n_docs']} documents; "
+              f"index fingerprint {manifest['index_fingerprint'][:16]} (see {db_dir}/manifest.json).")
+        return
 
     print("Ingestion directories:")
     for d in dirs:

@@ -1,0 +1,256 @@
+{
+ "generated": {
+  "date": "2026-11-09",
+  "git_sha": "f184622"
+ },
+ "keyword": {
+  "K1": {
+   "term": "ApJ|MNRAS|A&A",
+   "atlas": 165,
+   "defaults": 181
+  },
+  "K2": {
+   "term": "Chandra",
+   "atlas": 27,
+   "defaults": 53
+  },
+  "K2b": {
+   "term": "Chandra X-ray",
+   "atlas": 0,
+   "defaults": 3
+  },
+  "K3": {
+   "term": "Planck",
+   "atlas": 69,
+   "defaults": 102
+  },
+  "K4": {
+   "term": "pulsar survey",
+   "atlas": 4,
+   "atlas_has_Joshi01": false,
+   "defaults": 12,
+   "defaults_has_Joshi01": true
+  },
+  "K5": {
+   "term": "data rate|data volume",
+   "atlas": 5,
+   "defaults": 16,
+   "defaults_literal_plural_only": 27
+  },
+  "K6": {
+   "term": "zoom mode|zoom-mode|zoom window",
+   "atlas": 3,
+   "defaults": 7,
+   "defaults_bare_zoom": 33
+  },
+  "K7": {
+   "term": "VLBI",
+   "atlas": 76,
+   "defaults": 102
+  }
+ },
+ "index": {
+  "I1": {
+   "what": "Bianchi01 listed in list_documents / counted in keyword_coverage",
+   "list_documents": 2,
+   "keyword_coverage": 2
+  },
+  "I2": {
+   "what": "copies counted by keyword_coverage by default",
+   "copies_counted": [
+    "Curiel01b",
+    "Curiel01c",
+    "Oswald01b"
+   ]
+  },
+  "I3": {
+   "what": "index fingerprint returned",
+   "manifest": false,
+   "fingerprint_in_response": false
+  }
+ },
+ "calculator": {
+  "S1": {
+   "case": "B-03 (15.8 uJy/beam, AA*, 1 h, 810 MHz)",
+   "best_fit": {
+    "closest_pct_diff": null,
+    "closest_variant": {},
+    "strict_pct_diff": null,
+    "strict_error": null,
+    "defaults_applied": null,
+    "array_substituted": null,
+    "n_free_parameters": null,
+    "variant_errors": [
+     "00&pointing_centre=00%3A00%3A00+-30%3A00%3A00&subarray_configuration=AA%2A&weighting_mode=natural — ",
+     "00&pointing_centre=00%3A00%3A00+-30%3A00%3A00&subarray_configuration=AA%2A&weighting_mode=robust&rob"
+    ]
+   }
+  },
+  "S2": {
+   "case": "E-03 (5 uJy/beam, AA4, 8 h, robust -1; 150 vs 200 MHz)",
+   "strict": {
+    "unsupported": [
+     "mode"
+    ]
+   },
+   "best_fit_sweep": {
+    "unsupported": [
+     "sweep"
+    ]
+   }
+  },
+  "S3": {
+   "case": "C-02 (0.02 K, 8.17 arcsec beam, Band 5b, AA*)",
+   "result": {
+    "unsupported": [
+     "claimed_channel_width_hz",
+     "mode"
+    ]
+   }
+  },
+  "S4": {
+   "case": "F-33 (2 uJy as 5 sigma, AA4, 4 h)",
+   "as_1sigma": {
+    "unsupported": [
+     "mode"
+    ]
+   },
+   "as_5sigma": {
+    "unsupported": [
+     "mode",
+     "sigma_level"
+    ]
+   }
+  },
+  "S5": {
+   "case": "zoom accepts subarray name and label",
+   "AA* (MID_inner_r2km)": "ok",
+   "MID_inner_r2km_aastar": "error: "
+  },
+  "S6": {
+   "case": "robust 0.5",
+   "result": {
+    "unsupported": [
+     "mode"
+    ]
+   }
+  }
+ },
+ "capability": {
+  "V1": {
+   "case": "default contexts",
+   "contexts": [
+    "SV-AA2",
+    "SV-AA*",
+    "Cycle 0",
+    "Cycle 1"
+   ]
+  },
+  "V2": {
+   "unsupported": [
+    "requirement"
+   ]
+  },
+  "V3": {
+   "unsupported": [
+    "requirement"
+   ]
+  }
+ },
+ "quote": {
+  "Q1": {
+   "case": "C-19 weighting stated or inferred",
+   "unsupported": [
+    "rag.requirements"
+   ]
+  }
+ },
+ "time_demand": {
+  "T1": {
+   "case": "Mid demand/supply ratio returned",
+   "returned": null,
+   "accepted_hours": 131148,
+   "supply_h": 37230.0,
+   "computed_ratio": 3.52
+  },
+  "T2": {
+   "case": "share of Mid hours placed on the sky",
+   "placed_h": 23423.5,
+   "placed_fraction": 0.179,
+   "all_sky_hi_placed": false
+  },
+  "T4": {
+   "case": "sun constraint applied by default",
+   "assumption": "per request",
+   "apply_sun_constraints": null
+  },
+  "T5": {
+   "case": "conflicting duplicate hours reported",
+   "conflicts": "unsupported"
+  },
+  "T3": {
+   "case": "Cygnus A and M31 from Mid",
+   "Cygnus A @15": {
+    "max_el": 18.55,
+    "usable_h_per_year": 1199.7
+   },
+   "Cygnus A @20": {
+    "max_el": 18.55,
+    "usable_h_per_year": 0.0
+   },
+   "Cygnus A @45": {
+    "max_el": 18.55,
+    "usable_h_per_year": 0.0
+   },
+   "M31 @15": {
+    "max_el": 18.02,
+    "usable_h_per_year": 1109.5
+   },
+   "M31 @20": {
+    "max_el": 18.02,
+    "usable_h_per_year": 0.0
+   },
+   "M31 @45": {
+    "max_el": 18.02,
+    "usable_h_per_year": 0.0
+   },
+   "never_visible_at_default": [
+    "L1551 IRS5",
+    "W3A",
+    "NGC 1275",
+    "Holmberg II X-1"
+   ]
+  }
+ },
+ "data_products": {
+  "D1": {
+   "case": "single-dish / wide-band product types",
+   "types": "unsupported (zoom-window sizing in build_atlas_data)"
+  },
+  "D2": {
+   "case": "all-sky HI cube (atlas v2 sizing)",
+   "bandwidth_MHz": 53.76,
+   "n_chan": 4000,
+   "tiers_TB": "unsupported (one total)"
+  },
+  "D3": {
+   "case": "Band 1 intensity mapping",
+   "result": "unsupported (sized as zoom window)"
+  }
+ },
+ "citations": {
+  "C1": {
+   "case": "references whose first author parses as a journal",
+   "n": 436
+  },
+  "C2": {
+   "case": "refs grouped by bibcode",
+   "bibcode_column": false,
+   "n_with_bibcode": 0
+  },
+  "C3": {
+   "case": "Cygnus A display name",
+   "error": "Unable to access the capabilities endpoint at:\n- https://simbad.cds.unistra.fr/simbad/sim-tap/capabilities: Connection f"
+  }
+ }
+}

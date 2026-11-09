@@ -3,7 +3,7 @@ Shared, process-cached access to heavy resources used across the pipeline:
 the ChromaDB collection, the sentence-transformers embedding model, and the
 Ollama client. Also holds small stateless helpers (`chunk_id`,
 `discover_files`) and a tiny cache utility (`CountCache`) for in-memory
-indexes that must be rebuilt whenever the underlying collection changes size.
+indexes that must be rebuilt whenever the underlying collection changes.
 
 Centralising these here means `rag/ingestion.py`, `rag/retrieval.py`, and
 `rag/generation.py` all share one construction path per resource instead of
@@ -115,23 +115,39 @@ def discover_files(dirs: list[Path], suffixes: set[str]) -> list[Path]:
 _T = TypeVar("_T")
 
 
+def db_dir_of(collection: chromadb.Collection) -> Path | None:
+    """The store directory a cached collection handle was opened from."""
+    with _collection_lock:
+        return next((Path(k) for k, c in _collections.items() if c is collection), None)
+
+
+def _manifest_mtime(collection: chromadb.Collection) -> float:
+    from .zones import manifest_mtime
+
+    db_dir = db_dir_of(collection)
+    return manifest_mtime(db_dir) if db_dir else 0.0
+
+
 class CountCache:
     """Caches an arbitrary value, invalidated whenever `collection.count()`
-    changes since the last build.
+    or the store's manifest (rewritten by every ingest and `--retag`) changes
+    since the last build.
 
     Used for in-memory indexes (BM25, acronym lookup) that are expensive to
     construct but must be rebuilt after re-ingestion changes the collection.
+    The manifest matters because a retag rewrites chunk metadata (zones,
+    duplicate status) without changing the count.
     """
 
     def __init__(self) -> None:
         self._value: _T | None = None
-        self._count: int | None = None
+        self._stamp: tuple | None = None
         self._lock = threading.Lock()
 
     def get(self, collection: chromadb.Collection, build_fn: Callable[[], _T]) -> _T:
-        current_count = collection.count()
+        stamp = (collection.count(), _manifest_mtime(collection))
         with self._lock:
-            if self._value is None or current_count != self._count:
+            if self._value is None or stamp != self._stamp:
                 self._value = build_fn()
-                self._count = current_count
+                self._stamp = stamp
             return self._value

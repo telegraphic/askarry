@@ -93,13 +93,23 @@ def list_toc_entries(doc_source: str | None = None) -> dict[str, list[dict]]:
     that report are included — so AASKA2015 and AASKAII chapters can be
     browsed as separate tabs without mixing.
     """
-    grouped: dict[str, list[dict]] = {}
+    # One file per bibliography entry: when a paper ID exists in two folders
+    # (Bianchi01 was downloaded into two sections), keep the file whose folder
+    # agrees with the entry's section.
+    chosen: dict[str, Path] = {}
     for path in store.discover_files(PDF_DIRS, SUPPORTED_SUFFIXES):
         entry = lookup_citation(path)
         if entry is None:
             continue
         if doc_source is not None and doc_source_for(path) != doc_source:
             continue
+        key = bib_key(path)
+        if key not in chosen or (path.parent.name == entry["section"] != chosen[key].parent.name):
+            chosen[key] = path
+
+    grouped: dict[str, list[dict]] = {}
+    for path in chosen.values():
+        entry = lookup_citation(path)
         grouped.setdefault(section_of(path), []).append(
             {
                 "title": entry["title"],
