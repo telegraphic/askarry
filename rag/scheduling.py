@@ -5,7 +5,8 @@ visibility_windows  when one target is usable over a year: LST window above
                     the elevation limit, usable hours per month and LST bin
                     under a Sun constraint (night / avoid twilight / any)
 lst_pressure        requested vs available hours per LST bin (and month ×
-                    LST) for a set of observing requests
+                    LST) for a set of observing requests, and the overall
+                    demand-to-supply ratio
 
 Relative analysis only: it compares requests against clock time, not
 against a real allocation. All operational settings are the unverified
@@ -140,6 +141,11 @@ def visibility_windows(ra: float, dec: float, telescope: str, min_elevation: flo
         "site_latitude_deg": round(lat, 4),
         "max_elevation_deg": round(max_el, 2),
         "never_reaches_min_elevation": window is None,
+        # Below the dish limit nothing can be done; between it and min_elevation
+        # the target is low but observable.
+        "mechanical_min_elevation_deg": SCHEDULING["mechanical_min_elevation_deg"][telescope.lower().replace("ska-", "").replace("ska_", "")],
+        "above_mechanical_limit": bool(max_el >= SCHEDULING["mechanical_min_elevation_deg"][
+            telescope.lower().replace("ska-", "").replace("ska_", "")]),
         "lst_window_above_min_elevation": window,
         "usable_hours_per_year": round(float(cells.sum()), 1),
         "usable_hours_per_month": [round(float(x), 1) for x in cells.sum(axis=1)],
@@ -148,9 +154,29 @@ def visibility_windows(ra: float, dec: float, telescope: str, min_elevation: flo
     }
 
 
-def _request_positions(req: dict) -> list[tuple[float, float]]:
-    """Point target, or a grid over an area request: ra_range/dec_range, or
-    gal_l_range/gal_b_range (e.g. the Galactic plane), in degrees."""
+def _assumed_dec_band(area_deg2: float, lat: float) -> tuple[float, float]:
+    """A declination band of *area_deg2*, centred on the site's zenith
+    declination and clipped to the sky: where a survey of that size with no
+    stated position would most plausibly go."""
+    target = np.radians(1) ** 2 * min(area_deg2, 41252.96) / (2 * np.pi)  # = sin(d_hi) - sin(d_lo)
+
+    def band(h):
+        lo, hi = max(-90.0, lat - h), min(90.0, lat + h)
+        return lo, hi, np.sin(np.radians(hi)) - np.sin(np.radians(lo))
+
+    a, b = 0.0, 180.0
+    for _ in range(60):  # bisection on the half-width
+        mid = (a + b) / 2
+        a, b = (mid, b) if band(mid)[2] < target else (a, mid)
+    lo, hi, _ = band(b)
+    return float(lo), float(hi)
+
+
+def _request_positions(req: dict, lat: float | None = None) -> list[tuple[float, float]]:
+    """Point target, or a grid over an area request: ra_range/dec_range, a
+    declination band (dec_range alone: all RA), gal_l_range/gal_b_range
+    (e.g. the Galactic plane), or an area alone (area_deg2, placed on the
+    band from _assumed_dec_band), in degrees."""
     if "gal_b_range" in req:
         from astropy.coordinates import SkyCoord
 
@@ -160,8 +186,9 @@ def _request_positions(req: dict) -> list[tuple[float, float]]:
         bs = np.tile(np.linspace(b0, b1, 5), 36)
         icrs = SkyCoord(l=ls * u.deg, b=bs * u.deg, frame="galactic").icrs
         return list(zip(icrs.ra.deg.tolist(), icrs.dec.deg.tolist()))
-    if "ra_range" in req:
-        (ra0, ra1), (dec0, dec1) = req["ra_range"], req["dec_range"]
+    if "dec_range" in req or "area_deg2" in req:
+        (ra0, ra1) = req.get("ra_range", [0, 360])
+        dec0, dec1 = req["dec_range"] if "dec_range" in req else _assumed_dec_band(req["area_deg2"], lat)
         span = (ra1 - ra0) % 360 or 360
         ras = [(ra0 + span * (i + 0.5) / 24) % 360 for i in range(24)]
         decs = np.linspace(dec0, dec1, 5)
@@ -169,44 +196,92 @@ def _request_positions(req: dict) -> list[tuple[float, float]]:
     return [(float(req["ra"]), float(req["dec"]))]
 
 
+def _placed(req: dict) -> bool:
+    return bool({"ra", "ra_range", "dec_range", "gal_b_range", "area_deg2"} & req.keys())
+
+
 def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = None,
-                 years: float | None = None) -> dict:
+                 years: float | None = None, min_elevation_deg: float | list[float] | None = None,
+                 apply_sun_constraints: bool | None = None) -> dict:
     """Spread each request's hours over the (month, LST-bin) cells where it
     is usable, in proportion to availability, and compare with clock time.
 
-    A request is {"name", "hours", and either "ra"/"dec" or
-    "ra_range"/"dec_range" (deg), optional "sun", "min_elevation",
-    "commensal_group", "telescope"}. Requests for another telescope are
-    skipped. Within a commensal group only the per-cell maximum counts
-    (commensal observations share the same time). Requests with no position
-    are not spread over the sky: their hours are reported as "unplaced".
-    Supply is *years* (default config planning_years) of clock time, since
-    requested hours are totals over a programme, not per year.
+    A request is {"name", "hours", and a position: "ra"/"dec", "ra_range"/
+    "dec_range", "dec_range" alone (a declination band, all RA),
+    "gal_l_range"/"gal_b_range", or "area_deg2" alone (placed on an assumed
+    band, flagged); optional "sun", "min_elevation", "commensal_group",
+    "telescope"}. Requests for another telescope are skipped. Within a
+    commensal group only the per-cell maximum counts (commensal observations
+    share time). Requests with no position are "unplaced": their hours count
+    in the total demand-to-supply ratio but are not spread over LST.
+
+    *min_elevation_deg* replaces the default elevation limit for requests
+    without their own; a list gives one full result per value under
+    "by_min_elevation". A target that never reaches its limit but does
+    clear the telescope's mechanical limit is placed at the mechanical limit
+    and listed under "elevation_relaxed"; only targets below the mechanical
+    limit are "never_visible". Sun constraints ("night", "avoid_twilight")
+    are ignored unless *apply_sun_constraints* (off by default for radio).
+    Supply is *years* (default config planning_years) of clock time less the
+    maintenance share, since requested hours are programme totals.
     """
+    if isinstance(min_elevation_deg, (list, tuple)):
+        runs = {f"{el:g}": lst_pressure(requests, telescope, year_start, years, el, apply_sun_constraints)
+                for el in min_elevation_deg}
+        first = next(iter(runs.values()))
+        return {"telescope": telescope, "planning_years": first["planning_years"],
+                "total_supply_h": first["total_supply_h"],
+                "summary": {el: {k: r[k] for k in ("demand_supply_ratio", "total_demand_supply_ratio", "placed_h",
+                                                     "total_demand_h_all")}
+                            | {"n_elevation_relaxed": len(r["elevation_relaxed"]), "n_never_visible": len(r["never_visible"])}
+                            for el, r in runs.items()},
+                "by_min_elevation": runs}
+
     year_start = year_start or _default_year_start()
     g = _grid(telescope, year_start)
     t_norm = telescope.lower().replace("ska-", "").replace("ska_", "")
     clock = _cells(g, np.ones_like(g["lst_h"], dtype=bool))
     years = SCHEDULING["planning_years"] if years is None else years
     supply = clock * (1 - SCHEDULING["maintenance_fraction"]) * years
+    sun_on = SCHEDULING["apply_sun_constraints"] if apply_sun_constraints is None else apply_sun_constraints
+    default_el = SCHEDULING["default_min_elevation_deg"] if min_elevation_deg is None else float(min_elevation_deg)
+    mech_el = SCHEDULING["mechanical_min_elevation_deg"][t_norm]
 
     demand = np.zeros_like(clock)
     groups: dict[str, np.ndarray] = {}
-    never, used, unplaced = [], [], []
+    unplaced_groups: dict[str, float] = {}
+    never, used, unplaced, relaxed, assumed = [], [], [], [], []
     for req in requests:
-        if req.get("telescope") and req["telescope"].lower().replace("ska-", "") != t_norm:
+        if req.get("telescope") and req["telescope"].lower().replace("ska-", "").replace("ska_", "") != t_norm:
             continue
-        if not {"ra", "ra_range", "gal_b_range"} & req.keys():
-            unplaced.append({"name": req.get("name", "?"), "hours": float(req["hours"]),
-                             "position_note": req.get("position_note")})
+        hours = float(req["hours"])
+        if not _placed(req):
+            unplaced.append({"name": req.get("name", "?"), "hours": hours, "position_note": req.get("position_note")})
+            key = req.get("commensal_group") or f"__{len(unplaced)}"
+            unplaced_groups[key] = max(unplaced_groups.get(key, 0.0), hours)
             continue
-        min_el = req.get("min_elevation", SCHEDULING["default_min_elevation_deg"])
-        avail = np.mean([_cells(g, _usable(g, ra, dec, min_el, req.get("sun", "any")))
-                         for ra, dec in _request_positions(req)], axis=0)
+        positions = _request_positions(req, g["lat"])
+        sun = req.get("sun", "any") if sun_on else "any"
+        min_el = req.get("min_elevation", default_el)
+
+        def availability(el):
+            return np.mean([_cells(g, _usable(g, ra, dec, el, sun)) for ra, dec in positions], axis=0)
+
+        avail = availability(min_el)
+        if avail.sum() == 0 and min_el > mech_el:
+            avail = availability(mech_el)
+            if avail.sum() > 0:
+                max_el = max(90 - abs(dec - g["lat"]) for _, dec in positions)
+                relaxed.append({"name": req.get("name", "?"), "hours": hours, "min_elevation": min_el,
+                                "max_elevation_deg": round(float(max_el), 2)})
         if avail.sum() == 0:
-            never.append(req.get("name", "?"))
+            never.append({"name": req.get("name", "?"), "hours": hours})
             continue
-        share = float(req["hours"]) * avail / avail.sum()
+        if "area_deg2" in req and "dec_range" not in req:
+            lo, hi = _assumed_dec_band(req["area_deg2"], g["lat"])
+            assumed.append({"name": req.get("name", "?"), "hours": hours, "area_deg2": req["area_deg2"],
+                            "assumed_dec_range": [round(lo, 1), round(hi, 1)]})
+        share = hours * avail / avail.sum()
         used.append(req.get("name", "?"))
         if req.get("commensal_group"):
             key = req["commensal_group"]
@@ -225,17 +300,30 @@ def lst_pressure(requests: list[dict], telescope: str, year_start: str | None = 
         for i, (dm, sp, p) in enumerate(zip(per_bin_demand, per_bin_supply, pressure))
     ]
     cell_pressure = np.divide(demand, supply, out=np.zeros_like(demand), where=supply > 0)
+    placed_h = float(demand.sum())
+    total_supply = float(supply.sum())
+    # Everything requested (commensal groups counted once), placed or not:
+    # the telescope's overall oversubscription.
+    total_all = placed_h + sum(unplaced_groups.values()) + sum(n["hours"] for n in never)
     return {
         "telescope": telescope,
         "planning_years": years,
         "n_requests_used": len(used),
-        "total_demand_h": round(float(demand.sum()), 1),
-        "total_supply_h": round(float(supply.sum()), 1),
+        "total_demand_h": round(placed_h, 1),  # placed demand only (as before)
+        "placed_h": round(placed_h, 1),
+        "total_demand_h_all": round(total_all, 1),
+        "total_supply_h": round(total_supply, 1),
+        "demand_supply_ratio": round(placed_h / total_supply, 3),
+        "total_demand_supply_ratio": round(total_all / total_supply, 3),
         "lst_bins": bins,
         "most_pressured_bins": sorted(bins, key=lambda b: -b["pressure"])[:5],
         "month_by_lst_pressure": [[round(float(x), 3) for x in row] for row in cell_pressure],
-        "never_visible": never,
-        "unplaced_hours": round(sum(u["hours"] for u in unplaced), 1),
+        "never_visible": [n["name"] for n in never],
+        "never_visible_hours": round(sum(n["hours"] for n in never), 1),
+        "elevation_relaxed": relaxed,
+        "footprint_assumed": assumed,
+        "unplaced_hours": round(sum(x["hours"] for x in unplaced), 1),
         "unplaced": unplaced,
-        "assumptions": assumptions(SCHEDULING["default_min_elevation_deg"], "per request", year_start),
+        "assumptions": {**assumptions(default_el, "per request" if sun_on else "any (sun constraints off)", year_start),
+                        "mechanical_min_elevation_deg": mech_el, "apply_sun_constraints": sun_on},
     }

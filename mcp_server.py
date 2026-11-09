@@ -1649,10 +1649,12 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
                             sun: str = "any", year_start: str | None = None) -> str:
     """When a target can be observed from SKA-Low or SKA-Mid over a year.
 
-    Returns the maximum elevation, whether it ever reaches min_elevation, the
-    LST window above it, and usable hours per month and per LST bin under a
-    Sun constraint. Operational settings are unverified defaults
-    (config.SCHEDULING), echoed under "assumptions".
+    Returns the maximum elevation, whether it ever reaches min_elevation and
+    whether it clears the dish's mechanical limit (Mid ~15°; a target below
+    45° can still be observed), the LST window above min_elevation, and
+    usable hours per month and per LST bin under a Sun constraint.
+    Operational settings are unverified defaults (config.SCHEDULING), echoed
+    under "assumptions".
 
     Args:
         target: Object name (SIMBAD/NED), "ra dec" in degrees, or sexagesimal.
@@ -1675,40 +1677,63 @@ def visibility_windows_tool(target: str, telescope: str, min_elevation: float | 
 @mcp.tool()
 def lst_pressure_tool(telescope: str, requests: list[dict] | None = None,
                       from_db: bool = False, year_start: str | None = None,
-                      extracted_by: str | None = None, reviewed_only: bool = False,
-                      years: float | None = None) -> str:
+                      extracted_by: str | list[str] | None = None, reviewed_only: bool = False,
+                      years: float | None = None, min_elevation_deg: float | list[float] | None = None,
+                      apply_sun_constraints: bool = False) -> str:
     """Requested vs available hours per LST bin (and month × LST) for a set of
-    observing requests: which LST ranges are oversubscribed.
+    observing requests, and the telescope's overall demand-to-supply ratio.
 
     Relative pressure between science cases, not a real allocation: supply
     is clock time minus a maintenance share (unverified defaults, echoed
-    under "assumptions").
+    under "assumptions"). "total_demand_supply_ratio" counts every request,
+    placed on the sky or not; "demand_supply_ratio" only the placed ones.
+
+    Changed 2026-11: Sun constraints are off unless apply_sun_constraints
+    (radio requests rarely need night time); a target below its elevation
+    limit but above the dish's mechanical limit (Mid ~15°) is placed and
+    listed under "elevation_relaxed", so "never_visible" means never above
+    the mechanical limit; declination bands (dec_range alone) and areas with
+    no position (placed on an assumed band, under "footprint_assumed") are
+    placed.
 
     Args:
         telescope: "low" or "mid".
-        requests: List of {"name", "hours", "ra"/"dec" or "ra_range"/
-            "dec_range" in degrees, optional "sun", "min_elevation",
-            "commensal_group"}. Requests in one commensal group share time.
+        requests: List of {"name", "hours", "ra"/"dec", "ra_range"/
+            "dec_range", "dec_range" alone, or "area_deg2" in degrees,
+            optional "sun", "min_elevation", "commensal_group"}. Requests in
+            one commensal group share time.
         from_db: Use the requests recorded with add_observing_request_tool
-            (added to any given requests). Requests without a position are
-            listed under "unplaced", not spread over the sky.
+            (added to any given requests). Also returns "conflicts": requests
+            marked duplicate whose hours differ from the one they repeat.
         year_start: "YYYY-MM-DD" (default: next 1 January).
-        extracted_by: With from_db, only requests with this tag (e.g. one
-            extraction run), so pilot runs don't mix in.
+        extracted_by: With from_db, only requests with this tag (one
+            extraction run). A list of tags uses the first for the pressure
+            and reports per-request "agreement" across all of them.
         reviewed_only: With from_db, only requests a reviewer accepted
             (rejected and duplicate requests are always left out).
         years: Years of telescope time the requests compete for (default:
             config planning_years, an unverified default).
+        min_elevation_deg: Elevation limit for requests without their own
+            (default 45); a list, e.g. [15, 20, 30, 45], returns one result
+            per value under "by_min_elevation", with a "summary".
+        apply_sun_constraints: Honour each request's "sun" setting.
     """
+    runs = extracted_by if isinstance(extracted_by, list) else [extracted_by] if extracted_by else []
     reqs = list(requests or [])
+    conn = source_db.connect() if from_db else None
     if from_db:
-        reqs += source_db.list_requests(source_db.connect(), telescope, extracted_by, reviewed_only)
+        reqs += source_db.list_requests(conn, telescope, runs[0] if runs else None, reviewed_only)
     if not reqs:
         return "Invalid request: no requests given (pass requests or from_db=true)"
     try:
-        return json.dumps(scheduling.lst_pressure(reqs, telescope, year_start, years))
+        out = scheduling.lst_pressure(reqs, telescope, year_start, years, min_elevation_deg, apply_sun_constraints)
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"
+    if from_db:
+        out["conflicts"] = source_db.hour_conflicts(conn, telescope, runs[0] if runs else None)
+        if len(runs) > 1:
+            out["agreement"] = source_db.extraction_agreement(conn, runs, telescope)
+    return json.dumps(out)
 
 
 @mcp.tool()
@@ -1788,7 +1813,8 @@ def add_survey_field_tool(
         book: "aaskaii" or "aaska2015", when a Paper ID exists in both books.
         ra, dec: Centre in degrees, if stated.
         ra_range, dec_range: RA/Dec box in degrees, if stated ("southern
-            sky" = ra_range [0, 360], dec_range [-90, 0]).
+            sky" = ra_range [0, 360], dec_range [-90, 0]). dec_range alone
+            is a declination band (all RA).
         gal_l_range, gal_b_range: Galactic box in degrees, if stated
             (e.g. |b| < 5 deg: gal_b_range [-5, 5]; l defaults to all).
         area_deg2: Area in square degrees, if stated.

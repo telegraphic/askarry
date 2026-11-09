@@ -437,15 +437,21 @@ def _field_key(name: str) -> str:
 
 
 def _geometry(row) -> dict | None:
-    """Placeable geometry from a fields/requests row: a centre, an RA/Dec box
-    or a Galactic box (None if only an area or description is known)."""
+    """Placeable geometry from a fields/requests row: a centre, an RA/Dec box,
+    a declination band (all RA), a Galactic box, or for a field only an area
+    (placed by lst_pressure on an assumed footprint). None if only a
+    description is known."""
     if row["ra_min"] is not None:
         return {"ra_range": [row["ra_min"], row["ra_max"]], "dec_range": [row["dec_min"], row["dec_max"]]}
+    if row["dec_min"] is not None:
+        return {"dec_range": [row["dec_min"], row["dec_max"]]}
     if row["gal_b_min"] is not None:
         return {"gal_l_range": [row["gal_l_min"], row["gal_l_max"]],
                 "gal_b_range": [row["gal_b_min"], row["gal_b_max"]]}
     if row["ra_deg"] is not None:
         return {"ra": row["ra_deg"], "dec": row["dec_deg"]}
+    if "area_deg2" in row.keys() and row["area_deg2"]:
+        return {"area_deg2": row["area_deg2"]}
     return None
 
 
@@ -530,8 +536,8 @@ def add_survey_field(conn: sqlite3.Connection, paper: str, quote: str, name: str
     in requests and the best known geometry."""
     if not name and not description:
         raise ValueError("give the field's name, or a description of the area for an unnamed one")
-    if (ra is None) != (dec is None) or (ra_range is None) != (dec_range is None):
-        raise ValueError("give ra with dec, and ra_range with dec_range")
+    if (ra is None) != (dec is None) or (ra_range is not None and dec_range is None):
+        raise ValueError("give ra with dec, and ra_range with dec_range (dec_range alone is a declination band)")
     if gal_b_range is not None and gal_l_range is None:
         gal_l_range = [0, 360]
     meta = _check_quote(quote, paper, book)
@@ -601,7 +607,7 @@ def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: st
     if gal_b_range is not None and gal_l_range is None:
         gal_l_range = [0, 360]
     source_id = None
-    if ra is None and ra_range is None and gal_b_range is None:
+    if ra is None and dec_range is None and gal_b_range is None:
         pos = field_position(conn, field or name, live=True)
         if pos:
             source_id = pos.get("source_id")
@@ -626,7 +632,7 @@ def add_request(conn: sqlite3.Connection, name: str, hours: float, telescope: st
     )
     conn.commit()
     return {"id": cur.lastrowid, "paper": Path(meta["source"]).stem, "page": meta.get("page_no", 0),
-            "placed": ra is not None or ra_range is not None or gal_b_range is not None}
+            "placed": ra is not None or dec_range is not None or gal_b_range is not None}
 
 
 REVIEW_STATUSES = ("accepted", "rejected", "duplicate")
@@ -701,13 +707,54 @@ def list_requests(conn: sqlite3.Connection, telescope: str | None = None,
         geom = field_position(conn, r["reviewed_field"]) if r["reviewed_field"] else _geometry(r)
         if geom:
             req.update({k: v for k, v in geom.items() if k in ("ra", "dec", "ra_range", "dec_range",
-                                                                 "gal_l_range", "gal_b_range")})
+                                                                 "gal_l_range", "gal_b_range", "area_deg2")})
             if r["reviewed_field"]:
                 req["reviewed_field"] = r["reviewed_field"]
         else:
             req["position_note"] = r["position_note"]
         out.append(req)
     return out
+
+
+def hour_conflicts(conn: sqlite3.Connection, telescope: str | None = None,
+                   extracted_by: str | None = None, rel_tol: float = 0.01) -> list[dict]:
+    """Requests marked as duplicates whose hours differ from the request they
+    repeat: the same survey tier quoted with different times (Elahi01 5,000 h
+    against 10,000 h). list_requests drops duplicates, so without this the
+    disagreement would vanish from the totals unseen."""
+    rows = {r["id"]: r for r in list_requests(conn, telescope, extracted_by, include_rejected=True)}
+    out: dict[int, dict] = {}
+    for r in rows.values():
+        canon = rows.get(r.get("duplicate_of"))
+        if r.get("review_status") != "duplicate" or canon is None:
+            continue
+        hours = r.get("extracted_hours", r["hours"])
+        if abs(hours - canon["hours"]) <= rel_tol * max(hours, canon["hours"]):
+            continue
+        entry = out.setdefault(canon["id"], {"id": canon["id"], "name": canon["name"], "paper": canon["paper"],
+                                             "hours": canon["hours"], "restated": []})
+        entry["restated"].append({"id": r["id"], "paper": r["paper"], "hours": hours, "quote": r.get("quote")})
+    return list(out.values())
+
+
+def extraction_agreement(conn: sqlite3.Connection, runs: list[str], telescope: str | None = None,
+                         rel_tol: float = 0.1) -> list[dict]:
+    """How repeated extraction runs agree, per request. Requests are matched
+    across runs by paper and field (or normalised name); "agree" means every
+    run found it and their hours are within *rel_tol*."""
+    by_key: dict[tuple, dict] = {}
+    for run in runs:
+        for r in list_requests(conn, telescope, run, include_rejected=True):
+            key = (r["paper"], _field_key(r.get("reviewed_field") or r.get("field") or r["name"]))
+            entry = by_key.setdefault(key, {"paper": r["paper"], "request": r["name"], "hours_by_run": {}})
+            entry["hours_by_run"].setdefault(run, r["hours"])
+    out = []
+    for entry in by_key.values():
+        hours = list(entry["hours_by_run"].values())
+        entry["runs_present"] = len(hours)
+        entry["agree"] = len(hours) == len(runs) and max(hours) <= (1 + rel_tol) * min(hours)
+        out.append(entry)
+    return sorted(out, key=lambda e: (e["agree"], e["paper"]))
 
 
 def unresolved_names(conn: sqlite3.Connection, limit: int = 200) -> list[dict]:
