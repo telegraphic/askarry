@@ -137,7 +137,10 @@ def calculator_cases() -> dict:
                 integration_time_s=3600, pointing_centre=POINTING, weighting_mode="robust", robustness=0)
     out = {
         "S1": {"case": "B-03 (15.8 uJy/beam, AA*, 1 h, 810 MHz)", "best_fit": _compare(
-            "S1", telescope="mid", params=b03, claimed_sensitivity=15.8)},
+            "S1", telescope="mid", params=b03, claimed_sensitivity=15.8),
+               # What the atlas agent did: move the centre to 1.355 GHz to fit 810 MHz in Band 2.
+               "best_fit_sweep": _compare("S1", telescope="mid", params=b03, claimed_sensitivity=15.8,
+                                          sweep={"freq_centre_hz": [1.4e9, 1.355e9]})},
         "S2": {"case": "E-03 (5 uJy/beam, AA4, 8 h, robust -1; 150 vs 200 MHz)",
                "strict": _compare("S2", telescope="low", params=e03, claimed_sensitivity=5, mode="strict"),
                "best_fit_sweep": _compare("S2", telescope="low", params=e03, claimed_sensitivity=5,

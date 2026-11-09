@@ -1,0 +1,106 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "subarrays",
+  "params": {}
+ },
+ "status": 200,
+ "body": [
+  {
+   "name": "MID_AAstar_all",
+   "label": "AA*",
+   "n_ska": 80,
+   "n_meer": 64
+  },
+  {
+   "name": "MID_AAstar_SKA_only",
+   "label": "AA* (15-m antennas only)",
+   "n_ska": 80,
+   "n_meer": 0
+  },
+  {
+   "name": "MID_inner_r125m_aastar",
+   "label": "AA* (MID_inner_r125m)",
+   "n_ska": 7,
+   "n_meer": 9
+  },
+  {
+   "name": "MID_inner_r20km_aastar",
+   "label": "AA* (MID_inner_r20km)",
+   "n_ska": 77,
+   "n_meer": 64
+  },
+  {
+   "name": "MID_inner_r2km_aastar",
+   "label": "AA* (MID_inner_r2km)",
+   "n_ska": 47,
+   "n_meer": 53
+  },
+  {
+   "name": "MID_inner_r500m_aastar",
+   "label": "AA* (MID_inner_r500m)",
+   "n_ska": 24,
+   "n_meer": 39
+  },
+  {
+   "name": "MID_AA4_MeerKAT_only",
+   "label": "AA*/AA4 (13.5-m antennas only)",
+   "n_ska": 0,
+   "n_meer": 64
+  },
+  {
+   "name": "MID_AA05_all",
+   "label": "AA0.5",
+   "n_ska": 4,
+   "n_meer": 0
+  },
+  {
+   "name": "MID_AA1_all",
+   "label": "AA1",
+   "n_ska": 8,
+   "n_meer": 0
+  },
+  {
+   "name": "MID_AA2_all",
+   "label": "AA2",
+   "n_ska": 64,
+   "n_meer": 0
+  },
+  {
+   "name": "MID_AA4_all",
+   "label": "AA4",
+   "n_ska": 133,
+   "n_meer": 64
+  },
+  {
+   "name": "MID_AA4_SKA_only",
+   "label": "AA4 (15-m antennas only)",
+   "n_ska": 133,
+   "n_meer": 0
+  },
+  {
+   "name": "MID_inner_r125m_aa4",
+   "label": "AA4 (MID_inner_r125m)",
+   "n_ska": 22,
+   "n_meer": 9
+  },
+  {
+   "name": "MID_inner_r20km_aa4",
+   "label": "AA4 (MID_inner_r20km)",
+   "n_ska": 110,
+   "n_meer": 64
+  },
+  {
+   "name": "MID_inner_r2km_aa4",
+   "label": "AA4 (MID_inner_r2km)",
+   "n_ska": 79,
+   "n_meer": 53
+  },
+  {
+   "name": "MID_inner_r500m_aa4",
+   "label": "AA4 (MID_inner_r500m)",
+   "n_ska": 55,
+   "n_meer": 39
+  }
+ ]
+}

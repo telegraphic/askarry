@@ -62,3 +62,28 @@ methods, risks and the book diff (`modes.json`, `methods.json`,
 lists and affiliations (ApJ, Planck, Chandra, and any term in journal
 titles), and rises for terms usually written in the plural (pulsar surveys,
 data rates, zoom modes). The table at the end has the regression cases.
+
+## WS3: strict and best-fit calculator modes
+
+**What changed.** `compare_to_calculator_tool` has a strict mode (only what
+the paper states, plus listed defaults) and reports the strict result next
+to every best fit, with the number of free parameters. Array swaps are
+flagged. Claims in K, at 5σ, in Stokes V, at odd channel widths or
+half-integer robust values can now be checked. The calculator moved to API
+v12, which had broken every live call.
+
+**What the workflow should change.** In `scripts/atlas_prose_workflow.js`,
+the sensitivity check should call `mode="strict"` first and record its
+`defaults_applied`; call best fit only when strict misses, and record
+`n_free_parameters` and any `array_substituted`. A "match" should mean a
+strict match; a best-fit-only match is a weaker category ("matches with N
+free parameters"). Agents should stop moving centre frequencies or arrays by
+hand: pass them as `sweep` so they are counted.
+
+**Figures that move.** `sensitivity-verification.html` (`prose.json`
+`sensitivity`): matches that relied on unstated parameters (E-03 on the
+centre frequency, F-33 on the 5σ reading, C-19 on the weighting) become
+best-fit matches with free parameters; B-03 and B-04 carry
+`array_substituted`; C-02 (a K claim) moves from "unverifiable" to a checked
+result, which diverges, because the paper's 8.17″ beam implies a taper the
+quote doesn't state.

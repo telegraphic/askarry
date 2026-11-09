@@ -52,7 +52,8 @@ get_paper_info_tool, list_missing_papers_tool
 lookup_acronym_tool, list_acronyms_tool
                         Acronym senses, variants, categories and papers.
 compare_to_calculator_tool
-                        Quoted sensitivity vs. live calculator, all weightings.
+                        Quoted sensitivity vs. live calculator: strict, or best fit
+                        over free parameters (both reported).
 validate_across_contexts_tool
                         One obs_config validated under every observing context.
 resolve_object_tool, ned_lookup_tool, cone_search_tool
@@ -739,8 +740,13 @@ def query_sensitivity_calc(telescope: str, endpoint: str, params: dict) -> str:
 
                    Full parameter reference (advanced overrides like taper, pwv, el,
                    eta_*, t_sys_*): rag/sensitivity_calculator.py docstrings, or the
-                   live OpenAPI spec at sensitivity-calculator.skao.int/api/v11/
+                   live OpenAPI spec at sensitivity-calculator.skao.int/api/v12/
                    {telescope}/openapi.json.
+
+                   subarray_configuration may be the subarray's name
+                   ("MID_inner_r2km_aastar") or its label ("AA* (MID_inner_r2km)"):
+                   it is translated to the form the API takes (labels for Mid,
+                   names for Low), and the result's "subarray_used" says which.
     """
     try:
         result = query_sensitivity_calculator(telescope, endpoint, params)
@@ -1229,37 +1235,64 @@ def compare_to_calculator_tool(
     claimed_sensitivity: float,
     unit: str = "uJy/beam",
     quantity: str = "continuum",
-    claimed_beam_arcsec: float | None = None,
+    claimed_beam_arcsec: float | list[float] | None = None,
     endpoint: str = "continuum",
     window_index: int = 0,
+    mode: str = "best_fit",
+    sweep: dict[str, list] | None = None,
+    sigma_level: float = 1.0,
+    stokes: str = "I",
+    claimed_channel_width_hz: float | None = None,
 ) -> str:
-    """Check a paper's quoted sensitivity against the live sensitivity calculator,
-    sweeping every weighting scheme (natural, robust -2..2, uniform) for
-    continuum and zoom; pulsar search ("pss") is a single call (no weighting).
+    """Check a paper's quoted sensitivity against the live sensitivity
+    calculator, in "strict" mode (only what the paper states, plus declared
+    defaults) or "best_fit" mode (default: also try free parameters).
 
-    Papers often leave the weighting unstated, which is the usual reason a
-    quoted figure fails to reproduce. This reports each variant's
-    sensitivity and % difference, the closest one, and all variants within
-    10%. Pass claimed_beam_arcsec when the paper states a resolution, so the
-    match must fit both noise and beam.
+    Use mode="strict" to decide whether a figure is reproduced: it uses only
+    the stated params plus declared defaults (robust 0 if no weighting is
+    given, the AA* array, band centre and default bandwidth for the stated
+    band) and lists every default under "defaults_applied". "best_fit" sweeps
+    every weighting (natural, robust -2..2, uniform) when params state none,
+    plus any parameters in `sweep`, and reports all variants, the closest,
+    `n_free_parameters` and the strict result side by side: a best-fit match
+    with free parameters is weaker evidence than a strict one.
+
+    When the calculator refuses an array for a band or window (the mixed AA*
+    in Band 5, or wider than 720 MHz in Band 2), the 15-m-only subarray at the
+    same stage is used and "array_substituted" says so, with the reason.
 
     Args:
         telescope: "low" or "mid".
-        params: That endpoint's params as for query_sensitivity_calc, minus
-            weighting_mode/robustness (the sweep sets those).
+        params: That endpoint's params as for query_sensitivity_calc. A stated
+            weighting_mode/robustness is used as given (non-integer robust
+            values are interpolated between the neighbouring integers and
+            labelled "interpolated"); omit them to sweep weightings.
+            subarray_configuration may be a name or a label.
         claimed_sensitivity: The paper's figure.
-        unit: "Jy", "mJy", "uJy" or "nJy" (with or without "/beam"; pulsar
-            figures are plain flux densities).
+        unit: "Jy", "mJy", "uJy" or "nJy" (with or without "/beam"), or "K"
+            ("mK", "uK") for a brightness temperature, converted to Jy/beam
+            with the frequency and the beam (claimed_beam_arcsec, else the
+            calculator's).
         quantity: continuum endpoint only: "continuum" (default) or
             "spectral" (per-channel figure).
-        claimed_beam_arcsec: Optional stated resolution, arcsec.
+        claimed_beam_arcsec: Stated resolution, arcsec (one value, or
+            [major, minor]); the match must then fit both noise and beam.
         endpoint: "continuum" (default), "zoom" (spectral line) or "pss".
         window_index: zoom only: which zoom window to compare.
+        mode: "best_fit" (default) or "strict".
+        sweep: best_fit only: extra params to vary, e.g.
+            {"freq_centre_hz": [1.31e9, 1.355e9]}; every combination is tried.
+        sigma_level: The claim is this many sigma (5 for a 5-sigma limit);
+            it is divided by this before comparing with the 1-sigma rms.
+        stokes: "I" (default; total noise including confusion) or "V"
+            (thermal noise only).
+        claimed_channel_width_hz: For a spectral figure, the paper's channel
+            width; the calculator's per-channel noise is rescaled to it.
     """
     try:
         return json.dumps(compare_to_calculator(
             telescope, params, claimed_sensitivity, unit, quantity, claimed_beam_arcsec,
-            endpoint, window_index,
+            endpoint, window_index, mode, sweep, sigma_level, stokes, claimed_channel_width_hz,
         ))
     except (ValueError, KeyError) as exc:
         return f"Invalid request: {exc}"

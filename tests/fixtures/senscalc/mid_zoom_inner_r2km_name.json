@@ -1,0 +1,24 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "zoom/calculate",
+  "params": {
+   "rx_band": "Band 2",
+   "freq_centres_hz": 1400000000.0,
+   "total_bandwidths_hz": 3200000.0,
+   "spectral_resolutions_hz": 13440,
+   "integration_time_s": 3600,
+   "pointing_centre": "00:00:00 -30:00:00",
+   "weighting_mode": "robust",
+   "robustness": 0,
+   "subarray_configuration": "MID_inner_r2km_aastar"
+  }
+ },
+ "status": 400,
+ "body": {
+  "type": "about:blank",
+  "title": "Bad Request",
+  "detail": "'MID_inner_r2km_aastar' is not one of ['AA0.5', 'AA1', 'AA2', 'AA*', 'AA* (15-m antennas only)', 'AA4', 'AA*/AA4 (13.5-m antennas only)', 'AA4 (15-m antennas only)', 'AA4 (MID_inner_r2km)', 'AA* (MID_inner_r2km)', 'AA4 (MID_inner_r20km)', 'AA* (MID_inner_r20km)', 'AA4 (MID_inner_r125m)', 'AA* (MID_inner_r125m)', 'AA4 (MID_inner_r500m)', 'AA* (MID_inner_r500m)']\n\nFailed validating 'enum' in schema:\n    {'type': 'string',\n     'enum': ['AA0.5',\n              'AA1',\n              'AA2',\n              'AA*',\n              'AA* (15-m antennas only)',\n              'AA4',\n              'AA*/AA4 (13.5-m antennas only)',\n              'AA4 (15-m antennas only)',\n              'AA4 (MID_inner_r2km)',\n              'AA* (MID_inner_r2km)',\n              'AA4 (MID_inner_r20km)',\n              'AA* (MID_inner_r20km)',\n              'AA4 (MID_inner_r125m)',\n              'AA* (MID_inner_r125m)',\n              'AA4 (MID_inner_r500m)',\n              'AA* (MID_inner_r500m)']}\n\nOn instance:\n    'MID_inner_r2km_aastar'",
+  "status": 400
+ }
+}

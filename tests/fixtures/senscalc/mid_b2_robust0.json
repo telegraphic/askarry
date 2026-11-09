@@ -1,0 +1,129 @@
+{
+ "request": {
+  "telescope": "mid",
+  "endpoint": "continuum/calculate",
+  "params": {
+   "rx_band": "Band 2",
+   "freq_centre_hz": 1310000000.0,
+   "bandwidth_hz": 700000000.0,
+   "integration_time_s": 3600,
+   "pointing_centre": "00:00:00 -30:00:00",
+   "subarray_configuration": "AA*",
+   "weighting_mode": "robust",
+   "robustness": 0
+  }
+ },
+ "status": 200,
+ "body": {
+  "calculate": {
+   "continuum_sensitivity": {
+    "value": 1.226514967311679e-06,
+    "unit": "Jy"
+   },
+   "spectral_sensitivity": {
+    "value": 0.0002799124644642991,
+    "unit": "Jy"
+   },
+   "spectropolarimetry_results": {
+    "fwhm_of_the_rmsf": {
+     "value": 53.37273159699959,
+     "unit": "rad / m2"
+    },
+    "max_faraday_depth_extent": {
+     "value": 96.3210319227564,
+     "unit": "rad / m2"
+    },
+    "max_faraday_depth": {
+     "value": 634326.3849496804,
+     "unit": "rad / m2"
+    }
+   }
+  },
+  "weighting": {
+   "continuum_weighting": {
+    "weighting_factor": 1.3979670339660826,
+    "sbs_conv_factor": 210894.0993877039,
+    "confusion_noise": {
+     "value": 4.197744773229912e-08,
+     "limit_type": "value"
+    },
+    "beam_size": {
+     "beam_maj_scaled": 0.0005561166012106226,
+     "beam_min_scaled": 0.00046852858465553764,
+     "beam_pa": 72.29862433511083
+    },
+    "subbands": []
+   },
+   "spectral_weighting": {
+    "weighting_factor": 1.408533965415231,
+    "sbs_conv_factor": 180774.88856046103,
+    "confusion_noise": {
+     "value": 5.4904762686212285e-08,
+     "limit_type": "value"
+    },
+    "beam_size": {
+     "beam_maj_scaled": 0.0006165620675772908,
+     "beam_min_scaled": 0.0004930051725595803,
+     "beam_pa": 447.76469459435026
+    },
+    "subbands": []
+   }
+  },
+  "transformed_result": {
+   "weighted_continuum_sensitivity": {
+    "value": 1.7146274909677144e-06,
+    "unit": "Jy / beam"
+   },
+   "continuum_confusion_noise": {
+    "value": 4.197744773229912e-08,
+    "unit": "Jy / beam"
+   },
+   "total_continuum_sensitivity": {
+    "value": 1.7151412591679899e-06,
+    "unit": "Jy / beam"
+   },
+   "continuum_synthesized_beam_size": {
+    "beam_maj": {
+     "value": 2.0020197643582414,
+     "unit": "arcsec"
+    },
+    "beam_min": {
+     "value": 1.6867029047599356,
+     "unit": "arcsec"
+    }
+   },
+   "continuum_surface_brightness_sensitivity": {
+    "value": 0.3617131711749257,
+    "unit": "K"
+   },
+   "weighted_spectral_sensitivity": {
+    "value": 0.00039426621354104915,
+    "unit": "Jy / beam"
+   },
+   "spectral_confusion_noise": {
+    "value": 5.4904762686212285e-08,
+    "unit": "Jy / beam"
+   },
+   "total_spectral_sensitivity": {
+    "value": 0.0003942662173640155,
+    "unit": "Jy / beam"
+   },
+   "spectral_synthesized_beam_size": {
+    "beam_maj": {
+     "value": 2.219623443278247,
+     "unit": "arcsec"
+    },
+    "beam_min": {
+     "value": 1.774818621214489,
+     "unit": "arcsec"
+    }
+   },
+   "spectral_surface_brightness_sensitivity": {
+    "value": 71.2734315071344,
+    "unit": "K"
+   },
+   "warnings": [],
+   "subbands": {}
+  }
+ }
+}
