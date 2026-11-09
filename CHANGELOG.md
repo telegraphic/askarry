@@ -6,6 +6,35 @@ caller has to change and which existing counts move. See
 
 ## Unreleased
 
+### Sensitivity calculator: strict and best-fit modes (WS3)
+
+- **Fixed: the calculator API moved to v12.** v11 now returns 404, so every
+  `query_sensitivity_calc` and `compare_to_calculator_tool` call was failing.
+  v12 takes the same parameters and returns the same shape.
+- **Subarray names and labels are interchangeable.** The calculator lists
+  each subarray with a name (`MID_inner_r2km_aastar`) and a label
+  (`AA* (MID_inner_r2km)`), but the Mid API accepts only labels and the Low
+  API only names. Either is now translated, everywhere, and the response's
+  `subarray_used` echoes the name, the label and what was sent.
+- **`compare_to_calculator_tool(mode="strict")`** uses only the stated
+  params plus declared defaults (robust 0 when no weighting is given, the
+  AA* array, band centre and default continuum bandwidth for the stated
+  band, a −30° pointing) and lists them in `defaults_applied`. It refuses to
+  guess a Mid band.
+- **`mode="best_fit"` (default, as before)** now returns
+  `n_free_parameters`, `free_parameters` and the `strict` result alongside
+  the variants. New `sweep` parameter for explicit sweeps (e.g. centre
+  frequency). A stated weighting is no longer swept.
+- **`array_substituted`.** When the calculator refuses a mixed array for a
+  band or window (Band 5 on the 13.5-m dishes; more than 720 MHz in Band 2),
+  the 15-m-only subarray at the same stage is used and the swap is reported
+  with the calculator's reason. It is never silent.
+- New: claims in K (`unit="K"`, converted with the frequency and the stated
+  or calculated beam), `sigma_level` (5 for a 5σ limit), `stokes="V"`
+  (thermal noise only), `claimed_channel_width_hz` (rescales a per-channel
+  figure), and non-integer robust values (interpolated between neighbouring
+  integers and labelled `interpolated`).
+
 ### keyword_coverage_tool and facility_network_tool (WS2)
 
 - **Default change: abstract and body only.** New `zones` parameter
