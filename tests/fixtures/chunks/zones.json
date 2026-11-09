@@ -1,0 +1,329 @@
+{
+ "Maccagni01": [
+  {
+   "text": "Filippo M. Maccagni , 1 , 2 Vincenzo Mainieri , 3 Isabella Prandoni , 4 Massimo Gaspari , 5 W. J. G. de Blok , 6 , 7 , 8 Ilaria Ruffa , 9 Stanislav S. Shabala , 10 Dipanjan Mukherjee , 11 Mayur B. Shende , 12 Antonino Marasco 13 and Paolo Serra 1\n1 INAF - Osservatorio Astronomico di Cagliari, via della Scienza 5, 09047, Selargius (CA), Italy\n2 Wits Centre for Astrophysics, School of Physics, University of the Witwatersrand, 1 Jan Smuts Avenue, 2000, Johannesburg, South Africa\n3 ESO, Karl-Schwarschild-Strasse 2, 85748 Garching bei München, Germany\n4 INAF - Istituto di Radioastronomia, Via P. Gobetti 101, 40125 Bologna, Italy\n5 Department of Physics, Informatics and Mathematics, University of Modena and Reggio Emilia, 41125 Modena, Italy\n6 Netherlands Institute for Radio Astronomy (ASTRON), Oude Hoogeveensedijk 4, 7991 PD Dwingeloo, the Netherlands\n7 Dept. of Astronomy, Univ. of Cape Town, Private Bag X3, Rondebosch 7701, South Africa\n8 Kapteyn Astronomical Institute, University of Groningen, PO Box 800, 9700 AV Groningen, The Netherlands\n9 INAF, Arcetri Astrophysical Observatory, Largo Enrico Fermi 5, I-50125 Florence, Italy\n10 School of Natural Sciences, University of Tasmania, Private Bag 37, Hobart, TAS, 7001, Australia\n11 Inter-University Centre for Astronomy and Astrophysics, Post Bag-4, Pune University, Pune - 411007, India.\n12 Institute for Advanced Study in Physics, Zhejiang University, 866 Yuhangtang Rd, Hangzhou 310058, Peoples Republic of China\n13 INAF - Padova Astronomical Observatory, Vicolo dell'Osservatorio 5, I-35122 Padova, Italy\nE-mail: , ",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 0,
+    "heading": "AGN Feeding & Feedback Over the Galactic Scales",
+    "section_path": "AGN Feeding & Feedback Over the Galactic Scales",
+    "page_no": 1,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Active Galactic Nuclei (AGN) are key drivers of galaxy evolution, triggered by cold gas accreting onto a super-massive black hole. However, the processes regulating this gas accretion (feeding) and how AGN alter the interstellar medium to affect star formation (feedback) remain poorly understood. A major observational challenge is the vast range of spatial scales involved: AGN fuelling and jet-ejection occur over the sub-pc scales, while AGN feedback shocks and heats the ISM preventing star formation over the galactic and circum-galactic scales. Moreover, it is unclear how short stochastic AGN episodes are connected with the long timescales of gas accretion and star formation.\nIn this manuscript, we illustrate how SKAO will provide the unprecedented opportunity to solve the observational limitations of AGN feeding and feedback studies by observing hundreds of nearby AGN down to low radio powers (10 21 WHz -1 ). Simultaneous SKA-Low and Mid observations of nearby galaxies will trace the thermal emission associated with star formation and AGN feedback and the synchrotron emission of their jets of relativistic plasma. These broad-band radio observations enable the detailed characterisation of the AGN duty-cycle, unravelling the time-scales of the nuclear activities.\nReaching in 10 hours neutral atomic hydrogen (HI) column density sensitivities ∼ 10 19 cm -2 at arcsecond resolution, SKA AA4 observations will trace the typical low column density of HI gas in AGN inflows and outflows, to understand the impact AGN feedback over the full galaxy and trace fuelling processes from the environment onto the SMBH. Combining SKA with mm, sub-mm and optical Integral Field Spectrographic observations at comparable arcsecond resolution will provide an exhaustive understanding of the link between multi-phase AGN feeding and feedback processes and star formation.",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 1,
+    "heading": "AGN Feeding & Feedback Over the Galactic Scales",
+    "section_path": "AGN Feeding & Feedback Over the Galactic Scales",
+    "page_no": 2,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Observations indicate that accretion of gas onto the super-massive black holes (SMBHs) of galaxies is tightly related with the speed (velocity dispersion) with which the stars in galaxies move, with more massive SMBHs inhabiting galaxies with a higher stellar velocity dispersion (e.g. Kormendy and Ho, 2013). This unexpected result indicates that the episodes of accretion which occur rapidly and stochastically on scales of less than a hundred pc around the SMBH are connected with the dynamical evolution of galaxies occurring on scales of several kpc. Accretion onto the SMBH generates one of the most energetic phenomena in the Universe, known as Active Galactic Nucleus (AGN), for which we show one of the most nearby examples in Fig. 1. AGN affect the star formation (SF) of the host galaxy, abruptly and rapidly changing the physical conditions of its fuel reservoir. They can rapidly extinguish SF on a global scale by delaying the infall and cooling of the accreting gas (i.e. negative AGN feedback; Harrison et al., 2014), but they can also significantly increase it on local scales by compressing the gas and making it easier to cool, coalesce and form stars (i.e. positive feedback; Silk, 2013). AGN release their energy either through radiation winds which shock-heat the surrounding gas, or through relativistic outflows of non-thermal plasma (i.e. radio jets) which shock and mechanically displace the ISM. Even though there is a broad-brush dichothomy between radiative and jetted AGN (Best and Heckman, 2012), there is a number of AGN producing both powerful radiative winds and jets, see for example, Centaurus A (McKinley et al., 2018, 2022), Mrk 231 (Rupke and Veilleux, 2011; Morganti et al., 2016), 3C84 (Pedlar et al., 1990; Fabian et al., 2011).",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 2,
+    "heading": "1 Introduction: The co-evolution of galaxies and their nuclear activity",
+    "section_path": "1 Introduction: The co-evolution of galaxies and their nuclear activity",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "AGN feedback typically gives rise to fast multi-phase gaseous outflows ejected from the very proximities of the SMBHs and expanding through the host galaxy out to the circum-galactic medium (CGM) (Tombesi and Cappi, 2014). In this context, some of the key open questions are:\n- define how outflows are driven from the circum-nuclear to the circum-galactic scale;\n- determine how feedback displaces and heats the ISM and CGM;\n- understand how efficiently it impacts ISM-CGM and therefore the formation of new stars.",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 3,
+    "heading": "1 Introduction: The co-evolution of galaxies and their nuclear activity",
+    "section_path": "1 Introduction: The co-evolution of galaxies and their nuclear activity",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- T. Oosterloo et al. A&A , 608:A38, Dec. 2017. doi: 10.1051/0004-6361/201731781.\n- T. Oosterloo, R. Morganti, and S. Murthy. Nature Astronomy , 8:256-262, Feb. 2024. doi: 10.1038/ s41550-023-02138-y.\n- T. A. Oosterloo et al. AJ , 119(5):2085-2091, May 2000. doi: 10.1086/301358.\n- E. O'Sullivan et al. MNRAS , 416(4):2916-2931, Oct. 2011. doi: 10.1111/j.1365-2966.2011.19239. x.\n- A. G. Pacholczyk. Radio astrophysics. Nonthermal processes in galactic and extragalactic sources . 1970.\n- M. Pandey-Pommier et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Pandey-Pommier03.\n- G. F. Paraschos et al. A&A , 687:L6, July 2024. doi: 10.1051/0004-6361/202450590.\n- P. Parma et al. A&A , 470(3):875-888, Aug. 2007. doi: 10.1051/0004-6361:20077592.\n- A. Pedlar et al. MNRAS , 246:477, Oct. 1990.\n- M. Perna et al. A&A , 583:A72, Nov. 2015. doi: 10.1051/0004-6361/201526907.\n- M. Perucho. A&A , 684:A45, Apr. 2024. doi: 10.1051/0004-6361/202348624.",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 64,
+    "heading": "References",
+    "section_path": "References",
+    "page_no": 29,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- I. Prandoni et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Prandoni01.\n- M. Ramatsoku et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Ramatsoku01.\n- M. Roncarelli et al. A&A , 618:A39, Oct. 2018. doi: 10.1051/0004-6361/201833371.\n- E. Rosolowsky et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search:\nReport number AASKAII/Rosolowsky01.",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 65,
+    "heading": "References",
+    "section_path": "References",
+    "page_no": 29,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- I. Ruffa et al. MNRAS , 489(3):3739-3757, Nov. 2019a. doi: 10.1093/mnras/stz2368.\n- I. Ruffa et al. MNRAS , 484(3):4239-4259, Apr. 2019b. doi: 10.1093/mnras/stz255.\n- I. Ruffa et al. MNRAS , 510(3):4485-4503, Mar. 2022. doi: 10.1093/mnras/stab3541.\n- I. Ruffa et al. MNRAS , 546(1):staf2269, Feb. 2026. doi: 10.1093/mnras/staf2269.\n- D. S. Rupke, S. Veilleux, and D. B. Sanders. ApJ , 632(2):751-780, Oct. 2005. doi: 10.1086/444451.\n- D. S. N. Rupke and S. Veilleux. ApJL , 729(2):L27, Mar. 2011. doi: 10.1088/2041-8205/729/2/L27.\n- H. R. Russell et al. MNRAS , 472(4):4024-4037, Dec. 2017. doi: 10.1093/mnras/stx2255.\n- Q. Salomé et al. A&A , 690:L18, Oct. 2024. doi: 10.1051/0004-6361/202450952.\n- F. Santoro et al. A&A , 590:A37, May 2016. doi: 10.1051/0004-6361/201628353.\nF. Santoro et al.\nA&A\n, 617:A139, Oct. 2018. doi: 10.1051/0004-6361/201833248.",
+   "meta": {
+    "source": "pdfs/AASKAII/Formation and Evolution of Stars/Maccagni01.pdf",
+    "chunk_index": 66,
+    "heading": "References",
+    "section_path": "References",
+    "page_no": 30,
+    "doc_source": "aaskaii"
+   }
+  }
+ ],
+ "Nasirudin01": [
+  {
+   "text": "Ainulnabilah Nasirudin , 1 Philip Bull , 1 , 2 Ziad Sakr , 3 , 4 , 5 Joël Mayor , 6 Benedict Bahr-Kalus , 7 , 8 , 9 Hengxing Pan , 10 , 11 Stefano Camera , 8 , 9 , 7 , 2 José Fonseca , 12 , 13 , 2 Liantsoa F. Randrianjanahary , 14 , 2 Gabriella De Lucia 15 , 16 and Marta Spinelli 17 , 2\n1 Jodrell Bank Centre for Astrophysics, University of Manchester, Manchester, M13 9PL, United Kingdom\n2 Department of Physics and Astronomy, University of Western Cape, Cape Town 7535, South Africa\n3 Instituto de Física Teórica UAM-CSIC, Campus de Cantoblanco, 28049 Madrid, Spain\n4 Institut de Recherche en Astrophysique et Planétologie (IRAP), Université de Toulouse, CNRS, UPS, CNES, 14 Av. Edouard Belin, 31400 Toulouse, France\n5 Université St Joseph; Faculty of Sciences, Beirut, BP-11514, Lebanon\n6 Institute for Particle- and Astrophysics, ETH Zürich, Wolfgang-Pauli-Strasse 27, 8093 Zürich, Switzerland\n7 INAF, Osservatorio Astrofisico di Torino, Via Osservatorio 20, 10025 Pino Torinese, Italy\n8 Dipartimento di Fisica, Università degli Studi di Torino, Via P. Giuria 1, 10125 Torino, Italy\n9 INFN, Sezione di Torino, Via P. Giuria 1, 10125 Torino, Italy\n10 National Astronomical Observatories, Chinese Academy of Sciences, Beijing 100101, China\n11 Guizhou Radio Astronomical Observatory, Guizhou University, Guiyang 550000, China\n12 Instituto de Astrofísica e Ciências do Espaço, Universidade do Porto CAUP, 4150-762 Porto, Portugal\n13 Departamento de Física e Astronomia, Faculdade de Ciências, Universidade do Porto, Rua do Campo Alegre 687, 4169-007 Porto, Portugal",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 0,
+    "heading": "Cosmology from H i galaxy surveys with the SKA",
+    "section_path": "Cosmology from H i galaxy surveys with the SKA",
+    "page_no": 1,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "14 Astrophysics Research Centre & School of Mathematics, Statistics and Computer Science, University of KwaZulu-Natal, Durban, 4041, South Africa\n15 INAF, Osservatorio Astronomico di Trieste, Via Tiepolo 11, 34131 Trieste, Italy\n16 IFPU - Institute for Fundamental Physics of the Universe, Via Beirut, 2, 34151 Trieste, Italy\n17 Observatoire de la Côte d'Azur, Laboratoire J-L Lagrange, Boulevard de l'Observatoire, Nice, France\nThe 21cm line from neutral hydrogen is expected to be a ubiquitous (albeit faint) tracer of galaxies in the late Universe. With SKAO-MID, large wide-field surveys of several million H i-containing galaxies will become feasible, resulting in catalogues of sufficient size to measure large-scale structure observables such as baryon acoustic oscillations and redshift-space distortions. While optical galaxy surveys over comparable areas are generally deeper, radio surveys of this kind have a number of other advantages, such as broader sampling of the halo mass function and the possibility of measuring luminosity distances via the Tully-Fisher relation. In this chapter, we provide predictions for the galaxy number counts versus redshift that will be achievable with a wide-field H i galaxy survey on SKAOMID, along with corresponding forecasts for cosmological observables. Given the substantial uncertainty in the H i mass function with redshift, we bracket our predictions using a handful of different modelling methods.",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 1,
+    "heading": "Cosmology from H i galaxy surveys with the SKA",
+    "section_path": "Cosmology from H i galaxy surveys with the SKA",
+    "page_no": 1,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Oneofthe original motivations for the SKAO project was the 'Hydrogen Array' concept (Wilkinson, 1991), an idea to detect the majority of the galaxies containing substantial reservoirs of neutral hydrogen gas out to redshifts of 𝑧 ∼ 2 and beyond. This would provide a tremendously valuable 3D map of the Universe over a large fraction of cosmic history, allowing a range of cosmological and astrophysical measurements to be carried out, from measurements of matter clustering to a detailed census of the evolution of neutral hydrogen as star formation proceeded throughout the Universe (Ekers, 2012). The necessary collecting area for such an instrument was roughly one square kilometre.\nToday, optical and near-infrared spectroscopic galaxy surveys have become extremely efficient, rapidly measuring many galaxy spectra simultaneously, and therefore permitting huge samples of hundreds of millions of galaxies to be built up across survey areas of over ten thousand square degrees, and across a wide range of redshifts, even exceeding 𝑧 ∼ 2 (Ross et al., 2020; Euclid Collaboration et al., 2022; DESI Collaboration et al., 2025). This early historical mission of the SKA has arguably been achieved to a large extent by these other machines. Radio galaxy surveys, particularly spectroscopic ones with the 21cm line from neutral hydrogen, still have an interesting and unique role to play in modern cosmology however (Yahya et al., 2015; Bull, 2016; Obuljen et al., 2019; Square Kilometre Array Cosmology Science Working Group et al., 2020).\nThe first, and most obvious, is that neutral hydrogen gas is a crucial ingredient of star formation, and understanding how its abundance, distribution, and lifecycle change over time remains an important open question. The neutral hydrogen fraction,\n<!-- formula-not-decoded -->",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 2,
+    "heading": "1 Introduction",
+    "section_path": "1 Introduction",
+    "page_no": 2,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Our forecasts are sensitive to the exact number of sources observed and how they trace the dark matter field. Here we have summarised the simulations available as well as their predictions for the size of the H i galaxies catalogue. But the future catalogue provided by SKAO observations will constrain the number density and bias of H i galaxies providing another complementary way to understand how gas has populated galaxies throughout the history of the Universe, and these the dark matter halos.",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 44,
+    "heading": "6 Conclusions",
+    "section_path": "6 Conclusions",
+    "page_no": 19,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "The lead author coordinated the preparation of the chapter, performed one of the Fisher forecasts, and wrote Section 3 and most of Section 4. All other authors contributed to writing different sections, performing simulations, and/or providing guidance and useful comments, and they are listed in order of contribution.",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 45,
+    "heading": "Author List Ordering",
+    "section_path": "Author List Ordering",
+    "page_no": 19,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "AN and PB acknowledge support from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (Grant agreement No. 948764). JM is supported in part by grant CRSII5_193826 from the Swiss National Science Foundation, and by SERI as part of the SKACH consortium. BB-K acknowledges support from INAF for the project 'Paving the way to radio cosmology in the SKA Observatory era: synergies between SKA pathfinders/precursors and the new generation of optical/near-infrared cosmological surveys', CUP C54I1900105 0001. LF acknowledges support from the South African National Research Foundation (NRF). ZS acknowledges support from the research projects PID2021123012NB-C43, PID2024-159420NB-C43, the Proyecto de Investigación SAFE25003 from the Consejo Superior de Investigaciones Científicas (CSIC), and the Spanish Research Agency (Agencia Estatal de Investigación) through the Grant IFT Centro de Excelencia Severo Ochoa No CEX2020-001007-S, funded by MCIN/AEI/10.13039/501100011033. JF acknowledges support of Fundação para a Ciência e a Tecnologia (FCT) through the Investigador FCT Contract no. 2020.02633.CEECIND/CP1631/CT0002, the FCT exploratory project 10.54499/2023.15069.PEX, and the research grant UID/04434/2025.",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 46,
+    "heading": "Acknowledgments",
+    "section_path": "Acknowledgments",
+    "page_no": 20,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- M. Abdul Karim et al. Phys. Rev. D, 112(8):083515, Oct. 2025. doi: 10.1103/tr6y-kpc6.\n- I. S. Albuquerque et al. 6 2025.\n- D. Alonso et al. The Open Journal of Astrophysics, 8:42, Apr. 2025. doi: 10.33232/001c.136891.\n- M. Asgari, A. J. Mead, and C. Heymans. The Open Journal of Astrophysics, 6:39, Nov. 2023. doi: 10.21105/astro.2303.08752.\n- B. Bahr-Kalus, D. Parkinson, and E.-M. Mueller. MNRAS, 524(2):2463-2476, Sept. 2023. doi: 10.1093/mnras/stad1867.\n- B. Bahr-Kalus et al. Phys. Rev. D, 112(6):063553, Sept. 2025. doi: 10.1103/yqm1-ybbv.\n- C. J. Ball et al. ApJ, 950(2):87, June 2023. doi: 10.3847/1538-4357/accb53.\n- B. Bassett and R. Hlozek. Baryon acoustic oscillations. In P. Ruiz-Lapuente, editor, Dark Energy, page 246. 2010. doi: 10.48550/arXiv.0910.5224.\n- A. A. Berlind and D. H. Weinberg. ApJ, 575(2):587-616, Aug. 2002. doi: 10.1086/341469.\n- C. Blake and S. Bridle. MNRAS, 363(4):1329-1348, Nov. 2005. doi: 10.1111/j.1365-2966.2005. 09526.x.",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 47,
+    "heading": "References",
+    "section_path": "References",
+    "page_no": 20,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- P. Boubel, M. Colless, K. Said, and L. Staveley-Smith. MNRAS, 533(2):1550-1559, Sept. 2024. doi: 10.1093/mnras/stae1925.\n- R. Braun and et al. Anticipated SKA1 science performance. DTE SKAO-TEL-0000818, SKA Observatory, Oct. 2024. URL https://www.skao.int/sites/default/files/",
+   "meta": {
+    "source": "pdfs/AASKAII/The Cosmos/Nasirudin01.pdf",
+    "chunk_index": 48,
+    "heading": "References",
+    "section_path": "References",
+    "page_no": 20,
+    "doc_source": "aaskaii"
+   }
+  }
+ ],
+ "Hota01": [
+  {
+   "text": "In the long term, once SKAO operations are established, a global network of SKA-inspired lowfrequency stations could be developed by partner institutions, especially in remote or underdeveloped regions. These would be simplified arrays meeting basic standards for timing and calibration. Their primary role would be education and capacity building, enabling local studies of the ionosphere, space weather, meteor trails, and lightning-related radio emission. With defined protocols, selected data could also support SKA campaigns in heliospheric science, transients, and VLBI, extending coverage beyond Australia and Africa. A pilot project to assess feasibility would be required before its realisation.",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 52,
+    "heading": "10.3 Prospects for a distributed network of SKA-inspired low-frequency stations",
+    "section_path": "10.3 Prospects for a distributed network of SKA-inspired low-frequency stations",
+    "page_no": 26,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Over the past two decades, astronomical publications using CSR have grown steadily, now exceeding 100 per year in NASA ADS. Millions of participants worldwide have contributed to such initiatives, which not only generate high-quality scientific results but also deliver educational and societal benefits. In this paper, we reviewed major CSR platforms in astronomy, with emphasis on RGZ, RGZ-LOFAR, and the RAD@home Astronomy Collaboratory. While web-based projects like RGZ excel in large-scale catalogue generation, RAD@home advances the CSR model by providing direct, structured training that enables participants to develop into semi-professional e-astronomers capable of discovering rare and complex radio sources.\nAligned with the goals of the IAU's Office of Astronomy for Development and the United Nations' recognition of the right to participate in science, we strongly advocate the incorporation of CSR within the SKAO. We propose two complementary operational modes: SKA@home-web-based, a fully online system for large-volume classification, and SKA@home-Collaboratory, a trainingdriven model that builds student communities capable of submitting preliminary discovery reports to SKAO. Each participating nation would oversee the training pathway and publication process. Through these initiatives, the SKA could connect meaningfully with university students and astronomy enthusiasts across the globe, fostering widespread scientific engagement and discovery.",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 53,
+    "heading": "11 Conclusions",
+    "section_path": "11 Conclusions",
+    "page_no": 26,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "AH acknowledges the University Grants Commission (UGC, Ministry of Education, Govt. of India) for his monthly salary grants since June 2014. We sincerely thank Late Prof. Govind Swarup, FRS, for his encouragement during the formative years of the RAD@home Collaboratory. We also gratefully acknowledge the significant contributions of Late Dr. Nandivada Rathnasree, Ms. Megha Rajoria, Mr. Avinash Kumar, and Mr. Ck. Avinash, whose efforts through various camps and workshops greatly contributed to the growth of RAD@home. References",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 54,
+    "heading": "12 Acknowledgement",
+    "section_path": "12 Acknowledgement",
+    "page_no": 27,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- B. Abbott et al. Phys. Rev. D , 79(2):022001, Jan. 2009. doi: 10.1103/PhysRevD.79.022001.\n- L. Alegre et al. MNRAS , 532(3):3322-3340, Aug. 2024. doi: 10.1093/mnras/stae1454.\n- D. P. Anderson et al. AJ , 170(2):111, Aug. 2025. doi: 10.3847/1538-3881/ade5ab.\n- A. Andersson et al. MNRAS , 523(2):2219-2235, Aug. 2023. doi: 10.1093/mnras/stad1298.\n- P. Apoorva et al. Galaxies , 13(5):98, Aug. 2025. doi: 10.3390/galaxies13050098.\n- J. S. Bagla et al. Journal of Astrophysics and Astronomy , 46(1):18, Feb. 2025. doi: 10.1007/ s12036-025-10041-3.\n- M. Banerji et al. MNRAS , 406(1):342-353, July 2010. doi: 10.1111/j.1365-2966.2010.16713.x.\n- J. K. Banfield et al. MNRAS , 453(3):2326-2340, Nov. 2015. doi: 10.1093/mnras/stv1688.\n- J. K. Banfield et al. MNRAS , 460(3):2376-2384, Aug. 2016. doi: 10.1093/mnras/stw1067.\n- B. Barkus et al. MNRAS , 509(1):1-15, Jan. 2022. doi: 10.1093/mnras/stab2952.\n- J. Barranco et al. Open Engineering , 7(1):42, Dec. 2017. doi: 10.1515/eng-2017-0042.",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 55,
+    "heading": "12 Acknowledgement",
+    "section_path": "12 Acknowledgement",
+    "page_no": 27,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- G. Bell, T. Hey, and A. Szalay. Science , 323(5919):1297-1298, 2009. doi: 10.1126/science. 1170411. URL https://www.science.org/doi/abs/10.1126/science.1170411 .\n- L. Bishop. European Journal of Human Rights , 4:411-430, 2015.\n- R. Bonney et al. Science , 343(6178):1436-1437, Mar. 2014. doi: 10.1126/science.1251554.\n- K. Borne. arXiv e-prints , art. arXiv:0911.0505, Nov. 2009. doi: 10.48550/arXiv.0911.0505.\n- M. Bowles et al. MNRAS , 522(2):2584-2600, June 2023. doi: 10.1093/mnras/stad1021.\n- M. Brienza et al. Nature Astronomy , 5:1261-1267, Dec. 2021. doi: 10.1038/s41550-021-01491-0.\n- T. M. Brown et al. PASP , 125(931):1031, Sept. 2013. doi: 10.1086/673168.\n- O. Burggraaff et al. In T. George and M. S. Islam, editors, Micro- and Nanotechnology Sensors, Systems, and Applications XII , volume 11389 of Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series , page 113892K, May 2020. doi: 10.1117/12.2558562.\n- C. Cardamone et al. MNRAS , 399(3):1191-1205, Nov. 2009. doi: 10.1111/j.1365-2966.2009. 15383.x.\n- P. Dabhade et al. A&A , 696:A97, Apr. 2025. doi: 10.1051/0004-6361/202451918.",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 56,
+    "heading": "12 Acknowledgement",
+    "section_path": "12 Acknowledgement",
+    "page_no": 27,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "- P. Dabhade et al. In Advancing Astrophysics with the SKA - II (AASKAII) . 2026. arXiv search: Report number AASKAII/Dabhade01.\n- F. De Gasperin et al. A&A , 709:A154, May 2026. doi: 10.1051/0004-6361/202658988.\n- G. C. Dewangan et al. Journal of Astrophysics and Astronomy , 46(2):60, Aug. 2025. doi: 10.1007/ s12036-025-10075-7.",
+   "meta": {
+    "source": "pdfs/AASKAII/Methods and Techniques/Hota01.pdf",
+    "chunk_index": 57,
+    "heading": "12 Acknowledgement",
+    "section_path": "12 Acknowledgement",
+    "page_no": 27,
+    "doc_source": "aaskaii"
+   }
+  }
+ ],
+ "Curiel01": [
+  {
+   "text": "Salvador Curiel , 1 María J. Rioja , 2 , 3 Richard Dodson , 2 Huib Jan van Langevelde 4 , 5 and Tao An 6\n1 Instituto de Astronomía, Universidad Nacional Autónoma de México (UNAM), Apartado Postal 70-264, Ciudad de México, México\n2 International Centre for Radio Astronomy Research (ICRAR), University of Western Australia, 35 Stirling Hwy, Crawley, WA 6009, Australia\n3 Observatorio Astronómico Nacional (IGN), Alfonso XII, 3 y 5, 28014 Madrid, Spain\n4 Joint Institute for VLBI ERIC (JIVE), Oude Hoogeveensedijk 4, 7991 PD Dwingeloo, The Netherlands\n5 Leiden Observatory, Leiden University, Postbus 2300, 9513 RA Leiden, The Netherlands\n6 Shanghai Astronomical Observatory, CAS, Nandao Road 80, Shanghai 200030, China\nE-mail:\n",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 0,
+    "heading": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "section_path": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "page_no": 1,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "The study of exoplanets is a rapidly developing field, driven by the discoveries of Kepler and TESS, among others. The recent detection of Jovian planetary companions of low-mass stars demonstrates that VLBI observations will be an excellent tool for indirect detection of planetary companions through precise radio astrometry of the host star. The anticipated sensitivity of SKA-VLBI and its capability to form multi-beam Tied Array Beams and MultiView analysis will allow us to achieve an order of magnitude increase in astrometric precision, providing much finer details for a wider range of exoplanets and hosts, which will revolutionize the field of exoplanets. Precise micro-arcsecond astrometric observations are crucial for detecting not only Jupiter-like planets, but also lowermass planets. SKA-VLBI astrometric observations in L and C bands will open the possibility of indirect detection of thousands of planetary companions to radiobright ultra cool dwarfs, M dwarfs and young stars. When a companion is also detected, the astrometric fit of the data will provide the dynamical masses of the components. In the case of binary systems with planets, fitting the astrometric data will provide the individual masses of stars and planets, as well as the mutual inclination angle of the system, which will show whether the planet is moving in prograde or retrograde orbit around its host star. The search for exoplanets at radio wavelengths will be complementary to other techniques and will allow for the detection of a population of exoplanets that is difficult to reach using other techniques.",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 1,
+    "heading": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "section_path": "Ultra-Precise Astrometric Search for Exoplanets with SKA-VLBI",
+    "page_no": 1,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "In the field of exoplanet research, the study of radio emission from M-dwarfs and ultra-cool dwarfs (UCDs) is of relevance for several reasons. First, magnetic interactions between a star and a close-in planetary companion are expected to produce observable radio bursts as the companion traverses the stellar magnetosphere (e.g., Strugarek and Shkolnik, 2025). The mechanism responsible for these radio bursts is the electron-cyclotron maser instability (ECMI), which produces highly polarized and strongly beamed emission (e.g., Peña-Moñino et al., 2025). Second, high-precision astrometry of radio-bright M-dwarfs and UCDs can be used to search for companions with masses in the planetary-mass regime. For example, the astrometric precision of the Very Long Baseline Array (VLBA; ≲ 100 𝜇 as in X-band, single epoch) allows the indirect detection of massive planets in wide orbits (P ≳ 100 days) around nearby (d ≲ 10 pc) M-dwarfs and UCDs (Curiel et al., 2020, 2022). Multi-epoch radio monitoring of such systems can then be used to characterize their orbits as well as their masses, providing a means to accurately estimate the physical properties of potential exoplanet-hosting stars. Moreover, high-angular-resolution observations in the radio can detect close-in stellar and even substellar companions around this kind of stars, providing the possibility of obtaining their dynamical masses (e.g., Curiel et al., 2024). Last, high-energy charged particles confined in a dipolar magnetic field around very late M-dwarfs (ultracool dwarfs) can produce radiation belts that show a double-lobed structure (Kao et al., 2023; Climent et al., 2023). These structures are similar in morphology to the Jovian radiation belts and emit detectable non-thermal (synchrotron) radio emission, which can be used to probe planet-like magnetospheric phenomena (Kao et al., 2023).",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 2,
+    "heading": "1 Introduction",
+    "section_path": "1 Introduction",
+    "page_no": 2,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "The sensitivity and resolution of Very Long Baseline Interferometry (VLBI), in combination with the discovery of radio emission from late M and L dwarfs (Berger et al., 2001; Berger, 2006), have become a game changer to improve our observational understanding of planetary formation in very low-mass stars and brown dwarfs with M < 0.2 𝑀 ⊙ (see Bower et al., 2009; Forbrich and Berger, 2009; Forbrich et al., 2013; Gawroński et al., 2017). In addition, recent work has demonstrated the potential of the VLBI astrometric technique to discover brown dwarf and planetary companions. For instance, using astrometric observations at radio wavelengths with the Very Long Baseline Array (VLBA), three brown dwarfs were discovered orbiting two pre-main sequence stars (Curiel et al., 2019, 2024), and two Jovian mass planets were found associated with an M9 ultracool dwarf and the main star in an M-dwarf binary system (Curiel et al., 2020, 2022).\nSome of these topics are discussed in other chapters in Advance Astrophysics with the Square Kilometre Array II, such as magnetic star-planet interaction (Radio Emission from Star-planet interactions by Vedantham et al., 2026), direct exoplanet detection (Discovery and characterizing exoplanets and ultracool dwarfs with the Square Kilometre Array by Kavanagh et al., 2026) and Ultra-Precise MultiView Astrometry (Ultra-Precise Astrometry with the next generation of VLBI, using SKA by Rioja et al., 2026). In this chapter, we provide an overview of the core science goals and requirements for exoplanet astrometric studies, along with a focus on the advances expected from the next generation astrometric MultiView methods to meet this challenge, and recent progress made from pathfinder studies. In particular, we focus on what is expected from SKA in conjunction with other radio telescopes, located at distances of between several hundred and several thousand kilometers, SKA-VLBI.",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 3,
+    "heading": "1 Introduction",
+    "section_path": "1 Introduction",
+    "page_no": 2,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "VLBI intrinsically provides the highest resolution in astrometry and, with a robust calibration method, provides an astrometric precision roughly equal to the resolution over the signal-to-noise ratio (S/N). Nevertheless, in current VLBI arrays and using standard single-calibrator phase reference methods, precision is nearly always limited by systematics in the calibration rather than intrinsic thermal limits (see Rioja and Dodson, 2020, Figure 2). The SKA offers the possibility for ultra-precise astrometry in conjunction with other radio telescopes, to provide next-generation VLBI observations with potential for an order of magnitude improvement in sensitivity and in astrometric performance. Furthermore, the wide range of radio frequencies that will be covered will allow for the application of astrometric methods to a much wider set of targets and science cases. But to deliver this, we require, in addition to the next-generation instruments, next-generation methods, to improve on the limits currently obtained with standard astrometric methods. MultiView methods have demonstrated outstanding performance, with an increasing number of astrometric measurements reaching the thermal noise limit of current VLBI networks, as predicted by our error analysis. As discussed in Chapter Ultra-Precise Astrometry (Rioja et al., 2026), we estimate an order of magnitude improvement for SKA-VLBI (i.e. up to 10 𝜇 as astrometric precision at 1.4 GHz and 1 𝜇 as above 5 GHz), assuming an upgraded network of antennas that match the SKA capabilities combined with next-generation technology. This is predicated on the sensitivity improvement from the increased collecting area and the quasi-perfect compensation of systematic atmospheric effects, as provided by MultiView analysis using multiple calibrators or an extremely close suitable calibrator (with an arcmin separation or less). Additionally, the frequency range possible for astrometry could increase by an order of magnitude.",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 4,
+    "heading": "2.1 Next generation MultiView methods",
+    "section_path": "2.1 Next generation MultiView methods",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "One of the most ground-breaking enhancements the SKA-VLBI will bring is the ability to form multiple Tied Array Beams (TAB) from the SKA array, both within the large field of view of a single element with maximal sensitivity or, with sub-arraying, anywhere within the visible sky. The initial roll-out of SKA (AA*) will be limited to one (or maybe four) simultaneous beams. However, it remains possible that the Pulsar Timing Voltage beams can be repurposed for VLBI, at the price of reduced bandwidth. The prime driver for multiple VLBI beams is for the ultra-precise cancelation of systematic errors, but it would also allow for targeting of multiple sources close together. One can estimate the impact of such an observing model by including dynamic errors in the error budget, see Figure 1. See also the Chapter Ultra-Precise MultiView Astrometry (Rioja et al., 2026).",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 5,
+    "heading": "2.2 Consequences of SKA Capabilities",
+    "section_path": "2.2 Consequences of SKA Capabilities",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "Section 2 shows that the expected MultiView astrometric precision of SKA-VLBI observations at 1.4 and 5 GHz is between 7 and 1 𝜇 as, respectively. According to the expected performance of SKA1 (Braun et al., 2019) the expected sensitivity at those frequencies is about 2 and 1.3 𝜇 Jy/beam in 1 h integration time. This extraordinary performance will open up the possibility of detecting numerous exoplanets using radio astrometry. To quantify the number of exoplanets that could be Hours Hours detected with SKA-VLBI using this technique, we first need to estimate the number of low-mass stars (radio-emitting or not) that can be detected with an adequate S/N. We used a 3D Monte-Carlo population synthesis simulation to estimate the number of expected detections within a volume with a radius of 300 pc around the Sun, which is consistent with estimates of the Galactic thin disk scale height, as reported values range from 150 and 450 pc (Aganze et al., 2022). The estimated local density of ultra-cool dwarfs (spectral types M7-T6) is assumed to be 2.9 × 10 -2 pc -3 , consistent with volume-limited ( < 25 pc) surveys (Tang et al., 2022, and references therein) and the completenesscorrected 20 pc census of Kirkpatrick et al. (2024). Unfortunately, while the stellar space density of M-dwarfs is well established, the local fraction of radio-bright M-dwarfs at the relevant frequencies is not yet uniformly quantified for a robust estimate of the local density of M-dwarfs, so we will limit these calculations to ultra-cool dwarfs. Since there are no estimates of the expected visible sky, for these calculations, we consider that half of the sky will be accessible to be observed with SKA-VLBI. We assume the detection rate of radio-flaring ultra-cool dwarfs from unbiased surveys, 𝑓 𝑟𝑎𝑑 = 3%. Each synthetic source is given a radio luminosity following the luminosity function of ultra-cool flares (Tang et al., 2022) and their flux densities are calculated at 1.4 and 5 GHz.",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 6,
+    "heading": "3 Planetary companions detectable with SKA-VLBI radio astrometry",
+    "section_path": "3 Planetary companions detectable with SKA-VLBI radio astrometry",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  },
+  {
+   "text": "After running 10000 simulations, we obtain that ∼ 18000 ultra-cool dwarfs could be detected at 1.4 GHz and ∼ 2700 at 5 GHz as far as 300 pc with a 10 -𝜎 detection limit.\nFigure 1: Astrometric Error budget for SKA with multiple pencil beamsat at AA4 sensitivities. (Left) 1.4 GHz for a 2 mJy source and (Right) 5 GHz for a 5 mJy source. Thermal limits for VLBA (blue dashed) and for an SKA-VLBI single baseline to a nominal 100 m-diameter telescope, are calculated using SEFDs from EVNCalc (red dashes for AA4 tied-array of 10 km radius) as a function of the observing time. At L-band the systematics limits for a single very close phase reference calibrator (6 arcmin away) and MultiView with multiple sources are shown with black dotted lines, at 100 𝜇 as and 7 𝜇 as respectively. For C-band only MV calibration is shown (as few high dynamic range in-beam calibrators are to be found at 5 GHz), limiting at 1 𝜇 as for simultaneous. The predicted performance (solid lines) is a sum of the systematic and thermal errors. At the selected target flux systematic limits are reached at about an hour; weaker or stronger sources would reach the same limits in greater or lesser time, respectively.",
+   "meta": {
+    "source": "pdfs/AASKAII/Sun, Earth and Planets/Curiel01.pdf",
+    "chunk_index": 7,
+    "heading": "3 Planetary companions detectable with SKA-VLBI radio astrometry",
+    "section_path": "3 Planetary companions detectable with SKA-VLBI radio astrometry",
+    "page_no": 3,
+    "doc_source": "aaskaii"
+   }
+  }
+ ]
+}

@@ -63,6 +63,7 @@ list_unresolved_sources_tool
 build_citation_db_tool, top_cited_papers_tool, citing_papers_tool
                         Database of references cited by the papers (most-cited works).
 facility_network_tool   External facilities named per section, with co-mentions.
+index_health_tool       Duplicates, unlisted documents, zone counts, manifest check.
 verify_citation_tool    Check a paper's reference list contains a cited work.
 visibility_windows_tool, lst_pressure_tool
                         Target visibility and LST pressure (unverified settings).
@@ -110,8 +111,9 @@ from pathlib import Path
 
 import requests
 from fastmcp import FastMCP
+from fastmcp.server.middleware import Middleware
 
-from rag import store
+from rag import store, zones
 from rag import citation_db, corpus_tools, scheduling, source_db
 from rag.bibliography import bib_key, format_citation, list_toc_entries, lookup_citation, section_of
 from rag.config import (
@@ -280,6 +282,59 @@ mcp = FastMCP(
         "ones."
     ),
 )
+
+
+# ---------------------------------------------------------------------------
+# Index fingerprint on every response
+# ---------------------------------------------------------------------------
+# Counts change whenever the index does (a new chapter, a removed copy, a
+# retag), so every response says which index it came from: the fingerprint
+# and build time from the store's manifest.json (written by ingest.py). It
+# goes in the protocol's result _meta and, so agents and transcripts keep it,
+# in the visible result: an "_index" key for JSON-object results, a closing
+# line for text. JSON-list results (search_astronomy_docs(as_json=True)) are
+# left as they are, so existing parsers keep working.
+_TEXTBOOK_TOOLS = {"search_textbooks", "list_textbooks"}
+_manifest_cache: dict[Path, tuple[float, dict | None]] = {}
+
+
+def _index_meta(db_dir: Path) -> dict:
+    mtime = zones.manifest_mtime(db_dir)
+    if _manifest_cache.get(db_dir, (None,))[0] != mtime:
+        _manifest_cache[db_dir] = (mtime, zones.read_manifest(db_dir))
+    m = _manifest_cache[db_dir][1]
+    if not m:
+        return {"fingerprint": None, "note": "no manifest; run `python ingest.py --retag`"}
+    return {"fingerprint": m["index_fingerprint"][:16], "written_at": m["written_at"], "n_chunks": m["n_chunks"]}
+
+
+def _stamp(text: str, meta: dict) -> str:
+    """Add the index metadata to one text result (see the comment above)."""
+    try:
+        data = json.loads(text)
+    except ValueError:
+        data = None
+    if isinstance(data, dict):
+        return json.dumps({**data, "_index": meta})
+    if isinstance(data, list):
+        return text
+    return f"{text}\n\n[index {meta.get('fingerprint')}, built {meta.get('written_at')}]"
+
+
+class IndexFingerprint(Middleware):
+    async def on_call_tool(self, context, call_next):
+        result = await call_next(context)
+        meta = _index_meta(TEXTBOOKS_CHROMA_DIR if context.message.name in _TEXTBOOK_TOOLS else CHROMA_DIR)
+        result.meta = {**(result.meta or {}), "index": meta}
+        for block in result.content:
+            if getattr(block, "type", None) == "text":
+                block.text = _stamp(block.text, meta)
+        if isinstance(result.structured_content, dict) and isinstance(result.structured_content.get("result"), str):
+            result.structured_content["result"] = _stamp(result.structured_content["result"], meta)
+        return result
+
+
+mcp.add_middleware(IndexFingerprint())
 
 
 def _format_passage(i: int, chunk: dict) -> str:
@@ -602,9 +657,9 @@ def get_document_chunks(filename: str, max_chunks: int = 60) -> str:
             author_str = ""
         citation = format_citation(entry)
     else:
-        doc_title = stem
+        doc_title = Path(matching_source).stem
         author_str = ""
-        citation = stem
+        citation = doc_title
 
     lines = [
         f"# {doc_title}{author_str}",
@@ -1017,7 +1072,8 @@ def get_author_info_tool(author_name: str) -> str:
 
 @mcp.tool()
 def keyword_coverage_tool(
-    terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1
+    terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1,
+    include_noncanonical: bool = False,
 ) -> str:
     """Exact, repeatable counts of which book sections and papers mention each term.
 
@@ -1035,9 +1091,12 @@ def keyword_coverage_tool(
             for everything.
         min_hits_per_paper: Mentions a paper needs before it counts as
             covering a term (raise to 3-5 to drop passing mentions).
+        include_noncanonical: Also count re-downloaded copies of an indexed
+            paper and book documents with no bibliography entry (default
+            false since 2026-11: each paper counts once; see index_health_tool).
     """
     try:
-        return json.dumps(corpus_tools.keyword_coverage(terms, book, min_hits_per_paper))
+        return json.dumps(corpus_tools.keyword_coverage(terms, book, min_hits_per_paper, include_noncanonical))
     except ValueError as exc:
         return f"Invalid request: {exc}"
 
@@ -1405,7 +1464,7 @@ def citing_papers_tool(text: str, limit: int = 100) -> str:
 
 @mcp.tool()
 def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
-                          min_shared_papers: int = 2) -> str:
+                          min_shared_papers: int = 2, include_noncanonical: bool = False) -> str:
     """Which external facilities (Rubin/LSST, JWST, ngVLA, CTAO, LIGO, IceCube,
     ALMA, …; about 80, curated in corpus_tools.FACILITIES) the papers name,
     across how many sections and papers, and which are named together.
@@ -1420,11 +1479,38 @@ def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int 
         book: "aaskaii" (default), "aaska2015", "ska_capabilities" or null.
         min_hits_per_paper: Mentions a paper needs to count (default 2).
         min_shared_papers: Minimum shared papers for an edge (default 2).
+        include_noncanonical: Also count copies and unlisted documents
+            (default false since 2026-11).
     """
     try:
-        return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers))
+        return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers,
+                                                        include_noncanonical))
     except ValueError as exc:
         return f"Invalid request: {exc}"
+
+
+@mcp.tool()
+def index_health_tool(book: str | None = None, include_documents: bool = False) -> str:
+    """State of the document index: duplicate paper IDs and copies, book
+    documents with no bibliography entry, unclassified documents, chapters
+    with no PDF, documents whose reference list wasn't found, and whether the
+    manifest (index fingerprint, parser and embedding versions) still matches.
+
+    Run this before a corpus-wide analysis, and record its fingerprint next to
+    any counts you report, so later runs can tell an index change from a
+    change in the papers.
+
+    Args:
+        book: "aaskaii", "aaska2015", "ska_capabilities" or null for all.
+        include_documents: Also list chunk and zone counts for every document.
+    """
+    try:
+        out = corpus_tools.index_health(book)
+    except ValueError as exc:
+        return f"Invalid request: {exc}"
+    if not include_documents:
+        out.pop("documents")
+    return json.dumps(out, default=str)
 
 
 @mcp.tool()
