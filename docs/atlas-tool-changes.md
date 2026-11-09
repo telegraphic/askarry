@@ -143,3 +143,42 @@ tiers are linked to fields; LST bins change slightly because Sun
 constraints no longer apply and low targets (NGC 1275, L1551 IRS5) are
 placed; `never_visible` shrinks to targets that never clear the horizon
 (W3A, Holmberg II X-1).
+
+## WS7: data-product sizing
+
+**What changed.** HI surveys can be sized as wide-band cubes and intensity
+mapping as autocorrelation spectra, and results separate visibilities, the
+archived volume (under a stated, unverified policy) and the delivered
+volume.
+
+**What `build_atlas_data.py` should change.** `request_odps()` sizes every
+"Zoom" request as a 4,000-channel, 13.44 kHz window (`zoom_n_chan`,
+`zoom_channel_kHz` in `_odp_reference`), which is what made the all-sky HI
+tier 54 MHz wide. HI surveys should call
+`estimate_data_product_size("Spectral Cube (wide-band)", ...)` with the
+band's frequency range, and intensity-mapping requests
+`"Single-dish Autocorrelation"`. `volume_TB` on the page should be split
+into the three tiers, and the archive total should use `archived_TB`, not
+the visibility volume.
+
+**Figures that move.** `observing-mode-data.html` (`mode_odps.json`): HI
+cube channel counts rise by about nine times (470 MHz instead of 54 MHz in
+Band 2); intensity-mapping requests lose their visibility volume; the
+archive totals fall sharply, because calibrated visibilities, which
+dominate the current totals, are not archived under the stated assumption.
+
+## WS8: citations and objects
+
+**What changed.** References are grouped by DOI or ADS bibcode (built
+offline), with journal recorded and journal-like first authors fixed and
+flagged. Object lookups return a familiar display name and a confidence.
+
+**What `build_atlas_data.py` should change.** `citations()` should show
+`journal` and link `bibcode`s to ADS, and drop or footnote rows with
+`first_author_suspect`. `sources()` should show `display_name` with the
+SIMBAD `main_id` beside it.
+
+**Figures that move.** `citation-landscape.html` (`citations.json`):
+most-cited counts rise where the two books' styles now merge, and rows
+labelled with a journal as author ("araa", "mnras") get real authors.
+`target-atlas.html` (`sources.json`): names become familiar ones.

@@ -269,11 +269,10 @@ def data_product_cases() -> dict:
 
 
 def citation_cases() -> dict:
-    from rag import citation_db
     conn = sqlite3.connect(ROOT / "citations.db")
     cols = {r[1] for r in conn.execute("PRAGMA table_info(refs)")}
-    journals = tuple(sorted(citation_db.JOURNAL_ABBREVIATIONS)) if hasattr(citation_db, "JOURNAL_ABBREVIATIONS") else (
-        "apj", "mnras", "araa", "aa", "aj", "pasa", "nature", "science", "d", "physics", "apjl", "apjs", "pasp")
+    # A fixed list, so the before and after counts compare like with like.
+    journals = ("apj", "mnras", "araa", "aa", "aj", "pasa", "nature", "science", "d", "physics", "apjl", "apjs", "pasp")
     n_bad = conn.execute(f"SELECT COUNT(*) FROM refs WHERE first_author IN ({','.join('?' * len(journals))})",
                          journals).fetchone()[0]
     out = {"C1": {"case": "references whose first author parses as a journal", "n": n_bad},

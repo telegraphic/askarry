@@ -350,7 +350,8 @@ def query_sources(conn: sqlite3.Connection, object_type: str | None = None,
                   paper: str | None = None, dec_min: float | None = None,
                   dec_max: float | None = None, min_papers: int = 1,
                   limit: int = 100) -> list[dict]:
-    """Resolved sources, most-cited first, with the papers that mention them."""
+    """Resolved sources, most-cited first, with the papers that mention them
+    and a display_name (the name the papers use most)."""
     where, params = ["n.status = 'resolved'"], []
     for column, value in (("s.object_type", object_type), ("m.book", book),
                           ("m.section", section), ("m.paper", paper)):
@@ -374,8 +375,16 @@ def query_sources(conn: sqlite3.Connection, object_type: str | None = None,
             ORDER BY n_papers DESC, n_mentions DESC LIMIT ?""",
         (*params, min_papers, limit),
     ).fetchall()
+    # Familiar name: the one the papers use most (SIMBAD's main_id can be
+    # obscure, e.g. Cygnus A is MCG+07-41-003).
+    counts = {}
+    for sid, raw, n in conn.execute(
+            "SELECT n.source_id, n.raw_name, COUNT(*) FROM names n JOIN mentions m ON m.name_key = n.name_key"
+            " WHERE n.source_id IS NOT NULL GROUP BY n.source_id, n.raw_name"):
+        if n > counts.get(sid, ("", 0))[1]:
+            counts[sid] = (raw, n)
     return [
-        {**dict(r), "papers": sorted(r["papers"].split(",")),
+        {**dict(r), "display_name": counts.get(r["id"], (r["main_id"],))[0], "papers": sorted(r["papers"].split(",")),
          "names_as_written": sorted(r["names_as_written"].split(","))}
         for r in rows
     ]

@@ -73,9 +73,45 @@ def ned_lookup(name: str) -> dict:
     }
 
 
+# Catalogues readers know, most familiar first, for picking a display name
+# when SIMBAD's main identifier is obscure (Cygnus A's is "MCG+07-41-003").
+_FAMILIAR = [r"M\s+\d+$", r"NGC\s+\d+\w?$", r"IC\s+\d+$", r"3C\s+\d+(\.\d+)?\w?$", r"PSR\s+[JB]\S+$",
+             r"4C\s+\S+$", r"PKS\s+\S+$", r"SN\s+\S+$", r"GRB\s+\S+$", r"FRB\s+\S+$"]
+
+
+def _norm_id(s: str) -> str:
+    return re.sub(r"\s+", "", str(s)).lower()
+
+
+def display_name(main_id: str, aliases: list[str], query: str | None = None) -> str:
+    """A familiar name for an object: the query itself if it is one of
+    SIMBAD's common names; else a Messier number ("M 31"); else SIMBAD's
+    common name ("NAME Cygnus A" -> "Cygnus A"); else the first alias from a
+    well-known catalogue (NGC, IC, 3C, PSR, ...); else the main identifier.
+    Runs of spaces are collapsed ("M  31" -> "M 31")."""
+    clean = lambda s: re.sub(r"\s+", " ", str(s)).strip()  # noqa: E731
+    names = [clean(a)[5:] for a in aliases if clean(a).startswith("NAME ")]
+    q = _norm_id(query) if query else None
+    hit = next((n for n in names if _norm_id(n) == q), None)
+    if hit:
+        return hit
+    messier = next((clean(a) for a in [main_id, *aliases] if re.match(_FAMILIAR[0], clean(a))), None)
+    if messier or names:
+        return messier or names[0]
+    for pattern in _FAMILIAR[1:]:
+        hit = next((clean(a) for a in [main_id, *aliases] if re.match(pattern, clean(a))), None)
+        if hit:
+            return hit
+    return clean(main_id)
+
+
 def resolve_object(name: str) -> dict:
     """SIMBAD's entry for an object name (falling back to NED): position in
-    several frames, object type, redshift and common aliases."""
+    several frames, object type, redshift, common aliases, a familiar
+    display name (SIMBAD's main ID can be obscure: Cygnus A is
+    "MCG+07-41-003"), and a confidence: 1.0 when the name is one of SIMBAD's
+    identifiers for the object, 0.8 when SIMBAD resolved it some other way,
+    0.6 from the NED fallback."""
     import warnings
 
     from astroquery.simbad import Simbad
@@ -84,19 +120,29 @@ def resolve_object(name: str) -> dict:
         warnings.simplefilter("ignore")
         t = _simbad().query_object(name)
     if len(t) == 0:
-        return ned_lookup(name)
+        out = ned_lookup(name)
+        if out.get("found"):
+            out.update(main_id=out["name"], display_name=out["name"], confidence=0.6)
+        return out
     row = t[0]
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         ids = Simbad.query_objectids(name)
+    every = [str(i) for i in ids["id"]] if ids is not None else []
+    main_id = _clean(row["main_id"])
+    known = {_norm_id(i) for i in [main_id, *every]}
+    exact = _norm_id(name) in known or _norm_id(f"NAME {name}") in known
     return {
         "found": True,
         "service": "SIMBAD",
-        "name": _clean(row["main_id"]),
+        "name": main_id,  # kept for existing callers; same as main_id
+        "main_id": main_id,
+        "display_name": display_name(main_id, every, name),
+        "confidence": 1.0 if exact else 0.8,
         "object_type": _clean(row["otype"]),
         "redshift": _clean(row["rvz_redshift"]),
         **_coords(float(row["ra"]), float(row["dec"])),
-        "aliases": [str(i) for i in ids["id"][:MAX_ALIASES]] if ids is not None else [],
+        "aliases": every[:MAX_ALIASES],
     }
 
 

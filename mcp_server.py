@@ -790,12 +790,29 @@ def estimate_data_product_size_tool(product_type: str, params: dict) -> str:
     """Estimate the data volume (and rate, where applicable) of an SKA data product.
 
     Uses the vendored odp-data-size-tool formulas for a single data product
-    instance (not a full observing setup).
+    instance (not a full observing setup), plus two whole-observation modes:
+
+    - "Spectral Cube (wide-band)": a line cube across a whole band (an HI
+      survey), not a single zoom window. Params: telescope, freq_min_mhz +
+      freq_max_mhz (or bandwidth_mhz), channel_width_khz (default the native
+      continuum channel), resolution_arcsec, fov_deg, n_station, duration_h,
+      t_int_s; optional n_stokes, n_beam, n_bit, n_pointings.
+    - "Single-dish Autocorrelation": intensity mapping from autocorrelation
+      spectra (no cross-correlations). Params: telescope, frequencies as
+      above, n_dish, duration_h, t_int_s; optional n_pol, n_bit, and
+      map_area_deg2 + pixel_arcmin for the delivered maps.
+
+    Those two return tiers_TB: visibilities_TB (raw/calibrated visibilities;
+    None for autocorrelations), archived_TB (what the archive keeps) and
+    delivered_TB (what the science team gets). Every result says whether
+    the archive keeps the product and the policy source; the archive policy
+    is an unverified assumption (config.DATA_PRODUCT_POLICY).
 
     Args:
         product_type: One of "Image", "Image Cutout", "Gridded Visibilities",
             "PSS", "PST Folded", "Dynamic Spectrum", "Flowthrough", "VLBI",
-            "Transient Dump", "Calibrated Vis".
+            "Transient Dump", "Calibrated Vis", "Spectral Cube (wide-band)",
+            "Single-dish Autocorrelation".
         params: Parameter values for that product type. Angular values
             (resolution, fov) and durations are unit strings (e.g.
             "1.000 arcsec", "3600.000 s"); bandwidths (bw, cbw) accept a

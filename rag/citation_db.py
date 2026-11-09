@@ -47,11 +47,45 @@ RUN_ON_RE = re.compile(r"(?<=\d)\s+(?=(?:[a-z]+\s)?[A-Z][^\s,]*,\s+[A-Z]\.)")
 VOL_PAGE_GIVEN_FIRST = re.compile(r"\b(\d+)(?:\(\d+\))?:\s*([A-Za-z]*\d+)")  # 359(1):L30
 VOL_PAGE_SURNAME_FIRST = re.compile(r",\s*([A-Z]?\d+)\s*,\s*(?:(?:article id\.|art\.|p\.)\s*)?([A-Za-z]?\d+)\b")
 
+# Journals as cited -> (abbreviation, ADS bibstem). Keys are the journal
+# name lowercased with spaces and full stops removed. Used to name the
+# journal and to build ADS bibcodes offline (no network): references are
+# grouped by DOI or bibcode, so the two books' citation styles meet.
+JOURNALS: dict[str, tuple[str, str]] = {}
+for _abbr, _stem, _names in (
+    ("ApJ", "ApJ", "apj astrophysj theastrophysicaljournal astrophysicaljournal"),
+    ("ApJL", "ApJ", "apjl apjlett astrophysjlett apjletters astrophysjl theastrophysicaljournalletters"),
+    ("ApJS", "ApJS", "apjs astrophysjsuppl astrophysjsupplser theastrophysicaljournalsupplementseries"),
+    ("MNRAS", "MNRAS", "mnras monnotrastronsoc monthlynoticesoftheroyalastronomicalsociety"),
+    ("A&A", "A&A", "a&a aa astronastrophys astronomyandastrophysics astronomy&astrophysics"),
+    ("AJ", "AJ", "aj astronj theastronomicaljournal astronomicaljournal"),
+    ("ARA&A", "ARA&A", "ara&a araa annurevastronastrophys"),
+    ("A&ARv", "A&ARv", "a&arv aarv astronastrophysrev"),
+    ("PASA", "PASA", "pasa publastronsocaust"),
+    ("PASP", "PASP", "pasp publastronsocpac"),
+    ("PASJ", "PASJ", "pasj publastronsocjpn"),
+    ("Nature", "Natur", "nature"),
+    ("Science", "Sci", "science"),
+    ("NatAs", "NatAs", "natastron natureastronomy"),
+    ("PhRvD", "PhRvD", "physrevd prd physicalreviewd"),
+    ("PhRvL", "PhRvL", "physrevlett prl physicalreviewletters"),
+    ("JCAP", "JCAP", "jcap jcosmolastropartphys"),
+    ("SSRv", "SSRv", "ssrv spacescirev spacesciencereviews"),
+    ("SoPh", "SoPh", "solphys"),
+    ("Icarus", "Icar", "icarus"),
+):
+    for _name in _names.split():
+        JOURNALS[_name] = (_abbr, _stem)
+# Folded forms a journal takes when a parser mistakes it for a surname
+# ("S. P. Reynolds. ARA&A , 46:89" once gave first author "araa").
+JOURNAL_ABBREVIATIONS = {re.sub(r"[^a-z0-9]", "", k) for k in JOURNALS} | {"d", "physics", "lett", "rev"}
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS refs (
     ref_key TEXT PRIMARY KEY,
     raw TEXT NOT NULL,
-    first_author TEXT, year INTEGER, volume TEXT, page TEXT, doi TEXT, arxiv TEXT
+    first_author TEXT, year INTEGER, volume TEXT, page TEXT, doi TEXT, arxiv TEXT,
+    journal TEXT, bibcode TEXT, first_author_suspect INTEGER
 );
 CREATE TABLE IF NOT EXISTS cites (
     ref_key TEXT NOT NULL REFERENCES refs(ref_key),
@@ -61,6 +95,7 @@ CREATE TABLE IF NOT EXISTS cites (
 CREATE INDEX IF NOT EXISTS cites_ref ON cites(ref_key);
 CREATE INDEX IF NOT EXISTS refs_doi ON refs(doi);
 CREATE INDEX IF NOT EXISTS refs_arxiv ON refs(arxiv);
+CREATE INDEX IF NOT EXISTS refs_bibcode ON refs(bibcode);
 """
 
 
@@ -99,15 +134,47 @@ def split_entries(text: str) -> list[str]:
     return entries
 
 
+# End of a given-first author list: "Reynolds. ", "et al. ", "Gerhard. "
+# (a full stop after a whole word, not after an initial like "J. ").
+AUTHORS_END_RE = re.compile(r"et al\.?\s|(?<=[^\W\d_]{2})\.\s")
+VOL_PAGE_RAW_GIVEN = re.compile(r"\b(\d+)(?:\(\d+\))?:\s*([A-Za-z]?\d+)")
+
+
+def journal_of(name: str | None) -> tuple[str, str] | None:
+    """(abbreviation, ADS bibstem) for a journal as cited, if known."""
+    if not name:
+        return None
+    return JOURNALS.get(re.sub(r"[\s.]", "", name.lower()))
+
+
+def bibcode(year: int | None, journal: str | None, volume: str | None, page: str | None,
+            initial: str | None) -> str | None:
+    """ADS bibcode built offline (YYYYJJJJJVVVVMPPPPA), or None when a part is
+    missing or doesn't fit the format (five-digit pages, unknown journal).
+    Letter page prefixes (ApJL "L24", A&A "A68") go in the qualifier."""
+    j = journal_of(journal)
+    if not (year and j and volume and page and initial) or not volume.isdigit():
+        return None
+    abbr, stem = j
+    m = re.fullmatch(r"([A-Za-z]?)(\d+)", page)
+    if not m or len(m[2]) > 4 or len(volume) > 4:
+        return None
+    qualifier = (m[1] or ("L" if abbr == "ApJL" else ".")).upper()
+    return f"{year}{stem:.<5}{volume:.>4}{qualifier}{m[2]:.>4}{initial.upper()}"
+
+
 def parse_ref(entry: str) -> dict | None:
     """Fields and ref_key for one reference string (None if unparseable).
 
     Key preference: AASKAII report number / AASKA14 PoS id (chapters of the
-    books themselves), then surname|year|volume|page (matches across both
-    styles), then arXiv id, then DOI, then surname|year|start of the text.
-    # ponytail: an arXiv-only citation and a journal citation without the
-    # arXiv id/DOI stay separate (and so do free-text reports cited with
-    # different wording); merge via ADS bibcode resolution if that skews ranks.
+    books themselves), then the ADS bibcode built from journal, year, volume,
+    page and first initial (the same in both citation styles), then
+    surname|year|volume|page for journals without a known bibstem, then arXiv
+    id, then DOI, then surname|year|journal, then surname|year|start of the
+    text. Refs sharing a DOI, arXiv id or bibcode are merged after parsing
+    (_merge_shared_ids), so a citation with a DOI and one without still meet.
+    # ponytail: bibcodes are built offline, not looked up; an arXiv-only
+    # citation and a journal citation without the arXiv id/DOI stay separate.
     """
     doi_m = DOI_RE.search(entry)
     doi = re.sub(r"\s+", "", doi_m[1]).rstrip(".").lower() if doi_m else None
@@ -121,42 +188,65 @@ def parse_ref(entry: str) -> dict | None:
     body = ARXIV_RE.sub("", body)
 
     given = GIVEN_FIRST_RE.match(body)
-    if given:
-        first = re.split(r",| et al\b| and ", body[given.end():], maxsplit=1)[0].split()
-        surname = first[-1] if first else ""
-    else:
-        m = re.match(r"(?:[a-z]+\s+)*([^\s,.]+)", body)  # skip particles: "de Blok" -> "Blok"
-        surname = m[1] if m else ""
-    surname = _fold(surname)
-
     years = list(YEAR_RE.finditer(body))
     year_m = (years[-1] if given else years[0]) if years else None
     year = int(year_m[1]) if year_m else None
+    journal = None
+    if given:
+        # The first author's name runs to the first ",", " et al", " and" or
+        # the full stop ending the author list ("S. P. Reynolds. ARA&A , 46"
+        # is Reynolds, not ARA&A); the journal follows the author list.
+        name = re.split(r",| et al\b| and |(?<=[^\W\d_]{2})\.\s", body[given.end():], maxsplit=1)[0].strip()
+        first = name.split()
+        surname = first[-1] if first else ""
+        end = AUTHORS_END_RE.search(body, given.end())
+        if end:
+            jm = re.match(r"\s*(.+?)\s*,\s*(?:art\.|\d)", body[end.end():])
+            journal = jm[1].strip() if jm else None
+    else:
+        m = re.match(r"(?:[a-z]+\s+)*([^\s,.]+)", body)  # skip particles: "de Blok" -> "Blok"
+        surname = m[1] if m else ""
+        name = body.split(",")[0].strip()
+        if year_m:
+            jm = re.match(r"[a-z]?[,.]?\s*([^,\d][^,]*?)\s*,\s*[A-Z]?\d", body[year_m.end():])
+            journal = jm[1].strip(" .'") if jm else None
+    initial = next((ch for ch in name if ch.isalpha()), None)
+    surname = _fold(surname)
 
     if given:
         vp = VOL_PAGE_GIVEN_FIRST.search(body)
+        raw_vp = VOL_PAGE_RAW_GIVEN.search(body)
     else:
-        vp = VOL_PAGE_SURNAME_FIRST.search(body, year_m.end() if year_m else 0)
+        vp = raw_vp = VOL_PAGE_SURNAME_FIRST.search(body, year_m.end() if year_m else 0)
     volume, page = (_fold(vp[1]).lstrip("0"), _fold(vp[2]).lstrip("0")) if vp else (None, None)
+    known = journal_of(journal)
+    bib = bibcode(year, journal, volume, raw_vp[2].lstrip("0") if raw_vp else None,
+                  unicodedata.normalize("NFKD", initial).encode("ascii", "ignore").decode() if initial else None)
 
     aaskaii, aaska14 = AASKAII_RE.search(entry), AASKA14_RE.search(entry)
     if aaskaii:
         key = f"aaskaii:{aaskaii[1].lower()}"
     elif aaska14:
         key = f"aaska14:{int(aaska14[1] or aaska14[2])}"
+    elif bib:
+        key = f"bib:{bib}"
     elif surname and year and volume and page:
         key = f"{surname}|{year}|{volume}|{page}"
     elif arxiv:  # before DOI: arXiv DOIs (10.48550/arXiv.NNNN) often extract broken
         key = f"arxiv:{arxiv.lower()}"
     elif doi:
         key = f"doi:{doi}"
+    elif surname and year and known:
+        key = f"{surname}|{year}|{_fold(known[0])}"
     elif surname and year:
         tail = body[given.end():] if given else body[year_m.end():]
         key = f"{surname}|{year}|{_fold(tail)[:40]}"
     else:
         return None
     return {"ref_key": key, "raw": entry, "first_author": surname or None, "year": year,
-            "volume": volume, "page": page, "doi": doi, "arxiv": arxiv}
+            "volume": volume, "page": page, "doi": doi, "arxiv": arxiv,
+            "journal": known[0] if known else journal, "bibcode": bib,
+            "first_author_suspect": int(surname in JOURNAL_ABBREVIATIONS)}
 
 
 def reference_texts(chunks: list[dict]) -> dict[str, tuple[str, str]]:
@@ -182,7 +272,7 @@ def record_citations(conn: sqlite3.Connection, chunks: list[dict]) -> int:
             if ref is None:
                 continue
             conn.execute("INSERT OR IGNORE INTO refs VALUES (:ref_key, :raw, :first_author, :year,"
-                         " :volume, :page, :doi, :arxiv)", ref)
+                         " :volume, :page, :doi, :arxiv, :journal, :bibcode, :first_author_suspect)", ref)
             conn.execute("INSERT OR IGNORE INTO cites VALUES (?, ?, ?, ?, ?, ?)",
                          (ref["ref_key"], paper, source, book, section, entry))
     _merge_shared_ids(conn)
@@ -191,9 +281,10 @@ def record_citations(conn: sqlite3.Connection, chunks: list[dict]) -> int:
 
 
 def _merge_shared_ids(conn: sqlite3.Connection) -> None:
-    """Fold refs sharing a DOI or arXiv id into the smallest ref_key (e.g. an
-    arXiv-only citation and a journal citation that also gives the arXiv id)."""
-    for col in ("doi", "arxiv"):
+    """Fold refs sharing a DOI, arXiv id or bibcode into the smallest ref_key
+    (e.g. an arXiv-only citation and a journal citation that also gives the
+    arXiv id; a 2015-style citation with no DOI and a 2026-style one with)."""
+    for col in ("doi", "bibcode", "arxiv"):
         canonical = f"""(SELECT MIN(r2.ref_key) FROM refs r1 JOIN refs r2 ON r2.{col} = r1.{col}
                          WHERE r1.ref_key = cites.ref_key)"""
         conn.execute(f"UPDATE OR IGNORE cites SET ref_key = {canonical}"
@@ -223,6 +314,9 @@ def stats(conn: sqlite3.Connection) -> dict:
         "refs": one("SELECT COUNT(*) FROM refs"),
         "cites": one("SELECT COUNT(*) FROM cites"),
         "papers_with_refs": one("SELECT COUNT(DISTINCT source_path) FROM cites"),
+        "refs_with_doi": one("SELECT COUNT(*) FROM refs WHERE doi IS NOT NULL"),
+        "refs_with_bibcode": one("SELECT COUNT(*) FROM refs WHERE bibcode IS NOT NULL"),
+        "first_author_suspect": one("SELECT COUNT(*) FROM refs WHERE first_author_suspect"),
     }
 
 

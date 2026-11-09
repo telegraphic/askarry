@@ -6,6 +6,37 @@ caller has to change and which existing counts move. See
 
 ## Unreleased
 
+### Data products, citations and objects (WS7, WS8)
+
+- **`estimate_data_product_size_tool` gains two whole-observation modes.**
+  `"Spectral Cube (wide-band)"` sizes a line cube across a whole band (an
+  HI survey) rather than one 4,000 × 13.44 kHz zoom window (54 MHz).
+  `"Single-dish Autocorrelation"` sizes intensity mapping from
+  autocorrelation spectra (no cross-correlations). Both return `tiers_TB`:
+  `visibilities_TB`, `archived_TB` and `delivered_TB`.
+- Every data-product result now says whether the archive keeps the product
+  and gives `policy_source`. The archive policy is an unverified
+  assumption in `config.DATA_PRODUCT_POLICY` (science products archived;
+  visibilities kept only for processing).
+- **Citations are grouped by DOI or ADS bibcode.** References now record
+  `journal` and an ADS `bibcode` built offline from journal, year, volume,
+  page and first initial (about 20 journals; none for five-digit pages).
+  Refs sharing a DOI, bibcode or arXiv id are merged, so the two books'
+  citation styles meet. `ref_key` values change (`bib:1998AJ....115.1693C`
+  instead of `condon|1998|115|1693`). Rebuild with `build_citation_db_tool`.
+- Fixed: a single-author reference in the 2026 style
+  (`S. P. Reynolds. ARA&A , 46:89`) took the journal as the first author.
+  New `first_author_suspect` flags any first author that still looks like a
+  journal abbreviation.
+- **`resolve_object_tool` returns `display_name`, `main_id` and
+  `confidence`.** The display name is a familiar one (Cygnus A, not
+  MCG+07-41-003): the query if it is one of SIMBAD's common names, else a
+  Messier number, else SIMBAD's common name, else a well-known catalogue
+  name. Confidence: 1.0 when the query is one of SIMBAD's identifiers, 0.8
+  when SIMBAD resolved it otherwise, 0.6 from the NED fallback. `name` is
+  kept. `query_sources_tool` adds `display_name` (the name the papers use
+  most).
+
 ### Time demand: lst_pressure_tool and visibility_windows_tool (WS6)
 
 - **Demand-to-supply ratio.** `lst_pressure_tool` returns
