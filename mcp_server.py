@@ -107,6 +107,7 @@ Notes
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import requests
@@ -1073,15 +1074,26 @@ def get_author_info_tool(author_name: str) -> str:
 @mcp.tool()
 def keyword_coverage_tool(
     terms: list[str], book: str | None = "aaskaii", min_hits_per_paper: int = 1,
-    include_noncanonical: bool = False,
+    include_noncanonical: bool = False, zones: list[str] | None = ["abstract", "body"],
+    strict: bool = False, exclude: list[str] | None = None, use_curated_exclusions: bool = True,
+    return_contexts: int = 0, usage_stats: bool = False,
 ) -> str:
     """Exact, repeatable counts of which book sections and papers mention each term.
 
     Use this instead of running one search per keyword and tallying the
     results by hand, e.g. for "how many sections use technique X" rankings.
-    It scans every indexed chunk literally (whole-word match), so it measures
-    mentions, not relevance: follow up with search_astronomy_docs(paper=...)
-    to see how a paper actually uses a term.
+    It scans every indexed chunk, so it measures mentions, not relevance:
+    follow up with return_contexts or search_astronomy_docs(paper=...) to see
+    how a paper actually uses a term.
+
+    Defaults changed 2026-11 (pass zones=null, strict=true and
+    include_noncanonical=true for the old counts): only the abstract and body
+    count, so reference lists ("ApJ"), affiliations ("Max-Planck") and author
+    lists no longer do; words match in singular and plural and with spaces or
+    hyphens ("pulsar survey" finds "pulsar surveys", "zoom mode" finds
+    "zoom-mode"); curated exclusions drop other meanings of facility names
+    (Planck constant, "Chandra et al.", Fermi level); copies of a paper count
+    once.
 
     Args:
         terms: Terms to count. Use "|" for synonyms counted as one term, e.g.
@@ -1092,12 +1104,27 @@ def keyword_coverage_tool(
         min_hits_per_paper: Mentions a paper needs before it counts as
             covering a term (raise to 3-5 to drop passing mentions).
         include_noncanonical: Also count re-downloaded copies of an indexed
-            paper and book documents with no bibliography entry (default
-            false since 2026-11: each paper counts once; see index_health_tool).
+            paper and book documents with no bibliography entry (see
+            index_health_tool).
+        zones: Parts of each paper to count: any of "front_matter",
+            "abstract", "body", "acknowledgements", "references", "appendix";
+            null for all. Default abstract and body.
+        strict: Literal whole-word matching, no plurals or hyphen variants,
+            no curated exclusions.
+        exclude: Patterns whose mentions don't count, e.g. ["Planck
+            function", "Max-Planck"] (regular expressions, case-insensitive).
+        use_curated_exclusions: Apply the curated exclusions for Planck,
+            Chandra, Swift, Fermi, Gaia and Euclid (default true).
+        return_contexts: Return this many matched snippets per paper (with
+            zone, heading and page).
+        usage_stats: Per paper, mentions per 1,000 body words and whether
+            the term appears in a heading or the abstract.
     """
     try:
-        return json.dumps(corpus_tools.keyword_coverage(terms, book, min_hits_per_paper, include_noncanonical))
-    except ValueError as exc:
+        return json.dumps(corpus_tools.keyword_coverage(
+            terms, book, min_hits_per_paper, include_noncanonical, zones, strict, exclude,
+            use_curated_exclusions, return_contexts, usage_stats))
+    except (ValueError, re.error) as exc:
         return f"Invalid request: {exc}"
 
 
@@ -1464,7 +1491,9 @@ def citing_papers_tool(text: str, limit: int = 100) -> str:
 
 @mcp.tool()
 def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
-                          min_shared_papers: int = 2, include_noncanonical: bool = False) -> str:
+                          min_shared_papers: int = 2, include_noncanonical: bool = False,
+                          zones: list[str] | None = ["abstract", "body"], exclude: list[str] | None = None,
+                          use_curated_exclusions: bool = True) -> str:
     """Which external facilities (Rubin/LSST, JWST, ngVLA, CTAO, LIGO, IceCube,
     ALMA, …; about 80, curated in corpus_tools.FACILITIES) the papers name,
     across how many sections and papers, and which are named together.
@@ -1475,17 +1504,27 @@ def facility_network_tool(book: str | None = "aaskaii", min_hits_per_paper: int 
     example, is often cited for cosmological parameters rather than as an
     observing partner, so check a paper before calling it a synergy.
 
+    Defaults changed 2026-11: only the abstract and body count (not
+    reference lists or affiliations), curated exclusions drop other meanings
+    (Max-Planck, "Chandra et al.", Planck Collaboration citations, the Fermi
+    level), and copies of a paper count once.
+
     Args:
         book: "aaskaii" (default), "aaska2015", "ska_capabilities" or null.
         min_hits_per_paper: Mentions a paper needs to count (default 2).
         min_shared_papers: Minimum shared papers for an edge (default 2).
-        include_noncanonical: Also count copies and unlisted documents
-            (default false since 2026-11).
+        include_noncanonical: Also count copies and unlisted documents.
+        zones: Parts of each paper to count (see keyword_coverage_tool);
+            null for all. Default abstract and body.
+        exclude: Extra patterns whose mentions don't count (regular
+            expressions, case-insensitive), applied to every facility.
+        use_curated_exclusions: Apply the curated exclusions (default true).
     """
     try:
         return json.dumps(corpus_tools.facility_network(book, min_hits_per_paper, min_shared_papers,
-                                                        include_noncanonical))
-    except ValueError as exc:
+                                                        include_noncanonical, zones, exclude,
+                                                        use_curated_exclusions))
+    except (ValueError, re.error) as exc:
         return f"Invalid request: {exc}"
 
 

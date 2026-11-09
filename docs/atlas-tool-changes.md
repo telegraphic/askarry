@@ -33,3 +33,32 @@ manifest with a fingerprint, and every tool response reports it.
 **Figures that move.** Only figures the atlas computed without its own
 chapter restriction: the counts were already restricted to chapters, so
 duplicates mostly affected the tools' raw output, not the pages.
+
+## WS2: keyword_coverage and facility_network
+
+**What changed.** Counts cover the abstract and body only, match plurals
+and hyphen/space variants, and drop other meanings of facility names
+(Max-Planck, "Chandra et al.", the Planck constant, Planck Collaboration
+citations). Each response states the zones, matching mode and exclusions.
+
+**What `build_atlas_data.py` should change.**
+
+- `_coverage()` can call `keyword_coverage` with its defaults; keep
+  `min_hits_per_paper=2` if the atlas still wants to drop passing mentions.
+  With zones in place, that threshold is no longer needed to drop
+  affiliations ("SETI Institute"), which was its stated reason.
+- Term lists written to work around literal matching
+  (`"zoom mode|zoom-mode|zoom window"`) can be simplified
+  (`"zoom mode|zoom window"`), but they still work unchanged.
+- `facilities()` should pass nothing new; its counts will drop for Planck,
+  Chandra and Fermi.
+- Use `return_contexts=2` when an agent needs to check how a paper uses a
+  term, instead of a separate search.
+
+**Figures that move.** Every keyword-coverage figure: observing modes,
+methods, risks and the book diff (`modes.json`, `methods.json`,
+`risks.json`, `books_diff.json`), and the synergy network
+(`facilities.json`). Expect falls for terms that also appear in reference
+lists and affiliations (ApJ, Planck, Chandra, and any term in journal
+titles), and rises for terms usually written in the plural (pulsar surveys,
+data rates, zoom modes). The table at the end has the regression cases.

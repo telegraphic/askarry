@@ -25,6 +25,7 @@ from rag.config import (
 )
 from rag.ingestion import find_acronym_candidates
 from rag.retrieval import get_acronyms, get_all_chunks, matches_where, rerank_score, retrieve
+from rag.zones import CONTENT_ZONES, ZONES
 
 # Book names accepted by the tools, mapped to chunk doc_source tags.
 BOOKS = {
@@ -128,31 +129,118 @@ def corpus_chunks(book: str | None = "aaskaii", include_noncanonical: bool = Fal
     ]
 
 
-def _term_regexes(term: str, acronyms: dict[str, str]) -> list[re.Pattern]:
+# Words that end in "s" but are not plurals, so _singular leaves them alone.
+_NOT_PLURAL_ENDINGS = ("ss", "us", "is", "ous", "ics", "ays")
+
+# Other meanings of words that are also facility names, left out of counts
+# unless strict matching is asked for. Keys match a term alternative (or a
+# FACILITIES name) case-insensitively. Each guard is a regex matched
+# case-insensitively; a mention inside a guard's match is not counted.
+TERM_EXCLUSIONS: dict[str, list[str]] = {
+    "Planck": [r"Max[- ]Planck\w*", r"Planck(?:'s)?\s+(?:and\s+\w+\s+)?(?:constants?|function|law|mass|scale|length|time|units?|"
+               r"spectrum|distribution|curve|formula|radiation|regime)", r"Planck\s+Collaborations?",
+               r"Planck\s+et\s+al\.?", r"Planck,?\s+\(?(?:19|20)\d\d"],
+    "Chandra": [r"Chandra\s+et\s+al\.?", r"Chandra,?\s+\(?(?:19|20)\d\d", r"Chandra\s+and\s+[A-Z]\w+,?\s+\(?(?:19|20)\d\d"],
+    "Swift": [r"Swift\s+et\s+al\.?", r"Swift,?\s+\(?(?:19|20)\d\d"],
+    "Fermi": [r"Fermi(?:[- ]Dirac|\s+(?:energy|level|surface|acceleration|gas|momentum|sea|statistics|bubbles?|"
+              r"mechanism|process))", r"Fermi\s+et\s+al\.?", r"Fermi,?\s+\(?(?:19|20)\d\d"],
+    "Gaia": [r"Gaia[- ](?:Enceladus|Sausage)\w*", r"Gaia\s+Collaboration", r"Gaia\s+et\s+al\.?"],
+    "Euclid": [r"Euclid's", r"Euclid\s+Collaboration", r"Euclid\s+et\s+al\.?"],
+}
+
+
+def _singular(word: str) -> str:
+    """Strip a plural ending ("surveys" -> "survey", "frequencies" ->
+    "frequency"), leaving "analysis", "mass", "radius" alone."""
+    low = word.lower()
+    if len(word) > 4 and low.endswith("ies"):
+        return word[:-3] + ("Y" if word[-3:].isupper() else "y")
+    if len(word) > 4 and low.endswith(("ches", "shes", "sses", "xes")):
+        return word[:-2]
+    if len(word) > 3 and low.endswith("s") and not low.endswith(_NOT_PLURAL_ENDINGS) and not word.isupper():
+        return word[:-1]
+    return word
+
+
+def _inflected(word: str) -> str:
+    """Regex for one word in singular or plural form."""
+    if word.isupper() and len(word) > 1:  # acronym: FRB, FRBs
+        return re.escape(word) + "s?"
+    base = _singular(word)
+    low = base.lower()
+    if low.endswith("y") and len(low) > 1 and low[-2] not in "aeiou":
+        return re.escape(base[:-1]) + "(?:y|ies)"
+    if low.endswith(("s", "x", "ch", "sh", "z")):
+        return re.escape(base) + "(?:es)?"
+    return re.escape(base) + "(?:s|es)?"
+
+
+def _alternative_regex(alt: str, strict: bool) -> re.Pattern:
+    """One "|"-separated alternative. All-caps alternatives match
+    case-sensitively (so "HI" doesn't match "hi"); everything else ignores case.
+
+    strict: the literal, whole-word match keyword_coverage always used.
+    Otherwise words also match in singular or plural, and words may be joined
+    by spaces or hyphens ("zoom mode" = "zoom-mode" = "zoom modes").
+    """
+    flags = 0 if alt.isupper() else re.IGNORECASE
+    if strict:
+        return re.compile(rf"\b{re.escape(alt)}\b", flags)
+    words = [w for w in re.split(r"[\s\-]+", alt) if w]
+    return re.compile(r"(?<!\w)" + r"[\s\-]+".join(_inflected(w) for w in words) + r"(?!\w)", flags)
+
+
+def _term_regexes(term: str, acronyms: dict[str, str], strict: bool = True) -> list[re.Pattern]:
     """One regex per "|"-separated alternative, plus the full form of any
-    all-caps acronym alternative. All-caps alternatives match case-sensitively
-    (so "HI" doesn't match "hi"); everything else ignores case."""
+    all-caps acronym alternative (see _alternative_regex for matching)."""
     alts = [a.strip() for a in term.split("|") if a.strip()]
     alts += [acronyms[a] for a in list(alts) if a.isupper() and a in acronyms]
-    return [
-        re.compile(rf"\b{re.escape(a)}\b", 0 if a.isupper() else re.IGNORECASE)
-        for a in dict.fromkeys(alts)
-    ]
+    return [_alternative_regex(a, strict) for a in dict.fromkeys(alts)]
 
 
-def _mention_counts(patterns: dict[str, list[re.Pattern]], chunks: list[dict]) -> dict[str, dict[str, int]]:
-    """{label: {source path: mentions}} for each label's regexes over *chunks*."""
+def _exclusion_regex(names: list[str], extra: list[str] | None, curated: bool) -> re.Pattern | None:
+    """One regex for every guard that applies: the curated TERM_EXCLUSIONS for
+    any of *names*, plus the caller's own patterns in *extra* (each a regex,
+    or "|"-separated phrases matched as in _alternative_regex)."""
+    keys = {k.lower(): k for k in TERM_EXCLUSIONS}
+    guards = [g for n in names if curated and n.strip().lower() in keys for g in TERM_EXCLUSIONS[keys[n.strip().lower()]]]
+    guards += list(extra or [])
+    return re.compile("|".join(f"(?:{g})" for g in guards), re.IGNORECASE) if guards else None
+
+
+def _matches(regexes: list[re.Pattern], exclude: re.Pattern | None, text: str) -> list[re.Match]:
+    """Matches of any regex in *text*, minus those overlapping an exclusion."""
+    found = [m for r in regexes for m in r.finditer(text)]
+    if exclude is None or not found:
+        return found
+    spans = [m.span() for m in exclude.finditer(text)]
+    return [m for m in found if not any(a < m.end() and m.start() < b for a, b in spans)]
+
+
+def _mention_counts(patterns: dict[str, list[re.Pattern]], chunks: list[dict],
+                    excludes: dict[str, re.Pattern | None] | None = None) -> dict[str, dict[str, int]]:
+    """{label: {source path: mentions}} for each label's regexes over *chunks*,
+    not counting matches inside that label's exclusion regex."""
+    excludes = excludes or {}
     counts: dict[str, dict[str, int]] = {label: defaultdict(int) for label in patterns}
     for c in chunks:
         for label, regexes in patterns.items():
-            n = sum(len(r.findall(c["text"])) for r in regexes)
+            n = len(_matches(regexes, excludes.get(label), c["text"]))
             if n:
                 counts[label][c["meta"]["source"]] += n
     return counts
 
 
+def _snippet(text: str, m: re.Match, width: int = 120) -> str:
+    a, b = max(0, m.start() - width), min(len(text), m.end() + width)
+    return ("…" if a else "") + re.sub(r"\s+", " ", text[a:b]).strip() + ("…" if b < len(text) else "")
+
+
 def keyword_coverage(terms: list[str], book: str | None = "aaskaii",
-                     min_hits_per_paper: int = 1, include_noncanonical: bool = False) -> dict:
+                     min_hits_per_paper: int = 1, include_noncanonical: bool = False,
+                     zones: list[str] | None = CONTENT_ZONES, strict: bool = False,
+                     exclude: list[str] | None = None, use_curated_exclusions: bool = True,
+                     return_contexts: int = 0, usage_stats: bool = False) -> dict:
     """Exact per-section / per-paper mention counts for each term.
 
     A paper counts as covering a term when the term (or an alternative /
@@ -160,39 +248,108 @@ def keyword_coverage(terms: list[str], book: str | None = "aaskaii",
     Papers are counted by file path, once each; copies of another indexed
     file and unlisted book documents are left out unless
     *include_noncanonical*.
+
+    Only chunks in *zones* are counted (default abstract and body, so
+    reference lists, affiliations and acknowledgements don't count; None for
+    every zone). Words match in singular or plural and with spaces or hyphens
+    unless *strict*. Mentions inside an *exclude* pattern don't count, nor,
+    unless *strict* or not *use_curated_exclusions*, inside the curated
+    TERM_EXCLUSIONS for that word ("Max-Planck", "Chandra et al."). With
+    *return_contexts* k, each paper lists its first k matched snippets; with
+    *usage_stats*, mentions per 1,000 body words and whether the term is in a
+    heading or the abstract.
     """
-    chunks = corpus_chunks(book, include_noncanonical)
+    if zones is not None:
+        unknown = sorted(set(zones) - set(ZONES))
+        if unknown:
+            raise ValueError(f"Unknown zones {unknown}; expected some of {list(ZONES)}")
+    every = corpus_chunks(book, include_noncanonical)
+    chunks = [c for c in every if zones is None or c["meta"].get("zone", "body") in zones]
     acronyms = get_acronyms()
 
     section_sizes: dict[str, set] = defaultdict(set)
-    for c in chunks:
+    for c in every:
         section_sizes[section_of(c["meta"]["source"]) or "(unknown)"].add(c["meta"]["source"])
 
+    patterns = {t: _term_regexes(t, acronyms, strict) for t in terms}
+    excludes = {t: _exclusion_regex(t.split("|"), exclude, use_curated_exclusions and not strict) for t in terms}
+    all_hits = _mention_counts(patterns, chunks, excludes)
+    stats = _usage_stats(patterns, excludes, every) if usage_stats else {}
+
     results = []
-    all_hits = _mention_counts({t: _term_regexes(t, acronyms) for t in terms}, chunks)
     for term in terms:
         hits = all_hits[term]
+        counted = {s for s, n in hits.items() if n >= min_hits_per_paper}  # paths: each file counts once
         by_section: dict[str, list[str]] = defaultdict(list)
-        for source, n in hits.items():  # keyed by path, so each file counts once
-            if n >= min_hits_per_paper:
-                by_section[section_of(source) or "(unknown)"].append(_stem(source))
-        results.append({
+        for source in counted:
+            by_section[section_of(source) or "(unknown)"].append(_stem(source))
+        row = {
             "term": term,
             "total_mentions": sum(hits.values()),
-            "n_papers": sum(len(p) for p in by_section.values()),
+            "n_papers": len(counted),
             "n_sections": len(by_section),
             "sections": {
                 s: {"n_papers": len(p), "papers": sorted(p)}
                 for s, p in sorted(by_section.items(), key=lambda kv: -len(kv[1]))
             },
-        })
+        }
+        if return_contexts:
+            row["contexts"] = _contexts(patterns[term], excludes[term], chunks, counted, return_contexts)
+        if usage_stats:
+            row["usage"] = {_stem(s): stats[term][s] for s in sorted(counted, key=_stem)}
+        results.append(row)
     results.sort(key=lambda r: (-r["n_sections"], -r["n_papers"]))
     return {
         "book": book or "all",
         "min_hits_per_paper": min_hits_per_paper,
+        "zones": zones or "all",
+        "matching": "strict (literal, whole word)" if strict else "inflected (plurals, space/hyphen variants)",
+        "exclusions": {t: excludes[t].pattern for t in terms if excludes[t] is not None},
         "papers_per_section": {s: len(p) for s, p in sorted(section_sizes.items())},
         "terms": results,
     }
+
+
+def _contexts(regexes: list[re.Pattern], exclude: re.Pattern | None, chunks: list[dict],
+              sources: set[str], k: int) -> dict[str, list[dict]]:
+    """First *k* matched snippets per counted paper, in reading order."""
+    out: dict[str, list[dict]] = defaultdict(list)
+    for c in sorted(chunks, key=lambda c: (c["meta"]["source"], c["meta"].get("chunk_index", 0))):
+        src = c["meta"]["source"]
+        if src not in sources or len(out[_stem(src)]) >= k:
+            continue
+        for m in _matches(regexes, exclude, c["text"])[:k - len(out[_stem(src)])]:
+            out[_stem(src)].append({"text": _snippet(c["text"], m), "zone": c["meta"].get("zone", "body"),
+                                    "heading": c["meta"].get("heading", ""), "page": c["meta"].get("page_no")})
+    return dict(out)
+
+
+def _usage_stats(patterns: dict[str, list[re.Pattern]], excludes: dict[str, re.Pattern | None],
+                 chunks: list[dict]) -> dict[str, dict[str, dict]]:
+    """{term: {source: {mentions_per_1k_body_words, in_heading, in_abstract}}},
+    over every zone of each paper (body words count the body zone only)."""
+    body_words: dict[str, int] = defaultdict(int)
+    for c in chunks:
+        if c["meta"].get("zone", "body") == "body":
+            body_words[c["meta"]["source"]] += len(c["text"].split())
+    out: dict[str, dict] = {}
+    for term, regexes in patterns.items():
+        per: dict[str, dict] = defaultdict(lambda: {"body_mentions": 0, "in_heading": False, "in_abstract": False})
+        for c in chunks:
+            m, src, zone = c["meta"], c["meta"]["source"], c["meta"].get("zone", "body")
+            n = len(_matches(regexes, excludes[term], c["text"]))
+            if zone == "body":
+                per[src]["body_mentions"] += n
+            if zone == "abstract" and n:
+                per[src]["in_abstract"] = True
+            if _matches(regexes, None, m.get("section_path") or m.get("heading") or ""):
+                per[src]["in_heading"] = True
+        out[term] = {
+            src: {"mentions_per_1k_body_words": round(1000 * v["body_mentions"] / body_words[src], 2) if body_words[src] else None,
+                  "in_heading": v["in_heading"], "in_abstract": v["in_abstract"]}
+            for src, v in per.items()
+        }
+    return out
 
 
 # External facilities named as SKA partners/synergies: (name, category, regex).
@@ -293,7 +450,9 @@ def _facility_regexes() -> dict[str, list[re.Pattern]]:
 
 
 def facility_network(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
-                     min_shared_papers: int = 2, include_noncanonical: bool = False) -> dict:
+                     min_shared_papers: int = 2, include_noncanonical: bool = False,
+                     zones: list[str] | None = CONTENT_ZONES, exclude: list[str] | None = None,
+                     use_curated_exclusions: bool = True) -> dict:
     """Which external facilities the papers name, across which sections, and
     which facilities are named together (co-mention edges) — the data behind
     a synergy network, computed rather than reconstructed.
@@ -301,9 +460,14 @@ def facility_network(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
     A paper counts for a facility when it names it at least
     *min_hits_per_paper* times (2 by default, to drop passing mentions).
     Copies and unlisted documents are left out unless *include_noncanonical*.
+    Only chunks in *zones* count (default abstract and body). Mentions inside
+    the curated TERM_EXCLUSIONS for a facility (Max-Planck, "Chandra et al.",
+    the Fermi level) or an *exclude* pattern don't count.
     """
-    chunks = corpus_chunks(book, include_noncanonical)
-    counts = _mention_counts(_facility_regexes(), chunks)
+    chunks = corpus_chunks(book, include_noncanonical, zones)
+    regexes = _facility_regexes()
+    counts = _mention_counts(regexes, chunks, {name: _exclusion_regex([name], exclude, use_curated_exclusions)
+                                               for name in regexes})
     category = {name: cat for name, cat, _ in FACILITIES}
 
     papers: dict[str, set[str]] = {
@@ -334,6 +498,7 @@ def facility_network(book: str | None = "aaskaii", min_hits_per_paper: int = 2,
     return {
         "book": book or "all",
         "min_hits_per_paper": min_hits_per_paper,
+        "zones": zones or "all",
         "facilities": [f for f in facilities if f["n_papers"]],
         "not_named": sorted(f["facility"] for f in facilities if not f["n_papers"]),
         "edges": edges,
